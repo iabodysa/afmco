@@ -155,6 +155,12 @@ scheduler_events = {
 override_whitelisted_methods = {
 	"toggle_archive_view": "afmco.financial_operations.api.expense_request.toggle_archive_view",
 }
+
+regional_overrides = {
+	"Saudi Arabia": {
+		"erpnext.controllers.taxes_and_totals.update_itemised_tax_data": "afmco.financial_operations.itemised_tax.update_itemised_tax_data",
+	},
+}
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
