@@ -19,15 +19,15 @@ from frappe.utils import (
 	today,
 )
 
-GROUP = "SADAD Group V2"
-LINE = "SADAD Child Table 2"
+GROUP = "SADAD Batch"
+LINE = "SADAD Batch Item"
 SETUP = "SADAD Setup"
 PAYMENT_REQUEST = "Payment Requisition"
 JOURNAL_ENTRY = "Journal Entry"
 JOURNAL_ENTRY_ACCOUNT = "Journal Entry Account"
 RENEWAL_TRACKING = "Iqama Renewal Tracking"
 CONTEXT = "SADAD Bulk"
-GROUP_SERIES = "SADADV2-.YYYY.-"
+GROUP_SERIES = "SADAD-B-.YYYY.-"
 PAYMENT_REQUEST_SERIES = "PR-.YYYY.-"
 TYPE_PLACEHOLDER = "--- Select ---"
 SINGLE_PERIOD_TYPE = "Change of profession"

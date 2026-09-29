@@ -78,7 +78,7 @@
    "fieldname": "item",
    "fieldtype": "Table",
    "label": "Employee List",
-   "options": "SADAD Child Table 2"
+   "options": "SADAD Batch Item"
   },
   {
    "fieldname": "table_section",
@@ -94,7 +94,7 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "naming_series",
-   "options": "SADADV2-.YYYY.-"
+   "options": "SADAD-B-.YYYY.-"
   },
   {
    "default": "JV Not Created",
@@ -110,7 +110,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "SADAD Group V2",
+   "options": "SADAD Batch",
    "print_hide": 1,
    "read_only": 1
   },
@@ -132,7 +132,7 @@
  "modified": "2024-10-17 15:27:47.289088",
  "modified_by": "Administrator",
  "module": "Financial Operations",
- "name": "SADAD Group V2",
+ "name": "SADAD Batch",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [

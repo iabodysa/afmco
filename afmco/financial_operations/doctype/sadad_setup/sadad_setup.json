@@ -15,7 +15,7 @@
    "fieldname": "sadad_type",
    "fieldtype": "Table",
    "label": "SADAD Type",
-   "options": "SADAD Child Table 1"
+   "options": "SADAD Setup Account"
   }
  ],
  "grid_page_length": 50,

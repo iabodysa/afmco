@@ -1075,7 +1075,6 @@ PR Reference,مرجع أمر الدفع
 PR Reference 2,مرجع أمر الدفع 2
 PR User (Residency Renewal),مستخدم أمر الدفع (تجديد الإقامة)
 PR User (SADAD Invoice),مستخدم أمر الدفع (فاتورة سداد)
-PR v2,طلب الدفع v2
 Package ID,معرّف الحزمة
 Paid Loan,قرض مدفوع
 Palestine,فلسطين
@@ -1352,9 +1351,10 @@ Riyadh,الرياض
 Room No,رقم الغرفة
 Round trip distance from home to warehouse (km),مسافة الذهاب والعودة من السكن إلى المستودع (كم)
 SADAD Calculation,حساب سداد
-SADAD Child Table 1,جدول سداد الفرعي 1
-SADAD Child Table 2,جدول سداد الفرعي 2
-SADAD Group V2,مجموعة سداد v2
+SADAD Setup Account,حساب إعدادات سداد
+SADAD Batch Item,بند دفعة سداد
+SADAD Batch,دفعة سداد
+SADAD Group Item,بند مجموعة سداد
 SADAD Invoice Creation Date,تاريخ إنشاء فاتورة سداد
 SADAD Number,رقم سداد
 SADAD Type,نوع سداد
@@ -1778,7 +1778,6 @@ packaging,التغليف
 party,الطرف
 period,الفترة
 place of birth,مكان الميلاد
-pr v2 table,جدول طلب الدفع v2
 print builder,منشئ الطباعة
 promo 1,عرض ترويجي 1
 promo 2,عرض ترويجي 2
