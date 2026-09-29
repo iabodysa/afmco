@@ -152,7 +152,13 @@ scheduler_events = {
 # Overriding Methods
 # ------------------------------
 #
+after_request = ["afmco.seo.add_robots_header"]
+
 doc_events = {
+	"Web Form": {
+		"on_update": "afmco.seo.clear_web_form_routes",
+		"on_trash": "afmco.seo.clear_web_form_routes",
+	},
 	"File": {
 		"before_insert": "afmco.financial_operations.report_export.shorten_file_name",
 	},
