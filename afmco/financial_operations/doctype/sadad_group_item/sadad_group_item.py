@@ -3,5 +3,5 @@
 
 from frappe.model.document import Document
 
-class SADADGroup2(Document):
+class SADADGroupItem(Document):
 	pass

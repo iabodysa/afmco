@@ -3,5 +3,5 @@
 
 from frappe.model.document import Document
 
-class prv2table(Document):
+class SADADSetupAccount(Document):
 	pass

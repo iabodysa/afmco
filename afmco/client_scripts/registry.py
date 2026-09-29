@@ -16,7 +16,7 @@ DOCTYPE_JS = {
 		'public/js/client_scripts/form/afmco--employee_data_update_2024.js',
 	],
 	'Employee Financial Summary': [
-		'public/js/client_scripts/form/afmco--employee_financial_summary_2.js',
+		'public/js/client_scripts/form/afmco--employee_financial_summary.js',
 	],
 	'Employee Salary Adjustment': [
 		'public/js/client_scripts/form/afmco--employee_salary_adjustment_form.js',
@@ -28,7 +28,7 @@ DOCTYPE_JS = {
 		'public/js/client_scripts/form/afmco--payment_requisition.js',
 	],
 	'Financial Analysis Dashboard': [
-		'public/js/client_scripts/form/afmco--financial_analysis_dashboard_2.js',
+		'public/js/client_scripts/form/afmco--financial_analysis_dashboard.js',
 	],
 	'Iqama Renewal Management': [
 		'public/js/client_scripts/form/afmco--iqama_renewal_management_form.js',
@@ -50,9 +50,6 @@ DOCTYPE_JS = {
 	],
 	'Loan Application': [
 		'public/js/client_scripts/form/afmco--loan_application.js',
-	],
-	'PR v2': [
-		'public/js/client_scripts/form/afmco--pr_v2_form.js',
 	],
 	'Payroll Entry': [
 		'public/js/client_scripts/form/afmco--payroll_entry_form.js',
@@ -83,7 +80,7 @@ DOCTYPE_JS = {
 		'public/js/client_scripts/form/afmco--task_form.js',
 	],
 	'Vacation Allowance': [
-		'public/js/client_scripts/form/afmco--vacation_allowance_2.js',
+		'public/js/client_scripts/form/afmco--vacation_allowance.js',
 	],
 	'WPS Consolidated Report': [
 		'public/js/client_scripts/form/afmco--wps_consolidated_report.js',

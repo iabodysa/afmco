@@ -33,7 +33,7 @@
    "fieldname": "table12",
    "fieldtype": "Table",
    "label": "Employee List",
-   "options": "SADADGroup2"
+   "options": "SADAD Group Item"
   },
   {
    "fieldname": "section_journal_entry_account",

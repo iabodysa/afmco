@@ -3,5 +3,5 @@
 
 from frappe.model.document import Document
 
-class SADADChildTable1(Document):
+class SADADBatch(Document):
 	pass

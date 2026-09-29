@@ -1,7 +1,7 @@
 // Copyright (c) 2026, AFMCO and contributors
 
 const SB_API = "afmco.financial_operations.api.sadad.";
-const SB_DOCTYPE = "SADAD Group V2";
+const SB_DOCTYPE = "SADAD Batch";
 const SB_PAGE_LENGTH = 50;
 const SB_VIEWS = ["batches", "compose", "overview"];
 const SB_DOCSTATUS_FILTERS = [
