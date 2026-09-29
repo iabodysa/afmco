@@ -406,34 +406,39 @@ function er_fill($container, rows) {
 }
 
 
-// Attachments of the entry and its Payment Requisition, previewed without leaving the form
+// Attachments of the entry and its Payment Requisition, shown beside the form in a split view
+const JE_IMAGE_EXT = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'];
+
 function je_attachments(frm) {
     if (frm.je_attachments_wrapper) {
         frm.je_attachments_wrapper.remove();
         frm.je_attachments_wrapper = null;
     }
-    if (frm.is_new()) return;
+    frm.je_files = [];
+    if (frm.is_new()) {
+        je_split_close();
+        return;
+    }
+    if (!frm.je_split_btn) {
+        frm.je_split_btn = frm.page.add_action_icon('attachment', () => je_split_toggle(frm), '', __('Attachments View'));
+    }
 
-    frappe.xcall('afmco.financial_operations.api.journal_entry.get_attachments', { name: frm.doc.name }).then(files => {
-        if (!files || !files.length || frm.je_attachments_wrapper) return;
+    const name = frm.doc.name;
+    frappe.xcall('afmco.financial_operations.api.journal_entry.get_attachments', { name }).then(files => {
+        if (frm.doc.name !== name) return;
+        frm.je_files = files || [];
+        if (je_split_is_open()) je_split_render(frm);
+        if (!frm.je_files.length || frm.je_attachments_wrapper) return;
 
         const wrapper = $(`
             <div class="row form-section card-section visible-section">
-                <div class="section-head">${__('Attachments')} (${files.length})</div>
+                <div class="section-head">${__('Attachments')} (${frm.je_files.length})</div>
                 <div class="section-body">
                     <div class="form-column col-sm-12 je-attachment-list" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
                 </div>
             </div>
         `);
-        const $list = wrapper.find('.je-attachment-list');
-        files.forEach(file => {
-            const source = file.attached_to_doctype === 'Journal Entry' ? __('Journal Entry') : __('Payment Requisition');
-            $(`<button type="button" class="btn btn-default btn-sm"></button>`)
-                .append($('<span></span>').text(file.file_name || file.file_url))
-                .append($('<span class="text-muted" style="margin-inline-start: 6px;"></span>').text(source))
-                .on('click', () => je_preview(file))
-                .appendTo($list);
-        });
+        je_file_buttons(frm, wrapper.find('.je-attachment-list'));
 
         const dashboard = frm.$wrapper.find('.form-dashboard');
         if (dashboard.length) {
@@ -445,25 +450,99 @@ function je_attachments(frm) {
     });
 }
 
-function je_preview(file) {
-    const url = encodeURI(file.file_url);
-    const ext = (file.file_url.split('?')[0].split('.').pop() || '').toLowerCase();
-    let body;
-    if (['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'].includes(ext)) {
-        body = `<img src="${url}" style="max-width: 100%; display: block; margin: auto;">`;
-    } else if (ext === 'pdf') {
-        body = `<iframe src="${url}" style="width: 100%; height: 75vh; border: 0;"></iframe>`;
+function je_file_buttons(frm, $list, active) {
+    frm.je_files.forEach((file, idx) => {
+        const source = file.attached_to_doctype === 'Journal Entry' ? __('Journal Entry') : __('Payment Requisition');
+        $(`<button type="button" class="btn btn-sm ${idx === active ? 'btn-primary' : 'btn-default'}"></button>`)
+            .append($('<span></span>').text(file.file_name || file.file_url))
+            .append($('<span style="margin-inline-start: 6px; opacity: 0.7;"></span>').text(source))
+            .on('click', () => je_split_open(frm, idx))
+            .appendTo($list);
+    });
+}
+
+function je_split_is_open() {
+    return document.body.classList.contains('je-split');
+}
+
+function je_split_toggle(frm) {
+    if (je_split_is_open()) {
+        je_split_close();
     } else {
-        window.open(url, '_blank');
+        je_split_open(frm, 0);
+    }
+}
+
+function je_split_open(frm, idx) {
+    frm.je_split_index = idx || 0;
+    if (!je_split_is_open()) {
+        je_split_style();
+        const sidebar = frappe.app && frappe.app.sidebar;
+        document.body.dataset.jeSidebarWasOpen = sidebar && sidebar.sidebar_expanded ? '1' : '';
+        if (sidebar && sidebar.sidebar_expanded) sidebar.close();
+        document.body.classList.add('je-split');
+        $('<div class="je-split-panel"></div>').appendTo('body');
+        frappe.router.once('change', je_split_close);
+    }
+    je_split_render(frm);
+}
+
+function je_split_close() {
+    if (!je_split_is_open()) return;
+    document.body.classList.remove('je-split');
+    $('.je-split-panel').remove();
+    const sidebar = frappe.app && frappe.app.sidebar;
+    if (sidebar && document.body.dataset.jeSidebarWasOpen && !sidebar.sidebar_expanded) sidebar.open();
+    delete document.body.dataset.jeSidebarWasOpen;
+}
+
+function je_split_render(frm) {
+    const $panel = $('.je-split-panel').empty();
+    const top = ($('.navbar').outerHeight() || 0);
+    $panel.css('top', top + 'px');
+
+    const $head = $('<div class="je-split-head"></div>').appendTo($panel);
+    const $files = $('<div class="je-split-files"></div>').appendTo($head);
+    $(`<button type="button" class="btn btn-default btn-sm icon-btn" title="${__('Close')}">${frappe.utils.icon('close', 'sm')}</button>`)
+        .on('click', je_split_close)
+        .appendTo($head);
+
+    const $body = $('<div class="je-split-body"></div>').appendTo($panel);
+    if (!frm.je_files.length) {
+        $body.append($('<div class="text-muted" style="padding: 24px;"></div>').text(__('No attachments')));
         return;
     }
-    const d = new frappe.ui.Dialog({
-        title: frappe.utils.escape_html(file.file_name || file.file_url),
-        size: 'extra-large',
-        fields: [{ fieldtype: 'HTML', fieldname: 'preview' }],
-        primary_action_label: __('Open in New Tab'),
-        primary_action: () => window.open(url, '_blank'),
-    });
-    d.fields_dict.preview.$wrapper.html(body);
-    d.show();
+    const idx = Math.min(frm.je_split_index || 0, frm.je_files.length - 1);
+    je_file_buttons(frm, $files, idx);
+
+    const file = frm.je_files[idx];
+    const url = encodeURI(file.file_url);
+    const ext = (file.file_url.split('?')[0].split('.').pop() || '').toLowerCase();
+    if (JE_IMAGE_EXT.includes(ext)) {
+        $body.append($('<img style="max-width: 100%; display: block; margin: auto;">').attr('src', url));
+    } else if (ext === 'pdf') {
+        $body.append($('<iframe style="width: 100%; height: 100%; border: 0;"></iframe>').attr('src', url));
+    } else {
+        $body.append(
+            $('<div style="padding: 24px;"></div>').append(
+                $('<a class="btn btn-default btn-sm" target="_blank" rel="noopener"></a>').attr('href', url).text(__('Open in New Tab'))
+            )
+        );
+    }
+}
+
+function je_split_style() {
+    if (document.getElementById('je-split-style')) return;
+    $(`<style id="je-split-style">
+        body.je-split .page-container { margin-inline-end: 50vw; }
+        body.je-split .layout-side-section { display: none !important; }
+        .je-split-panel {
+            position: fixed; inset-inline-end: 0; bottom: 0; width: 50vw; z-index: 1020;
+            display: flex; flex-direction: column;
+            background: var(--card-bg); border-inline-start: 1px solid var(--border-color);
+        }
+        .je-split-head { display: flex; gap: 8px; align-items: flex-start; padding: 8px; border-bottom: 1px solid var(--border-color); }
+        .je-split-files { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+        .je-split-body { flex: 1; overflow: auto; }
+    </style>`).appendTo('head');
 }
