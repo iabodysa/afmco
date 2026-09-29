@@ -3,7 +3,9 @@
 
 import frappe
 from frappe import _
-from frappe.utils import get_link_to_form
+from frappe.utils import cint, get_link_to_form
+
+DRAFT_LIMIT_FIELD = "afmco_journal_entry_draft_limit"
 
 
 class AfmcoJournalEntry:
@@ -12,6 +14,9 @@ class AfmcoJournalEntry:
 		if frappe.flags.in_install or frappe.flags.in_migrate:
 			return
 		if self.is_new():
+			limit = cint(frappe.db.get_single_value("Accounts Settings", DRAFT_LIMIT_FIELD))
+			if not limit:
+				return
 			count = frappe.db.count(
 				self.doctype,
 				filters={
@@ -19,8 +24,10 @@ class AfmcoJournalEntry:
 					"docstatus": 0,
 				},
 			)
-			if count >= 60:
-				frappe.throw(_("You cannot create more than 20 drafts. Submit or delete one of your current drafts."))
+			if count >= limit:
+				frappe.throw(
+					_("You cannot create more than {0} drafts. Submit or delete one of your current drafts.").format(limit)
+				)
 
 	def before_submit(self):
 		super().before_submit()
