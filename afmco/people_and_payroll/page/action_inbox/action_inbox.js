@@ -9,6 +9,9 @@ frappe.pages['action-inbox'].on_page_load = function (wrapper) {
 	wrapper.action_inbox = new ActionInbox(page);
 };
 
+// Cards shown per section before the Show all button
+const AI_VISIBLE = 12;
+
 class ActionInbox {
 	constructor(page) {
 		this.page = page;
@@ -21,18 +24,19 @@ class ActionInbox {
 
 	_build_skeleton() {
 		this.$root = $('<div class="action-inbox"></div>').appendTo(this.page.main);
+		this.$summary = $('<div class="ai-summary"></div>').appendTo(this.$root);
 
-		this.$approvalsSection = this._section(__('Pending Approvals'));
+		this.$approvalsSection = this._section(__('Pending Approvals'), 'blue');
 		this.$approvals = this.$approvalsSection.find('.ai-list');
-		this.$tasksSection = this._section(__('Assigned Tasks'));
+		this.$tasksSection = this._section(__('Assigned Tasks'), 'orange');
 		this.$tasks = this.$tasksSection.find('.ai-list');
-		this.$actedSection = this._section(__('Acted On My Documents'));
+		this.$actedSection = this._section(__('Acted On My Documents'), 'purple');
 		this.$acted = this.$actedSection.find('.ai-list');
-		this.$submittedSection = this._section(__('My Open Submissions'));
+		this.$submittedSection = this._section(__('My Open Submissions'), 'green');
 		this.$submitted = this.$submittedSection.find('.ai-list');
-		this.$closedSection = this._section(__('Closed in the Last 48h'));
+		this.$closedSection = this._section(__('Closed in the Last 48h'), 'gray');
 		this.$closed = this.$closedSection.find('.ai-list');
-		this.$notifsSection = this._section(__('Notifications'));
+		this.$notifsSection = this._section(__('Notifications'), 'cyan');
 		this.$notifs = this.$notifsSection.find('.ai-list');
 
 		this.$empty = $('<div class="ai-empty text-muted"></div>').appendTo(this.$root);
@@ -42,11 +46,51 @@ class ActionInbox {
 		];
 	}
 
-	_section(title) {
-		const $s = $('<section class="ai-section"></section>').appendTo(this.$root);
-		$('<header class="ai-section-head"></header>').text(title).appendTo($s);
+	_section(title, tone) {
+		const $s = $(`<section class="ai-section ai-tone-${tone}"></section>`).appendTo(this.$root);
+		const $head = $('<header class="ai-section-head"></header>').appendTo($s);
+		$('<span class="ai-section-title"></span>').text(title).appendTo($head);
+		$('<span class="ai-section-count"></span>').appendTo($head);
+		$('<button type="button" class="btn btn-xs btn-default ai-section-toggle"></button>')
+			.text(__('Hide'))
+			.on('click', () => {
+				$s.toggleClass('ai-collapsed');
+				$head.find('.ai-section-toggle').text($s.hasClass('ai-collapsed') ? __('Show') : __('Hide'));
+			})
+			.appendTo($head);
 		$('<div class="ai-list"></div>').appendTo($s);
+		$('<button type="button" class="btn btn-sm btn-default ai-more"></button>').hide().appendTo($s);
+		$s.data('title', title);
 		return $s;
+	}
+
+	_finish_section($s, total) {
+		$s.find('.ai-section-count').text(total);
+		const $cards = $s.find('.ai-card');
+		const $more = $s.find('.ai-more');
+		if ($cards.length <= AI_VISIBLE) {
+			$more.hide();
+			return;
+		}
+		$cards.slice(AI_VISIBLE).addClass('ai-hidden');
+		$more.text(__('Show all {0}', [$cards.length])).show().off('click').on('click', () => {
+			$cards.removeClass('ai-hidden');
+			$more.hide();
+		});
+	}
+
+	_render_summary() {
+		this.$summary.empty();
+		this._allSections.forEach(($s) => {
+			const total = $s.find('.ai-card').length;
+			if (!total) return;
+			$('<button type="button" class="ai-summary-tile"></button>')
+				.addClass(($s.attr('class').match(/ai-tone-\w+/) || [''])[0])
+				.append($('<span class="ai-summary-count"></span>').text(total))
+				.append($('<span class="ai-summary-label"></span>').text($s.data('title')))
+				.on('click', () => $s[0].scrollIntoView({ behavior: 'smooth', block: 'start' }))
+				.appendTo(this.$summary);
+		});
 	}
 
 	refresh() {
@@ -97,15 +141,21 @@ class ActionInbox {
 		submitted.forEach((row) => this._doc_card(this.$submitted, row, 'green'));
 		closed.forEach((row) => this._doc_card(this.$closed, row, 'gray'));
 		notifs.forEach((row) => this._notification_card(row));
+
+		this._allSections.forEach(($s) => this._finish_section($s, $s.find('.ai-card').length));
+		this._render_summary();
+		this.$summary.show();
 	}
 
 	_render_loading() {
 		this._allSections.forEach(($s) => $s.hide());
+		this.$summary.hide();
 		this.$empty.text(__('Loading…')).show();
 	}
 
 	_render_error() {
 		this._allSections.forEach(($s) => $s.hide());
+		this.$summary.hide();
 		this.$empty.empty();
 		$('<div class="ai-error-msg"></div>')
 			.text(__('Could not load your work center. Please retry.'))

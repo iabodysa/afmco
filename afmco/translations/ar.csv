@@ -719,6 +719,7 @@ HD Team,فريق الدعم
 HD Ticket,تذكرة الدعم
 HD Ticket Priority,أولوية تذكرة الدعم
 HD Ticket Type,نوع تذكرة الدعم
+Hide,إخفاء
 HOUSING 2,السكن 2
 HR,الموارد البشرية
 Ha'il,حائل
@@ -1367,6 +1368,7 @@ SADAD Number,رقم سداد
 SADAD Type,نوع سداد
 SADAD code,رمز سداد
 SADAD number and exemption status updated successfully.,تم تحديث رقم السداد وحالة الإعفاء بنجاح.
+Show all {0},عرض الكل ({0})
 SIM Card Cost (Months),تكلفة شريحة الاتصال (أشهر)
 Sadad Invoice Amount,مبلغ فاتورة سداد
 Sadad Invoice Amount for Advance Payments,مبلغ فاتورة سداد للدفعات المقدمة
