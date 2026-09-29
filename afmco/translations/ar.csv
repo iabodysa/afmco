@@ -470,6 +470,8 @@ EMP NAME,اسم الموظف
 EMP Name,اسم الموظف
 EMP No,الرقم الوظيفي
 EMPL PHONE,هاتف الموظف
+Employee Transfer Requests moved to Apex. Opening Apex...,انتقلت طلبات نقل الموظفين إلى Apex. جارٍ فتح Apex...
+Employee Transfer Requests moved to Apex. This list stays for payment orders.,انتقلت طلبات نقل الموظفين إلى Apex. تبقى هذه القائمة لأوامر الدفع.
 EOS Calculations,حسابات نهاية الخدمة
 EOS document has been marked as Paid,تم تعليم مستند نهاية الخدمة كمدفوع
 Eastern Province,المنطقة الشرقية
@@ -1027,6 +1029,7 @@ Number of vacation days per year,عدد أيام الإجازة السنوية
 Number to Hire,العدد المطلوب توظيفه
 O.T HOURS,ساعات العمل الإضافي
 OP Bonus,مكافأة التشغيل
+Open in Apex,فتح في Apex
 Open in New Tab,فتح في تبويب جديد
 OT Hour,ساعة العمل الإضافي
 OTHER ALLOWANCE,بدلات أخرى
@@ -1498,6 +1501,7 @@ Supporting files and documents,الملفات والمستندات الداعم�
 Suspended,موقوف
 System Management Tools,أدوات إدارة النظام
 System User,مستخدم النظام
+This request moved to Apex as a Transport Request. New requests are created in Apex.,انتقل هذا الطلب إلى Apex باسم Transport Request. الطلبات الجديدة تُنشأ في Apex.
 to the AFMCO family,في أسرة أفمكو
 TOTAL OT,إجمالي العمل الإضافي
 TRANSFERED TO ANOTHER COMPANY,منقول إلى شركة أخرى
