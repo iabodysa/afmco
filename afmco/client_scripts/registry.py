@@ -1,4 +1,7 @@
 DOCTYPE_JS = {
+	'Employee Transfer Request': [
+		'public/js/client_scripts/form/afmco--employee_transfer_request_to_apex.js',
+	],
 	'Cancellation Request': [
 		'public/js/client_scripts/form/afmco--cancellation_request_route.js',
 	],
@@ -88,6 +91,9 @@ DOCTYPE_JS = {
 }
 
 DOCTYPE_LIST_JS = {
+	'Employee Transfer Request': [
+		'public/js/client_scripts/list/afmco--employee_transfer_request_list_to_apex.js',
+	],
 	'Employee': [
 		'public/js/client_scripts/list/afmco--employee_list.js',
 	],

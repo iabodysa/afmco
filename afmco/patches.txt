@@ -12,3 +12,4 @@ afmco.patches.v16_0.replace_renamed_doctype_names_in_filters
 afmco.patches.v16_0.delete_financial_analysis_dashboard
 afmco.patches.v16_0.label_journal_entry_employee_tab
 afmco.patches.v16_0.move_journal_entry_employee_to_first_tab
+afmco.patches.v16_0.stop_employee_transfer_request_creation
