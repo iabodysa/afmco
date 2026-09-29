@@ -6,7 +6,7 @@ import frappe
 PAYMENT_REQUISITION = "Payment Requisition"
 
 
-@frappe.whitelist(methods=["GET"])
+@frappe.whitelist()
 def get_attachments(name: str) -> list[dict]:
 	doc = frappe.get_doc("Journal Entry", name)
 	doc.check_permission("read")
