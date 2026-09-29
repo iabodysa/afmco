@@ -1,9 +1,9 @@
 {
  "creation": "2024-06-15 04:33:45.399167",
  "doctype": "Number Card",
- "document_type": "Expense Request Afmco",
+ "document_type": "Payment Requisition",
  "dynamic_filters_json": "[]",
- "filters_json": "[[\"Expense Request Afmco\",\"payment_type\",\"=\",\"EOS\",false],[\"Expense Request Afmco\",\"creation\",\"Timespan\",\"this month\",false]]",
+ "filters_json": "[[\"Payment Requisition\",\"payment_type\",\"=\",\"EOS\",false],[\"Payment Requisition\",\"creation\",\"Timespan\",\"this month\",false]]",
  "function": "Count",
  "is_standard": 1,
  "label": "Monthly EOS Expense Requests Count",

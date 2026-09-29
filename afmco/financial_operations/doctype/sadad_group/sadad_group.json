@@ -123,7 +123,7 @@
    "fieldname": "pr_reference",
    "fieldtype": "Link",
    "label": "PR Reference",
-   "options": "Expense Request Afmco"
+   "options": "Payment Requisition"
   },
   {
    "fieldname": "note",

@@ -24,8 +24,8 @@ DOCTYPE_JS = {
 	'Employee Update': [
 		'public/js/client_scripts/form/afmco--employee_update_form.js',
 	],
-	'Expense Request Afmco': [
-		'public/js/client_scripts/form/afmco--expense_request_afmco_v3.js',
+	'Payment Requisition': [
+		'public/js/client_scripts/form/afmco--payment_requisition.js',
 	],
 	'Financial Analysis Dashboard': [
 		'public/js/client_scripts/form/afmco--financial_analysis_dashboard_2.js',
@@ -97,8 +97,8 @@ DOCTYPE_LIST_JS = {
 	'Employee': [
 		'public/js/client_scripts/list/afmco--employee_list.js',
 	],
-	'Expense Request Afmco': [
-		'public/js/client_scripts/list/afmco--expense_request_afmco_v3_list.js',
+	'Payment Requisition': [
+		'public/js/client_scripts/list/afmco--payment_requisition_list.js',
 	],
 	'Iqama Renewal Tracking': [
 		'public/js/client_scripts/list/afmco--iqama_renewal_tracking_list.js',

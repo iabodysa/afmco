@@ -650,7 +650,7 @@ async function createPaymentRequest(frm) {
 			account_no: account_no
 		};
 		let expenseRequest = await frappe.db.insert({
-			doctype: 'Expense Request Afmco',
+			doctype: 'Payment Requisition',
 			...expenseRequestData
 		});
 		for (const name of successList) {

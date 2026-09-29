@@ -110,7 +110,7 @@ async function fetchPaymentRequests(docname) {
         const { message } = await frappe.call({
             method: "frappe.client.get_list",
             args: {
-                doctype: "Expense Request Afmco",
+                doctype: "Payment Requisition",
                 filters: { tax_invoice_number: docname },
                 fields: ["name", "amount", "workflow_state"],
                 limit: 10
@@ -285,7 +285,7 @@ function createPaymentRequestDashboard_old(payments, containerId) {
                         <td><span class="pr-status-pill ${badgeClass}"><span class="icon">${icon}</span> ${statusLabel}</span></td>
                         <td style="text-align:right; font-weight: 500;">${(p.amount || 0).toLocaleString('en-US')} SAR</td>
                         <td style="text-align:center;">
-                            <button class="pr-open-btn" onclick="frappe.set_route('Form', 'Expense Request Afmco', '${p.name}')">
+                            <button class="pr-open-btn" onclick="frappe.set_route('Form', 'Payment Requisition', '${p.name}')">
                                 <span class="icon">${dashboard_icons.externalLink}</span> Open
                             </button>
                         </td>
@@ -499,7 +499,7 @@ async function updateDashboards(frm) {
             const { message: payments } = await frappe.call({
                 method: "frappe.client.get_list",
                 args: {
-                    doctype: "Expense Request Afmco",
+                    doctype: "Payment Requisition",
                     filters: { tax_invoice_number: frm.doc.name },
                     fields: ["name", "amount", "workflow_state"],
                     limit: 10
@@ -537,7 +537,7 @@ async function updateDashboards(frm) {
                             <td class="amount-cell">${fmt(p.amount)}</td>
                             <td><span class="indicator-pill ${statusClass}">${p.workflow_state || 'Pending'}</span></td>
                             <td class="text-right">
-                                <a class="btn-link" onclick="frappe.set_route('Form', 'Expense Request Afmco', '${p.name}')">
+                                <a class="btn-link" onclick="frappe.set_route('Form', 'Payment Requisition', '${p.name}')">
                                     Open →
                                 </a>
                             </td>
@@ -802,7 +802,7 @@ frappe.ui.form.on('Vacation Allowance', {
 
         await frappe.db.set_value(frm.doctype, frm.docname, 'pr_status', 'PR Created');
         
-        const expenseRequest = frappe.model.get_new_doc('Expense Request Afmco');
+        const expenseRequest = frappe.model.get_new_doc('Payment Requisition');
         expenseRequest.tax_invoice_number = frm.doc.name;
         expenseRequest.account_no = frm.doc.account_no;
         expenseRequest.beneficiary_name = `${frm.doc.employee_name} ${frm.doc.employee}`;
@@ -860,7 +860,7 @@ frappe.ui.form.on('Vacation Allowance', {
     },
   create_pr_for_sadad: function(frm) {
         let VisaAmount = frm.doc.days1 === '30' ? 200 : frm.doc.days1 === '60' ? 200 : frm.doc.days1 === '90' ? 300 : frm.doc.days1 === '120' ? 400 : 0;
-        const expenseRequest = frappe.model.get_new_doc('Expense Request Afmco');
+        const expenseRequest = frappe.model.get_new_doc('Payment Requisition');
         expenseRequest.tax_invoice_number = frm.doc.name;
         expenseRequest.account_no = "MOI SADAD";
         expenseRequest.beneficiary_name = `${frm.doc.employee_name} ${frm.doc.employee}`;

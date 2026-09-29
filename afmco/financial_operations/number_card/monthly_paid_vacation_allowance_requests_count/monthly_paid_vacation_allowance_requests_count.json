@@ -1,9 +1,9 @@
 {
  "creation": "2024-06-15 04:35:06.701126",
  "doctype": "Number Card",
- "document_type": "Expense Request Afmco",
+ "document_type": "Payment Requisition",
  "dynamic_filters_json": "[]",
- "filters_json": "[[\"Expense Request Afmco\",\"payment_type\",\"=\",\"Vacation Allowance\",false],[\"Expense Request Afmco\",\"workflow_state\",\"=\",\"Paid\",false],[\"Expense Request Afmco\",\"creation\",\"Timespan\",\"this month\",false]]",
+ "filters_json": "[[\"Payment Requisition\",\"payment_type\",\"=\",\"Vacation Allowance\",false],[\"Payment Requisition\",\"workflow_state\",\"=\",\"Paid\",false],[\"Payment Requisition\",\"creation\",\"Timespan\",\"this month\",false]]",
  "function": "Count",
  "is_standard": 1,
  "label": "Monthly Paid Vacation Allowance Requests Count",

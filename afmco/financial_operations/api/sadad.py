@@ -22,7 +22,7 @@ from frappe.utils import (
 GROUP = "SADAD Group V2"
 LINE = "SADAD Child Table 2"
 SETUP = "SADAD Setup"
-PAYMENT_REQUEST = "Expense Request Afmco"
+PAYMENT_REQUEST = "Payment Requisition"
 JOURNAL_ENTRY = "Journal Entry"
 JOURNAL_ENTRY_ACCOUNT = "Journal Entry Account"
 RENEWAL_TRACKING = "Iqama Renewal Tracking"

@@ -409,7 +409,7 @@ Object.assign(IqamaControl.prototype, {
 
 		const folded = actions.filter((action) => action !== primary);
 		// Item 1 (round 8c): the ORIGINAL is bulk-first -- select many records,
-		// pick one payment type, get ONE Expense Request Afmco covering all of
+		// pick one payment type, get ONE Payment Requisition covering all of
 		// them (_create_pr() in ic_actions.js already sums the amount and
 		// builds one remark block per employee; that half was already correct,
 		// only this reachability wiring was missing). Same _payment_entries()
@@ -1268,7 +1268,7 @@ Object.assign(IqamaControl.prototype, {
 					.forEach(([name, label]) => {
 						const $field = this._field($parent, label, "");
 						$("<a></a>")
-							.attr("href", frappe.utils.get_form_link("Expense Request Afmco", name))
+							.attr("href", frappe.utils.get_form_link("Payment Requisition", name))
 							.text(name)
 							.appendTo($field.find(".ic-field-value").empty());
 					});

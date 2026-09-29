@@ -1,7 +1,7 @@
 // Copyright (c) 2026, AFMCO and contributors
 
 const IC_DOCTYPE = "Iqama Renewal Tracking";
-const IC_EXPENSE_DOCTYPE = "Expense Request Afmco";
+const IC_EXPENSE_DOCTYPE = "Payment Requisition";
 const IC_ROW_LIMIT = 500;
 
 const IC_VIEWS = [

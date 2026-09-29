@@ -460,7 +460,7 @@ class EmployeeFinancialDashboard {
         const totalLoanPaid = loans.reduce((a,x)=>a+this.safeFloat(x.total_principal_paid),0);
         const totalAdv = advances.reduce((a,x)=>a+this.safeFloat(x.advance_amount),0);
         
-        // 3. Payments (Expense Request Afmco - Paid)
+        // 3. Payments (Payment Requisition - Paid)
         let payFilters = [['workflow_state', '=', 'Paid']];
         // Combine account number filter logic similarly to loadExpenseRequests
         if (this.employeeData && this.employeeData.bank_ac_no) {
@@ -473,12 +473,12 @@ class EmployeeFinancialDashboard {
              // Assuming strict account number query for now as per user request.
         }
         
-        // We need to fetch 'amount' from Expense Request Afmco for Paid items
+        // We need to fetch 'amount' from Payment Requisition for Paid items
         // Note: Filters might need to be OR if we want to allow employee filter too, but Frappe list is AND.
         // If account_no is missing, we might skip this query or return 0.
         let totalPay = 0;
         if (this.employeeData && this.employeeData.bank_ac_no) {
-             const payments = await this.callAPI('Expense Request Afmco', payFilters, ['amount'], {limit:0});
+             const payments = await this.callAPI('Payment Requisition', payFilters, ['amount'], {limit:0});
              if(this.mountId !== mid) return;
              totalPay = payments.reduce((a,x)=>a+this.safeFloat(x.amount),0);
         }
@@ -703,7 +703,7 @@ class EmployeeFinancialDashboard {
              $('#efd-expenses-table').html(`
                  <div class="alert alert-warning m-3">
                      <strong>Note:</strong> No Bank Account Number found in Employee record (field: <code>bank_ac_no</code>).
-                     <br>Expenses are queried by matching the employee's bank account to <code>Expense Request Afmco.account_no</code>.
+                     <br>Expenses are queried by matching the employee's bank account to <code>Payment Requisition.account_no</code>.
                  </div>
              `);
              return;
@@ -722,10 +722,10 @@ class EmployeeFinancialDashboard {
          $('#efd-expenses-table').html(`<div class="text-muted text-center p-3"><i class="fa fa-spinner fa-spin"></i> Searching for IBAN containing: <code>${clean}</code>...</div>`);
 
          // Safe to use limit:0 because we have a specific account filter
-         console.log('[Debug] Calling frappe.client.get_list for Expense Request Afmco', {account_no_like: `%${clean}%`});
+         console.log('[Debug] Calling frappe.client.get_list for Payment Requisition', {account_no_like: `%${clean}%`});
          try {
              // We use a manual call here to await and catch specifically
-             const d = await this.callAPI('Expense Request Afmco', [['account_no', 'like', `%${clean}%`]], ['name','creation','amount','workflow_state'], {limit:100});
+             const d = await this.callAPI('Payment Requisition', [['account_no', 'like', `%${clean}%`]], ['name','creation','amount','workflow_state'], {limit:100});
              console.log('[Debug] API Response Success. Count:', d ? d.length : 0, d);
              
              if(this.mountId !== mid) {
@@ -738,7 +738,7 @@ class EmployeeFinancialDashboard {
                  $('#efd-expenses-table').html(`
                      <div class="alert alert-info m-3">
                          <strong>No Expenses Found</strong><br>
-                         Searched <code>Expense Request Afmco.account_no</code> for: <code>%${clean}%</code><br>
+                         Searched <code>Payment Requisition.account_no</code> for: <code>%${clean}%</code><br>
                          Employee's Bank Account: <code>${bankAcNo}</code><br>
                          <small class="text-muted">Check Browser Console for detailed logs</small>
                      </div>
@@ -749,7 +749,7 @@ class EmployeeFinancialDashboard {
              this.renderTable('#efd-expenses-table', d,
                  ['Request #', 'Date', 'Amount', 'Status'],
                  r => `
-                     <td><a href="${frappe.utils.get_form_link("Expense Request Afmco", r.name)}">${r.name}</a></td>
+                     <td><a href="${frappe.utils.get_form_link("Payment Requisition", r.name)}">${r.name}</a></td>
                      <td>${this.formatDate(r.creation)}</td>
                      <td class="text-right">${this.formatCurrency(r.amount)}</td>
                      <td><span class="efd-badge badge-${this.getBadgeStatus(r.workflow_state)}">${r.workflow_state||'-'}</span></td>

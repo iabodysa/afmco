@@ -11,7 +11,7 @@ frappe.ui.form.on('Journal Entry', {
     }
 });
 
-const DT_ER = 'Expense Request Afmco';
+const DT_ER = 'Payment Requisition';
 const DT_CM = 'Comment';
 
 function er_buttons(frm) {
@@ -266,7 +266,7 @@ function er_details(frm) {
     
     // Load data into the section
     frappe.db.get_list('Comment', {
-        filters: { reference_doctype: 'Expense Request Afmco', reference_name: frm.doc.expense_request_cf },
+        filters: { reference_doctype: 'Payment Requisition', reference_name: frm.doc.expense_request_cf },
         fields: ['comment_type', 'content', 'owner', 'creation', 'comment_by'],
         order_by: 'creation asc'
     }).then(rows => {

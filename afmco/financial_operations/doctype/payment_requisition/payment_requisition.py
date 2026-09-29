@@ -7,7 +7,7 @@ from frappe.model.document import Document
 from erpnext import get_default_company
 from frappe.utils import  money_in_words
 
-class ExpenseRequestAfmco(Document):
+class PaymentRequisition(Document):
 	def validate(self):
 		if self.amount:
 			self.amount_in_words=money_in_words(self.amount,frappe.get_cached_value("Company", get_default_company(), "default_currency"))
@@ -57,5 +57,5 @@ def get_permission_query_conditions(user):
 	company = frappe.db.get_single_value("Global Defaults", "default_company")
 	frozen_date = company and frappe.db.get_value("Company", company, "accounts_frozen_till_date")
 	if frozen_date and frappe.defaults.get_user_default("show_archive_preference", user) != "1":
-		return f"`tabExpense Request Afmco`.`date` > '{frozen_date}'"
+		return f"`tabPayment Requisition`.`date` > '{frozen_date}'"
 	return None

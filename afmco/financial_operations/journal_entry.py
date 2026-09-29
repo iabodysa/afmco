@@ -41,11 +41,11 @@ class AfmcoJournalEntry:
 		super().validate()
 		if not self.expense_request_cf:
 			return
-		frappe.db.set_value("Expense Request Afmco", self.expense_request_cf, "jv_status", "JV Created")
+		frappe.db.set_value("Payment Requisition", self.expense_request_cf, "jv_status", "JV Created")
 		frappe.msgprint(
 			_(
 				"Expencse Request {0} , JV status is updated to <b>JV Created</b>".format(
-					frappe.bold(get_link_to_form("Expense Request Afmco", self.expense_request_cf))
+					frappe.bold(get_link_to_form("Payment Requisition", self.expense_request_cf))
 				)
 			),
 			title=_("Expense Request"),
@@ -63,11 +63,11 @@ class AfmcoJournalEntry:
 	def mark_expense_request_jv_not_created(self):
 		if not self.expense_request_cf:
 			return
-		frappe.db.set_value("Expense Request Afmco", self.expense_request_cf, "jv_status", "JV Not Created")
+		frappe.db.set_value("Payment Requisition", self.expense_request_cf, "jv_status", "JV Not Created")
 		frappe.msgprint(
 			_(
 				"Expencse Request {0} , JV status is updated to <b>JV Not Created</b>".format(
-					frappe.bold(get_link_to_form("Expense Request Afmco", self.expense_request_cf))
+					frappe.bold(get_link_to_form("Payment Requisition", self.expense_request_cf))
 				)
 			),
 			title=_("Expense Request"),
