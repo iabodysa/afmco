@@ -410,10 +410,6 @@ function er_fill($container, rows) {
 const JE_IMAGE_EXT = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'];
 
 function je_attachments(frm) {
-    if (frm.je_attachments_wrapper) {
-        frm.je_attachments_wrapper.remove();
-        frm.je_attachments_wrapper = null;
-    }
     frm.je_files = [];
     if (frm.is_new()) {
         je_split_close();
@@ -422,31 +418,13 @@ function je_attachments(frm) {
     if (!frm.je_split_btn) {
         frm.je_split_btn = frm.page.add_action_icon('attachment', () => je_split_toggle(frm), '', __('Attachments View'));
     }
+    if (je_split_is_open()) je_load_files(frm).then(() => je_split_render(frm));
+}
 
+function je_load_files(frm) {
     const name = frm.doc.name;
-    frappe.xcall('afmco.financial_operations.api.journal_entry.get_attachments', { name }).then(files => {
-        if (frm.doc.name !== name) return;
-        frm.je_files = files || [];
-        if (je_split_is_open()) je_split_render(frm);
-        if (!frm.je_files.length || frm.je_attachments_wrapper) return;
-
-        const wrapper = $(`
-            <div class="row form-section card-section visible-section">
-                <div class="section-head">${__('Attachments')} (${frm.je_files.length})</div>
-                <div class="section-body">
-                    <div class="form-column col-sm-12 je-attachment-list" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
-                </div>
-            </div>
-        `);
-        je_file_buttons(frm, wrapper.find('.je-attachment-list'));
-
-        const dashboard = frm.$wrapper.find('.form-dashboard');
-        if (dashboard.length) {
-            wrapper.insertAfter(dashboard);
-        } else {
-            wrapper.insertBefore(frm.$wrapper.find('.form-section:first'));
-        }
-        frm.je_attachments_wrapper = wrapper;
+    return frappe.xcall('afmco.financial_operations.api.journal_entry.get_attachments', { name }).then(files => {
+        if (frm.doc.name === name) frm.je_files = files || [];
     });
 }
 
@@ -476,6 +454,8 @@ function je_split_toggle(frm) {
 function je_split_open(frm, idx) {
     frm.je_split_index = idx || 0;
     if (!je_split_is_open()) {
+        frm.je_files = null;
+        je_load_files(frm).then(() => je_split_is_open() && je_split_render(frm));
         je_split_style();
         const sidebar = frappe.app && frappe.app.sidebar;
         document.body.dataset.jeSidebarWasOpen = sidebar && sidebar.sidebar_expanded ? '1' : '';
@@ -508,6 +488,10 @@ function je_split_render(frm) {
         .appendTo($head);
 
     const $body = $('<div class="je-split-body"></div>').appendTo($panel);
+    if (!frm.je_files) {
+        $body.append($('<div class="text-muted" style="padding: 24px;"></div>').text(__('Loading...')));
+        return;
+    }
     if (!frm.je_files.length) {
         $body.append($('<div class="text-muted" style="padding: 24px;"></div>').text(__('No attachments')));
         return;
