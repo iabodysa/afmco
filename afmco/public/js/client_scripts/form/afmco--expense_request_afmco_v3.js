@@ -1018,7 +1018,7 @@ function loadAndRenderAccountAuditDashboard(frm) {
             if (employee && frm.doc.payment_type === 'Petty Cash') {
                 return fetchListRecords('GL Entry', {
                     filters: [['party', '=', employee.employee]],
-                    fields: ['sum(debit) as total_debit', 'sum(credit) as total_credit'],
+                    fields: [{ SUM: 'debit', as: 'total_debit' }, { SUM: 'credit', as: 'total_credit' }],
                     group_by: 'party',
                     limit: 1
                 }).then(gl => {

@@ -373,7 +373,7 @@ Object.assign(IqamaControl.prototype, {
 	_count_by_status() {
 		return frappe.db
 			.get_list(IC_DOCTYPE, {
-				fields: ["status", "count(name) as count"],
+				fields: ["status", { COUNT: "name", as: "count" }],
 				filters: this._filters("status"),
 				group_by: "status",
 				limit: 0,
@@ -396,7 +396,7 @@ Object.assign(IqamaControl.prototype, {
 	_count_by_expiry() {
 		return frappe.db
 			.get_list(IC_DOCTYPE, {
-				fields: ["iqama_expiration_date", "count(name) as count"],
+				fields: ["iqama_expiration_date", { COUNT: "name", as: "count" }],
 				filters: this._filters("risk"),
 				group_by: "iqama_expiration_date",
 				limit: 0,
@@ -447,7 +447,7 @@ Object.assign(IqamaControl.prototype, {
 	_count_by_project() {
 		return frappe.db
 			.get_list(IC_DOCTYPE, {
-				fields: ["department", "count(name) as count"],
+				fields: ["department", { COUNT: "name", as: "count" }],
 				filters: this._filters("project"),
 				group_by: "department",
 				limit: 0,
@@ -479,7 +479,7 @@ Object.assign(IqamaControl.prototype, {
 	_count_by_cost_center() {
 		return frappe.db
 			.get_list(IC_DOCTYPE, {
-				fields: ["cost_center", "count(name) as count"],
+				fields: ["cost_center", { COUNT: "name", as: "count" }],
 				filters: this._filters("cost_center"),
 				group_by: "cost_center",
 				limit: 0,
