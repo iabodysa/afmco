@@ -6,6 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "document_types",
+  "action_inbox_window_days",
   "action_inbox_workflow_action_limit",
   "action_inbox_todo_limit",
   "work_center_recent_hours",
@@ -17,6 +18,14 @@
    "fieldtype": "Table",
    "label": "Document Types",
    "options": "Action Inbox Document Type"
+  },
+  {
+   "default": "1",
+   "description": "Pending My Action counts and lists workflow actions created in this many days, today included.",
+   "fieldname": "action_inbox_window_days",
+   "fieldtype": "Int",
+   "label": "Pending Action Window (Days)",
+   "non_negative": 1
   },
   {
    "default": "200",
@@ -49,7 +58,7 @@
  ],
  "issingle": 1,
  "links": [],
- "modified": "2026-09-28 14:00:00.000000",
+ "modified": "2026-09-30 02:00:00.000000",
  "modified_by": "Administrator",
  "module": "People and Payroll",
  "name": "Action Inbox Settings",

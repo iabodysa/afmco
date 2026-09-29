@@ -152,6 +152,12 @@ scheduler_events = {
 # Overriding Methods
 # ------------------------------
 #
+doc_events = {
+	"File": {
+		"before_insert": "afmco.financial_operations.report_export.shorten_file_name",
+	},
+}
+
 override_whitelisted_methods = {
 	"toggle_archive_view": "afmco.financial_operations.api.expense_request.toggle_archive_view",
 }
