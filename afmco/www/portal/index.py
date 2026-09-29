@@ -64,6 +64,34 @@ def get_services():
 			"href": f"{APP_URL}/desk",
 			"link_label": _("Open the system"),
 		},
+		{
+			"title": _("Update your IBAN"),
+			"text": _("Send your new bank account number for your salary. HR reviews it before it takes effect."),
+			"note": _("No account needed."),
+			"href": f"{APP_URL}/iban-update/new",
+			"link_label": _("Open the form"),
+		},
+		{
+			"title": _("Leave request"),
+			"text": _("Submit a leave request if you do not have an account in the employee app."),
+			"note": _("No account needed."),
+			"href": f"{APP_URL}/leave-application/new",
+			"link_label": _("Open the form"),
+		},
+		{
+			"title": _("Contact us"),
+			"text": _("Send a message to the company administration."),
+			"note": _("No account needed."),
+			"href": f"{APP_URL}/contact/new",
+			"link_label": _("Open the form"),
+		},
+		{
+			"title": _("Apply for a job"),
+			"text": _("Submit your job application and CV to AFMCO."),
+			"note": _("For applicants from outside the company."),
+			"href": f"{APP_URL}/job_application/new",
+			"link_label": _("Open the form"),
+		},
 	]
 
 
