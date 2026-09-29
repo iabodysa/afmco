@@ -15,24 +15,6 @@
   },
   {
    "collapsible": 1,
-   "icon": "user-pen",
-   "label": "Employee Update",
-   "link_to": "Employee Update",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
-   "collapsible": 1,
-   "icon": "shield-plus",
-   "label": "Employee Insurance",
-   "link_to": "Employee Insurance",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
-   "collapsible": 1,
    "icon": "users",
    "label": "Employee Dependent",
    "link_to": "Employee Dependent",
@@ -268,7 +250,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-09-28 16:00:00.000000",
+ "modified": "2026-09-29 22:00:00.000000",
  "module": "People and Payroll",
  "name": "People and Payroll",
  "owner": "Administrator",
