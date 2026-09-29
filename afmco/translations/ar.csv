@@ -1,3 +1,4 @@
+"Pending My Action counts and lists workflow actions created in this many days, today included.",عدد الأيام التي تُحسب فيها الإجراءات المعلقة، ويشمل اليوم الحالي.
 --Please Select--,--يرجى الاختيار--
 1-month,شهر واحد
 100k-250k,100 ألف - 250 ألف
@@ -1072,6 +1073,7 @@ Overtime Assignment Request,طلب تكليف بعمل إضافي
 Overtime Cost,تكلفة العمل الإضافي
 Overtime Value,قيمة العمل الإضافي
 Payment Requisition,أمر الدفع
+Pending Action Window (Days),فترة الإجراءات المعلقة (بالأيام)
 PR Creation Date (Residency Renewal),تاريخ إنشاء أمر الدفع (تجديد الإقامة)
 PR Creation Date (SADAD Invoice),تاريخ إنشاء أمر الدفع (فاتورة سداد)
 PR Document Link(Residency Renewal),رابط مستند أمر الدفع (تجديد الإقامة)

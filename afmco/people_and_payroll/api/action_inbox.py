@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import frappe
 from frappe.model.workflow import get_transitions, get_workflow_name, get_workflow_state_field
+from frappe.utils import add_days, today
 
 from afmco.people_and_payroll.doctype.action_inbox_settings.action_inbox_settings import SETTINGS, get_int
 
@@ -38,7 +39,9 @@ def _active_states() -> dict[str, list[str]]:
 
 
 def _workflow_filters(doctype: str, states: list[str]) -> dict:
-	return {"status": "Open", "reference_doctype": doctype, "workflow_state": ["in", states]}
+	filters = {"status": "Open", "reference_doctype": doctype, "workflow_state": ["in", states]}
+	filters["creation"] = [">=", add_days(today(), 1 - get_int("action_inbox_window_days"))]
+	return filters
 
 
 def _pending(workflow_limit: int, todo_limit: int) -> dict:
