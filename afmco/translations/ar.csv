@@ -13,6 +13,7 @@ AFMCO Financial Management System,نظام أفمكو للإدارة المال�
 AFMCO Settings,إعدادات أفمكو
 AL Mutairy Co,شركة المطيري
 API Response,استجابة API
+Apply for a job,التقديم على وظيفة
 ASSIGNED CITY,المدينة المخصصة
 Abha,أبها
 Abs Light,لمبة نظام منع انغلاق الفرامل ABS
@@ -215,6 +216,7 @@ Buraidah,بريدة
 Buraydah,بريدة
 COMMENTS,الملاحظات
 COMMISSION 2,العمولة 2
+Contact us,تواصل معنا
 CRC NO,رقم السجل التجاري
 CRC Registration Details,بيانات تسجيل السجل التجاري
 CSV Child Table Code,رمز CSV للجدول الفرعي
@@ -658,6 +660,7 @@ Fleet Procedures,إجراءات الأسطول
 Fleet User,مستخدم الأسطول
 Follow-up Date,تاريخ المتابعة
 Food Allowance,بدل الطعام
+For applicants from outside the company.,للمتقدمين من خارج الشركة.
 Force Update,تحديث إجباري
 Form Information,بيانات النموذج
 Format: 0000XXX (4 digits followed by 3 English letters),الصيغة: 0000XXX (أربعة أرقام تليها ثلاثة أحرف إنجليزية)
@@ -872,6 +875,7 @@ Layout,التخطيط
 Learning and Development,التعلم والتطوير
 Leave Approver,معتمد الإجازات
 Leave Block List,قائمة حظر الإجازات
+Leave request,طلب إجازة
 Leave Salary (Months),راتب الإجازة (أشهر)
 Left Back Door Inside,الباب الخلفي الأيسر من الداخل
 Left Back Door Inside Image,صورة الباب الخلفي الأيسر من الداخل
@@ -962,6 +966,7 @@ Mutairi Binzagr BU6,المطيري بن زقر BU6
 My Location,موقعي
 NATIONALITY,الجنسية
 New AFMCO employees arriving at King Khalid International Airport,موظفو أفمكو الجدد عند وصولهم إلى مطار الملك خالد الدولي
+No account needed.,لا يحتاج حسابًا.
 No attachments,لا توجد مرفقات
 NPA Flag,مؤشر الأصل غير العامل
 Najran,نجران
@@ -1031,6 +1036,7 @@ O.T HOURS,ساعات العمل الإضافي
 OP Bonus,مكافأة التشغيل
 Open in Apex,فتح في Apex
 Open in New Tab,فتح في تبويب جديد
+Open the form,فتح النموذج
 OT Hour,ساعة العمل الإضافي
 OTHER ALLOWANCE,بدلات أخرى
 OTHER ALLOWANCE 2,بدلات أخرى 2
@@ -1372,6 +1378,8 @@ SADAD Number,رقم سداد
 SADAD Type,نوع سداد
 SADAD code,رمز سداد
 SADAD number and exemption status updated successfully.,تم تحديث رقم السداد وحالة الإعفاء بنجاح.
+Send a message to the company administration.,أرسل رسالة إلى إدارة الشركة.
+Send your new bank account number for your salary. HR reviews it before it takes effect.,أرسل رقم حسابك البنكي الجديد لإيداع الراتب. تراجعه الموارد البشرية قبل اعتماده.
 Show all {0},عرض الكل ({0})
 SIM Card Cost (Months),تكلفة شريحة الاتصال (أشهر)
 Sadad Invoice Amount,مبلغ فاتورة سداد
@@ -1475,7 +1483,9 @@ Stop Working,توقف عن العمل
 Store,المتجر
 Store Name,اسم المتجر
 Sub Policy Number,رقم الوثيقة الفرعية
+Submit a leave request if you do not have an account in the employee app.,قدّم طلب إجازتك إذا لم يكن لك حساب في تطبيق الموظفين.
 Submit Salary Slips,اعتماد قسائم الرواتب
+Submit your job application and CV to AFMCO.,قدّم طلب التوظيف وسيرتك الذاتية إلى أفمكو.
 Submitting...,جارٍ الاعتماد...
 Subscriber’s name,اسم المشترك
 Subscription Section,قسم الاشتراك
@@ -1622,6 +1632,7 @@ Type of service required,نوع الخدمة المطلوبة
 Types (Arabic),الأنواع (عربي)
 Types (English),الأنواع (إنجليزي)
 UNKNOWN,غير معروف
+Update your IBAN,تحديث الآيبان
 URGENT - IMMEDIATE ACTION REQUIRED,عاجل - يلزم إجراء فوري
 URL or file path reference,رابط أو مسار الملف
 Umm Al Quwain,أم القيوين
