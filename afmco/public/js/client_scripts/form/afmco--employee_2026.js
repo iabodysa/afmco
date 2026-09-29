@@ -409,7 +409,7 @@ async function getEmployeeBalance(employeeName) {
             party_type: 'Employee',
             party: employeeName
         },
-        fields: ['sum(debit) as total_debit', 'sum(credit) as total_credit']
+        fields: [{ SUM: 'debit', as: 'total_debit' }, { SUM: 'credit', as: 'total_credit' }]
     });
 
     if (response && response.length > 0) {
