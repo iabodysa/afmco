@@ -639,7 +639,6 @@ Filter Employees,تصفية الموظفين
 Filters and Fans Regularly Serviced,صيانة الفلاتر والمراوح بانتظام
 Finance Book,الدفتر المالي
 Financial,مالي
-Financial Analysis Dashboard,لوحة التحليل المالي
 Financial Impact,الأثر المالي
 Fire Alarm,إنذار الحريق
 Fire Extinguisher,طفاية الحريق
@@ -2663,36 +2662,6 @@ Designation,المنصب,Employee Data Update 2024
 Select a new {0},اختر {0} جديدة,Employee Data Update 2024
 The current value ({0}) does not exist in the system. Please select another value.,القيمة الحالية ({0}) غير موجودة في النظام. الرجاء اختيار قيمة أخرى.,Employee Data Update 2024
 Update,تحديث,Employee Data Update 2024
-Financial Analysis Dashboard,لوحة التحليل المالي,Financial Analysis Dashboard
-No financial data. Please refresh the data first.,لا توجد بيانات مالية. يرجى تحديث البيانات أولاً.,Financial Analysis Dashboard
-Error reading financial data,خطأ في قراءة البيانات المالية,Financial Analysis Dashboard
-Total Income,إجمالي الإيرادات,Financial Analysis Dashboard
-Total Expenses,إجمالي المصروفات,Financial Analysis Dashboard
-Net Profit,صافي الربح,Financial Analysis Dashboard
-Profit Margin,هامش الربح,Financial Analysis Dashboard
-Annual Income,الإيرادات السنوية,Financial Analysis Dashboard
-Annual Expenses,المصروفات السنوية,Financial Analysis Dashboard
-Data up to Q{0} {1} • Last updated: {2},البيانات حتى Q{0} {1} • آخر تحديث: {2},Financial Analysis Dashboard
-{0} vs {1},{0} مقابل {1},Financial Analysis Dashboard
-Annual Expense Comparison,مقارنة المصروفات السنوية,Financial Analysis Dashboard
-Quarterly Analysis,التحليل الربع سنوي,Financial Analysis Dashboard
-Quarterly Expense Comparison Analysis,تحليل مقارنة المصروفات الربع سنوية,Financial Analysis Dashboard
-Expense Details for the Last 4 Quarters,تفاصيل المصروفات لآخر 4 أرباع,Financial Analysis Dashboard
-Comparison,المقارنة,Financial Analysis Dashboard
-Current Expenses,المصروفات الحالية,Financial Analysis Dashboard
-Previous Expenses,المصروفات السابقة,Financial Analysis Dashboard
-Change Rate,نسبة التغيير,Financial Analysis Dashboard
-Quarter,الربع,Financial Analysis Dashboard
-Income,الإيرادات,Financial Analysis Dashboard
-Expenses,المصروفات,Financial Analysis Dashboard
-Current Quarter,الربع الحالي,Financial Analysis Dashboard
-Previous Quarter,الربع السابق,Financial Analysis Dashboard
-Item,البند,Financial Analysis Dashboard
-Change %,التغيير %,Financial Analysis Dashboard
-Total,الإجمالي,Financial Analysis Dashboard
-Account,الحساب,Financial Analysis Dashboard
-million,مليون,Financial Analysis Dashboard
-thousand,ألف,Financial Analysis Dashboard
 Show List of Qiwa Payment Number,عرض قائمة إصدار رقم سداد قوى وموقع قوى,iQama Renewal Payment Management
 Create Payment Request,إنشاء أمر دفع,iQama Renewal Payment Management
 Download Bank File,تحميل ملف البنك,iQama Renewal Payment Management

@@ -27,9 +27,6 @@ DOCTYPE_JS = {
 	'Payment Requisition': [
 		'public/js/client_scripts/form/afmco--payment_requisition.js',
 	],
-	'Financial Analysis Dashboard': [
-		'public/js/client_scripts/form/afmco--financial_analysis_dashboard.js',
-	],
 	'Iqama Renewal Management': [
 		'public/js/client_scripts/form/afmco--iqama_renewal_management_form.js',
 	],
