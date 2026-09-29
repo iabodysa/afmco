@@ -1,0 +1,62 @@
+{
+ "allow_rename": 1,
+ "creation": "2023-11-04 18:01:14.466365",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "contract_start_date",
+  "contract_end_date",
+  "status",
+  "note",
+  "vad",
+  "amount3"
+ ],
+ "fields": [
+  {
+   "fieldname": "contract_start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "contract start date"
+  },
+  {
+   "fieldname": "contract_end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "contract end date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Paid\nunpaid"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Note"
+  },
+  {
+   "fieldname": "vad",
+   "fieldtype": "Data",
+   "label": "vacation allowance (day)"
+  },
+  {
+   "fieldname": "amount3",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2024-08-11 01:05:14.175969",
+ "module": "People and Payroll",
+ "name": "Contract Vacation Allowance",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

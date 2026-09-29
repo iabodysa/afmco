@@ -1,0 +1,24 @@
+{
+ "add_total_row": 1,
+ "creation": "2024-06-12 13:53:52.073981",
+ "doctype": "Report",
+ "is_standard": "Yes",
+ "letter_head": null,
+ "letterhead": null,
+ "modified": "2026-09-24 00:30:00.000000",
+ "module": "People and Payroll",
+ "name": "Salary Register WPS",
+ "owner": "Administrator",
+ "prepared_report": 1,
+ "ref_doctype": "Salary Slip",
+ "report_name": "Salary Register WPS",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "HR User"
+  },
+  {
+   "role": "HR Manager"
+  }
+ ]
+}

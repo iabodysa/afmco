@@ -1,0 +1,15 @@
+{
+ "app": "afmco",
+ "bg_color": "gray",
+ "creation": "2026-09-27 12:00:00.000000",
+ "doctype": "Desktop Icon",
+ "icon_type": "App",
+ "label": "Apex",
+ "link": "https://apex.afmco.sa/desk",
+ "link_type": "External",
+ "logo_url": "/assets/afmco/images/apex-app-icon.svg",
+ "modified": "2026-09-29 00:00:00.000000",
+ "name": "Apex",
+ "owner": "Administrator",
+ "standard": 1
+}

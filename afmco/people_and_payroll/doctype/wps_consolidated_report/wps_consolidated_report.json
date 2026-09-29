@@ -1,0 +1,163 @@
+{
+ "allow_rename": 1,
+ "autoname": "format:WPS-{YYYY}-{####}",
+ "creation": "2025-05-24 23:50:45.256446",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_report_settings",
+  "title",
+  "bank_format",
+  "column_break_payroll_entries",
+  "file_type",
+  "payroll_entries",
+  "section_generated_files",
+  "report_generated_at",
+  "column_break_zip_file",
+  "generated_zip_file",
+  "attached_reports_section",
+  "attached_reports",
+  "section_bat_script",
+  "cmd_script",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_report_settings",
+   "fieldtype": "Section Break",
+   "label": "Report Settings"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bank_format",
+   "fieldtype": "Select",
+   "label": "Bank Format",
+   "options": "NCBK\nSIBC"
+  },
+  {
+   "fieldname": "column_break_payroll_entries",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "file_type",
+   "fieldtype": "Select",
+   "label": "File Type",
+   "options": "CSV\nExcel"
+  },
+  {
+   "fieldname": "payroll_entries",
+   "fieldtype": "Table MultiSelect",
+   "label": "Payroll Entries",
+   "options": "Payroll Entry Reference"
+  },
+  {
+   "fieldname": "section_generated_files",
+   "fieldtype": "Section Break",
+   "label": "Generated Files"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "report_generated_at",
+   "fieldtype": "Datetime",
+   "label": "Report Generated At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_zip_file",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "generated_zip_file",
+   "fieldtype": "Attach",
+   "label": "Generated ZIP File",
+   "read_only": 1
+  },
+  {
+   "fieldname": "attached_reports_section",
+   "fieldtype": "Section Break",
+   "label": "Attached Reports"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "attached_reports",
+   "fieldtype": "Table",
+   "label": "Attached Reports",
+   "options": "WPS File Metadata",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_bat_script",
+   "fieldtype": "Section Break",
+   "label": "Generated BAT Script"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "cmd_script",
+   "fieldtype": "Code",
+   "label": "Generated BAT Script",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "WPS Consolidated Report",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Payroll Entry",
+   "link_fieldname": "custom_wps_report_reference"
+  }
+ ],
+ "modified": "2025-05-25 02:13:27.920614",
+ "module": "People and Payroll",
+ "name": "WPS Consolidated Report",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "read": 1,
+   "role": "Payroll User",
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "title",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "title",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

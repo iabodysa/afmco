@@ -1,0 +1,37 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Address",
+   "fieldname": "latitude",
+   "fieldtype": "Data",
+   "idx": "22",
+   "insert_after": "my_location",
+   "label": "Latitude",
+   "module": "People and Payroll",
+   "name": "Address-latitude"
+  },
+  {
+   "dt": "Address",
+   "fieldname": "longitude",
+   "fieldtype": "Data",
+   "idx": "22",
+   "insert_after": "my_location",
+   "label": "Longitude",
+   "module": "People and Payroll",
+   "name": "Address-longitude"
+  },
+  {
+   "dt": "Address",
+   "fieldname": "my_location",
+   "fieldtype": "HTML",
+   "idx": "21",
+   "insert_after": "disabled",
+   "label": "My Location",
+   "module": "People and Payroll",
+   "name": "Address-my_location"
+  }
+ ],
+ "doctype": "Address",
+ "property_setters": [],
+ "sync_on_migrate": 1
+}

@@ -1,0 +1,138 @@
+{
+ "allow_rename": 1,
+ "creation": "2024-06-26 17:31:03.965690",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_basic_info",
+  "employee",
+  "date_of_joining",
+  "column_break_grade",
+  "grade",
+  "years_of_service",
+  "adjust_for_previous_salary_diff",
+  "section_salary_info",
+  "last_month_salary_last_year",
+  "last_month_salary",
+  "unexpected_increase",
+  "column_break_increase",
+  "increase_rate",
+  "calculated_increase",
+  "total_new_salary"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_basic_info",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.date_of_joining",
+   "fieldname": "date_of_joining",
+   "fieldtype": "Data",
+   "label": "Date of Joining"
+  },
+  {
+   "fieldname": "column_break_grade",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "grade",
+   "fieldtype": "Int",
+   "label": "Employee Grade"
+  },
+  {
+   "fieldname": "years_of_service",
+   "fieldtype": "Int",
+   "label": "Years of Service"
+  },
+  {
+   "default": "0",
+   "fieldname": "adjust_for_previous_salary_diff",
+   "fieldtype": "Check",
+   "label": "Adjust for Previous Salary Difference"
+  },
+  {
+   "fieldname": "section_salary_info",
+   "fieldtype": "Section Break",
+   "label": "Salary Information"
+  },
+  {
+   "fieldname": "last_month_salary_last_year",
+   "fieldtype": "Currency",
+   "label": "Salary for Last Month of Previous Year",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "last_month_salary",
+   "fieldtype": "Currency",
+   "label": "Last Month Salary",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "unexpected_increase",
+   "fieldtype": "Currency",
+   "label": "Unexpected Increase",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_increase",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "increase_rate",
+   "fieldtype": "Int",
+   "label": "Increase Rate (out of 100)"
+  },
+  {
+   "fieldname": "calculated_increase",
+   "fieldtype": "Currency",
+   "label": "Calculated Increase",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "total_new_salary",
+   "fieldtype": "Currency",
+   "label": "Total New Salary",
+   "options": "Currency"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "modified": "2024-06-27 20:30:30.340057",
+ "module": "People and Payroll",
+ "name": "Employee Salary Adjustment",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "HR Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

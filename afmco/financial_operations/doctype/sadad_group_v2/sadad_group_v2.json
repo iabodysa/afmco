@@ -1,0 +1,199 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-11-24 01:36:51.672653",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_1",
+  "employeelist",
+  "column_break_4",
+  "type",
+  "period",
+  "column_break_6",
+  "bank_payment_date",
+  "sadad_invoice_number",
+  "section_break_11",
+  "item",
+  "table_section",
+  "total_amount",
+  "naming_series",
+  "jv_status",
+  "amended_from",
+  "section_break_6",
+  "journal"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Payment of SADAD By Group"
+  },
+  {
+   "fieldname": "employeelist",
+   "fieldtype": "Small Text",
+   "label": "Employee List"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "--- Select ---\nIssue or renew residence permit\nTransfer of sponsorship\nChange of profession\nExit and Return Visa\nExtend exit and re-entry visa (1 month)\nFees for the financial counterpart of work permits (Exempted)\nFees for the financial counterpart of work permits",
+   "precision": "0"
+  },
+  {
+   "fieldname": "period",
+   "fieldtype": "Int",
+   "label": "Period"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bank_payment_date",
+   "fieldtype": "Date",
+   "label": "Bank Payment Date"
+  },
+  {
+   "fieldname": "sadad_invoice_number",
+   "fieldtype": "Int",
+   "label": "SADAD invoice number"
+  },
+  {
+   "fieldname": "section_break_11",
+   "fieldtype": "Section Break",
+   "label": "Employee List"
+  },
+  {
+   "allow_bulk_edit": 1,
+   "fieldname": "item",
+   "fieldtype": "Table",
+   "label": "Employee List",
+   "options": "SADAD Child Table 2"
+  },
+  {
+   "fieldname": "table_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "naming_series",
+   "options": "SADADV2-.YYYY.-"
+  },
+  {
+   "default": "JV Not Created",
+   "fieldname": "jv_status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_standard_filter": 1,
+   "label": "JV Status",
+   "options": "\nJV Created\nJV Not Created"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "SADAD Group V2",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "journal",
+   "fieldtype": "Table",
+   "label": "JV",
+   "options": "Journal Entry Account"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-10-17 15:27:47.289088",
+ "modified_by": "Administrator",
+ "module": "Financial Operations",
+ "name": "SADAD Group V2",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Request User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Support Team",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

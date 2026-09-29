@@ -1,0 +1,17 @@
+{
+ "creation": "2024-06-15 04:43:48.572496",
+ "doctype": "Number Card",
+ "document_type": "Expense Request Afmco",
+ "dynamic_filters_json": "[]",
+ "filters_json": "[[\"Expense Request Afmco\",\"jv_status\",\"=\",\"JV Not Created\",false],[\"Expense Request Afmco\",\"workflow_state\",\"=\",\"Paid\",false],[\"Expense Request Afmco\",\"creation\",\"fiscal year\",\"2024\",false]]",
+ "function": "Count",
+ "is_standard": 1,
+ "label": "Count of Paid Orders Without JV Created This Year",
+ "modified": "2026-09-26 12:00:00.000000",
+ "module": "Financial Operations",
+ "name": "Count of Paid Orders Without JV Created This Year",
+ "report_function": "Sum",
+ "show_percentage_stats": 1,
+ "stats_time_interval": "Monthly",
+ "type": "Document Type"
+}

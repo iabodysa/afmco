@@ -1,0 +1,123 @@
+{
+ "app": "afmco",
+ "creation": "2026-09-25 23:30:00.000000",
+ "doctype": "Workspace Sidebar",
+ "header_icon": "landmark",
+ "items": [
+  {
+   "collapsible": 1,
+   "icon": "home",
+   "label": "Home",
+   "link_to": "Operations",
+   "link_type": "Workspace",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "icon": "receipt",
+   "label": "Expense Request",
+   "link_to": "Expense Request Afmco",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "icon": "wallet",
+   "label": "Petty Cash",
+   "link_to": "Petty Cash",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "icon": "coins",
+   "label": "Liquidation Petty Cash",
+   "link_to": "Liquidation Petty Cash",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "icon": "hand-coins",
+   "label": "Employee Petty Cash",
+   "link_to": "Employee Petty Cash",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "icon": "ban",
+   "label": "Cancellation Request",
+   "link_to": "Cancellation Request",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "icon": "calculator",
+   "label": "Labor Operational Costs Quotation Calculator",
+   "link_to": "Labor Operational Costs Quotation Calculator",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "icon": "chart-line",
+   "label": "Financial Analysis Dashboard",
+   "link_to": "Financial Analysis Dashboard",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "icon": "layout-dashboard",
+   "label": "Expense Request Dashboard",
+   "link_to": "Expense Request Dashboard",
+   "link_type": "Dashboard",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "icon": "database",
+   "indent": 1,
+   "keep_closed": 1,
+   "label": "Setup",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Section Break"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "label": "Payment Approver",
+   "link_to": "Payment Approver",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "label": "Saudi Bank",
+   "link_to": "Saudi Bank",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-09-25 23:45:00.000000",
+ "module": "Financial Operations",
+ "name": "Financial Operations",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "Financial Operations"
+}

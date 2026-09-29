@@ -1,0 +1,3 @@
+body:not(.full-width) .std-form-layout .form-section:has(.form-grid) > :is(.section-head, .section-body) {
+	max-width: none;
+}

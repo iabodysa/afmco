@@ -1,0 +1,17 @@
+{
+ "custom_fields": [],
+ "doctype": "Expense Request Afmco",
+ "property_setters": [
+  {
+   "doc_type": "Expense Request Afmco",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "module": "Financial Operations",
+   "name": "Expense Request Afmco-main-field_order",
+   "property": "field_order",
+   "property_type": "Data",
+   "value": "[\"custom_role\", \"urgency_and_status_section\", \"date\", \"column_break_created_by\", \"created_by\", \"column_break_payment_approver\", \"payment_approver\", \"section_urgency\", \"verify_payment\", \"if_it__urgent\", \"column_break_urgency_reason\", \"reason_of_urgency\", \"beneficiary_information_section\", \"account_no\", \"beneficiary_name\", \"amount\", \"amount_in_words\", \"column_break_remark\", \"remark\", \"payment_details_section\", \"cost_center\", \"project\", \"column_break_payment_type\", \"payment_type\", \"mode_of_payment\", \"column_break_bank_account\", \"bank_account\", \"bank_payment_date\", \"column_break_jv_status\", \"jv_status\", \"tax_invoice_number\", \"open_reference_document\", \"purchase_details_section\", \"amended_from\", \"section_purchase_references\", \"data\", \"column_break_naming_series\", \"naming_series\", \"column_break_supplier\", \"supplier_name\", \"column_break_purchase_order\", \"purchase_order\", \"section_assignment\", \"assign_to_employee\", \"section_workflow\", \"workflow_state\"]"
+  }
+ ],
+ "sync_on_migrate": 1
+}

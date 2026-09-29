@@ -1,0 +1,16 @@
+{
+ "app": "afmco",
+ "creation": "2026-09-25 23:30:00.000000",
+ "doctype": "Desktop Icon",
+ "icon": "landmark",
+ "icon_type": "Link",
+ "idx": 3,
+ "label": "Financial Operations",
+ "link_to": "Financial Operations",
+ "link_type": "Workspace Sidebar",
+ "modified": "2026-09-25 23:30:00.000000",
+ "name": "Financial Operations",
+ "owner": "Administrator",
+ "parent_icon": "AFMCO",
+ "standard": 1
+}

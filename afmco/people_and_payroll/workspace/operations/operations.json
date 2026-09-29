@@ -1,0 +1,149 @@
+{
+ "app": "afmco",
+ "content": "[{\"id\":\"h6fVPlufwo\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"afmcoLvTdy\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Employees on leave today\",\"col\":4}},{\"id\":\"hCpgkbwkjn\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Your Shortcuts</span>\",\"col\":12}},{\"id\":\"0LwlLpOalA\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PR\",\"col\":4}},{\"id\":\"BiezcIhjOI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Update\",\"col\":4}},{\"id\":\"N80k4NjvdN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"EOS\",\"col\":4}},{\"id\":\"G2V2sqLIdl\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"nZE_MIC2MD\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Workspace</span>\",\"col\":12}},{\"id\":\"IG28Z4jTsv\",\"type\":\"card\",\"data\":{\"card_name\":\"Finance\",\"col\":4}},{\"id\":\"ZJQeDCWoSh\",\"type\":\"card\",\"data\":{\"card_name\":\"iQama Renewal Management\",\"col\":4}},{\"id\":\"bB0nAgrFWX\",\"type\":\"card\",\"data\":{\"card_name\":\"HR\",\"col\":4}},{\"id\":\"Vl_GzwiPcX\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Cancellation Request\",\"col\":4}},{\"id\":\"Wt4EXv6p6G\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><a href=\\\"https://care.afmco.sa/helpdesk\\\">Help Desk</a></span>\",\"col\":12}}]",
+ "creation": "2023-11-20 23:22:43.887633",
+ "doctype": "Workspace",
+ "hide_custom": 1,
+ "icon": "organization",
+ "idx": 2,
+ "label": "Operations",
+ "links": [
+  {
+   "label": "Salary Slip",
+   "link_to": "Salary Slip",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Salary Structure Assignment",
+   "link_to": "Salary Structure Assignment",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Additional Salary",
+   "link_to": "Additional Salary",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "HR",
+   "link_count": 4,
+   "link_type": "DocType",
+   "type": "Card Break"
+  },
+  {
+   "label": "Employee",
+   "link_to": "Employee",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Leave Application",
+   "link_to": "Leave Application",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "EOS",
+   "link_to": "End of Service Settlement",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Vacation Allowance",
+   "link_to": "Vacation Allowance",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "description": "iQama Renewal Management v2 (Trial Version) streamlines the renewal process for residency permits, handling expiration tracking, issue resolution, and payment processing efficiently.",
+   "label": "iQama Renewal Management",
+   "link_count": 2,
+   "link_type": "DocType",
+   "type": "Card Break"
+  },
+  {
+   "label": "Iqama Renewal Tracking",
+   "link_to": "Iqama Renewal Tracking",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "is_query_report": 1,
+   "label": "Renewal Tracking Report (Trial)",
+   "link_to": "Iqama Renewal Tracking Report",
+   "link_type": "Report",
+   "type": "Link"
+  },
+  {
+   "label": "Finance",
+   "link_count": 3,
+   "link_type": "DocType",
+   "type": "Card Break"
+  },
+  {
+   "label": "Payment Request",
+   "link_to": "Expense Request Afmco",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Petty Cash",
+   "link_to": "Petty Cash",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "is_query_report": 1,
+   "label": "Expense Request Report",
+   "link_to": "Expense Request",
+   "link_type": "Report",
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-09-26 00:00:00.000000",
+ "module": "People and Payroll",
+ "name": "Operations",
+ "number_cards": [
+  {
+   "label": "Employees on leave today",
+   "number_card_name": "Number of Employees on Leave (Today)"
+  }
+ ],
+ "owner": "Administrator",
+ "public": 1,
+ "quick_lists": [
+  {
+   "document_type": "Cancellation Request",
+   "label": "Cancellation Request",
+   "quick_list_filter": "[]"
+  }
+ ],
+ "sequence_id": 15.0,
+ "shortcuts": [
+  {
+   "doc_view": "List",
+   "format": "{} JV Not Created",
+   "label": "PR",
+   "link_to": "Expense Request Afmco",
+   "stats_filter": "{\r\n    \"jv_status\": [\"IN\" , [\"JV Not Created\"]]\r\n}",
+   "type": "DocType"
+  },
+  {
+   "label": "Update",
+   "link_to": "Employee Update",
+   "type": "DocType"
+  },
+  {
+   "color": "#CB2929",
+   "format": "{} Open",
+   "label": "EOS",
+   "link_to": "End of Service Settlement",
+   "stats_filter": "{\r\n    \"workflow_state\": [\"IN\" , [\"Legal\"]]\r\n}",
+   "type": "DocType"
+  }
+ ],
+ "title": "Operations",
+ "type": "Workspace"
+}

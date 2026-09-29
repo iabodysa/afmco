@@ -1,0 +1,577 @@
+{
+ "allow_import": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-08-13 22:41:57.427934",
+ "default_print_format": "End of Service Settlement Statement",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "workflow_state",
+  "employee_details_section",
+  "employee",
+  "employee_name",
+  "column_break_department",
+  "branch",
+  "department",
+  "establishment",
+  "column_break_bank",
+  "account_no",
+  "cash_payment",
+  "iqama_expiration",
+  "column_break_dates",
+  "date_1",
+  "date_2",
+  "cell_number",
+  "accounting_procedures_section",
+  "table_14",
+  "cva",
+  "clearing_end_of_service_section",
+  "dos_years",
+  "total_salary",
+  "salary_per_day",
+  "column_break_vacation",
+  "vacation_days_per_year",
+  "cva_total",
+  "total_eos",
+  "column_break_totals",
+  "ticket_allowance",
+  "deductions",
+  "amount",
+  "hr_procedures_section",
+  "end_of_service_reason",
+  "term",
+  "s_id",
+  "check1",
+  "check2",
+  "check3",
+  "attach_34",
+  "column_break_hr_note",
+  "hr_note",
+  "replacement",
+  "legal_procedures_section",
+  "penalty_clause",
+  "alternative_reward",
+  "note",
+  "days_of_eos",
+  "payroll_cost_center",
+  "naming_series",
+  "calculate_section",
+  "duration_of_service",
+  "column_break_months",
+  "months",
+  "column_break_days",
+  "days",
+  "column_break_years",
+  "years",
+  "status_section",
+  "employee_status",
+  "employee_prior_status",
+  "column_break_pr_status",
+  "pr_status",
+  "ticket_allowance_confirmed",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "allow_on_submit": 1,
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Workflow State",
+   "no_copy": 1,
+   "options": "Workflow State"
+  },
+  {
+   "description": "Update the Employee record first: joining date, bank, salary, allowances, leave.",
+   "fieldname": "employee_details_section",
+   "fieldtype": "Section Break",
+   "label": "Employee details"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "iQama No.",
+   "options": "Employee",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "column_break_department",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.branch",
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fetch_from": "employee.corporation",
+   "fieldname": "establishment",
+   "fieldtype": "Data",
+   "label": "Establishment"
+  },
+  {
+   "fieldname": "column_break_bank",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.check3 == 0",
+   "fetch_from": "employee.bank_ac_no",
+   "fieldname": "account_no",
+   "fieldtype": "Data",
+   "label": "Bank A/C No."
+  },
+  {
+   "default": "Account Suspended",
+   "depends_on": "eval:doc.check3 == 1",
+   "fieldname": "cash_payment",
+   "fieldtype": "Data",
+   "label": "Cash Payment",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.iqama_expiration_date",
+   "fieldname": "iqama_expiration",
+   "fieldtype": "Date",
+   "label": "iQama Expiration"
+  },
+  {
+   "fieldname": "column_break_dates",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.date_of_joining",
+   "fieldname": "date_1",
+   "fieldtype": "Date",
+   "label": "Date of Joining"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "date_2",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Last working day"
+  },
+  {
+   "fetch_from": "employee.cell_number",
+   "fieldname": "cell_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "cell_number"
+  },
+  {
+   "fieldname": "clearing_end_of_service_section",
+   "fieldtype": "Section Break",
+   "label": "Clearing end of service"
+  },
+  {
+   "default": "0",
+   "fieldname": "dos_years",
+   "fieldtype": "Data",
+   "label": "Duration of service (years)"
+  },
+  {
+   "fetch_from": "employee.basic_wage",
+   "fieldname": "total_salary",
+   "fieldtype": "Currency",
+   "label": "Total salary"
+  },
+  {
+   "default": "0",
+   "fieldname": "salary_per_day",
+   "fieldtype": "Currency",
+   "label": "Salary Per Day"
+  },
+  {
+   "fieldname": "column_break_vacation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fetch_from": "employee.number_of_vacation_days_per_year",
+   "fieldname": "vacation_days_per_year",
+   "fieldtype": "Data",
+   "label": "vacation days per year"
+  },
+  {
+   "default": "0",
+   "fieldname": "cva_total",
+   "fieldtype": "Currency",
+   "label": "vacation allowance amount"
+  },
+  {
+   "fieldname": "total_eos",
+   "fieldtype": "Currency",
+   "label": "Total EOS",
+   "precision": "0"
+  },
+  {
+   "fieldname": "column_break_totals",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.ticket_allowance",
+   "fieldname": "ticket_allowance",
+   "fieldtype": "Currency",
+   "label": "Ticket allowance"
+  },
+  {
+   "default": "0",
+   "fieldname": "deductions",
+   "fieldtype": "Currency",
+   "label": "Debt Owed by Employee"
+  },
+  {
+   "default": "0",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount"
+  },
+  {
+   "description": "Add all advances and fines; enter allowances as negative, reason Other, with proof.",
+   "fieldname": "accounting_procedures_section",
+   "fieldtype": "Tab Break",
+   "label": "Accounting Procedures"
+  },
+  {
+   "columns": 4,
+   "fieldname": "table_14",
+   "fieldtype": "Table",
+   "label": "Debt",
+   "options": "Settlement Deduction Item",
+   "print_width": "100",
+   "width": "100"
+  },
+  {
+   "fieldname": "cva",
+   "fieldtype": "Table",
+   "label": "Clearing vacation allowance",
+   "options": "Contract Vacation Allowance"
+  },
+  {
+   "description": "After review, file the payment request on this form with supporting documents.",
+   "fieldname": "hr_procedures_section",
+   "fieldtype": "Tab Break",
+   "label": "HR Procedures"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "end_of_service_reason",
+   "fieldtype": "Select",
+   "label": "End of Service Reason",
+   "options": "Select\n1-End of term or mutual agreement\n2-Termination by the employer\n3-Termination by the employer under Article 80\n4-Termination due to force majeure\n5-Termination of the contract by the female employee during the first six months of marriage or during the first three months of childbirth\n6-Termination by the employee under Article 81\n7-Termination by the employee or termination of employment by the employee for reasons other than those specified in Article 81\n8-Resignation"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "term",
+   "fieldtype": "Select",
+   "label": "Termination type",
+   "options": "\nTransfer of sponsorship\nFinal Exit"
+  },
+  {
+   "depends_on": "eval: doc.term == 'Transfer of sponsorship'",
+   "fieldname": "s_id",
+   "fieldtype": "Data",
+   "label": "The new sponsor’s ID number"
+  },
+  {
+   "default": "0",
+   "fieldname": "check1",
+   "fieldtype": "Check",
+   "label": "Has a final exit visa been issued or the sponsorship transferred?"
+  },
+  {
+   "default": "0",
+   "fieldname": "check2",
+   "fieldtype": "Check",
+   "label": "Was a liquidation form signed by the employee attached?"
+  },
+  {
+   "default": "0",
+   "fieldname": "check3",
+   "fieldtype": "Check",
+   "label": "Cash Payment if Account Suspended"
+  },
+  {
+   "fieldname": "attach_34",
+   "fieldtype": "Attach",
+   "label": "Please print the form, sign the employee and attach it"
+  },
+  {
+   "fieldname": "column_break_hr_note",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Enter the new sponsor ID or exit visa number, and every step taken.",
+   "fieldname": "hr_note",
+   "fieldtype": "Small Text",
+   "label": "HR note"
+  },
+  {
+   "description": "Select the replacement employee; if there is none, escalate to management at once.",
+   "fieldname": "replacement",
+   "fieldtype": "Link",
+   "label": "Replacement",
+   "options": "Employee"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "legal_procedures_section",
+   "fieldtype": "Tab Break",
+   "label": "Legal Procedures"
+  },
+  {
+   "description": "Two months' wage, owed if the employee ends the contract without a valid reason.",
+   "fieldname": "penalty_clause",
+   "fieldtype": "Currency",
+   "label": "Termination Penalty Clause"
+  },
+  {
+   "description": "One ticket allowance per year of leave deferred with Operations Management approval.",
+   "fieldname": "alternative_reward",
+   "fieldtype": "Currency",
+   "label": "Alternative Reward"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Small Text",
+   "label": "Legal Note"
+  },
+  {
+   "default": "0",
+   "fieldname": "days_of_eos",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Days of EOS"
+  },
+  {
+   "fetch_from": "employee.payroll_cost_center",
+   "fieldname": "payroll_cost_center",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "payroll_cost_center"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "naming_series",
+   "options": "Exit-.YYYY.-"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "calculate_section",
+   "fieldtype": "Tab Break",
+   "label": "Calculate"
+  },
+  {
+   "default": "0",
+   "fieldname": "duration_of_service",
+   "fieldtype": "Data",
+   "label": "Duration of service ( Days )"
+  },
+  {
+   "fieldname": "column_break_months",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "months",
+   "fieldtype": "Data",
+   "label": "Months"
+  },
+  {
+   "fieldname": "column_break_days",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "days",
+   "fieldtype": "Data",
+   "label": "Days"
+  },
+  {
+   "fieldname": "column_break_years",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "years",
+   "fieldtype": "Data",
+   "label": "Years"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "status_section",
+   "fieldtype": "Tab Break",
+   "label": "Status"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Not updated",
+   "fieldname": "employee_status",
+   "fieldtype": "Select",
+   "label": "Employee Status",
+   "options": "\nUpdated\nNot updated"
+  },
+  {
+   "fieldname": "employee_prior_status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Employee Status Before Relieving",
+   "no_copy": 1,
+   "options": "\nActive\nInactive\nSuspended\nLeft",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_pr_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "PR Not Created",
+   "fieldname": "pr_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "PR Status",
+   "options": "PR Created\nPR Not Created"
+  },
+  {
+   "default": "0",
+   "fieldname": "ticket_allowance_confirmed",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "ticket_allowance_confirmed"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "End of Service Settlement",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "group": "Reference",
+   "link_doctype": "Expense Request Afmco",
+   "link_fieldname": "tax_invoice_number"
+  }
+ ],
+ "modified": "2026-09-26 00:00:00.000000",
+ "module": "People and Payroll",
+ "name": "End of Service Settlement",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Request User",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Support Team",
+   "set_user_permissions": "0",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Legal user",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "employee_name",
+ "track_changes": 1,
+ "track_seen": 1,
+ "translated_doctype": 1
+}

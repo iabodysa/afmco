@@ -1,0 +1,176 @@
+{
+ "allow_rename": 1,
+ "creation": "2023-05-17 18:03:18.159857",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "image",
+  "date",
+  "expected_salary",
+  "job",
+  "name1",
+  "sex",
+  "address",
+  "mobile",
+  "e_mail",
+  "religion",
+  "nationality",
+  "place_of_birth",
+  "date_of_birth",
+  "age",
+  "id",
+  "id_place_of_issue",
+  "date_of_issue",
+  "date_of_expiry",
+  "marital_status",
+  "no_of_children",
+  "do_they_live_with_you_now_in_ksa",
+  "do_you_have_any_healh_problems",
+  "cv"
+ ],
+ "fields": [
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "image",
+   "options": "\u0627\u0636\u0641 \u0635\u0648\u0631\u0629 \u0634\u062e\u0635\u064a\u0629"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "date",
+   "options": "\u062a\u0627\u0631\u064a\u062e \u062a\u0639\u0628\u0626\u0629 \u0627\u0644\u0637\u0644\u0628"
+  },
+  {
+   "fieldname": "expected_salary",
+   "fieldtype": "Data",
+   "label": "Expected salary"
+  },
+  {
+   "fieldname": "job",
+   "fieldtype": "Data",
+   "label": "job"
+  },
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "name"
+  },
+  {
+   "fieldname": "sex",
+   "fieldtype": "Select",
+   "label": "sex",
+   "options": "\u0630\u0643\u0631\n\u0623\u0646\u062b\u0649"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Geolocation",
+   "label": "address"
+  },
+  {
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "mobile"
+  },
+  {
+   "fieldname": "e_mail",
+   "fieldtype": "Data",
+   "label": "E mail"
+  },
+  {
+   "fieldname": "religion",
+   "fieldtype": "Data",
+   "label": "Religion"
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Data",
+   "label": "nationality"
+  },
+  {
+   "fieldname": "place_of_birth",
+   "fieldtype": "Data",
+   "label": "place of birth"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "date of birth"
+  },
+  {
+   "fieldname": "age",
+   "fieldtype": "Data",
+   "label": "age"
+  },
+  {
+   "fieldname": "id",
+   "fieldtype": "Data",
+   "label": "id"
+  },
+  {
+   "fieldname": "id_place_of_issue",
+   "fieldtype": "Data",
+   "label": "id place of issue"
+  },
+  {
+   "fieldname": "date_of_issue",
+   "fieldtype": "Date",
+   "label": "date of issue"
+  },
+  {
+   "fieldname": "date_of_expiry",
+   "fieldtype": "Date",
+   "label": "date of expiry"
+  },
+  {
+   "fieldname": "marital_status",
+   "fieldtype": "Select",
+   "label": "marital status",
+   "options": "\u0645\u062a\u0632\u0648\u062c\n\u0622\u0639\u0632\u0628"
+  },
+  {
+   "fieldname": "no_of_children",
+   "fieldtype": "Data",
+   "label": "No. of children"
+  },
+  {
+   "fieldname": "do_they_live_with_you_now_in_ksa",
+   "fieldtype": "Select",
+   "label": "do they live with you now in ksa",
+   "options": "\n\u0646\u0639\u0645\n\u0644\u0627"
+  },
+  {
+   "fieldname": "do_you_have_any_healh_problems",
+   "fieldtype": "Select",
+   "label": "do you have any healh problems",
+   "options": "\u0646\u0639\u0645\n\u0644\u0627"
+  },
+  {
+   "fieldname": "cv",
+   "fieldtype": "Attach",
+   "label": "Cv"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "modified": "2024-04-16 20:22:58.578730",
+ "module": "People and Payroll",
+ "name": "application for employment",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

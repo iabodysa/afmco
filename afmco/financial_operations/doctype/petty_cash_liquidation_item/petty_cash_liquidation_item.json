@@ -1,0 +1,114 @@
+{
+ "allow_rename": 1,
+ "creation": "2023-11-20 19:02:43.531857",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tax_invoice_number",
+  "invoice_date",
+  "column_break_supplier",
+  "supplier_name",
+  "cr",
+  "section_products",
+  "products",
+  "section_amounts",
+  "amount",
+  "column_break_tax",
+  "tax",
+  "column_break_total_amount",
+  "total_amount",
+  "section_notes",
+  "notes",
+  "liquidation_petty_cash_no"
+ ],
+ "fields": [
+  {
+   "fieldname": "tax_invoice_number",
+   "fieldtype": "Int",
+   "label": "Tax Invoice Number"
+  },
+  {
+   "fieldname": "invoice_date",
+   "fieldtype": "Date",
+   "label": "Invoice Date"
+  },
+  {
+   "fieldname": "column_break_supplier",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name"
+  },
+  {
+   "fieldname": "cr",
+   "fieldtype": "Int",
+   "label": "CR."
+  },
+  {
+   "fieldname": "section_products",
+   "fieldtype": "Section Break",
+   "label": "Products"
+  },
+  {
+   "fieldname": "products",
+   "fieldtype": "Small Text",
+   "label": "Products"
+  },
+  {
+   "fieldname": "section_amounts",
+   "fieldtype": "Section Break",
+   "label": "Amounts"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "column_break_tax",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tax",
+   "fieldtype": "Currency",
+   "label": "Tax"
+  },
+  {
+   "fieldname": "column_break_total_amount",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "section_notes",
+   "fieldtype": "Section Break",
+   "label": "Notes and Reference"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "liquidation_petty_cash_no",
+   "fieldtype": "Link",
+   "label": "Liquidation Petty Cash No.",
+   "options": "Liquidation Petty Cash"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2024-02-08 01:20:37.311116",
+ "module": "Financial Operations",
+ "name": "Petty Cash Liquidation Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

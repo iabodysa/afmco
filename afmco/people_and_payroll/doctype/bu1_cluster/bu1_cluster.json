@@ -1,0 +1,280 @@
+{
+ "allow_rename": 1,
+ "creation": "2024-11-07 19:32:51.595002",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_attendance",
+  "iqama_no",
+  "pay_roll",
+  "company",
+  "name1",
+  "designation",
+  "branch",
+  "day1",
+  "day2",
+  "day3",
+  "day4",
+  "day5",
+  "day6",
+  "day7",
+  "day8",
+  "day9",
+  "day10",
+  "day11",
+  "day12",
+  "day13",
+  "day14",
+  "day15",
+  "day16",
+  "day17",
+  "day18",
+  "day19",
+  "day20",
+  "day21",
+  "day22",
+  "day23",
+  "day24",
+  "day25",
+  "day26",
+  "day27",
+  "day28",
+  "day29",
+  "day30",
+  "no_of_days_present"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_attendance",
+   "fieldtype": "Section Break",
+   "label": "Attendance Details"
+  },
+  {
+   "fieldname": "iqama_no",
+   "fieldtype": "Link",
+   "label": "Iqama No",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "pay_roll",
+   "fieldtype": "Data",
+   "label": "Pay Roll"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Data",
+   "label": "Company"
+  },
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation "
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Data",
+   "label": "Branch"
+  },
+  {
+   "fieldname": "day1",
+   "fieldtype": "Data",
+   "label": "Day1",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day2",
+   "fieldtype": "Data",
+   "label": "Day2",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day3",
+   "fieldtype": "Data",
+   "label": "Day3",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day4",
+   "fieldtype": "Data",
+   "label": "Day4",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day5",
+   "fieldtype": "Data",
+   "label": "Day5",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day6",
+   "fieldtype": "Data",
+   "label": "Day6",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day7",
+   "fieldtype": "Data",
+   "label": "Day7",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day8",
+   "fieldtype": "Data",
+   "label": "Day8",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day9",
+   "fieldtype": "Data",
+   "label": "Day9",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day10",
+   "fieldtype": "Data",
+   "label": "Day10",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day11",
+   "fieldtype": "Data",
+   "label": "Day11",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day12",
+   "fieldtype": "Data",
+   "label": "Day12",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day13",
+   "fieldtype": "Data",
+   "label": "Day13",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day14",
+   "fieldtype": "Data",
+   "label": "Day14",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day15",
+   "fieldtype": "Data",
+   "label": "Day15",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day16",
+   "fieldtype": "Data",
+   "label": "Day16",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day17",
+   "fieldtype": "Data",
+   "label": "Day17",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day18",
+   "fieldtype": "Data",
+   "label": "Day18",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day19",
+   "fieldtype": "Data",
+   "label": "Day19",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day20",
+   "fieldtype": "Data",
+   "label": "Day20",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day21",
+   "fieldtype": "Data",
+   "label": "Day21",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day22",
+   "fieldtype": "Data",
+   "label": "Day22",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day23",
+   "fieldtype": "Data",
+   "label": "Day23",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day24",
+   "fieldtype": "Data",
+   "label": "Day24",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day25",
+   "fieldtype": "Data",
+   "label": "Day25",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day26",
+   "fieldtype": "Data",
+   "label": "Day26",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day27",
+   "fieldtype": "Data",
+   "label": "Day27",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day28",
+   "fieldtype": "Data",
+   "label": "Day28",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day29",
+   "fieldtype": "Data",
+   "label": "Day29",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "day30",
+   "fieldtype": "Data",
+   "label": "Day30",
+   "options": "P\nA"
+  },
+  {
+   "fieldname": "no_of_days_present",
+   "fieldtype": "Data",
+   "label": "No of Days Present",
+   "options": "\n"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2024-11-07 19:48:21.277486",
+ "module": "People and Payroll",
+ "name": "BU1 Cluster",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

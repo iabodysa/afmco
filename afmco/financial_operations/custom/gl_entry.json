@@ -1,0 +1,41 @@
+{
+ "custom_fields": [
+  {
+   "allow_on_submit": "1",
+   "dt": "GL Entry",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "idx": "0",
+   "insert_after": null,
+   "is_system_generated": "1",
+   "label": "Employee",
+   "module": "Financial Operations",
+   "name": "GL Entry-employee",
+   "options": "Employee"
+  }
+ ],
+ "doctype": "GL Entry",
+ "property_setters": [
+  {
+   "doc_type": "GL Entry",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "module": "Financial Operations",
+   "name": "GL Entry-main-allow_import",
+   "property": "allow_import",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "GL Entry",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "module": "Financial Operations",
+   "name": "GL Entry-main-field_order",
+   "property": "field_order",
+   "property_type": "Data",
+   "value": "[\"employee\", \"posting_date\", \"transaction_date\", \"account\", \"party_type\", \"party\", \"cost_center\", \"debit\", \"credit\", \"account_currency\", \"debit_in_account_currency\", \"credit_in_account_currency\", \"against\", \"against_voucher_type\", \"against_voucher\", \"voucher_type\", \"voucher_subtype\", \"voucher_no\", \"voucher_detail_no\", \"project\", \"remarks\", \"is_opening\", \"is_advance\", \"fiscal_year\", \"company\", \"finance_book\", \"to_rename\", \"due_date\", \"is_cancelled\", \"transaction_currency\", \"debit_in_transaction_currency\", \"credit_in_transaction_currency\", \"transaction_exchange_rate\"]"
+  }
+ ],
+ "sync_on_migrate": 1
+}

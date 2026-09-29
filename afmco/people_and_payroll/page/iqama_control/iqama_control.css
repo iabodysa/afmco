@@ -1,0 +1,5594 @@
+/* Copyright (c) 2026, AFMCO and contributors */
+
+/* Three views share one header. Triage is rail, list and detail side by side; the dashboard
+   is tiles and charts; batch is a step rail over a picker and an outcome pane. Logical
+   properties throughout, because the site runs in Arabic. */
+
+/* ---- header ----------------------------------------------------- */
+
+/* R8-B item 2: the mobile detail overlay (.ic-page .ic-triage .ic-detail,
+   position:fixed, z-index:5, defined under @media (max-width:1023px)) sat in
+   a stacking context ranked ABOVE this header. .ic-head-menu-list's own
+   z-index:10 never reached that comparison — it is a descendant of .ic-head,
+   so it only competes inside .ic-head's context, and the WHOLE context was
+   capped at 4. Raising the cap past the overlay's 5 is what lets the menu
+   stay reachable while the panel is open; the menu's local z-index:10 is
+   unchanged and still orders it above its own siblings. */
+.ic-head {
+    position: sticky;
+    inset-block-start: var(--navbar-height, 48px);
+    z-index: 6;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--margin-md, 15px);
+    padding-block: var(--padding-sm, 10px);
+    background: var(--fg-color);
+}
+
+.ic-seg {
+    display: inline-flex;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md, 8px);
+    background: var(--control-bg);
+    padding: 2px;
+    gap: 2px;
+}
+
+.ic-seg-btn {
+    border: none;
+    border-radius: var(--border-radius-sm, 6px);
+    background: transparent;
+    padding-block: 5px;
+    padding-inline: 14px;
+    font: inherit;
+    font-size: var(--text-sm, 13px);
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.ic-seg-btn:hover {
+    color: var(--text-color);
+}
+
+.ic-seg-btn.is-on {
+    background: var(--fg-color);
+    color: var(--text-color);
+    box-shadow: var(--shadow-base, 0 1px 2px rgba(0, 0, 0, 0.09));
+}
+
+.ic-head-count {
+    font-size: var(--text-sm, 13px);
+    margin-inline-start: auto;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---- triage ----------------------------------------------------- */
+
+.ic-triage {
+    display: grid;
+    grid-template-columns: 210px minmax(260px, 1fr) minmax(320px, 1.3fr);
+    gap: var(--margin-md, 15px);
+    align-items: start;
+}
+
+@media (max-width: 1100px) {
+    .ic-triage {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ic-rail {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md, 8px);
+    background: var(--card-bg);
+    overflow: hidden;
+}
+
+.ic-rail-row {
+    display: grid;
+    grid-template-columns: 8px 1fr auto;
+    align-items: center;
+    gap: var(--margin-sm, 10px);
+    border: none;
+    background: transparent;
+    padding-block: 7px;
+    padding-inline: 12px;
+    font: inherit;
+    font-size: var(--text-sm, 13px);
+    text-align: start;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.ic-rail-row:hover {
+    background: var(--control-bg);
+    color: var(--text-color);
+}
+
+.ic-rail-row.is-on {
+    background: var(--control-bg);
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.ic-rail-dot {
+    inline-size: 8px;
+    block-size: 8px;
+    border-radius: 50%;
+    background: var(--gray-400);
+}
+
+.ic-rail-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ic-rail-count {
+    font-variant-numeric: tabular-nums;
+    font-size: var(--text-xs, 11px);
+}
+
+.ic-dot--all {
+    background: var(--text-color);
+}
+
+/* ---- the record list -------------------------------------------- */
+
+.ic-list {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md, 8px);
+    background: var(--card-bg);
+    overflow: hidden;
+}
+
+.ic-list-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--margin-sm, 10px);
+    padding-block: var(--padding-sm, 10px);
+    padding-inline: 12px;
+    border-block-end: 1px solid var(--border-color);
+}
+
+.ic-list-title {
+    font-weight: 600;
+    font-size: var(--text-sm, 13px);
+}
+
+.ic-list-count {
+    font-size: var(--text-xs, 11px);
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.ic-bands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-inline-start: auto;
+}
+
+.ic-list-body {
+    max-block-size: 62vh;
+    overflow-y: auto;
+}
+
+.ic-row {
+    display: grid;
+    grid-template-columns: 3px auto 1fr auto;
+    align-items: center;
+    gap: var(--margin-sm, 10px);
+    padding-block: 8px;
+    padding-inline-end: 12px;
+    border-block-end: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+.ic-row:last-child {
+    border-block-end: none;
+}
+
+.ic-row:hover {
+    background: var(--control-bg);
+}
+
+.ic-row.is-focus {
+    background: var(--control-bg);
+}
+
+.ic-row.is-selected {
+    background: var(--highlight-color, var(--control-bg));
+}
+
+.ic-row-bar {
+    align-self: stretch;
+    background: transparent;
+}
+
+.ic-row--expired .ic-row-bar {
+    background: var(--red-600);
+}
+.ic-row--critical .ic-row-bar {
+    background: var(--red-400);
+}
+.ic-row--soon .ic-row-bar {
+    background: var(--orange-500);
+}
+.ic-row--clear .ic-row-bar {
+    background: var(--green-500);
+}
+
+.ic-row-check {
+    margin: 0;
+}
+
+.ic-row-who {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-inline-size: 0;
+}
+
+.ic-row-name {
+    font-size: var(--text-sm, 13px);
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ic-row-org {
+    font-size: var(--text-xs, 11px);
+    color: var(--text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ic-row-days {
+    font-size: var(--text-md, 14px);
+    font-weight: 700;
+}
+
+/* ---- the record detail ------------------------------------------ */
+
+.ic-detail {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md, 8px);
+    background: var(--card-bg);
+    padding: var(--padding-md, 15px);
+    position: sticky;
+    inset-block-start: 60px;
+    max-block-size: 78vh;
+    overflow-y: auto;
+}
+
+.ic-detail-head {
+    display: flex;
+    align-items: center;
+    gap: var(--margin-md, 15px);
+    padding-block-end: var(--padding-sm, 10px);
+}
+
+.ic-detail-identity {
+    min-inline-size: 0;
+}
+
+.ic-detail-name {
+    font-size: var(--text-lg, 16px);
+    font-weight: 600;
+}
+
+.ic-detail-sub {
+    color: var(--text-muted);
+    font-size: var(--text-sm, 13px);
+    margin-block-start: 2px;
+    overflow-wrap: anywhere;
+}
+
+.ic-detail-chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    padding-block-end: var(--padding-sm, 10px);
+    border-block-end: 1px solid var(--border-color);
+}
+
+.ic-detail-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-block: var(--padding-md, 15px);
+}
+
+.ic-field {
+    display: flex;
+    gap: var(--margin-sm, 10px);
+    font-size: var(--text-sm, 13px);
+}
+
+.ic-field-label {
+    color: var(--text-muted);
+    flex: none;
+    min-inline-size: 130px;
+}
+
+.ic-field-value {
+    overflow-wrap: anywhere;
+}
+
+.ic-field--missing .ic-field-value {
+    color: var(--red-600);
+    font-style: italic;
+}
+
+/* ---- history ---------------------------------------------------- */
+
+.ic-history {
+    padding-block-start: var(--padding-sm, 10px);
+    border-block-start: 1px solid var(--border-color);
+}
+
+.ic-history-title {
+    font-size: var(--text-sm, 13px);
+    font-weight: 600;
+    margin: 0 0 var(--margin-sm, 10px);
+}
+
+.ic-history-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-block-size: 240px;
+    overflow-y: auto;
+}
+
+.ic-history-item {
+    display: grid;
+    grid-template-columns: 108px 1fr;
+    gap: 2px var(--margin-sm, 10px);
+    padding-block: 5px;
+    border-block-end: 1px solid var(--border-color);
+    font-size: var(--text-xs, 11px);
+}
+
+.ic-history-when {
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.ic-history-what {
+    overflow-wrap: anywhere;
+}
+
+.ic-history-who {
+    grid-column: 2;
+    color: var(--text-muted);
+    overflow-wrap: anywhere;
+}
+
+.ic-history-empty {
+    padding-block: var(--padding-sm, 10px);
+    font-size: var(--text-sm, 13px);
+}
+
+/* ---- the action bar --------------------------------------------- */
+
+.ic-actionbar {
+    position: sticky;
+    inset-block-end: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--margin-sm, 10px);
+    padding-block-start: var(--padding-sm, 10px);
+    margin-block-start: var(--margin-sm, 10px);
+    border-block-start: 1px solid var(--border-color);
+    background: var(--card-bg);
+}
+
+/* ---- chips ------------------------------------------------------ */
+
+.ic-chip {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: var(--card-bg);
+    padding-block: 3px;
+    padding-inline: 10px;
+    font: inherit;
+    font-size: var(--text-xs, 11px);
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.ic-chip:hover,
+.ic-chip.is-held {
+    border-color: var(--text-color);
+    color: var(--text-color);
+}
+
+.ic-chip::before {
+    content: "";
+    align-self: center;
+    inline-size: 8px;
+    block-size: 8px;
+    border-radius: 50%;
+    background: var(--gray-400);
+}
+
+.ic-chip--static {
+    cursor: default;
+}
+
+.ic-chip--static:hover {
+    border-color: var(--border-color);
+    color: var(--text-muted);
+}
+
+.ic-chip-count {
+    font-size: var(--text-sm, 13px);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-color);
+}
+
+/* ---- flags ------------------------------------------------------ */
+
+.ic-flags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding-block-end: var(--padding-sm, 10px);
+}
+
+.ic-flag {
+    font-size: var(--text-xs, 11px);
+    font-weight: 600;
+    border-radius: 999px;
+    padding-block: 2px;
+    padding-inline: 8px;
+    white-space: nowrap;
+    color: var(--text-muted);
+    background: var(--control-bg);
+}
+
+.ic-flag--stop {
+    color: var(--red-600);
+    background: var(--red-100);
+}
+
+.ic-flag--warn {
+    color: var(--orange-600);
+    background: var(--orange-100);
+}
+
+.ic-flag--done {
+    color: var(--green-600);
+    background: var(--green-100);
+}
+
+/* ---- shared ----------------------------------------------------- */
+
+.ic-num {
+    text-align: end;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.ic-empty {
+    padding: 36px 12px;
+    text-align: center;
+}
+
+.ic-truncated {
+    padding-block: var(--padding-sm, 10px);
+    padding-inline: 12px;
+    font-size: var(--text-xs, 11px);
+}
+
+.ic-skip-list {
+    margin: 0;
+    padding-inline-start: 18px;
+    max-block-size: 240px;
+    overflow: auto;
+}
+
+.ic-error {
+    margin-block: var(--margin-md, 15px);
+    padding: var(--padding-md, 15px);
+    border: 1px solid var(--red-300);
+    border-radius: var(--border-radius-md, 8px);
+    background: var(--card-bg);
+}
+
+.ic-error-title {
+    font-weight: 600;
+    margin-block-end: var(--margin-xs, 5px);
+}
+
+.ic-error-detail {
+    color: var(--text-muted);
+    font-size: var(--text-sm, 13px);
+    margin-block-end: var(--margin-sm, 10px);
+}
+
+/* ==========================================================================
+   Figma — CHOSEN DIRECTION, one page three views.
+   Tokens are raw literals in the design file: it binds no Figma variables,
+   so the names below are this page's own. Everything past this point is the
+   header band and the surfaces the design puts controls in.
+   ========================================================================== */
+
+.ic-page {
+	--ic-font: "Inter", var(--font-stack, sans-serif);
+
+	--ic-text-brand: #1f1f1f;
+	--ic-text-strong: #262626;
+	--ic-text-title: #404040;
+	--ic-text-body: #595959;
+	--ic-text-muted: #737373;
+	--ic-text-faint: #8c8c8c;
+	--ic-text-on-dark: #fafafa;
+
+	--ic-surface: #ffffff;
+	--ic-surface-sunk: #f7f7f7;
+	--ic-surface-track: #ededed;
+	--ic-surface-field: #f2f2f2;
+	--ic-surface-button: #f0f0f0;
+
+	--ic-line: #e6e6e6;
+	--ic-line-head: #e0e0e0;
+	--ic-fill-placeholder: #ebebeb;
+
+	--ic-accent: #404040;
+
+	--ic-radius-chip: 4px;
+	--ic-radius-field: 7px;
+	--ic-radius-track: 9px;
+	--ic-radius-card: 10px;
+	--ic-radius-pill: 13px;
+
+	--ic-gap: 16px;
+	--ic-pad-inline: 24px;
+
+	--ic-shadow-raised: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* The design carries no framework title bar. */
+.ic-page .page-head {
+	display: none;
+}
+
+.ic-page .page-body .layout-main-section-wrapper,
+.ic-page .page-body .layout-main-section {
+	margin-block: 0;
+	padding-block: 0;
+	border: 0;
+	background: transparent;
+}
+
+/* --- header band ------------------------------------------------------- */
+
+.ic-head {
+	display: flex;
+	align-items: center;
+	gap: var(--ic-gap);
+	block-size: 65px;
+	padding-block: 14px;
+	padding-inline: var(--ic-pad-inline);
+	background: var(--ic-surface);
+	border-block-end: 1px solid var(--ic-line-head);
+	font-family: var(--ic-font);
+	overflow: clip;
+	/* B6: overflow:clip guards the nowrap flex row's inline axis so a long
+	   brand/count string can never push the page width. .ic-head-menu-list
+	   opens as an absolute child below this box, on the block axis — clamping
+	   the clip edge open by this margin (bounded by the menu's own overflow
+	   extent, never further) keeps the inline guard while the dropdown paints. */
+	overflow-clip-margin: 280px;
+}
+
+.ic-head-brand {
+	flex: 0 0 auto;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--ic-text-brand);
+	white-space: nowrap;
+}
+
+/* One either side of the switcher, equal grow: this is what centres it
+   between the brand and the right-hand block. */
+.ic-head-gap {
+	flex: 1 0 0;
+	min-inline-size: 1px;
+	block-size: 1px;
+}
+
+/* The live tally the design has no slot for. Kept, and folded under the
+   header rather than dropped. */
+.ic-head-count {
+	flex: 0 0 100%;
+	order: 9;
+	font-size: 9px;
+	color: var(--ic-text-faint);
+}
+
+/* --- view switcher ----------------------------------------------------- */
+
+.ic-seg {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 2px;
+	block-size: 37px;
+	padding: 3px;
+	border-radius: var(--ic-radius-track);
+	background: var(--ic-surface-track);
+	overflow: clip;
+}
+
+.ic-seg-btn {
+	block-size: 31px;
+	padding-block: 8px;
+	padding-inline: 18px;
+	border: 0;
+	border-radius: var(--ic-radius-field);
+	background: transparent;
+	font-family: var(--ic-font);
+	font-size: 12px;
+	font-weight: 400;
+	color: var(--ic-text-muted);
+	white-space: nowrap;
+}
+
+.ic-seg-btn.is-on {
+	background: var(--ic-surface);
+	box-shadow: var(--ic-shadow-raised);
+	font-weight: 600;
+	color: var(--ic-text-strong);
+}
+
+/* --- action bar -------------------------------------------------------- */
+
+.ic-actionbar {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	block-size: 63px;
+	padding-block: 16px;
+	padding-inline: var(--ic-pad-inline);
+	background: var(--ic-surface);
+	border: 1px solid var(--ic-line);
+	font-family: var(--ic-font);
+}
+
+.ic-actionbar-gap {
+	flex: 1 0 0;
+	block-size: 1px;
+}
+
+.ic-btn {
+	block-size: 31px;
+	padding-block: 9px;
+	padding-inline: 14px;
+	border: 0;
+	border-radius: 6px;
+	background: var(--ic-surface-button);
+	font-family: var(--ic-font);
+	font-size: var(--ic-label, 11px);
+	font-weight: 400;
+	color: var(--ic-text-body);
+	white-space: nowrap;
+}
+
+.ic-btn--primary {
+	padding-inline: 18px;
+	background: var(--ic-accent);
+	font-weight: 600;
+	color: var(--ic-text-on-dark);
+}
+
+/* --- relocated filter form --------------------------------------------- */
+
+.ic-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 0;
+	padding-block: 0 12px;
+	padding-inline: var(--ic-pad-inline);
+	border: 0;
+	background: transparent;
+}
+
+.ic-filters .form-group {
+	margin-block-end: 0;
+}
+
+.ic-filters .frappe-control {
+	margin: 0;
+}
+
+.ic-filters input:not([type="checkbox"]),
+.ic-filters select {
+	block-size: 26px;
+	border: 0;
+	border-radius: var(--ic-radius-pill);
+	background: var(--ic-surface-field);
+	font-size: 11px;
+	color: var(--ic-text-body);
+}
+
+/* ===== view: triage (from tools/design/css/triage.css) ===== */
+
+/* ==========================================================================
+   VIEW 1 — Triage.
+   Concatenated onto iqama_control.css, so every rule here is scoped under
+   .ic-triage and wins on order, not on weight. The tokens the shared block
+   already defines are reused; the ones the design needs and it does not carry
+   are declared below on .ic-page beside them.
+   ========================================================================== */
+
+.ic-page {
+	/* Surfaces the shared block has no name for. */
+	--ic-surface-detail: #fbfbfb;
+	--ic-surface-selected: #e6e6e6;
+	--ic-surface-row-on: #f0f0f0;
+
+	/* Text steps the shared block has no name for. */
+	--ic-text-rail: #4d4d4d;
+	--ic-text-section: #6b6b6b;
+
+	/* Placeholder fills darker than --ic-fill-placeholder. */
+	--ic-fill-strong: #d9d9d9;
+	--ic-fill-bar: #e0e0e0;
+
+	/* Radii the shared block has no name for. */
+	--ic-radius-line: 2px;
+	--ic-radius-bar: 3px;
+	--ic-radius-rail: 5px;
+	--ic-radius-input: 6px;
+
+	/* View 1 carries no page-level band, so it sets its own inline padding:
+	   12 in the rail and the list, 28 in the detail column. */
+	--ic-pad-col: 12px;
+	--ic-pad-detail: 28px;
+}
+
+.ic-triage,
+.ic-triage *,
+.ic-triage *::before,
+.ic-triage *::after {
+	box-sizing: border-box;
+}
+
+/* --- body: three columns, no gap ---------------------------------------- */
+
+.ic-triage {
+	display: flex;
+	align-items: stretch;
+	block-size: 755px;
+	background: var(--ic-surface);
+	font-family: var(--ic-font);
+	overflow: clip;
+}
+
+/* --- 210 rail ----------------------------------------------------------- */
+
+.ic-triage .ic-rail {
+	display: flex;
+	flex: 0 0 210px;
+	inline-size: 210px;
+	flex-direction: column;
+	gap: 4px;
+	padding-block: 16px;
+	padding-inline: var(--ic-pad-col);
+	background: var(--ic-surface-sunk);
+	overflow-y: auto;
+}
+
+.ic-triage .ic-rail-list {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.ic-triage .ic-rail-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	inline-size: 186px;
+	block-size: 26px;
+	padding-block: 7px;
+	padding-inline: 10px;
+	border: 0;
+	border-radius: var(--ic-radius-rail);
+	background: transparent;
+	font-family: var(--ic-font);
+	font-size: 10px;
+	font-weight: 400;
+	line-height: 1;
+	color: var(--ic-text-rail);
+	text-align: start;
+	cursor: pointer;
+}
+
+.ic-triage .ic-rail-row.is-on {
+	background: var(--ic-surface-selected);
+	font-weight: 600;
+}
+
+.ic-triage .ic-rail-dot {
+	flex: 0 0 8px;
+	inline-size: 8px;
+	block-size: 8px;
+	border-radius: 4px;
+}
+
+.ic-triage .ic-rail-label {
+	flex: 1 1 auto;
+	min-inline-size: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.ic-triage .ic-rail-count {
+	flex: 0 0 auto;
+	font-size: 9px;
+	font-weight: 400;
+	color: var(--ic-text-faint);
+}
+
+/* R27: the rail-filters host is now the one layout owner for both children
+   (.ic-filterbar and .ic-filters/page_form, appended in that order by
+   _place_filters(), iqama_control.js:524-525) instead of the two block-
+   stacking with whatever spacing each brought on its own. container-type
+   lets the filter block self-adapt to whichever slot it docks into (see the
+   @container rule below) independent of the outer .ic-narrow view-width
+   switch, which keeps deciding rail-vs-bar dock (css:4004). Breakpoint is
+   the rail track's own declared width, .ic-triage's grid-template-columns
+   first column, css:71 (`210px minmax(260px,1fr) minmax(320px,1.3fr)`) —
+   not a guessed pixel value. */
+.ic-triage .ic-rail-filters {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	container-type: inline-size;
+	margin-block-start: 12px;
+}
+
+@container (max-width: 210px) {
+	.ic-rail-filters .ic-filterbar {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.ic-rail-filters .ic-choice {
+		align-self: flex-start;
+	}
+
+	.ic-rail-filters .ic-project-cascade,
+	.ic-rail-filters .ic-project-cascade-trigger {
+		inline-size: 100%;
+		max-inline-size: none;
+	}
+}
+
+.ic-triage .ic-filters .form-group,
+.ic-triage .ic-filters .frappe-control {
+	inline-size: 100%;
+	margin: 0;
+}
+
+.ic-triage .ic-filters .control-label {
+	margin-block-end: 2px;
+	font-size: 9px;
+	color: var(--ic-text-faint);
+}
+
+.ic-triage .ic-filters input:not([type="checkbox"]),
+.ic-triage .ic-filters select {
+	inline-size: 100%;
+	block-size: 26px;
+	border-radius: var(--ic-radius-input);
+}
+
+/* --- 340 list ----------------------------------------------------------- */
+
+.ic-triage .ic-list {
+	display: flex;
+	flex: 0 0 340px;
+	inline-size: 340px;
+	flex-direction: column;
+	background: var(--ic-surface);
+	border: 1px solid var(--ic-line);
+	overflow: hidden;
+}
+
+/* The 52px band the design fills with a single search rect; that rect is
+   worn by the live risk filter. The employee-number search runs in its own
+   band below the list head (.ic-list-search, near the file's tail). */
+.ic-triage .ic-list-head {
+	display: flex;
+	flex: 0 0 52px;
+	align-items: center;
+	gap: 8px;
+	block-size: 52px;
+	padding: 12px;
+}
+
+.ic-triage .ic-list-title {
+	flex: 0 0 auto;
+	font-size: 9px;
+	color: var(--ic-text-faint);
+	white-space: nowrap;
+}
+
+.ic-triage .ic-bands {
+	display: flex;
+	flex: 1 1 auto;
+	align-items: center;
+	gap: 6px;
+	min-inline-size: 0;
+	block-size: 28px;
+	padding-inline: 6px;
+	border-radius: var(--ic-radius-input);
+	background: var(--ic-surface-field);
+	overflow-x: auto;
+}
+
+.ic-triage .ic-list-count {
+	flex: 0 0 auto;
+	font-size: 10px;
+	font-weight: 600;
+	color: var(--ic-text-title);
+}
+
+.ic-triage .ic-bands .ic-chip {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 4px;
+	block-size: 18px;
+	padding-block: 0;
+	padding-inline: 7px;
+	border: 0;
+	border-radius: var(--ic-radius-field);
+	background: var(--ic-surface);
+	font-family: var(--ic-font);
+	font-size: 9px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.ic-triage .ic-bands .ic-chip.is-held {
+	background: var(--ic-surface-selected);
+	/* R22-2: .ic-choice-btn.is-on (this row's own sort toggle, css:2486)
+	   reads pressed via box-shadow; this chip read pressed via a background
+	   tint alone, a weaker signal for the same on/off idiom beside it. */
+	box-shadow: var(--ic-shadow-raised);
+	font-weight: 600;
+}
+
+.ic-triage .ic-bands .ic-chip-count {
+	color: var(--ic-text-faint);
+}
+
+.ic-triage .ic-list-body {
+	flex: 1 1 auto;
+	min-block-size: 0;
+	overflow-y: auto;
+}
+
+/* A 50px row. No rule between rows: the design separates by whitespace and by
+   the tint on the selected row alone. */
+.ic-triage .ic-row {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	block-size: 50px;
+	padding-block: 10px;
+	padding-inline: var(--ic-pad-col);
+	border: 0;
+	background: var(--ic-surface);
+	cursor: pointer;
+}
+
+.ic-triage .ic-row.is-focus {
+	background: var(--ic-surface-row-on);
+}
+
+.ic-triage .ic-row:focus-visible {
+	outline: 2px solid var(--ic-accent);
+	outline-offset: -2px;
+}
+
+/* Geometry only. The bar's fill stays with the .ic-row--<urgency> rules in the
+   shared sheet, because in a live list the bar carries days-left, not
+   selection; the row tint carries selection instead. */
+.ic-triage .ic-row-bar {
+	flex: 0 0 6px;
+	inline-size: 6px;
+	block-size: 30px;
+	border-radius: var(--ic-radius-bar);
+}
+
+/* The design draws no checkbox in view 1. Selection, the x shortcut and batch
+   payment all read it, so it is kept and sized down to the row's ramp. */
+.ic-triage .ic-row-check {
+	flex: 0 0 14px;
+	inline-size: 14px;
+	block-size: 14px;
+	margin: 0;
+}
+
+.ic-triage .ic-row-who {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	gap: 5px;
+	min-inline-size: 0;
+}
+
+/* The 9px wireframe bar. Weight and colour are lowered below by the
+   .ic-row-employee rule near the file's tail, so the employee number — the
+   row's declared title — outweighs this subtitle rather than the reverse. */
+.ic-triage .ic-row-name {
+	font-size: 11px;
+	font-weight: 500;
+	line-height: 1.2;
+	color: var(--ic-text-title);
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* The 7px wireframe bar. */
+.ic-triage .ic-row-org {
+	font-size: 9px;
+	font-weight: 400;
+	line-height: 1.2;
+	color: var(--ic-text-faint);
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* The 44x14 pill. Its colour stays with the .ic-days--<urgency> rules. */
+.ic-triage .ic-row-days {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	min-inline-size: 44px;
+	block-size: 14px;
+	padding-inline: 6px;
+	border-radius: var(--ic-radius-field);
+	background: var(--ic-surface-track);
+	font-size: 9px;
+	font-weight: 600;
+	line-height: 1;
+}
+
+.ic-triage .ic-list .ic-empty {
+	padding-block: 24px;
+	padding-inline: var(--ic-pad-col);
+	font-size: 10px;
+	color: var(--ic-text-faint);
+}
+
+.ic-triage .ic-truncated {
+	flex: 0 0 auto;
+	padding-block: 10px;
+	padding-inline: var(--ic-pad-col);
+	font-size: 9px;
+	color: var(--ic-text-faint);
+}
+
+/* --- 730 detail column -------------------------------------------------- */
+
+.ic-triage .ic-detail {
+	display: flex;
+	flex: 1 1 0;
+	min-inline-size: 0;
+	flex-direction: column;
+	background: var(--ic-surface-detail);
+	overflow: clip;
+	/* R21-A: query container for the action bar's own width tier (:4010-ish,
+	   @container below) — its inline-size here comes only from fixed grid
+	   tracks (css:1084, css:3548), never from its own children, so this adds
+	   no reflow of the column itself. */
+	container-type: inline-size;
+}
+
+/* Band 1 — the 84 title band, the only white in the column. */
+.ic-triage .ic-detail-title {
+	display: flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	gap: 8px;
+	min-block-size: 84px;
+	padding-block: 24px 20px;
+	padding-inline: var(--ic-pad-detail);
+	background: var(--ic-surface);
+}
+
+.ic-triage .ic-detail-head {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-inline-size: 0;
+}
+
+.ic-triage .ic-detail-head .avatar {
+	flex: 0 0 auto;
+	inline-size: 20px;
+	block-size: 20px;
+}
+
+.ic-triage .ic-detail-head .avatar-frame {
+	font-size: 8px;
+}
+
+.ic-triage .ic-detail-identity {
+	display: flex;
+	flex: 1 1 auto;
+	align-items: baseline;
+	gap: 10px;
+	min-inline-size: 0;
+}
+
+.ic-triage .ic-detail-name {
+	flex: 0 0 auto;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+.ic-triage .ic-detail-name a {
+	color: var(--ic-text-strong);
+}
+
+.ic-triage .ic-detail-sub {
+	flex: 1 1 auto;
+	min-inline-size: 0;
+	font-size: 9px;
+	line-height: 1.2;
+	color: var(--ic-text-faint);
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* The three chips the design puts under the title. Backgrounds are left to
+   .indicator-pill and .ic-band--* so the status and nitaqat colours survive. */
+.ic-triage .ic-detail-chips {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.ic-triage .ic-detail-chips .indicator-pill,
+.ic-triage .ic-detail-chips .ic-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	block-size: 14px;
+	padding-block: 0;
+	padding-inline: 8px;
+	border: 0;
+	border-radius: var(--ic-radius-field);
+	font-family: var(--ic-font);
+	font-size: 9px;
+	line-height: 1;
+}
+
+/* The nitaqat chip wears .ic-band--* for its own fill, so the neutral track
+   fill is held back from any chip that carries a band. */
+.ic-triage .ic-detail-chips .ic-chip--static:not([class*="ic-band--"]) {
+	background: var(--ic-surface-track);
+}
+
+/* Bands 2 and 3 share one scroller so the action bar stays on screen when a
+   lens runs past the ten slots the design draws. */
+.ic-triage .ic-detail-scroll {
+	flex: 1 1 auto;
+	min-block-size: 0;
+	overflow-y: auto;
+}
+
+/* Band 2 — the 250 field grid: five rows, two equal columns, ten slots. */
+.ic-triage .ic-detail-fields {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	column-gap: var(--ic-gap);
+	align-content: start;
+	min-block-size: 250px;
+	padding-block: 20px;
+	padding-inline: var(--ic-pad-detail);
+	background: var(--ic-surface-detail);
+}
+
+.ic-triage .ic-field {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	min-inline-size: 0;
+	padding-block: 9px;
+}
+
+/* The 70x7 label bar. */
+.ic-triage .ic-field-label {
+	font-size: 9px;
+	line-height: 1;
+	color: var(--ic-text-faint);
+}
+
+/* The 11px value bar. */
+.ic-triage .ic-field-value {
+	font-size: 11px;
+	line-height: 1.2;
+	color: var(--ic-text-body);
+	overflow-wrap: anywhere;
+}
+
+.ic-triage .ic-field--missing .ic-field-value {
+	color: var(--ic-text-faint);
+	font-style: italic;
+}
+
+.ic-triage .ic-flags {
+	display: flex;
+	grid-column: 1 / -1;
+	flex-wrap: wrap;
+	gap: 8px;
+	padding-block: 9px;
+}
+
+.ic-triage .ic-flag {
+	display: inline-flex;
+	align-items: center;
+	block-size: 16px;
+	padding-block: 0;
+	padding-inline: 8px;
+	border: 0;
+	border-radius: var(--ic-radius-field);
+	font-size: 9px;
+	line-height: 1;
+}
+
+/* Band 3 — the 94 History band. */
+.ic-triage .ic-history {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	min-block-size: 94px;
+	padding-block: 8px 20px;
+	padding-inline: var(--ic-pad-detail);
+	background: var(--ic-surface-detail);
+}
+
+.ic-triage .ic-history-title {
+	margin: 0;
+	font-size: 10px;
+	font-weight: 600;
+	line-height: 1;
+	color: var(--ic-text-section);
+}
+
+.ic-triage .ic-history-list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ic-triage .ic-history-item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 9px;
+	line-height: 1.2;
+}
+
+.ic-triage .ic-history-item::before {
+	content: "";
+	flex: 0 0 8px;
+	inline-size: 8px;
+	block-size: 8px;
+	border-radius: 4px;
+	background: var(--ic-fill-strong);
+}
+
+.ic-triage .ic-history-when {
+	flex: 0 0 auto;
+	color: var(--ic-text-faint);
+}
+
+.ic-triage .ic-history-what {
+	flex: 1 1 auto;
+	min-inline-size: 0;
+	color: var(--ic-text-body);
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.ic-triage .ic-history-who {
+	flex: 0 0 auto;
+	color: var(--ic-text-faint);
+}
+
+.ic-triage .ic-history-empty {
+	font-size: 9px;
+	color: var(--ic-text-faint);
+}
+
+/* Band 4 — the 1px rule. */
+.ic-triage .ic-detail-rule {
+	flex: 0 0 1px;
+	block-size: 1px;
+	background: var(--ic-surface);
+}
+
+/* Band 5 — the action bar, the page shell's one bar, moved in here. */
+.ic-triage .ic-actionbar {
+	flex: 0 0 auto;
+	flex-wrap: wrap;
+	block-size: auto;
+	min-block-size: 63px;
+	padding-inline: var(--ic-pad-detail);
+}
+
+.ic-triage .ic-actionbar-row {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.ic-triage .ic-btn {
+	cursor: pointer;
+}
+
+.ic-triage .ic-btn:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
+/* The design carries one dark button per bar and it is the workflow action,
+   which sits inside the row slot. The shell's Refresh is a direct child of the
+   bar, so it reads as a secondary here. */
+.ic-triage .ic-actionbar > .ic-btn--primary {
+	background: var(--ic-surface-button);
+	font-weight: 400;
+	color: var(--ic-text-body);
+}
+
+.ic-triage .ic-detail > .ic-empty {
+	padding-block: 32px;
+	padding-inline: var(--ic-pad-detail);
+	font-size: 10px;
+	color: var(--ic-text-faint);
+}
+
+/* ===== view: dashboard (from tools/design/css/dashboard.css) ===== */
+/* ==========================================================================
+   VIEW 2 — Dashboard body. Concatenated onto iqama_control.css, so it may
+   only add: every token name it does not declare here comes from the
+   "Figma — CHOSEN DIRECTION" block at the tail of that file.
+
+   Band arithmetic from the design: 65 header + 120 kpi + 192 charts +
+   299 table. Page inline padding is 24 on every band.
+   ========================================================================== */
+
+/* Colours the design uses that the shared token block does not carry. */
+.ic-page {
+	--ic-surface-canvas: #f6f6f6;
+	--ic-surface-head: #fafafa;
+
+	--ic-text-section: #666666;
+
+	--ic-fill-bar: #dbdbdb;
+	--ic-fill-track: #e0e0e0;
+
+	--ic-ramp-1: #b8b8b8;
+	--ic-ramp-2: #c7c7c7;
+	--ic-ramp-3: #d6d6d6;
+	--ic-ramp-4: #e6e6e6;
+}
+
+.ic-board {
+	min-block-size: 100%;
+	background: var(--ic-surface-canvas);
+	font-family: var(--ic-font);
+	/* R21-A: query container for the KPI/chart wrap tier below (@container,
+	   css:~1740) — a block element already filling .ic-view's own width, so
+	   this changes no size of the board itself. */
+	container-type: inline-size;
+}
+
+/* Every band below is sized to the pixel, so the padding has to sit inside
+   the declared size rather than outside it. */
+.ic-board *,
+.ic-board *::before,
+.ic-board *::after {
+	box-sizing: border-box;
+}
+
+/* --- band 1, the KPI strip --------------------------------------------- */
+
+.ic-kpi {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	block-size: 120px;
+	padding-block: 20px 6px;
+	padding-inline: var(--ic-pad-inline);
+}
+
+.ic-kpi-card {
+	display: flex;
+	flex: 1 0 0;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 8px;
+	min-inline-size: 0;
+	block-size: 94px;
+	padding: 16px;
+	border: 1px solid var(--ic-line);
+	border-radius: 8px;
+	background: var(--ic-surface);
+	text-align: start;
+	overflow: clip;
+}
+
+.ic-kpi-card:hover {
+	border-color: var(--ic-line-head);
+}
+
+.ic-kpi-label {
+	max-inline-size: 100%;
+	font-size: 9px;
+	line-height: 11px;
+	color: var(--ic-text-faint);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ic-kpi-value {
+	font-size: 26px;
+	font-weight: 600;
+	line-height: 28px;
+	color: var(--ic-text-strong);
+	text-align: start;
+}
+
+/* The urgency signal the tile strip carried before. _paint_kpi only ever
+   emits ic-kpi-card--${tile.risk}, and "expired" is the sole risk key in
+   IC_TILES, so --critical and --soon below never matched a rendered tile;
+   the muted retrofit (:3252+) migrated every other consumer off --red-600
+   but missed this one, leaving it the one saturated colour on the page. */
+.ic-kpi-card--expired .ic-kpi-value {
+	color: var(--ic-critical);
+}
+
+/* --- band 2, the chart cards ------------------------------------------- */
+
+.ic-charts {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	min-block-size: 192px;
+	padding-block: 14px 6px;
+	padding-inline: var(--ic-pad-inline);
+}
+
+.ic-chart-card {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	min-block-size: 172px;
+	padding-block: 14px;
+	padding-inline: 16px;
+	border: 1px solid var(--ic-line);
+	border-radius: 8px;
+	background: var(--ic-surface);
+	overflow: clip;
+}
+
+.ic-chart-card--wide {
+	flex: 1 1 0;
+	min-inline-size: 0;
+}
+
+.ic-chart-card--share {
+	flex: 0 0 300px;
+	inline-size: 300px;
+}
+
+.ic-chart-title {
+	margin: 0;
+	font-size: 10px;
+	font-weight: 600;
+	line-height: 12px;
+	color: var(--ic-text-section);
+}
+
+/* The shared empty state is built for a full panel; these cards are 172. */
+.ic-chart-card .ic-empty {
+	padding-block: 24px;
+}
+
+/* --- the donut and its legend ------------------------------------------- */
+
+.ic-share-list {
+	display: flex;
+	flex: 1 1 0;
+	flex-direction: column;
+	gap: 8px;
+	min-inline-size: 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ic-share-row {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+}
+
+.ic-share-key {
+	flex: 0 0 9px;
+	inline-size: 9px;
+	block-size: 9px;
+	margin-block-start: 1px;
+	border-radius: 2px;
+}
+
+.ic-share-key--1 {
+	background: var(--ic-ramp-1);
+}
+
+.ic-share-key--2 {
+	background: var(--ic-ramp-2);
+}
+
+.ic-share-key--3 {
+	background: var(--ic-ramp-3);
+}
+
+.ic-share-key--4 {
+	background: var(--ic-ramp-4);
+}
+
+/* The 300 card leaves 134 for the legend, which one line cannot hold both
+   the status name and its count in. They stack instead. */
+.ic-share-text {
+	display: flex;
+	flex: 1 1 0;
+	flex-direction: column;
+	min-inline-size: 0;
+}
+
+.ic-share-name {
+	font-size: 9px;
+	line-height: 11px;
+	color: var(--ic-text-faint);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ic-share-count {
+	font-size: 9px;
+	line-height: 11px;
+	color: var(--ic-text-body);
+	text-align: start;
+}
+
+/* --- band 3, the table -------------------------------------------------- */
+
+.ic-today {
+	padding-block: 14px 20px;
+	padding-inline: var(--ic-pad-inline);
+}
+
+/* 37 header + 6 rows of 38 is the design's 265. The view keeps rendering up
+   to IC_TABLE_ROWS, so the card grows past it rather than hiding a row. */
+.ic-today-card {
+	display: flex;
+	flex-direction: column;
+	inline-size: 100%;
+	min-block-size: 265px;
+	border: 1px solid var(--ic-line);
+	border-radius: 8px;
+	background: var(--ic-surface);
+	overflow: clip;
+}
+
+.ic-today-head {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	block-size: 37px;
+	padding-block: 12px;
+	padding-inline: 16px;
+	background: var(--ic-surface-head);
+}
+
+.ic-today-title {
+	margin: 0;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 13px;
+	color: var(--ic-text-title);
+}
+
+.ic-today-gap {
+	flex: 1 0 0;
+	block-size: 1px;
+}
+
+.ic-today-all {
+	flex: 0 0 auto;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-family: var(--ic-font);
+	font-size: 9px;
+	line-height: 13px;
+	color: var(--ic-text-faint);
+	white-space: nowrap;
+}
+
+.ic-today-all:hover {
+	color: var(--ic-text-title);
+	text-decoration: underline;
+}
+
+.ic-today-rows {
+	display: flex;
+	flex-direction: column;
+}
+
+/* No zebra and no rule between rows: whitespace and the header do the
+   separating, which is what the design asks for. */
+.ic-today-row {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	block-size: 38px;
+	padding-block: 9px;
+	padding-inline: 16px;
+	background: var(--ic-surface);
+	cursor: pointer;
+}
+
+.ic-today-row:hover {
+	background: var(--ic-surface-head);
+}
+
+.ic-today-face {
+	display: flex;
+	flex: 0 0 20px;
+	align-items: center;
+	justify-content: center;
+	inline-size: 20px;
+	block-size: 20px;
+	border-radius: 10px;
+	background: var(--ic-fill-placeholder);
+	font-size: 8px;
+	font-weight: 600;
+	color: var(--ic-text-muted);
+}
+
+.ic-today-name {
+	flex: 0 0 150px;
+	inline-size: 150px;
+	font-size: 10px;
+	font-weight: 600;
+	line-height: 12px;
+	color: var(--ic-text-title);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ic-today-detail {
+	display: flex;
+	flex: 1 1 0;
+	align-items: center;
+	gap: 10px;
+	min-inline-size: 0;
+	font-size: 9px;
+	line-height: 11px;
+	color: var(--ic-text-faint);
+}
+
+.ic-today-days {
+	flex: 0 0 auto;
+	font-weight: 600;
+	text-align: start;
+}
+
+.ic-today-due {
+	flex: 0 1 auto;
+	text-align: start;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ic-today-status {
+	flex: 0 0 auto;
+	display: block;
+	min-inline-size: 80px;
+	block-size: 14px;
+	padding-block: 1px;
+	padding-inline: 6px;
+	border-radius: 7px;
+	font-size: 9px;
+	line-height: 12px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ic-today-open {
+	flex: 0 0 64px;
+	inline-size: 64px;
+	block-size: 18px;
+	padding: 0;
+	border: 0;
+	border-radius: 4px;
+	background: var(--ic-fill-track);
+	font-family: var(--ic-font);
+	font-size: 9px;
+	line-height: 18px;
+	color: var(--ic-text-title);
+}
+
+.ic-today-open:hover {
+	background: var(--ic-accent);
+	color: var(--ic-text-on-dark);
+}
+
+/* The design is one 1280 artboard with no narrow variant. Below the width its
+   five KPI cards and two chart cards were measured at, they wrap rather than
+   crush. Reads the board's own inline size (container-type on .ic-board,
+   css:1383) so it agrees with the element-width signal the rest of the page
+   uses instead of the viewport. */
+@container (max-width: 1100px) {
+	.ic-kpi,
+	.ic-charts {
+		flex-wrap: wrap;
+		block-size: auto;
+	}
+
+	.ic-kpi-card {
+		flex: 1 1 180px;
+	}
+
+	.ic-chart-card--share {
+		flex: 1 1 300px;
+		inline-size: auto;
+	}
+}
+
+/* ===== view: batch (from tools/design/css/batch.css) ===== */
+
+/* ==========================================================================
+   VIEW 3 — Batch. Figma node 9:309.
+   Three bands: a 56px stepper, then a 699 body that sinks behind one card and
+   a 300 rail. This file is concatenated after iqama_control.css, so it reuses
+   that file's token block and adds only the literals it does not already name.
+   ========================================================================== */
+
+.ic-page {
+	/* Zebra tint on the first of every pair of batch rows. */
+	--ic-surface-row-alt: #fcfcfc;
+	/* The view-3 action bar sits a shade under the card white. */
+	--ic-surface-bar: #fbfbfb;
+	/* The darker chip the design puts on an unchecked row. */
+	--ic-fill-strong: #d6d6d6;
+	/* The view-3 primary is one step darker than the view-1 primary. */
+	--ic-accent-strong: #383838;
+	/* The current stepper label. */
+	--ic-text-current: #333333;
+	--ic-radius-sub: 6px;
+}
+
+/* The design stacks its bands edge to edge. */
+.ic-batch {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	font-family: var(--ic-font);
+	/* R21-A: query container for the body/rail wrap tier below (@container,
+	   css:~2189) — a block element already filling .ic-view's own width, so
+	   this changes no size of the batch column itself. */
+	container-type: inline-size;
+}
+
+
+
+/* Five of these between the six steps; they carry all the spacing. */
+/* --- band 2: body ------------------------------------------------------- */
+
+.ic-b-body {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--ic-gap);
+	padding-block: 20px;
+	padding-inline: var(--ic-pad-inline);
+	background: var(--ic-surface-sunk);
+}
+
+/* At the design's 1280 this resolves to its 916: 1280 − 48 padding − 16 gap
+   − 300 rail. Grown rather than pinned, so a wider desk page does not leave a
+   dead strip beside the rail. */
+.ic-b-card {
+	display: flex;
+	flex: 1 1 0;
+	flex-direction: column;
+	min-inline-size: 0;
+	border: 1px solid var(--ic-line);
+	border-radius: var(--ic-radius-card);
+	background: var(--ic-surface);
+	overflow: clip;
+}
+
+/* --- card 1: the question, 87px ---------------------------------------- */
+
+.ic-b-ask {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	min-block-size: 87px;
+	padding-block: 22px 18px;
+	padding-inline: var(--ic-pad-inline);
+}
+
+.ic-b-ask-title {
+	margin: 0;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: normal;
+	color: var(--ic-text-strong);
+}
+
+.ic-b-ask-sub {
+	margin: 0;
+	font-size: 12px;
+	font-weight: 400;
+	color: var(--ic-text-muted);
+}
+
+/* --- card 2: the filter strip, 38px ------------------------------------ */
+
+/* This view's [data-ic-filters] host. Every view declares its own — the rail in
+   triage, the strip here, the board filter bar in the dashboard — because the
+   header is no longer a fallback. _place_filters() appends the relocated
+   framework form last, so order puts the risk chips first, the real controls
+   next and the count hard right whatever the DOM order is. */
+.ic-b-strip {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	min-block-size: 38px;
+	padding-block: 0 12px;
+	padding-inline: var(--ic-pad-inline);
+}
+
+.ic-b-strip .ic-filters {
+	order: 2;
+	flex: 0 1 auto;
+	padding: 0;
+}
+
+.ic-b-checked {
+	order: 3;
+	margin-inline-start: auto;
+	font-size: 10px;
+	color: var(--ic-text-muted);
+}
+
+/* R9-E cleanup (PHASE-R9-D-RESULT.md DROPPED): ic_batch.js no longer calls
+   _render_bands($strip) — edit:1 of round 9D cut that layer entirely (H-12)
+   — so .ic-bands/.ic-chip never render inside .ic-b-strip any more. The base
+   .ic-bands/.ic-chip rules (:440, and this file's earlier un-scoped block)
+   stay untouched: .ic-bands still renders on the triage screen through its
+   own _render_bands call. Only the .ic-b-strip-scoped copies were dead; they
+   are removed here, not the shared rule. */
+
+/* --- card 3: the rows, 44px each --------------------------------------- */
+
+.ic-b-rows {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	min-block-size: 0;
+	max-block-size: 56vh;
+	overflow-y: auto;
+}
+
+.ic-b-all {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 14px;
+	block-size: 32px;
+	margin: 0;
+	padding-inline: var(--ic-pad-inline);
+	border-block-end: 1px solid var(--ic-line);
+	font-size: 10px;
+	font-weight: 400;
+	color: var(--ic-text-muted);
+	cursor: pointer;
+}
+
+.ic-b-list {
+	display: flex;
+	flex-direction: column;
+}
+
+.ic-b-row {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	block-size: 44px;
+	margin: 0;
+	padding-block: 10px;
+	padding-inline: var(--ic-pad-inline);
+	background: var(--ic-surface);
+	font-weight: 400;
+	color: var(--ic-text-body);
+	cursor: pointer;
+}
+
+/* Alternating, first row tinted. */
+.ic-b-row:nth-child(odd) {
+	background: var(--ic-surface-row-alt);
+}
+
+.ic-b-check {
+	flex: 0 0 auto;
+	inline-size: 16px;
+	block-size: 16px;
+	margin: 0;
+	border-radius: var(--ic-radius-chip);
+	accent-color: var(--ic-text-faint);
+}
+
+.ic-b-avatar {
+	display: inline-grid;
+	flex: 0 0 auto;
+	place-items: center;
+	inline-size: 24px;
+	block-size: 24px;
+	border-radius: 50%;
+	background: var(--ic-fill-placeholder);
+	font-size: 9px;
+	color: var(--ic-text-body);
+	overflow: hidden;
+}
+
+/* The design's 9px bar is the primary line of the row. */
+.ic-b-name {
+	flex: 0 0 160px;
+	inline-size: 160px;
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--ic-text-title);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* And its 7px bar is the secondary one. */
+.ic-b-detail {
+	display: flex;
+	flex: 1 1 0;
+	align-items: center;
+	gap: 8px;
+	min-inline-size: 0;
+}
+
+.ic-b-org {
+	font-size: 10px;
+	color: var(--ic-text-muted);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ic-b-flag {
+	flex: 0 0 auto;
+	padding-block: 1px;
+	padding-inline: 6px;
+	border-radius: var(--ic-radius-field);
+	background: var(--ic-fill-strong);
+	font-size: 9px;
+	color: var(--ic-text-body);
+	white-space: nowrap;
+}
+
+.ic-b-status {
+	flex: 0 0 auto;
+	min-inline-size: 90px;
+	block-size: 14px;
+	border-radius: var(--ic-radius-field);
+	background: var(--ic-surface-button);
+	font-size: 9px;
+	line-height: 14px;
+	color: var(--ic-text-body);
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ic-b-out {
+	flex: 0 0 70px;
+	inline-size: 70px;
+	block-size: 16px;
+	border-radius: var(--ic-radius-chip);
+	background: var(--ic-surface-sunk);
+	font-size: 9px;
+	line-height: 16px;
+	text-align: center;
+}
+
+/* The page css colours every urgency but "clear"; its neutral is scoped here so
+   the other four keep the colours view 1 gives them. */
+.ic-batch .ic-b-out.ic-days--clear {
+	color: var(--ic-text-body);
+}
+
+/* The design darkens the outcome chip on the one unchecked row. */
+.ic-b-row:not(.is-checked) .ic-b-out {
+	background: var(--ic-fill-strong);
+}
+
+/* --- card 4: the action bar, 67px -------------------------------------- */
+
+/* Split: Back hard left, the spacer, then the destructive transitions with the
+   primary last. Bounded to the card, never the page, never the viewport. */
+.ic-b-bar {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 12px;
+	block-size: 67px;
+	padding-block: 16px;
+	padding-inline: var(--ic-pad-inline);
+	border-block-start: 1px solid var(--ic-line);
+	background: var(--ic-surface-bar);
+}
+
+.ic-b-bar-gap {
+	flex: 1 0 0;
+	block-size: 1px;
+}
+
+.ic-b-bar .ic-btn {
+	block-size: 35px;
+	padding-block: 11px;
+	padding-inline: 16px;
+	border-radius: var(--ic-radius-field);
+	cursor: pointer;
+}
+
+.ic-b-bar .ic-btn--primary {
+	padding-inline: 26px;
+	background: var(--ic-accent-strong);
+}
+
+/* --- the right rail, 300 fixed ----------------------------------------- */
+
+.ic-b-rail {
+	display: flex;
+	flex: 0 0 300px;
+	flex-direction: column;
+	gap: 14px;
+	inline-size: 300px;
+}
+
+.ic-b-rail-card {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 16px;
+	border: 1px solid var(--ic-line);
+	border-radius: var(--ic-radius-card);
+	background: var(--ic-surface);
+	overflow: clip;
+}
+
+.ic-b-rail-title {
+	margin: 0;
+	font-size: 10px;
+	font-weight: 600;
+	color: var(--ic-text-body);
+}
+
+/* The shared empty state is sized for a full column; inside a rail card it is
+   one quiet line. */
+.ic-b-rail-card .ic-empty {
+	padding: 0;
+	font-size: 10px;
+	text-align: start;
+}
+
+.ic-b-next {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ic-b-next-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.ic-b-dotmark {
+	flex: 0 0 auto;
+	inline-size: 8px;
+	block-size: 8px;
+	border-radius: 50%;
+	background: var(--ic-fill-placeholder);
+}
+
+.ic-b-next-text {
+	font-size: 10px;
+	color: var(--ic-text-muted);
+}
+
+.ic-b-flagged {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	inline-size: 100%;
+	padding-block: 10px;
+	padding-inline: 12px;
+	border: 0;
+	border-radius: var(--ic-radius-sub);
+	background: var(--ic-surface-sunk);
+	font-family: inherit;
+	text-align: start;
+	cursor: pointer;
+}
+
+.ic-b-flagged-name {
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--ic-text-title);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ic-b-flagged-why {
+	font-size: 9px;
+	color: var(--ic-text-muted);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ic-b-more {
+	font-size: 9px;
+	color: var(--ic-text-faint);
+}
+
+/* --- states the design does not draw ------------------------------------ */
+
+.ic-b-flagged:focus-visible,
+.ic-b-bar .ic-btn:focus-visible {
+	outline: 2px solid var(--ic-accent);
+	outline-offset: 2px;
+}
+
+.ic-b-row:hover {
+	background: var(--ic-surface-field);
+}
+
+/* The file carries no narrow artboard; below the 1280 it was drawn at, the rail
+   drops under the card rather than crushing it. Reads .ic-batch's own inline
+   size (container-type on .ic-batch, css:1782) instead of the viewport, so
+   it agrees with the page's other element-width tiers. */
+@container (max-width: 1100px) {
+	.ic-b-body {
+		flex-wrap: wrap;
+	}
+
+	.ic-b-rail {
+		flex: 1 1 100%;
+		inline-size: auto;
+	}
+}
+
+/* --- header menu, the home of the actions the hidden page head used to carry - */
+
+.ic-head-menu {
+	position: relative;
+	flex: 0 0 auto;
+}
+
+.ic-head-menu-list {
+	position: absolute;
+	inset-block-start: calc(100% + 8px);
+	inset-inline-end: 0;
+	z-index: 10;
+	min-inline-size: 190px;
+	margin: 0;
+	padding: 6px;
+	list-style: none;
+	border: 1px solid var(--ic-line);
+	border-radius: var(--ic-radius-card);
+	background: var(--ic-surface);
+	box-shadow: var(--ic-shadow-raised);
+}
+
+.ic-head-menu-item {
+	inline-size: 100%;
+	padding-block: 7px;
+	padding-inline: 10px;
+	border: 0;
+	border-radius: var(--ic-radius-chip);
+	background: transparent;
+	font-family: var(--ic-font);
+	font-size: var(--ic-label, 11px);
+	color: var(--ic-text-body);
+	text-align: start;
+	white-space: nowrap;
+}
+
+.ic-head-menu-item:hover {
+	background: var(--ic-surface-button);
+}
+
+/* The page body is the only scroller; the header band stays put. */
+.ic-view {
+	display: block;
+	overflow: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Live-page corrections. Three faults seen on the real desk that the design
+   file cannot show: the desk container caps the page width, the framework's
+   filter form arrives wearing bootstrap grid classes, and real history text
+   is far longer than the design's placeholder bars.
+   -------------------------------------------------------------------------- */
+
+/* 1. The design is a full-bleed page. The desk wraps a page in a centred,
+   width-capped container, which is what makes this one look small. */
+.ic-page .page-body,
+.ic-page .page-body > .container,
+.ic-page .layout-main,
+.ic-page .layout-main-section-wrapper,
+.ic-page .layout-main-section {
+	max-inline-size: none;
+	inline-size: 100%;
+	margin-inline: 0;
+	padding-inline: 0;
+}
+
+.ic-page .layout-main-section {
+	display: flex;
+	flex-direction: column;
+	min-block-size: calc(100vh - 60px);
+}
+
+.ic-page .ic-view {
+	flex: 1 1 auto;
+	min-block-size: 0;
+}
+
+/* 2. The filter form is `page-form row` and each control is `col-md-2`, so
+   bootstrap gives it negative row margins and locks every field to one sixth
+   of the width. Both have to be undone before the pill styling can land. */
+.ic-filters.row {
+	margin-inline: 0;
+}
+
+.ic-filters > .form-group[class*="col-"] {
+	inline-size: auto;
+	max-inline-size: none;
+	flex: 0 0 auto;
+	margin-block-end: 0;
+	padding-inline: 0;
+}
+
+.ic-filters .frappe-control.input-max-width {
+	max-inline-size: none;
+}
+
+.ic-filters .form-control,
+.ic-filters .form-control.input-xs {
+	block-size: 26px;
+	min-block-size: 26px;
+	inline-size: auto;
+	min-inline-size: 110px;
+	padding-block: 0;
+	padding-inline: 12px;
+	border: 0;
+	border-radius: var(--ic-radius-pill);
+	background: var(--ic-surface-field);
+	font-size: 11px;
+	color: var(--ic-text-body);
+	box-shadow: none;
+}
+
+.ic-filters .checkbox {
+	margin-block: 0;
+	padding-block: 5px;
+	padding-inline: 12px;
+	border-radius: var(--ic-radius-field);
+	background: var(--ic-surface-field);
+}
+
+.ic-filters .checkbox label {
+	margin-block-end: 0;
+	font-size: 11px;
+	color: var(--ic-text-body);
+	white-space: nowrap;
+}
+
+/* The framework leaves these behind on every control; the design has no room
+   for them and one of them renders the literal word "undefined". */
+.ic-filters .tooltip-content,
+.ic-filters .help-box,
+.ic-filters .placeholder {
+	display: none !important;
+}
+
+.ic-filters .select-icon.xs {
+	inset-inline-end: 6px;
+}
+
+/* 3. Real history text runs to a full sentence in two languages, where the
+   design drew a 7px bar. Give the row a grid so the long middle column can
+   wrap and break instead of pushing the timestamp and the author out. */
+.ic-history-item {
+	display: grid;
+	grid-template-columns: max-content minmax(0, 1fr) max-content;
+	align-items: start;
+	gap: 10px;
+	padding-block: 6px;
+}
+
+.ic-history-when {
+	font-size: 9px;
+	color: var(--ic-text-faint);
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+
+.ic-history-what {
+	min-inline-size: 0;
+	font-size: 11px;
+	color: var(--ic-text-body);
+	overflow-wrap: anywhere;
+	line-height: 1.5;
+}
+
+.ic-history-who {
+	font-size: 9px;
+	color: var(--ic-text-faint);
+	overflow-wrap: anywhere;
+	max-inline-size: 160px;
+	text-align: end;
+}
+
+/* Nothing on this page may push the body sideways. */
+.ic-page .ic-view,
+.ic-page .ic-view * {
+	max-inline-size: 100%;
+}
+
+/* The artboard is 820 tall, so the triage body was pinned to the 755 left
+   under the header. A real page fills the viewport instead. */
+.ic-page .ic-triage {
+	block-size: auto;
+	min-block-size: calc(100vh - 125px);
+}
+
+/* The artboard drew the desk navbar's own search and avatar inside the page
+   header. The real navbar already carries both, so the page header keeps only
+   the brand, the switcher, the tally and the menu, and never wraps. */
+.ic-head {
+	flex-wrap: nowrap;
+}
+
+.ic-head-count {
+	flex: 0 1 auto;
+	order: 0;
+	min-inline-size: 0;
+	font-size: 10px;
+	color: var(--ic-text-faint);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ic-head-more {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 28px;
+	block-size: 28px;
+	padding: 0;
+	border: 0;
+	border-radius: var(--ic-radius-field);
+	background: var(--ic-surface-field);
+	font-size: 15px;
+	line-height: 1;
+	color: var(--ic-text-body);
+}
+
+.ic-head-more:hover {
+	background: var(--ic-surface-button);
+}
+
+/* --------------------------------------------------------------------------
+   Filters as buttons. A dropdown hides its options and costs a click to read
+   them; a row of buttons shows the whole choice and its current answer at a
+   glance, which is what this queue needs.
+   -------------------------------------------------------------------------- */
+
+.ic-filterbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	padding-block: 10px;
+	padding-inline: var(--ic-pad-inline);
+}
+
+.ic-choice {
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+	padding: 3px;
+	border-radius: var(--ic-radius-track);
+	background: var(--ic-surface-track);
+}
+
+.ic-choice--wrap {
+	flex-wrap: wrap;
+	max-inline-size: 100%;
+}
+
+.ic-choice-btn {
+	block-size: 26px;
+	padding-block: 0;
+	padding-inline: 12px;
+	border: 0;
+	border-radius: var(--ic-radius-field);
+	background: transparent;
+	font-family: var(--ic-font);
+	font-size: var(--ic-label, 11px);
+	color: var(--ic-text-muted);
+	white-space: nowrap;
+}
+
+.ic-choice-btn:hover {
+	color: var(--ic-text-strong);
+}
+
+.ic-choice-btn.is-on {
+	background: var(--ic-surface);
+	box-shadow: var(--ic-shadow-raised);
+	font-weight: 600;
+	color: var(--ic-text-strong);
+}
+
+.ic-more {
+	background: var(--ic-surface-field);
+}
+
+.ic-more.is-on {
+	background: var(--ic-accent);
+	color: var(--ic-text-on-dark);
+	box-shadow: none;
+}
+
+/* The project filter: one pill (.ic-choice-btn + this trigger class) that
+   opens a floating panel below it. Panel geometry copies .ic-head-menu-list;
+   the value list copies .ic-head-menu-item. Fully logical properties, so the
+   RTL page needs no [dir="rtl"] override here (unlike .ic-drawer's translateX
+   above, this panel never flips axis). */
+.ic-project-cascade {
+	position: relative;
+}
+
+.ic-project-cascade-trigger {
+	max-inline-size: 220px;
+	overflow: hidden;
+	border: 1px solid transparent;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ic-project-cascade-trigger.is-on {
+	border-color: var(--ic-accent);
+}
+
+.ic-project-cascade-panel {
+	position: absolute;
+	inset-block-start: calc(100% + 8px);
+	inset-inline-start: 0;
+	z-index: 10;
+	min-inline-size: 260px;
+	padding: 8px;
+	border: 1px solid var(--ic-line);
+	border-radius: var(--ic-radius-card);
+	background: var(--ic-surface);
+	box-shadow: var(--ic-shadow-raised);
+}
+
+.ic-project-cascade-modes {
+	display: flex;
+	gap: 6px;
+	margin-block-end: 8px;
+}
+
+.ic-project-cascade-crumbs {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-block-end: 8px;
+}
+
+/* K-04: wears the same pill treatment .ic-choice-btn gives every other
+   filter control, instead of a bare text link, so it reads as one of the
+   page's own controls rather than a browser default button. */
+.ic-project-cascade-back {
+	block-size: 26px;
+	padding-block: 0;
+	padding-inline: 10px;
+	border: 0;
+	border-radius: var(--ic-radius-field);
+	background: transparent;
+	font-family: var(--ic-font);
+	font-size: var(--ic-label, 11px);
+	color: var(--ic-text-muted);
+	cursor: pointer;
+}
+.ic-project-cascade-back:hover {
+	background: var(--ic-surface-button);
+	color: var(--ic-text-strong);
+}
+
+.ic-project-cascade-path {
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--ic-text-strong);
+}
+
+.ic-project-cascade-values {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	max-block-size: 240px;
+	overflow-y: auto;
+}
+
+.ic-project-cascade-value {
+	inline-size: 100%;
+	padding-block: 7px;
+	padding-inline: 10px;
+	border: 0;
+	border-radius: var(--ic-radius-chip);
+	background: transparent;
+	font-family: var(--ic-font);
+	font-size: 11px;
+	color: var(--ic-text-body);
+	text-align: start;
+	white-space: nowrap;
+}
+
+.ic-project-cascade-value:hover {
+	background: var(--ic-surface-button);
+}
+
+.ic-project-cascade-value.is-on {
+	background: var(--ic-accent);
+	font-weight: 600;
+	color: var(--ic-text-on-dark);
+}
+
+.ic-project-cascade-clear {
+	margin-block-start: 8px;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-family: var(--ic-font);
+	font-size: 11px;
+	color: var(--ic-critical);
+	cursor: pointer;
+}
+
+.ic-project-cascade-clear:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
+/* Folded by default, and never a nine-control wall when opened. */
+.ic-filters[hidden] {
+	display: none !important;
+}
+
+.ic-filters {
+	padding-block-start: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Dashboard corrections. The artboard drew every chart as a grey wireframe
+   and pinned every band to an exact pixel height. Both were built literally:
+   the result reads as one grey block, and real labels and six-figure counts
+   overflow the fixed heights and are clipped out of sight.
+   -------------------------------------------------------------------------- */
+
+.ic-page {
+	/* A chart is read by its colours. The grey ramp was placeholder art. */
+	--ic-ramp-1: #2f5fd0;
+	--ic-ramp-2: #e0912f;
+	--ic-ramp-3: #2f9e63;
+	--ic-ramp-4: #cf4b4b;
+	--ic-fill-bar: #5b83d6;
+}
+
+/* Nothing on this page is allowed to hide content behind a fixed height.
+   The class names here are the ones the dashboard module actually emits. */
+.ic-page .ic-kpi,
+.ic-page .ic-kpi-card,
+.ic-page .ic-charts,
+.ic-page .ic-chart-card,
+.ic-page .ic-today,
+.ic-page .ic-today-card,
+.ic-page .ic-today-rows {
+	block-size: auto;
+	overflow: visible;
+}
+
+.ic-page .ic-kpi {
+	min-block-size: 120px;
+	flex-wrap: wrap;
+}
+
+.ic-page .ic-kpi-card {
+	min-block-size: 94px;
+	min-inline-size: 180px;
+}
+
+.ic-page .ic-charts {
+	min-block-size: 192px;
+	flex-wrap: wrap;
+}
+
+.ic-page .ic-chart-card {
+	min-block-size: 172px;
+}
+
+.ic-page .ic-chart-card--wide {
+	flex: 1 1 420px;
+}
+
+.ic-page .ic-chart-card--share {
+	flex: 0 1 300px;
+}
+
+/* A six-figure count must never be trimmed to fit the artboard's box. */
+.ic-page .ic-kpi-value,
+.ic-page .ic-kpi-label,
+.ic-page .ic-share-name,
+.ic-page .ic-share-text,
+.ic-page .ic-today-name,
+.ic-page .ic-today-detail {
+	min-inline-size: 0;
+	overflow: visible;
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+
+.ic-page .ic-share-row {
+	align-items: center;
+	min-inline-size: 0;
+}
+
+/* Numbers and Latin identifiers inside Arabic flow. A SADAD number must read
+   left to right inside an RTL row, and stacked amounts must align on the digit
+   rather than on the glyph. */
+.ic-num,
+.ic-latn {
+	direction: ltr;
+	unicode-bidi: isolate;
+	font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   PHASE 1 AND 2 CORRECTIONS
+   Appended at the tail on purpose: this sheet is a merge of four files and the
+   rules above were written against the artboard. At equal specificity the last
+   rule wins, so every correction below beats the artboard rule it names
+   without that rule having to be edited out of the file it came from.
+   ========================================================================== */
+
+/* --- D-01 the header tally is never trimmed ------------------------------- */
+
+/* "7129 open" was shrinking to "7…" because the tally was allowed to give up
+   its width to the switcher beside it. It is the one number the page always
+   shows, so it gives up nothing; the two flex spacers either side of the
+   switcher are what absorb a narrow viewport. */
+.ic-head-count {
+	flex: 0 0 auto;
+	overflow: visible;
+	text-overflow: clip;
+}
+
+.ic-head-brand {
+	min-inline-size: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ic-head-gap {
+	min-inline-size: 0;
+}
+
+/* No filter surface may be pulled above the top of the view it belongs to.
+   The bar that overlapped the sticky header did it with a negative offset. */
+.ic-view .ic-filterbar,
+.ic-view .ic-filters,
+.ic-view [data-ic-filters] {
+	position: static;
+	margin-block-start: 0;
+	inset-block-start: auto;
+}
+
+/* --- D-03 the rail fits its longest status ------------------------------- */
+
+/* The artboard measured the rail at 210 against placeholder bars. "Awaiting
+   Operations Approval" is 300 wide on one line, so the rail was hiding 90px of
+   every long status name. The row becomes a grid so the label may take two
+   lines while the dot and the count keep their own tracks. */
+.ic-page .ic-triage {
+	/* The three columns each clip or scroll themselves, so the row does not
+	   need to clip on their behalf — and while it did, it clipped the rail. */
+	overflow: visible;
+}
+
+.ic-triage .ic-rail {
+	flex: 0 0 clamp(232px, 18vw, 280px);
+	inline-size: clamp(232px, 18vw, 280px);
+	/* Paired with overflow-y: auto this computes to auto rather than visible,
+	   which is the intent: never hidden. */
+	overflow-x: visible;
+}
+
+.ic-triage .ic-rail-row {
+	display: grid;
+	grid-template-columns: 8px 1fr auto;
+	gap: 8px;
+	align-items: start;
+	inline-size: auto;
+	block-size: auto;
+	min-block-size: 26px;
+	line-height: 1.35;
+}
+
+.ic-triage .ic-rail-dot {
+	margin-block-start: 3px;
+}
+
+.ic-triage .ic-rail-label {
+	overflow: visible;
+	white-space: normal;
+	overflow-wrap: anywhere;
+	text-overflow: clip;
+	line-height: 1.35;
+}
+
+.ic-triage .ic-rail-count {
+	font-variant-numeric: tabular-nums;
+}
+
+/* --- D-02 every action on the detail bar is reachable --------------------- */
+
+/* The column clipped instead of scrolling, so 301px of the action bar sat
+   outside it with no way to reach it. */
+.ic-triage .ic-detail {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+/* Its own stacking context, and below the header's z-index 4. */
+.ic-triage .ic-actionbar {
+	position: sticky;
+	inset-block-end: 0;
+	z-index: 2;
+	isolation: isolate;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	min-inline-size: 0;
+	padding-block: 12px;
+	padding-inline: var(--ic-pad-detail);
+	border-block-start: 1px solid var(--ic-line);
+	background: var(--ic-surface-detail);
+}
+
+.ic-triage .ic-actionbar-row {
+	flex-wrap: wrap;
+	min-inline-size: 0;
+	gap: 8px;
+}
+
+.ic-triage .ic-actionbar .ic-btn {
+	max-inline-size: 100%;
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+
+.ic-triage .ic-actionbar-gap {
+	min-inline-size: 0;
+}
+
+/* --- one dropdown mechanism, two homes ------------------------------------ */
+
+.ic-actionbar-menu,
+.ic-bulk-menu {
+	position: relative;
+	display: inline-flex;
+	flex: 0 0 auto;
+}
+
+/* A bar sits at the foot of its column, so its menu opens upward. */
+.ic-drop-list {
+	inset-block-start: auto;
+	inset-block-end: calc(100% + 6px);
+	max-block-size: 40vh;
+	overflow-y: auto;
+}
+
+.ic-drop-list .ic-head-menu-item {
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+
+.ic-head-menu-item:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
+/* --- D-06 selection in triage --------------------------------------------- */
+
+.ic-triage .ic-list-all {
+	flex: 0 0 auto;
+	inline-size: 13px;
+	block-size: 13px;
+	margin: 0;
+	cursor: pointer;
+}
+
+/* Appears on the first selection and stays at the foot of the record column. */
+.ic-triage .ic-bulk {
+	position: sticky;
+	inset-block-end: 0;
+	z-index: 2;
+	display: flex;
+	flex: 0 0 auto;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	padding-block: 10px;
+	padding-inline: 12px;
+	border-block-start: 1px solid var(--ic-line);
+	background: var(--ic-surface);
+}
+
+.ic-triage .ic-bulk-count {
+	font-size: 10px;
+	font-weight: 600;
+	color: var(--ic-text-title);
+}
+
+.ic-triage .ic-bulk-clear {
+	margin-inline-start: auto;
+}
+
+/* --- D-08 one status filter at every width -------------------------------- */
+
+.ic-status-select {
+	inline-size: 100%;
+	max-inline-size: 260px;
+	block-size: 28px;
+	padding-block: 0;
+	padding-inline: 8px;
+	border: 1px solid var(--ic-line);
+	border-radius: var(--ic-radius-field);
+	background: var(--ic-surface);
+	font-family: var(--ic-font);
+	font-size: 11px;
+	color: var(--ic-text-body);
+}
+
+/* Above the breakpoint the rail rows are the status filter, so the rail's copy
+   of the select is not rendered. The dashboard's copy has no rail to defer to
+   and stays visible at every width. */
+.ic-rail-select {
+	display: none;
+}
+
+/* R9-C H-09/H-10: the dashboard's filter band is dead. ic_dashboard.js
+   declares no [data-ic-filters] host any more — the sketch (9:203) draws no
+   filter control on this view, and the shell's own documented behaviour for
+   a host-less view is to carry no filter surface (iqama_control.js:361). */
+
+@media (max-width: 1023px) {
+	/* The rail has no room to stand beside two columns, so it takes the row
+	   above them and shows one select in place of ten rows. The
+	   [data-ic-filters] host stays in the DOM at every width. */
+	.ic-page .ic-triage {
+		flex-wrap: wrap;
+	}
+
+	.ic-triage .ic-rail {
+		flex: 1 1 100%;
+		inline-size: auto;
+		overflow-y: visible;
+	}
+
+	.ic-triage .ic-rail-list {
+		display: none;
+	}
+
+	.ic-triage .ic-rail-select {
+		display: block;
+	}
+
+	.ic-triage .ic-list {
+		flex: 1 1 300px;
+		inline-size: auto;
+	}
+
+	.ic-triage .ic-detail {
+		flex: 1 1 380px;
+	}
+
+	}
+
+/* ==========================================================================
+   PHASE 4, 5 AND 6 CORRECTIONS
+   Appended at the tail for the same reason PHASE 1 and 2 were: this sheet is a
+   merge of four files, the rules above it were written against a 1280 artboard,
+   and at equal specificity the last rule wins. Every rule below therefore
+   carries the .ic-page prefix so it outranks the artboard rule it replaces
+   without that rule having to be cut out of the file it came from.
+
+   Placeholder art is not spec: every fixed block-size the artboard drew is
+   answered here with min-block-size, so real Arabic labels and six-figure
+   counts grow the box instead of being clipped by it.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   A11Y-01  TYPE RAMP AND GREY RAMP
+   Sixteen text elements sat under 4.5:1 and twelve under 12px, some at 8px.
+   Three type steps and three greys replace every ad-hoc value.
+   -------------------------------------------------------------------------- */
+
+.ic-page {
+	/* Three steps. Nothing on this page is smaller than --ic-label. */
+	--ic-text: 15px; /* primary content */
+	--ic-text-2: 13px; /* secondary data */
+	--ic-label: 11px; /* uppercase labels and meta */
+	--ic-title: 20px; /* the one thing per surface that is the subject */
+
+	/* Three greys. --ic-fg-3 is decoration only and never carries text. */
+	--ic-fg: #1f1f1f; /* >= 7:1 on every surface this page paints */
+	--ic-fg-2: #4a4a4a; /* >= 4.5:1 on every surface this page paints */
+	--ic-fg-3: #8a8a8a; /* >= 3:1, rules and dividers only */
+
+	/* Every older token now resolves to one of the three, so a rule written
+	   against --ic-text-faint at 2.69:1 lands on a compliant colour without
+	   that rule having to be found and edited. */
+	--ic-text-brand: var(--ic-fg);
+	--ic-text-strong: var(--ic-fg);
+	--ic-text-title: var(--ic-fg);
+	--ic-text-current: var(--ic-fg);
+	--ic-text-body: var(--ic-fg-2);
+	--ic-text-muted: var(--ic-fg-2);
+	--ic-text-faint: var(--ic-fg-2);
+	--ic-text-rail: var(--ic-fg-2);
+	--ic-text-section: var(--ic-fg-2);
+}
+
+/* Arabic takes one step larger than its Latin sibling at every step: the dots
+   under ب ت ث and the diacritics above them are the whole letter, and they are
+   gone by 11px. */
+.ic-rtl .ic-page {
+	--ic-text: 16px;
+	--ic-text-2: 14px;
+	--ic-label: 12px;
+	--ic-title: 21px;
+}
+
+/* --- the twelve elements that were below 12px, and every 9px sibling ------- */
+
+.ic-page .ic-head-count,
+.ic-page .ic-triage .ic-rail-count,
+.ic-page .ic-triage .ic-filters .control-label,
+.ic-page .ic-triage .ic-list-count,
+.ic-page .ic-triage .ic-list-days,
+.ic-page .ic-triage .ic-bands .ic-chip,
+.ic-page .ic-triage .ic-row-org,
+.ic-page .ic-triage .ic-truncated,
+.ic-page .ic-triage .ic-detail-sub,
+.ic-page .ic-triage .ic-detail-chips .indicator-pill,
+.ic-page .ic-triage .ic-detail-chips .ic-chip,
+.ic-page .ic-triage .ic-field-label,
+.ic-page .ic-triage .ic-field-hijri,
+.ic-page .ic-triage .ic-flag,
+.ic-page .ic-triage .ic-history-when,
+.ic-page .ic-triage .ic-bulk-count,
+.ic-page .ic-kpi-label,
+.ic-page .ic-share-count,
+.ic-page .ic-today-all,
+.ic-page .ic-today-detail,
+.ic-page .ic-today-status,
+.ic-page .ic-today-open,
+.ic-page .ic-b-checked,
+.ic-page .ic-b-strip .ic-chip,
+.ic-page .ic-b-all,
+.ic-page .ic-b-org,
+.ic-page .ic-b-flag,
+.ic-page .ic-b-status,
+.ic-page .ic-b-out,
+.ic-page .ic-b-rail-title,
+.ic-page .ic-b-rail-card .ic-empty,
+.ic-page .ic-b-flagged-why,
+.ic-page .ic-b-more,
+.ic-page .ic-history-when,
+.ic-page .ic-history-who {
+	font-size: var(--ic-label);
+	color: var(--ic-fg-2);
+}
+
+.ic-page .ic-triage .ic-rail-row,
+.ic-page .ic-triage .ic-list-title,
+.ic-page .ic-triage .ic-list .ic-empty,
+.ic-page .ic-triage .ic-detail > .ic-empty,
+.ic-page .ic-triage .ic-row-name,
+.ic-page .ic-triage .ic-row-days,
+.ic-page .ic-triage .ic-field-value,
+.ic-page .ic-triage .ic-history-title,
+.ic-page .ic-triage .ic-history-what,
+.ic-page .ic-triage .ic-history-empty,
+.ic-page .ic-chart-title,
+.ic-page .ic-share-name,
+.ic-page .ic-today-name,
+.ic-page .ic-b-name,
+.ic-page .ic-b-next-text,
+.ic-page .ic-b-flagged-name,
+.ic-page .ic-b-ask-sub,
+.ic-page .ic-history-what {
+	font-size: var(--ic-text-2);
+}
+
+.ic-page .ic-triage .ic-row-name,
+.ic-page .ic-triage .ic-field-value,
+.ic-page .ic-triage .ic-history-what,
+.ic-page .ic-b-name,
+.ic-page .ic-today-name,
+.ic-page .ic-share-name,
+.ic-page .ic-history-what {
+	color: var(--ic-fg);
+}
+
+/* The two avatars that rendered at 8px. D-19 also puts a whole Arabic word in
+   them, so they are sized by their content and not by the artboard's square. */
+.ic-page .ic-triage .ic-detail-head .avatar-frame,
+.ic-page .ic-today-face,
+.ic-page .ic-b-avatar {
+	font-size: var(--ic-label);
+	color: var(--ic-fg);
+}
+
+/* The framework leaves this control hint inside the relocated filter form and
+   it renders at 12px against 1.69:1. It is already display:none there; this is
+   the rule that keeps any other copy of it legible. */
+.ic-page .tooltip-content {
+	font-size: var(--ic-label);
+	color: var(--ic-fg);
+}
+
+/* --ic-fg-3 is a rule, never a word. */
+.ic-page .ic-detail-rule {
+	background: var(--ic-fg-3);
+}
+
+/* --------------------------------------------------------------------------
+   A11Y-02 AND OWNER NOTE.1  FOUR SEMANTIC TONES, LOW CHROMA
+   Ten decorative colours — two of them the same blue — carried the status and
+   nothing else did, so the rail was unreadable without colour discrimination
+   and the chart shouted over a page built out of greys.
+
+   Four tones replace them. Each is a muted, low-chroma neighbour of the
+   surface greys rather than a saturated hue, and each is paired with a second
+   channel: the rail dot changes SHAPE as well as fill, and every pill, chip and
+   flag carries its own text.
+   -------------------------------------------------------------------------- */
+
+.ic-page {
+	--ic-critical: #8c3a3a;
+	--ic-critical-bg: #f2e6e6;
+	--ic-critical-line: #d9bcbc;
+
+	/* K-23: expired and critical are different urgencies — one still has a
+	   week to act, the other has been overdue since anywhere up to 1420
+	   days — and the retrofit above merged both onto --ic-critical. This
+	   revives the red-600/red-400 split the artboard-era rule (css:214-218)
+	   drew before the merge, at the retrofit's own muted saturation. */
+	--ic-critical-strong: #6b2626;
+	--ic-critical-strong-bg: #ecd9d9;
+
+	--ic-attention: #7a5c26;
+	--ic-attention-bg: #f4efe4;
+	--ic-attention-line: #ddcdae;
+
+	--ic-done: #3f6b52;
+	--ic-done-bg: #e7efe9;
+	--ic-done-line: #b9d0c2;
+
+	--ic-neutral: #5a6472;
+	--ic-neutral-bg: #eceef1;
+	--ic-neutral-line: #c6ccd4;
+}
+
+.ic-page .ic-tone--critical {
+	color: var(--ic-critical);
+}
+.ic-page .ic-tone--attention {
+	color: var(--ic-attention);
+}
+.ic-page .ic-tone--done {
+	color: var(--ic-done);
+}
+.ic-page .ic-tone--neutral {
+	color: var(--ic-neutral);
+}
+
+/* --- the status pill ------------------------------------------------------ */
+
+.ic-page .indicator-pill[class*="ic-pill--"] {
+	border: 1px solid transparent;
+	font-weight: 600;
+}
+
+.ic-page .ic-pill--critical {
+	background: var(--ic-critical-bg);
+	border-color: var(--ic-critical-line);
+	color: var(--ic-critical);
+}
+.ic-page .ic-pill--attention {
+	background: var(--ic-attention-bg);
+	border-color: var(--ic-attention-line);
+	color: var(--ic-attention);
+}
+.ic-page .ic-pill--done {
+	background: var(--ic-done-bg);
+	border-color: var(--ic-done-line);
+	color: var(--ic-done);
+}
+.ic-page .ic-pill--neutral {
+	background: var(--ic-neutral-bg);
+	border-color: var(--ic-neutral-line);
+	color: var(--ic-neutral);
+}
+
+/* --- the rail dot: fill AND shape ----------------------------------------- */
+
+/* The dot's track widens to hold the rotated one without clipping it. */
+.ic-page .ic-triage .ic-rail-row {
+	grid-template-columns: 12px 1fr auto;
+}
+
+.ic-page .ic-rail-dot {
+	inline-size: 8px;
+	block-size: 8px;
+	justify-self: center;
+	border: 0;
+}
+
+/* critical — a square, the only right-angled mark on the rail */
+.ic-page .ic-dot--critical {
+	background: var(--ic-critical);
+	border-radius: 1px;
+}
+
+/* attention — the same square turned 45 degrees */
+.ic-page .ic-dot--attention {
+	background: var(--ic-attention);
+	border-radius: 1px;
+	inline-size: 7px;
+	block-size: 7px;
+	transform: rotate(45deg);
+}
+
+/* done — a filled circle */
+.ic-page .ic-dot--done {
+	background: var(--ic-done);
+	border-radius: 50%;
+}
+
+/* waiting on someone else — an open ring, empty at its centre */
+.ic-page .ic-dot--neutral {
+	background: transparent;
+	border: 2px solid var(--ic-neutral);
+	border-radius: 50%;
+}
+
+.ic-page .ic-dot--all {
+	background: var(--ic-fg);
+	border-radius: 50%;
+}
+
+/* --- urgency: the row bar, the days badge, the risk chips ----------------- */
+
+.ic-page .ic-row--expired .ic-row-bar {
+	background: var(--ic-critical-strong);
+}
+.ic-page .ic-row--critical .ic-row-bar {
+	background: var(--ic-critical);
+}
+.ic-page .ic-row--soon .ic-row-bar {
+	background: var(--ic-attention);
+}
+.ic-page .ic-row--clear .ic-row-bar {
+	background: var(--ic-neutral-line);
+}
+
+.ic-page .ic-days--expired {
+	background: var(--ic-critical-strong-bg);
+	color: var(--ic-critical-strong);
+	font-weight: 700;
+}
+.ic-page .ic-days--critical {
+	background: var(--ic-critical-bg);
+	color: var(--ic-critical);
+	font-weight: 700;
+}
+.ic-page .ic-days--soon {
+	background: var(--ic-attention-bg);
+	color: var(--ic-attention);
+	font-weight: 700;
+}
+.ic-page .ic-days--clear,
+.ic-page .ic-days--none {
+	background: var(--ic-neutral-bg);
+	color: var(--ic-neutral);
+}
+
+.ic-page .ic-chip--expired::before,
+.ic-page .ic-chip--critical::before {
+	background: var(--ic-critical);
+	border-radius: 1px;
+}
+.ic-page .ic-chip--soon::before {
+	background: var(--ic-attention);
+	border-radius: 1px;
+	transform: rotate(45deg);
+}
+.ic-page .ic-chip--clear::before {
+	background: transparent;
+	border: 2px solid var(--ic-neutral);
+}
+.ic-page .ic-chip--missing::before {
+	background: var(--ic-attention-bg);
+	border: 2px solid var(--ic-attention);
+}
+
+.ic-page .ic-chip.is-held {
+	border-color: var(--ic-fg);
+	background: var(--ic-neutral-bg);
+	color: var(--ic-fg);
+	font-weight: 600;
+}
+
+/* --- flags ---------------------------------------------------------------- */
+
+.ic-page .ic-flag {
+	background: var(--ic-neutral-bg);
+	color: var(--ic-neutral);
+}
+.ic-page .ic-flag--stop {
+	background: var(--ic-critical-bg);
+	color: var(--ic-critical);
+}
+.ic-page .ic-flag--warn {
+	background: var(--ic-attention-bg);
+	color: var(--ic-attention);
+}
+.ic-page .ic-flag--done {
+	background: var(--ic-done-bg);
+	color: var(--ic-done);
+}
+
+/* The nitaqat bands are the government's own four names. They keep their
+   identity and lose their saturation, like everything else here. */
+.ic-page .ic-band--red {
+	background: var(--ic-critical-bg);
+	color: var(--ic-critical);
+}
+.ic-page .ic-band--yellow {
+	background: var(--ic-attention-bg);
+	color: var(--ic-attention);
+}
+.ic-page .ic-band--green,
+.ic-page .ic-band--platinum {
+	background: var(--ic-done-bg);
+	color: var(--ic-done);
+}
+.ic-page .ic-band--unknown {
+	background: var(--ic-neutral-bg);
+	color: var(--ic-neutral);
+}
+
+.ic-page .ic-field--missing .ic-field-value,
+.ic-page .ic-money-value--none {
+	color: var(--ic-attention);
+	font-style: normal;
+}
+
+/* --- the chart, owner note.1 --------------------------------------------- */
+
+/* The ramp shipped at #2f5fd0 / #e0912f / #2f9e63 / #cf4b4b — four fully
+   saturated hues on a page whose every other surface is a grey. These four sit
+   beside the greys instead, and they separate by LIGHTNESS as well as by hue,
+   so the donut still reads when the colour does not. */
+.ic-page {
+	--ic-ramp-1: #4a5b70;
+	--ic-ramp-2: #7d8a99;
+	--ic-ramp-3: #a8977c;
+	--ic-ramp-4: #cbd0d6;
+	--ic-fill-bar: #6b7a8c;
+}
+
+/* --------------------------------------------------------------------------
+   LAYOUT-01  THE DETAIL COLUMN READS IN DECISION ORDER
+   Name, chips, a 2x2 fee grid, flags, a long history, then the buttons — the
+   least actionable block held the most space and the decision was under it.
+   The first four bands are now fixed and the last two share the scroller.
+   -------------------------------------------------------------------------- */
+
+.ic-page .ic-triage .ic-detail-fixed {
+	display: flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	background: var(--ic-surface);
+	border-block-end: 1px solid var(--ic-line);
+}
+
+/* Band 1 — nav */
+.ic-page .ic-triage .ic-detail-nav {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding-block: 10px;
+	padding-inline: var(--ic-pad-detail);
+	border-block-end: 1px solid var(--ic-line);
+}
+
+.ic-page .ic-detail-nav-gap {
+	flex: 1 1 auto;
+	min-inline-size: 0;
+}
+
+.ic-page .ic-detail-pos {
+	font-size: var(--ic-label);
+	color: var(--ic-fg-2);
+}
+
+.ic-page .ic-detail-step {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	inline-size: 28px;
+	min-block-size: 28px;
+	padding: 0;
+	border: 1px solid var(--ic-line);
+	border-radius: var(--ic-radius-field);
+	background: var(--ic-surface);
+	font-size: var(--ic-text-2);
+	line-height: 1;
+	color: var(--ic-fg);
+}
+
+.ic-page .ic-detail-step:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
+/* Only the overlay needs a way back. Above the breakpoint the list is beside
+   the column and Back would be a button that does nothing a click does not. */
+.ic-page .ic-detail-back {
+	display: none;
+	flex: 0 0 auto;
+	min-block-size: 28px;
+	padding-block: 0;
+	padding-inline: 12px;
+	border: 1px solid var(--ic-line);
+	border-radius: var(--ic-radius-field);
+	background: var(--ic-surface-field);
+	font-family: var(--ic-font);
+	font-size: var(--ic-label);
+	color: var(--ic-fg);
+}
+
+/* Band 2 — identity. The name is the largest thing in the column. */
+.ic-page .ic-triage .ic-detail-title {
+	gap: 10px;
+	min-block-size: 0;
+	padding-block: 16px 14px;
+}
+
+.ic-page .ic-triage .ic-detail-identity {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 4px;
+}
+
+.ic-page .ic-triage .ic-detail-name {
+	font-size: var(--ic-title);
+	font-weight: 700;
+	line-height: 1.25;
+}
+
+.ic-page .ic-triage .ic-detail-sub {
+	white-space: normal;
+	overflow: visible;
+	overflow-wrap: anywhere;
+	text-overflow: clip;
+	line-height: 1.45;
+}
+
+.ic-page .ic-triage .ic-detail-head .avatar,
+.ic-page .ic-triage .ic-detail-head .avatar-frame {
+	inline-size: auto;
+	min-inline-size: 28px;
+	block-size: auto;
+	min-block-size: 28px;
+	overflow: hidden;
+}
+
+/* Bands 3 and 4 — the decision and the money. Two equal tracks each, so the
+   blocking reason and the expiry sit side by side and neither crowds an edge. */
+.ic-page .ic-decision,
+.ic-page .ic-money {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 4px 24px;
+	padding-block: 12px;
+	padding-inline: var(--ic-pad-detail);
+	border-block-start: 1px solid var(--ic-line);
+}
+
+.ic-page .ic-decision-block,
+.ic-page .ic-decision-expiry,
+.ic-page .ic-money-due,
+.ic-page .ic-money-sadad {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	min-inline-size: 0;
+}
+
+.ic-page .ic-decision-label,
+.ic-page .ic-money-label {
+	font-size: var(--ic-label);
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--ic-fg-2);
+}
+
+.ic-page .ic-decision-value {
+	font-size: var(--ic-text);
+	font-weight: 600;
+	line-height: 1.4;
+	overflow-wrap: anywhere;
+	color: inherit;
+}
+
+.ic-page .ic-decision-dates,
+.ic-page .ic-field-hijri {
+	font-size: var(--ic-label);
+	color: var(--ic-fg-2);
+	overflow-wrap: anywhere;
+}
+
+.ic-page .ic-decision-block {
+	padding-inline-start: 10px;
+	border-inline-start: 3px solid var(--ic-critical);
+}
+
+/* The amount due is the number the operator is about to authorise. */
+.ic-page .ic-money-value {
+	font-size: var(--ic-title);
+	font-weight: 700;
+	line-height: 1.2;
+	color: var(--ic-fg);
+	overflow-wrap: anywhere;
+}
+
+.ic-page .ic-money-sadad {
+	flex-direction: column;
+}
+
+.ic-page .ic-money-sadad .ic-money-value {
+	font-size: var(--ic-text);
+	font-weight: 600;
+}
+
+.ic-page .ic-copy {
+	align-self: start;
+	min-block-size: 26px;
+	padding-block: 0;
+	padding-inline: 12px;
+}
+
+.ic-page .ic-money-value--none {
+	font-size: var(--ic-text-2);
+	font-weight: 600;
+}
+
+/* Band 5 — the field grid. The artboard pinned it at 250 tall and two columns;
+   a lens with twelve slots and an Arabic label needs neither. */
+.ic-page .ic-triage .ic-detail-fields {
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	min-block-size: 0;
+	padding-block: 14px;
+	row-gap: 2px;
+}
+
+/* Band 6 — history, folded. */
+.ic-page .ic-triage .ic-history {
+	padding-block: 12px;
+	padding-inline: var(--ic-pad-detail);
+	border-block-start: 1px solid var(--ic-line);
+}
+
+.ic-page .ic-triage .ic-history-title {
+	margin: 0;
+	font-weight: 600;
+	color: var(--ic-fg);
+	cursor: pointer;
+}
+
+.ic-page .ic-triage .ic-history-list {
+	max-block-size: none;
+	margin-block-start: 8px;
+	overflow: visible;
+}
+
+/* D-18: one header per person, then that person's run of events under it. */
+.ic-page .ic-history-by {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding-block: 8px 2px;
+}
+
+.ic-page .ic-history-by .avatar,
+.ic-page .ic-history-by .avatar-frame {
+	/* R22-4: was inline-size/block-size:auto with only a MIN, which is how
+	   this box stretched into an oval under a whole-word fallback (ic_utils.js
+	   ic_first_name()). The frame now only ever holds two initials
+	   (ic_triage.js _avatar_initials()), so it is fixed on every edge, the
+	   same equal-on-every-edge shape the 72px detail-head frame already
+	   proves (css:4873). */
+	inline-size: 20px;
+	min-inline-size: 20px;
+	max-inline-size: 20px;
+	block-size: 20px;
+	min-block-size: 20px;
+	max-block-size: 20px;
+	font-size: var(--ic-label);
+	overflow: hidden;
+}
+
+.ic-page .ic-history-who {
+	font-weight: 600;
+	color: var(--ic-fg);
+	max-inline-size: none;
+	text-align: start;
+	overflow-wrap: anywhere;
+}
+
+.ic-page .ic-history-group {
+	padding-inline-start: 28px;
+	border-inline-start: 1px solid var(--ic-line);
+	margin-inline-start: 10px;
+}
+
+.ic-page .ic-history-item {
+	grid-template-columns: max-content minmax(0, 1fr);
+	border-block-end: 0;
+}
+
+
+
+
+
+/* R11-Q: ic_batch.js now toggles is-loaded (count > 0) on all 7 stage
+   cards, not just the intervention one (R11-L); until this rule the other
+   6 carried the signal but nothing painted it. Attention tone, not
+   critical -- that tone stays reserved for the intervention card's legal
+   deadline (R11-H). Same 3-class specificity as .is-on directly below, so
+   this block MUST stay above it in source: on a card that is both loaded
+   and selected, the later rule wins the border/background tie and must be
+   .is-on, or a selected card would read as merely "has records". */
+
+
+
+
+/* T3: the count is the one thing that grows when its card is the active
+   filter; every unselected card, loaded or not, reads at body size. */
+
+
+/* T3/T4: the one card that is not a stage. Unselected and empty it reads as
+   quietly as any other card; unselected with rows waiting (.is-loaded, set by
+   ic_batch.js only when count > 0) or selected (.is-on) it takes the critical
+   tone. It spans two tracks either way, because a record inside it is waiting
+   on a person and nothing else on the page says so. */
+
+
+
+
+
+
+/* The stepper's own furniture is gone with the model it drew. */
+
+/* --------------------------------------------------------------------------
+   DISTRIBUTION
+   Every band on this page was built as a flex row with its content packed
+   against the start edge, because the artboard drew it at exactly 1280. At any
+   other width the content crowded one edge and left a hole at the other. Each
+   band below either spreads its children across the row or lays them on a grid
+   whose tracks share the width.
+   -------------------------------------------------------------------------- */
+
+.ic-page .ic-kpi {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 12px;
+	min-block-size: 0;
+	padding-block: 14px;
+}
+
+.ic-page .ic-kpi-card {
+	min-block-size: 84px;
+	min-inline-size: 0;
+}
+
+.ic-page .ic-charts {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 16px;
+	min-block-size: 0;
+	padding-block: 0 14px;
+}
+
+.ic-page .ic-chart-card {
+	min-block-size: 0;
+	min-inline-size: 0;
+}
+
+.ic-page .ic-share {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.ic-page .ic-share-list {
+	flex: 1 1 140px;
+	min-inline-size: 0;
+}
+
+.ic-page .ic-today-head {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.ic-page .ic-today-gap,
+.ic-page .ic-b-bar-gap,
+.ic-page .ic-actionbar-gap {
+	flex: 1 1 auto;
+	min-inline-size: 0;
+}
+
+.ic-page .ic-today-row {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-block-size: 38px;
+}
+
+.ic-page .ic-today-name {
+	flex: 1 1 auto;
+	min-inline-size: 0;
+}
+
+.ic-page .ic-today-detail {
+	display: flex;
+	flex: 0 1 auto;
+	align-items: baseline;
+	gap: 12px;
+	min-inline-size: 0;
+}
+
+.ic-page .ic-b-strip {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	min-block-size: 0;
+}
+
+.ic-page .ic-b-bar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	min-block-size: 0;
+	padding-block: 12px;
+}
+
+.ic-page .ic-b-body {
+	align-items: start;
+	min-block-size: 0;
+	padding-block: 16px;
+}
+
+.ic-page .ic-b-row {
+	min-block-size: 40px;
+}
+
+/* The rail's saved views sit at the top; the relocated filter form is pushed to
+   the foot of the column instead of hanging under the last status row. */
+.ic-page .ic-triage .ic-rail {
+	justify-content: flex-start;
+}
+
+.ic-page .ic-triage .ic-rail-filters {
+	margin-block-start: auto;
+	padding-block-start: 16px;
+}
+
+.ic-page .ic-triage .ic-list-head {
+	flex-wrap: wrap;
+	flex-basis: auto;
+	min-block-size: 52px;
+	block-size: auto;
+}
+
+.ic-page .ic-triage .ic-list-days {
+	flex: 0 0 auto;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+/* F-06: the fixed 28px row plus overflow-x:auto hid two of five band chips
+   under the rows below it. Wrapping to a second line keeps every chip on
+   screen and hit-testable instead of scrolling them off past the row edge. */
+.ic-page .ic-triage .ic-bands {
+	flex-wrap: wrap;
+	row-gap: 4px;
+	block-size: auto;
+	min-block-size: 28px;
+	overflow-x: visible;
+	overflow-y: visible;
+	margin-inline-start: auto;
+}
+
+/* D-19: an avatar holding a whole Arabic first name is an oval, not a square. */
+.ic-page .ic-avatar--word,
+.ic-page .ic-avatar--word .avatar-frame {
+	inline-size: auto;
+	min-inline-size: 28px;
+	max-inline-size: 96px;
+	block-size: auto;
+	min-block-size: 20px;
+	padding-inline: 6px;
+	border-radius: var(--ic-radius-pill);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* --------------------------------------------------------------------------
+   D-04  THE MEDIA QUERIES THE SHEET HAD NONE OF
+   A scan of this file for .ic-* rules inside @media returned an empty set, and
+   that is the root of both D-02 and D-03: the three-column triage body was
+   drawn once at 1280 and held at every width.
+   -------------------------------------------------------------------------- */
+
+.ic-page .ic-triage {
+	display: grid;
+	gap: 0;
+	align-items: stretch;
+	block-size: auto;
+	min-block-size: calc(100vh - 125px);
+	overflow: visible;
+}
+
+/* Under grid the three columns are tracks, so their own flex bases and fixed
+   inline sizes have to stand down or they fight the track that holds them. */
+.ic-page .ic-triage > .ic-rail,
+.ic-page .ic-triage > .ic-list,
+.ic-page .ic-triage > .ic-detail {
+	inline-size: auto;
+	min-inline-size: 0;
+	max-inline-size: none;
+	/* A grid item defaults to min-content in the block axis, which stops the
+	   list body and the detail scroller from ever scrolling. */
+	min-block-size: 0;
+}
+
+/* >= 1024 — three columns. B7/B9: the rail used to fall back to a full-width
+   row (grid-column:1/-1) with the real list swapped for a <select> between
+   1024 and 1279, which orphaned .ic-rail at a stale block-size once its list
+   child went display:none (the grid row was still sized to the rail's old
+   flex-wrap:row content). Shrinking the column floors below lets three real
+   tracks fit down to 1024px instead of collapsing, so the rail stays a normal
+   grid column sized to its own visible content at every width in this range. */
+@media (min-width: 1024px) {
+	.ic-page .ic-triage {
+		grid-template-columns: minmax(200px, 240px) minmax(300px, 0.6fr) minmax(420px, 1fr);
+	}
+}
+
+/* < 1024 element inline-size — one column, and the detail column becomes a
+   full overlay so it never renders under the 520px its content needs.
+   R18-A: was a viewport @media (max-width:1023px). Rewritten to key off
+   .ic-narrow — the class iqama_control.js's ResizeObserver already toggles
+   on .ic-view at this same 1023 number, measuring the VIEW's own inline
+   size. A desk sidebar that narrows the view without narrowing the browser
+   viewport now collapses this layout too, instead of the view sitting
+   narrow with a stale wide layout underneath it. */
+.ic-page .ic-view.ic-narrow .ic-triage {
+	grid-template-columns: 1fr;
+}
+
+.ic-page .ic-view.ic-narrow .ic-triage .ic-rail {
+	display: flex;
+	grid-column: 1 / -1;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	overflow-y: visible;
+}
+
+.ic-page .ic-view.ic-narrow .ic-triage .ic-rail-list {
+	display: none;
+}
+
+.ic-page .ic-view.ic-narrow .ic-triage .ic-rail-select {
+	display: block;
+}
+
+.ic-page .ic-view.ic-narrow .ic-triage .ic-rail-filters {
+	flex: 1 1 auto;
+	margin-block-start: 0;
+	padding-block-start: 0;
+}
+
+.ic-page .ic-view.ic-narrow .ic-triage .ic-detail {
+	position: fixed;
+	inset: 0;
+	z-index: 5;
+	min-inline-size: min(520px, 100vw);
+	max-inline-size: none;
+	background: var(--ic-surface-detail);
+	overflow-y: auto;
+}
+
+/* An overlay with no record in it would cover the list it was opened from. */
+.ic-page .ic-view.ic-narrow .ic-triage .ic-detail--empty {
+	display: none;
+}
+
+.ic-page .ic-view.ic-narrow .ic-detail-back {
+	display: inline-flex;
+	align-items: center;
+}
+
+
+/* The action bar needs 560px for two actions and the More menu. Below that it
+   wraps to a second line rather than pushing a button off the edge. Reads the
+   detail column's own inline size (container-type on .ic-detail, css:1075)
+   instead of the viewport, so a column narrowed by the desk sidebar wraps
+   even while the browser viewport stays wide. */
+@container (max-width: 620px) {
+	.ic-page .ic-triage .ic-actionbar,
+	.ic-page .ic-triage .ic-actionbar-row {
+		flex-wrap: wrap;
+	}
+
+	.ic-page .ic-triage .ic-actionbar .ic-btn {
+		flex: 1 1 auto;
+	}
+}
+
+/* The undo affordance inside the rejection toast. */
+.ic-page .ic-undo,
+.desk-alert .ic-undo {
+	margin-block-start: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   THE ARTBOARD'S FIXED HEIGHTS, ONCE THE TYPE RAMP RAISED THE FLOOR
+   Every box below was drawn at an exact pixel height against a placeholder bar
+   and against 8, 9 and 10px text. At 11, 13 and 15px — and one step larger
+   again in Arabic — the same text no longer fits, and a fixed block-size does
+   not fail loudly: it clips the descender or hides the second line.
+   Each one becomes a minimum. Nothing here is made shorter.
+   -------------------------------------------------------------------------- */
+
+.ic-page .ic-head,
+.ic-page .ic-seg,
+.ic-page .ic-seg-btn,
+.ic-page .ic-head-more,
+.ic-page .ic-actionbar,
+.ic-page .ic-btn,
+.ic-page .ic-choice,
+.ic-page .ic-choice-btn,
+.ic-page .ic-status-select,
+.ic-page .ic-triage .ic-rail-row,
+.ic-page .ic-triage .ic-list-head,
+.ic-page .ic-triage .ic-list-all,
+.ic-page .ic-triage .ic-row,
+.ic-page .ic-triage .ic-row-bar,
+.ic-page .ic-triage .ic-row-check,
+.ic-page .ic-triage .ic-row-days,
+.ic-page .ic-triage .ic-detail-chips .indicator-pill,
+.ic-page .ic-triage .ic-detail-chips .ic-chip,
+.ic-page .ic-triage .ic-flag,
+.ic-page .ic-triage .ic-detail-rule,
+.ic-page .ic-kpi-card,
+.ic-page .ic-chart-card,
+.ic-page .ic-today-card,
+.ic-page .ic-today-head,
+.ic-page .ic-today-row,
+.ic-page .ic-today-face,
+.ic-page .ic-today-status,
+.ic-page .ic-today-open,
+.ic-page .ic-b-strip,
+.ic-page .ic-b-all,
+.ic-page .ic-b-row,
+.ic-page .ic-b-check,
+.ic-page .ic-b-avatar,
+.ic-page .ic-b-status,
+.ic-page .ic-b-flag,
+.ic-page .ic-b-out,
+.ic-page .ic-b-bar,
+.ic-page .ic-b-back,
+.ic-page .ic-b-dotmark,
+.ic-page .ic-filters .form-control,
+.ic-page .ic-filters .form-control.input-xs {
+	block-size: auto;
+}
+
+.ic-page .ic-head {
+	min-block-size: 65px;
+}
+
+.ic-page .ic-seg-btn,
+.ic-page .ic-choice-btn,
+.ic-page .ic-status-select,
+.ic-page .ic-btn,
+.ic-page .ic-today-open,
+.ic-page .ic-b-back,
+.ic-page .ic-filters .form-control,
+.ic-page .ic-filters .form-control.input-xs {
+	min-block-size: 28px;
+}
+
+.ic-page .ic-head-more {
+	min-block-size: 28px;
+	min-inline-size: 28px;
+}
+
+.ic-page .ic-triage .ic-rail-row {
+	min-block-size: 30px;
+}
+
+.ic-page .ic-triage .ic-list-head {
+	min-block-size: 52px;
+}
+
+.ic-page .ic-triage .ic-row {
+	min-block-size: 50px;
+}
+
+/* Geometry, not text: the 3px bar down the start edge of a row stretches. */
+.ic-page .ic-triage .ic-row-bar {
+	align-self: stretch;
+	min-block-size: 30px;
+}
+
+.ic-page .ic-triage .ic-row-check,
+.ic-page .ic-triage .ic-list-all,
+.ic-page .ic-b-check {
+	min-block-size: 13px;
+	min-inline-size: 13px;
+}
+
+/* A pill drawn 14px tall cannot hold 11px text with a descender, and 12px
+   Arabic with a ي under the baseline needs more again. */
+.ic-page .ic-triage .ic-row-days,
+.ic-page .ic-triage .ic-detail-chips .indicator-pill,
+.ic-page .ic-triage .ic-detail-chips .ic-chip,
+.ic-page .ic-triage .ic-flag,
+.ic-page .ic-today-status,
+.ic-page .ic-b-status,
+.ic-page .ic-b-flag,
+.ic-page .ic-b-out {
+	min-block-size: 20px;
+	padding-block: 2px;
+	line-height: 1.35;
+}
+
+.ic-page .ic-triage .ic-detail-rule {
+	min-block-size: 1px;
+}
+
+.ic-page .ic-kpi-card {
+	min-block-size: 84px;
+}
+
+.ic-page .ic-chart-card {
+	min-block-size: 160px;
+}
+
+.ic-page .ic-today-card {
+	min-block-size: 0;
+}
+
+.ic-page .ic-today-head {
+	min-block-size: 37px;
+}
+
+.ic-page .ic-today-face,
+.ic-page .ic-b-avatar {
+	min-block-size: 22px;
+	min-inline-size: 22px;
+	padding-inline: 4px;
+}
+
+.ic-page .ic-b-strip {
+	min-block-size: 38px;
+}
+
+.ic-page .ic-b-row {
+	min-block-size: 44px;
+}
+
+.ic-page .ic-b-all {
+	min-block-size: 32px;
+}
+
+.ic-page .ic-b-bar {
+	min-block-size: 60px;
+}
+
+.ic-page .ic-b-dotmark {
+	min-block-size: 8px;
+	min-inline-size: 8px;
+}
+
+/* Flags sit beside the field grid, not inside it (ic_triage.js:_paint_detail),
+   so a value never prints as both a field and a flag in one container. */
+.ic-page .ic-triage .ic-detail-fields + .ic-flags {
+	padding-block: 8px 0;
+}
+
+/* --------------------------------------------------------------------------
+   LAYOUT-01, LAST: exactly ONE scroller in the detail column.
+   The PHASE 1-2 correction put overflow-y:auto on the column itself, and that
+   was right while every band sat in one flow. It is wrong now: bands 1 to 4
+   carry the decision, and a column that scrolls as a whole lets the blocking
+   reason and the amount due leave the screen, which is the criterion this
+   phase is judged on. The column clips; bands 5 and 6 scroll inside it.
+   -------------------------------------------------------------------------- */
+
+.ic-page .ic-triage .ic-detail {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.ic-page .ic-triage .ic-detail-scroll {
+	flex: 1 1 auto;
+	min-block-size: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+/* The overlay is not a column inside a row; it is the whole viewport, and there
+   the outer box is the scroller. Declared after the rule above so it wins.
+   R18-A: kept on the exact same .ic-narrow selector as the collapse above —
+   this scroll fix only makes sense while that overlay is the active layout,
+   so the two must never be able to disagree about when they fire. */
+.ic-page .ic-view.ic-narrow .ic-triage .ic-detail {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.ic-page .ic-view.ic-narrow .ic-triage .ic-detail-scroll {
+	overflow-y: visible;
+}
+
+/* ==========================================================================
+   PHASE 7, 8 AND 9 CORRECTIONS
+   Appended at the tail for the same reason every earlier phase was: this sheet
+   is a merge, and at equal specificity the last rule wins. Nothing above is
+   edited; every rule here carries the .ic-page prefix.
+
+   Placeholder art is not spec. Every box below is sized with min-block-size,
+   so an Arabic bucket label or a six-figure count grows it instead of being
+   clipped by it.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   D-10  THE STATUS RAMP RUNS TO NINE
+   The donut drew four statuses. The stacked bar draws every status the
+   population holds, so the ramp needs nine steps and a tenth for the gathered
+   "Other" slice. They stay in the muted family owner note.1 asked for and
+   separate by LIGHTNESS as well as by hue, so the bar still reads in a
+   greyscale screenshot.
+   -------------------------------------------------------------------------- */
+
+.ic-page {
+	--ic-ramp-5: #6d7f92;
+	--ic-ramp-6: #93a2ae;
+	--ic-ramp-7: #8d8271;
+	--ic-ramp-8: #b3b7bd;
+	--ic-ramp-9: #5f6a63;
+	--ic-ramp-other: #d4d7da;
+}
+
+.ic-page .ic-stack {
+	display: flex;
+	inline-size: 100%;
+	min-block-size: 18px;
+	overflow: hidden;
+	border-radius: var(--ic-radius-bar);
+	background: var(--ic-surface-track);
+}
+
+.ic-page .ic-stack-part {
+	flex-basis: 0;
+	min-inline-size: 2px;
+	block-size: auto;
+}
+
+.ic-page .ic-stack-part--1 { background: var(--ic-ramp-1); }
+.ic-page .ic-stack-part--2 { background: var(--ic-ramp-2); }
+.ic-page .ic-stack-part--3 { background: var(--ic-ramp-3); }
+.ic-page .ic-stack-part--4 { background: var(--ic-ramp-4); }
+.ic-page .ic-stack-part--5 { background: var(--ic-ramp-5); }
+.ic-page .ic-stack-part--6 { background: var(--ic-ramp-6); }
+.ic-page .ic-stack-part--7 { background: var(--ic-ramp-7); }
+.ic-page .ic-stack-part--8 { background: var(--ic-ramp-8); }
+.ic-page .ic-stack-part--9 { background: var(--ic-ramp-9); }
+.ic-page .ic-stack-part--other { background: var(--ic-ramp-other); }
+
+.ic-page .ic-share-key--5 { background: var(--ic-ramp-5); }
+.ic-page .ic-share-key--6 { background: var(--ic-ramp-6); }
+.ic-page .ic-share-key--7 { background: var(--ic-ramp-7); }
+.ic-page .ic-share-key--8 { background: var(--ic-ramp-8); }
+.ic-page .ic-share-key--9 { background: var(--ic-ramp-9); }
+.ic-page .ic-share-key--other { background: var(--ic-ramp-other); }
+
+/* The legend row is a button now, because a slice opens the list it stands
+   for. It must not look like one until it is reached. */
+.ic-page .ic-share-text {
+	appearance: none;
+	border: 0;
+	background: none;
+	padding: 0;
+	text-align: start;
+	cursor: pointer;
+	color: inherit;
+	font: inherit;
+}
+
+.ic-page .ic-share-text:hover .ic-share-name,
+.ic-page .ic-share-text:focus-visible .ic-share-name {
+	color: var(--ic-fg);
+	text-decoration: underline;
+}
+
+.ic-page .ic-chart-card--share .ic-share-list {
+	margin-block-start: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   D-11  OVERDUE DISTRIBUTION
+   The bucket names are words, so the bars run horizontally and the label sits
+   on the same line as its own bar rather than under a 12th of the plot.
+   -------------------------------------------------------------------------- */
+
+.ic-page .ic-hbars {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	inline-size: 100%;
+}
+
+.ic-page .ic-hbar {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	inline-size: 100%;
+	min-block-size: 20px;
+	padding: 0;
+	border: 0;
+	background: none;
+	cursor: pointer;
+	text-align: start;
+}
+
+.ic-page .ic-hbar-label {
+	flex: 0 0 auto;
+	min-inline-size: 96px;
+	font-size: var(--ic-label);
+	line-height: 15px;
+	color: var(--ic-fg-2);
+}
+
+.ic-page .ic-hbar-track {
+	flex: 1 1 0;
+	min-inline-size: 0;
+	block-size: 10px;
+	border-radius: var(--ic-radius-bar);
+	background: var(--ic-surface-track);
+	overflow: hidden;
+}
+
+.ic-page .ic-hbar-fill {
+	display: block;
+	block-size: 100%;
+	border-radius: var(--ic-radius-bar);
+	background: var(--ic-ramp-1);
+}
+
+.ic-page .ic-hbar-fill--over_year,
+.ic-page .ic-hbar-fill--half_year {
+	background: var(--ic-critical);
+}
+
+.ic-page .ic-hbar-fill--quarter,
+.ic-page .ic-hbar-fill--recent {
+	background: var(--ic-attention);
+}
+
+.ic-page .ic-hbar-fill--due_soon {
+	background: var(--ic-ramp-1);
+}
+
+.ic-page .ic-hbar-fill--later {
+	background: var(--ic-ramp-4);
+}
+
+.ic-page .ic-hbar-value {
+	display: flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 1px;
+	min-inline-size: 64px;
+	text-align: end;
+}
+
+.ic-page .ic-hbar:hover .ic-hbar-label,
+.ic-page .ic-hbar:focus-visible .ic-hbar-label {
+	color: var(--ic-fg);
+}
+
+/* --------------------------------------------------------------------------
+   D-12  NO BAR WITHOUT A DECLARED MAXIMUM
+   The 4px rule under each tile was filled to the largest of the five tiles,
+   which is a denominator nothing on screen names. The tile prints its share of
+   the population instead, and the population is a number the header and the
+   rail both already show.
+   -------------------------------------------------------------------------- */
+
+.ic-page .ic-kpi-share {
+	display: block;
+	font-size: var(--ic-label);
+	line-height: 15px;
+	color: var(--ic-fg-2);
+}
+
+/* --------------------------------------------------------------------------
+   D-05  THE LIST DRAWS A PAGE AT A TIME
+   -------------------------------------------------------------------------- */
+
+.ic-page .ic-list-foot,
+.ic-page .ic-b-foot {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+	min-block-size: 34px;
+	padding: 6px 12px;
+	border-block-start: 1px solid var(--ic-line);
+}
+
+.ic-page .ic-list-shown,
+.ic-page .ic-b-shown,
+.ic-page .ic-truncated {
+	font-size: var(--ic-label);
+	line-height: 15px;
+	color: var(--ic-fg-2);
+}
+
+.ic-page .ic-list-more {
+	margin-inline-start: auto;
+}
+
+/* --------------------------------------------------------------------------
+   D-27  AN EMPTY STATE CARRIES ITS WAY OUT
+   -------------------------------------------------------------------------- */
+
+.ic-page .ic-empty {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 6px;
+	min-block-size: 0;
+}
+
+.ic-page .ic-empty-text {
+	font-size: var(--ic-text-2);
+	line-height: 19px;
+	color: var(--ic-fg-2);
+}
+
+.ic-page .ic-empty-link {
+	appearance: none;
+	border: 0;
+	background: none;
+	padding: 0;
+	font-size: var(--ic-text-2);
+	line-height: 19px;
+	color: var(--ic-fg);
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   owner note.6  A FETCH DOES NOT BLANK THE BOARD
+   The view keeps standing while the answer is in flight and only dims, so the
+   operator's place on the page survives a filter change.
+   -------------------------------------------------------------------------- */
+
+.ic-page .ic-view.is-loading {
+	opacity: 0.62;
+}
+
+.ic-page .ic-today-count {
+	font-size: var(--ic-label);
+	line-height: 15px;
+	color: var(--ic-fg-2);
+	margin-inline-start: 8px;
+}
+
+/* A11Y-01: every element this phase adds is at or above the 11px floor, and
+   Arabic takes the one step larger its siblings take. */
+.ic-rtl .ic-page .ic-hbar-label,
+.ic-rtl .ic-page .ic-hbar-value,
+.ic-rtl .ic-page .ic-kpi-share,
+.ic-rtl .ic-page .ic-list-shown,
+.ic-rtl .ic-page .ic-b-shown,
+.ic-rtl .ic-page .ic-today-count {
+	font-size: 12px;
+	line-height: 17px;
+}
+
+/* A11Y-02: an overdue bucket reached from the chart becomes a chip in the list
+   band, so it needs the same shape channel the four risk chips carry. The four
+   past buckets are all overdue and wear the expired mark; the two forward ones
+   wear the mark of the band they sit in. */
+.ic-page .ic-chip--over_year::before,
+.ic-page .ic-chip--half_year::before,
+.ic-page .ic-chip--quarter::before,
+.ic-page .ic-chip--recent::before {
+	background: var(--ic-critical);
+	border-radius: 1px;
+}
+
+.ic-page .ic-chip--due_soon::before {
+	background: var(--ic-attention);
+	border-radius: 1px;
+	transform: rotate(45deg);
+}
+
+.ic-page .ic-chip--later::before {
+	background: transparent;
+	border: 2px solid var(--ic-neutral);
+}
+
+/* --------------------------------------------------------------------------
+   ROUND 4, PHASE 2  HIDDEN AND OVERLAPPING ELEMENTS
+   -------------------------------------------------------------------------- */
+
+/* F-07: .ic-detail was capped at 78vh by the artboard rule and never grew to
+   the grid row's real height, so .ic-detail-scroll had far less room than the
+   column offered and the action bar cut the last fields and history in half. */
+.ic-page .ic-triage .ic-detail {
+	block-size: 100%;
+	max-block-size: none;
+	/* B13: the pre-grid single-column build set .ic-detail (iqama_control.css:266)
+	   position:sticky with inset-block-start:60px. Nothing in the grid layout
+	   ever reset position for this selector, so that offset still applies here
+	   and sticks the column 60px from the scroll top — under the ~113px the
+	   sticky header (48px navbar + ~65px band) actually occupies, clipping the
+	   column's own top under the header once the page scrolls. Grid placement
+	   supplies this column's position; it does not need to be sticky at all. */
+	position: static;
+}
+
+/* F-09: a single nowrap+ellipsis line clipped the Arabic history text from its
+   start. Two lines with the ellipsis on the second keep the record readable;
+   the full line still needs a title= attribute wired on the element itself. */
+.ic-page .ic-triage .ic-history-what {
+	white-space: normal;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.ic-page .ic-triage .ic-history-field {
+	font-size: var(--ic-label);
+	color: var(--ic-fg-2);
+}
+
+.ic-page .ic-triage .ic-history-value {
+	display: inline-block;
+	max-inline-size: 150px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	vertical-align: bottom;
+}
+
+.ic-page .ic-triage .ic-history-value--old {
+	opacity: .6;
+	color: var(--ic-text-muted);
+}
+
+.ic-page .ic-triage .ic-history-value--new {
+	opacity: 1;
+	color: var(--ic-text-strong);
+}
+
+/* The arrow character is chosen at the JS call site off IC_IS_RTL, not fixed
+   by the browser's bidi mirroring (U+2192 is not on that list); this rule
+   only sets spacing, never a direction. */
+.ic-page .ic-triage .ic-history-arrow {
+	margin-inline: 4px;
+	color: var(--ic-fg-2);
+}
+
+.ic-rail-host > .ic-rail {
+	display: flex;
+	flex: 0 0 clamp(232px, 18vw, 280px);
+	inline-size: clamp(232px, 18vw, 280px);
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 4px;
+	padding-block: 16px;
+	padding-inline: var(--ic-pad-col);
+	background: var(--ic-surface-sunk);
+	font-family: var(--ic-font);
+	overflow-y: auto;
+	overflow-x: visible;
+}
+
+.ic-rail-host .ic-rail-list {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.ic-rail-host .ic-rail-row {
+	display: grid;
+	grid-template-columns: 8px 1fr auto;
+	gap: 8px;
+	align-items: start;
+	inline-size: auto;
+	block-size: auto;
+	min-block-size: 26px;
+	padding-block: 7px;
+	padding-inline: 10px;
+	border: 0;
+	border-radius: var(--ic-radius-rail);
+	background: transparent;
+	font-family: var(--ic-font);
+	font-size: 10px;
+	font-weight: 400;
+	line-height: 1.35;
+	color: var(--ic-text-rail);
+	text-align: start;
+	cursor: pointer;
+}
+
+.ic-rail-host .ic-rail-row.is-on {
+	background: var(--ic-surface-selected);
+	font-weight: 600;
+}
+
+.ic-rail-host .ic-rail-dot {
+	flex: 0 0 8px;
+	inline-size: 8px;
+	block-size: 8px;
+	border-radius: 4px;
+	margin-block-start: 3px;
+}
+
+.ic-rail-host .ic-rail-label {
+	flex: 1 1 auto;
+	min-inline-size: 0;
+	overflow: visible;
+	white-space: normal;
+	overflow-wrap: anywhere;
+	text-overflow: clip;
+	line-height: 1.35;
+}
+
+.ic-rail-host .ic-rail-count {
+	flex: 0 0 auto;
+	font-size: var(--ic-label, 9px);
+	font-weight: 400;
+	color: var(--ic-text-faint);
+	font-variant-numeric: tabular-nums;
+}
+
+/* Below the rail's own breakpoint it degrades to the same .ic-rail-select
+   dropdown Triage already builds (page/iqama_control/iqama_control.css:3042
+   sets it display:none by default) — it must never simply vanish, because it
+   carries the page's one status control. */
+@media (max-width: 1023px) {
+	.ic-rail-host > .ic-rail {
+		flex: 1 1 100%;
+		inline-size: auto;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		overflow-y: visible;
+	}
+
+	.ic-rail-host .ic-rail-list {
+		display: none;
+	}
+
+	.ic-rail-host .ic-rail-select {
+		display: block;
+	}
+}
+
+/* F-20: the undated bucket's chart bar had no fill rule and rendered with no
+   background at all. It is not an urgency band, so it takes a plain grey off
+   the board's own ramp rather than the critical/attention colours the other
+   bars carry. */
+.ic-page .ic-hbar-fill--none {
+	background: var(--ic-ramp-3);
+}
+
+/* R4-P3 F-13: one label system for every relocated filter host and for the
+   page's own status field, so identity does not depend on which view a
+   control landed in. The triage selector ties :3161's 4-class specificity
+   (.ic-page .ic-triage .ic-filters .control-label) and wins on source order
+   for font-size and color; the other three have no competing page rule to
+   beat. */
+.ic-page .ic-triage .ic-rail-filters .control-label,
+.ic-page .ic-b-strip .control-label,
+.ic-page .ic-status-field .control-label,
+.ic-page .ic-triage .ic-list-search .control-label {
+	display: block;
+	margin-block-end: 2px;
+	font-size: var(--ic-label, 11px);
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: var(--ic-fg-2, var(--ic-text-faint));
+}
+
+/* F-13: the folded-filters toggle separates to the edge opposite the scope
+   group instead of sitting inside it. */
+.ic-filterbar .ic-more {
+	margin-inline-start: auto;
+}
+
+/* --------------------------------------------------------------------------
+   R8-B ITEM 1 — band chips reachable and clickable
+   Owner-confirmed live: the six band chips render UNDER the list rows; the
+   only part showing through was one held chip's small rotated marker
+   (the "gold diamond"). ic_triage.js:366 appends .ic-bands INSIDE
+   .ic-list-head (not as a sibling row), so the audit's literal "3-row grid"
+   does not match the real markup — this keeps the true nesting and makes
+   every box in it grow instead of clip or overlap:
+     .ic-list (flex column)
+       .ic-list-head (flex row: title, bands, count) — auto height, wraps
+       .ic-list-body — flex:1, its own scroll, never fixed against the head
+   Appended last so it wins any specificity tie against an earlier definition
+   of the same selector layered earlier in this file (:940 fixes list-head at
+   a hard 52px and :956 caps .ic-bands at a hard 28px with overflow-x:auto —
+   both already partly answered by :3972/:3989's block-size:auto, this block
+   restates and closes the remaining gap so the fix does not depend on which
+   of those wins the cascade). is-held (ic_triage.js:381) is the chip's own
+   pressed state; once every chip is on screen the operator can see and
+   toggle it directly, so no held band stays invisible or unreachable. */
+.ic-page .ic-triage .ic-list {
+	display: flex;
+	flex-direction: column;
+}
+
+.ic-page .ic-triage .ic-list-head {
+	flex: 0 0 auto;
+	flex-wrap: wrap;
+	align-items: center;
+	block-size: auto;
+	min-block-size: 52px;
+	overflow: visible;
+}
+
+/* R8-B item 1, live-DOM correction: a DOM read on the deployed page found
+   every chip's own getBoundingClientRect() at ZERO, not merely covered — so
+   the row was not just clipped, it was collapsing to no content-box height,
+   the classic nested-flex intrinsic-sizing collapse (a min-block-size:0 a few
+   levels up, at .ic-page .ic-triage > .ic-list :4059, removes the
+   content-based auto-minimum a flex/grid item would otherwise get, and
+   nothing below it was independently floored). block-size/min-block-size on
+   THIS element only fixes .ic-bands' own box; it cannot fix a chip whose box
+   collapsed for the same reason one level deeper. Both this rule and the one
+   below now set an explicit min-block-size directly on the box that has to
+   stay non-zero, which — per CSS sizing (used size = max(min, size)) — holds
+   regardless of what any ancestor's min-block-size:0 does upstream. */
+.ic-page .ic-triage .ic-bands {
+	flex-wrap: wrap;
+	row-gap: 4px;
+	block-size: auto;
+	min-block-size: 28px;
+	max-block-size: none;
+	overflow: visible;
+}
+
+.ic-page .ic-triage .ic-bands .ic-chip {
+	position: relative;
+	z-index: 1;
+	flex: 0 0 auto;
+	min-inline-size: max-content;
+	min-block-size: 18px;
+	overflow: visible;
+}
+
+.ic-page .ic-triage .ic-list-body {
+	flex: 1 1 auto;
+	min-block-size: 0;
+	overflow-y: auto;
+}
+
+/* --------------------------------------------------------------------------
+   R8-B ITEM 7 — the "other filters" panel, one grid and one control height
+   .ic-triage .ic-filters (:903) capped every text/link/date/select field at a
+   uniform 26px row via `input:not([type="checkbox"])` (:920), which by
+   naming what it excludes left the two Check fields (only_with_sadad,
+   include_settled) on the browser's native checkbox box — a different
+   height, no shared row shape, no shared gap with the fields around them.
+   This gives the panel one grid track and gives the checkbox row the same
+   26px shape and label treatment as every other control, closing that gap
+   without touching the fields :920 already sizes correctly. Frappe's Check
+   control wraps its input in a ".checkbox" element; the :has() clause is a
+   DOM-structure-agnostic fallback for a build where that wrapper class is
+   named differently — UNVERIFIED-WITHOUT-A-BROWSER against the exact
+   installed control markup, kept safe because it changes nothing if it
+   matches nothing. */
+.ic-page .ic-triage .ic-filters {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 8px;
+}
+
+.ic-page .ic-triage .ic-filters .checkbox,
+.ic-page .ic-triage .ic-filters .frappe-control:has(> .checkbox) {
+	display: flex;
+	align-items: center;
+	min-block-size: 26px;
+}
+
+.ic-page .ic-triage .ic-filters .checkbox label {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin: 0;
+	font-size: var(--ic-label);
+	color: var(--ic-text-faint);
+	cursor: pointer;
+}
+
+.ic-page .ic-triage .ic-filters .checkbox input[type="checkbox"] {
+	inline-size: 13px;
+	block-size: 13px;
+	margin: 0;
+	flex: 0 0 auto;
+}
+
+/* ==========================================================================
+   R9-E — integration pass, hand-offs from PHASE-R9-A-RESULT.md and
+   PHASE-R9-D-RESULT.md (both marked needs_file:iqama_control.css) plus the
+   H-07/H-08 filter-panel fix this round owns directly. Appended at the end
+   of the file on purpose: this sheet redefines the same selectors at several
+   specificities and depths (see file header warning), and the safest way to
+   win a rule already set upstream, without hunting every earlier definition,
+   is to match or exceed its specificity and let source order settle any tie.
+   Each block below names the earlier rule(s) it has to outrank.
+   ========================================================================== */
+
+/* --- H-01: the employee photo is a portrait, not a hero image ----------
+   Outranks :3588 (.ic-page .ic-triage .ic-detail-head .avatar, .avatar-frame
+   — 4-class specificity, sets inline-size/block-size:auto with only a 28px
+   MIN, so the box was free to grow to the image's own intrinsic size, which
+   is the enormous-photo bug H-01 names) by matching its 4-class specificity
+   and landing later in source order. .avatar-large is frappe's own avatar
+   size class (not defined in this file at all — it ships from the framework
+   core sheet), so it is capped here too, scoped to this one detail head, so
+   it never fights this rule's own size. 72px sits mid the 64-96px range the
+   hand-off gives. */
+.ic-page .ic-triage .ic-detail-head .avatar-frame,
+.ic-page .ic-triage .ic-detail-head .avatar-large {
+	inline-size: 72px;
+	block-size: 72px;
+	min-inline-size: 72px;
+	min-block-size: 72px;
+	max-inline-size: 72px;
+	max-block-size: 72px;
+	overflow: hidden;
+	border-radius: var(--ic-radius-rail);
+}
+
+/* R21-B2: the photo <img> (ic_triage.js:_avatar) fills its .avatar-frame
+   above and takes the frame's own radius by inherit, so a radius change
+   there needs no matching value here. */
+.ic-page .ic-triage .ic-detail-head .avatar-frame-img {
+	inline-size: 100%;
+	block-size: 100%;
+	object-fit: cover;
+	border-radius: inherit;
+}
+
+/* --- H-03: the duplicate row gets a non-text marker ---------------------
+   .ic-row (:182) is the only other rule that touches this box; nothing else
+   in the file sets border-inline-start on .ic-row, so no earlier rule has to
+   be out-specificity'd, only added to. Reuses --ic-critical, the same tone
+   token the held/flagged chip states already read (:3421 .ic-chip.is-held),
+   so a duplicate reads as the same order of "look at this" as a flag does,
+   without a third text line on the row (ic_triage.js now toggles this class
+   instead of printing one — see PHASE-R9-A-RESULT.md). */
+.ic-page .ic-triage .ic-row.is-duplicate {
+	border-inline-start: 3px solid var(--ic-critical);
+}
+
+/* --- H-04: the identity grid — one .ic-field per row, own label+value --
+   .ic-detail-id-grid did not exist before this round; no earlier rule to
+   outrank. .ic-field itself (:311) already lays a label+value pair out as a
+   flex row, so the grid only has to stack that repeated row with the page's
+   own spacing token. .ic-field--num is new too: PHASE-R9-A-RESULT.md's claim
+   that it is "reused from the existing lens grid" does not hold — this file
+   carries zero prior definitions of .ic-field--num (verified: `grep -in
+   "field--num"` before this block returns nothing) — so this is the first
+   rule for it, not a reuse. Numbers (employee number, employer file number)
+   stay LTR and isolated even though the page itself is RTL, which is a
+   direction/unicode-bidi rule, not a left/right physical property, so it
+   does not conflict with the page's logical-properties requirement. */
+.ic-page .ic-triage .ic-detail-id-grid {
+	display: flex;
+	flex-direction: column;
+	gap: var(--margin-sm, 10px);
+}
+
+.ic-page .ic-triage .ic-detail-id-grid .ic-field--num .ic-field-value {
+	direction: ltr;
+	unicode-bidi: isolate;
+	font-variant-numeric: tabular-nums;
+}
+
+/* K-03: .ic-list-search had no wrapper rule at all anywhere in the sheet —
+   only the input inside it (H-05, below) was ever styled — so the band ran
+   flush against the card's own 1px border with no block padding, out of
+   line with .ic-list-head's 12px inset above it and the rows below. Late
+   block on purpose: an earlier placement would fall behind :948, :3955,
+   :4223 and :4895, all of which redeclare .ic-triage geometry after it. */
+.ic-page .ic-triage .ic-list-search {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding-inline: 12px;
+	padding-block: 12px 0;
+	font-size: var(--ic-label);
+	block-size: auto;
+	min-block-size: 28px;
+}
+
+.ic-page .ic-triage .ic-list-search-glyph {
+	flex: 0 0 auto;
+	inline-size: 14px;
+	block-size: 14px;
+	color: var(--ic-fg-2, var(--ic-text-faint));
+}
+
+.ic-page .ic-triage .ic-list-search-clear {
+	flex: 0 0 auto;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: var(--ic-label);
+	color: var(--ic-fg-2, var(--ic-text-faint));
+	cursor: pointer;
+}
+.ic-page .ic-triage .ic-list-search-clear:hover {
+	color: var(--ic-fg, var(--ic-text-strong));
+}
+
+/* --- H-05: the employee-number search styled with the page's own tokens -
+   .ic-list-search-input did not exist before this round; no earlier rule to
+   outrank. border-color/radius/padding/focus all read the same tokens the
+   rest of the page's inputs read (--ic-line, --ic-radius-input,
+   --ic-surface-field, --ic-accent), and the focus ring copies the shape
+   .ic-triage .ic-row:focus-visible already uses at :1034 so the same "this
+   is focused" language repeats across the screen. */
+.ic-page .ic-triage .ic-list-search-input {
+	flex: 1 1 auto;
+	min-inline-size: 0;
+	inline-size: 100%;
+	block-size: 26px;
+	padding-inline: 10px;
+	border: 1px solid var(--ic-line);
+	border-radius: var(--ic-radius-input);
+	background: var(--ic-surface-field);
+	font-size: var(--ic-label, 11px);
+	color: var(--ic-text-body);
+}
+
+.ic-page .ic-triage .ic-list-search-input:focus-visible {
+	outline: 2px solid var(--ic-accent);
+	outline-offset: -2px;
+}
+
+/* --- H-07/H-08: the folded filter panel — one control height, one gap,
+   one label treatment, and the icons that carry no meaning removed --------
+   R8-B item 7 (:4954 in the pre-R9-E file) already gave this panel one grid
+   column, an 8px gap, and matched the checkbox row's height to the 26px
+   every other control already had — those hold and are not repeated here.
+   What was still missing: Frappe's Link control (frappe/public/js/frappe/
+   form/controls/link.js, installed source read at
+   apps/frappe/frappe/public/js/frappe/form/controls/link.js:14-22) renders
+   TWO icons per Link field inside .link-btn — .btn-clear (meaningful here:
+   it empties the filter) and .btn-open (an "open this record" arrow, which
+   in a FILTER field carries no meaning — the operator is narrowing a list,
+   not navigating to a Corporation or Department document). This hides only
+   .btn-open, scoped to this one panel, so the clear affordance and every
+   Link field outside the filter panel are untouched. .ic-field-hidden is the
+   utility class _place_filters() (iqama_control.js) now toggles per view and
+   for the employee field on every view (H-08's cut, see ACCEPT). */
+.ic-page .ic-triage .ic-filters .btn-open {
+	display: none;
+}
+
+.ic-page .ic-filters .ic-field-hidden {
+	/* !important: this sheet redefines display on .form-group[class*="col-"]
+	   and .frappe-control at several specificities (:2539, :4199 among them)
+	   for the shared page_form; a per-view hide has to win against all of
+	   them at once rather than chase each one, since this file's own header
+	   warns the same selector is redefined at several depths. */
+	display: none !important;
+}
+
+/* --- D handoff 1: the batch strip reads as one 38px row, not a wrap -----
+   Outranks :3928 (.ic-page .ic-b-strip, 2-class specificity, sets
+   flex-wrap:wrap) by matching its specificity and landing later in source
+   order; :4301's later .ic-page .ic-b-strip only sets min-block-size, so it
+   does not contest flex-wrap and is left alone. */
+.ic-page .ic-b-strip {
+	flex-wrap: nowrap;
+	gap: 10px;
+}
+
+.ic-page .ic-b-checked {
+	margin-inline-start: auto;
+}
+
+/* --- D handoff 2: the batch rail's new "queue after this step" card -----
+   New classes (ic_batch.js _outcome_queue, edit:3 of round 9D), no prior
+   rule to outrank. Mirrors the other rail card rows' 10px type scale
+   (.ic-b-rail-title, :2309) and puts the count at the far edge the same way
+   .ic-b-checked does in the strip above, so "value pinned opposite its
+   label" reads as one convention across the screen, not two. */
+.ic-page .ic-b-queue-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.ic-page .ic-b-queue-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.ic-page .ic-b-queue-row-label {
+	font-size: var(--ic-label);
+	font-weight: 400;
+	color: var(--ic-text-muted);
+}
+
+.ic-page .ic-b-queue-row-value {
+	margin-inline-start: auto;
+	font-size: var(--ic-label);
+	font-weight: 600;
+	color: var(--ic-text-strong);
+}
+
+/* --- D handoff 3: 3rd rail card height, re-checked, no rule needed ------
+   .ic-b-rail's own gap:14 stack (:2290) and .ic-b-rail-card's own padding
+   (:2298) are unconditional — they do not count how many .ic-b-rail-card
+   children are present, so a 3rd card fits the same way a 2nd one did. No
+   new shell rule required; recorded here so this hand-off is not silently
+   skipped. SOURCE-verified only: real 3-card total height against the
+   sketch's 110px is UNVERIFIABLE-WITHOUT-A-BROWSER. */
+
+/* ROUND 10-B: the action drawer. Replaces frappe.confirm/frappe.prompt for
+   every action _run_action() and _create_pr() open (ic_actions.js) except
+   "preference", which keeps its framework dialog for its conditional
+   fields (see the comment beside IC_FRAMEWORK_DIALOG_ACTIONS there).
+   Fixed to the viewport rather than to a DOM ancestor, so it slides in
+   beside the record instead of covering it; the scrim behind it stays
+   fully transparent for the same reason and exists only to close the
+   drawer on an outside click. `dir` is set on the drawer element itself in
+   JS (IC_DIR), so the one physical-axis rule below — the slide transform,
+   which has no logical equivalent in CSS — keys off that attribute rather
+   than assuming an ancestor already carries it. */
+.ic-drawer-scrim {
+	position: fixed;
+	inset: 0;
+	/* R22-5: .ic-drawer/.ic-drawer-scrim mount on this.page.main
+	   (ic_actions.js _ensure_drawer()), a sibling of .ic-triage/.ic-board/
+	   .ic-batch, never their descendant, so the container-type ancestors
+	   (.ic-detail/.ic-board/.ic-batch, css:1086/1395/1801 -- container-type
+	   implies containment, which does create a stacking context) are not the
+	   trap: this pair sits outside all three. Nothing between page.main and
+	   here sets position+z-index, a transform, a filter or opacity<1 either,
+	   so no local stacking context traps them. That leaves a plain z-index
+	   VALUE too low against Frappe's own fixed page chrome (the top bar, the
+	   sync tools), so it is raised past Bootstrap's own modal tier
+	   (.modal-backdrop:1040/.modal:1050 -- the scale Frappe desk's chrome is
+	   built on) instead of piled onto the untouched 40/41. */
+	z-index: 1040;
+	background: transparent;
+	display: none;
+}
+.ic-drawer-scrim.ic-drawer-scrim--open {
+	display: block;
+}
+
+.ic-drawer {
+	position: fixed;
+	inset-block: 0;
+	inset-inline-end: 0;
+	inline-size: min(420px, 92vw);
+	max-inline-size: 92vw;
+	display: flex;
+	flex-direction: column;
+	background: var(--ic-surface);
+	box-shadow: var(--ic-shadow-raised), 0 0 32px rgba(0, 0, 0, 0.14);
+	z-index: 1050;
+	transform: translateX(100%);
+	transition: transform 0.22s ease;
+}
+.ic-drawer[dir="rtl"] {
+	transform: translateX(-100%);
+}
+.ic-drawer.ic-drawer--open {
+	transform: translateX(0);
+}
+
+.ic-drawer-head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 8px;
+	padding-block: 16px;
+	padding-inline: 18px;
+	border-block-end: 1px solid var(--ic-surface-track);
+}
+.ic-drawer-title {
+	margin: 0;
+	font-size: var(--ic-text, 15px);
+	font-weight: 600;
+	color: var(--ic-text-strong);
+}
+.ic-drawer-subtitle {
+	margin: 0;
+	margin-block-start: 4px;
+	font-size: var(--ic-label, 12px);
+	color: var(--ic-text-muted);
+}
+.ic-drawer-close {
+	inline-size: 28px;
+	block-size: 28px;
+	border: none;
+	border-radius: var(--ic-radius-field);
+	background: transparent;
+	color: var(--ic-text-faint);
+	font-size: 18px;
+	line-height: 1;
+	cursor: pointer;
+}
+.ic-drawer-close:hover,
+.ic-drawer-close:focus-visible {
+	background: var(--ic-surface-field);
+	color: var(--ic-text-strong);
+}
+
+.ic-drawer-message {
+	margin: 0;
+	margin-block-start: 16px;
+	padding-inline: 18px;
+	font-size: var(--ic-text-2, 13px);
+	color: var(--ic-text-body);
+}
+
+/* CHEQUE steps 1-5 (BRIEF SECTION F): .ic-drawer-html is the raw-HTML band
+   host ic_actions.js already builds (_ensure_drawer:769) but never styled —
+   the front and back faces rendered as unstyled table/p/ul markup until
+   now. flex:1 1 auto + overflow-y:auto mirrors .ic-drawer-fields below so a
+   40-row eligible list scrolls inside the fixed-height panel instead of
+   escaping it; min-block-size:0 is required for a flex column child to
+   shrink below its content height. */
+.ic-drawer-html {
+	flex: 1 1 auto;
+	min-block-size: 0;
+	overflow-y: auto;
+	padding-inline: 18px;
+	padding-block-start: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	font-size: var(--ic-text-2, 13px);
+	color: var(--ic-text-body);
+}
+/* the cheque flow passes fields:null, so .ic-drawer-fields renders and
+   stays in the DOM with zero children; without this it still claims an
+   equal flex-grow share of the drawer's leftover height beside
+   .ic-drawer-html above, halving the room the eligible-row table gets.
+   :has() already has two precedents in this sheet (css:5142, css:5580) for
+   reading JS-driven DOM state without a JS change. */
+.ic-drawer:has(.ic-drawer-html:not(:empty)) .ic-drawer-fields:empty {
+	flex: 0 1 auto;
+}
+/* SECTION F step 8: the cheque's own confirm/close button reads at the
+   drawer's text scale, not the base .ic-btn 11px fallback (K-25) — scoped
+   to only the moment .ic-drawer-html carries content, so every other
+   drawer action's confirm button is untouched. */
+.ic-drawer:has(.ic-drawer-html:not(:empty)) .ic-drawer-confirm {
+	font-size: var(--ic-text-2, 13px);
+}
+
+.ic-drawer-html p,
+.ic-drawer-html table {
+	margin: 0;
+}
+.ic-drawer-html a {
+	color: var(--ic-accent);
+}
+
+/* SECTION F step 8: the cheque is a money surface — no band below drops
+   under var(--ic-label), and the payee line plus the total both read at or
+   above the drawer's own --ic-text-2/--ic-title, never the .ic-btn 11px
+   literal. */
+.ic-pr-payee {
+	font-size: var(--ic-text-2, 13px);
+}
+.ic-pr-total {
+	font-size: var(--ic-title, 20px);
+	font-weight: 700;
+	color: var(--ic-text-strong);
+}
+
+.ic-pr-rows {
+	inline-size: 100%;
+	border-collapse: collapse;
+	font-size: var(--ic-text-2, 13px);
+}
+.ic-pr-rows td {
+	padding-block: 6px;
+	padding-inline: 4px;
+	border-block-end: 1px solid var(--ic-surface-track);
+	text-align: start;
+	overflow-wrap: anywhere;
+}
+
+.ic-pr-skipped,
+.ic-pr-siblings,
+.ic-pr-unlinked {
+	padding-block: 10px;
+	padding-inline: 12px;
+	border: 1px solid var(--ic-neutral-line);
+	border-radius: var(--ic-radius-field, 7px);
+	background: var(--ic-neutral-bg);
+	color: var(--ic-neutral);
+}
+.ic-pr-siblings {
+	border-color: var(--ic-attention-line);
+	background: var(--ic-attention-bg);
+	color: var(--ic-attention);
+}
+.ic-pr-unlinked {
+	border-color: var(--ic-critical-line);
+	background: var(--ic-critical-bg);
+	color: var(--ic-critical);
+}
+.ic-pr-skipped p,
+.ic-pr-siblings p,
+.ic-pr-unlinked p {
+	margin-block-end: 6px;
+	font-size: var(--ic-label, 12px);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+.ic-pr-skipped ul,
+.ic-pr-siblings ul,
+.ic-pr-unlinked ul {
+	margin: 0;
+	padding-inline-start: 18px;
+	font-size: var(--ic-text-2, 13px);
+	color: var(--ic-text-body);
+}
+.ic-pr-skipped li,
+.ic-pr-siblings li,
+.ic-pr-unlinked li {
+	margin-block-end: 2px;
+}
+
+.ic-pr-undo-note {
+	font-size: var(--ic-label, 12px);
+	color: var(--ic-text-muted);
+}
+
+/* SECTION F step 6: MOTION. Every direct child of .ic-drawer-html is a
+   freshly-inserted node on each _open_drawer call (_open_drawer:892 does
+   .empty() then .html(opts.html)) — both the front face's first paint and
+   its swap to the back face on insert-resolve re-create these children, so
+   a plain CSS animation (which always plays on an element's insertion,
+   unlike a transition) fires at both moments with no JS class hook needed.
+   One transform+fade, 180ms; no @keyframes existed before this file; no 3D
+   turn. */
+@keyframes ic-pr-face-in {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+.ic-drawer-html > * {
+	animation: ic-pr-face-in 0.18s ease-out;
+}
+
+.ic-drawer-fields {
+	flex: 1 1 auto;
+	overflow-y: auto;
+	padding-block: 16px;
+	padding-inline: 18px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.ic-drawer-field-label {
+	display: block;
+	margin-block-end: 6px;
+	font-size: var(--ic-label, 12px);
+	font-weight: 600;
+	color: var(--ic-text-body);
+}
+.ic-drawer-field-req {
+	color: var(--ic-critical);
+	margin-inline-start: 2px;
+}
+.ic-drawer-field-input {
+	inline-size: 100%;
+	box-sizing: border-box;
+	padding-block: 8px;
+	padding-inline: 10px;
+	border: 1px solid var(--ic-surface-track);
+	border-radius: var(--ic-radius-field);
+	background: var(--ic-surface-field);
+	color: var(--ic-text-strong);
+	font-size: var(--ic-text-2, 13px);
+}
+.ic-drawer-field-input:focus-visible {
+	outline: 2px solid var(--ic-accent);
+	outline-offset: 1px;
+}
+textarea.ic-drawer-field-input {
+	resize: vertical;
+	min-block-size: 64px;
+}
+.ic-drawer-field-check {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: var(--ic-text-2, 13px);
+	color: var(--ic-text-body);
+}
+.ic-drawer-field-error {
+	margin-block-start: 4px;
+	font-size: var(--ic-label, 11px);
+	color: var(--ic-critical);
+	min-block-size: 14px;
+}
+.ic-drawer-field--error .ic-drawer-field-input {
+	border-color: var(--ic-critical);
+}
+
+.ic-drawer-foot {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	padding-block: 14px;
+	padding-inline: 18px;
+	border-block-start: 1px solid var(--ic-surface-track);
+}
+
+@media (max-width: 640px) {
+	.ic-drawer {
+		inline-size: 100vw;
+		max-inline-size: 100vw;
+	}
+}
+
+/* K-29: at >=1280 the drawer's fixed 420px floats over the inline-end edge
+   of the 3-column grid (css:4127), which is exactly where the detail column
+   sits, hiding the very record a single-record action is confirming. Below
+   1280 the drawer already goes full-width over a single-column layout, so
+   there is no separate record view left to protect. :has() already has a
+   precedent in this sheet (the .checkbox fallback above); it lets the
+   detail column reserve the drawer's own width from itself, without the
+   drawer agent's JS having to toggle a class anywhere but on .ic-drawer
+   itself, which it already does. */
+@media (min-width: 1280px) {
+	.ic-page:has(.ic-drawer.ic-drawer--open) .ic-triage .ic-detail {
+		padding-inline-end: min(420px, 92vw);
+	}
+}
+
+/* K-39: no @media (prefers-reduced-motion: reduce) block existed anywhere in
+   the sheet. The drawer's slide is the only motion today; .ic-cheque is
+   reserved so the payment-request flip this round adds does not have to
+   reopen this guard a second time. SECTION F step 6 landed the flip as
+   .ic-drawer-html > *'s ic-pr-face-in animation (css:5497) instead of a
+   class the reserved .ic-cheque selector would match — .ic-cheque is kept
+   here rather than deleted (T6) and the real selector is added beside it. */
+@media (prefers-reduced-motion: reduce) {
+	.ic-drawer {
+		transition: none;
+	}
+	.ic-cheque,
+	.ic-drawer-html > * {
+		transition: none;
+		animation: none;
+	}
+}
+
+/* K-15: _pick_primary can return the destructive action as the only legal
+   one, which otherwise wears the same dark .ic-btn--primary an approval
+   does. This reads as refusal rather than approval wherever it lands. */
+.ic-page .ic-btn--danger {
+	border: 1px solid var(--ic-critical-line);
+	background: var(--ic-critical-bg);
+	font-weight: 600;
+	color: var(--ic-critical);
+}
+.ic-page .ic-btn--danger:hover {
+	background: var(--ic-critical);
+	color: var(--ic-text-on-dark);
+}
+
+/* K-24: ic_triage.js's own H-03 comment declares the employee number the
+   row's title; it rendered as plain body text while .ic-row-name below it
+   read bolder and darker, inverting the scan order the code itself
+   declares. .ic-row-name's own weight is lowered beside its early rule. */
+.ic-page .ic-triage .ic-row-employee {
+	font-weight: 700;
+	color: var(--ic-fg);
+}
+.ic-page .ic-triage .ic-row-name {
+	color: var(--ic-fg-2);
+}
+
+.ic-row-nopick {
+	flex: 0 0 14px;
+	inline-size: 14px;
+	block-size: 14px;
+}
+
+.ic-b-nopick {
+	flex: 0 0 auto;
+	inline-size: 16px;
+	block-size: 16px;
+}
+
+.ic-page .ic-b-line {
+	display: flex;
+	align-items: center;
+	gap: 0;
+	min-block-size: 56px;
+	padding-inline: var(--ic-pad-inline);
+	background: var(--ic-surface);
+	border-block-end: 1px solid var(--ic-line);
+	overflow-x: auto;
+}
+
+.ic-page .ic-b-stage {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 8px;
+	border: 0;
+	background: transparent;
+	padding-block: 0;
+	padding-inline: 8px;
+	color: var(--ic-text-muted);
+}
+
+.ic-page .ic-b-stage.is-on {
+	color: var(--ic-text-strong);
+}
+
+.ic-page .ic-b-stage-label {
+	white-space: nowrap;
+}
+
+.ic-page .ic-b-stage-dot {
+	flex: 0 0 auto;
+	inline-size: 20px;
+	block-size: 20px;
+	border-radius: 50%;
+	background: var(--ic-surface-track);
+}
+
+.ic-page .ic-b-stage.is-done .ic-b-stage-dot {
+	background: var(--ic-text-faint);
+}
+
+.ic-page .ic-b-stage.is-on .ic-b-stage-dot {
+	background: var(--ic-accent);
+}
+
+.ic-page .ic-b-stage-link {
+	flex: 1 1 0;
+	min-inline-size: 12px;
+	block-size: 2px;
+	background: var(--ic-line);
+}
+
+.ic-page .ic-b-stage-link.is-done {
+	background: var(--ic-text-faint);
+}
+
+.ic-page .ic-b-side {
+	flex: 0 0 260px;
+	min-inline-size: 0;
+	order: -1;
+}
+
+.ic-page .ic-b-side:empty {
+	display: none;
+}
+
+.ic-page .ic-b-ask-amount {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 8px;
+	margin-block: 0;
+}
+
+.ic-page .ic-b-ask-amount-label {
+	color: var(--ic-text-muted);
+}
+
+.ic-page .ic-b-ask-amount-value {
+	color: var(--ic-text-strong);
+}
+
+.ic-page .ic-b-ask-amount-of {
+	color: var(--ic-text-muted);
+}
+
+.ic-chart-card--dim {
+	flex: 0 1 300px;
+	min-inline-size: 0;
+}
+
+.ic-dim-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+}
+
+.ic-dim-modes {
+	display: inline-flex;
+	gap: 4px;
+}
+
+.ic-dim-mode {
+	min-block-size: 18px;
+	padding-block: 0;
+	padding-inline: 6px;
+	border: 1px solid var(--ic-line);
+	border-radius: var(--ic-radius-chip);
+	background: none;
+	font-size: 9px;
+	line-height: 11px;
+	color: var(--ic-text-faint);
+}
+
+.ic-dim-mode.is-on {
+	background: var(--ic-surface-track);
+	color: var(--ic-text-body);
+}
+
+.ic-page .ic-chart-card--dim .ic-share-list {
+	margin-block-start: 10px;
+}
+
+.ic-page .ic-dim-mode {
+	font-size: var(--ic-label);
+	line-height: 15px;
+	min-block-size: 22px;
+}
+
+.ic-meter {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	inline-size: 100%;
+}
+
+.ic-meter-track {
+	block-size: 4px;
+	border-radius: 2px;
+	background: var(--ic-surface-track);
+	overflow: clip;
+}
+
+.ic-meter-fill {
+	display: block;
+	block-size: 100%;
+	background: var(--ic-accent);
+}
+
+.ic-meter-share {
+	font-size: 9px;
+	line-height: 11px;
+	color: var(--ic-text-faint);
+}
+
+.ic-meter--risk .ic-meter-fill {
+	background: var(--ic-critical);
+}
+
+.ic-page .ic-kpi-card .ic-meter-share {
+	display: block;
+	font-size: var(--ic-label);
+	line-height: 15px;
+	color: var(--ic-fg-2);
+}
+
+.ic-rtl .ic-page .ic-kpi-card .ic-meter-share {
+	font-size: 12px;
+	line-height: 17px;
+}
+
+.ic-page .ic-hbar-count {
+	font-size: var(--ic-label);
+	line-height: 15px;
+	color: var(--ic-fg);
+}
+
+.ic-page .ic-hbar-value .ic-meter-share {
+	font-size: 9px;
+	line-height: 11px;
+	color: var(--ic-fg-2);
+	white-space: nowrap;
+}
+
+.ic-tri-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	min-inline-size: 0;
+}
+
+.ic-tri-wrap > .ic-triage {
+	flex: 0 0 auto;
+	min-inline-size: 0;
+}
+
+.ic-tri-filters:empty,
+.ic-triage .ic-rail-filters:empty {
+	display: none;
+}
+
+/* B3-collision guard: .ic-narrow is now also toggled by iqama_control.js
+   onto .ic-view (the page's own view container) to compact the chrome below
+   1023px. This block predates that and was written for an unrelated narrow
+   chip widget with its own head/chip/label/value parts below. Excluding
+   .ic-view here keeps that widget's rule alive for whatever emits it while
+   stopping it from hijacking the view container's display. */
+.ic-narrow:not(.ic-view) {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	padding-inline: var(--ic-pad-inline);
+	padding-block: 0 8px;
+}
+

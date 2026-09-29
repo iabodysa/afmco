@@ -1,0 +1,13 @@
+{
+ "doctype": "Number Card",
+ "document_type": "Notification Log",
+ "filters_json": "[[\"Notification Log\", \"read\", \"=\", 0]]",
+ "function": "Count",
+ "is_public": 1,
+ "is_standard": 1,
+ "label": "Unread Notifications",
+ "modified": "2026-09-28 14:00:00.000000",
+ "module": "People and Payroll",
+ "name": "Unread Notifications",
+ "type": "Document Type"
+}

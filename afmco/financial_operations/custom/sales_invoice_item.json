@@ -1,0 +1,206 @@
+{
+ "custom_fields": [
+  {
+   "allow_on_submit": "1",
+   "dt": "Sales Invoice Item",
+   "fieldname": "day_hour",
+   "fieldtype": "Data",
+   "idx": "8",
+   "insert_after": "delivery_date",
+   "is_system_generated": "1",
+   "label": "Quantity",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-day_hour",
+   "translatable": "1"
+  },
+  {
+   "dt": "Sales Invoice Item",
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "idx": "7",
+   "insert_after": "item_name",
+   "is_system_generated": "1",
+   "label": "Delivery Date",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-delivery_date",
+   "print_hide": "1",
+   "translatable": "1"
+  },
+  {
+   "dt": "Sales Invoice Item",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "idx": "102",
+   "insert_after": "dimension_col_break",
+   "is_system_generated": "1",
+   "label": "Employee",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-employee",
+   "options": "Employee"
+  },
+  {
+   "allow_on_submit": "1",
+   "dt": "Sales Invoice Item",
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "idx": "3",
+   "insert_after": "item_code",
+   "is_system_generated": "1",
+   "label": "Location",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-location",
+   "translatable": "1"
+  },
+  {
+   "allow_on_submit": "1",
+   "dt": "Sales Invoice Item",
+   "fieldname": "ot_hour",
+   "fieldtype": "Data",
+   "idx": "4",
+   "insert_after": "location",
+   "is_system_generated": "1",
+   "label": "OT Hour",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-ot_hour",
+   "translatable": "1"
+  },
+  {
+   "allow_on_submit": "1",
+   "dt": "Sales Invoice Item",
+   "fetch_from": "item_code.tax_code",
+   "fieldname": "tax_code",
+   "fieldtype": "Read Only",
+   "idx": "12",
+   "insert_after": "description",
+   "is_system_generated": "1",
+   "label": "Tax Code",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-tax_code",
+   "print_hide": "1",
+   "translatable": "1"
+  }
+ ],
+ "doctype": "Sales Invoice Item",
+ "property_setters": [
+  {
+   "doc_type": "Sales Invoice Item",
+   "doctype_or_field": "DocField",
+   "field_name": "barcode",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-barcode-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Sales Invoice Item",
+   "doctype_or_field": "DocField",
+   "field_name": "discount_account",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-discount_account-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Sales Invoice Item",
+   "doctype_or_field": "DocField",
+   "field_name": "discount_account",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-discount_account-mandatory_depends_on",
+   "property": "mandatory_depends_on",
+   "property_type": "Code",
+   "value": ""
+  },
+  {
+   "doc_type": "Sales Invoice Item",
+   "doctype_or_field": "DocField",
+   "field_name": "income_account",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-income_account-default",
+   "property": "default",
+   "property_type": "Text",
+   "value": "128001 - المبيعات المستحقة - AF"
+  },
+  {
+   "doc_type": "Sales Invoice Item",
+   "doctype_or_field": "DocField",
+   "field_name": "net_amount",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-net_amount-precision",
+   "property": "precision",
+   "property_type": "Select",
+   "value": "5"
+  },
+  {
+   "doc_type": "Sales Invoice Item",
+   "doctype_or_field": "DocField",
+   "field_name": "net_rate",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-net_rate-precision",
+   "property": "precision",
+   "property_type": "Select",
+   "value": "5"
+  },
+  {
+   "doc_type": "Sales Invoice Item",
+   "doctype_or_field": "DocField",
+   "field_name": "qty",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-qty-label",
+   "property": "label",
+   "property_type": "Data",
+   "value": "Day/Hour"
+  },
+  {
+   "doc_type": "Sales Invoice Item",
+   "doctype_or_field": "DocField",
+   "field_name": "qty",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-qty-precision",
+   "property": "precision",
+   "property_type": "Select",
+   "value": ""
+  },
+  {
+   "doc_type": "Sales Invoice Item",
+   "doctype_or_field": "DocField",
+   "field_name": "rate",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-rate-label",
+   "property": "label",
+   "property_type": "Data",
+   "value": "Rate PerDay - Hour"
+  },
+  {
+   "doc_type": "Sales Invoice Item",
+   "doctype_or_field": "DocField",
+   "field_name": "rate",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-rate-precision",
+   "property": "precision",
+   "property_type": "Select",
+   "value": "5"
+  },
+  {
+   "doc_type": "Sales Invoice Item",
+   "doctype_or_field": "DocField",
+   "field_name": "target_warehouse",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Sales Invoice Item-target_warehouse-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  }
+ ],
+ "sync_on_migrate": 1
+}

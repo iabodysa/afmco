@@ -1,0 +1,199 @@
+{
+ "allow_rename": 1,
+ "creation": "2024-05-20 21:34:43.004943",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee_section",
+  "employee",
+  "column_break_full_name",
+  "employee_name",
+  "column_break_corporation",
+  "corporation",
+  "service",
+  "service_type",
+  "exit_reentry_visa_service_section",
+  "visa_duration_in_days",
+  "return_before_a_specific_date",
+  "column_break_visa_type",
+  "type_of_visa",
+  "renew_iqama_service_section",
+  "iqama_duration_in_months",
+  "update_information_service",
+  "new_information",
+  "authentication",
+  "user",
+  "password",
+  "column_break_application_credentials",
+  "application_id",
+  "application_key",
+  "section_api_response",
+  "response",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee_section",
+   "fieldtype": "Section Break",
+   "label": "Employee"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Iqama Number",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_full_name",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "column_break_corporation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.corporation",
+   "fieldname": "corporation",
+   "fieldtype": "Link",
+   "label": "Corporation",
+   "options": "Corporation"
+  },
+  {
+   "fieldname": "service",
+   "fieldtype": "Section Break",
+   "label": "Service"
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Select",
+   "label": "Service Type",
+   "options": "\nCancel Exit Re-Entry Visa\nReprint Exit Re-Entry Visa\nCancel Final Exit Visa\nExtend Passport Validity\nRenew Passport\nRenew Iqama\nIssue Iqama\nExtend Visit Visa\nIssue Final Exit during the Probationary Period\nIqama Transfer\nCheck MOL Approval for Changing Occupation\nChange Occupation\nExtend Exit Re-Entry Visa\nOther"
+  },
+  {
+   "fieldname": "exit_reentry_visa_service_section",
+   "fieldtype": "Section Break",
+   "label": "Exit Reentry Visa Service"
+  },
+  {
+   "fieldname": "visa_duration_in_days",
+   "fieldtype": "Int",
+   "label": "Visa Duration in Days"
+  },
+  {
+   "fieldname": "return_before_a_specific_date",
+   "fieldtype": "Data",
+   "label": "Return Before a Specific Date"
+  },
+  {
+   "fieldname": "column_break_visa_type",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "type_of_visa",
+   "fieldtype": "Select",
+   "label": "Type of Visa",
+   "options": "\nSingle\nMultiple"
+  },
+  {
+   "fieldname": "renew_iqama_service_section",
+   "fieldtype": "Section Break",
+   "label": "Renew Iqama Service"
+  },
+  {
+   "fieldname": "iqama_duration_in_months",
+   "fieldtype": "Int",
+   "label": "Iqama Duration in Months"
+  },
+  {
+   "fieldname": "update_information_service",
+   "fieldtype": "Section Break",
+   "label": "Update Information Service"
+  },
+  {
+   "fieldname": "new_information",
+   "fieldtype": "Data",
+   "label": "New Information"
+  },
+  {
+   "fieldname": "authentication",
+   "fieldtype": "Section Break",
+   "label": "Authentication"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Data",
+   "label": "User"
+  },
+  {
+   "fieldname": "password",
+   "fieldtype": "Password",
+   "label": "Password"
+  },
+  {
+   "fieldname": "column_break_application_credentials",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "corporation.app_id",
+   "fieldname": "application_id",
+   "fieldtype": "Data",
+   "label": "Application ID"
+  },
+  {
+   "fetch_from": "corporation.app_key",
+   "fieldname": "application_key",
+   "fieldtype": "Data",
+   "label": "Application Key"
+  },
+  {
+   "fieldname": "section_api_response",
+   "fieldtype": "Section Break",
+   "label": "API Response"
+  },
+  {
+   "fieldname": "response",
+   "fieldtype": "Text",
+   "label": "API Response"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Muqeem",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "modified": "2024-05-20 22:11:32.755895",
+ "module": "People and Payroll",
+ "name": "Muqeem",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "employee_name"
+}

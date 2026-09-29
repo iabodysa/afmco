@@ -1,0 +1,1181 @@
+// --- NEW ICONS OBJECT ---
+const dashboard_icons = {
+    plane: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path></svg>`,
+    invoice: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`,
+    sort: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18M3 10h12M3 16h6"></path></svg>`,
+    sortUp: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18M3 10h12M3 16h6m12-6l-3-3-3 3m3 3V4"></path></svg>`,
+    sortDown: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18M3 10h12M3 16h6m12 6l-3-3-3 3m3-3v9"></path></svg>`,
+    check: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`,
+    cross: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`,
+    clock: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`,
+    arrowRight: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`,
+    externalLink: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>`,
+};
+
+/* ---------------------------------- */
+/* Vacation History Dashboard        */
+/* ---------------------------------- */
+
+async function renderVacationDashboard_old(employee, excludeDocname) {
+    const containerId = 'vacation-history-dashboard';
+    const oldDashboard = document.getElementById(containerId);
+    if (oldDashboard) oldDashboard.remove();
+
+    if (!employee) return;
+
+    const vaList = await fetchVacationAllowanceList(employee, excludeDocname);
+    if (!vaList || vaList.length === 0) return;
+
+    const vacationDetails = await fetchVacationDetails(vaList);
+    const structuredData = structureVacationData(vacationDetails);
+    if (structuredData.length === 0) return;
+
+    const dashboardElement = createVacationDashboard(structuredData);
+    const host = document.querySelector(".layout-main-section") || cur_frm.wrapper;
+    host.prepend(dashboardElement);
+
+    setTimeout(enableVacationSorting, 100);
+}
+
+async function fetchVacationAllowanceList(employee, excludeDocname) {
+    const { message } = await frappe.call({
+        method: "frappe.client.get_list",
+        args: {
+            doctype: "Vacation Allowance",
+            filters: [
+                ["employee", "=", employee],
+                ["name", "!=", excludeDocname],
+                ["docstatus", "in", [0, 1, 2]]
+            ],
+            fields: ["name", "docstatus", "workflow_state"],
+            order_by: "creation desc",
+            limit: 1000
+        }
+    });
+    return message || [];
+}
+
+async function fetchVacationDetails(vaList) {
+    return await Promise.allSettled(
+        vaList.map(d => frappe.call({
+            method: "frappe.client.get",
+            args: { doctype: "Vacation Allowance", name: d.name }
+        }))
+    );
+}
+
+function structureVacationData(settled) {
+    const rows = [];
+    settled.forEach((res) => {
+        if (res.status !== "fulfilled") return;
+        const doc = res.value.message;
+        if (!doc || !doc.cva) return;
+
+        const { statusLabel, badgeClass } = getDocumentStatus(doc);
+
+        doc.cva.forEach(row => {
+            rows.push({
+                document: doc.name,
+                docBadge: badgeClass,
+                docStatus: statusLabel,
+                start: frappe.datetime.str_to_user(row.contract_start_date),
+                end: frappe.datetime.str_to_user(row.contract_end_date)
+            });
+        });
+    });
+    return rows;
+}
+
+
+/* ---------------------------------- */
+/* Payment Request Dashboard          */
+/* ---------------------------------- */
+async function renderPaymentRequestDashboard_old(docname, pr_status) {
+    const containerId = "payment-requests-dashboard";
+    const oldDashboard = document.getElementById(containerId);
+    if (oldDashboard) oldDashboard.remove();
+    
+    if (pr_status !== "PR Created") return;
+
+    const payments = await fetchPaymentRequests(docname);
+    if (!payments || !payments.length) return;
+
+    const dashboardElement = createPaymentRequestDashboard(payments, containerId);
+    const host = document.querySelector(".layout-main-section") || cur_frm.wrapper;
+    host.prepend(dashboardElement);
+}
+
+async function fetchPaymentRequests(docname) {
+    try {
+        const { message } = await frappe.call({
+            method: "frappe.client.get_list",
+            args: {
+                doctype: "Expense Request Afmco",
+                filters: { tax_invoice_number: docname },
+                fields: ["name", "amount", "workflow_state"],
+                limit: 10
+            }
+        });
+        return message || [];
+    } catch (err) {
+        console.warn("No permission to view Payment Requests:", err);
+        return [];
+    }
+}
+
+
+/* ---------------------------------- */
+/* --- Dashboard UI Generation ---    */
+/* ---------------------------------- */
+
+function getDocumentStatus_old(doc) {
+    let statusLabel, badgeClass, icon;
+    const state = doc.workflow_state || '';
+    if (state.includes("Rejected") || (doc.docstatus === 2)) {
+        statusLabel = state || "Cancelled";
+        badgeClass = "danger";
+        icon = dashboard_icons.cross;
+    } else if (state.includes("Approved") || state.includes("Paid") || (doc.docstatus === 1)) {
+        statusLabel = state || "Paid";
+        badgeClass = "success";
+        icon = dashboard_icons.check;
+    } else {
+        statusLabel = state || "Pending";
+        badgeClass = "warning";
+        icon = dashboard_icons.clock;
+    }
+    return { statusLabel, badgeClass, icon };
+}
+
+function createVacationDashboard_old(rows) {
+    const containerId = "vacation-history-dashboard";
+    
+    const groupedDocs = rows.reduce((acc, r) => {
+        if (!acc[r.document]) {
+            acc[r.document] = { badge: r.docBadge, status: r.docStatus, rows: [] };
+        }
+        acc[r.document].rows.push(r);
+        return acc;
+    }, {});
+
+    const dashboardHTML = `
+    <style>
+        .vd-card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; margin: 20px 0; font-family: 'Inter', sans-serif; }
+        .vd-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid #e5e7eb; }
+        .vd-title-group { display: flex; align-items: center; gap: 12px; }
+        .vd-title-icon { color: var(--primary, #3b82f6); }
+        .vd-title-icon svg { width: 24px; height: 24px; }
+        .vd-title { font-size: 18px; font-weight: 600; color: #111827; margin: 0; }
+        .vd-sort-btn { background: #fff; border: 1px solid #d1d5db; color: #374151; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+        .vd-sort-btn svg { width: 14px; height: 14px; }
+        .vd-document-section { margin-bottom: 12px; background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
+        .vd-summary { padding: 12px 16px; cursor: pointer; display: flex; align-items: center; gap: 12px; list-style: none; }
+        .vd-summary::-webkit-details-marker { display: none; }
+        .vd-doc-name { flex: 1; font-weight: 500; color: #1f2937; }
+        .vd-status-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; }
+        .vd-status-pill.success { background-color: #ecfdf5; color: #065f46; }
+        .vd-status-pill.danger { background-color: #fef2f2; color: #991b1b; }
+        .vd-status-pill.warning { background-color: #fffbeb; color: #92400e; }
+        .vd-status-pill svg { width: 14px; height: 14px; }
+        .vd-periods-table-container { padding: 0 16px 16px; }
+        .vd-periods-table { width: 100%; border-collapse: collapse; }
+        .vd-periods-table th, .vd-periods-table td { text-align: left; padding: 10px; border-bottom: 1px solid #f3f4f6; font-size: 13px; }
+        .vd-periods-table th { color: #6b7280; font-weight: 500; }
+        .vd-periods-table tr:last-child td { border-bottom: none; }
+        .vd-period-cell { display: flex; align-items: center; gap: 8px; }
+        .vd-period-cell svg { width: 14px; height: 14px; color: #9ca3af; }
+        .vd-open-btn { background: transparent; border: none; color: var(--primary, #3b82f6); cursor: pointer; display: inline-flex; align-items: center; gap: 4px; font-weight: 500; }
+        .vd-open-btn svg { width: 14px; height: 14px; }
+    </style>
+    <div id="${containerId}" class="vd-card">
+        <div class="vd-header">
+            <div class="vd-title-group">
+                <span class="vd-title-icon">${dashboard_icons.plane}</span>
+                <h4 class="vd-title">Vacation History</h4>
+            </div>
+            <button class="vd-sort-btn" id="sort-vh"><span class="icon">${dashboard_icons.sort}</span> Sort</button>
+        </div>
+        <div class="vacation-documents">
+            ${Object.keys(groupedDocs).map(docName => {
+                const doc = groupedDocs[docName];
+                const { icon } = getDocumentStatus({ workflow_state: doc.status, docstatus: 0 }); // pass dummy docstatus
+                return `
+                <details class="vd-document-section">
+                    <summary class="vd-summary">
+                        <span class="vd-status-pill ${doc.badge}"><span class="icon">${icon}</span> ${doc.status}</span>
+                        <strong class="vd-doc-name">${docName}</strong>
+                    </summary>
+                    <div class="vd-periods-table-container">
+                        <table class="vd-periods-table">
+                            <thead><tr><th>Period</th><th style="text-align:right;">Action</th></tr></thead>
+                            <tbody>
+                            ${doc.rows.map(row => `
+                                <tr>
+                                    <td>
+                                        <div class="vd-period-cell">
+                                            <span>${row.start}</span>
+                                            <span class="icon">${dashboard_icons.arrowRight}</span>
+                                            <span>${row.end}</span>
+                                        </div>
+                                    </td>
+                                    <td style="text-align:right;">
+                                        <button class="vd-open-btn" onclick="frappe.set_route('Form','Vacation Allowance','${docName}')">
+                                            <span class="icon">${dashboard_icons.externalLink}</span> Open
+                                        </button>
+                                    </td>
+                                </tr>`).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </details>`;
+            }).join('')}
+        </div>
+    </div>`;
+
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = dashboardHTML;
+    return wrapper;
+}
+
+function createPaymentRequestDashboard_old(payments, containerId) {
+    const totalAmount = payments.reduce((sum, p) => sum + (p.amount || 0), 0);
+
+    const dashboardHTML = `
+    <style>
+        .pr-card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; margin: 20px 0; font-family: 'Inter', sans-serif; }
+        .pr-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid #e5e7eb; }
+        .pr-title-group { display: flex; align-items: center; gap: 12px; }
+        .pr-title-icon { color: var(--primary, #16a34a); }
+        .pr-title-icon svg { width: 24px; height: 24px; }
+        .pr-title { font-size: 18px; font-weight: 600; color: #111827; margin: 0; }
+        .pr-count-pill { background-color: #dcfce7; color: #15803d; font-size: 13px; font-weight: 500; padding: 6px 12px; border-radius: 999px; }
+        .pr-table-wrapper { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
+        .pr-table { width: 100%; border-collapse: collapse; }
+        .pr-table th, .pr-table td { text-align: left; padding: 12px; border-bottom: 1px solid #f3f4f6; font-size: 13px; }
+        .pr-table thead { background-color: #f9fafb; }
+        .pr-table th { color: #6b7280; font-weight: 500; }
+        .pr-table tr:last-child td { border-bottom: none; }
+        .pr-table tfoot td { font-weight: 600; }
+        .pr-total-amount { color: #15803d; font-size: 16px; }
+        .pr-status-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; white-space: nowrap; }
+        .pr-status-pill.success { background-color: #ecfdf5; color: #065f46; }
+        .pr-status-pill.danger { background-color: #fef2f2; color: #991b1b; }
+        .pr-status-pill.warning { background-color: #fffbeb; color: #92400e; }
+        .pr-status-pill svg { width: 14px; height: 14px; }
+        .pr-open-btn { background: transparent; border: none; color: var(--primary, #3b82f6); cursor: pointer; display: inline-flex; align-items: center; gap: 4px; font-weight: 500; }
+        .pr-open-btn svg { width: 14px; height: 14px; }
+    </style>
+    <div id="${containerId}" class="pr-card">
+        <div class="pr-header">
+            <div class="pr-title-group">
+                <span class="pr-title-icon">${dashboard_icons.invoice}</span>
+                <h4 class="pr-title">Payment Requests</h4>
+            </div>
+            <span class="pr-count-pill">${payments.length} Request${payments.length !== 1 ? 's' : ''}</span>
+        </div>
+        <div class="pr-table-wrapper">
+            <table class="pr-table">
+                <thead><tr><th>Document</th><th>Status</th><th style="text-align:right;">Amount</th><th style="text-align:center;">Action</th></tr></thead>
+                <tbody>
+                ${payments.map(p => {
+                    const { statusLabel, badgeClass, icon } = getDocumentStatus({ workflow_state: p.workflow_state, docstatus: 0 });
+                    return `
+                    <tr>
+                        <td>${p.name}</td>
+                        <td><span class="pr-status-pill ${badgeClass}"><span class="icon">${icon}</span> ${statusLabel}</span></td>
+                        <td style="text-align:right; font-weight: 500;">${(p.amount || 0).toLocaleString('en-US')} SAR</td>
+                        <td style="text-align:center;">
+                            <button class="pr-open-btn" onclick="frappe.set_route('Form', 'Expense Request Afmco', '${p.name}')">
+                                <span class="icon">${dashboard_icons.externalLink}</span> Open
+                            </button>
+                        </td>
+                    </tr>`;
+                }).join('')}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">Total</td>
+                        <td class="pr-total-amount" style="text-align:right;">${totalAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} SAR</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>`;
+
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = dashboardHTML;
+    return wrapper;
+}
+
+function enableVacationSorting_old() {
+    const sortButton = document.getElementById("sort-vh");
+    if (!sortButton) return;
+    
+    sortButton.onclick = function() {
+        const container = document.getElementById("vacation-history-dashboard");
+        if (!container) return;
+        
+        const host = document.querySelector(".layout-main-section") || cur_frm.wrapper;
+        const documentsContainer = container.querySelector(".vacation-documents");
+        if (!documentsContainer) return;
+
+        const list = Array.from(documentsContainer.querySelectorAll("details.vd-document-section"));
+        
+        const asc = !host.__vhAsc;
+        
+        list.sort((a, b) => {
+            const textA = a.querySelector("strong.vd-doc-name").textContent.trim();
+            const textB = b.querySelector("strong.vd-doc-name").textContent.trim();
+            return asc ? textA.localeCompare(textB) : textB.localeCompare(textA);
+        });
+        
+        list.forEach(el => documentsContainer.appendChild(el));
+        
+        host.__vhAsc = asc;
+        
+        sortButton.querySelector('.icon').innerHTML = asc ? dashboard_icons.sortUp : dashboard_icons.sortDown;
+    };
+}
+
+/* ---------------------------------- */
+/* --- Main Form Event Handler ---    */
+/* ---------------------------------- */
+function fmt(value) {
+    if (!value) return __('SAR', null, 'Vacation Allowance') + ' 0.00';
+    return `${__('SAR', null, 'Vacation Allowance')} ${parseFloat(value).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    })}`;
+}
+function updateDashboards_old(frm) {
+    renderVacationDashboard(frm.doc.employee, frm.doc.name);
+    renderPaymentRequestDashboard(frm.doc.name, frm.doc.pr_status);
+}
+
+async function updateDashboards(frm) {
+    if (!frm.doc.employee) return;
+    
+    let vacationHTML = '';
+    let paymentHTML = '';
+    
+    try {
+        const { message: vaList } = await frappe.call({
+            method: "frappe.client.get_list",
+            args: {
+                doctype: "Vacation Allowance",
+                filters: [
+                    ["employee", "=", frm.doc.employee],
+                    ["name", "!=", frm.doc.name],
+                    ["docstatus", "in", [0, 1, 2]]
+                ],
+                fields: ["name", "docstatus", "workflow_state"],
+                order_by: "creation desc",
+                limit: 1000
+            }
+        });
+        
+        if (vaList && vaList.length > 0) {
+            const settled = await Promise.allSettled(
+                vaList.map(d => frappe.call({
+                    method: "frappe.client.get",
+                    args: { doctype: "Vacation Allowance", name: d.name }
+                }))
+            );
+            
+            const rows = [];
+            settled.forEach((res) => {
+                if (res.status !== "fulfilled") return;
+                const doc = res.value.message;
+                if (!doc || !doc.cva) return;
+                
+                let statusLabel, badgeClass;
+                if (doc.workflow_state) {
+                    statusLabel = doc.workflow_state;
+                    if (statusLabel.includes("Rejected")) {
+                        badgeClass = "danger";
+                    } else if (statusLabel.includes("Approved") || statusLabel.includes("Paid")) {
+                        badgeClass = "success";
+                    } else {
+                        badgeClass = "warning";
+                    }
+                } else {
+                    switch (doc.docstatus) {
+                        case 1:
+                            statusLabel = "Paid";
+                            badgeClass = "success";
+                            break;
+                        case 2:
+                            statusLabel = "Cancelled";
+                            badgeClass = "danger";
+                            break;
+                        default:
+                            statusLabel = "Pending";
+                            badgeClass = "warning";
+                    }
+                }
+                
+                doc.cva.forEach(row => {
+                    rows.push({
+                        document: doc.name,
+                        docBadge: badgeClass,
+                        docStatus: statusLabel,
+                        start: frappe.datetime.str_to_user(row.contract_start_date),
+                        end: frappe.datetime.str_to_user(row.contract_end_date)
+                    });
+                });
+            });
+            
+            if (rows.length > 0) {
+                const groupedDocs = rows.reduce((acc, r) => {
+                    if (!acc[r.document]) {
+                        acc[r.document] = { badge: r.docBadge, status: r.docStatus, rows: [] };
+                    }
+                    acc[r.document].rows.push(r);
+                    return acc;
+                }, {});
+                
+                let docsHTML = '';
+                Object.keys(groupedDocs).forEach((docName, index) => {
+                    const doc = groupedDocs[docName];
+                    const collapseId = `vacation-collapse-${index}`;
+                    docsHTML += `
+                        <div class="col-12 mb-2">
+                            <div class="vacation-card">
+                                <div class="card-header collapsible" data-toggle="collapse" data-target="#${collapseId}">
+                                    <div class="header-content">
+                                        <span class="document-name">${docName}</span>
+                                        <span class="indicator-pill ${doc.badge}">${doc.status}</span>
+                                    </div>
+                                    <span class="collapse-icon">
+                                        <svg class="icon icon-xs">
+                                            <use href="#icon-down"></use>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div id="${collapseId}" class="collapse">
+                                    <table class="vacation-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th class="text-right">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${doc.rows.map(row => `
+                                                <tr>
+                                                    <td>${row.start}</td>
+                                                    <td>${row.end}</td>
+                                                    <td class="text-right">
+                                                        <a class="btn-link" onclick="frappe.set_route('Form','Vacation Allowance','${docName}')">
+                                                            Open →
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            `).join('')}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                vacationHTML = `
+                    <div class="dashboard-section">
+                        <h6 class="section-title">Vacation History</h6>
+                        <div class="row">${docsHTML}</div>
+                    </div>
+                `;
+            }
+        }
+    } catch (err) {
+        console.warn("Error fetching vacation data:", err);
+    }
+    
+    if (frm.doc.pr_status === "PR Created") {
+        try {
+            const { message: payments } = await frappe.call({
+                method: "frappe.client.get_list",
+                args: {
+                    doctype: "Expense Request Afmco",
+                    filters: { tax_invoice_number: frm.doc.name },
+                    fields: ["name", "amount", "workflow_state"],
+                    limit: 10
+                }
+            });
+            
+            if (payments && payments.length > 0) {
+                const totalAmount = payments.reduce((sum, p) => sum + (p.amount || 0), 0);
+                
+                const summaryCards = `
+                    <div class="payment-summary">
+                        <div class="summary-card">
+                            <div class="summary-label">Requests</div>
+                            <div class="summary-value">${payments.length}</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-label">Total Amount</div>
+                            <div class="summary-value primary">${fmt(totalAmount)}</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-label">Status</div>
+                            <div class="summary-badge">
+                                <span class="indicator-pill ${frm.doc.pr_status === 'PR Created' ? 'success' : 'warning'}">${frm.doc.pr_status}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                const paymentsTable = payments.map(p => {
+                    const statusClass = p.workflow_state?.includes('Approved') ? 'success' : 
+                                       p.workflow_state?.includes('Rejected') ? 'danger' : 'warning';
+                    return `
+                        <tr>
+                            <td><strong>${p.name}</strong></td>
+                            <td class="amount-cell">${fmt(p.amount)}</td>
+                            <td><span class="indicator-pill ${statusClass}">${p.workflow_state || 'Pending'}</span></td>
+                            <td class="text-right">
+                                <a class="btn-link" onclick="frappe.set_route('Form', 'Expense Request Afmco', '${p.name}')">
+                                    Open →
+                                </a>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+                
+                paymentHTML = `
+                    <div class="dashboard-section">
+                        <h6 class="section-title">Payment Requests</h6>
+                        ${summaryCards}
+                        <div class="payment-card">
+                            <table class="payment-table">
+                                <thead>
+                                    <tr>
+                                        <th>Document</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th class="text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>${paymentsTable}</tbody>
+                                <tfoot>
+                                    <tr class="total-row">
+                                        <td><strong>Total</strong></td>
+                                        <td class="amount-cell total">${fmt(totalAmount)}</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }
+        } catch (err) {
+            console.warn("Error fetching payment data:", err);
+        }
+    }
+    
+    if (vacationHTML || paymentHTML) {
+        const combinedHTML = `
+            <div id="combined-dashboard">
+                ${vacationHTML}
+                ${paymentHTML}
+                <style>
+                    #combined-dashboard { margin: 10px 0; }
+                    .dashboard-section { margin-bottom: 15px; }
+                    .section-title {
+                        font-size: 13px;
+                        font-weight: 600;
+                        color: var(--text-color);
+                        margin: 0 0 8px 0;
+                        padding: 0;
+                    }
+                    .vacation-card, .payment-card {
+                        background: var(--card-bg, #ffffff);
+                        border: 1px solid var(--border-color);
+                        border-radius: var(--border-radius);
+                        overflow: hidden;
+                    }
+                    .card-header {
+                        padding: 8px 10px;
+                        background: var(--bg-light-gray);
+                        border-bottom: 1px solid var(--border-color);
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        cursor: pointer;
+                        transition: background 0.2s;
+                    }
+                    .card-header:hover {
+                        background: var(--gray-100);
+                    }
+                    .card-header .header-content {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        flex: 1;
+                    }
+                    .card-header .collapse-icon {
+                        transition: transform 0.2s;
+                        color: var(--text-muted);
+                    }
+                    .card-header[aria-expanded="true"] .collapse-icon {
+                        transform: rotate(180deg);
+                    }
+                    .document-name {
+                        font-weight: 500;
+                        color: var(--text-color);
+                        font-size: 13px;
+                    }
+                    .indicator-pill {
+                        padding: 2px 8px;
+                        border-radius: 10px;
+                        font-size: 11px;
+                        font-weight: 500;
+                        display: inline-block;
+                    }
+                    .indicator-pill.success {
+                        background: var(--indicator-green-bg, #dcfce7);
+                        color: var(--indicator-green, #15803d);
+                    }
+                    .indicator-pill.danger {
+                        background: var(--indicator-red-bg, #fee2e2);
+                        color: var(--indicator-red, #b91c1c);
+                    }
+                    .indicator-pill.warning {
+                        background: var(--indicator-yellow-bg, #fef9c3);
+                        color: var(--indicator-yellow, #a16207);
+                    }
+                    .vacation-table, .payment-table {
+                        width: 100%;
+                        margin: 0;
+                        border-collapse: collapse;
+                    }
+                    .vacation-table thead th, .payment-table thead th {
+                        padding: 6px 10px;
+                        font-size: 12px;
+                        font-weight: 500;
+                        color: var(--text-muted);
+                        background: var(--bg-light-gray);
+                        border-bottom: 1px solid var(--border-color);
+                        text-align: left;
+                    }
+                    .vacation-table tbody td, .payment-table tbody td, .payment-table tfoot td {
+                        padding: 6px 10px;
+                        font-size: 13px;
+                        color: var(--text-color);
+                        border-bottom: 1px solid var(--table-border-color);
+                    }
+                    .vacation-table tbody tr:hover, .payment-table tbody tr:hover {
+                        background: var(--table-hover-bg, #f9fafb);
+                    }
+                    .vacation-table tbody tr:last-child td { border-bottom: none; }
+                    .btn-link {
+                        color: var(--primary);
+                        font-weight: 500;
+                        cursor: pointer;
+                        text-decoration: none;
+                        font-size: 12px;
+                    }
+                    .btn-link:hover { text-decoration: underline; }
+                    .payment-summary {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                        gap: 8px;
+                        margin-bottom: 10px;
+                    }
+                    .summary-card {
+                        background: var(--card-bg, #ffffff);
+                        border: 1px solid var(--border-color);
+                        border-radius: var(--border-radius);
+                        padding: 8px 10px;
+                    }
+                    .summary-label {
+                        font-size: 11px;
+                        color: var(--text-muted);
+                        margin-bottom: 4px;
+                    }
+                    .summary-value {
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: var(--text-color);
+                        line-height: 1.2;
+                    }
+                    .summary-value.primary { color: var(--primary); }
+                    .summary-badge { margin-top: 2px; }
+                    .payment-table .amount-cell {
+                        font-weight: 500;
+                        font-variant-numeric: tabular-nums;
+                    }
+                    .payment-table tfoot {
+                        border-top: 2px solid var(--border-color);
+                    }
+                    .payment-table .total-row td {
+                        border-bottom: none;
+                        padding-top: 8px;
+                    }
+                    .payment-table .amount-cell.total {
+                        color: var(--primary);
+                        font-weight: 600;
+                        font-size: 14px;
+                    }
+                </style>
+            </div>
+        `;
+        
+        frm.dashboard.add_section(combinedHTML);
+        frm.dashboard.show();
+    }
+}
+frappe.ui.form.on('Vacation Allowance', {
+
+  updateFieldValueAndRefreshForm: function(frm, fieldName, value) {
+    let currentValue = frm.doc[fieldName];
+    if (currentValue !== value && !isNaN(value)) {
+      frm.set_value(fieldName, value.toFixed(2));
+      frm.refresh_field(fieldName);
+    }
+  },
+  validate: function(frm) {
+
+    checkDuplicateContractStartDate(frm);
+    const requiredFields = [
+      'account_no',
+      'date_1',
+      'date_2',
+      'total_salary',
+      'vacation_days_per_year',
+    ];
+
+    requiredFields.forEach((field) => {
+      if (!frm.doc[field]) {
+        frappe.msgprint(`Employee data must be added before saving the file: ${field}`);
+        frappe.validated = false;
+      }
+    });
+    if (!frappe.validated) return;
+    
+    frappe.db.get_list('End of Service Settlement', {
+    filters: {
+        'employee': frm.doc.employee,
+        'docstatus': ['!=', 2],
+        'workflow_state': ['not in', ['Cancelled']],
+    },
+    fields: ['name']
+  }).then(records => {
+    if (records.length > 0) {
+
+      frappe.msgprint(`
+        <div style="font-family: Arial, sans-serif; font-size: 14px;">
+          <h4>${__("End of Service Settlement Notice", null, "Vacation Allowance")}</h4>
+          <p>${__("Dear user,", null, "Vacation Allowance")}</p>
+          <p>${__("All dues of this employee have already been settled, and our records hold a completed End of Service Settlement. Therefore, <strong>a vacation allowance payment cannot be made</strong> for this employee at this time.", null, "Vacation Allowance")}</p>
+          <p>${__("Thank you for your understanding. Please verify the data and the work procedures in place before submitting any new request.", null, "Vacation Allowance")}</p>
+        </div>
+      `, __("Important Notice", null, "Vacation Allowance"));
+      frappe.validated = false; 
+    }
+  });
+},
+  refresh: function(frm) {
+        updateDashboards(frm);
+
+        if (["Paid", "Approved"].includes(frm.doc.workflow_state)) {
+            frm.add_custom_button('Cancel Request', () => Cancel_Request(frm)).addClass('btn-danger');
+        }
+        
+    ['salary_per_day', 'duration_of_service', 'dos_years', 'cva_total', 'deductions', 'amount'].forEach(field => {
+      frm.set_df_property(field, 'read_only', 1);
+    });
+    if (frm.doc.workflow_state === 'Waiting Accountant Approval') {
+        frm.set_df_property('cva', 'read_only', 0); 
+        
+    } else {
+        frm.set_df_property('cva', 'read_only', 1);
+        
+    }
+    if (frm.doc.workflow_state === 'Approved' && frm.doc.pr_status == 'PR Not Created') {
+      frm.add_custom_button(__('Create PR'), async () => {
+        await frm.set_value('pr_status', 'PR Created');
+
+        await frappe.db.set_value(frm.doctype, frm.docname, 'pr_status', 'PR Created');
+        
+        const expenseRequest = frappe.model.get_new_doc('Expense Request Afmco');
+        expenseRequest.tax_invoice_number = frm.doc.name;
+        expenseRequest.account_no = frm.doc.account_no;
+        expenseRequest.beneficiary_name = `${frm.doc.employee_name} ${frm.doc.employee}`;
+        expenseRequest.amount = frm.doc.amount;
+        expenseRequest.project = frm.doc.payroll_cost_center;
+        expenseRequest.cost_center = frm.doc.branch;
+        expenseRequest.jv_status = 'JV Not Created';
+        expenseRequest.naming_series = 'PR-.YYYY.-';
+        expenseRequest.date = frappe.datetime.nowdate();
+        expenseRequest.bank_payment_date = frappe.datetime.nowdate();
+        expenseRequest.payment_type = 'Vacation Allowance';
+        expenseRequest.mode_of_payment = 'Bank Transfer';
+        expenseRequest.payment_approver ='Human Resources - الموارد البشرية';
+        expenseRequest.remark = `
+            Vacation Salary Request
+            -------------------------------------
+            - Service in Days| ${frm.doc.duration_of_service}
+            - Service in Years| ${frm.doc.dos_years}
+            - Total Salary| ${frm.doc.total_salary}
+            - Ticket Allowance| ${frm.doc.ticket_allowance}
+            - Number of Tickets| ${frm.doc.number_of_tickets}
+            - Total Ticket| ${frm.doc.ticket_allowance * frm.doc.number_of_tickets} (${frm.doc.not_eligible_for_ticket_allowance ? "No" : "Yes"})
+            - Afmco Reward| ${frm.doc.alternative_reward}
+            - Deductions| ${frm.doc.deductions}
+            - Total Amount| ${frm.doc.amount}
+            
+            Summary:
+            - ${frm.doc.cva_total} + (${frm.doc.ticket_allowance} * ${frm.doc.number_of_tickets}) - ${frm.doc.deductions} = ${frm.doc.amount}
+            `;
+
+        frappe.set_route('Form', expenseRequest.doctype, expenseRequest.name);
+        frappe.msgprint(__('A new payment request was created', null, 'Vacation Allowance'));
+      }).addClass('btn-danger');
+    }
+    if (frm.doc.workflow_state === 'Waiting Accountant Approval') {
+            frm.add_custom_button(__('Get Vacation allowance'), () => {
+                frm.events.calculateVacationAllowance(frm);
+            }).addClass('btn-primary');
+
+            frm.add_custom_button(__('Open General Ledger'), function() {
+                var parameters = {
+                    company: "شركة عبدالله فهد المطيري للخدمات المساندة",
+                    from_date: frm.doc.date_1,
+                    to_date: frm.doc.date_2,
+                    party_type: "Employee",
+                    party: frm.doc.employee,
+                };
+
+                frappe.set_route("query-report", "General Ledger", parameters);
+            });
+        }
+  },
+  employee: function(frm) {
+        updateDashboards(frm);
+    },
+  create_pr_for_sadad: function(frm) {
+        let VisaAmount = frm.doc.days1 === '30' ? 200 : frm.doc.days1 === '60' ? 200 : frm.doc.days1 === '90' ? 300 : frm.doc.days1 === '120' ? 400 : 0;
+        const expenseRequest = frappe.model.get_new_doc('Expense Request Afmco');
+        expenseRequest.tax_invoice_number = frm.doc.name;
+        expenseRequest.account_no = "MOI SADAD";
+        expenseRequest.beneficiary_name = `${frm.doc.employee_name} ${frm.doc.employee}`;
+        expenseRequest.amount = VisaAmount;
+        expenseRequest.project = frm.doc.payroll_cost_center;
+        expenseRequest.cost_center = frm.doc.branch;
+        expenseRequest.jv_status = 'JV Not Created';
+        expenseRequest.naming_series = 'PR-.YYYY.-';
+        expenseRequest.bank_payment_date = frappe.datetime.nowdate();
+        expenseRequest.date = frappe.datetime.nowdate();
+        expenseRequest.payment_type = 'SADAD Payment';
+        expenseRequest.mode_of_payment = 'Bank Transfer';
+        expenseRequest.remark = `Exit and return visa:
+- Employee Name: ${frm.doc.employee_name}
+- Employee ID: ${frm.doc.employee}
+- From Date: ${frm.doc.start}
+- Days: ${frm.doc.days1}`;
+        frappe.set_route('Form', expenseRequest.doctype, expenseRequest.name);
+        frappe.msgprint(__('A new repayment request was created', null, 'Vacation Allowance'));
+    },
+  before_save: async function(frm) {
+    if (!frm.doc.ticket_allowance) {
+        if (frm.doc.branch === "Bin Zagr - بن زقر - AF") {
+            frm.doc.ticket_allowance = 960;
+        } else if (frm.doc.branch === "Bon Café - بون كافيه") {
+            frm.doc.ticket_allowance = 800;
+        } else if (frm.doc.branch === "Amazon RUH - امازون الرياض" || frm.doc.branch === "Amazon JED - امازون جدة" || frm.doc.branch === "Amazon - امازون") {
+            frm.doc.ticket_allowance = 750;
+        } else {
+            frm.doc.ticket_allowance = 600;
+        }
+    }
+    ['salary_per_day', 'duration_of_service', 'dos_years', 'cva_total', 'deductions', 'amount'].forEach(field => {
+      frm.set_df_property(field, 'read_only', 0);
+    });
+    frm.events.calculateServiceDuration(frm); 
+    
+  },
+  after_save: async function (frm) {
+    if (!frm.doc.employee || !frm.doc.total_salary) return;
+
+    const { message: salaryAssignments } = await frappe.call({
+      method: "frappe.client.get_list",
+      args: {
+        doctype: "Salary Structure Assignment",
+        filters: {
+          employee: frm.doc.employee,
+          docstatus: 1
+        },
+        fields: ["base"],
+        order_by: "from_date desc",
+        limit_page_length: 1
+      }
+    });
+
+    if (salaryAssignments && salaryAssignments.length > 0) {
+      const base_salary = salaryAssignments[0].base;
+
+      if (frm.doc.total_salary != base_salary) {
+        frappe.msgprint({
+          title: __('Warning', null, 'Vacation Allowance'),
+          message: __('Total salary ({0}) does not match the base salary in the system ({1}).', [frm.doc.total_salary, base_salary], 'Vacation Allowance'),
+          indicator: "orange"
+        });
+      }
+    }
+  },
+  
+  calculateVacationAllowance:  function(frm) {
+    let Las_Day = new Date(frm.doc.date_2);
+    let contractStartDate = new Date(frm.doc.date_1);
+    const contractEndDate = new Date(contractStartDate);
+    contractEndDate.setDate(contractEndDate.getDate() + 364);
+
+    const rows = [];
+
+    let j = 0;
+
+    while (j < frm.doc.dos_years) {
+      let contractEndDateCopy = new Date(contractEndDate);
+      if (contractEndDateCopy > Las_Day) {
+            contractEndDateCopy = Las_Day;
+            
+        }
+
+      if (j === frm.doc.dos_years - 1) {
+        contractEndDateCopy = new Date(frm.doc.date_2);
+      }
+
+      const mysqlFormatEnd = contractEndDateCopy.toISOString().slice(0, 19).replace('T', ' ');
+      const mysqlFormatStart = contractStartDate.toISOString().slice(0, 19).replace('T', ' ');
+      let daysBetween = (contractEndDateCopy - contractStartDate) / (1000 * 60 * 60 * 24);
+        if (daysBetween === 365) {
+            daysBetween = 364;
+            
+        }
+     // const amount = Math.round(frm.doc.salary_per_day * (daysBetween / 364 * frm.doc.vacation_days_per_year));
+    let vacation_days_per_year = frm.doc.vacation_days_per_year || 21;
+
+    if (j + 1 >= 6 && vacation_days_per_year < 30) {
+        vacation_days_per_year = 30;
+    }
+
+    const amount = Math.round(frm.doc.salary_per_day * (daysBetween / 364 * vacation_days_per_year));
+
+      rows.push({
+        contract_start_date: mysqlFormatStart,
+        contract_end_date: mysqlFormatEnd,
+        status: 'unpaid',
+        note: 'اضف ملاحظاتك',
+        vad: vacation_days_per_year,
+        amount3: amount,
+      });
+      contractStartDate = new Date(contractEndDate.setDate(contractEndDate.getDate() + 1));
+      contractEndDate.setDate(contractEndDate.getDate() + 365);
+
+      j += 1;
+    }
+
+    rows.forEach((rowData) => {
+      const row = frm.add_child('cva');
+      Object.keys(rowData).forEach((key) => {
+        frappe.model.set_value(row.doctype, row.name, key, rowData[key]);
+      });
+    });
+    checkPreviousVacations(frm);
+    frm.refresh();
+    frm.events.calculateServiceDuration(frm);
+
+  },
+  calculateServiceDuration: function(frm) {
+    const dailySalary = frm.doc.total_salary / 30;
+    frm.events.updateFieldValueAndRefreshForm(frm, 'salary_per_day', dailySalary);
+    let totalVacationAllowance = 0;
+    $.each(frm.doc.cva || [], (i, d) => {
+      if (d.status && d.status === 'Paid') {
+      } else {
+        totalVacationAllowance += d.amount3;
+      }
+    });
+    
+    const alternative_reward = frm.doc.alternative_reward;
+    const diffInDates = frappe.datetime.get_diff(frm.doc.date_2, frm.doc.date_1);
+    const yearsOfService = Math.round(diffInDates / 365);
+    let totalDeductions = 0;
+    $.each(frm.doc.table_14 || [], (i, d) => {
+      if (d.amount2) {
+        totalDeductions += d.amount2;
+      }
+    });
+    let ticketAllowance = frm.doc.ticket_allowance;
+    if (frm.doc.not === 1 || frm.doc.check1 === 0) {
+    ticketAllowance = 0;
+        
+    }
+    let totalTickets = frm.doc.number_of_tickets * ticketAllowance;
+    const totalAmount = totalVacationAllowance + alternative_reward + totalTickets - totalDeductions;
+    frm.events.updateFieldValueAndRefreshForm(frm, 'dos_years', yearsOfService);
+    frm.events.updateFieldValueAndRefreshForm(frm, 'duration_of_service', diffInDates);
+    frm.events.updateFieldValueAndRefreshForm(frm, 'cva_total', totalVacationAllowance);
+    frm.events.updateFieldValueAndRefreshForm(frm, 'deductions', totalDeductions);
+    frm.events.updateFieldValueAndRefreshForm(frm, 'amount', totalAmount);
+    frm.refresh_field();
+
+  },
+});
+function checkPreviousVacations(frm) {
+  frappe.db.get_list('Vacation Allowance', {
+    filters: {
+      'employee': frm.doc.employee,
+      'name': ['!=', frm.doc.name],
+      'workflow_state': ['in', ['Approved', 'Paid']]
+
+    },
+    fields: ['name']
+  }).then(records => {
+    if (records.length > 0) {
+      let message = `<h4>${__('Found', null, 'Vacation Allowance')} ${records.length} ${__('previous leave settlements for this employee:', null, 'Vacation Allowance')}</h4><ul>`;
+
+      Promise.all(records.map(record => {
+        return frappe.db.get_doc('Vacation Allowance', record.name).then(doc => {
+          doc.cva.forEach((childRow, index) => {
+            let childStartDate = new Date(childRow.contract_start_date).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+            let childEndDate = new Date(childRow.contract_end_date).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            message += `<li>${index + 1}. ${__('Settlement No.', null, 'Vacation Allowance')} ${record.name}: ${childStartDate} ${__('to', null, 'Vacation Allowance')} ${childEndDate}</li>`;
+            
+            frm.doc.cva.forEach(newRow => {
+              let newStartDate = new Date(newRow.contract_start_date);
+              let newEndDate = new Date(newRow.contract_end_date);
+              let childStartDate = new Date(childRow.contract_start_date);
+              let childEndDate = new Date(childRow.contract_end_date);
+
+              if (
+                  (newStartDate >= childStartDate && newStartDate <= childEndDate) ||
+                  (newEndDate >= childStartDate && newEndDate <= childEndDate) ||
+                  (newStartDate <= childStartDate && newEndDate >= childEndDate)
+                  ) {
+                newRow.status = 'Paid';
+              }
+            });
+          });
+        });
+      })).then(() => {
+        message += "</ul>";
+        frappe.msgprint(message);
+        frm.refresh_field('cva');
+      });
+    }
+  });
+  updateVacationStatus(frm);
+}
+function updateVacationStatus(frm) {
+  frappe.db.get_value('Employee', frm.doc.employee, 'date_of_last_vacation_clearance', (r) => {
+    if (!r.date_of_last_vacation_clearance) {
+      return;
+    }
+    
+    const lastClearanceDate = new Date(r.date_of_last_vacation_clearance);
+    
+    frm.doc.cva.forEach(newRow => {
+      const newStartDate = new Date(newRow.contract_start_date);
+      const newEndDate = new Date(newRow.contract_end_date);
+      
+      if (lastClearanceDate > newStartDate) {
+        newRow.status = 'Paid';
+        newRow.amount3 = 0;
+      }
+    });
+    
+    frm.refresh_field('cva');
+  });
+}
+function checkPreviousVacations_old(frm) {
+  frappe.db.get_list('Vacation Allowance', {
+    filters: {
+      'employee': frm.doc.employee,
+      'name': ['!=', frm.doc.name],
+      'workflow_state': ['in', ['Approved', 'Paid']]
+    },
+    fields: ['name', 'date_1', 'date_2']
+  }).then(records => {
+    if (records.length > 0) {
+      let message = `<h4>${__('Found {0} previous leave settlements for this employee:', [records.length], 'Vacation Allowance')}</h4><ul>`;
+      records.forEach(record => {
+        let startDate = formatDate(record.date_1);
+        let endDate = formatDate(record.date_2);
+        message += `<li>${__('Settlement No. {0}: from {1} to {2}', [record.name, startDate, endDate], 'Vacation Allowance')}</li>`;
+      });
+      message += "</ul>";
+      frappe.msgprint(message, __('Previous Leave Update', null, 'Vacation Allowance'));
+    } else {
+      frappe.msgprint(__('No previous leaves exist for this employee.', null, 'Vacation Allowance'), __('Previous Leave Update', null, 'Vacation Allowance'));
+    }
+  }).catch(err => {
+    console.error("Error fetching previous vacations", err);
+    frappe.msgprint(__('An error occurred while retrieving previous leave data.', null, 'Vacation Allowance'), __('Error', null, 'Vacation Allowance'));
+  });
+}
+function formatDate(dateString) {
+  if (!dateString) return __('Unknown', null, 'Vacation Allowance');
+  let date = new Date(dateString);
+  return date.toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+function checkDuplicateContractStartDate(frm) {
+    let unique_start_dates = new Set();
+    let duplicates_found = false;
+
+    frm.doc.cva.forEach(function(row) {
+        if (unique_start_dates.has(row.contract_start_date)) {
+            duplicates_found = true;
+        } else {
+            unique_start_dates.add(row.contract_start_date);
+        }
+    });
+
+    if (duplicates_found) {
+        frappe.msgprint(__('Please note that contract period start dates are repeated. Please review the data and make sure the dates do not overlap so the procedure is correct.', null, 'Vacation Allowance'))
+        frappe.validated = false;
+    }
+}
+async function Cancel_Request(frm) {
+
+    const confirmed = await new Promise((resolve) => {
+        frappe.confirm(
+            "Are you sure you want to cancel this request?",
+            () => resolve(true),
+            () => resolve(false)
+        );
+    });
+
+    if (!confirmed) {
+        frappe.show_alert({ message: "Cancellation aborted.", indicator: 'blue' });
+        return;
+    }
+
+    try {
+        if (!frm.doc.custom_allow_cancel) {
+            await frappe.db.set_value(frm.doctype, frm.docname, "custom_allow_cancel", 1);
+            await frm.reload_doc();
+        }
+
+        await frappe.xcall('frappe.model.workflow.apply_workflow', {
+            doc: frm.doc,
+            action: "Cancel"
+        });
+
+        await frm.reload_doc();
+        frappe.show_alert({ message: "Request cancelled.", indicator: 'orange' });
+
+    } catch (err) {
+        frappe.msgprint({
+            title: "Workflow Error",
+            message: (err && err.message) || err,
+            indicator: 'red'
+        });
+    }
+}

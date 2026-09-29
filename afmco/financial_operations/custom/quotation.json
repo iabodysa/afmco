@@ -1,0 +1,68 @@
+{
+ "custom_fields": [],
+ "doctype": "Quotation",
+ "property_setters": [
+  {
+   "doc_type": "Quotation",
+   "doctype_or_field": "DocField",
+   "field_name": "base_rounded_total",
+   "module": "Financial Operations",
+   "name": "Quotation-base_rounded_total-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Quotation",
+   "doctype_or_field": "DocField",
+   "field_name": "disable_rounded_total",
+   "module": "Financial Operations",
+   "name": "Quotation-disable_rounded_total-default",
+   "property": "default",
+   "property_type": "Text",
+   "value": "1"
+  },
+  {
+   "doc_type": "Quotation",
+   "doctype_or_field": "DocField",
+   "field_name": "in_words",
+   "module": "Financial Operations",
+   "name": "Quotation-in_words-print_hide",
+   "property": "print_hide",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Quotation",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Quotation-main-default_print_format",
+   "property": "default_print_format",
+   "property_type": "Data",
+   "value": "Manpower Quotation"
+  },
+  {
+   "doc_type": "Quotation",
+   "doctype_or_field": "DocField",
+   "field_name": "rounded_total",
+   "module": "Financial Operations",
+   "name": "Quotation-rounded_total-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Quotation",
+   "doctype_or_field": "DocField",
+   "field_name": "rounded_total",
+   "module": "Financial Operations",
+   "name": "Quotation-rounded_total-print_hide",
+   "property": "print_hide",
+   "property_type": "Check",
+   "value": "1"
+  }
+ ],
+ "sync_on_migrate": 1
+}

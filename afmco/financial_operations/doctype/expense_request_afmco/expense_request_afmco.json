@@ -1,0 +1,381 @@
+{
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-01-16 15:51:04.227284",
+ "description": " ",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "custom_role",
+  "urgency_and_status_section",
+  "date",
+  "column_break_created_by",
+  "created_by",
+  "column_break_payment_approver",
+  "payment_approver",
+  "section_urgency",
+  "verify_payment",
+  "if_it__urgent",
+  "column_break_urgency_reason",
+  "reason_of_urgency",
+  "beneficiary_information_section",
+  "account_no",
+  "beneficiary_name",
+  "amount",
+  "amount_in_words",
+  "column_break_remark",
+  "remark",
+  "payment_details_section",
+  "cost_center",
+  "project",
+  "column_break_payment_type",
+  "payment_type",
+  "mode_of_payment",
+  "column_break_bank_account",
+  "bank_account",
+  "bank_payment_date",
+  "column_break_jv_status",
+  "jv_status",
+  "tax_invoice_number",
+  "open_reference_document",
+  "purchase_details_section",
+  "amended_from",
+  "section_purchase_references",
+  "data",
+  "column_break_naming_series",
+  "naming_series",
+  "column_break_supplier",
+  "supplier_name",
+  "column_break_purchase_order",
+  "purchase_order",
+  "section_assignment",
+  "assign_to_employee",
+  "section_workflow",
+  "workflow_state"
+ ],
+ "fields": [
+  {
+   "fetch_from": "payment_approver.roles",
+   "fieldname": "custom_role",
+   "fieldtype": "Text",
+   "hidden": 1,
+   "ignore_user_permissions": 1,
+   "label": "Role",
+   "read_only": 1
+  },
+  {
+   "default": "PR-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "naming_series",
+   "options": "PR-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Creation Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "beneficiary_information_section",
+   "fieldtype": "Section Break",
+   "label": "Beneficiary Information"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "account_no",
+   "fieldtype": "Data",
+   "label": "Account No",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "remark",
+   "fieldtype": "Text",
+   "in_list_view": 1,
+   "label": "Remark",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount_in_words",
+   "fieldtype": "Read Only",
+   "label": "Amount in Words"
+  },
+  {
+   "fieldname": "column_break_remark",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_supplier",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Data",
+   "label": "Created By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_payment_approver",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "assign_to_employee",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Assign To Employee",
+   "options": "User",
+   "permlevel": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "JV Not Created",
+   "fieldname": "jv_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "JV Status",
+   "options": "\nJV Created\nJV Not Created"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Expense Request Afmco",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "urgency_and_status_section",
+   "fieldtype": "Section Break",
+   "label": "Request Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "verify_payment",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Already paid"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "0",
+   "fieldname": "if_it__urgent",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Urgent"
+  },
+  {
+   "fieldname": "column_break_urgency_reason",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_workflow",
+   "fieldtype": "Section Break",
+   "label": "Workflow"
+  },
+  {
+   "allow_on_submit": 1,
+   "description": "      ",
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Workflow State",
+   "no_copy": 1,
+   "options": "Workflow State"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "depends_on": "eval: doc.if_it__urgent",
+   "fieldname": "reason_of_urgency",
+   "fieldtype": "Small Text",
+   "label": "Reason of Urgency"
+  },
+  {
+   "fieldname": "column_break_created_by",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_urgency",
+   "fieldtype": "Section Break",
+   "label": "Urgency"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "payment_type",
+   "fieldtype": "Select",
+   "label": "Payment Type",
+   "options": "--- Choose from List ---\n-- Choose Bills --\nPurchases\nPassport Fee Payment\nWork Permit Fee Payment\nMedical Insurance Bill Payment\n-- Choose Employee Benefits --\nPayroll (Salary)\nPetty Cash\nEmployee Loan\nEOS\nVacation Allowance\n-- Others --\nOther Payment\nDue Amount\nExpenses\nSADAD Payment"
+  },
+  {
+   "fieldname": "column_break_bank_account",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Select",
+   "label": "Mode of Payment",
+   "options": "--- Choose from List ---\nLocal Bank Transfer\nIntra-NCB Transfer\nInternational Transfer\nCash Payment\nSADAD Payment\nBank cheque\nBank Transfer"
+  },
+  {
+   "fieldname": "column_break_purchase_order",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "payment_approver",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Payment Approver",
+   "link_filters": "[[\"Payment Approver\",\"active\",\"=\",1]]",
+   "no_copy": 1,
+   "options": "Payment Approver",
+   "read_only_depends_on": "eval:doc.workflow_state != 'Pending' && doc.workflow_state != 'Financial Controller'"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "beneficiary_name",
+   "fieldtype": "Data",
+   "label": "Beneficiary name"
+  },
+  {
+   "fieldname": "payment_details_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Details"
+  },
+  {
+   "fieldname": "section_assignment",
+   "fieldtype": "Section Break",
+   "label": "Assignment"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Data",
+   "label": "Project"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "column_break_payment_type",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "label": "Bank Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "bank_payment_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Bank Payment Date"
+  },
+  {
+   "fieldname": "column_break_jv_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_naming_series",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tax_invoice_number",
+   "fieldtype": "Data",
+   "label": "Reference"
+  },
+  {
+   "fieldname": "open_reference_document",
+   "fieldtype": "Button",
+   "label": "Open Reference Document"
+  },
+  {
+   "fieldname": "purchase_details_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Purchase Details"
+  },
+  {
+   "fieldname": "supplier_name",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Supplier Name",
+   "options": "Supplier",
+   "read_only": 1
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Purchase Order",
+   "options": "Purchase Order",
+   "read_only": 1
+  },
+  {
+   "fieldname": "data",
+   "fieldtype": "Code",
+   "hidden": 1,
+   "label": "Data"
+  },
+  {
+   "fieldname": "section_purchase_references",
+   "fieldtype": "Section Break",
+   "label": "Supplier and Purchase Order"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "group": "Reference",
+   "link_doctype": "Journal Entry",
+   "link_fieldname": "expense_request_cf"
+  }
+ ],
+ "modified": "2026-09-27 12:00:00.000000",
+ "module": "Financial Operations",
+ "name": "Expense Request Afmco",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_views": 1
+}

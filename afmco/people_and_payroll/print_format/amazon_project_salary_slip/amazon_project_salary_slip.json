@@ -1,0 +1,22 @@
+{
+ "creation": "2024-05-19 11:57:56.725378",
+ "doc_type": "Salary Slip",
+ "doctype": "Print Format",
+ "font": "Default",
+ "font_size": 14,
+ "format_data": "[{\"fieldname\": \"print_heading_template\", \"fieldtype\": \"Custom HTML\", \"options\": \"{% import \\\"afmco/templates/print/identity.html\\\" as afm %}{{ afm.strip() }}<h3 style=\\\"text-align: right;\\\"><span style=\\\"line-height: 1.42857;\\\">{{doc.name}}</span></h3>\\r\\n<div style=\\\"text-align: center;\\\">\\r\\n    <strong style=\\\"font-size: 20px;\\\">Salary Slip <span style=\\\"font-weight: normal;\\\">|</span> مسير الرواتب</strong>\\r\\n    <hr style=\\\"width: 80%; margin: 0 auto;\\\">\\r\\n</div>\\r\\n\"}, {\"fieldname\": \"_custom_html\", \"fieldtype\": \"HTML\", \"label\": \"Custom HTML\", \"print_hide\": 0, \"options\": \"{% import \\\"afmco/templates/print/identity.html\\\" as afm %}{{ afm.styles() }}\"}, {\"fieldtype\": \"Section Break\", \"label\": \"\"}, {\"fieldtype\": \"Column Break\"}, {\"fieldname\": \"employee\", \"print_hide\": 0, \"label\": \"Employee\"}, {\"fieldname\": \"employee_name\", \"print_hide\": 0, \"label\": \"Employee Name\"}, {\"fieldtype\": \"Column Break\"}, {\"fieldname\": \"start_date\", \"print_hide\": 0, \"label\": \"Start Date\"}, {\"fieldname\": \"end_date\", \"print_hide\": 0, \"label\": \"End Date\"}, {\"fieldtype\": \"Section Break\", \"label\": \"\"}, {\"fieldtype\": \"Column Break\"}, {\"fieldname\": \"earnings\", \"print_hide\": 0, \"label\": \"Earnings\", \"visible_columns\": [{\"fieldname\": \"salary_component\", \"print_width\": \"\", \"print_hide\": 0}, {\"fieldname\": \"amount\", \"print_width\": \"\", \"print_hide\": 0}]}, {\"fieldtype\": \"Column Break\"}, {\"fieldname\": \"deductions\", \"print_hide\": 0, \"label\": \"Deductions\", \"visible_columns\": [{\"fieldname\": \"salary_component\", \"print_width\": \"\", \"print_hide\": 0}, {\"fieldname\": \"amount\", \"print_width\": \"\", \"print_hide\": 0}, {\"fieldname\": \"depends_on_payment_days\", \"print_width\": \"\", \"print_hide\": 0}]}, {\"fieldtype\": \"Section Break\", \"label\": \"\"}, {\"fieldtype\": \"Column Break\"}, {\"fieldtype\": \"Column Break\"}, {\"fieldname\": \"gross_pay\", \"print_hide\": 0, \"label\": \"Gross Pay\"}, {\"fieldname\": \"total_deduction\", \"print_hide\": 0, \"label\": \"Total Deduction\"}, {\"fieldname\": \"net_pay\", \"print_hide\": 0, \"label\": \"Net Pay\"}, {\"fieldname\": \"rounded_total\", \"print_hide\": 0, \"label\": \"Rounded Total\"}, {\"fieldname\": \"total_in_words\", \"print_hide\": 0, \"label\": \"Total in words\"}]",
+ "margin_bottom": 15.0,
+ "margin_left": 15.0,
+ "margin_right": 15.0,
+ "margin_top": 15.0,
+ "modified": "2026-09-27 12:00:00.000000",
+ "module": "People and Payroll",
+ "name": "Amazon Project Salary Slip",
+ "owner": "Administrator",
+ "page_number": "Hide",
+ "pdf_generator": "wkhtmltopdf",
+ "print_format_builder": 1,
+ "print_format_for": "DocType",
+ "print_format_type": "Jinja",
+ "standard": "Yes"
+}

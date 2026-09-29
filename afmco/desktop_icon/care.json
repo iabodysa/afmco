@@ -1,0 +1,14 @@
+{
+ "app": "afmco",
+ "creation": "2026-09-27 12:00:00.000000",
+ "doctype": "Desktop Icon",
+ "icon_type": "App",
+ "label": "Care",
+ "link": "https://care.afmco.sa/helpdesk",
+ "link_type": "External",
+ "logo_url": "/assets/afmco/images/care-app-icon.svg",
+ "modified": "2026-09-29 00:00:00.000000",
+ "name": "Care",
+ "owner": "Administrator",
+ "standard": 1
+}

@@ -1,0 +1,27 @@
+{
+ "custom_fields": [],
+ "doctype": "Scheduled Job Type",
+ "property_setters": [
+  {
+   "doc_type": "Scheduled Job Type",
+   "doctype_or_field": "DocField",
+   "field_name": "stopped",
+   "module": "People and Payroll",
+   "name": "Scheduled Job Type-stopped-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Scheduled Job Type",
+   "doctype_or_field": "DocField",
+   "field_name": "stopped",
+   "module": "People and Payroll",
+   "name": "Scheduled Job Type-stopped-in_preview",
+   "property": "in_preview",
+   "property_type": "Check",
+   "value": "1"
+  }
+ ],
+ "sync_on_migrate": 1
+}

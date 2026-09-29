@@ -1,0 +1,37 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Deleted Document",
+   "fieldname": "github_sync_id",
+   "fieldtype": "Data",
+   "hidden": "1",
+   "idx": "0",
+   "insert_after": null,
+   "is_system_generated": "1",
+   "label": "GitHub Sync ID",
+   "module": "People and Payroll",
+   "name": "Deleted Document-github_sync_id",
+   "no_copy": "1",
+   "read_only": "1",
+   "unique": "1"
+  },
+  {
+   "dt": "Deleted Document",
+   "fieldname": "hub_sync_id",
+   "fieldtype": "Data",
+   "hidden": "1",
+   "idx": "0",
+   "insert_after": null,
+   "is_system_generated": "1",
+   "label": "Hub Sync ID",
+   "module": "People and Payroll",
+   "name": "Deleted Document-hub_sync_id",
+   "no_copy": "1",
+   "read_only": "1",
+   "unique": "1"
+  }
+ ],
+ "doctype": "Deleted Document",
+ "property_setters": [],
+ "sync_on_migrate": 1
+}

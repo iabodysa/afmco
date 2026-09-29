@@ -1,0 +1,308 @@
+/* Copyright (c) 2026, AFMCO and contributors */
+
+.employee-id-checker {
+	padding-block: var(--padding-md, 15px);
+}
+
+.employee-id-checker .analysis-container {
+	padding: 20px 0;
+}
+
+.employee-id-checker .analysis-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	padding: 15px 20px;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	border-radius: 12px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.employee-id-checker .analysis-title {
+	margin: 0;
+	font-size: 18px;
+	color: white;
+}
+
+.employee-id-checker .analysis-date {
+	margin: 5px 0 0 0;
+	opacity: 0.9;
+	font-size: 14px;
+}
+
+.employee-id-checker .analysis-total {
+	text-align: end;
+}
+
+.employee-id-checker .analysis-total-number {
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.employee-id-checker .analysis-total-label {
+	font-size: 12px;
+	opacity: 0.9;
+}
+
+.employee-id-checker .analysis-stats {
+	display: flex;
+	gap: 20px;
+	margin-bottom: 20px;
+}
+
+.employee-id-checker .stat-card {
+	flex: 1;
+	padding: 15px;
+	background: var(--card-bg, white);
+	border-radius: 8px;
+	border-inline-start: 4px solid #667eea;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	text-align: center;
+}
+
+.employee-id-checker .stat-card.stat-missing {
+	border-inline-start-color: #ef4444;
+}
+
+.employee-id-checker .stat-card.stat-expired {
+	border-inline-start-color: #f59e0b;
+}
+
+.employee-id-checker .stat-card.stat-rate {
+	border-inline-start-color: #10b981;
+}
+
+.employee-id-checker .stat-number {
+	font-size: 24px;
+	font-weight: 700;
+	color: var(--text-color, #333);
+	margin-bottom: 5px;
+}
+
+.employee-id-checker .stat-expired .stat-number {
+	color: #f59e0b;
+}
+
+.employee-id-checker .stat-rate .stat-number {
+	color: #10b981;
+}
+
+.employee-id-checker .stat-label {
+	font-size: 12px;
+	color: var(--text-muted, #666);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.employee-id-checker .table-controls {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+	gap: 15px;
+}
+
+.employee-id-checker .search-box {
+	flex: 1;
+	max-width: 300px;
+}
+
+.employee-id-checker .search-input {
+	width: 100%;
+	padding: 10px 15px;
+	border: 2px solid #e1e5e9;
+	border-radius: 25px;
+	font-size: 14px;
+	background: var(--control-bg, white);
+	color: var(--text-color, inherit);
+	transition: all 0.3s ease;
+}
+
+.employee-id-checker .search-input:focus {
+	outline: none;
+	border-color: #667eea;
+	box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.employee-id-checker .export-btn {
+	padding: 8px 16px;
+	border: none;
+	border-radius: 6px;
+	font-size: 13px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	background: #0369a1;
+	color: white;
+}
+
+.employee-id-checker .export-btn:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.employee-id-checker .table-wrapper {
+	border: 1px solid #e1e5e9;
+	border-radius: 12px;
+	overflow: hidden;
+	background-color: var(--card-bg, #fff);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+	position: relative;
+}
+
+.employee-id-checker .table-scroll {
+	overflow-x: auto;
+	max-height: 600px;
+	overflow-y: auto;
+}
+
+.employee-id-checker .results-table {
+	font-size: 13px;
+	border-collapse: collapse;
+	width: 100%;
+	min-width: 1600px;
+	margin: 0;
+}
+
+.employee-id-checker .results-table thead {
+	background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+
+.employee-id-checker .results-table th {
+	text-align: start;
+	padding: 16px 12px;
+	border-bottom: 2px solid #cbd5e1;
+	font-weight: 600;
+	color: #1e293b;
+	white-space: nowrap;
+	cursor: pointer;
+	user-select: none;
+	position: relative;
+	transition: background-color 0.2s ease;
+}
+
+.employee-id-checker .results-table th:hover {
+	background-color: #e2e8f0;
+}
+
+.employee-id-checker .results-table th.sortable::after {
+	content: " ⇅";
+	opacity: 0.5;
+	font-size: 12px;
+	margin-inline-start: 5px;
+}
+
+.employee-id-checker .results-table th.sort-asc::after {
+	content: " ↑";
+	opacity: 1;
+	color: #667eea;
+}
+
+.employee-id-checker .results-table th.sort-desc::after {
+	content: " ↓";
+	opacity: 1;
+	color: #667eea;
+}
+
+.employee-id-checker .results-table td {
+	padding: 14px 12px;
+	border-bottom: 1px solid #e2e8f0;
+	color: var(--text-color, #475569);
+	white-space: nowrap;
+	transition: background-color 0.2s ease;
+}
+
+.employee-id-checker .results-table tbody tr:hover {
+	background-color: var(--highlight-color, #f8fafc);
+}
+
+.employee-id-checker .results-table tbody tr.not-found {
+	background-color: #fef2f2;
+}
+
+.employee-id-checker .results-table tbody tr.expired-iqama {
+	background-color: #fff7ed;
+}
+
+.employee-id-checker .results-table .text-end {
+	text-align: end;
+}
+
+.employee-id-checker .result-badge {
+	display: inline-block;
+	padding: 6px 12px;
+	font-size: 11px;
+	font-weight: 600;
+	border-radius: 20px;
+	text-align: center;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+}
+
+.employee-id-checker .result-badge.status-active,
+.employee-id-checker .result-badge.expired-no {
+	background: linear-gradient(135deg, #10b981, #059669);
+	color: white;
+}
+
+.employee-id-checker .result-badge.status-inactive,
+.employee-id-checker .result-badge.expired-yes {
+	background: linear-gradient(135deg, #ef4444, #dc2626);
+	color: white;
+}
+
+.employee-id-checker .result-badge.expired-yes {
+	animation: employee-id-checker-pulse 2s infinite;
+}
+
+@keyframes employee-id-checker-pulse {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.7;
+	}
+}
+
+.employee-id-checker .text-danger {
+	color: #dc2626;
+	font-weight: 600;
+}
+
+.employee-id-checker .text-success {
+	color: #059669;
+	font-weight: 600;
+}
+
+.employee-id-checker .no-data-row {
+	padding: 40px;
+	text-align: center;
+	color: var(--text-muted, #64748b);
+	font-style: italic;
+}
+
+@media (max-width: 768px) {
+	.employee-id-checker .analysis-header,
+	.employee-id-checker .analysis-stats {
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.employee-id-checker .table-controls {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.employee-id-checker .search-box {
+		max-width: none;
+	}
+}

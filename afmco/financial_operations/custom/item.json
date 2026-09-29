@@ -1,0 +1,31 @@
+{
+ "custom_fields": [
+  {
+   "allow_in_quick_entry": "1",
+   "default": "0",
+   "dt": "Item",
+   "fieldname": "is_it_asset",
+   "fieldtype": "Check",
+   "idx": "0",
+   "insert_after": "is_fixed_asset",
+   "label": "Is IT Asset",
+   "module": "Financial Operations",
+   "name": "Item-is_it_asset"
+  },
+  {
+   "dt": "Item",
+   "fieldname": "tax_code",
+   "fieldtype": "Data",
+   "idx": "0",
+   "insert_after": "item_group",
+   "is_system_generated": "1",
+   "label": "Tax Code",
+   "module": "Financial Operations",
+   "name": "Item-tax_code",
+   "translatable": "1"
+  }
+ ],
+ "doctype": "Item",
+ "property_setters": [],
+ "sync_on_migrate": 1
+}

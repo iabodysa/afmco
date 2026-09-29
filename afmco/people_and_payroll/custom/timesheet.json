@@ -1,0 +1,151 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Timesheet",
+   "fieldname": "alosaimi_timesheet",
+   "fieldtype": "Table",
+   "idx": "0",
+   "insert_after": "osama_zaid",
+   "label": "Alosaimi timesheet",
+   "module": "People and Payroll",
+   "name": "Timesheet-alosaimi_timesheet",
+   "options": "Alosaimi timesheet"
+  },
+  {
+   "dt": "Timesheet",
+   "fieldname": "barn_cafe",
+   "fieldtype": "Table",
+   "idx": "0",
+   "insert_after": "bu1_cluster",
+   "label": "Barn cafe",
+   "module": "People and Payroll",
+   "name": "Timesheet-barn_cafe",
+   "options": "Barn cafe"
+  },
+  {
+   "dt": "Timesheet",
+   "fieldname": "binzagr_cluster",
+   "fieldtype": "Table",
+   "idx": "0",
+   "insert_after": "binzagr_gt",
+   "label": "Binzagr cluster",
+   "module": "People and Payroll",
+   "name": "Timesheet-binzagr_cluster",
+   "options": "Binzagr cluster"
+  },
+  {
+   "dt": "Timesheet",
+   "fieldname": "binzagr_gt",
+   "fieldtype": "Table",
+   "idx": "0",
+   "insert_after": "mutairi_binzagr_bu6",
+   "label": "Binzagr GT",
+   "module": "People and Payroll",
+   "name": "Timesheet-binzagr_gt",
+   "options": "Binzagr GT"
+  },
+  {
+   "dt": "Timesheet",
+   "fieldname": "bu1_cluster",
+   "fieldtype": "Table",
+   "idx": "0",
+   "insert_after": "binzagr_cluster",
+   "label": "BU1 Cluster",
+   "module": "People and Payroll",
+   "name": "Timesheet-bu1_cluster",
+   "options": "BU1 Cluster"
+  },
+  {
+   "dt": "Timesheet",
+   "fieldname": "carrefour_bikers",
+   "fieldtype": "Table",
+   "idx": "0",
+   "insert_after": "ildress_labours",
+   "label": "Carrefour Bikers",
+   "module": "People and Payroll",
+   "name": "Timesheet-carrefour_bikers",
+   "options": "Carrefour Bikers"
+  },
+  {
+   "depends_on": "eval:(in_list([\"Hokair Timesheet\"], doc.custom_project))",
+   "dt": "Timesheet",
+   "fieldname": "custom_hokair_timesheet",
+   "fieldtype": "Table",
+   "idx": "38",
+   "insert_after": "smsa",
+   "label": "Hokair Timesheet",
+   "module": "People and Payroll",
+   "name": "Timesheet-custom_hokair_timesheet",
+   "options": "Hokair Timesheet"
+  },
+  {
+   "dt": "Timesheet",
+   "fieldname": "first_mile",
+   "fieldtype": "Table",
+   "idx": "0",
+   "insert_after": "barn_cafe",
+   "label": "First Mile",
+   "module": "People and Payroll",
+   "name": "Timesheet-first_mile",
+   "options": "First Mile"
+  },
+  {
+   "dt": "Timesheet",
+   "fieldname": "ildress_labours",
+   "fieldtype": "Table",
+   "idx": "0",
+   "insert_after": "alosaimi_timesheet",
+   "label": "ildress Labours",
+   "module": "People and Payroll",
+   "name": "Timesheet-ildress_labours",
+   "options": "ildress Labours"
+  },
+  {
+   "dt": "Timesheet",
+   "fieldname": "mutairi_binzagr_bu6",
+   "fieldtype": "Table",
+   "idx": "0",
+   "insert_after": "carrefour_bikers",
+   "label": "Mutairi Binzagr BU6",
+   "module": "People and Payroll",
+   "name": "Timesheet-mutairi_binzagr_bu6",
+   "options": "Mutairi Binzagr BU6"
+  },
+  {
+   "dt": "Timesheet",
+   "fieldname": "osama_zaid",
+   "fieldtype": "Table",
+   "idx": "0",
+   "insert_after": "time_logs",
+   "label": "Osama zaid",
+   "module": "People and Payroll",
+   "name": "Timesheet-osama_zaid",
+   "options": "Osama zaid"
+  },
+  {
+   "dt": "Timesheet",
+   "fieldname": "smsa",
+   "fieldtype": "Table",
+   "idx": "0",
+   "insert_after": "first_mile",
+   "label": "SMSA",
+   "module": "People and Payroll",
+   "name": "Timesheet-smsa",
+   "options": "SMSA"
+  }
+ ],
+ "doctype": "Timesheet",
+ "property_setters": [
+  {
+   "doc_type": "Timesheet",
+   "doctype_or_field": "DocField",
+   "field_name": "time_logs",
+   "module": "People and Payroll",
+   "name": "Timesheet-time_logs-reqd",
+   "property": "reqd",
+   "property_type": "Check",
+   "value": "0"
+  }
+ ],
+ "sync_on_migrate": 1
+}

@@ -1,0 +1,149 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Company",
+   "fieldname": "afmco_settings",
+   "fieldtype": "Section Break",
+   "idx": "24",
+   "insert_after": "date_of_establishment",
+   "is_system_generated": "1",
+   "label": "AFMCO Settings",
+   "module": "Financial Operations",
+   "name": "Company-afmco_settings"
+  },
+  {
+   "dt": "Company",
+   "fieldname": "company_name_in_arabic",
+   "fieldtype": "Data",
+   "idx": "3",
+   "insert_after": "company_name",
+   "is_system_generated": "1",
+   "label": "Company Name In Arabic",
+   "module": "Financial Operations",
+   "name": "Company-company_name_in_arabic",
+   "translatable": "1"
+  },
+  {
+   "dt": "Company",
+   "fieldname": "crc",
+   "fieldtype": "Link",
+   "idx": "105",
+   "insert_after": "crc_registration_details",
+   "label": "CRC",
+   "module": "Financial Operations",
+   "name": "Company-crc",
+   "options": "Registration Details"
+  },
+  {
+   "dt": "Company",
+   "fieldname": "crc_registration_details",
+   "fieldtype": "Section Break",
+   "idx": "104",
+   "insert_after": "section_break_28",
+   "label": "CRC Registration Details",
+   "module": "Financial Operations",
+   "name": "Company-crc_registration_details"
+  },
+  {
+   "depends_on": "eval:doc.enable_jv_creation_on_sales_invoice_submit_cf==1",
+   "dt": "Company",
+   "fieldname": "default_jv_credit_account_cf",
+   "fieldtype": "Link",
+   "idx": "28",
+   "insert_after": "default_jv_debit_account_cf",
+   "is_system_generated": "1",
+   "label": "Default JV Credit Account",
+   "mandatory_depends_on": "eval:doc.enable_jv_creation_on_sales_invoice_submit_cf==1",
+   "module": "Financial Operations",
+   "name": "Company-default_jv_credit_account_cf",
+   "options": "Account"
+  },
+  {
+   "depends_on": "eval:doc.enable_jv_creation_on_sales_invoice_submit_cf==1",
+   "dt": "Company",
+   "fieldname": "default_jv_debit_account_cf",
+   "fieldtype": "Link",
+   "idx": "27",
+   "insert_after": "enable_jv_creation_on_sales_invoice_submit_cf",
+   "is_system_generated": "1",
+   "label": "Default JV Debit Account",
+   "mandatory_depends_on": "eval:doc.enable_jv_creation_on_sales_invoice_submit_cf==1",
+   "module": "Financial Operations",
+   "name": "Company-default_jv_debit_account_cf",
+   "options": "Account"
+  },
+  {
+   "dt": "Company",
+   "fieldname": "delinquent_limit",
+   "fieldtype": "Percent",
+   "hidden": "1",
+   "idx": "0",
+   "insert_after": "loan_restructure_limit",
+   "label": "Delinquent Limit % (Overall)",
+   "module": "Financial Operations",
+   "name": "Company-delinquent_limit"
+  },
+  {
+   "dt": "Company",
+   "fieldname": "enable_jv_creation_on_sales_invoice_submit_cf",
+   "fieldtype": "Check",
+   "idx": "25",
+   "insert_after": "afmco_settings",
+   "is_system_generated": "1",
+   "label": "Enable JV Creation On Sales Invoice Submit",
+   "module": "Financial Operations",
+   "name": "Company-enable_jv_creation_on_sales_invoice_submit_cf"
+  },
+  {
+   "dt": "Company",
+   "fieldname": "jv_series",
+   "fieldtype": "Data",
+   "idx": "25",
+   "insert_after": "date_of_establishment",
+   "is_system_generated": "1",
+   "label": "JV Series",
+   "module": "Financial Operations",
+   "name": "Company-jv_series",
+   "translatable": "1"
+  },
+  {
+   "dt": "Company",
+   "fieldname": "payment_entry_series",
+   "fieldtype": "Data",
+   "idx": "28",
+   "insert_after": "purchase_invoice_series",
+   "is_system_generated": "1",
+   "label": "Payment Entry Series",
+   "module": "Financial Operations",
+   "name": "Company-payment_entry_series",
+   "translatable": "1"
+  },
+  {
+   "dt": "Company",
+   "fieldname": "purchase_invoice_series",
+   "fieldtype": "Data",
+   "idx": "27",
+   "insert_after": "sales_invoice_series",
+   "is_system_generated": "1",
+   "label": "Purchase Invoice Series",
+   "module": "Financial Operations",
+   "name": "Company-purchase_invoice_series",
+   "translatable": "1"
+  },
+  {
+   "dt": "Company",
+   "fieldname": "sales_invoice_series",
+   "fieldtype": "Data",
+   "idx": "26",
+   "insert_after": "jv_series",
+   "is_system_generated": "1",
+   "label": "Sales Invoice Series",
+   "module": "Financial Operations",
+   "name": "Company-sales_invoice_series",
+   "translatable": "1"
+  }
+ ],
+ "doctype": "Company",
+ "property_setters": [],
+ "sync_on_migrate": 1
+}

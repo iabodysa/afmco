@@ -1,0 +1,417 @@
+{
+ "allow_rename": 1,
+ "autoname": "naming_series: ",
+ "creation": "2024-07-30 21:04:17.124906",
+ "default_view": "List",
+ "description": " ",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "workflow_state",
+  "employee_details_section",
+  "naming_series",
+  "employee",
+  "employee_name",
+  "department",
+  "custom_date_of_joining",
+  "column_break_omvju",
+  "corporation",
+  "iqama_expiration_date",
+  "iqama_new_expiration_date",
+  "status_section",
+  "status",
+  "custom_employee_status",
+  "custom_reschedule_date",
+  "column_break_qu9tj",
+  "posting_date",
+  "reason_of_preventing_renewal",
+  "renewal_procedures_section",
+  "renewal_preference",
+  "renewal_duration",
+  "column_break_y6gsu",
+  "reason_of_not_renew",
+  "details_section",
+  "pr_status",
+  "custom_pr_reference",
+  "custom_pr_reference_2",
+  "contract_date",
+  "refundable_balance",
+  "iqama_renewal_issue",
+  "exempt_from_financial_compensation",
+  "column_break_2cypm",
+  "muqeem_balance",
+  "muqeem_balance_after_renewal",
+  "traffic_violation_balance",
+  "accounts_section",
+  "cost_center",
+  "column_break_j0mrz",
+  "sadad_invoice",
+  "column_break_mhlkz",
+  "iqama_renewal_amount",
+  "work_permit_fee",
+  "total_amount",
+  "section_break_tehce",
+  "company_name",
+  "column_break_cjgkr",
+  "file_no"
+ ],
+ "fields": [
+  {
+   "allow_on_submit": 1,
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Workflow State",
+   "no_copy": 1,
+   "options": "Workflow State"
+  },
+  {
+   "fieldname": "employee_details_section",
+   "fieldtype": "Section Break",
+   "label": "Employee Details"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "naming_series",
+   "options": "Re-.YYYY.-.employee.-.##"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fetch_from": "employee.date_of_joining",
+   "fieldname": "custom_date_of_joining",
+   "fieldtype": "Data",
+   "label": "Date of Joining",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_omvju",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.corporation",
+   "fieldname": "corporation",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Corporation",
+   "options": "Corporation"
+  },
+  {
+   "fetch_from": "employee.iqama_expiration_date",
+   "fetch_if_empty": 1,
+   "fieldname": "iqama_expiration_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Iqama Expiration Date",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "iqama_new_expiration_date",
+   "fieldtype": "Date",
+   "label": "New Iqama Expiration Date"
+  },
+  {
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "New\nAwaiting Operations Approval\nRescheduled\nWaiting for Legal Approval\nAwaiting Payment\nAwaiting Renewal\nIssue Preventing Renewal\nRenewed\nRejected"
+  },
+  {
+   "fetch_from": "employee.status",
+   "fieldname": "custom_employee_status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Status",
+   "read_only": 1,
+   "translatable": 1
+  },
+  {
+   "depends_on": "eval:doc.statu",
+   "fieldname": "custom_reschedule_date",
+   "fieldtype": "Date",
+   "label": "Reschedule Date",
+   "mandatory_depends_on": "eval:doc.status == 'Rescheduled'",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_qu9tj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "depends_on": "eval:doc.status == \"Issue Preventing Renewal\"",
+   "fieldname": "reason_of_preventing_renewal",
+   "fieldtype": "Small Text",
+   "label": "Reason of Preventing Renewal"
+  },
+  {
+   "fieldname": "renewal_procedures_section",
+   "fieldtype": "Section Break",
+   "label": "Renewal Procedures"
+  },
+  {
+   "fieldname": "renewal_preference",
+   "fieldtype": "Select",
+   "label": "Renewal Preference",
+   "options": "\nYes\nNO"
+  },
+  {
+   "fieldname": "renewal_duration",
+   "fieldtype": "Select",
+   "label": "Renewal Duration",
+   "options": "\n3 months\n6 months\n9 Months\n1 year"
+  },
+  {
+   "fieldname": "column_break_y6gsu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.renewal_preference == \"NO\"",
+   "fieldname": "reason_of_not_renew",
+   "fieldtype": "Small Text",
+   "label": "Reason of Not Renewal"
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "default": "Not Created",
+   "fieldname": "pr_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "PR Status",
+   "options": "Not Created\nPR Created for Work Cards\nPR Created for Iqama Renewal\nPR Created for Both Work Cards and Iqama Renewal"
+  },
+  {
+   "fieldname": "custom_pr_reference",
+   "fieldtype": "Link",
+   "label": "PR Reference",
+   "options": "Expense Request Afmco",
+   "read_only": 1
+  },
+  {
+   "fieldname": "custom_pr_reference_2",
+   "fieldtype": "Link",
+   "label": "PR Reference 2",
+   "options": "Expense Request Afmco",
+   "read_only": 1
+  },
+  {
+   "fieldname": "contract_date",
+   "fieldtype": "Date",
+   "label": "Contract Date"
+  },
+  {
+   "default": "0",
+   "fieldname": "refundable_balance",
+   "fieldtype": "Check",
+   "label": "Refundable Balance"
+  },
+  {
+   "default": "0",
+   "fieldname": "iqama_renewal_issue",
+   "fieldtype": "Check",
+   "label": "Iqama Renewal Issue"
+  },
+  {
+   "default": "0",
+   "fieldname": "exempt_from_financial_compensation",
+   "fieldtype": "Check",
+   "label": "Exempt from Financial Compensation"
+  },
+  {
+   "fieldname": "column_break_2cypm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "muqeem_balance",
+   "fieldtype": "Currency",
+   "label": "Muqeem Balance",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "muqeem_balance_after_renewal",
+   "fieldtype": "Currency",
+   "label": "Muqeem Balance After Renewal",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "traffic_violation_balance",
+   "fieldtype": "Currency",
+   "label": "Traffic Violation Balance",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "accounts_section",
+   "fieldtype": "Section Break",
+   "label": "Accounts"
+  },
+  {
+   "fetch_from": "employee.payroll_cost_center",
+   "fieldname": "cost_center",
+   "fieldtype": "Data",
+   "label": "Cost Center"
+  },
+  {
+   "fieldname": "column_break_j0mrz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sadad_invoice",
+   "fieldtype": "Data",
+   "label": "Sadad Invoice"
+  },
+  {
+   "fieldname": "column_break_mhlkz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "    ",
+   "fieldname": "iqama_renewal_amount",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Iqama Renewal Amount",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "work_permit_fee",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Work Permit Fee",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "section_break_tehce",
+   "fieldtype": "Section Break",
+   "label": "Company"
+  },
+  {
+   "fetch_from": "corporation.company_name",
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company name"
+  },
+  {
+   "fieldname": "column_break_cjgkr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "corporation.establishment_number",
+   "fieldname": "file_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "File No"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "modified": "2026-09-25 12:00:00.000000",
+ "module": "People and Payroll",
+ "name": "Iqama Renewal Tracking",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Support Team",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_preview_popup": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "employee",
+ "track_changes": 1,
+ "track_seen": 1
+}

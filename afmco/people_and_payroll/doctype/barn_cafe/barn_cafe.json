@@ -1,0 +1,310 @@
+{
+ "allow_rename": 1,
+ "creation": "2024-11-06 16:52:03.887104",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_payroll",
+  "personnel_number",
+  "name1",
+  "contract_start_date",
+  "branch_name",
+  "grade",
+  "position",
+  "payment_methods",
+  "employment_type",
+  "nationality",
+  "national__iqama_id",
+  "bank_name",
+  "iban",
+  "department",
+  "contract_basic_salary",
+  "working_days",
+  "actual_working_days",
+  "reason",
+  "total_leave_days",
+  "total_overtime_hours",
+  "basic_salary",
+  "\u0623\u062e\u0631\u0649",
+  "\u0627\u0644\u0627\u062c\u0627\u0632\u0627\u062a",
+  "\u0628\u062f\u0644_\u0633\u0643\u0646",
+  "\u0628\u062f\u0644_\u0637\u0639\u0627\u0645",
+  "\u0628\u062f\u0644_\u0639\u0645\u0644_\u0627\u0636\u0627\u0641\u064a",
+  "\u0628\u062f\u0644_\u0645\u0648\u0627\u0635\u0644\u0627\u062a",
+  "\u0628\u062f\u0644\u0627\u062a_\u0627\u062e\u0631\u0649",
+  "\u062a\u0639\u062f\u064a\u0644_\u0627\u062c\u0627\u0632\u0629",
+  "\u062a\u0639\u062f\u064a\u0644_\u0627\u0644\u0631\u0627\u062a\u0628",
+  "\u0628\u062f\u0644\u0627\u062a_\u062e\u0627\u0635\u0647",
+  "op_bonus",
+  "increase_pay_transactions_leave",
+  "absence_deduction",
+  "absentcontracting",
+  "general_deduction",
+  "\u0627\u0644\u062a\u0627\u062e\u064a\u0631",
+  "\u0627\u0644\u062a\u0627\u0645\u064a\u0646\u0627\u062a_\u0627\u0644\u0627\u062c\u062a\u0645\u0627\u0639\u064a\u0629",
+  "\u0627\u0644\u0633\u0644\u0641",
+  "\u0627\u0644\u063a\u064a\u0627\u0628",
+  "\u062a\u0639\u062f\u064a\u0644_\u0627\u0644\u0631\u0627\u062a\u06281",
+  "\u0639\u0642\u0648\u0628\u0627\u062a",
+  "\u0646\u0642\u0635_\u0627\u0644\u0645\u0628\u064a\u0639\u0627\u062a",
+  "absence_deduction2",
+  "decrease_pay_transactions_leave",
+  "\u0627\u062c\u0645\u0627\u0644\u064a_\u0627\u0644\u062e\u0635\u0645\u064a\u0627\u062a",
+  "branch",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_payroll",
+   "fieldtype": "Section Break",
+   "label": "Payroll Details"
+  },
+  {
+   "fieldname": "personnel_number",
+   "fieldtype": "Link",
+   "label": "Personnel number",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "personnel_number.first_name",
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "contract_start_date",
+   "fieldtype": "Date",
+   "label": "Contract start date"
+  },
+  {
+   "fieldname": "branch_name",
+   "fieldtype": "Data",
+   "label": "Branch name"
+  },
+  {
+   "fieldname": "grade",
+   "fieldtype": "Data",
+   "label": "Grade"
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Data",
+   "label": "Position"
+  },
+  {
+   "fieldname": "payment_methods",
+   "fieldtype": "Data",
+   "label": "Payment methods"
+  },
+  {
+   "fieldname": "employment_type",
+   "fieldtype": "Data",
+   "label": "Employment type"
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Data",
+   "label": "Nationality"
+  },
+  {
+   "fieldname": "national__iqama_id",
+   "fieldtype": "Data",
+   "label": "National  Iqama Id"
+  },
+  {
+   "fieldname": "bank_name",
+   "fieldtype": "Data",
+   "label": "Bank Name"
+  },
+  {
+   "fieldname": "iban",
+   "fieldtype": "Data",
+   "label": "IBAN"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department"
+  },
+  {
+   "fieldname": "contract_basic_salary",
+   "fieldtype": "Data",
+   "label": "Contract basic salary"
+  },
+  {
+   "fieldname": "working_days",
+   "fieldtype": "Data",
+   "label": "Working days"
+  },
+  {
+   "fieldname": "actual_working_days",
+   "fieldtype": "Data",
+   "label": "Actual working days"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Data",
+   "label": "Reason"
+  },
+  {
+   "fieldname": "total_leave_days",
+   "fieldtype": "Data",
+   "label": "Total leave days"
+  },
+  {
+   "fieldname": "total_overtime_hours",
+   "fieldtype": "Data",
+   "label": "Total overtime hours"
+  },
+  {
+   "fieldname": "basic_salary",
+   "fieldtype": "Data",
+   "label": "Basic Salary"
+  },
+  {
+   "fieldname": "\u0623\u062e\u0631\u0649",
+   "fieldtype": "Data",
+   "label": "Other"
+  },
+  {
+   "fieldname": "\u0627\u0644\u0627\u062c\u0627\u0632\u0627\u062a",
+   "fieldtype": "Data",
+   "label": "Leaves"
+  },
+  {
+   "fieldname": "\u0628\u062f\u0644_\u0633\u0643\u0646",
+   "fieldtype": "Data",
+   "label": "Housing Allowance"
+  },
+  {
+   "fieldname": "\u0628\u062f\u0644_\u0637\u0639\u0627\u0645",
+   "fieldtype": "Data",
+   "label": "Food Allowance"
+  },
+  {
+   "fieldname": "\u0628\u062f\u0644_\u0639\u0645\u0644_\u0627\u0636\u0627\u0641\u064a",
+   "fieldtype": "Data",
+   "label": "Overtime Allowance"
+  },
+  {
+   "fieldname": "\u0628\u062f\u0644_\u0645\u0648\u0627\u0635\u0644\u0627\u062a",
+   "fieldtype": "Data",
+   "label": "Transportation Allowance"
+  },
+  {
+   "fieldname": "\u0628\u062f\u0644\u0627\u062a_\u0627\u062e\u0631\u0649",
+   "fieldtype": "Data",
+   "label": "Other Allowances"
+  },
+  {
+   "fieldname": "\u062a\u0639\u062f\u064a\u0644_\u0627\u062c\u0627\u0632\u0629",
+   "fieldtype": "Data",
+   "label": "Leave Adjustment"
+  },
+  {
+   "fieldname": "\u062a\u0639\u062f\u064a\u0644_\u0627\u0644\u0631\u0627\u062a\u0628",
+   "fieldtype": "Data",
+   "label": "Salary Adjustment"
+  },
+  {
+   "fieldname": "\u0628\u062f\u0644\u0627\u062a_\u062e\u0627\u0635\u0647",
+   "fieldtype": "Data",
+   "label": "Special Allowances"
+  },
+  {
+   "fieldname": "op_bonus",
+   "fieldtype": "Data",
+   "label": "OP Bonus"
+  },
+  {
+   "fieldname": "increase_pay_transactions_leave",
+   "fieldtype": "Data",
+   "label": "Increase pay transactions (Leave)"
+  },
+  {
+   "fieldname": "absence_deduction",
+   "fieldtype": "Data",
+   "label": "Absence deduction"
+  },
+  {
+   "fieldname": "absentcontracting",
+   "fieldtype": "Data",
+   "label": "absent/contracting"
+  },
+  {
+   "fieldname": "general_deduction",
+   "fieldtype": "Data",
+   "label": "General deduction"
+  },
+  {
+   "fieldname": "\u0627\u0644\u062a\u0627\u062e\u064a\u0631",
+   "fieldtype": "Data",
+   "label": "Lateness"
+  },
+  {
+   "fieldname": "\u0627\u0644\u062a\u0627\u0645\u064a\u0646\u0627\u062a_\u0627\u0644\u0627\u062c\u062a\u0645\u0627\u0639\u064a\u0629",
+   "fieldtype": "Data",
+   "label": "Social Insurance"
+  },
+  {
+   "fieldname": "\u0627\u0644\u0633\u0644\u0641",
+   "fieldtype": "Data",
+   "label": "Advances"
+  },
+  {
+   "fieldname": "\u0627\u0644\u063a\u064a\u0627\u0628",
+   "fieldtype": "Data",
+   "label": "Absence"
+  },
+  {
+   "fieldname": "\u062a\u0639\u062f\u064a\u0644_\u0627\u0644\u0631\u0627\u062a\u06281",
+   "fieldtype": "Data",
+   "label": "Salary Adjustment 1"
+  },
+  {
+   "fieldname": "\u0639\u0642\u0648\u0628\u0627\u062a",
+   "fieldtype": "Data",
+   "label": "Penalties"
+  },
+  {
+   "fieldname": "\u0646\u0642\u0635_\u0627\u0644\u0645\u0628\u064a\u0639\u0627\u062a",
+   "fieldtype": "Data",
+   "label": "Sales Shortage"
+  },
+  {
+   "fieldname": "absence_deduction2",
+   "fieldtype": "Data",
+   "label": "Absence deduction2"
+  },
+  {
+   "fieldname": "decrease_pay_transactions_leave",
+   "fieldtype": "Data",
+   "label": "Decrease pay transactions (Leave)"
+  },
+  {
+   "fieldname": "\u0627\u062c\u0645\u0627\u0644\u064a_\u0627\u0644\u062e\u0635\u0645\u064a\u0627\u062a",
+   "fieldtype": "Data",
+   "label": "Total Deductions"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Data",
+   "label": "Branch"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Data",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2024-11-07 19:25:10.917497",
+ "module": "People and Payroll",
+ "name": "Barn cafe",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

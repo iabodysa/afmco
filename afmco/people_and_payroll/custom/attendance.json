@@ -1,0 +1,18 @@
+{
+ "custom_fields": [],
+ "doctype": "Attendance",
+ "property_setters": [
+  {
+   "doc_type": "Attendance",
+   "doctype_or_field": "DocField",
+   "field_name": "naming_series",
+   "is_system_generated": "1",
+   "module": "People and Payroll",
+   "name": "Attendance-naming_series-options",
+   "property": "options",
+   "property_type": "Text",
+   "value": "HR-ATT-.YYYY.-"
+  }
+ ],
+ "sync_on_migrate": 1
+}

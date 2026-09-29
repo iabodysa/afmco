@@ -1,0 +1,23 @@
+{
+ "custom_fields": [
+  {
+   "columns": "1",
+   "dt": "Salary Detail",
+   "fetch_from": "salary_component.default_account",
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "idx": "0",
+   "in_list_view": "1",
+   "insert_after": "abbr",
+   "label": "Account",
+   "module": "People and Payroll",
+   "name": "Salary Detail-account",
+   "options": "Account",
+   "print_hide": "1",
+   "read_only": "1"
+  }
+ ],
+ "doctype": "Salary Detail",
+ "property_setters": [],
+ "sync_on_migrate": 1
+}

@@ -1,0 +1,115 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "creation": "2023-11-24 00:14:38.236714",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "types_english",
+  "types_arabic",
+  "column_break_3",
+  "period_unit",
+  "period",
+  "column_break_6",
+  "biller",
+  "service_codes",
+  "column_break_9",
+  "account_head_office",
+  "account_other",
+  "advanced_expenses",
+  "section_break_12",
+  "amounts"
+ ],
+ "fields": [
+  {
+   "fieldname": "types_english",
+   "fieldtype": "Data",
+   "label": "Types (English)"
+  },
+  {
+   "fieldname": "types_arabic",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Types (Arabic)"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "period_unit",
+   "fieldtype": "Select",
+   "label": "Period Unit",
+   "options": "\nMonth\nTime"
+  },
+  {
+   "fieldname": "period",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "period"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "biller",
+   "fieldtype": "Data",
+   "label": "Biller"
+  },
+  {
+   "fieldname": "service_codes",
+   "fieldtype": "Data",
+   "label": "Service Codes"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "account_head_office",
+   "fieldtype": "Link",
+   "label": "Account (Head Office)",
+   "options": "Account"
+  },
+  {
+   "fieldname": "account_other",
+   "fieldtype": "Link",
+   "label": "Account (Other)",
+   "options": "Account"
+  },
+  {
+   "fieldname": "advanced_expenses",
+   "fieldtype": "Link",
+   "label": "Advanced expenses",
+   "options": "Account"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amounts",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amounts"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-08-11 01:05:14.351457",
+ "modified_by": "Administrator",
+ "module": "Financial Operations",
+ "name": "SADAD Child Table 1",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

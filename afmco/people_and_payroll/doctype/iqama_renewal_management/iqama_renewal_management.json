@@ -1,0 +1,101 @@
+{
+ "creation": "2024-07-25 16:16:50.584545",
+ "description": " ",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "details_section",
+  "department",
+  "column_break_corporation",
+  "corporation",
+  "employee_details_section",
+  "employees_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Department and Corporation"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "column_break_corporation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "corporation",
+   "fieldtype": "Link",
+   "label": "Corporation",
+   "options": "Corporation"
+  },
+  {
+   "fieldname": "employee_details_section",
+   "fieldtype": "Section Break",
+   "label": "Employee Details"
+  },
+  {
+   "allow_bulk_edit": 1,
+   "fieldname": "employees_details",
+   "fieldtype": "Table",
+   "label": "Employees Details",
+   "options": "Iqama Renewal Tracking Item"
+  }
+ ],
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "modified": "2024-08-29 15:17:38.804090",
+ "module": "People and Payroll",
+ "name": "Iqama Renewal Management",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "HR Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "HR User",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Support Team",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

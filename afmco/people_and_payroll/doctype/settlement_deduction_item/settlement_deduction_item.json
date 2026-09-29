@@ -1,0 +1,49 @@
+{
+ "allow_rename": 1,
+ "creation": "2023-10-30 14:19:24.351771",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "note",
+  "claim_type",
+  "date",
+  "amount2"
+ ],
+ "fields": [
+  {
+   "fieldname": "note",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "note"
+  },
+  {
+   "fieldname": "claim_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Claim type",
+   "options": "Loan\nindebtedness\nDriving License\nRenewal of IQama\nRenewal of IQama violations\nTraffic violations\nCar damage\nMissing shipments\nOther"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "amount2",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2024-08-11 01:05:10.890499",
+ "module": "People and Payroll",
+ "name": "Settlement Deduction Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

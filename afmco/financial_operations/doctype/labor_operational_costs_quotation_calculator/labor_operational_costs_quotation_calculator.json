@@ -1,0 +1,759 @@
+{
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-08-10 16:59:34.234303",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "instructions_section",
+  "cost_calculation_details",
+  "client_details_section",
+  "company_name",
+  "column_break_client_name",
+  "client_name",
+  "column_break_contact_number",
+  "contact_number",
+  "column_break_email",
+  "email",
+  "employment_details_section",
+  "nationality",
+  "position",
+  "column_break_hiring",
+  "number_to_hire",
+  "hours_per_day",
+  "column_break_employment_type",
+  "employment_type",
+  "housing_and_transportation",
+  "specific_costs",
+  "toggle_health_certificate",
+  "contract_details_section",
+  "contract_start_date",
+  "column_break_contract_end",
+  "contract_end_date",
+  "column_break_contract_duration",
+  "contract_duration",
+  "salary_details_section",
+  "monthly_salary",
+  "column_break_overtime_cost",
+  "overtime_cost",
+  "section_salary_components",
+  "basic_salary",
+  "housing_allowance",
+  "column_break_allowances",
+  "transportation_allowance",
+  "food_allowance",
+  "column_break_leave_end_of_service",
+  "leave_salary",
+  "end_of_service",
+  "column_break_gosi",
+  "gosi",
+  "recruitment_costs_section",
+  "work_permit",
+  "iqama_cost",
+  "column_break_insurance_ajeer",
+  "medical_insurance",
+  "ajeer_fees",
+  "column_break_travel",
+  "annual_air_ticket",
+  "exit_and_reentry_visa_fees",
+  "section_one_time_costs",
+  "visa_cost",
+  "sponsorship_transfer_fees",
+  "health_certificate_cost",
+  "column_break_exam_agency",
+  "medical_exam_fee",
+  "agency_fees",
+  "equipment_costs_section",
+  "uniform_cost",
+  "vehicle_cost",
+  "column_break_safety_fuel",
+  "safety_shoes_cost",
+  "fuel_cost",
+  "column_break_worker_supplies",
+  "cleaning_supplies_cost",
+  "mobile_cost",
+  "sim_card_cost",
+  "operational_costs_section",
+  "housing_cost",
+  "column_break_transportation_cost",
+  "transportation_cost",
+  "administrative_expenses_section",
+  "commissions",
+  "column_break_general_administrative",
+  "general_administrative_expenses",
+  "column_break_localization",
+  "saudization_expenses",
+  "section_profit_discount",
+  "profit_margin",
+  "discount_rate",
+  "column_break_profit_totals",
+  "individual_profit",
+  "discount",
+  "total_profit",
+  "profit_and_vat_section",
+  "total_cost_excluding_salary_vat_profit",
+  "total_monthly_billing",
+  "workers_contract_duration_cost",
+  "column_break_totals_with_vat",
+  "total_cost_with_profit",
+  "vat",
+  "total_cost_with_profit_and_vat",
+  "total_cost_with_vat_contract_duration",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "collapsible": 1,
+   "fieldname": "instructions_section",
+   "fieldtype": "Section Break",
+   "label": "Instructions"
+  },
+  {
+   "fieldname": "cost_calculation_details",
+   "fieldtype": "HTML",
+   "label": "Cost Calculation Details",
+   "options": "<div style=\"text-align: left; padding: 10px; font-family: Arial, sans-serif; line-height: 1.5;\">\n    <h4 style=\"color: #007bff;\">Cost Calculation Details</h4>\n\n    <section>\n        <h5>Instructions</h5>\n        <p>Please ensure all relevant fields are filled out correctly. The calculations are based on various factors including contract duration, monthly salary, and specific allowances. Below are the detailed descriptions and types of costs considered in the calculations.</p>\n    </section>\n\n    <section>\n        <h5>Contract Duration</h5>\n        <p>The contract duration is determined by the number of days between the start and end dates.</p>\n    </section>\n\n    <section>\n        <h5>Salary and Allowances</h5>\n        <p>The monthly salary is used to calculate the following allowances:</p>\n        <ul>\n            <li>Food</li>\n            <li>Housing</li>\n            <li>Transportation</li>\n        </ul>\n        <p>It also includes:</p>\n        <ul>\n            <li>General Organization for Social Insurance (GOSI)</li>\n            <li>End-of-service benefits</li>\n        </ul>\n    </section>\n\n    <section>\n        <h5>Leave Salary</h5>\n        <p>The leave salary is calculated based on 21 days of leave per year.</p>\n    </section>\n\n    <section>\n        <h5>Annual Costs</h5>\n        <p>Annual costs such as air tickets, medical insurance, and other fees are converted to monthly values.</p>\n    </section>\n\n    <section>\n        <h5>Recruitment Costs</h5>\n        <p>If the employment type is 'Recruitment', costs such as visa, international recruitment fees, and sponsorship transfer fees are included based on a 24-month contract.</p>\n    </section>\n\n    <section>\n        <h5>Specific Costs</h5>\n        <p>For positions like 'Worker' or 'Delivery Representative', specific costs are considered:</p>\n        <ul>\n            <li>Uniform</li>\n            <li>Safety shoes</li>\n            <li>Cleaning supplies</li>\n            <li>Mobile</li>\n            <li>Sim card</li>\n            <li>Vehicle</li>\n            <li>Fuel</li>\n        </ul>\n        <p>Housing and transportation costs are added if applicable.</p>\n    </section>\n\n    <section>\n        <h5>Total Cost Calculation</h5>\n        <p>The total cost includes the components listed above along with:</p>\n        <ul>\n            <li>Commissions</li>\n            <li>General administrative expenses</li>\n            <li>Saudization expenses</li>\n            <li>Overtime costs (calculated for hours worked beyond the standard 8 hours per day at 1.5 times the hourly rate)</li>\n        </ul>\n        <p>The total cost per worker is aggregated, and then multiplied by the number of employees. The document calculates the final total cost by adding the profit margin and value-added tax (VAT) to the total cost.</p>\n    </section>\n\n    <section>\n        <h5>Calculation Types</h5>\n        <table style=\"width: 100%; border-collapse: collapse; border: 1px solid #ddd;\">\n            <thead style=\"background-color: #f2f2f2;\">\n                <tr>\n                    <th style=\"border: 1px solid #ddd; padding: 8px;\">Cost Type</th>\n                    <th style=\"border: 1px solid #ddd; padding: 8px;\">Calculation Frequency</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Work Permit</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Annual</td>\n                </tr>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Iqama Cost</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Annual</td>\n                </tr>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Medical Insurance</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Annual</td>\n                </tr>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Ajeer Fees</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Annual</td>\n                </tr>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Visa Cost</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">24 Months</td>\n                </tr>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Sponsorship Transfer Fees</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">24 Months</td>\n                </tr>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Uniform Cost</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">12 Months</td>\n                </tr>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Safety Shoes Cost</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">12 Months</td>\n                </tr>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Cleaning Supplies Cost</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Monthly</td>\n                </tr>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Mobile Cost</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Annual</td>\n                </tr>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Sim Card Cost</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Monthly</td>\n                </tr>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Vehicle Cost</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Monthly</td>\n                </tr>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Fuel Cost</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Monthly</td>\n                </tr>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Housing Cost</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Monthly</td>\n                </tr>\n                <tr>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Transportation Cost</td>\n                    <td style=\"border: 1px solid #ddd; padding: 8px;\">Monthly</td>\n                </tr>\n            </tbody>\n        </table>\n    </section>\n</div>\n"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "client_details_section",
+   "fieldtype": "Section Break",
+   "label": "Client Details"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Company Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_client_name",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "label": "Client Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_contact_number",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "Contact Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_email",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "reqd": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "employment_details_section",
+   "fieldtype": "Section Break",
+   "label": "Employment Details"
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Nationality",
+   "options": "\nIndia\nBangladesh\nPakistan\nEgypt\nSri Lanka\nNepal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Position",
+   "options": "\nWorker\nDelivery Representative",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_hiring",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "number_to_hire",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Number to Hire",
+   "reqd": 1
+  },
+  {
+   "default": "8",
+   "description": "Enter up to 12 hours; hours above 8 are charged as overtime at 1.5 times the hourly rate.",
+   "fieldname": "hours_per_day",
+   "fieldtype": "Int",
+   "label": "Working Hours Per Day"
+  },
+  {
+   "fieldname": "column_break_employment_type",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "employment_type",
+   "fieldtype": "Select",
+   "label": "Employment Type",
+   "options": "\nNo Recruitment Fee\nRecruitment\nSponsorship Transfer"
+  },
+  {
+   "default": "0",
+   "fieldname": "housing_and_transportation",
+   "fieldtype": "Check",
+   "label": "Includes accommodation or transportation"
+  },
+  {
+   "default": "0",
+   "fieldname": "specific_costs",
+   "fieldtype": "Check",
+   "label": "Special requests"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.position == 'Worker'",
+   "fieldname": "toggle_health_certificate",
+   "fieldtype": "Check",
+   "label": "Include Health Certificate"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "contract_details_section",
+   "fieldtype": "Section Break",
+   "label": "Contract Details"
+  },
+  {
+   "fieldname": "contract_start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Contract Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_contract_end",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contract_end_date",
+   "fieldtype": "Date",
+   "label": "Contract End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_contract_duration",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Calculated from the contract start and end dates.",
+   "fieldname": "contract_duration",
+   "fieldtype": "Int",
+   "label": "Contract Duration (Months)",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "salary_details_section",
+   "fieldtype": "Section Break",
+   "label": "Salary"
+  },
+  {
+   "description": "Enter the full monthly salary, including the food allowance.",
+   "fieldname": "monthly_salary",
+   "fieldtype": "Currency",
+   "label": "Total Salary (Months)",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_overtime_cost",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Monthly pay for hours above 8 a day, over 26 working days.",
+   "fieldname": "overtime_cost",
+   "fieldtype": "Currency",
+   "label": "Overtime Cost",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_salary_components",
+   "fieldtype": "Section Break",
+   "label": "Salary Details"
+  },
+  {
+   "description": "65% of the monthly salary after the food allowance.",
+   "fieldname": "basic_salary",
+   "fieldtype": "Currency",
+   "label": "Basic Salary",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "description": "25% of the monthly salary after the food allowance.",
+   "fieldname": "housing_allowance",
+   "fieldtype": "Currency",
+   "label": "Housing Allowance",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_allowances",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "10% of the monthly salary after the food allowance.",
+   "fieldname": "transportation_allowance",
+   "fieldtype": "Currency",
+   "label": "Transportation Allowance",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "default": "200",
+   "description": "Fixed at 200 when the monthly salary is above 200.",
+   "fieldname": "food_allowance",
+   "fieldtype": "Currency",
+   "label": "Food Allowance",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_leave_end_of_service",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Monthly share of 21 days of annual leave pay.",
+   "fieldname": "leave_salary",
+   "fieldtype": "Currency",
+   "label": "Leave Salary (Months)",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "description": "Monthly share of half a month's salary for each year of service.",
+   "fieldname": "end_of_service",
+   "fieldtype": "Currency",
+   "label": "End of Service (Months)",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_gosi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "2% of the monthly salary after the food allowance.",
+   "fieldname": "gosi",
+   "fieldtype": "Currency",
+   "label": "GOSI (Months)",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "description": "Annual amounts, each spread over 12 months in the monthly cost.",
+   "fieldname": "recruitment_costs_section",
+   "fieldtype": "Section Break",
+   "label": "Recurring Employment Costs"
+  },
+  {
+   "default": "9700",
+   "fieldname": "work_permit",
+   "fieldtype": "Currency",
+   "label": "Work Permit (Annual)",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "default": "650",
+   "fieldname": "iqama_cost",
+   "fieldtype": "Currency",
+   "label": "Iqama Cost (Annual)",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_insurance_ajeer",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "550",
+   "fieldname": "medical_insurance",
+   "fieldtype": "Currency",
+   "label": "Medical Insurance (Annual)",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "default": "276",
+   "fieldname": "ajeer_fees",
+   "fieldtype": "Currency",
+   "label": "Ajeer Fees (Annual)",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_travel",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "600",
+   "fieldname": "annual_air_ticket",
+   "fieldtype": "Currency",
+   "label": "Annual Air Ticket (Annual)",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "default": "200",
+   "fieldname": "exit_and_reentry_visa_fees",
+   "fieldtype": "Currency",
+   "label": "Exit and Re-Entry Visa Fees (Annual)",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "description": "One-time costs are spread over 24 months in the monthly cost.",
+   "fieldname": "section_one_time_costs",
+   "fieldtype": "Section Break",
+   "label": "One-time Employment Costs"
+  },
+  {
+   "default": "2000",
+   "depends_on": "eval:doc.employment_type == 'Recruitment'",
+   "fieldname": "visa_cost",
+   "fieldtype": "Currency",
+   "label": "Visa Cost ( 24 Months)",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "default": "2000",
+   "depends_on": "eval:doc.employment_type == 'Sponsorship Transfer'",
+   "fieldname": "sponsorship_transfer_fees",
+   "fieldtype": "Currency",
+   "label": "Sponsorship Transfer Fees ( 24 Months)",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.toggle_health_certificate == 1",
+   "fieldname": "health_certificate_cost",
+   "fieldtype": "Currency",
+   "label": "Health Certificate Cost (24 months)"
+  },
+  {
+   "fieldname": "column_break_exam_agency",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.employment_type == 'Recruitment'",
+   "fieldname": "medical_exam_fee",
+   "fieldtype": "Currency",
+   "label": "Medical Exam Fee (24 months)",
+   "options": "Currency"
+  },
+  {
+   "default": "2812.5",
+   "depends_on": "eval:doc.employment_type == 'Recruitment'",
+   "fieldname": "agency_fees",
+   "fieldtype": "Currency",
+   "label": "Agency Fees (24 months)",
+   "options": "Currency"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "equipment_costs_section",
+   "fieldtype": "Section Break",
+   "label": "Equipment Costs"
+  },
+  {
+   "default": "100",
+   "depends_on": "eval:doc.position == 'Worker' && doc.specific_costs == 1",
+   "fieldname": "uniform_cost",
+   "fieldtype": "Currency",
+   "label": "Uniform Cost (Annual)",
+   "options": "Currency"
+  },
+  {
+   "default": "1000",
+   "depends_on": "eval:doc.position == 'Delivery Representative' && doc.specific_costs == 1",
+   "fieldname": "vehicle_cost",
+   "fieldtype": "Currency",
+   "label": "Vehicle Cost (Months)",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_safety_fuel",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "75",
+   "depends_on": "eval:doc.position == 'Worker' && doc.specific_costs == 1",
+   "fieldname": "safety_shoes_cost",
+   "fieldtype": "Currency",
+   "label": "Safety Shoes Cost (Annual)",
+   "options": "Currency"
+  },
+  {
+   "default": "200",
+   "depends_on": "eval:doc.position == 'Delivery Representative' && doc.specific_costs == 1",
+   "fieldname": "fuel_cost",
+   "fieldtype": "Currency",
+   "label": "Fuel Cost (Months)",
+   "options": "Currency"
+  },
+  {
+   "depends_on": "eval:doc.position == 'Worker'",
+   "fieldname": "column_break_worker_supplies",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "50",
+   "depends_on": "eval:doc.position == 'Worker' && doc.specific_costs == 1",
+   "fieldname": "cleaning_supplies_cost",
+   "fieldtype": "Currency",
+   "label": "Cleaning Supplies Cost (Months)",
+   "options": "Currency"
+  },
+  {
+   "default": "300",
+   "depends_on": "eval:doc.position == 'Delivery Representative' && doc.specific_costs == 1",
+   "fieldname": "mobile_cost",
+   "fieldtype": "Currency",
+   "label": "Mobile Cost (Annual)",
+   "options": "Currency"
+  },
+  {
+   "default": "50",
+   "depends_on": "eval:doc.position == 'Delivery Representative' && doc.specific_costs == 1",
+   "fieldname": "sim_card_cost",
+   "fieldtype": "Currency",
+   "label": "SIM Card Cost (Months)",
+   "options": "Currency"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "operational_costs_section",
+   "fieldtype": "Section Break",
+   "label": "Operational Costs"
+  },
+  {
+   "default": "500",
+   "depends_on": "eval:doc.housing_and_transportation == 1",
+   "fieldname": "housing_cost",
+   "fieldtype": "Currency",
+   "label": "Housing Cost (Months)",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_transportation_cost",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "200",
+   "depends_on": "eval:doc.housing_and_transportation == 1",
+   "fieldname": "transportation_cost",
+   "fieldtype": "Currency",
+   "label": "Transportation Cost (Months)",
+   "options": "Currency"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "administrative_expenses_section",
+   "fieldtype": "Section Break",
+   "label": "Administrative Expenses"
+  },
+  {
+   "default": "500",
+   "fieldname": "commissions",
+   "fieldtype": "Currency",
+   "label": "Commissions (Months)",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_general_administrative",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "300",
+   "fieldname": "general_administrative_expenses",
+   "fieldtype": "Currency",
+   "label": "General Administrative Expenses (Months)",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_localization",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "756.11",
+   "fieldname": "saudization_expenses",
+   "fieldtype": "Currency",
+   "label": "Localization Costs (Months)",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "section_profit_discount",
+   "fieldtype": "Section Break",
+   "label": "Profit and Discount"
+  },
+  {
+   "default": "6",
+   "fieldname": "profit_margin",
+   "fieldtype": "Int",
+   "label": "Profit Margin (%)",
+   "precision": "1"
+  },
+  {
+   "fieldname": "discount_rate",
+   "fieldtype": "Int",
+   "label": "Discount Rate",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_profit_totals",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "individual_profit",
+   "fieldtype": "Currency",
+   "label": "Individual Profit",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "discount",
+   "fieldtype": "Currency",
+   "label": "Discount",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_profit",
+   "fieldtype": "Currency",
+   "label": "Total Profit",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "profit_and_vat_section",
+   "fieldtype": "Section Break",
+   "label": "Total and VAT Calculation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_cost_excluding_salary_vat_profit",
+   "fieldtype": "Currency",
+   "label": "Total Cost excluding Salary, VAT, and Profit",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "description": "Cost of one worker per month, including profit and before VAT.",
+   "fieldname": "total_monthly_billing",
+   "fieldtype": "Currency",
+   "label": "worker's monthly cost",
+   "options": "Currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "workers_contract_duration_cost",
+   "fieldtype": "Currency",
+   "label": "Worker's Contract Duration Cost",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_totals_with_vat",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Cost of all workers per month, including profit and before discount.",
+   "fieldname": "total_cost_with_profit",
+   "fieldtype": "Currency",
+   "label": "Total worker cost per month before tax",
+   "options": "Currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "description": "15% of the total after discount.",
+   "fieldname": "vat",
+   "fieldtype": "Currency",
+   "label": "VAT (15%)",
+   "options": "Currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "description": "Monthly total for all workers after discount, including profit and VAT.",
+   "fieldname": "total_cost_with_profit_and_vat",
+   "fieldtype": "Currency",
+   "label": "Total Cost with VAT (Monthly)",
+   "options": "Currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_cost_with_vat_contract_duration",
+   "fieldtype": "Currency",
+   "label": "Total Cost with VAT (Contract Duration)",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "Cost-.YYYY.-"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "modified": "2026-09-25 12:00:00.000000",
+ "module": "Financial Operations",
+ "name": "Labor Operational Costs Quotation Calculator",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

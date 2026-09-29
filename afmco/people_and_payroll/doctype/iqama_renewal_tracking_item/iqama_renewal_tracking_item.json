@@ -1,0 +1,164 @@
+{
+ "creation": "2024-07-25 16:05:35.755114",
+ "description": " ",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "name1",
+  "employee",
+  "column_break_employee",
+  "employee_name",
+  "iqama_expiration_date",
+  "section_organization",
+  "department",
+  "cost_center",
+  "column_break_company",
+  "company_name",
+  "corporation",
+  "file_no",
+  "section_renewal",
+  "renewal_preference",
+  "column_break_renewal_period",
+  "renewal_period",
+  "column_break_renewal_reason",
+  "reason_of_not_renewal"
+ ],
+ "fields": [
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "columns": 1,
+   "fieldname": "employee",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee"
+  },
+  {
+   "fieldname": "column_break_employee",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 2,
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "columns": 1,
+   "fieldname": "iqama_expiration_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Iqama Expiration Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_organization",
+   "fieldtype": "Section Break",
+   "label": "Organization"
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Department",
+   "options": "Department",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_company",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "corporation.company_name",
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Company name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.corporation",
+   "fieldname": "corporation",
+   "fieldtype": "Link",
+   "label": "Corporation",
+   "options": "Corporation",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "corporation.establishment_number",
+   "fieldname": "file_no",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "File No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_renewal",
+   "fieldtype": "Section Break",
+   "label": "Renewal"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "columns": 1,
+   "fieldname": "renewal_preference",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Renewal Preference",
+   "options": "\nYes\nNO"
+  },
+  {
+   "fieldname": "column_break_renewal_period",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "columns": 1,
+   "fieldname": "renewal_period",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Renewal Duration (months)",
+   "options": "3\n6\n9\n12"
+  },
+  {
+   "fieldname": "column_break_renewal_reason",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "columns": 2,
+   "fieldname": "reason_of_not_renewal",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reason of Not Renewal"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2024-08-29 15:17:37.474475",
+ "module": "People and Payroll",
+ "name": "Iqama Renewal Tracking Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1
+}

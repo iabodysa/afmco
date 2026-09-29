@@ -1,0 +1,216 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Salary Structure Assignment",
+   "fieldname": "attendance_allowance",
+   "fieldtype": "Currency",
+   "idx": "27",
+   "insert_after": "supervisor_allowance",
+   "label": "Attendance Allowance",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-attendance_allowance",
+   "options": "currency"
+  },
+  {
+   "dt": "Salary Structure Assignment",
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break",
+   "idx": "22",
+   "insert_after": "custom_update",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-column_break_15"
+  },
+  {
+   "dt": "Salary Structure Assignment",
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break",
+   "idx": "25",
+   "insert_after": "food_allowance",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-column_break_17"
+  },
+  {
+   "dt": "Salary Structure Assignment",
+   "fieldname": "commission",
+   "fieldtype": "Currency",
+   "idx": "20",
+   "insert_after": "variable",
+   "label": "COMMISSION",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-commission",
+   "options": "currency"
+  },
+  {
+   "dt": "Salary Structure Assignment",
+   "fieldname": "custom_housing",
+   "fieldtype": "Currency",
+   "idx": "17",
+   "insert_after": "base",
+   "label": "Housing",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-custom_housing"
+  },
+  {
+   "allow_on_submit": "1",
+   "dt": "Salary Structure Assignment",
+   "fieldname": "custom_update",
+   "fieldtype": "Check",
+   "idx": "21",
+   "insert_after": "commission",
+   "label": "update",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-custom_update",
+   "options": "currency"
+  },
+  {
+   "dt": "Salary Structure Assignment",
+   "fieldname": "food_allowance",
+   "fieldtype": "Currency",
+   "idx": "24",
+   "insert_after": "transportation_allowance",
+   "label": "Food Allowance",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-food_allowance",
+   "options": "currency"
+  },
+  {
+   "dt": "Salary Structure Assignment",
+   "fetch_from": "grade.default_base_pay",
+   "fieldname": "housing",
+   "fieldtype": "Currency",
+   "idx": "14",
+   "insert_after": "currency",
+   "label": "Housing old",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-housing",
+   "options": "currency",
+   "read_only": "1"
+  },
+  {
+   "dt": "Salary Structure Assignment",
+   "fieldname": "supervisor_allowance",
+   "fieldtype": "Currency",
+   "idx": "26",
+   "insert_after": "column_break_17",
+   "label": "Supervisor Allowance",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-supervisor_allowance",
+   "options": "currency"
+  },
+  {
+   "dt": "Salary Structure Assignment",
+   "fieldname": "transportation_allowance",
+   "fieldtype": "Currency",
+   "idx": "23",
+   "insert_after": "column_break_15",
+   "label": "Transportation Allowance",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-transportation_allowance",
+   "options": "currency"
+  }
+ ],
+ "doctype": "Salary Structure Assignment",
+ "property_setters": [
+  {
+   "doc_type": "Salary Structure Assignment",
+   "doctype_or_field": "DocField",
+   "field_name": "base",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-base-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Structure Assignment",
+   "doctype_or_field": "DocField",
+   "field_name": "column_break_18",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-column_break_18-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Structure Assignment",
+   "doctype_or_field": "DocField",
+   "field_name": "earnings_and_taxation_section",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-earnings_and_taxation_section-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Structure Assignment",
+   "doctype_or_field": "DocField",
+   "field_name": "employee",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-employee-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Structure Assignment",
+   "doctype_or_field": "DocField",
+   "field_name": "employee_name",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-employee_name-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Structure Assignment",
+   "doctype_or_field": "DocField",
+   "field_name": "income_tax_slab",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-income_tax_slab-allow_on_submit",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Structure Assignment",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-main-field_order",
+   "property": "field_order",
+   "property_type": "Data",
+   "value": "[\"employee\", \"employee_name\", \"department\", \"designation\", \"grade\", \"column_break_6\", \"salary_structure\", \"from_date\", \"income_tax_slab\", \"column_break_11\", \"company\", \"payroll_payable_account\", \"currency\", \"housing\", \"section_break_7\", \"base\", \"custom_housing\", \"column_break_9\", \"variable\", \"commission\", \"custom_update\", \"column_break_15\", \"transportation_allowance\", \"food_allowance\", \"column_break_17\", \"supervisor_allowance\", \"attendance_allowance\", \"amended_from\", \"earnings_and_taxation_section\", \"taxable_earnings_till_date\", \"column_break_20\", \"tax_deducted_till_date\", \"section_break_17\", \"payroll_cost_centers\"]"
+  },
+  {
+   "doc_type": "Salary Structure Assignment",
+   "doctype_or_field": "DocField",
+   "field_name": "salary_structure",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-salary_structure-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Salary Structure Assignment",
+   "doctype_or_field": "DocField",
+   "field_name": "tax_deducted_till_date",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-tax_deducted_till_date-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Structure Assignment",
+   "doctype_or_field": "DocField",
+   "field_name": "taxable_earnings_till_date",
+   "module": "People and Payroll",
+   "name": "Salary Structure Assignment-taxable_earnings_till_date-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  }
+ ],
+ "sync_on_migrate": 1
+}

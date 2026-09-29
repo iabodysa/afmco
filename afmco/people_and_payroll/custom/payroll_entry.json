@@ -1,0 +1,113 @@
+{
+ "custom_fields": [
+  {
+   "allow_on_submit": "1",
+   "default": "214001 - الرواتب المستحقة - Salaries owed - AF",
+   "depends_on": "company",
+   "dt": "Payroll Entry",
+   "fieldname": "custom_payroll_clearing_account",
+   "fieldtype": "Link",
+   "idx": "9",
+   "insert_after": "payroll_payable_account",
+   "label": "Payroll Clearing Account",
+   "module": "People and Payroll",
+   "name": "Payroll Entry-custom_payroll_clearing_account",
+   "options": "Account"
+  },
+  {
+   "allow_on_submit": "1",
+   "dt": "Payroll Entry",
+   "fieldname": "custom_wps_report_reference",
+   "fieldtype": "Link",
+   "idx": "4",
+   "insert_after": "company",
+   "label": "WPS Report Reference",
+   "module": "People and Payroll",
+   "name": "Payroll Entry-custom_wps_report_reference",
+   "options": "WPS Consolidated Report",
+   "read_only": "1"
+  },
+  {
+   "dt": "Payroll Entry",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "idx": "32",
+   "insert_after": "dimension_col_break",
+   "is_system_generated": "1",
+   "label": "Employee",
+   "module": "People and Payroll",
+   "name": "Payroll Entry-employee",
+   "options": "Employee"
+  },
+  {
+   "allow_on_submit": "1",
+   "default": "0",
+   "dt": "Payroll Entry",
+   "fieldname": "bank_entry_created",
+   "fieldtype": "Check",
+   "idx": "0",
+   "insert_after": "salary_slips_submitted",
+   "label": "Bank Entry Created",
+   "module": "People and Payroll",
+   "name": "Payroll Entry-bank_entry_created",
+   "no_copy": "1"
+  },
+  {
+   "allow_on_submit": "1",
+   "dt": "Payroll Entry",
+   "fieldname": "month_name",
+   "fieldtype": "Data",
+   "idx": "0",
+   "insert_after": "end_date",
+   "label": "Month Name",
+   "module": "People and Payroll",
+   "name": "Payroll Entry-month_name",
+   "read_only": "1"
+  }
+ ],
+ "doctype": "Payroll Entry",
+ "property_setters": [
+  {
+   "doc_type": "Payroll Entry",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "is_system_generated": "1",
+   "module": "People and Payroll",
+   "name": "Payroll Entry-main-allow_import",
+   "property": "allow_import",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Payroll Entry",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "module": "People and Payroll",
+   "name": "Payroll Entry-main-field_order",
+   "property": "field_order",
+   "property_type": "Data",
+   "value": "[\"select_payroll_period\", \"posting_date\", \"company\", \"custom_wps_report_reference\", \"column_break_5\", \"currency\", \"exchange_rate\", \"payroll_payable_account\", \"custom_payroll_clearing_account\", \"status\", \"section_break_cypo\", \"salary_slip_based_on_timesheet\", \"payroll_frequency\", \"start_date\", \"end_date\", \"month_name\", \"column_break_13\", \"deduct_tax_for_unclaimed_employee_benefits\", \"deduct_tax_for_unsubmitted_tax_exemption_proof\", \"employees_tab\", \"section_break_17\", \"branch\", \"department\", \"column_break_21\", \"designation\", \"grade\", \"number_of_employees\", \"section_break_24\", \"employees\", \"section_break_26\", \"validate_attendance\", \"attendance_detail_html\", \"accounting_dimensions_tab\", \"accounting_dimensions_section\", \"cost_center\", \"dimension_col_break\", \"employee\", \"project\", \"account\", \"payment_account\", \"column_break_35\", \"bank_account\", \"salary_slips_created\", \"salary_slips_submitted\", \"bank_entry_created\", \"failure_details_section\", \"error_message\", \"section_break_41\", \"amended_from\", \"connections_tab\"]"
+  },
+  {
+   "doc_type": "Payroll Entry",
+   "doctype_or_field": "DocField",
+   "field_name": "payroll_frequency",
+   "module": "People and Payroll",
+   "name": "Payroll Entry-payroll_frequency-default",
+   "property": "default",
+   "property_type": "Text",
+   "value": "Monthly"
+  },
+  {
+   "doc_type": "Payroll Entry",
+   "doctype_or_field": "DocField",
+   "field_name": "salary_slips_created",
+   "module": "People and Payroll",
+   "name": "Payroll Entry-salary_slips_created-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "0"
+  }
+ ],
+ "sync_on_migrate": 1
+}

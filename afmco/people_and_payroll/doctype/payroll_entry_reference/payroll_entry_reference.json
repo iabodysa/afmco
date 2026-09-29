@@ -1,0 +1,29 @@
+{
+ "allow_rename": 1,
+ "creation": "2025-05-25 00:26:37.127141",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "payroll_entry"
+ ],
+ "fields": [
+  {
+   "fieldname": "payroll_entry",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Payroll Entry",
+   "link_filters": "[[\"Payroll Entry\",\"docstatus\",\"=\",\"1\"],[\"Payroll Entry\",\"creation\",\"Timespan\",\"last month\"]]",
+   "options": "Payroll Entry"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2025-05-25 00:30:52.094264",
+ "module": "People and Payroll",
+ "name": "Payroll Entry Reference",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

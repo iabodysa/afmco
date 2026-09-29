@@ -1,0 +1,47 @@
+{
+ "custom_fields": [],
+ "doctype": "Salary Structure",
+ "property_setters": [
+  {
+   "doc_type": "Salary Structure",
+   "doctype_or_field": "DocField",
+   "field_name": "deductions",
+   "module": "People and Payroll",
+   "name": "Salary Structure-deductions-allow_on_submit",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Structure",
+   "doctype_or_field": "DocField",
+   "field_name": "earnings",
+   "module": "People and Payroll",
+   "name": "Salary Structure-earnings-allow_on_submit",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Structure",
+   "doctype_or_field": "DocField",
+   "field_name": "net_pay",
+   "module": "People and Payroll",
+   "name": "Salary Structure-net_pay-allow_on_submit",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Structure",
+   "doctype_or_field": "DocField",
+   "field_name": "total_earning",
+   "module": "People and Payroll",
+   "name": "Salary Structure-total_earning-allow_on_submit",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1"
+  }
+ ],
+ "sync_on_migrate": 1
+}

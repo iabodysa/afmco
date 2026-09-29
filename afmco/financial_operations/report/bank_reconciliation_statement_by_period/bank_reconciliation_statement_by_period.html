@@ -1,0 +1,245 @@
+{%
+	var is_rtl = frappe.utils.is_rtl();
+	var esc = function (value) {
+		return frappe.utils.escape_html(value);
+	};
+	/* wkhtmltopdf has no dir="auto": pick the direction from the first strong character so
+	account names, document names and dates keep their order inside the other direction */
+	var bidi = function (value) {
+		if (value === undefined || value === null || value === "") return "";
+		var text = String(value);
+		var rtl_at = text.search(/[֐-ࣿיִ-﷿ﹰ-﻿]/);
+		var ltr_at = text.search(/[A-Za-zÀ-ɏ]/);
+		var dir = rtl_at !== -1 && (ltr_at === -1 || rtl_at < ltr_at) ? "rtl" : "ltr";
+		return "<span class=\"afmco-brs-bidi\" dir=\"" + dir + "\">" + esc(text) + "</span>";
+	};
+
+	var labels = {};
+	(columns || []).forEach(function (column) {
+		labels[column.fieldname] = column.label;
+	});
+	var label = function (fieldname, fallback) {
+		return esc(labels[fieldname] || __(fallback));
+	};
+
+	var rows = data || [];
+	var currency = "";
+	rows.forEach(function (row) {
+		if (!currency && row && row.account_currency) currency = row.account_currency;
+	});
+	if (!currency && typeof erpnext !== "undefined" && filters.company) {
+		currency = erpnext.get_currency(filters.company) || "";
+	}
+	var number_format = get_number_format(currency);
+	var decimals = frappe.boot.sysdefaults.currency_precision || null;
+	var amount = function (value) {
+		return format_number(flt(value), number_format, decimals);
+	};
+	var date = function (value) {
+		return value ? bidi(frappe.datetime.str_to_user(value)) : "";
+	};
+
+	var text_fields = [
+		["posting_date", "Posting Date", "date", 8],
+		["payment_document", "Payment Document Type", "text", 10],
+		["payment_entry", "Payment Document", "text", 13],
+		["against_account", "Against Account", "text", 17],
+		["reference_no", "Reference", "text", 11],
+		["ref_date", "Ref Date", "date", 8],
+		["clearance_date", "Clearance Date", "date", 8],
+	].filter(function (field) {
+		return !columns || !columns.length || labels[field[0]] !== undefined;
+	});
+	var amount_fields = [
+		["debit", "Debit"],
+		["credit", "Credit"],
+	];
+	/* column weights add up to 100 with every column present and are rescaled when some are missing */
+	var amount_weight = 12.5;
+	var total_weight = text_fields.reduce(function (sum, field) {
+		return sum + field[3];
+	}, amount_weight * amount_fields.length);
+	var width = function (weight) {
+		return Math.round((weight * 10000) / total_weight) / 100;
+	};
+
+	var entries = [];
+	var summary = [];
+	rows.forEach(function (row) {
+		if (!row) return;
+		if (row.posting_date) entries.push(row);
+		else summary.push(row);
+	});
+	var last_summary = -1;
+	summary.forEach(function (row, idx) {
+		if (row.payment_entry) last_summary = idx;
+	});
+
+	var letter_head = print_settings && print_settings.letter_head;
+	var portrait = !print_settings || print_settings.orientation !== "Landscape";
+	var generated_on = frappe.datetime.str_to_user(frappe.datetime.system_datetime());
+	var generated_by = frappe.session.user_fullname || frappe.session.user;
+%}
+<style>
+	.afmco-brs { font-family: Tahoma, Arial, sans-serif; color: #333333; font-size: 10px; line-height: 1.4; }
+	.afmco-brs table { width: 100%; border-collapse: collapse; border-spacing: 0; }
+	.afmco-brs .afmco-brs-bidi { unicode-bidi: embed; }
+	.afmco-brs .afmco-brs-strip { height: 6px; background-color: #00844E; margin-bottom: 12px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+	.afmco-brs .afmco-brs-heading { border-bottom: 2px solid #00844E; margin-bottom: 12px; }
+	.afmco-brs .afmco-brs-heading td { border: none; padding: 0 0 8px 0 !important; vertical-align: bottom !important; }
+	.afmco-brs .afmco-brs-heading td.afmco-brs-logo { width: 52px; padding: 0 10px 8px 0 !important; vertical-align: middle !important; }
+	.afmco-brs .afmco-brs-logo svg { width: 42px; height: 42px; display: block; }
+	.afmco-brs .afmco-brs-company { font-size: 14px; font-weight: bold; color: #072B1A; }
+	.afmco-brs .afmco-brs-title-en { font-size: 18px; line-height: 24px; font-weight: bold; color: #072B1A; direction: ltr; text-align: left; }
+	.afmco-brs .afmco-brs-title-ar { font-size: 18px; line-height: 24px; font-weight: bold; color: #072B1A; direction: rtl; text-align: right; }
+	.afmco-brs .afmco-brs-sub { font-size: 10px; font-weight: bold; color: #00844E; letter-spacing: 1px; }
+	.afmco-brs .afmco-brs-meta { margin-bottom: 12px; table-layout: fixed; }
+	.afmco-brs .afmco-brs-meta td { border: 1px solid #ECE6D6; background-color: #FAF8F3; padding: 5px 8px !important; vertical-align: top !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+	.afmco-brs .afmco-brs-meta-label { display: block; font-size: 8.5px; color: #6B6B6B; text-transform: uppercase; letter-spacing: 0.5px; }
+	.afmco-brs .afmco-brs-meta-value { display: block; font-size: 11px; font-weight: bold; color: #072B1A; word-wrap: break-word; }
+	.afmco-brs .afmco-brs-grid { table-layout: fixed; border-bottom: 2px solid #00844E; }
+	.afmco-brs .afmco-brs-grid thead { display: table-header-group; }
+	.afmco-brs .afmco-brs-grid tr { page-break-inside: avoid; }
+	.afmco-brs .afmco-brs-grid th { background-color: #072B1A; color: #FFFFFF; border: 1px solid #072B1A; font-size: 9px; font-weight: bold; padding: 6px 5px !important; vertical-align: bottom !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+	.afmco-brs .afmco-brs-grid td { border: 1px solid #E5E5E5; padding: 4px 5px !important; vertical-align: top !important; word-wrap: break-word; }
+	.afmco-brs .afmco-brs-grid th, .afmco-brs .afmco-brs-grid td { text-align: left; }
+	.afmco-brs[dir="rtl"] .afmco-brs-grid th, .afmco-brs[dir="rtl"] .afmco-brs-grid td { text-align: right; }
+	.afmco-brs .afmco-brs-grid .afmco-brs-num { text-align: right; direction: ltr; white-space: nowrap; }
+	.afmco-brs[dir="rtl"] .afmco-brs-grid .afmco-brs-num { text-align: left; }
+	.afmco-brs .afmco-brs-grid .afmco-brs-doc { font-weight: bold; color: #072B1A; }
+	.afmco-brs .afmco-brs-grid .afmco-brs-zero { color: #A0A0A0; }
+	.afmco-brs .afmco-brs-grid .afmco-brs-even td { background-color: #F7F7F7; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+	.afmco-brs .afmco-brs-grid .afmco-brs-empty td { text-align: center; color: #6B6B6B; padding: 14px 5px !important; }
+	.afmco-brs .afmco-brs-grid .afmco-brs-gap td { border-left: none; border-right: none; padding: 0 !important; height: 6px; background-color: #FFFFFF; }
+	.afmco-brs .afmco-brs-grid .afmco-brs-summary td { background-color: #FAF8F3; border-color: #ECE6D6; font-weight: bold; color: #072B1A; padding: 6px 5px !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+	.afmco-brs .afmco-brs-grid .afmco-brs-summary-first td { border-top: 2px solid #00844E; }
+	.afmco-brs .afmco-brs-grid .afmco-brs-grand td { background-color: #00844E; border-color: #00844E; color: #FFFFFF; font-size: 11px; font-weight: bold; padding: 7px 5px !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+	.afmco-brs .afmco-brs-grid .afmco-brs-summary .afmco-brs-zero { color: #9A9A9A; font-weight: normal; }
+	.afmco-brs .afmco-brs-grid .afmco-brs-grand .afmco-brs-zero { color: #BFE3D0; font-weight: normal; }
+	.afmco-brs.afmco-brs-portrait .afmco-brs-grid th { font-size: 8px; padding: 5px 3px !important; }
+	.afmco-brs.afmco-brs-portrait .afmco-brs-grid td { font-size: 8.5px; padding: 4px 3px !important; }
+	.afmco-brs.afmco-brs-portrait .afmco-brs-grid .afmco-brs-grand td { font-size: 9.5px; padding: 6px 3px !important; }
+	.afmco-brs .afmco-brs-foot { margin-top: 8px; font-size: 8.5px; color: #6B6B6B; }
+	.afmco-brs .afmco-brs-foot td { border: none; padding: 0 !important; vertical-align: top !important; }
+	.afmco-brs .afmco-brs-foot .afmco-brs-foot-end { text-align: right; }
+	.afmco-brs[dir="rtl"] .afmco-brs-foot td { text-align: right; }
+	.afmco-brs[dir="rtl"] .afmco-brs-foot .afmco-brs-foot-end { text-align: left; }
+</style>
+
+<div class="afmco-brs{%= portrait ? " afmco-brs-portrait" : "" %}" dir="{%= is_rtl ? "rtl" : "ltr" %}" lang="{%= esc(frappe.boot.lang) %}">
+	{% if (!letter_head) { %}
+	<div class="afmco-brs-strip"></div>
+	{% } %}
+
+	<table class="afmco-brs-heading" dir="ltr">
+		<tr>
+			{% if (!letter_head) { %}
+			<td class="afmco-brs-logo">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="618.855 339.625 400 400" width="42" height="42">
+					<g fill="#00824E">
+						<path d="M863.03,372.91c-2.11-0.55-4.23-0.82-6.28-0.82c-12.93,0-24.17,10.33-24.17,24.02
+						c0,10.88,7.31,20.45,17.83,23.16c53.67,13.8,92.77,62.09,92.77,120.37c0,58.25-39.11,106.55-92.77,120.34
+						c-5.26,1.35-9.72,4.42-12.87,8.51c-3.13,4.08-4.97,9.19-4.97,14.64c0,15.87,15.11,27.25,30.45,23.2
+						c73.84-19.5,128.29-86.71,128.29-166.7C991.32,459.63,936.87,392.43,863.03,372.91z M805.12,416.03v-48.28
+						c-88.82,6.99-158.73,81.24-158.73,171.88c0,90.62,69.91,164.86,158.73,171.87v-48.3c-62.6-6.74-110.6-59.05-110.6-123.58
+						C694.51,475.08,742.52,422.77,805.12,416.03z"/>
+					</g>
+				</svg>
+			</td>
+			{% } %}
+			<td>
+				{% if (!letter_head) { %}
+				<div class="afmco-brs-company">{%= bidi(filters.company) %}</div>
+				{% } %}
+				<div class="afmco-brs-title-en">Bank Reconciliation Statement by Period</div>
+				<div class="afmco-brs-sub">{%= date(filters.from_date) %} &ndash; {%= date(filters.report_date) %}</div>
+			</td>
+			<td>
+				<div class="afmco-brs-title-ar">كشف التسوية البنكية حسب الفترة</div>
+			</td>
+		</tr>
+	</table>
+
+	<table class="afmco-brs-meta">
+		<tr>
+			<td style="width: 26%;">
+				<span class="afmco-brs-meta-label">{%= __("Company") %}</span>
+				<span class="afmco-brs-meta-value">{%= bidi(filters.company) %}</span>
+			</td>
+			<td style="width: 30%;">
+				<span class="afmco-brs-meta-label">{%= __("Bank Account") %}</span>
+				<span class="afmco-brs-meta-value">{%= bidi(filters.account) %}</span>
+			</td>
+			<td style="width: 13%;">
+				<span class="afmco-brs-meta-label">{%= __("From Date") %}</span>
+				<span class="afmco-brs-meta-value">{%= date(filters.from_date) %}</span>
+			</td>
+			<td style="width: 13%;">
+				<span class="afmco-brs-meta-label">{%= __("To Date") %}</span>
+				<span class="afmco-brs-meta-value">{%= date(filters.report_date) %}</span>
+			</td>
+			<td style="width: 18%;">
+				<span class="afmco-brs-meta-label">{%= __("Currency") %}</span>
+				<span class="afmco-brs-meta-value">{%= esc(currency) %}</span>
+			</td>
+		</tr>
+	</table>
+
+	<table class="afmco-brs-grid">
+		<thead>
+			<tr>
+				{% text_fields.forEach(function (field) { %}
+				<th style="width: {%= width(field[3]) %}%;">{%= label(field[0], field[1]) %}</th>
+				{% }); %}
+				{% amount_fields.forEach(function (field) { %}
+				<th class="afmco-brs-num" style="width: {%= width(amount_weight) %}%;">{%= label(field[0], field[1]) %}</th>
+				{% }); %}
+			</tr>
+		</thead>
+		<tbody>
+			{% if (!entries.length) { %}
+			<tr class="afmco-brs-empty">
+				<td colspan="{%= text_fields.length + amount_fields.length %}">{%= __("No outstanding cheques or deposits in this period") %}</td>
+			</tr>
+			{% } %}
+			{% entries.forEach(function (row, idx) { %}
+			<tr class="{%= idx % 2 ? "afmco-brs-even" : "" %}">
+				{% text_fields.forEach(function (field) { %}
+					{% if (field[2] === "date") { %}
+					<td class="afmco-brs-date">{%= date(row[field[0]]) %}</td>
+					{% } else { %}
+					<td class="{%= field[0] === "payment_entry" ? "afmco-brs-doc" : "" %}">{%= bidi(field[0] === "payment_document" ? __(row[field[0]] || "") : row[field[0]]) %}</td>
+					{% } %}
+				{% }); %}
+				{% amount_fields.forEach(function (field) { %}
+				<td class="afmco-brs-num{%= flt(row[field[0]]) ? "" : " afmco-brs-zero" %}">{%= amount(row[field[0]]) %}</td>
+				{% }); %}
+			</tr>
+			{% }); %}
+			{% var first_summary = true; %}
+			{% summary.forEach(function (row, idx) { %}
+				{% if (!row.payment_entry) { %}
+				<tr class="afmco-brs-gap"><td colspan="{%= text_fields.length + amount_fields.length %}"></td></tr>
+				{% } else { %}
+				<tr class="{%= idx === last_summary ? "afmco-brs-grand" : "afmco-brs-summary" %}{%= first_summary ? " afmco-brs-summary-first" : "" %}">
+					<td colspan="{%= text_fields.length %}">{%= bidi(row.payment_entry) %}</td>
+					{% amount_fields.forEach(function (field) { %}
+					<td class="afmco-brs-num{%= flt(row[field[0]]) ? "" : " afmco-brs-zero" %}">{%= amount(row[field[0]]) %}</td>
+					{% }); %}
+				</tr>
+				{% first_summary = false; %}
+				{% } %}
+			{% }); %}
+		</tbody>
+	</table>
+
+	<table class="afmco-brs-foot">
+		<tr>
+			<td>
+				{%= __("Outstanding entries") %}: {%= entries.length %}
+				{% if (cint(filters.include_pos_transactions)) { %} &middot; {%= __("Include POS Transactions") %}{% } %}
+			</td>
+			<td class="afmco-brs-foot-end">{%= __("Generated on") %} {%= bidi(generated_on) %} &middot; {%= bidi(generated_by) %}</td>
+		</tr>
+	</table>
+</div>

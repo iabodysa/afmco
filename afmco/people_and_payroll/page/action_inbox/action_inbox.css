@@ -1,0 +1,72 @@
+/* Copyright (c) 2026, AFMCO and contributors */
+
+.action-inbox {
+	display: flex;
+	flex-direction: column;
+	gap: var(--margin-lg, 20px);
+	padding-block: var(--padding-md, 15px);
+}
+
+.ai-section,
+.ai-list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--margin-sm, 10px);
+}
+
+.ai-section-head {
+	font-size: var(--text-md, 14px);
+	font-weight: 600;
+	color: var(--text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+[dir="rtl"] .ai-section-head {
+	text-transform: none;
+	letter-spacing: normal;
+}
+
+.ai-card {
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius-md, 8px);
+	background: var(--card-bg);
+	padding: var(--padding-md, 15px);
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.ai-card-head,
+.ai-card-actions {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.ai-card-head {
+	align-items: center;
+}
+
+.ai-card-link {
+	font-weight: 600;
+	color: var(--text-color);
+}
+
+.ai-card-meta {
+	display: flex;
+	gap: var(--margin-md, 15px);
+	font-size: var(--text-sm, 12px);
+	flex-wrap: wrap;
+}
+
+.ai-card-desc {
+	font-size: var(--text-sm, 12px);
+	color: var(--text-color);
+}
+
+.ai-empty {
+	padding-block: var(--padding-xl, 30px);
+	text-align: center;
+	font-size: var(--text-md, 14px);
+}

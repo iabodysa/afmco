@@ -1,0 +1,30 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Journal Entry Account",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "idx": "12",
+   "insert_after": "dimension_col_break",
+   "is_system_generated": "1",
+   "label": "EMP Cost Center",
+   "module": "Financial Operations",
+   "name": "Journal Entry Account-employee",
+   "options": "Employee"
+  }
+ ],
+ "doctype": "Journal Entry Account",
+ "property_setters": [
+  {
+   "doc_type": "Journal Entry Account",
+   "doctype_or_field": "DocField",
+   "field_name": "reference_type",
+   "module": "Financial Operations",
+   "name": "Journal Entry Account-reference_type-options",
+   "property": "options",
+   "property_type": "Text",
+   "value": "\nSales Invoice\nPurchase Invoice\nJournal Entry\nSales Order\nPurchase Order\nExpense Claim\nAsset\nLoan\nPayroll Entry\nEmployee Advance\nExchange Rate Revaluation\nInvoice Discounting\nFees\nFull and Final Statement\nPayment Entry\nBank Transaction\nLoan Interest Accrual"
+  }
+ ],
+ "sync_on_migrate": 1
+}

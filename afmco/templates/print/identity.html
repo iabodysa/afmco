@@ -1,0 +1,41 @@
+{% macro styles() -%}
+<style>
+.print-format { font-family: Tahoma, Arial, sans-serif; color: #333333; }
+.print-format .afm-strip { height: 6px; background-color: #00844E; margin-bottom: 14px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.print-format .afm-heading { width: 100%; border-bottom: 2px solid #00844E; margin-bottom: 14px; }
+.print-format .afm-heading td { padding: 0 0 6px 0; vertical-align: bottom; border: none; }
+.print-format .afm-title-en { font-size: 20px; line-height: 26px; font-weight: bold; color: #072B1A; text-align: left; direction: ltr; margin: 0; }
+.print-format .afm-title-ar { font-size: 20px; line-height: 26px; font-weight: bold; color: #072B1A; text-align: right; direction: rtl; margin: 0; }
+.print-format .afm-sub { font-size: 11px; font-weight: bold; color: #00844E; letter-spacing: 1px; }
+.print-format .afm-box { border: 1px solid #00844E; }
+.print-format .afm-warning { color: #e60000; }
+.print-format .afm-grand td { background-color: #00844E !important; color: #ffffff !important; font-weight: bold; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.print-format .print-heading { border-bottom: 2px solid #00844E; margin-bottom: 14px; }
+.print-format .print-heading h2 { color: #072B1A; font-weight: bold; }
+.print-format .print-heading .sub-heading { color: #00844E; }
+.print-format .section-break h4 { color: #072B1A; border-bottom: 1px solid #ECE6D6; padding-bottom: 4px; }
+.print-format .section-break label { color: #072B1A; }
+.print-format .section-break table { border-bottom: 2px solid #00844E; }
+.print-format .section-break table th { background-color: #072B1A !important; color: #ffffff !important; border-color: #072B1A !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.print-format .section-break table td { border-color: #e5e5e5 !important; }
+.print-format .section-break table tr:nth-child(even) td { background-color: #f7f7f7; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+</style>
+{%- endmacro %}
+
+{% macro strip() -%}
+<div class="afm-strip"></div>
+{%- endmacro %}
+
+{% macro heading(title, sub=None) -%}
+<table class="afm-heading">
+	<tr>
+		<td><div class="afm-title-en">{{ title }}</div>{% if sub %}<div class="afm-sub">{{ sub }}</div>{% endif %}</td>
+		<td><div class="afm-title-ar">{{ _(title, "ar") }}</div></td>
+	</tr>
+</table>
+{%- endmacro %}
+
+{% macro document_heading(doc) -%}
+{{ strip() }}
+{{ heading(doc.get("select_print_heading") or (doc.get("print_heading") if doc.get("print_heading") != None else doc.doctype), doc.get("sub_heading") if doc.get("sub_heading") != None else doc.name) }}
+{%- endmacro %}

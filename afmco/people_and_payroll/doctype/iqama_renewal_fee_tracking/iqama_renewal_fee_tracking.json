@@ -1,0 +1,489 @@
+{
+ "autoname": "naming_series: ",
+ "creation": "2024-07-25 15:40:48.241989",
+ "description": " ",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "column_break_renewal_preference",
+  "renewal_preference",
+  "reason_of_not_renewal",
+  "renewal_period",
+  "column_break_approval",
+  "approved_by",
+  "approval_date",
+  "employee_section",
+  "employee",
+  "employee_name",
+  "department",
+  "column_break_iqama",
+  "iqama_expiration_date",
+  "iqama_new_expiration_date",
+  "cost_center",
+  "company_section",
+  "company_name",
+  "column_break_corporation",
+  "corporation",
+  "column_break_file_no",
+  "file_no",
+  "sadad_section",
+  "sadad_invoice_number",
+  "column_break_sadad_date",
+  "sadad_invoice_creation_date",
+  "column_break_sadad_creator",
+  "created_by_sadad_invoice",
+  "section_payment_requests",
+  "payment_request_doc_number_residency_renewal",
+  "payment_request_creation_date_residency_renewal",
+  "payment_request_creation_user_residency_renewal",
+  "column_break_sadad_payment_request",
+  "payment_request_doc_number_sadad_invoice",
+  "payment_request_creation_date_sadad_invoice",
+  "payment_request_creation_user_sadad_invoice",
+  "amount_section",
+  "sadad_invoice_amount",
+  "sadad_invoice_amount_for_current_year",
+  "sadad_invoice_amount_for_advance_payments",
+  "column_break_renewal_fees",
+  "renewal_fee_amount",
+  "renewal_fee_amount_for_current_year",
+  "renewal_fee_amount_for_advance_payments",
+  "section_break_total_amount",
+  "total_amount",
+  "processes_section",
+  "resident_balance",
+  "jv_created_for_sadad_invoice",
+  "jv_created_for_renewal_fees",
+  "column_break_violations",
+  "renewal_expiration_violation_on_employee",
+  "column_break_issues",
+  "issue_in_renewal",
+  "traffic_violations",
+  "column_break_plans",
+  "two_year_plan",
+  "medical_insurance_issue",
+  "dependent_fees",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "default": "New",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "New\nWaiting Sadad\nAwaiting Payment\nAwaiting Renewal\nIssue Preventing Renewal\nRenewed\nRejected"
+  },
+  {
+   "fieldname": "column_break_renewal_preference",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "renewal_preference",
+   "fieldtype": "Select",
+   "label": "Renewal Preference",
+   "options": "\nYes\nNO",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.renewal_preference == \"NO\"",
+   "fieldname": "reason_of_not_renewal",
+   "fieldtype": "Data",
+   "label": "Reason of Not Renewal"
+  },
+  {
+   "depends_on": "eval:doc.renewal_preference == \"Yes\" ",
+   "fieldname": "renewal_period",
+   "fieldtype": "Int",
+   "label": "Renewal Duration (months)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_approval",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approval_date",
+   "fieldtype": "Date",
+   "label": "Approval Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "employee_section",
+   "fieldtype": "Section Break",
+   "label": "Employee",
+   "read_only": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "column_break_iqama",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "iqama_expiration_date",
+   "fieldtype": "Date",
+   "label": "Iqama Expiration Date",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "iqama_new_expiration_date",
+   "fieldtype": "Date",
+   "label": "New Expiration Date",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.payroll_cost_center",
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "company_section",
+   "fieldtype": "Section Break",
+   "label": "Company",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "corporation.company_name",
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Company name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_corporation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.corporation",
+   "fieldname": "corporation",
+   "fieldtype": "Link",
+   "label": "Corporation",
+   "options": "Corporation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_file_no",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.labor_office_file_number",
+   "fieldname": "file_no",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "File No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sadad_section",
+   "fieldtype": "Section Break",
+   "label": "SADAD"
+  },
+  {
+   "fieldname": "sadad_invoice_number",
+   "fieldtype": "Data",
+   "label": "SADAD Invoice Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_sadad_date",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sadad_invoice_creation_date",
+   "fieldtype": "Date",
+   "label": "SADAD Invoice Creation Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_sadad_creator",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "created_by_sadad_invoice",
+   "fieldtype": "Link",
+   "label": "Created By (SADAD Invoice)",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_payment_requests",
+   "fieldtype": "Section Break",
+   "label": "Payment Requests"
+  },
+  {
+   "fieldname": "payment_request_doc_number_residency_renewal",
+   "fieldtype": "Link",
+   "label": "PR Document Link(Residency Renewal)",
+   "options": "Expense Request Afmco",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_request_creation_date_residency_renewal",
+   "fieldtype": "Date",
+   "label": "PR Creation Date (Residency Renewal)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_request_creation_user_residency_renewal",
+   "fieldtype": "Link",
+   "label": "PR User (Residency Renewal)",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_sadad_payment_request",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_request_doc_number_sadad_invoice",
+   "fieldtype": "Link",
+   "label": "PR Document Link(SADAD Invoice)",
+   "options": "Expense Request Afmco",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_request_creation_date_sadad_invoice",
+   "fieldtype": "Date",
+   "label": "PR Creation Date (SADAD Invoice)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_request_creation_user_sadad_invoice",
+   "fieldtype": "Link",
+   "label": "PR User (SADAD Invoice)",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amount_section",
+   "fieldtype": "Section Break",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "sadad_invoice_amount",
+   "fieldtype": "Currency",
+   "label": "Sadad Invoice Amount",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sadad_invoice_amount_for_current_year",
+   "fieldtype": "Currency",
+   "label": "Sadad Invoice Amount for Current Year",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sadad_invoice_amount_for_advance_payments",
+   "fieldtype": "Currency",
+   "label": "Sadad Invoice Amount for Advance Payments",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_renewal_fees",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "renewal_fee_amount",
+   "fieldtype": "Currency",
+   "label": "Renewal Fee Amount",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "renewal_fee_amount_for_current_year",
+   "fieldtype": "Currency",
+   "label": "Renewal Fee Amount for Current Year",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "renewal_fee_amount_for_advance_payments",
+   "fieldtype": "Currency",
+   "label": "Renewal Fee Amount for Advance Payments",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_total_amount",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount ",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "processes_section",
+   "fieldtype": "Section Break",
+   "label": "Processes"
+  },
+  {
+   "default": "0",
+   "fieldname": "resident_balance",
+   "fieldtype": "Check",
+   "label": "Resident Balance",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "jv_created_for_sadad_invoice",
+   "fieldtype": "Check",
+   "label": "JV Created for Sadad Invoice"
+  },
+  {
+   "default": "0",
+   "fieldname": "jv_created_for_renewal_fees",
+   "fieldtype": "Check",
+   "label": "JV Created for Renewal Fees"
+  },
+  {
+   "fieldname": "column_break_violations",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "renewal_expiration_violation_on_employee",
+   "fieldtype": "Check",
+   "label": "Renewal Expiration Violation on Employee",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_issues",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "issue_in_renewal",
+   "fieldtype": "Check",
+   "label": "Issue in Renewal",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "traffic_violations",
+   "fieldtype": "Check",
+   "label": "Traffic Violations",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_plans",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "two_year_plan",
+   "fieldtype": "Check",
+   "label": "Two Year Plan",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "medical_insurance_issue",
+   "fieldtype": "Check",
+   "label": "Medical Insurance issue",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "dependent_fees",
+   "fieldtype": "Check",
+   "label": "Dependent Fees",
+   "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "naming_series",
+   "options": "Re2-.YYYY.-.employee.-.##",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "modified": "2024-09-29 16:34:36.882351",
+ "module": "People and Payroll",
+ "name": "Iqama Renewal Fee Tracking",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

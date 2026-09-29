@@ -1,0 +1,128 @@
+{
+ "allow_rename": 1,
+ "creation": "2024-11-04 20:43:45.076620",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_performance",
+  "emp_no",
+  "outsource_co",
+  "emp_name",
+  "job_title",
+  "station",
+  "loc",
+  "rgn",
+  "type",
+  "ecom",
+  "card",
+  "gov_card",
+  "spo",
+  "pup",
+  "total",
+  "promo_1",
+  "promo_2",
+  "performance"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_performance",
+   "fieldtype": "Section Break",
+   "label": "Performance Details"
+  },
+  {
+   "fieldname": "emp_no",
+   "fieldtype": "Data",
+   "label": "EMP No"
+  },
+  {
+   "fieldname": "outsource_co",
+   "fieldtype": "Data",
+   "label": "OutSource Co"
+  },
+  {
+   "fieldname": "emp_name",
+   "fieldtype": "Data",
+   "label": "EMP Name"
+  },
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Data",
+   "label": "Job Title"
+  },
+  {
+   "fieldname": "station",
+   "fieldtype": "Data",
+   "label": "Station"
+  },
+  {
+   "fieldname": "loc",
+   "fieldtype": "Data",
+   "label": "Loc"
+  },
+  {
+   "fieldname": "rgn",
+   "fieldtype": "Data",
+   "label": "RGN"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "label": "Type"
+  },
+  {
+   "fieldname": "ecom",
+   "fieldtype": "Data",
+   "label": "ECOM"
+  },
+  {
+   "fieldname": "card",
+   "fieldtype": "Data",
+   "label": "CARD"
+  },
+  {
+   "fieldname": "gov_card",
+   "fieldtype": "Data",
+   "label": "Gov Card"
+  },
+  {
+   "fieldname": "spo",
+   "fieldtype": "Data",
+   "label": "SPO"
+  },
+  {
+   "fieldname": "pup",
+   "fieldtype": "Data",
+   "label": "PUP"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Data",
+   "label": "Total"
+  },
+  {
+   "fieldname": "promo_1",
+   "fieldtype": "Data",
+   "label": "promo 1"
+  },
+  {
+   "fieldname": "promo_2",
+   "fieldtype": "Data",
+   "label": "promo 2"
+  },
+  {
+   "fieldname": "performance",
+   "fieldtype": "Data",
+   "label": "Performance"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2024-11-04 20:46:14.778798",
+ "module": "People and Payroll",
+ "name": "SMSA",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

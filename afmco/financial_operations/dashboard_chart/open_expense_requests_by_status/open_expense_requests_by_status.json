@@ -1,0 +1,33 @@
+{
+ "aggregate_function_based_on": "amount",
+ "based_on": "cost_center",
+ "chart_name": "Open Expense Requests by Status",
+ "chart_type": "Group By",
+ "creation": "2024-06-15 03:47:57.165198",
+ "doctype": "Dashboard Chart",
+ "document_type": "Expense Request Afmco",
+ "filters_json": "[[\"Expense Request Afmco\",\"workflow_state\",\"!=\",\"Paid\",false],[\"Expense Request Afmco\",\"workflow_state\",\"!=\",\"Rejected\",false],[\"Expense Request Afmco\",\"workflow_state\",\"!=\",\"Pending\",false]]",
+ "group_by_based_on": "workflow_state",
+ "group_by_type": "Count",
+ "is_public": 1,
+ "is_standard": 1,
+ "modified": "2026-09-25 23:45:00.000000",
+ "module": "Financial Operations",
+ "name": "Open Expense Requests by Status",
+ "number_of_groups": 5,
+ "roles": [
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "General Manager"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "time_interval": "Yearly",
+ "timespan": "Last Year",
+ "type": "Percentage",
+ "value_based_on": "amount"
+}

@@ -1,0 +1,213 @@
+{% extends "templates/web.html" %}
+
+{%- macro arrow() -%}
+<svg class="afm-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+{%- endmacro -%}
+
+{%- macro ring_arcs() -%}
+<path class="afm-arc" d="M1294 42.5 A262 262 0 0 0 1294 566.5" pathLength="1"/>
+<path class="afm-arc afm-arc--late" d="M1275 43.2 A262 262 0 1 1 1275 565.8" pathLength="1"/>
+{%- endmacro -%}
+
+{%- block head_include %}
+{{ super() }}
+<meta name="theme-color" content="#00824E">
+<link rel="preload" href="/assets/afmco/images/portal/afmco-logo.webp" as="image" type="image/webp">
+<link rel="stylesheet" href="/assets/afmco/css/portal-fonts.css">
+{% endblock -%}
+
+{%- block banner -%}{%- endblock -%}
+{%- block navbar -%}{%- endblock -%}
+{%- block footer -%}{%- endblock -%}
+
+
+{% block content %}
+<div class="afm" dir="{{ text_dir }}" lang="{{ page_lang }}">
+	<a class="afm-skip" href="#afm-main">{{ _("Skip to main content") }}</a>
+	<div class="afm-progress" aria-hidden="true"></div>
+
+	<header class="afm-header">
+		<a class="afm-header__brand" href="#top" aria-label="{{ _('AFMCO Employee Portal') }}">
+			<img class="afm-logo" src="/assets/afmco/images/portal/afmco-logo.webp" alt="AFMCO" width="1600" height="609">
+		</a>
+		<nav id="afm-nav" class="afm-header__nav" aria-label="{{ _('Main menu') }}">
+			<a href="#services">{{ _("Services") }}</a>
+			<a href="#about">{{ _("About AFMCO") }}</a>
+			<a href="#help">{{ _("Help") }}</a>
+			<a class="afm-header__menu-cta" href="{{ portal_link }}">{{ portal_label }}</a>
+			<a class="afm-header__menu-cta" href="{{ support_url }}">{{ _("Open a support ticket") }}</a>
+		</nav>
+		<div class="afm-header__tools">
+			{% if show_language_switch %}
+			<div class="afm-lang" role="group" aria-label="{{ _('Language') }}">
+				<a href="?_lang=en" hreflang="en" lang="en"{% if page_lang == "en" %} aria-current="true"{% endif %}>EN</a>
+				<a href="?_lang=ar" hreflang="ar" lang="ar"{% if page_lang == "ar" %} aria-current="true"{% endif %}>العربية</a>
+			</div>
+			{% endif %}
+			<a class="afm-pill afm-pill--small afm-pill--primary afm-header__cta" href="{{ portal_link }}">{{ portal_label }}</a>
+			<button type="button" class="afm-burger" aria-controls="afm-nav" aria-expanded="false"
+				aria-label="{{ _('Open menu') }}" data-label-open="{{ _('Open menu') }}" data-label-close="{{ _('Close menu') }}">
+				<span></span><span></span>
+			</button>
+		</div>
+	</header>
+
+	<main id="afm-main" tabindex="-1">
+		<section id="top" class="afm-hero" aria-labelledby="afm-hero-title">
+			<img class="afm-hero__bg" src="/assets/afmco/images/portal/warehouse-1600.webp"
+				srcset="/assets/afmco/images/portal/warehouse-800.webp 800w, /assets/afmco/images/portal/warehouse-1600.webp 1600w"
+				sizes="100vw" alt="" width="1600" height="897" fetchpriority="high">
+			<div class="afm-hero__shade" aria-hidden="true"></div>
+
+			<div class="afm-hero__grid">
+				<div class="afm-hero__copy">
+					<p class="afm-eyebrow afm-in afm-in--1"><span class="afm-eyebrow__rule"></span>{{ _("AFMCO Employee Portal") }}</p>
+					<h1 id="afm-hero-title" class="afm-hero__title">
+						<span class="afm-line"><span class="afm-line__text">{{ _("Your services") }}</span></span>
+						<span class="afm-line"><span class="afm-line__text afm-line__text--accent">{{ _("in one place") }}</span></span>
+					</h1>
+					<p class="afm-hero__lead afm-in afm-in--3">{{ description }}</p>
+					<div class="afm-hero__actions afm-in afm-in--4">
+						<a class="afm-pill afm-pill--primary" href="{{ portal_link }}">{{ portal_label }}{{ arrow() }}</a>
+						<a class="afm-pill" href="{{ support_url }}">{{ _("Open a support ticket") }}</a>
+					</div>
+				</div>
+				<div class="afm-hero__mark" aria-hidden="true">
+					<svg class="afm-mark" viewBox="0 0 1600 609" focusable="false">
+						<defs>
+							<mask id="afm-ring-hero" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="609">{{ ring_arcs() }}</mask>
+							<clipPath id="afm-word-top"><rect x="0" y="0" width="968" height="262"/></clipPath>
+							<clipPath id="afm-word-bottom"><rect x="0" y="262" width="968" height="347"/></clipPath>
+						</defs>
+						<image href="/assets/afmco/images/portal/afmco-logo.webp" width="1600" height="609" mask="url(#afm-ring-hero)"/>
+						<g clip-path="url(#afm-word-top)"><g class="afm-word"><image href="/assets/afmco/images/portal/afmco-logo.webp" width="1600" height="609"/></g></g>
+						<g clip-path="url(#afm-word-bottom)"><g class="afm-word afm-word--late"><image href="/assets/afmco/images/portal/afmco-logo.webp" width="1600" height="609"/></g></g>
+					</svg>
+				</div>
+			</div>
+
+			<div class="afm-hero__bar afm-in afm-in--5">
+				<span>{{ _("This portal is for AFMCO employees only.") }}</span>
+				<a class="afm-cue" href="#services">{{ _("Services") }}<span class="afm-cue__line" aria-hidden="true"></span></a>
+			</div>
+		</section>
+
+		<section id="services" class="afm-section afm-section--scoop" aria-labelledby="afm-services-title">
+			<div class="afm-head">
+				<p class="afm-kicker"><span class="afm-kicker__num">01 /</span>{{ _("Services") }}</p>
+				<div>
+					<h2 id="afm-services-title" class="afm-title">{{ _("What can you get done?") }}</h2>
+				</div>
+			</div>
+			<ul class="afm-services">
+				{% for service in services %}
+				<li class="afm-service" data-reveal>
+					<span class="afm-service__num">{{ "%02d" % loop.index }}</span>
+					<h3 class="afm-service__title">{{ service.title }}</h3>
+					<p class="afm-service__text">{{ service.text }}</p>
+					<p class="afm-service__note">{{ service.note }}</p>
+					<a class="afm-link" href="{{ service.href }}">{{ service.link_label }}{{ arrow() }}</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</section>
+
+		<section id="about" class="afm-section afm-section--ruled" aria-labelledby="afm-about-title">
+			<div class="afm-head">
+				<p class="afm-kicker"><span class="afm-kicker__num">02 /</span>{{ _("About AFMCO") }}</p>
+				<div>
+					<h2 id="afm-about-title" class="afm-title">{{ _("Our integrated services") }}</h2>
+					<p class="afm-lead">{{ _("We provide integrated solutions in facility management, operations, and logistics services with international standards and a Saudi vision.") }}</p>
+				</div>
+			</div>
+			<ul class="afm-activities">
+				{% for activity in activities %}
+				<li class="afm-activity" data-reveal>
+					<div class="afm-activity__media">
+						<img class="afm-activity__img" src="/assets/afmco/images/portal/{{ activity.image }}-1200.webp"
+							srcset="/assets/afmco/images/portal/{{ activity.image }}-600.webp 600w, /assets/afmco/images/portal/{{ activity.image }}-1200.webp 1200w"
+							sizes="(min-width: 1024px) 30vw, 100vw" alt="" width="1200" height="673" loading="lazy" decoding="async">
+					</div>
+					<h3 class="afm-activity__title">{{ activity.title }}</h3>
+					<p class="afm-activity__text">{{ activity.text }}</p>
+				</li>
+				{% endfor %}
+			</ul>
+		</section>
+
+		<section class="afm-band" aria-labelledby="afm-band-title">
+			<h2 id="afm-band-title" class="afm-band__title" data-reveal>
+				<span class="afm-band__line">{{ _("Your strategic partner") }}</span>
+				<span class="afm-band__line afm-band__line--accent">{{ _("for sustainable growth") }}</span>
+			</h2>
+			<img class="afm-band__img" src="/assets/afmco/images/portal/fleet-1600.webp"
+				srcset="/assets/afmco/images/portal/fleet-800.webp 800w, /assets/afmco/images/portal/fleet-1600.webp 1600w"
+				sizes="100vw" alt="" width="1600" height="897" loading="lazy" decoding="async" data-reveal>
+		</section>
+
+		<section id="values" class="afm-section afm-values" aria-labelledby="afm-values-title">
+			<div class="afm-head">
+				<p class="afm-kicker"><span class="afm-kicker__num">03 /</span>{{ _("Our values") }}</p>
+				<div>
+					<h2 id="afm-values-title" class="afm-title afm-title--compact">{{ _("Principles that drive us towards excellence") }}</h2>
+				</div>
+			</div>
+			<ol class="afm-values__list">
+				{% for value in company_values %}
+				<li class="afm-value" data-reveal>
+					<span class="afm-value__num">{{ "%02d" % loop.index }}</span>
+					<h3 class="afm-value__title">{{ value.title }}</h3>
+					<p class="afm-value__text">{{ value.text }}</p>
+				</li>
+				{% endfor %}
+			</ol>
+		</section>
+
+		<section id="help" class="afm-section afm-section--ruled" aria-labelledby="afm-help-title">
+			<div class="afm-head">
+				<p class="afm-kicker"><span class="afm-kicker__num">04 /</span>{{ _("Help") }}</p>
+				<div>
+					<h2 id="afm-help-title" class="afm-title">{{ _("Need help?") }}</h2>
+					<p class="afm-lead">{{ _("A support ticket is the main way to get help. You can follow its progress after you open it.") }}</p>
+					<div class="afm-help__actions">
+						<a class="afm-pill afm-pill--primary" href="{{ support_url }}">{{ _("Open a support ticket") }}{{ arrow() }}</a>
+					</div>
+				</div>
+			</div>
+			<ul class="afm-contacts">
+				{% for contact in hr_contacts %}
+				<li data-reveal>
+					<a class="afm-contact" href="{{ contact.href }}">
+						<span class="afm-contact__label">{{ contact.label }}</span>
+						<span class="afm-contact__value" dir="ltr">{{ contact.value }}</span>
+						{{ arrow() }}
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</section>
+	</main>
+
+	<footer class="afm-footer">
+		<div class="afm-footer__sign">
+			<svg class="afm-sign" viewBox="980 0 628 609" aria-hidden="true" focusable="false" data-reveal>
+				<defs>
+					<mask id="afm-ring-sign" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="609">{{ ring_arcs() }}</mask>
+				</defs>
+				<image href="/assets/afmco/images/portal/afmco-logo.webp" width="1600" height="609" mask="url(#afm-ring-sign)"/>
+			</svg>
+			<div class="afm-footer__actions">
+				<a class="afm-pill afm-pill--primary" href="{{ portal_link }}">{{ portal_label }}{{ arrow() }}</a>
+				<a class="afm-pill" href="{{ support_url }}">{{ _("Open a support ticket") }}</a>
+			</div>
+		</div>
+		<div class="afm-footer__bar">
+			<div class="afm-footer__brand">
+				<img class="afm-logo afm-logo--footer" src="/assets/afmco/images/portal/afmco-logo.webp" alt="AFMCO" width="1600" height="609" loading="lazy">
+				<p>&copy; {{ _("Abdullah Fahad Al-Mutairi Co. Ltd.") }}</p>
+			</div>
+			<p>{{ _("This portal is for AFMCO employees only.") }}</p>
+		</div>
+	</footer>
+</div>
+{% endblock %}

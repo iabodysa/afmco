@@ -1,0 +1,137 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Purchase Invoice Item",
+   "fetch_from": "item_code.is_it_asset",
+   "fetch_if_empty": "1",
+   "fieldname": "custom_it_asset",
+   "fieldtype": "Check",
+   "idx": "5",
+   "in_global_search": "1",
+   "insert_after": "item_name",
+   "label": "IT Asset",
+   "module": "Financial Operations",
+   "name": "Purchase Invoice Item-custom_it_asset",
+   "read_only": "1"
+  },
+  {
+   "dt": "Purchase Invoice Item",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "idx": "103",
+   "insert_after": "dimension_col_break",
+   "is_system_generated": "1",
+   "label": "Employee",
+   "module": "Financial Operations",
+   "name": "Purchase Invoice Item-employee",
+   "options": "Employee"
+  },
+  {
+   "dt": "Purchase Invoice Item",
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "hidden": "1",
+   "idx": "0",
+   "insert_after": "tax_rate",
+   "is_system_generated": "1",
+   "label": "Tax Amount",
+   "module": "Financial Operations",
+   "name": "Purchase Invoice Item-tax_amount",
+   "options": "currency",
+   "print_hide": "1",
+   "read_only": "1",
+   "translatable": "1"
+  },
+  {
+   "allow_on_submit": "1",
+   "dt": "Purchase Invoice Item",
+   "fetch_from": "item_code.tax_code",
+   "fieldname": "tax_code",
+   "fieldtype": "Read Only",
+   "idx": "0",
+   "insert_after": "description",
+   "is_system_generated": "1",
+   "label": "Tax Code",
+   "module": "Financial Operations",
+   "name": "Purchase Invoice Item-tax_code",
+   "print_hide": "1",
+   "translatable": "1"
+  },
+  {
+   "dt": "Purchase Invoice Item",
+   "fieldname": "tax_rate",
+   "fieldtype": "Float",
+   "hidden": "1",
+   "idx": "0",
+   "insert_after": "tax_code",
+   "is_system_generated": "1",
+   "label": "Tax Rate",
+   "module": "Financial Operations",
+   "name": "Purchase Invoice Item-tax_rate",
+   "print_hide": "1",
+   "read_only": "1",
+   "translatable": "1"
+  },
+  {
+   "dt": "Purchase Invoice Item",
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "hidden": "1",
+   "idx": "0",
+   "insert_after": "tax_amount",
+   "is_system_generated": "1",
+   "label": "Total Amount",
+   "module": "Financial Operations",
+   "name": "Purchase Invoice Item-total_amount",
+   "options": "currency",
+   "print_hide": "1",
+   "read_only": "1",
+   "translatable": "1"
+  }
+ ],
+ "doctype": "Purchase Invoice Item",
+ "property_setters": [
+  {
+   "doc_type": "Purchase Invoice Item",
+   "doctype_or_field": "DocField",
+   "field_name": "discount_account",
+   "module": "Financial Operations",
+   "name": "Purchase Invoice Item-discount_account-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Purchase Invoice Item",
+   "doctype_or_field": "DocField",
+   "field_name": "discount_account",
+   "module": "Financial Operations",
+   "name": "Purchase Invoice Item-discount_account-mandatory_depends_on",
+   "property": "mandatory_depends_on",
+   "property_type": "Code",
+   "value": ""
+  },
+  {
+   "doc_type": "Purchase Invoice Item",
+   "doctype_or_field": "DocField",
+   "field_name": "from_warehouse",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Purchase Invoice Item-from_warehouse-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Purchase Invoice Item",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "module": "Financial Operations",
+   "name": "Purchase Invoice Item-main-field_order",
+   "property": "field_order",
+   "property_type": "Data",
+   "value": "[\"item_code\", \"product_bundle\", \"col_break1\", \"item_name\", \"custom_it_asset\", \"description_section\", \"description\", \"tax_code\", \"tax_rate\", \"tax_amount\", \"total_amount\", \"is_zero_rated\", \"is_exempt\", \"brand\", \"col_break7\", \"item_group\", \"image\", \"image_view\", \"quantity_and_rate\", \"received_qty\", \"qty\", \"rejected_qty\", \"col_break2\", \"uom\", \"conversion_factor\", \"stock_uom\", \"stock_qty\", \"sec_break1\", \"price_list_rate\", \"col_break3\", \"base_price_list_rate\", \"section_break_26\", \"margin_type\", \"margin_rate_or_amount\", \"rate_with_margin\", \"column_break_30\", \"discount_percentage\", \"discount_amount\", \"base_rate_with_margin\", \"sec_break2\", \"rate\", \"amount\", \"item_tax_template\", \"col_break4\", \"base_rate\", \"base_amount\", \"pricing_rules\", \"stock_uom_rate\", \"is_free_item\", \"apply_tds\", \"section_break_22\", \"net_rate\", \"net_amount\", \"column_break_25\", \"base_net_rate\", \"base_net_amount\", \"valuation_rate\", \"item_tax_amount\", \"landed_cost_voucher_amount\", \"rm_supp_cost\", \"warehouse_section\", \"warehouse\", \"add_serial_batch_bundle\", \"serial_and_batch_bundle\", \"use_serial_batch_fields\", \"col_br_wh\", \"from_warehouse\", \"quality_inspection\", \"rejected_warehouse\", \"rejected_serial_and_batch_bundle\", \"section_break_rqbe\", \"serial_no\", \"rejected_serial_no\", \"column_break_vbbb\", \"batch_no\", \"manufacture_details\", \"manufacturer\", \"column_break_13\", \"manufacturer_part_no\", \"accounting\", \"expense_account\", \"wip_composite_asset\", \"col_break5\", \"is_fixed_asset\", \"asset_location\", \"asset_category\", \"deferred_expense_section\", \"deferred_expense_account\", \"service_stop_date\", \"enable_deferred_expense\", \"column_break_58\", \"service_start_date\", \"service_end_date\", \"reference\", \"allow_zero_valuation_rate\", \"item_tax_rate\", \"bom\", \"include_exploded_items\", \"purchase_invoice_item\", \"col_break6\", \"purchase_order\", \"po_detail\", \"purchase_receipt\", \"pr_detail\", \"sales_invoice_item\", \"material_request\", \"material_request_item\", \"item_weight_details\", \"weight_per_unit\", \"total_weight\", \"column_break_38\", \"weight_uom\", \"accounting_dimensions_section\", \"project\", \"dimension_col_break\", \"employee\", \"cost_center\", \"section_break_82\", \"page_break\"]"
+  }
+ ],
+ "sync_on_migrate": 1
+}

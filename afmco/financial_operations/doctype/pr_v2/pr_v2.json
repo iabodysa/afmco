@@ -1,0 +1,451 @@
+{
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-12-23 18:26:30.107954",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "workflow_state",
+  "payment_details_section",
+  "payment_type",
+  "mode_of_payment",
+  "column_break_payment_dates",
+  "date",
+  "bank_payment_date",
+  "column_break_approver",
+  "created_by",
+  "assign_to_employee",
+  "section_due",
+  "due_in_a_month",
+  "sadad_section",
+  "payment_code",
+  "its_sadad_group",
+  "column_break_sadad_number",
+  "sadad_number",
+  "beneficiary_details_section",
+  "beneficiary_id",
+  "employee",
+  "its_group",
+  "column_break_beneficiary_name",
+  "beneficiary_name",
+  "column_break_bank",
+  "banks",
+  "column_break_account_no",
+  "account_no",
+  "group_section",
+  "group",
+  "section_remark",
+  "remark",
+  "section_loan",
+  "loan",
+  "accounts_section",
+  "amount",
+  "cost_center",
+  "column_break_account",
+  "account",
+  "bank_account",
+  "section_jv_status",
+  "jv_status",
+  "reference_section",
+  "eos",
+  "vacation_allowance",
+  "petty_cash",
+  "sadad_group",
+  "invoice_number",
+  "type",
+  "naming_series",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "allow_on_submit": 1,
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Workflow State",
+   "no_copy": 1,
+   "options": "Workflow State"
+  },
+  {
+   "fieldname": "payment_details_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Details"
+  },
+  {
+   "fieldname": "payment_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Payment Type",
+   "options": "\nEmployee Loan\nEOS\nVacation Allowance\nPayroll (Salary)\nPetty Cash\nPurchases\nSADAD Payment"
+  },
+  {
+   "depends_on": "eval:doc.payment_type",
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Mode of Payment",
+   "options": "\nCash Payment\nBank Transfer\nSADAD Payment\nBank cheque"
+  },
+  {
+   "fieldname": "column_break_payment_dates",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "depends_on": "eval:doc.mode_of_payment",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Creation Date",
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "depends_on": "eval:doc.payment_type",
+   "fieldname": "bank_payment_date",
+   "fieldtype": "Date",
+   "label": "Bank Payment Date"
+  },
+  {
+   "fieldname": "column_break_approver",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "__user",
+   "depends_on": "eval:doc.type",
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1,
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "depends_on": "eval:doc.remark",
+   "fieldname": "assign_to_employee",
+   "fieldtype": "Link",
+   "label": "Expense Approver",
+   "options": "User"
+  },
+  {
+   "fieldname": "section_due",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.payment_type == 'Payroll (Salary)' ",
+   "fieldname": "due_in_a_month",
+   "fieldtype": "Select",
+   "label": "Due in a month",
+   "options": "\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
+  },
+  {
+   "fieldname": "sadad_section",
+   "fieldtype": "Section Break",
+   "label": "SADAD"
+  },
+  {
+   "depends_on": "eval:doc.payment_type == 'SADAD Payment' && doc.its_sadad_group == 0",
+   "fieldname": "payment_code",
+   "fieldtype": "Select",
+   "label": "Payment code",
+   "options": "\n090 - \u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u062f\u0627\u062e\u0644\u064a\u0629 \u2013 \u0627\u0644\u0648\u0627\u0641\u062f\u064a\u0646 | Ministry of Interior \u2013 Expatriates\n020 - \u0645\u0635\u0644\u062d\u0629 \u0627\u0644\u0632\u0643\u0627\u0629 \u0648\u0627\u0644\u062f\u062e\u0644 | Zakat and Income Tax Authority\n091 - \u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u062f\u0627\u062e\u0644\u064a\u0629 \u2013 \u0631\u062e\u0635 \u0627\u0644\u0642\u064a\u0627\u062f\u0629 | Ministry of Interior \u2013 Driving Licenses\n030 - \u0645\u0635\u0644\u062d\u0629 \u0627\u0644\u062c\u0645\u0627\u0631\u0643 | Customs Authority\n092 - \u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u062f\u0627\u062e\u0644\u064a\u0629 \u2013 \u0627\u0644\u062c\u0648\u0627\u0632\u0627\u062a \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629 | Ministry of Interior \u2013 Saudi Passports\n040 - \u0635\u0646\u062f\u0648\u0642 \u0627\u0644\u062a\u0646\u0645\u064a\u0629 \u0627\u0644\u0639\u0642\u0627\u0631\u064a\u0629 | Real Estate Development Fund\n093 - \u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u062f\u0627\u062e\u0644\u064a\u0629 \u2013 \u0627\u0644\u0645\u062e\u0627\u0644\u0641\u0627\u062a \u0627\u0644\u0645\u0631\u0648\u0631\u064a\u0629 | Ministry of Interior \u2013 Traffic Violations\n045 - \u0635\u0646\u062f\u0648\u0642 \u0627\u0644\u062a\u0646\u0645\u064a\u0629 \u0627\u0644\u0632\u0631\u0627\u0639\u064a\u0629 | Agricultural Development Fund\n094 - \u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u062f\u0627\u062e\u0644\u064a\u0629 - \u0627\u0644\u0645\u0631\u0643\u0628\u0627\u062a | Ministry of Interior - Vehicles\n058 - \u0627\u0644\u0628\u0646\u0643 \u0627\u0644\u0633\u0639\u0648\u062f\u064a \u0644\u0644\u062a\u0633\u0644\u064a\u0641 \u0648\u0627\u0644\u0627\u062f\u062e\u0627\u0631 | Saudi Arabian Monetary Agency (SAMA)\n095 - \u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u062f\u0627\u062e\u0644\u064a\u0629 - \u0627\u0644\u0627\u0633\u062a\u0642\u062f\u0627\u0645 | Ministry of Interior - Recruitment\n006 - \u0623\u0645\u0627\u0646\u0629 \u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0645\u062f\u064a\u0646\u0629 \u0627\u0644\u0645\u0646\u0648\u0631\u0629 | Municipality of Al-Madinah Al-Munawarah Region\n096 - \u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u062f\u0627\u062e\u0644\u064a\u0629 \u2013 \u0627\u0644\u0623\u062d\u0648\u0627\u0644 \u0627\u0644\u0645\u062f\u0646\u064a\u0629 | Ministry of Interior \u2013 Civil Affairs\n010 - \u0623\u0645\u0627\u0646\u0629 \u0627\u0644\u0631\u064a\u0627\u0636 | Riyadh Municipality\n013 - \u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u062a\u062c\u0627\u0631\u0629 \u0648\u0627\u0644\u0635\u0646\u0627\u0639\u0629 | Ministry of Commerce and Industry\n025 - \u0623\u0645\u0627\u0646\u0629 \u0627\u0644\u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0634\u0631\u0642\u064a\u0629 | Eastern Province Municipality\n015 - \u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u0645\u064a\u0627\u0647 \u0648\u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0621 | Ministry of Water and Electricity\n027 - \u0623\u0645\u0627\u0646\u0629 \u0627\u0644\u0639\u0627\u0635\u0645\u0629 \u0627\u0644\u0645\u0642\u062f\u0633\u0629 | Municipality of the Holy Capital (Makkah)\n050 - \u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u0639\u0645\u0644 | Ministry of Labor\n028 - \u0623\u0645\u0627\u0646\u0629 \u0645\u062d\u0627\u0641\u0638\u0629 \u062c\u062f\u0629 | Jeddah Municipality\n051 - \u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u062b\u0642\u0627\u0641\u0629 \u0648\u0627\u0644\u0625\u0639\u0644\u0627\u0645 | Ministry of Culture and Information\n061 - \u0623\u0645\u0627\u0646\u0629 \u0645\u0646\u0637\u0642\u0629 \u062d\u0627\u0626\u0644 | Municipality of Hail Region\n075 - \u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u0646\u0642\u0644 | Ministry of Transportation\n062 - \u0623\u0645\u0627\u0646\u0629 \u0645\u0646\u0637\u0642\u0629 \u062a\u0628\u0648\u0643 | Municipality of Tabuk Region\n088 - \u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u0645\u0627\u0644\u064a\u0629 | Ministry of Finance\n064 - \u0623\u0645\u0627\u0646\u0629 \u0645\u0646\u0637\u0642\u0629 \u062c\u0627\u0632\u0627\u0646 | Municipality of Jazan Region\n042 - \u0647\u064a\u0626\u0629 \u0627\u0644\u0627\u062a\u0635\u0627\u0644\u0627\u062a \u0648\u062a\u0642\u0646\u064a\u0629 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a | Communications and Information Technology Commission (CITC)\n070 - \u0623\u0645\u0627\u0646\u0629 \u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0642\u0635\u064a\u0645 | Municipality of Al-Qassim Region\n049 - \u0627\u0644\u0647\u064a\u0626\u0629 \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629 \u0644\u0644\u0645\u0648\u0627\u0635\u0641\u0627\u062a \u0648\u0627\u0644\u0645\u0642\u0627\u064a\u064a\u0633 \u0648\u0627\u0644\u062c\u0648\u062f\u0629 | Saudi Standards, Metrology, and Quality Organization (SASO)\n084 - \u0623\u0645\u0627\u0646\u0629 \u0645\u0646\u0637\u0642\u0629 \u0639\u0633\u064a\u0631 | Municipality of Asir Region\n057 - \u0627\u0644\u0647\u064a\u0626\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0633\u064a\u0627\u062d\u0629 \u0648\u0627\u0644\u0622\u062b\u0627\u0631 | Saudi Commission for Tourism and National Heritage\n087 - \u0623\u0645\u0627\u0646\u0629 \u0645\u0646\u0637\u0642\u0629 \u0646\u062c\u0631\u0627\u0646 | Municipality of Najran Region\n089 - \u0627\u0644\u0645\u0624\u0633\u0633\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0645\u0648\u0627\u0646\u0626 | Saudi Ports Authority\n103 - \u0623\u0645\u0627\u0646\u0629 \u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u062c\u0648\u0641 | Municipality of Al-Jawf Region\n098 - \u0627\u0644\u0647\u064a\u0626\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0644\u0644\u0637\u064a\u0631\u0627\u0646 \u0627\u0644\u0645\u062f\u0646\u064a | General Authority of Civil Aviation (GACA)"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.payment_type == 'SADAD Payment'",
+   "fieldname": "its_sadad_group",
+   "fieldtype": "Check",
+   "label": "Group"
+  },
+  {
+   "fieldname": "column_break_sadad_number",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.payment_type == 'SADAD Payment' && doc.its_sadad_group == 0",
+   "fieldname": "sadad_number",
+   "fieldtype": "Data",
+   "label": "SADAD Invoice Number"
+  },
+  {
+   "collapsible_depends_on": "eval:doc.mode_of_payment",
+   "fieldname": "beneficiary_details_section",
+   "fieldtype": "Section Break",
+   "label": "Beneficiary Details"
+  },
+  {
+   "depends_on": "eval:doc.payment_type == 'Purchases' && doc.mode_of_payment",
+   "fieldname": "beneficiary_id",
+   "fieldtype": "Data",
+   "label": "Beneficiary ID"
+  },
+  {
+   "depends_on": "eval: (doc.payment_type == 'Employee Loan' || doc.payment_type == 'EOS' || doc.payment_type == 'Vacation Allowance' || doc.payment_type == 'Petty Cash' || doc.payment_type == 'Payroll (Salary)' ) && doc.its_group == 0 && doc.mode_of_payment",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "ID (iQama)",
+   "options": "Employee"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: (doc.payment_type == 'Payroll (Salary)' || doc.payment_type == 'Employee Loan') && !doc.employee",
+   "fieldname": "its_group",
+   "fieldtype": "Check",
+   "label": "Group"
+  },
+  {
+   "fieldname": "column_break_beneficiary_name",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: (doc.beneficiary_id || doc.employee) && doc.its_group == 0",
+   "fetch_from": "employee.employee_name",
+   "fetch_if_empty": 1,
+   "fieldname": "beneficiary_name",
+   "fieldtype": "Data",
+   "label": "Beneficiary name"
+  },
+  {
+   "fieldname": "column_break_bank",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:(doc.beneficiary_id || doc.employee) && doc.mode_of_payment == 'Bank Transfer' && doc.its_group == 0",
+   "fetch_from": "employee.bank_name",
+   "fetch_if_empty": 1,
+   "fieldname": "banks",
+   "fieldtype": "Link",
+   "label": "Bank",
+   "options": "Saudi Bank"
+  },
+  {
+   "fieldname": "column_break_account_no",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "SA",
+   "depends_on": "eval:(doc.beneficiary_id || doc.employee) && doc.mode_of_payment == 'Bank Transfer' && doc.its_group == 0",
+   "fetch_from": "employee.bank_ac_no",
+   "fetch_if_empty": 1,
+   "fieldname": "account_no",
+   "fieldtype": "Data",
+   "label": "Bank A/C No."
+  },
+  {
+   "fieldname": "group_section",
+   "fieldtype": "Section Break",
+   "label": "Group"
+  },
+  {
+   "allow_bulk_edit": 1,
+   "depends_on": "eval:doc.its_group == 1",
+   "fieldname": "group",
+   "fieldtype": "Table",
+   "label": "Group",
+   "options": "pr v2 table"
+  },
+  {
+   "fieldname": "section_remark",
+   "fieldtype": "Section Break",
+   "label": "Remark"
+  },
+  {
+   "depends_on": "eval: doc.employee ||doc.invoice_number || doc.sadad_group || doc.petty_cash || doc.vacation_allowance || doc.eos || doc.its_group == 1",
+   "fieldname": "remark",
+   "fieldtype": "Text",
+   "label": "Remark"
+  },
+  {
+   "fieldname": "section_loan",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: (doc.type == 'Accrued Expenses') && doc.payment_type == 'Payroll (Salary)' ",
+   "fieldname": "loan",
+   "fieldtype": "Currency",
+   "label": "Loan"
+  },
+  {
+   "fieldname": "accounts_section",
+   "fieldtype": "Section Break",
+   "label": "Accounts"
+  },
+  {
+   "depends_on": "eval:doc.remark",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
+  },
+  {
+   "depends_on": "eval:doc.remark",
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "column_break_account",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.assign_to_employee",
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Account",
+   "options": "Account"
+  },
+  {
+   "default": "122001 - \u0627\u0644\u0628\u0646\u0643 \u0627\u0644\u0627\u0647\u0644\u064a - \u062a\u0634\u063a\u064a\u0644 - AF",
+   "depends_on": "eval:doc.assign_to_employee",
+   "fieldname": "bank_account",
+   "fieldtype": "Select",
+   "label": "Bank Account",
+   "options": "\n122001 - \u0627\u0644\u0628\u0646\u0643 \u0627\u0644\u0627\u0647\u0644\u064a - \u062a\u0634\u063a\u064a\u0644 - AF\n122003 - \u0628\u0646\u0643 \u0627\u0644\u0627\u0633\u062a\u062b\u0645\u0627\u0631 - \u062a\u0634\u063a\u064a\u0644 - AF\n121001 - \u0627\u0644\u0635\u0646\u062f\u0648\u0642 \u0627\u0644\u0631\u0626\u064a\u0633\u064a - AF"
+  },
+  {
+   "fieldname": "section_jv_status",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "JV Not Created",
+   "depends_on": "eval:doc.assign_to_employee",
+   "fieldname": "jv_status",
+   "fieldtype": "Select",
+   "label": "JV Status",
+   "options": "JV Created\nJV Not Created"
+  },
+  {
+   "collapsible_depends_on": "eval:doc.beneficiary_id || doc.id_iqama",
+   "fieldname": "reference_section",
+   "fieldtype": "Section Break",
+   "label": "Reference"
+  },
+  {
+   "depends_on": "eval:doc.payment_type == 'EOS'",
+   "fieldname": "eos",
+   "fieldtype": "Link",
+   "label": "EOS",
+   "options": "End of Service Settlement"
+  },
+  {
+   "depends_on": "eval:doc.payment_type == 'Vacation Allowance'",
+   "fieldname": "vacation_allowance",
+   "fieldtype": "Link",
+   "label": "Vacation Allowance",
+   "options": "Vacation Allowance"
+  },
+  {
+   "depends_on": "eval:doc.payment_type == 'Petty Cash'",
+   "fieldname": "petty_cash",
+   "fieldtype": "Link",
+   "label": "Petty Cash",
+   "options": "Petty Cash"
+  },
+  {
+   "depends_on": "eval:doc.payment_type == 'SADAD Payment'",
+   "fieldname": "sadad_group",
+   "fieldtype": "Data",
+   "label": "SADAD Group"
+  },
+  {
+   "depends_on": "eval:doc.payment_type == 'Purchases' ",
+   "fieldname": "invoice_number",
+   "fieldtype": "Data",
+   "label": "invoice number"
+  },
+  {
+   "depends_on": "eval:doc.mode_of_payment",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Type ",
+   "options": "\nAccrued Expenses\nExpenses"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "naming_series",
+   "options": "PR-test-.YYYY.-"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "PR v2",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "group": "Reference",
+   "link_doctype": "Journal Entry",
+   "link_fieldname": "expense_request_cf"
+  }
+ ],
+ "modified": "2026-09-25 12:00:00.000000",
+ "module": "Financial Operations",
+ "name": "PR v2",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Request User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Auditor",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

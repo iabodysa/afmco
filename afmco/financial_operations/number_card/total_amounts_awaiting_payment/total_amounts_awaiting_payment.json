@@ -1,0 +1,18 @@
+{
+ "aggregate_function_based_on": "amount",
+ "creation": "2024-06-15 08:46:02.980774",
+ "doctype": "Number Card",
+ "document_type": "Expense Request Afmco",
+ "dynamic_filters_json": "[]",
+ "filters_json": "[[\"Expense Request Afmco\",\"workflow_state\",\"=\",\"First Approval for Bank\",false],[\"Expense Request Afmco\",\"verify_payment\",\"=\",0,false]]",
+ "function": "Sum",
+ "is_standard": 1,
+ "label": "Total Amounts Awaiting Payment",
+ "modified": "2026-09-25 23:45:00.000000",
+ "module": "Financial Operations",
+ "name": "Total Amounts Awaiting Payment",
+ "report_function": "Sum",
+ "show_percentage_stats": 1,
+ "stats_time_interval": "Daily",
+ "type": "Document Type"
+}

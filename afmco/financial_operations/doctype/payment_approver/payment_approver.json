@@ -1,0 +1,96 @@
+{
+ "allow_rename": 1,
+ "autoname": "format:{name1}-{department}",
+ "creation": "2024-07-25 21:37:09.820353",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_approver",
+  "department",
+  "column_break_user",
+  "user",
+  "name1",
+  "column_break_role",
+  "permission_role",
+  "active",
+  "section_roles",
+  "roles"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_approver",
+   "fieldtype": "Section Break",
+   "label": "Approver"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "column_break_user",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fetch_from": "user.full_name",
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "column_break_role",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "permission_role",
+   "fieldtype": "Data",
+   "label": "Permission Role",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active"
+  },
+  {
+   "fieldname": "section_roles",
+   "fieldtype": "Section Break",
+   "label": "Allowed Roles"
+  },
+  {
+   "fieldname": "roles",
+   "fieldtype": "Small Text",
+   "label": "Roles"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "modified": "2026-08-18 17:03:41.085092",
+ "module": "Financial Operations",
+ "name": "Payment Approver",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

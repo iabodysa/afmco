@@ -1,0 +1,53 @@
+{
+ "custom_fields": [
+  {
+   "bold": "1",
+   "dt": "Loan Repayment",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "idx": "0",
+   "insert_after": "amount_paid",
+   "label": "Amount",
+   "module": "People and Payroll",
+   "name": "Loan Repayment-amount",
+   "non_negative": "1",
+   "options": "Company:company:default_currency",
+   "reqd": "1"
+  },
+  {
+   "dt": "Loan Repayment",
+   "fieldname": "payroll_date",
+   "fieldtype": "Date",
+   "idx": "0",
+   "insert_after": "posting_date",
+   "label": "Payroll Date",
+   "module": "People and Payroll",
+   "name": "Loan Repayment-payroll_date",
+   "reqd": "1"
+  }
+ ],
+ "doctype": "Loan Repayment",
+ "property_setters": [
+  {
+   "doc_type": "Loan Repayment",
+   "doctype_or_field": "DocField",
+   "field_name": "amount_paid",
+   "module": "People and Payroll",
+   "name": "Loan Repayment-amount_paid-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Loan Repayment",
+   "doctype_or_field": "DocField",
+   "field_name": "amount_paid",
+   "module": "People and Payroll",
+   "name": "Loan Repayment-amount_paid-reqd",
+   "property": "reqd",
+   "property_type": "Check",
+   "value": "0"
+  }
+ ],
+ "sync_on_migrate": 1
+}

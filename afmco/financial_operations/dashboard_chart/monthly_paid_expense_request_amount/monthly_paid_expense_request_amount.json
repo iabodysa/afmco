@@ -1,0 +1,20 @@
+{
+ "based_on": "creation",
+ "chart_name": "Monthly Paid Expense Request Amount",
+ "chart_type": "Sum",
+ "color": "#449CF0",
+ "creation": "2024-06-15 05:38:08.038631",
+ "doctype": "Dashboard Chart",
+ "document_type": "Expense Request Afmco",
+ "filters_json": "[[\"Expense Request Afmco\",\"workflow_state\",\"=\",\"Paid\",false]]",
+ "group_by_type": "Count",
+ "is_standard": 1,
+ "modified": "2026-09-25 23:45:00.000000",
+ "module": "Financial Operations",
+ "name": "Monthly Paid Expense Request Amount",
+ "time_interval": "Monthly",
+ "timeseries": 1,
+ "timespan": "Last Year",
+ "type": "Bar",
+ "value_based_on": "amount"
+}

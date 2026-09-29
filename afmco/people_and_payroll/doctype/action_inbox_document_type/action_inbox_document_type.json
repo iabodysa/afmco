@@ -1,0 +1,62 @@
+{
+ "actions": [],
+ "creation": "2026-09-23 18:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "document_type",
+  "active_states",
+  "terminal_states",
+  "submitted_only"
+ ],
+ "fields": [
+  {
+   "columns": 3,
+   "fieldname": "document_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Document Type",
+   "options": "DocType",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "columns": 3,
+   "description": "One state per line. A document of yours in one of these states shows as open.",
+   "fieldname": "active_states",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Active States"
+  },
+  {
+   "columns": 3,
+   "description": "One state per line. A document of yours that reached one of these states shows as recently closed.",
+   "fieldname": "terminal_states",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Terminal States"
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "description": "Count only submitted documents.",
+   "fieldname": "submitted_only",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Submitted Only"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-09-28 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "People and Payroll",
+ "name": "Action Inbox Document Type",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

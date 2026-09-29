@@ -1,0 +1,14 @@
+{
+ "creation": "2026-09-27 12:00:00.000000",
+ "css": ".print-format { font-family: Tahoma, Arial, sans-serif; color: #333333; }\n.print-format .print-heading { border-bottom: 2px solid #00844E; margin-bottom: 14px; }\n.print-format .print-heading h2 { color: #072B1A; font-weight: bold; }\n.print-format .print-heading .sub-heading { color: #00844E; }\n.print-format .section-break h4 { color: #072B1A; border-bottom: 1px solid #ECE6D6; padding-bottom: 4px; }\n.print-format .section-break label { color: #072B1A; }\n.print-format .section-break table { border-bottom: 2px solid #00844E; }\n.print-format .section-break table th { background-color: #072B1A !important; color: #ffffff !important; border-color: #072B1A !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }\n.print-format .section-break table td { border-color: #e5e5e5 !important; }\n.print-format .section-break table tr:nth-child(even) td { background-color: #f7f7f7; -webkit-print-color-adjust: exact; print-color-adjust: exact; }\n",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Print Style",
+ "idx": 0,
+ "modified": "2026-09-27 12:00:00.000000",
+ "modified_by": "Administrator",
+ "name": "AFMCO",
+ "owner": "Administrator",
+ "print_style_name": "AFMCO",
+ "standard": 1
+}

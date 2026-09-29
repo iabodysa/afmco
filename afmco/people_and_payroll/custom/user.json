@@ -1,0 +1,19 @@
+{
+ "custom_fields": [
+  {
+   "dt": "User",
+   "fieldname": "group_type",
+   "fieldtype": "Select",
+   "idx": "0",
+   "in_standard_filter": "1",
+   "insert_after": "user_type",
+   "label": "Group Type",
+   "module": "People and Payroll",
+   "name": "User-group_type",
+   "options": "Self-Service Employee\nSystem User\nCustomer"
+  }
+ ],
+ "doctype": "User",
+ "property_setters": [],
+ "sync_on_migrate": 1
+}

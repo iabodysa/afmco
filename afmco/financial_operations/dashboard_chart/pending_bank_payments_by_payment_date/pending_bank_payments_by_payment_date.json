@@ -1,0 +1,20 @@
+{
+ "based_on": "bank_payment_date",
+ "chart_name": "Pending Bank Payments by Payment Date",
+ "chart_type": "Sum",
+ "color": "#449CF0",
+ "creation": "2024-06-15 05:04:35.965714",
+ "doctype": "Dashboard Chart",
+ "document_type": "Expense Request Afmco",
+ "filters_json": "[[\"Expense Request Afmco\",\"bank_payment_date\",\"is\",\"set\",false],[\"Expense Request Afmco\",\"workflow_state\",\"!=\",\"Rejected\",false],[\"Expense Request Afmco\",\"workflow_state\",\"!=\",\"Paid\",false]]",
+ "group_by_type": "Count",
+ "is_standard": 1,
+ "modified": "2026-09-25 23:45:00.000000",
+ "module": "Financial Operations",
+ "name": "Pending Bank Payments by Payment Date",
+ "time_interval": "Daily",
+ "timeseries": 1,
+ "timespan": "Last Week",
+ "type": "Bar",
+ "value_based_on": "amount"
+}

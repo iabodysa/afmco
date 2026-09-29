@@ -1,0 +1,177 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Journal Entry",
+   "fieldname": "expense_request_cf",
+   "fieldtype": "Link",
+   "idx": "35",
+   "insert_after": "jv_based_on_submitted_si_cf",
+   "is_system_generated": "1",
+   "label": "Expense Request",
+   "module": "Financial Operations",
+   "name": "Journal Entry-expense_request_cf",
+   "options": "Expense Request Afmco",
+   "unique": "1"
+  },
+  {
+   "dt": "Journal Entry",
+   "fieldname": "jv_based_on_submitted_si_cf",
+   "fieldtype": "Link",
+   "idx": "34",
+   "insert_after": "inter_company_journal_entry_reference",
+   "is_system_generated": "1",
+   "label": "JV Based on Submitted SI",
+   "module": "Financial Operations",
+   "name": "Journal Entry-jv_based_on_submitted_si_cf",
+   "options": "Sales Invoice",
+   "unique": "1"
+  },
+  {
+   "dt": "Journal Entry",
+   "fieldname": "payroll_entry",
+   "fieldtype": "Link",
+   "idx": "0",
+   "insert_after": "from_template",
+   "label": "Payroll Entry",
+   "module": "Financial Operations",
+   "name": "Journal Entry-payroll_entry",
+   "no_copy": "1",
+   "options": "Payroll Entry",
+   "read_only": "1"
+  }
+ ],
+ "doctype": "Journal Entry",
+ "property_setters": [
+  {
+   "doc_type": "Journal Entry",
+   "doctype_or_field": "DocField",
+   "field_name": "accounts",
+   "module": "Financial Operations",
+   "name": "Journal Entry-accounts-allow_bulk_edit",
+   "property": "allow_bulk_edit",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Journal Entry",
+   "doctype_or_field": "DocField",
+   "field_name": "cheque_no",
+   "module": "Financial Operations",
+   "name": "Journal Entry-cheque_no-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Journal Entry",
+   "doctype_or_field": "DocField",
+   "field_name": "company",
+   "module": "Financial Operations",
+   "name": "Journal Entry-company-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Journal Entry",
+   "doctype_or_field": "DocField",
+   "field_name": "due_date",
+   "module": "Financial Operations",
+   "name": "Journal Entry-due_date-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Journal Entry",
+   "doctype_or_field": "DocField",
+   "field_name": "expense_request_cf",
+   "module": "Financial Operations",
+   "name": "Journal Entry-expense_request_cf-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Journal Entry",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "module": "Financial Operations",
+   "name": "Journal Entry-main-field_order",
+   "property": "field_order",
+   "property_type": "Data",
+   "value": "[\"entry_type_and_date\", \"is_system_generated\", \"title\", \"voucher_type\", \"naming_series\", \"finance_book\", \"process_deferred_accounting\", \"reversal_of\", \"tax_withholding_category\", \"column_break1\", \"from_template\", \"payroll_entry\", \"company\", \"posting_date\", \"apply_tds\", \"2_add_edit_gl_entries\", \"accounts\", \"section_break99\", \"cheque_no\", \"cheque_date\", \"user_remark\", \"column_break99\", \"total_debit\", \"total_credit\", \"difference\", \"get_balance\", \"multi_currency\", \"total_amount_currency\", \"total_amount\", \"total_amount_in_words\", \"reference\", \"clearance_date\", \"remark\", \"paid_loan\", \"inter_company_journal_entry_reference\", \"jv_based_on_submitted_si_cf\", \"expense_request_cf\", \"column_break98\", \"bill_no\", \"bill_date\", \"due_date\", \"custom_pr_status\", \"write_off\", \"write_off_based_on\", \"get_outstanding_invoices\", \"column_break_30\", \"write_off_amount\", \"printing_settings\", \"pay_to_recd_from\", \"column_break_35\", \"letter_head\", \"select_print_heading\", \"addtional_info\", \"mode_of_payment\", \"payment_order\", \"column_break3\", \"is_opening\", \"stock_entry\", \"subscription_section\", \"auto_repeat\", \"amended_from\", \"custom_tab_2\"]"
+  },
+  {
+   "doc_type": "Journal Entry",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "module": "Financial Operations",
+   "name": "Journal Entry-main-track_views",
+   "property": "track_views",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Journal Entry",
+   "doctype_or_field": "DocField",
+   "field_name": "naming_series",
+   "module": "Financial Operations",
+   "name": "Journal Entry-naming_series-default",
+   "property": "default",
+   "property_type": "Text",
+   "value": "ACC-JV-.YYYY.-"
+  },
+  {
+   "doc_type": "Journal Entry",
+   "doctype_or_field": "DocField",
+   "field_name": "naming_series",
+   "module": "Financial Operations",
+   "name": "Journal Entry-naming_series-options",
+   "property": "options",
+   "property_type": "Text",
+   "value": "ACC-JV-.YYYY.-\nTJV-\nEJV-"
+  },
+  {
+   "doc_type": "Journal Entry",
+   "doctype_or_field": "DocField",
+   "field_name": "voucher_type",
+   "module": "Financial Operations",
+   "name": "Journal Entry-voucher_type-options",
+   "property": "options",
+   "property_type": "Text",
+   "value": "Journal Entry\nInter Company Journal Entry\nBank Entry\nCash Entry\nCredit Card Entry\nDebit Note\nCredit Note\nContra Entry\nExcise Entry\nWrite Off Entry\nOpening Entry\nDepreciation Entry\nAsset Disposal\nPeriodic Accounting Entry\nExchange Rate Revaluation\nExchange Gain Or Loss\nDeferred Revenue\nDeferred Expense\nPayroll Entry\nSalary Slip"
+  },
+  {
+   "doc_type": "Journal Entry",
+   "doctype_or_field": "DocField",
+   "field_name": "posting_date",
+   "module": "Financial Operations",
+   "name": "Journal Entry-posting_date-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Journal Entry",
+   "doctype_or_field": "DocField",
+   "field_name": "title",
+   "module": "Financial Operations",
+   "name": "Journal Entry-title-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Journal Entry",
+   "doctype_or_field": "DocField",
+   "field_name": "total_debit",
+   "module": "Financial Operations",
+   "name": "Journal Entry-total_debit-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  }
+ ],
+ "sync_on_migrate": 1
+}

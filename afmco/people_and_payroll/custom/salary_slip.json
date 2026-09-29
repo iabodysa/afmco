@@ -1,0 +1,937 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Salary Slip",
+   "fetch_from": "employee.basic_2",
+   "fieldname": "basic33",
+   "fieldtype": "Currency",
+   "idx": "98",
+   "insert_after": "amended_from",
+   "label": "Basic",
+   "module": "People and Payroll",
+   "name": "Salary Slip-basic33",
+   "permlevel": "1"
+  },
+  {
+   "allow_on_submit": "1",
+   "dt": "Salary Slip",
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "hidden": "1",
+   "idx": "11",
+   "ignore_user_permissions": "1",
+   "insert_after": "letter_head",
+   "label": "Cost Center",
+   "module": "People and Payroll",
+   "name": "Salary Slip-cost_center",
+   "options": "Cost Center",
+   "permlevel": "1",
+   "print_hide": "1"
+  },
+  {
+   "dt": "Salary Slip",
+   "fieldname": "custom_column_break_unqdx",
+   "fieldtype": "Column Break",
+   "idx": "112",
+   "insert_after": "custom_loan_account",
+   "label": "",
+   "module": "People and Payroll",
+   "name": "Salary Slip-custom_column_break_unqdx"
+  },
+  {
+   "allow_on_submit": "1",
+   "dt": "Salary Slip",
+   "fieldname": "custom_hold",
+   "fieldtype": "Check",
+   "idx": "17",
+   "insert_after": "exchange_rate",
+   "label": "Hold",
+   "module": "People and Payroll",
+   "name": "Salary Slip-custom_hold"
+  },
+  {
+   "dt": "Salary Slip",
+   "fieldname": "custom_loan",
+   "fieldtype": "Tab Break",
+   "idx": "109",
+   "insert_after": "leave_details",
+   "label": "Loan",
+   "module": "People and Payroll",
+   "name": "Salary Slip-custom_loan"
+  },
+  {
+   "dt": "Salary Slip",
+   "fieldname": "custom_loan_account",
+   "fieldtype": "Link",
+   "idx": "111",
+   "insert_after": "custom_loans",
+   "label": "Loan Account",
+   "module": "People and Payroll",
+   "name": "Salary Slip-custom_loan_account",
+   "options": "Account"
+  },
+  {
+   "allow_on_submit": "1",
+   "dt": "Salary Slip",
+   "fieldname": "custom_loans",
+   "fieldtype": "Link",
+   "idx": "110",
+   "insert_after": "custom_loan",
+   "label": "Loan",
+   "module": "People and Payroll",
+   "name": "Salary Slip-custom_loans",
+   "options": "Loan Repayment"
+  },
+  {
+   "dt": "Salary Slip",
+   "fetch_from": "custom_loans.amount_paid",
+   "fieldname": "custom_loans_amount",
+   "fieldtype": "Currency",
+   "idx": "113",
+   "insert_after": "custom_column_break_unqdx",
+   "label": "Loan Amount",
+   "module": "People and Payroll",
+   "name": "Salary Slip-custom_loans_amount",
+   "read_only": "1"
+  },
+  {
+   "dt": "Salary Slip",
+   "fieldname": "custom_net_pay_amount",
+   "fieldtype": "Currency",
+   "idx": "67",
+   "in_list_view": "1",
+   "insert_after": "net_pay",
+   "label": "Net Pay Amount",
+   "module": "People and Payroll",
+   "name": "Salary Slip-custom_net_pay_amount",
+   "options": "currency",
+   "read_only": "1"
+  },
+  {
+   "dt": "Salary Slip",
+   "fieldname": "deduction33",
+   "fieldtype": "Currency",
+   "idx": "101",
+   "insert_after": "other_allowance33",
+   "label": "Deduction",
+   "module": "People and Payroll",
+   "name": "Salary Slip-deduction33",
+   "permlevel": "1"
+  },
+  {
+   "dt": "Salary Slip",
+   "fetch_from": "employee.housing_2",
+   "fieldname": "housing33",
+   "fieldtype": "Currency",
+   "idx": "99",
+   "insert_after": "basic33",
+   "label": "Housing",
+   "module": "People and Payroll",
+   "name": "Salary Slip-housing33",
+   "permlevel": "1"
+  },
+  {
+   "allow_on_submit": "1",
+   "dt": "Salary Slip",
+   "fetch_from": "employee.labor_office_file_number",
+   "fieldname": "labor_office_file_number",
+   "fieldtype": "Data",
+   "idx": "102",
+   "insert_after": "deduction33",
+   "label": "Labor Office File Number",
+   "module": "People and Payroll",
+   "name": "Salary Slip-labor_office_file_number",
+   "permlevel": "1",
+   "read_only": "1",
+   "translatable": "1"
+  },
+  {
+   "dt": "Salary Slip",
+   "fieldname": "other_allowance33",
+   "fieldtype": "Currency",
+   "idx": "100",
+   "insert_after": "housing33",
+   "label": "Other Allowance",
+   "module": "People and Payroll",
+   "name": "Salary Slip-other_allowance33",
+   "permlevel": "1"
+  },
+  {
+   "dt": "Salary Slip",
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "idx": "103",
+   "insert_after": "labor_office_file_number",
+   "label": "Remark",
+   "module": "People and Payroll",
+   "name": "Salary Slip-remark",
+   "permlevel": "1",
+   "translatable": "1"
+  }
+ ],
+ "doctype": "Salary Slip",
+ "property_setters": [
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "amended_from",
+   "module": "People and Payroll",
+   "name": "Salary Slip-amended_from-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "annual_taxable_amount",
+   "module": "People and Payroll",
+   "name": "Salary Slip-annual_taxable_amount-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "base_gross_pay",
+   "module": "People and Payroll",
+   "name": "Salary Slip-base_gross_pay-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "base_gross_year_to_date",
+   "module": "People and Payroll",
+   "name": "Salary Slip-base_gross_year_to_date-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "base_hour_rate",
+   "module": "People and Payroll",
+   "name": "Salary Slip-base_hour_rate-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "0"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "base_month_to_date",
+   "module": "People and Payroll",
+   "name": "Salary Slip-base_month_to_date-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "base_net_pay",
+   "module": "People and Payroll",
+   "name": "Salary Slip-base_net_pay-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "base_rounded_total",
+   "module": "People and Payroll",
+   "name": "Salary Slip-base_rounded_total-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "base_total_in_words",
+   "module": "People and Payroll",
+   "name": "Salary Slip-base_total_in_words-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "base_year_to_date",
+   "module": "People and Payroll",
+   "name": "Salary Slip-base_year_to_date-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "branch",
+   "module": "People and Payroll",
+   "name": "Salary Slip-branch-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "branch",
+   "module": "People and Payroll",
+   "name": "Salary Slip-branch-in_standard_filter",
+   "property": "in_standard_filter",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "branch",
+   "module": "People and Payroll",
+   "name": "Salary Slip-branch-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "column_break_0rsw",
+   "module": "People and Payroll",
+   "name": "Salary Slip-column_break_0rsw-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "column_break_35wb",
+   "module": "People and Payroll",
+   "name": "Salary Slip-column_break_35wb-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "column_break_69",
+   "module": "People and Payroll",
+   "name": "Salary Slip-column_break_69-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "column_break_dqnd",
+   "module": "People and Payroll",
+   "name": "Salary Slip-column_break_dqnd-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "column_break_ieob",
+   "module": "People and Payroll",
+   "name": "Salary Slip-column_break_ieob-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "company",
+   "module": "People and Payroll",
+   "name": "Salary Slip-company-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "company",
+   "module": "People and Payroll",
+   "name": "Salary Slip-company-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "cost_center",
+   "module": "People and Payroll",
+   "name": "Salary Slip-cost_center-allow_on_submit",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "cost_center",
+   "module": "People and Payroll",
+   "name": "Salary Slip-cost_center-fetch_from",
+   "property": "fetch_from",
+   "property_type": "Small Text",
+   "value": "employee.payroll_cost_center"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "cost_center",
+   "module": "People and Payroll",
+   "name": "Salary Slip-cost_center-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "ctc",
+   "module": "People and Payroll",
+   "name": "Salary Slip-ctc-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "currency",
+   "module": "People and Payroll",
+   "name": "Salary Slip-currency-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "current_month_income_tax",
+   "module": "People and Payroll",
+   "name": "Salary Slip-current_month_income_tax-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "deduct_tax_for_unsubmitted_tax_exemption_proof",
+   "module": "People and Payroll",
+   "name": "Salary Slip-deduct_tax_for_unsubmitted_tax_exemption_proof-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "deductions_before_tax_calculation",
+   "module": "People and Payroll",
+   "name": "Salary Slip-deductions_before_tax_calculation-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "department",
+   "module": "People and Payroll",
+   "name": "Salary Slip-department-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "designation",
+   "module": "People and Payroll",
+   "name": "Salary Slip-designation-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "earnings_and_deductions_tab",
+   "module": "People and Payroll",
+   "name": "Salary Slip-earnings_and_deductions_tab-allow_on_submit",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "earnings_and_deductions_tab",
+   "module": "People and Payroll",
+   "name": "Salary Slip-earnings_and_deductions_tab-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "employee",
+   "module": "People and Payroll",
+   "name": "Salary Slip-employee-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "employee_name",
+   "module": "People and Payroll",
+   "name": "Salary Slip-employee_name-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "exchange_rate",
+   "module": "People and Payroll",
+   "name": "Salary Slip-exchange_rate-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "future_income_tax_deductions",
+   "module": "People and Payroll",
+   "name": "Salary Slip-future_income_tax_deductions-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "gross_year_to_date",
+   "module": "People and Payroll",
+   "name": "Salary Slip-gross_year_to_date-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "income_from_other_sources",
+   "module": "People and Payroll",
+   "name": "Salary Slip-income_from_other_sources-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "income_tax_calculation_breakup_section",
+   "module": "People and Payroll",
+   "name": "Salary Slip-income_tax_calculation_breakup_section-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "income_tax_deducted_till_date",
+   "module": "People and Payroll",
+   "name": "Salary Slip-income_tax_deducted_till_date-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "journal_entry",
+   "module": "People and Payroll",
+   "name": "Salary Slip-journal_entry-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "letter_head",
+   "module": "People and Payroll",
+   "name": "Salary Slip-letter_head-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "letter_head",
+   "module": "People and Payroll",
+   "name": "Salary Slip-letter_head-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "is_system_generated": "1",
+   "module": "People and Payroll",
+   "name": "Salary Slip-main-default_print_format",
+   "property": "default_print_format",
+   "property_type": "Data",
+   "value": "Employee Payslip"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "module": "People and Payroll",
+   "name": "Salary Slip-main-default_view",
+   "property": "default_view",
+   "property_type": "Select",
+   "value": "List"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "module": "People and Payroll",
+   "name": "Salary Slip-main-field_order",
+   "property": "field_order",
+   "property_type": "Data",
+   "value": "[\"employee_and_payroll_tab\", \"section_break_6\", \"employee\", \"employee_name\", \"department\", \"designation\", \"branch\", \"column_break_obdl\", \"posting_date\", \"letter_head\", \"cost_center\", \"column_break_18\", \"status\", \"company\", \"currency\", \"exchange_rate\", \"custom_hold\", \"section_break_gsts\", \"payroll_frequency\", \"start_date\", \"end_date\", \"column_break_ptcc\", \"salary_structure\", \"payroll_entry\", \"mode_of_payment\", \"column_break_wyhp\", \"salary_slip_based_on_timesheet\", \"section_break_gerh\", \"deduct_tax_for_unclaimed_employee_benefits\", \"deduct_tax_for_unsubmitted_tax_exemption_proof\", \"payment_days_tab\", \"total_working_days\", \"unmarked_days\", \"leave_without_pay\", \"column_break_geio\", \"absent_days\", \"payment_days\", \"help_section\", \"payment_days_calculation_help\", \"earnings_and_deductions_tab\", \"timesheets_section\", \"timesheets\", \"column_break_ghjr\", \"total_working_hours\", \"hour_rate\", \"base_hour_rate\", \"earning_deduction_sb\", \"earnings\", \"column_break_k1jz\", \"deductions\", \"section_break_qlfw\", \"basic_salary\", \"housing\", \"other_allowances\", \"column_break_yqmm\", \"deduction\", \"totals\", \"gross_pay\", \"base_gross_pay\", \"gross_year_to_date\", \"base_gross_year_to_date\", \"column_break_25\", \"total_deduction\", \"base_total_deduction\", \"net_pay_info\", \"net_pay\", \"custom_net_pay_amount\", \"base_net_pay\", \"rounded_total\", \"base_rounded_total\", \"column_break_dqnd\", \"year_to_date\", \"base_year_to_date\", \"month_to_date\", \"base_month_to_date\", \"section_break_55\", \"total_in_words\", \"column_break_69\", \"base_total_in_words\", \"income_tax_calculation_breakup_section\", \"ctc\", \"income_from_other_sources\", \"total_earnings\", \"column_break_0rsw\", \"non_taxable_earnings\", \"standard_tax_exemption_amount\", \"tax_exemption_declaration\", \"deductions_before_tax_calculation\", \"annual_taxable_amount\", \"column_break_35wb\", \"income_tax_deducted_till_date\", \"current_month_income_tax\", \"future_income_tax_deductions\", \"total_income_tax\", \"section_break_75\", \"journal_entry\", \"amended_from\", \"basic33\", \"housing33\", \"other_allowance33\", \"deduction33\", \"labor_office_file_number\", \"remark\", \"column_break_ieob\", \"bank_name\", \"bank_account_no\", \"leave_details_section\", \"leave_details\", \"custom_loan\", \"custom_loans\", \"custom_loan_account\", \"custom_column_break_unqdx\", \"custom_loans_amount\"]"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "mode_of_payment",
+   "module": "People and Payroll",
+   "name": "Salary Slip-mode_of_payment-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "month_to_date",
+   "module": "People and Payroll",
+   "name": "Salary Slip-month_to_date-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "net_pay",
+   "module": "People and Payroll",
+   "name": "Salary Slip-net_pay-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "non_taxable_earnings",
+   "module": "People and Payroll",
+   "name": "Salary Slip-non_taxable_earnings-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "payment_days_calculation_help",
+   "module": "People and Payroll",
+   "name": "Salary Slip-payment_days_calculation_help-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "payroll_entry",
+   "module": "People and Payroll",
+   "name": "Salary Slip-payroll_entry-in_global_search",
+   "property": "in_global_search",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "payroll_entry",
+   "module": "People and Payroll",
+   "name": "Salary Slip-payroll_entry-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "payroll_entry",
+   "module": "People and Payroll",
+   "name": "Salary Slip-payroll_entry-in_standard_filter",
+   "property": "in_standard_filter",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "payroll_entry",
+   "module": "People and Payroll",
+   "name": "Salary Slip-payroll_entry-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "payroll_frequency",
+   "module": "People and Payroll",
+   "name": "Salary Slip-payroll_frequency-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "posting_date",
+   "module": "People and Payroll",
+   "name": "Salary Slip-posting_date-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "rounded_total",
+   "module": "People and Payroll",
+   "name": "Salary Slip-rounded_total-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "rounded_total",
+   "module": "People and Payroll",
+   "name": "Salary Slip-rounded_total-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "rounded_total",
+   "module": "People and Payroll",
+   "name": "Salary Slip-rounded_total-print_hide",
+   "property": "print_hide",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "salary_slip_based_on_timesheet",
+   "module": "People and Payroll",
+   "name": "Salary Slip-salary_slip_based_on_timesheet-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "salary_structure",
+   "module": "People and Payroll",
+   "name": "Salary Slip-salary_structure-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "salary_structure",
+   "module": "People and Payroll",
+   "name": "Salary Slip-salary_structure-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "salary_structure",
+   "module": "People and Payroll",
+   "name": "Salary Slip-salary_structure-read_only",
+   "property": "read_only",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "section_break_55",
+   "module": "People and Payroll",
+   "name": "Salary Slip-section_break_55-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "standard_tax_exemption_amount",
+   "module": "People and Payroll",
+   "name": "Salary Slip-standard_tax_exemption_amount-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "tax_exemption_declaration",
+   "module": "People and Payroll",
+   "name": "Salary Slip-tax_exemption_declaration-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "timesheets_section",
+   "module": "People and Payroll",
+   "name": "Salary Slip-timesheets_section-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "total_deduction",
+   "module": "People and Payroll",
+   "name": "Salary Slip-total_deduction-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "total_deduction",
+   "module": "People and Payroll",
+   "name": "Salary Slip-total_deduction-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "total_earnings",
+   "module": "People and Payroll",
+   "name": "Salary Slip-total_earnings-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "total_in_words",
+   "module": "People and Payroll",
+   "name": "Salary Slip-total_in_words-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "total_income_tax",
+   "module": "People and Payroll",
+   "name": "Salary Slip-total_income_tax-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "total_working_hours",
+   "module": "People and Payroll",
+   "name": "Salary Slip-total_working_hours-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "0"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "totals",
+   "module": "People and Payroll",
+   "name": "Salary Slip-totals-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Salary Slip",
+   "doctype_or_field": "DocField",
+   "field_name": "year_to_date",
+   "module": "People and Payroll",
+   "name": "Salary Slip-year_to_date-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  }
+ ],
+ "sync_on_migrate": 1
+}

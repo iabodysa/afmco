@@ -1,0 +1,156 @@
+{
+ "allow_rename": 1,
+ "creation": "2023-12-13 21:02:30.116211",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "joining_date",
+  "column_break_bank",
+  "bank_account_number",
+  "project",
+  "column_break_salary",
+  "basic_salary",
+  "ticket_allowance",
+  "column_break_contact",
+  "cell_number",
+  "personal_email",
+  "updatebutton",
+  "section_update_log",
+  "log"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "iQama No.",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.date_of_joining",
+   "fetch_if_empty": 1,
+   "fieldname": "joining_date",
+   "fieldtype": "Date",
+   "label": "Joining Date"
+  },
+  {
+   "fieldname": "column_break_bank",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "SA",
+   "fetch_from": "employee.bank_ac_no",
+   "fetch_if_empty": 1,
+   "fieldname": "bank_account_number",
+   "fieldtype": "Data",
+   "label": "Bank Account Number",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.branch",
+   "fetch_if_empty": 1,
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Branch"
+  },
+  {
+   "fetch_from": "employee.",
+   "fieldname": "column_break_salary",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.basic_wage",
+   "fetch_if_empty": 1,
+   "fieldname": "basic_salary",
+   "fieldtype": "Currency",
+   "label": "Basic Salary"
+  },
+  {
+   "fetch_from": "employee.ticket_allowance",
+   "fetch_if_empty": 1,
+   "fieldname": "ticket_allowance",
+   "fieldtype": "Currency",
+   "label": "Ticket Allowance"
+  },
+  {
+   "fieldname": "column_break_contact",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.cell_number",
+   "fetch_if_empty": 1,
+   "fieldname": "cell_number",
+   "fieldtype": "Data",
+   "label": "Mobile"
+  },
+  {
+   "fetch_from": "employee.personal_email",
+   "fetch_if_empty": 1,
+   "fieldname": "personal_email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "updatebutton",
+   "fieldtype": "Button",
+   "label": "Update"
+  },
+  {
+   "fieldname": "section_update_log",
+   "fieldtype": "Section Break",
+   "label": "Update Log"
+  },
+  {
+   "fieldname": "log",
+   "fieldtype": "Table",
+   "label": "Log",
+   "options": "Employee Update Table"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "modified": "2024-08-11 01:05:10.799550",
+ "module": "People and Payroll",
+ "name": "Employee Update",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "set_user_permissions": "0",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Support Team",
+   "set_user_permissions": "0",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "HR User",
+   "set_user_permissions": "0",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "HR Manager",
+   "set_user_permissions": "0",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_views": 1
+}

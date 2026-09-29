@@ -1,0 +1,364 @@
+{
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-04-18 21:08:17.548556",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "workflow_state",
+  "custom_details",
+  "section_break_mviu",
+  "custom_allow_cancel",
+  "employee",
+  "employee_name",
+  "column_break_branch",
+  "branch",
+  "establishment",
+  "column_break_bank_account",
+  "account_no",
+  "iqama_expiration",
+  "column_break_dates",
+  "date_1",
+  "date_2",
+  "custom_accounting_procedures",
+  "accounting_procedures_section",
+  "table_14",
+  "cva",
+  "section_reward_and_tickets",
+  "alternative_reward",
+  "column_break_tickets",
+  "ticket_allowance",
+  "number_of_tickets",
+  "clearing_end_of_service_section",
+  "duration_of_service",
+  "dos_years",
+  "column_break_salary",
+  "total_salary",
+  "salary_per_day",
+  "column_break_vacation_days",
+  "vacation_days_per_year",
+  "cva_total",
+  "column_break_deductions",
+  "deductions",
+  "amount",
+  "custom_hr_procedures",
+  "hr_procedures_section",
+  "not",
+  "check1",
+  "payroll_cost_center",
+  "column_break_pr_status",
+  "pr_status",
+  "create_pr_for_sadad",
+  "naming_series",
+  "column_break_visa_period",
+  "start",
+  "days1",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "allow_on_submit": 1,
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Workflow State",
+   "no_copy": 1,
+   "options": "Workflow State"
+  },
+  {
+   "fieldname": "custom_details",
+   "fieldtype": "Tab Break",
+   "label": "Employee"
+  },
+  {
+   "fieldname": "section_break_mviu",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.custom_allow_cancel",
+   "fieldname": "custom_allow_cancel",
+   "fieldtype": "Check",
+   "label": "Allow Cancel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "iQama No.",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "column_break_branch",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.branch",
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fetch_from": "employee.corporation",
+   "fieldname": "establishment",
+   "fieldtype": "Data",
+   "label": " Establishment"
+  },
+  {
+   "fieldname": "column_break_bank_account",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.bank_ac_no",
+   "fieldname": "account_no",
+   "fieldtype": "Data",
+   "label": "Bank A/C No."
+  },
+  {
+   "fetch_from": "employee.contract_end_date",
+   "fieldname": "iqama_expiration",
+   "fieldtype": "Data",
+   "label": "iQama Expiration"
+  },
+  {
+   "fieldname": "column_break_dates",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Vacation Allowance",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "employee.date_of_joining",
+   "fieldname": "date_1",
+   "fieldtype": "Date",
+   "label": " Date of Joining"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "date_2",
+   "fieldtype": "Date",
+   "label": "Due Date"
+  },
+  {
+   "fieldname": "custom_accounting_procedures",
+   "fieldtype": "Tab Break",
+   "label": "Accounting Procedures"
+  },
+  {
+   "fieldname": "accounting_procedures_section",
+   "fieldtype": "Section Break",
+   "label": "Deductions and Clearing"
+  },
+  {
+   "fieldname": "table_14",
+   "fieldtype": "Table",
+   "label": "Deductions",
+   "options": "Settlement Deduction Item"
+  },
+  {
+   "fieldname": "cva",
+   "fieldtype": "Table",
+   "label": "Clearing vacation allowance",
+   "options": "Contract Vacation Allowance"
+  },
+  {
+   "fieldname": "section_reward_and_tickets",
+   "fieldtype": "Section Break",
+   "label": "Reward and Tickets"
+  },
+  {
+   "fieldname": "alternative_reward",
+   "fieldtype": "Currency",
+   "label": "Reward"
+  },
+  {
+   "fieldname": "column_break_tickets",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ticket_allowance",
+   "fieldtype": "Currency",
+   "label": "Ticket Allowance"
+  },
+  {
+   "fieldname": "number_of_tickets",
+   "fieldtype": "Int",
+   "label": "Number of tickets"
+  },
+  {
+   "fieldname": "clearing_end_of_service_section",
+   "fieldtype": "Section Break",
+   "label": "Clearing end of service"
+  },
+  {
+   "fieldname": "duration_of_service",
+   "fieldtype": "Data",
+   "label": "Duration of service ( Days )"
+  },
+  {
+   "fieldname": "dos_years",
+   "fieldtype": "Data",
+   "label": "Duration of service (years)"
+  },
+  {
+   "fieldname": "column_break_salary",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.basic_wage",
+   "fieldname": "total_salary",
+   "fieldtype": "Currency",
+   "label": "Total salary"
+  },
+  {
+   "fieldname": "salary_per_day",
+   "fieldtype": "Currency",
+   "label": "Salary Per Day"
+  },
+  {
+   "fieldname": "column_break_vacation_days",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.number_of_vacation_days_per_year",
+   "fieldname": "vacation_days_per_year",
+   "fieldtype": "Data",
+   "label": "vacation days per year"
+  },
+  {
+   "fieldname": "cva_total",
+   "fieldtype": "Currency",
+   "label": "vacation allowance amount"
+  },
+  {
+   "fieldname": "column_break_deductions",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "deductions",
+   "fieldtype": "Currency",
+   "label": "Deductions"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "custom_hr_procedures",
+   "fieldtype": "Tab Break",
+   "label": "HR Procedures"
+  },
+  {
+   "fieldname": "hr_procedures_section",
+   "fieldtype": "Section Break",
+   "label": "Exit and Return Visa"
+  },
+  {
+   "default": "0",
+   "fieldname": "not",
+   "fieldtype": "Check",
+   "label": "Not eligible for a ticket allowance"
+  },
+  {
+   "default": "0",
+   "fieldname": "check1",
+   "fieldtype": "Check",
+   "label": " Exit and return visa"
+  },
+  {
+   "fieldname": "pr_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "PR Status",
+   "options": "PR Created\nPR Not Created",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "create_pr_for_sadad",
+   "fieldtype": "Button",
+   "label": "Create PR for Sadad"
+  },
+  {
+   "fieldname": "start",
+   "fieldtype": "Data",
+   "label": "Start"
+  },
+  {
+   "fieldname": "days1",
+   "fieldtype": "Select",
+   "label": "Days",
+   "options": "30\n60\n90\n120"
+  },
+  {
+   "fetch_from": "employee.payroll_cost_center",
+   "fieldname": "payroll_cost_center",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "payroll_cost_center"
+  },
+  {
+   "fieldname": "column_break_pr_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_global_search": 1,
+   "label": "naming_series",
+   "options": "VA-.YYYY.-"
+  },
+  {
+   "fieldname": "column_break_visa_period",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "modified": "2026-09-25 12:00:00.000000",
+ "module": "People and Payroll",
+ "name": "Vacation Allowance",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1
+}

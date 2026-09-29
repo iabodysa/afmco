@@ -1,0 +1,84 @@
+{
+ "custom_fields": [
+  {
+   "allow_on_submit": "1",
+   "dt": "Loan",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "idx": "0",
+   "insert_after": "applicant",
+   "label": "employee",
+   "module": "People and Payroll",
+   "name": "Loan-employee",
+   "options": "Employee"
+  },
+  {
+   "dt": "Loan",
+   "fieldname": "loan_repayment_schedule_section",
+   "fieldtype": "Section Break",
+   "idx": "0",
+   "insert_after": "loan_repayment_schedule_tab",
+   "label": "Loan Repayment Schedule",
+   "module": "People and Payroll",
+   "name": "Loan-loan_repayment_schedule_section"
+  },
+  {
+   "dt": "Loan",
+   "fieldname": "loan_repayment_schedule_tab",
+   "fieldtype": "Tab Break",
+   "idx": "0",
+   "insert_after": "amended_from",
+   "label": "Loan Repayment Schedule",
+   "module": "People and Payroll",
+   "name": "Loan-loan_repayment_schedule_tab"
+  },
+  {
+   "default": "0",
+   "dt": "Loan",
+   "fetch_from": "loan_product.is_term_loan",
+   "fieldname": "repay_from_salary",
+   "fieldtype": "Check",
+   "idx": "0",
+   "insert_after": "is_term_loan",
+   "label": "Repay From Salary",
+   "module": "People and Payroll",
+   "name": "Loan-repay_from_salary",
+   "read_only": "1"
+  },
+  {
+   "dt": "Loan",
+   "fieldname": "repayment_details",
+   "fieldtype": "Table",
+   "idx": "0",
+   "insert_after": "loan_repayment_schedule_section",
+   "label": "Repayment Details",
+   "module": "People and Payroll",
+   "name": "Loan-repayment_details",
+   "options": "loan Schedule"
+  }
+ ],
+ "doctype": "Loan",
+ "links": [
+  {
+   "idx": "1",
+   "link_doctype": "Additional Salary",
+   "link_fieldname": "custom_loan",
+   "parent": "Loan",
+   "parentfield": "links",
+   "parenttype": "DocType"
+  }
+ ],
+ "property_setters": [
+  {
+   "doc_type": "Loan",
+   "doctype_or_field": "DocField",
+   "field_name": "repayment_method",
+   "module": "People and Payroll",
+   "name": "Loan-repayment_method-default",
+   "property": "default",
+   "property_type": "Text",
+   "value": "Repay Over Number of Periods"
+  }
+ ],
+ "sync_on_migrate": 1
+}

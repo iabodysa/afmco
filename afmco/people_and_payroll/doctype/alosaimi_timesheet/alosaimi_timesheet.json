@@ -1,0 +1,116 @@
+{
+ "allow_rename": 1,
+ "creation": "2024-11-10 19:45:30.751260",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_timesheet",
+  "name1",
+  "basic_salary",
+  "wroking_days",
+  "salary",
+  "normal_ot_h",
+  "friday_ot_h",
+  "total_ot",
+  "other_allw",
+  "absent",
+  "dedaction",
+  "loan",
+  "gross_salary",
+  "company",
+  "total",
+  "work_location"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_timesheet",
+   "fieldtype": "Section Break",
+   "label": "Timesheet Details"
+  },
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "basic_salary",
+   "fieldtype": "Data",
+   "label": "Basic Salary"
+  },
+  {
+   "fieldname": "wroking_days",
+   "fieldtype": "Data",
+   "label": "Wroking Days"
+  },
+  {
+   "fieldname": "salary",
+   "fieldtype": "Data",
+   "label": "Salary"
+  },
+  {
+   "fieldname": "normal_ot_h",
+   "fieldtype": "Data",
+   "label": "Normal OT H"
+  },
+  {
+   "fieldname": "friday_ot_h",
+   "fieldtype": "Data",
+   "label": "Friday OT H"
+  },
+  {
+   "fieldname": "total_ot",
+   "fieldtype": "Data",
+   "label": "Total OT"
+  },
+  {
+   "fieldname": "other_allw",
+   "fieldtype": "Data",
+   "label": "Other Allw."
+  },
+  {
+   "fieldname": "absent",
+   "fieldtype": "Data",
+   "label": "Absent"
+  },
+  {
+   "fieldname": "dedaction",
+   "fieldtype": "Data",
+   "label": "Dedaction"
+  },
+  {
+   "fieldname": "loan",
+   "fieldtype": "Data",
+   "label": "Loan"
+  },
+  {
+   "fieldname": "gross_salary",
+   "fieldtype": "Data",
+   "label": "Gross Salary"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Data",
+   "label": "Company"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Data",
+   "label": "Total"
+  },
+  {
+   "fieldname": "work_location",
+   "fieldtype": "Data",
+   "label": "Work Location"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2024-11-10 19:50:33.983158",
+ "module": "People and Payroll",
+ "name": "Alosaimi timesheet",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

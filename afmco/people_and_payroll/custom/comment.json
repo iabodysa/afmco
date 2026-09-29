@@ -1,0 +1,17 @@
+{
+ "custom_fields": [],
+ "doctype": "Comment",
+ "property_setters": [
+  {
+   "doc_type": "Comment",
+   "doctype_or_field": "DocField",
+   "field_name": "reference_name",
+   "module": "People and Payroll",
+   "name": "Comment-reference_name-in_list_view",
+   "property": "in_list_view",
+   "property_type": "Check",
+   "value": "1"
+  }
+ ],
+ "sync_on_migrate": 1
+}

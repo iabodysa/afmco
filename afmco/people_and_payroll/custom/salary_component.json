@@ -1,0 +1,19 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Salary Component",
+   "fieldname": "default_account",
+   "fieldtype": "Link",
+   "idx": "0",
+   "insert_after": "accounts",
+   "label": "Default Account",
+   "module": "People and Payroll",
+   "name": "Salary Component-default_account",
+   "options": "Account",
+   "read_only": "1"
+  }
+ ],
+ "doctype": "Salary Component",
+ "property_setters": [],
+ "sync_on_migrate": 1
+}

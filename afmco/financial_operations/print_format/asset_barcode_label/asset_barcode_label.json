@@ -1,0 +1,22 @@
+{
+ "creation": "2024-01-09 16:02:49.012468",
+ "doc_type": "Asset",
+ "doctype": "Print Format",
+ "font": "Default",
+ "font_size": 14,
+ "format_data": "[{\"fieldname\": \"print_heading_template\", \"fieldtype\": \"Custom HTML\", \"options\": \"{{ doc.name }}\"}, {\"fieldname\": \"_custom_html\", \"fieldtype\": \"HTML\", \"label\": \"Custom HTML\", \"print_hide\": 0, \"options\": \"{% import \\\"afmco/templates/print/identity.html\\\" as afm %}{{ afm.styles() }}\"}]",
+ "margin_bottom": 15.0,
+ "margin_left": 15.0,
+ "margin_right": 15.0,
+ "margin_top": 15.0,
+ "modified": "2026-09-27 12:00:00.000000",
+ "module": "Financial Operations",
+ "name": "Asset Barcode Label",
+ "owner": "Administrator",
+ "page_number": "Hide",
+ "pdf_generator": "wkhtmltopdf",
+ "print_format_builder": 1,
+ "print_format_for": "DocType",
+ "print_format_type": "Jinja",
+ "standard": "Yes"
+}

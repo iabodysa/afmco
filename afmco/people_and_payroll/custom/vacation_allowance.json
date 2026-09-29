@@ -1,0 +1,28 @@
+{
+ "custom_fields": [],
+ "doctype": "Vacation Allowance",
+ "property_setters": [
+  {
+   "doc_type": "Vacation Allowance",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "is_system_generated": "1",
+   "module": "People and Payroll",
+   "name": "Vacation Allowance-main-default_print_format",
+   "property": "default_print_format",
+   "property_type": "Data",
+   "value": "Vacation Allowance Statement"
+  },
+  {
+   "doc_type": "Vacation Allowance",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "module": "People and Payroll",
+   "name": "Vacation Allowance-main-field_order",
+   "property": "field_order",
+   "property_type": "Data",
+   "value": "[\"workflow_state\", \"custom_details\", \"section_break_mviu\", \"custom_allow_cancel\", \"employee\", \"employee_name\", \"column_break_branch\", \"branch\", \"establishment\", \"column_break_bank_account\", \"account_no\", \"iqama_expiration\", \"column_break_dates\", \"date_1\", \"date_2\", \"custom_accounting_procedures\", \"accounting_procedures_section\", \"table_14\", \"cva\", \"section_reward_and_tickets\", \"alternative_reward\", \"column_break_tickets\", \"ticket_allowance\", \"number_of_tickets\", \"clearing_end_of_service_section\", \"duration_of_service\", \"dos_years\", \"column_break_salary\", \"total_salary\", \"salary_per_day\", \"column_break_vacation_days\", \"vacation_days_per_year\", \"cva_total\", \"column_break_deductions\", \"deductions\", \"amount\", \"custom_hr_procedures\", \"hr_procedures_section\", \"not\", \"check1\", \"payroll_cost_center\", \"column_break_pr_status\", \"pr_status\", \"create_pr_for_sadad\", \"naming_series\", \"column_break_visa_period\", \"start\", \"days1\", \"amended_from\"]"
+  }
+ ],
+ "sync_on_migrate": 1
+}

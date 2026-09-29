@@ -1,0 +1,134 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Employee Checkin",
+   "fieldname": "address",
+   "fieldtype": "Link",
+   "idx": "11",
+   "insert_after": "customer_name",
+   "label": "Address",
+   "module": "People and Payroll",
+   "name": "Employee Checkin-address",
+   "options": "Address"
+  },
+  {
+   "dt": "Employee Checkin",
+   "fetch_from": "address.latitude",
+   "fieldname": "address_latitude",
+   "fieldtype": "Data",
+   "hidden": "1",
+   "idx": "11",
+   "insert_after": "address",
+   "label": "Address Latitude",
+   "module": "People and Payroll",
+   "name": "Employee Checkin-address_latitude",
+   "read_only": "1",
+   "translatable": "1"
+  },
+  {
+   "dt": "Employee Checkin",
+   "fetch_from": "address.longitude",
+   "fieldname": "address_longitude",
+   "fieldtype": "Data",
+   "hidden": "1",
+   "idx": "12",
+   "insert_after": "address_latitude",
+   "label": "Address Longitude",
+   "module": "People and Payroll",
+   "name": "Employee Checkin-address_longitude",
+   "read_only": "1",
+   "translatable": "1"
+  },
+  {
+   "dt": "Employee Checkin",
+   "fieldname": "area",
+   "fieldtype": "Data",
+   "idx": "10",
+   "insert_after": "latitude",
+   "label": "Area",
+   "module": "People and Payroll",
+   "name": "Employee Checkin-area",
+   "read_only": "1"
+  },
+  {
+   "dt": "Employee Checkin",
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "idx": "7",
+   "insert_after": "device_id",
+   "label": "City",
+   "module": "People and Payroll",
+   "name": "Employee Checkin-city",
+   "read_only": "1"
+  },
+  {
+   "dt": "Employee Checkin",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "hidden": "1",
+   "idx": "9",
+   "insert_after": "device_id",
+   "label": "Customer",
+   "module": "People and Payroll",
+   "name": "Employee Checkin-customer",
+   "options": "Customer"
+  },
+  {
+   "dt": "Employee Checkin",
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "idx": "10",
+   "insert_after": "customer",
+   "label": "Customer Name",
+   "module": "People and Payroll",
+   "name": "Employee Checkin-customer_name",
+   "read_only": "1"
+  },
+  {
+   "dt": "Employee Checkin",
+   "fieldname": "my_location",
+   "fieldtype": "HTML",
+   "idx": "4",
+   "insert_after": "log_type",
+   "label": "My Location",
+   "module": "People and Payroll",
+   "name": "Employee Checkin-my_location"
+  },
+  {
+   "dt": "Employee Checkin",
+   "fieldname": "radius",
+   "fieldtype": "Data",
+   "idx": "8",
+   "insert_after": "device_id",
+   "label": "Radius",
+   "module": "People and Payroll",
+   "name": "Employee Checkin-radius",
+   "read_only": "1"
+  },
+  {
+   "dt": "Employee Checkin",
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "idx": "8",
+   "insert_after": "city",
+   "label": "State",
+   "module": "People and Payroll",
+   "name": "Employee Checkin-state",
+   "read_only": "1"
+  },
+  {
+   "dt": "Employee Checkin",
+   "fieldname": "unique_log_id",
+   "fieldtype": "Data",
+   "idx": "0",
+   "insert_after": "shift_actual_end",
+   "label": "unique_log_id",
+   "module": "People and Payroll",
+   "name": "Employee Checkin-unique_log_id"
+  }
+ ],
+ "doctype": "Employee Checkin",
+ "property_setters": [],
+ "sync_on_migrate": 1
+}

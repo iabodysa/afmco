@@ -1,0 +1,213 @@
+{
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-11-08 18:52:02.681500",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_moi_payment",
+  "employeelist",
+  "column_break_period",
+  "period",
+  "bank_payment_date",
+  "column_break_services",
+  "check1",
+  "check2",
+  "check3",
+  "column_break_visas",
+  "check4",
+  "check5",
+  "section_employee_list",
+  "table12",
+  "section_payment_summary",
+  "total_amount",
+  "column_break_reference",
+  "pr_reference",
+  "note",
+  "amended_from",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_moi_payment",
+   "fieldtype": "Section Break",
+   "label": "Payment of MOI - Expatriates"
+  },
+  {
+   "fieldname": "employeelist",
+   "fieldtype": "Small Text",
+   "label": "Employee List"
+  },
+  {
+   "fieldname": "column_break_period",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "period",
+   "fieldtype": "Int",
+   "label": "Period",
+   "precision": "0"
+  },
+  {
+   "fieldname": "bank_payment_date",
+   "fieldtype": "Date",
+   "label": "Bank Payment Date"
+  },
+  {
+   "fieldname": "column_break_services",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "check1",
+   "fieldtype": "Check",
+   "label": "Issue or renew residence permit"
+  },
+  {
+   "default": "0",
+   "fieldname": "check2",
+   "fieldtype": "Check",
+   "label": "Transfer of sponsorship"
+  },
+  {
+   "default": "0",
+   "fieldname": "check3",
+   "fieldtype": "Check",
+   "label": "Change of profession"
+  },
+  {
+   "fieldname": "column_break_visas",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "check4",
+   "fieldtype": "Check",
+   "label": "Exit and Return Visa"
+  },
+  {
+   "default": "0",
+   "fieldname": "check5",
+   "fieldtype": "Check",
+   "label": "Extend exit and re-entry visa (1) month"
+  },
+  {
+   "fieldname": "section_employee_list",
+   "fieldtype": "Section Break",
+   "label": "Payment of MOI - Expatriates List"
+  },
+  {
+   "allow_bulk_edit": 1,
+   "fieldname": "table12",
+   "fieldtype": "Table",
+   "label": "Employee List",
+   "options": "SADADGroup2"
+  },
+  {
+   "fieldname": "section_payment_summary",
+   "fieldtype": "Section Break",
+   "label": "Payment Summary"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "column_break_reference",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pr_reference",
+   "fieldtype": "Link",
+   "label": "PR Reference",
+   "options": "Expense Request Afmco"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Small Text",
+   "label": "Note"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "SADAD Group",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "naming_series",
+   "options": "SADAD-.YYYY.-"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "modified": "2026-09-25 12:00:00.000000",
+ "module": "Financial Operations",
+ "name": "SADAD Group",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

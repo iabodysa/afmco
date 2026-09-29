@@ -1,0 +1,55 @@
+{
+ "allow_rename": 1,
+ "creation": "2025-05-24 23:29:48.776847",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "file_name",
+  "corporation_cr",
+  "labor_office_file_number",
+  "employees_count",
+  "total_net_pay"
+ ],
+ "fields": [
+  {
+   "fieldname": "file_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "File Name"
+  },
+  {
+   "fieldname": "corporation_cr",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Corporation CR"
+  },
+  {
+   "fieldname": "labor_office_file_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Labor Office File Number"
+  },
+  {
+   "fieldname": "employees_count",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Employees Count"
+  },
+  {
+   "fieldname": "total_net_pay",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Net Pay"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2025-05-25 15:38:54.630541",
+ "module": "People and Payroll",
+ "name": "WPS File Metadata",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

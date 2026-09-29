@@ -1,0 +1,161 @@
+{
+ "allow_rename": 1,
+ "autoname": "field:visa_number",
+ "creation": "2026-07-01 17:56:35.893704",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "sec_1",
+  "visa_number",
+  "visa_type",
+  "visa_duration",
+  "col_1",
+  "visa_status",
+  "full_name",
+  "iqama_number",
+  "passport_no",
+  "sec_2",
+  "visa_issue_date",
+  "col_2",
+  "travel_before",
+  "return_before"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sec_1",
+   "fieldtype": "Section Break",
+   "label": "Visa Details"
+  },
+  {
+   "fieldname": "visa_number",
+   "fieldtype": "Data",
+   "label": "Visa Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "visa_type",
+   "fieldtype": "Data",
+   "label": "Visa Type"
+  },
+  {
+   "fieldname": "visa_duration",
+   "fieldtype": "Int",
+   "label": "Visa Duration (Days)"
+  },
+  {
+   "fieldname": "col_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "visa_status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Visa Status"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Visa Holder Name"
+  },
+  {
+   "fieldname": "iqama_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Iqama Number"
+  },
+  {
+   "fieldname": "passport_no",
+   "fieldtype": "Data",
+   "label": "Passport No"
+  },
+  {
+   "fieldname": "sec_2",
+   "fieldtype": "Section Break",
+   "label": "Validity Dates"
+  },
+  {
+   "fieldname": "visa_issue_date",
+   "fieldtype": "Date",
+   "label": "Visa Issue Date"
+  },
+  {
+   "fieldname": "col_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "travel_before",
+   "fieldtype": "Date",
+   "label": "Travel Before"
+  },
+  {
+   "fieldname": "return_before",
+   "fieldtype": "Date",
+   "label": "Return Before"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "HR",
+   "link_doctype": "Employee",
+   "link_fieldname": "employee"
+  }
+ ],
+ "modified": "2026-07-02 17:01:47.138821",
+ "module": "People and Payroll",
+ "name": "Employee Visa",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

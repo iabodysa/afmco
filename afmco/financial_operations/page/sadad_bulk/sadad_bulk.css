@@ -1,0 +1,591 @@
+/* Frappe v16 desk tokens only (espresso + css_variables), so the page follows light, dark and RTL like the desk */
+
+.sb-root {
+	display: flex;
+	flex-direction: column;
+	gap: var(--margin-md);
+	padding-block: var(--padding-sm) var(--padding-xl);
+	color: var(--text-color);
+	font-size: var(--text-base);
+}
+
+/* view switcher sticks under the sticky .page-head of the desk scroll container */
+.sb-head {
+	position: sticky;
+	inset-block-start: var(--page-head-height, 48px);
+	z-index: 3;
+	background: var(--bg-color);
+	padding-block: var(--padding-xs);
+}
+
+/* segmented control: Frappe control surface with a raised selected segment */
+.sb-seg {
+	display: inline-flex;
+	gap: 2px;
+	padding: 2px;
+	border-radius: var(--border-radius);
+	background: var(--control-bg);
+	max-inline-size: 100%;
+}
+
+/* the rail status filter lays its four states out as an even 2 x 2 grid */
+.sb-seg-wrap {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sb-seg-btn {
+	min-block-size: calc(var(--btn-height) - 4px);
+	border: 0;
+	border-radius: calc(var(--border-radius) - 2px);
+	background: transparent;
+	color: var(--text-muted);
+	padding-block: 2px;
+	padding-inline: var(--padding-sm);
+	font-size: var(--text-sm);
+	font-weight: var(--weight-medium);
+	line-height: 1.4;
+	white-space: nowrap;
+}
+
+.sb-seg-btn:hover {
+	color: var(--text-color);
+}
+
+.sb-seg-btn:focus {
+	outline: none;
+}
+
+.sb-seg-btn:focus-visible {
+	box-shadow: var(--focus-default);
+}
+
+.sb-seg-btn[aria-pressed="true"] {
+	background: var(--fg-color);
+	color: var(--text-color);
+	box-shadow: var(--shadow-xs);
+}
+
+/* batches: filters rail, batch list, batch detail */
+/* filters sit above the list so the detail table keeps the width; three columns on wide screens */
+.sb-batches {
+	display: grid;
+	grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+	grid-template-rows: auto 1fr;
+	gap: var(--margin-md);
+	align-items: start;
+}
+
+.sb-rail,
+.sb-list {
+	grid-column: 1;
+}
+
+.sb-detail {
+	grid-column: 2;
+	grid-row: 1 / span 2;
+}
+
+/* cards look like .frappe-card: card background, hairline border, no shadow */
+.sb-rail,
+.sb-list,
+.sb-detail,
+.sb-compose,
+.sb-overview {
+	background: var(--card-bg);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius-md);
+	padding: var(--padding-md);
+	min-inline-size: 0;
+}
+
+.sb-list {
+	padding: var(--padding-sm);
+}
+
+.sb-rail {
+	display: flex;
+	flex-direction: column;
+	gap: var(--margin-sm);
+}
+
+.sb-label {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin: 0;
+	font-size: var(--text-sm);
+	font-weight: var(--weight-regular);
+	color: var(--text-muted);
+}
+
+.sb-label .form-control {
+	font-size: var(--text-base);
+}
+
+/* batch list rows are buttons: reset them to plain list rows */
+.sb-rows {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.sb-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--margin-sm);
+	inline-size: 100%;
+	text-align: start;
+	font: inherit;
+	color: var(--text-color);
+	border: 1px solid transparent;
+	border-radius: var(--border-radius);
+	background: transparent;
+	padding-block: var(--padding-sm);
+	padding-inline: var(--padding-sm);
+}
+
+.sb-row:hover {
+	background: var(--subtle-accent);
+}
+
+.sb-row[aria-current="true"] {
+	background: var(--control-bg);
+	border-color: var(--border-color);
+}
+
+.sb-row:focus {
+	outline: none;
+}
+
+.sb-row:focus-visible {
+	box-shadow: var(--focus-default);
+}
+
+.sb-row-main,
+.sb-row-side {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-inline-size: 0;
+}
+
+.sb-row-main strong {
+	font-weight: var(--weight-semibold);
+	overflow-wrap: anywhere;
+}
+
+.sb-row-main .text-muted {
+	font-size: var(--text-sm);
+}
+
+.sb-row-side {
+	flex-shrink: 0;
+	align-items: flex-end;
+	font-weight: var(--weight-medium);
+}
+
+.sb-chip {
+	white-space: nowrap;
+	font-weight: var(--weight-regular);
+}
+
+/* batch list rows: name and amount share the first line, date and state the second */
+.sb-list .sb-row {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	column-gap: var(--margin-sm);
+	row-gap: 2px;
+}
+
+.sb-list .sb-row-main,
+.sb-list .sb-row-side {
+	display: contents;
+}
+
+.sb-list .sb-row-main > :first-child {
+	grid-area: 1 / 1;
+}
+
+.sb-list .sb-row-main > :last-child {
+	grid-area: 2 / 1;
+}
+
+.sb-list .sb-row-side > :first-child {
+	grid-area: 1 / 2;
+	justify-self: end;
+}
+
+.sb-list .sb-row-side > :last-child {
+	grid-area: 2 / 2;
+	justify-self: end;
+}
+
+.sb-num {
+	font-variant-numeric: tabular-nums;
+	direction: ltr;
+	unicode-bidi: isolate;
+}
+
+.sb-more {
+	display: block;
+	inline-size: 100%;
+	margin-block-start: var(--margin-sm);
+}
+
+.sb-empty {
+	padding: var(--padding-lg);
+	text-align: center;
+	font-size: var(--text-sm);
+}
+
+/* batch detail */
+.sb-detail-head h4 {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--margin-sm);
+	align-items: center;
+	margin-block: 0 var(--margin-sm);
+	font-size: var(--text-lg);
+	font-weight: var(--weight-semibold);
+	color: var(--heading-color);
+}
+
+.sb-close {
+	display: none;
+	float: inline-end;
+}
+
+.sb-facts {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: var(--margin-lg);
+	row-gap: var(--margin-xs);
+	font-size: var(--text-sm);
+	margin-block-end: var(--margin-sm);
+}
+
+.sb-facts .text-muted {
+	margin-inline-end: 2px;
+}
+
+.sb-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--margin-xs);
+	margin-block: var(--margin-sm);
+}
+
+/* notes use the desk alert tokens so they read the same in light and dark */
+.sb-note {
+	border-radius: var(--border-radius);
+	border-inline-start: 3px solid var(--alert-text-warning);
+	background: var(--alert-bg-warning);
+	color: var(--alert-text-warning);
+	padding-block: var(--padding-sm);
+	padding-inline: var(--padding-md);
+	font-size: var(--text-sm);
+	margin-block: var(--margin-sm);
+}
+
+.sb-note-danger {
+	border-inline-start-color: var(--alert-text-danger);
+	background: var(--alert-bg-danger);
+	color: var(--alert-text-danger);
+}
+
+.sb-subhead {
+	margin-block: var(--margin-lg) var(--margin-xs);
+	font-size: var(--text-base);
+	font-weight: var(--weight-semibold);
+	color: var(--heading-color);
+}
+
+.sb-table-wrap {
+	overflow-x: auto;
+	border: 1px solid var(--table-border-color);
+	border-radius: var(--border-radius);
+}
+
+.sb-table {
+	font-size: var(--text-sm);
+	margin: 0;
+}
+
+.sb-table th,
+.sb-table td {
+	text-align: start;
+	vertical-align: top;
+	padding-block: var(--padding-sm);
+	padding-inline: var(--padding-sm);
+}
+
+.sb-table thead th {
+	background: var(--subtle-accent);
+	color: var(--text-muted);
+	font-weight: var(--weight-medium);
+	white-space: nowrap;
+	border-top: 0;
+	border-bottom: 1px solid var(--table-border-color);
+}
+
+.sb-table tbody tr:first-child td {
+	border-top: 0;
+}
+
+/* amounts line up on the end edge: right in LTR, left in RTL */
+.sb-table th.sb-num,
+.sb-table td.sb-num {
+	text-align: right;
+	white-space: nowrap;
+}
+
+.sb-root[dir="rtl"] .sb-table th.sb-num,
+.sb-root[dir="rtl"] .sb-table td.sb-num {
+	text-align: left;
+}
+
+.sb-table td > strong,
+.sb-table .btn-xs {
+	white-space: nowrap;
+}
+
+/* one block per fiscal year: year and amount on fixed tracks so amounts align, the account below */
+.sb-seg-line {
+	display: grid;
+	grid-template-columns: 4.5ch 10ch minmax(0, 1fr);
+	column-gap: var(--margin-sm);
+	align-items: baseline;
+}
+
+.sb-seg-line + .sb-seg-line {
+	margin-block-start: var(--margin-xs);
+}
+
+.sb-seg-line > .sb-num:nth-child(2) {
+	text-align: right;
+}
+
+.sb-seg-line > span:last-child {
+	grid-column: 1 / -1;
+	font-size: var(--text-xs);
+	unicode-bidi: plaintext;
+	text-align: left;
+	overflow-wrap: break-word;
+}
+
+.sb-root[dir="rtl"] .sb-seg-line > span:last-child {
+	text-align: right;
+}
+
+.sb-legacy summary {
+	cursor: pointer;
+	margin-block: var(--margin-lg) var(--margin-sm);
+	font-size: var(--text-sm);
+	font-weight: var(--weight-medium);
+	color: var(--text-muted);
+}
+
+.sb-legacy summary:hover {
+	color: var(--text-color);
+}
+
+/* compose */
+.sb-compose {
+	display: flex;
+	flex-direction: column;
+	gap: var(--margin-lg);
+}
+
+.sb-steps {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--margin-lg);
+	list-style: none;
+	padding: 0 0 var(--padding-md);
+	margin: 0;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.sb-step {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--margin-xs);
+	color: var(--text-muted);
+	font-size: var(--text-sm);
+	font-weight: var(--weight-medium);
+}
+
+.sb-step .sb-num {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 20px;
+	block-size: 20px;
+	border-radius: var(--border-radius-full);
+	background: var(--control-bg);
+	font-size: var(--text-xs);
+}
+
+.sb-step[aria-current="true"] {
+	color: var(--text-color);
+	font-weight: var(--weight-semibold);
+}
+
+.sb-step[aria-current="true"] .sb-num {
+	background: var(--btn-primary);
+	color: var(--neutral);
+}
+
+/* inputs bottom-align so a two-line label never pushes its input out of the row */
+.sb-form {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: var(--margin-md);
+	align-items: end;
+}
+
+.sb-wide {
+	grid-column: 1 / -1;
+}
+
+/* Frappe select control markup: position the chevron and keep text clear of it */
+.sb-select,
+.sb-select .control-input {
+	display: block;
+}
+
+.sb-select select.form-control {
+	padding-inline-end: 28px;
+}
+
+/* the Link control from frappe.ui.form.make_control matches the sibling labels */
+.sb-batch-field .frappe-control,
+.sb-batch-field .form-group {
+	margin: 0;
+	max-inline-size: none;
+}
+
+.sb-batch-field .control-label {
+	margin-block-end: 6px;
+	padding: 0;
+	font-size: var(--text-sm);
+	color: var(--text-muted);
+}
+
+.sb-batch-field .help-box:empty {
+	display: none;
+}
+
+.sb-ids {
+	font-family: var(--font-family-monospace, monospace);
+	font-size: var(--text-sm);
+	direction: ltr;
+	min-block-size: 160px;
+}
+
+.sb-fee {
+	align-self: center;
+	font-size: var(--text-sm);
+}
+
+.sb-compose-body > .sb-facts {
+	margin-block-end: var(--margin-md);
+}
+
+/* overview */
+.sb-tiles {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: var(--margin-md);
+}
+
+.sb-tile {
+	display: flex;
+	flex-direction: column;
+	gap: var(--margin-xs);
+	border-radius: var(--border-radius);
+	background: var(--subtle-accent);
+	border: 1px solid var(--border-color);
+	padding: var(--padding-md);
+}
+
+.sb-tile-label {
+	color: var(--text-muted);
+	font-size: var(--text-sm);
+}
+
+.sb-tile-value {
+	font-size: var(--text-2xl);
+	font-weight: var(--weight-semibold);
+	color: var(--heading-color);
+	text-align: start;
+}
+
+.sb-root[dir="rtl"] .sb-tile-value {
+	text-align: right;
+}
+
+@media (min-width: 1600px) {
+	.sb-batches {
+		grid-template-columns: minmax(200px, 240px) minmax(280px, 1fr) minmax(0, 2fr);
+		grid-template-rows: auto;
+	}
+
+	.sb-list {
+		grid-column: 2;
+	}
+
+	.sb-detail {
+		grid-column: 3;
+		grid-row: 1;
+	}
+}
+
+@media (max-width: 1023px) {
+	.sb-batches {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: auto;
+	}
+
+	.sb-detail {
+		grid-column: 1;
+		grid-row: auto;
+	}
+
+	.sb-detail {
+		display: none;
+	}
+
+	.sb-detail.sb-detail-open {
+		display: block;
+		position: fixed;
+		inset: var(--navbar-height, 48px) 0 0 0;
+		z-index: 10;
+		overflow-y: auto;
+		border-radius: 0;
+		border-inline: 0;
+	}
+
+	.sb-close {
+		display: inline-block;
+	}
+}
+
+@media (max-width: 575px) {
+	.sb-rail,
+	.sb-list,
+	.sb-compose,
+	.sb-overview {
+		padding: var(--padding-sm);
+	}
+
+	.sb-head .sb-seg {
+		display: flex;
+	}
+
+	.sb-head .sb-seg-btn {
+		flex: 1 1 0;
+	}
+}

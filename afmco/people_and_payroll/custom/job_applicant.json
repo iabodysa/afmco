@@ -1,0 +1,28 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Job Applicant",
+   "fieldname": "passport_number",
+   "fieldtype": "Data",
+   "idx": "0",
+   "insert_after": "country",
+   "label": "Passport Number",
+   "module": "People and Payroll",
+   "name": "Job Applicant-passport_number"
+  }
+ ],
+ "doctype": "Job Applicant",
+ "property_setters": [
+  {
+   "doc_type": "Job Applicant",
+   "doctype_or_field": "DocField",
+   "field_name": "phone_number",
+   "module": "People and Payroll",
+   "name": "Job Applicant-phone_number-reqd",
+   "property": "reqd",
+   "property_type": "Check",
+   "value": "1"
+  }
+ ],
+ "sync_on_migrate": 1
+}

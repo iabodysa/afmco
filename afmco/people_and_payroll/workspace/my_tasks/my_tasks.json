@@ -1,0 +1,103 @@
+{
+ "app": "afmco",
+ "charts": [],
+ "content": "[{\"id\": \"myTasksHdr\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>My Tasks</b></span>\", \"col\": 12}}, {\"id\": \"myTasksNc1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Pending My Action\", \"col\": 3}}, {\"id\": \"myTasksNc2\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Acted On My Documents\", \"col\": 3}}, {\"id\": \"myTasksNc3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Unread Notifications\", \"col\": 3}}, {\"id\": \"myTasksNc4\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Submitted By Me\", \"col\": 3}}, {\"id\": \"myTasksQl1\", \"type\": \"quick_list\", \"data\": {\"quick_list_name\": \"My Open Tasks\", \"col\": 4}}, {\"id\": \"myTasksQl2\", \"type\": \"quick_list\", \"data\": {\"quick_list_name\": \"My Unread Notifications\", \"col\": 4}}]",
+ "creation": "2020-01-01 00:00:08.000000",
+ "custom_blocks": [],
+ "doctype": "Workspace",
+ "icon": "list-todo",
+ "is_hidden": 0,
+ "label": "My Tasks",
+ "links": [
+  {
+   "description": "Everything waiting on you, from Frappe's own queues.",
+   "doctype": "Workspace Link",
+   "idx": 1,
+   "label": "My Work",
+   "type": "Card Break"
+  },
+  {
+   "doctype": "Workspace Link",
+   "idx": 2,
+   "label": "Action Inbox",
+   "link_to": "action-inbox",
+   "link_type": "Page",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "idx": 3,
+   "label": "ToDo",
+   "link_to": "ToDo",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "idx": 4,
+   "label": "Workflow Action",
+   "link_to": "Workflow Action",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "idx": 5,
+   "label": "Notification Log",
+   "link_to": "Notification Log",
+   "link_type": "DocType",
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-09-28 14:00:00.000000",
+ "module": "People and Payroll",
+ "name": "My Tasks",
+ "number_cards": [
+  {
+   "doctype": "Workspace Number Card",
+   "idx": 1,
+   "label": "Pending My Action",
+   "number_card_name": "Pending My Action"
+  },
+  {
+   "doctype": "Workspace Number Card",
+   "idx": 2,
+   "label": "Acted On My Documents",
+   "number_card_name": "Acted On My Documents"
+  },
+  {
+   "doctype": "Workspace Number Card",
+   "idx": 3,
+   "label": "Unread Notifications",
+   "number_card_name": "Unread Notifications"
+  },
+  {
+   "doctype": "Workspace Number Card",
+   "idx": 4,
+   "label": "Submitted By Me",
+   "number_card_name": "Submitted By Me"
+  }
+ ],
+ "public": 1,
+ "quick_lists": [
+  {
+   "doctype": "Workspace Quick List",
+   "document_type": "ToDo",
+   "idx": 1,
+   "label": "My Open Tasks",
+   "quick_list_filter": "{\"status\":[\"=\",\"Open\"],\"allocated_to\":[\"=\",frappe.session.user]}"
+  },
+  {
+   "doctype": "Workspace Quick List",
+   "document_type": "Notification Log",
+   "idx": 2,
+   "label": "My Unread Notifications",
+   "quick_list_filter": "{\"read\":[\"=\",0]}"
+  }
+ ],
+ "roles": [],
+ "sequence_id": 6.0,
+ "shortcuts": [],
+ "title": "My Tasks",
+ "type": "Workspace"
+}

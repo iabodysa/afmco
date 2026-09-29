@@ -1,0 +1,14 @@
+{
+ "app": "afmco",
+ "creation": "2026-09-25 23:30:00.000000",
+ "doctype": "Desktop Icon",
+ "icon_type": "App",
+ "label": "AFMCO",
+ "link": "/desk/operations",
+ "link_type": "External",
+ "logo_url": "/assets/afmco/images/afmco-app-icon.svg",
+ "modified": "2026-09-25 23:30:00.000000",
+ "name": "AFMCO",
+ "owner": "Administrator",
+ "standard": 1
+}

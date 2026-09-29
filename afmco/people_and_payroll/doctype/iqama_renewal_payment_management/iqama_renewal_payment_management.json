@@ -1,0 +1,289 @@
+{
+ "creation": "2024-07-27 19:04:09.116824",
+ "description": "Document to track and manage payment details for Iqama renewals.",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "qiwa",
+  "issue",
+  "pr",
+  "muqeem_balance",
+  "jv",
+  "pr2",
+  "witing",
+  "renewal_list",
+  "create_payment_request",
+  "create_jv",
+  "create_bank_file",
+  "list_of_iqamas_with_renewal_issues",
+  "section_invoice",
+  "month",
+  "column_break_corporation",
+  "corporation",
+  "column_break_sadad_invoice",
+  "sadad_invoice_number",
+  "section_payment_details",
+  "payment_details",
+  "employees_awaiting_renewal",
+  "resident_balance",
+  "payment_type",
+  "payment_request_iqama_list",
+  "section_totals",
+  "total_sadad_invoice",
+  "total_renewal_fee",
+  "section_payment_request",
+  "payment_request_number",
+  "section_html_content",
+  "html_vitu"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "qiwa",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Qiwa"
+  },
+  {
+   "default": "0",
+   "fieldname": "issue",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Issue"
+  },
+  {
+   "default": "0",
+   "fieldname": "pr",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "PR"
+  },
+  {
+   "default": "0",
+   "fieldname": "muqeem_balance",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Muqeem Balance"
+  },
+  {
+   "default": "0",
+   "fieldname": "jv",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "JV"
+  },
+  {
+   "default": "0",
+   "fieldname": "pr2",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "PR2"
+  },
+  {
+   "default": "0",
+   "fieldname": "witing",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "witing"
+  },
+  {
+   "depends_on": "eval:doc.qiwa",
+   "fieldname": "renewal_list",
+   "fieldtype": "Heading",
+   "label": "Renewal List"
+  },
+  {
+   "depends_on": "eval:doc.pr2",
+   "fieldname": "create_payment_request",
+   "fieldtype": "Heading",
+   "label": "Create Payment Request"
+  },
+  {
+   "depends_on": "eval:doc.jv",
+   "fieldname": "create_jv",
+   "fieldtype": "Heading",
+   "label": "Create JV"
+  },
+  {
+   "depends_on": "eval:doc.pr",
+   "fieldname": "create_bank_file",
+   "fieldtype": "Heading",
+   "label": "Create Bank File"
+  },
+  {
+   "depends_on": "eval:doc.issue",
+   "fieldname": "list_of_iqamas_with_renewal_issues",
+   "fieldtype": "Heading",
+   "label": "List of Iqamas with Renewal Issues"
+  },
+  {
+   "fieldname": "section_invoice",
+   "fieldtype": "Section Break",
+   "label": "Invoice Details"
+  },
+  {
+   "depends_on": "eval:doc.qiwa ",
+   "fieldname": "month",
+   "fieldtype": "Select",
+   "label": "Month",
+   "options": "\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
+  },
+  {
+   "fieldname": "column_break_corporation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.qiwa ",
+   "fieldname": "corporation",
+   "fieldtype": "Select",
+   "label": "Corporation"
+  },
+  {
+   "fieldname": "column_break_sadad_invoice",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.qiwa ",
+   "fieldname": "sadad_invoice_number",
+   "fieldtype": "Data",
+   "label": "Sadad Invoice Number"
+  },
+  {
+   "fieldname": "section_payment_details",
+   "fieldtype": "Section Break",
+   "label": "Payment Details"
+  },
+  {
+   "depends_on": "eval:doc.qiwa || doc.issue",
+   "fieldname": "payment_details",
+   "fieldtype": "Table",
+   "options": "Iqama Renewal Payment Tracking Item"
+  },
+  {
+   "depends_on": "eval:doc.witing ",
+   "fieldname": "employees_awaiting_renewal",
+   "fieldtype": "Table",
+   "label": "Employees Awaiting Renewal",
+   "options": "Employee Awaiting Renewal"
+  },
+  {
+   "depends_on": "eval:doc.muqeem_balance ",
+   "fieldname": "resident_balance",
+   "fieldtype": "Table",
+   "label": "Resident Balance",
+   "options": "Resident Balance"
+  },
+  {
+   "depends_on": "eval:doc.pr2",
+   "fieldname": "payment_type",
+   "fieldtype": "Select",
+   "label": "Payment Type",
+   "options": "PR Created for Work Cards\nPR Created for Iqama Renewal"
+  },
+  {
+   "depends_on": "eval:doc.pr2",
+   "fieldname": "payment_request_iqama_list",
+   "fieldtype": "Table",
+   "label": "Payment Request Iqama List",
+   "options": "Iqama Renewal Payment Management Item"
+  },
+  {
+   "fieldname": "section_totals",
+   "fieldtype": "Section Break",
+   "label": "Totals"
+  },
+  {
+   "depends_on": "eval: doc.pr2 && doc.payment_type === 'PR Created for Work Cards'",
+   "fieldname": "total_sadad_invoice",
+   "fieldtype": "Currency",
+   "label": "Sadad Invoice Amount",
+   "options": "Currency"
+  },
+  {
+   "depends_on": "eval: doc.pr2 && doc.payment_type === 'PR Created for Iqama Renewal'",
+   "fieldname": "total_renewal_fee",
+   "fieldtype": "Currency",
+   "label": "Renewal Fee Amount",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "section_payment_request",
+   "fieldtype": "Section Break",
+   "label": "Payment Request"
+  },
+  {
+   "depends_on": "eval:doc.pr || doc.jv",
+   "fieldname": "payment_request_number",
+   "fieldtype": "Link",
+   "label": "Payment Request Number",
+   "options": "Expense Request Afmco"
+  },
+  {
+   "fieldname": "section_html_content",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:!doc.qiwa && !doc.pr && !doc.pr2 && !doc.issue && !doc.muqeem_balance && !doc.jv",
+   "fieldname": "html_vitu",
+   "fieldtype": "HTML",
+   "options": "<div class=\"container\">\n    <h1 class=\"text-center mb-4\">قائمة متابعة تجديد الإقامات</h1>\n\n    <div class=\"row\">\n        <!-- كروت الحالة -->\n        <div class=\"col-md-4 mb-4\">\n            <div class=\"card shadow-sm\">\n                <div class=\"card-body\">\n                    <h5 class=\"card-title\">تفصيل الحالات</h5>\n                    <div class=\"stat-item\" id=\"status-new\">New: <span class=\"stat-value\">0</span></div>\n                    <div class=\"stat-item\" id=\"status-waiting-sadad\">Waiting Sadad: <span class=\"stat-value\">0</span></div>\n                    <div class=\"stat-item\" id=\"status-awaiting-payment\">Awaiting Payment: <span class=\"stat-value\">0</span></div>\n                    <div class=\"stat-item\" id=\"status-awaiting-renewal\">Awaiting Renewal: <span class=\"stat-value\">0</span></div>\n                    <div class=\"stat-item\" id=\"status-issue-preventing-renewal\">Issue Preventing Renewal: <span class=\"stat-value\">0</span></div>\n                    <div class=\"stat-item\" id=\"status-renewed\">Renewed: <span class=\"stat-value\">0</span></div>\n                    <div class=\"stat-item\" id=\"status-rejected\">Rejected: <span class=\"stat-value\">0</span></div>\n                </div>\n            </div>\n        </div>\n\n        <!-- كروت أعلى 10 إدارات -->\n        <div class=\"col-md-4 mb-4\">\n            <div class=\"card shadow-sm\">\n                <div class=\"card-body\">\n                    <h5 class=\"card-title\">أعلى 10 إدارات</h5>\n                    <div id=\"top-departments\"></div>\n                </div>\n            </div>\n        </div>\n\n        <!-- كروت تحليل انتهاء الإقامة -->\n        <div class=\"col-md-4 mb-4\">\n            <div class=\"card shadow-sm\">\n                <div class=\"card-body\">\n                    <h5 class=\"card-title\">تحليل انتهاء الإقامة</h5>\n                    <div class=\"stat-item\" id=\"expired\">Expired: <span class=\"stat-value\">0</span></div>\n                    <div class=\"stat-item\" id=\"expiring-this-week\">Expiring This Week: <span class=\"stat-value\">0</span></div>\n                    <div class=\"stat-item\" id=\"expiring-next-week\">Expiring Next Week: <span class=\"stat-value\">0</span></div>\n                    <div class=\"stat-item\" id=\"expiring-this-month\">Expiring This Month: <span class=\"stat-value\">0</span></div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>",
+   "read_only": 1
+  }
+ ],
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "modified": "2024-08-25 16:13:27.563742",
+ "module": "People and Payroll",
+ "name": "iQama Renewal Payment Management",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "HR Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "HR User",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Support Team",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

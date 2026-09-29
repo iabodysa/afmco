@@ -1,0 +1,27 @@
+{
+ "custom_fields": [],
+ "doctype": "End of Service Settlement",
+ "property_setters": [
+  {
+   "doc_type": "End of Service Settlement",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "module": "People and Payroll",
+   "name": "EOS-main-default_print_format",
+   "property": "default_print_format",
+   "property_type": "Data",
+   "value": "End of Service Settlement Statement"
+  },
+  {
+   "doc_type": "End of Service Settlement",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "module": "People and Payroll",
+   "name": "EOS-main-field_order",
+   "property": "field_order",
+   "property_type": "Data",
+   "value": "[\"workflow_state\", \"employee_details_section\", \"employee\", \"employee_name\", \"column_break_xybr\", \"branch\", \"establishment\", \"column_break_khir\", \"account_no\", \"cash_payment\", \"iqama_expiration\", \"column_break_ezuk\", \"date1\", \"date_2\", \"cell_number\", \"accounting_procedures_section\", \"cva\", \"clearing_end_of_service_section\", \"dos_years\", \"total_salary\", \"salary_per_day\", \"column_break_gjbp\", \"vacation_days_per_year\", \"cva_total\", \"total_eos\", \"column_break_kiki\", \"ticket_allowance\", \"deductions\", \"total_amount\", \"hr_procedures_section\", \"end_of_service_reason\", \"term\", \"s_id\", \"check1\", \"was_a_liquidation_form_signed_by_the_employee_attached\", \"check3\", \"attach_34\", \"hr_note_column\", \"hr_note\", \"legal_procedures_section\", \"alternative_reward\", \"note\", \"days_of_eos\", \"payroll_cost_center\", \"naming_series\", \"amended_from\"]"
+  }
+ ],
+ "sync_on_migrate": 1
+}

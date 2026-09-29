@@ -1,0 +1,65 @@
+{
+ "custom_fields": [
+  {
+   "allow_in_quick_entry": "1",
+   "dt": "Customer",
+   "fieldname": "customer_name_in_arabic",
+   "fieldtype": "Data",
+   "idx": "5",
+   "insert_after": "customer_name",
+   "is_system_generated": "1",
+   "label": "Customer Name in Arabic",
+   "module": "Financial Operations",
+   "name": "Customer-customer_name_in_arabic",
+   "translatable": "1"
+  }
+ ],
+ "doctype": "Customer",
+ "property_setters": [
+  {
+   "doc_type": "Customer",
+   "doctype_or_field": "DocField",
+   "field_name": "naming_series",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Customer-naming_series-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Customer",
+   "doctype_or_field": "DocField",
+   "field_name": "naming_series",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Customer-naming_series-options",
+   "property": "options",
+   "property_type": "Text",
+   "value": "CUST-.YYYY.-"
+  },
+  {
+   "doc_type": "Customer",
+   "doctype_or_field": "DocField",
+   "field_name": "naming_series",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Customer-naming_series-reqd",
+   "property": "reqd",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Customer",
+   "doctype_or_field": "DocField",
+   "field_name": "tax_id",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Customer-tax_id-allow_in_quick_entry",
+   "property": "allow_in_quick_entry",
+   "property_type": "Check",
+   "value": "1"
+  }
+ ],
+ "sync_on_migrate": 1
+}

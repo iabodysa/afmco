@@ -1,0 +1,435 @@
+{
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-11-20 13:49:21.803375",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "workflow_state",
+  "section_policy",
+  "t1",
+  "t2",
+  "t3",
+  "t4",
+  "t5",
+  "t6",
+  "t7",
+  "policy",
+  "column_break_policy_arabic",
+  "ta1",
+  "ta2",
+  "ta3",
+  "ta4",
+  "ta5",
+  "ta6",
+  "ta7",
+  "applicant_information_section",
+  "employee",
+  "department",
+  "employee_name",
+  "column_break_branch",
+  "branch",
+  "bank_ac_no",
+  "column_break_dates",
+  "issue_date",
+  "due_date",
+  "petty_cash_information_section",
+  "account",
+  "column_break_amount",
+  "petty_cash_amount",
+  "column_break_declaration",
+  "attach_the_declaration",
+  "justifications_for_the_request_section",
+  "category",
+  "cost_center",
+  "column_break_description",
+  "petty_cash_description",
+  "liquidation_of_petty_cash_section",
+  "liquidation_of_petty_cash",
+  "balance_remaining",
+  "naming_series",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "allow_on_submit": 1,
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Workflow State",
+   "no_copy": 1,
+   "options": "Workflow State"
+  },
+  {
+   "depends_on": "eval:doc.policy == 0",
+   "fieldname": "section_policy",
+   "fieldtype": "Section Break",
+   "label": "Cash Custody and Petty Expenses Policy"
+  },
+  {
+   "default": "This policy aims to establish controls and procedures for issuing and liquidating cash custody and petty expenses within the company, with the objective of preserving the company's funds and ensuring their rational and effective use.",
+   "fieldname": "t1",
+   "fieldtype": "Text",
+   "label": "Purpose",
+   "read_only": 1
+  },
+  {
+   "default": "Finance Manager: Responsible for creating and implementing this policy and monitoring compliance of all relevant parties.\nCash Disbursement Officer: Responsible for disbursing funds in accordance with this policy and ensuring the availability of all required documents.\nThe Applicant: Responsible for liquidating cash custody and returning any surplus to the company.",
+   "fieldname": "t2",
+   "fieldtype": "Text",
+   "label": "Responsibilities",
+   "read_only": 1
+  },
+  {
+   "default": "Cash Custody: An amount of money granted to an employee or a group of employees to carry out specific tasks on behalf of the company.\nPetty Expenses: Small and varied expenses related to the company's daily activities.\nInvoices: Documents supporting the issuance of funds from cash custody.",
+   "fieldname": "t3",
+   "fieldtype": "Text",
+   "label": "Definitions",
+   "read_only": 1
+  },
+  {
+   "default": "Source: The invoice must be issued by a licensed company or commercial entity in Saudi Arabia.\nBasic Contents:\nName of the company or commercial entity.\nTax Identification Number.\nAddress of the company or commercial entity.\nDate of the invoice.\nInvoice number.\nDescription of the goods or services purchased.\nTotal price of the goods or services.\nCertification: The invoice must be stamped by the company or commercial entity.\nBarcode: The invoice must contain a barcode that can be verified through the electronic invoice reader application accredited by the Zakat and Income Authority.\nElectronic Verification: Barcode verification is possible using official applications available on Google Play and App Store.\nFor Google Play: https://play.google.com/store/apps/details?id=com.gazt.egazt\nFor App Store: https://apps.apple.com/sa/app/zatca/id1517289036\nThese terms aim to ensure transparency and compliance with the tax regulations in Saudi Arabia.",
+   "fieldname": "t4",
+   "fieldtype": "Text",
+   "label": "Terms",
+   "read_only": 1
+  },
+  {
+   "default": "Company Name: Abdullah Fahad Al-Mutairi for Support Services.\nTax Number: 301173179500003.",
+   "fieldname": "t5",
+   "fieldtype": "Data",
+   "label": "Tax Information of the Company",
+   "read_only": 1
+  },
+  {
+   "default": "Issuing Funds:\n\nThe Cash Disbursement Officer submits a request for cash custody issuance to the Finance Manager, stating the purpose of the funds and the requested amount.\nThe Finance Manager reviews the cash custody issuance request, ensuring all required conditions are met.\nIf the cash custody request is approved, the Finance Manager approves the issuance request.\nNo cash custody request exceeding (10,000) Riyals per month will be accepted without written approval from the General Manager.\nNo new cash custody amount will be disbursed if the previous amount has not been liquidated.\n\nDisbursing Funds:\n\nThe Cash Disbursement Officer submits a payment request using the same form, and the requested amount is transferred.\nThe Cash Disbursement Officer keeps a copy of the cash custody issuance order and supporting documents.\n\nLiquidating Cash Custody:\n\nThe Cash Custody Liquidator submits supporting documents to the Finance Manager, proving the issuance of funds from cash custody.\nThe Finance Manager reviews the supporting documents, ensuring all required conditions are met.\nIf all required conditions are met, the Finance Manager proceeds with liquidating the cash custody.\nInvoices must be in PDF format, and no invoice in the form of a photo or screensh.\nIt is required for the liquidation of cash custody to bring the original invoices to match them with the electronic copies (PDF).\nIf the cash custody applicant is outside the main office area of the company, the liquidation of electronically sent invoices is permitted. However, the applicant is required to send the original invoices via mail or other approved means. \nIt is essential to preserve the paper invoices and ensure their integrity to avoid any damage that might obscure the information recorded on them.",
+   "fieldname": "t6",
+   "fieldtype": "Text",
+   "label": "Procedures",
+   "read_only": 1
+  },
+  {
+   "default": "Commitment to Disbursing Funds for the Specified Purpose:\n\nThe Cash Disbursement Officer must disburse the funds from cash custody for the specified purpose.\nIf funds from cash custody are disbursed for another purpose, the Cash Disbursement Officer is financially responsible for the disbursed funds.\nCommitment to including the company's tax information in the invoice.\nCommitment to Disbursing Funds at a Competitive Price:\n\nThe Cash Disbursement Officer must obtain a competitive price for the goods or services purchased from the cash custody.\nIf a competitive price is not obtained, the Cash Disbursement Officer is financially responsible for the price difference.\nPenalties:\n\nIn the event of a violation of any provisions of this policy, appropriate disciplinary actions will be taken against the offending employee, in accordance with Saudi labor law.",
+   "fieldname": "t7",
+   "fieldtype": "Text",
+   "label": "Obligations",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "default": "0",
+   "fieldname": "policy",
+   "fieldtype": "Check",
+   "label": "I understand and will comply with the Financial Policy .",
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "column_break_policy_arabic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "\nتهدف هذه السياسة إلى وضع ضوابط وإجراءات لإصدار وتصفية العهد النقدية والمصاريف النثرية داخل الشركة، بهدف الحفاظ على أموال الشركة وضمان استخدامها بطريقة عقلانية وفعالة.\n",
+   "fieldname": "ta1",
+   "fieldtype": "Text",
+   "in_list_view": 1,
+   "label": "Purpose",
+   "read_only": 1
+  },
+  {
+   "default": "\nمدير المالية: مسؤول عن إنشاء وتنفيذ هذه السياسة، ومراقبة التزام جميع الأطراف ذات الصلة.\nضابط دفع النقد: مسؤول عن دفع الأموال وفقًا لهذه السياسة، وضمان توفر كافة الوثائق المطلوبة.\nمصفي العهد النقدية: مسؤول عن تصفية العهد النقدية وإعادة أي فوائض إلى الشركة.",
+   "fieldname": "ta2",
+   "fieldtype": "Text",
+   "label": "Responsibilities",
+   "read_only": 1
+  },
+  {
+   "default": "\n\nالعهد النقدية: مبلغ من المال يُمنح لموظف أو مجموعة من الموظفين لتنفيذ مهام محددة نيابة عن الشركة.\nالمصاريف النثرية: مصاريف صغيرة ومتنوعة تتعلق بنشاطات الشركة اليومية.\nالفواتير: وثائق تدعم إصدار الأموال من العهد النقدية.",
+   "fieldname": "ta3",
+   "fieldtype": "Text",
+   "label": "Definitions",
+   "read_only": 1
+  },
+  {
+   "default": "\n\n1.المصدر: الفاتورة يجب أن تكون صادرة من شركة أو كيان تجاري مرخص في المملكة العربية السعودية.\n2.المحتويات الأساسية:\nاسم الشركة أو الكيان التجاري.\nرقم الهوية الضريبية.\nعنوان الشركة أو الكيان التجاري.\nتاريخ الفاتورة.\nرقم الفاتورة.\nوصف السلع أو الخدمات المشتراة.\nالسعر الإجمالي للسلع أو الخدمات.\n3.التصديق: يجب أن تكون الفاتورة مختومة بختم الشركة أو الكيان التجاري.\n4.الباركود: يجب أن تحتوي الفاتورة على باركود يمكن التحقق من صحته من خلال تطبيق قارئ الفاتورة الإلكترونية المعتمد من هيئة الزكاة والدخل.\n5.التحقق الإلكتروني: يمكن التحقق من الباركود باستخدام التطبيقات الرسمية المتوفرة على Google Play وApp Store.\nلتطبيق Google Play: https://play.google.com/store/apps/details?id=com.gazt.egazt\nلتطبيق App Store: https://apps.apple.com/sa/app/zatca/id1517289036\nتهدف هذه الشروط إلى ضمان الشفافية والتوافق مع اللوائح الضريبية في المملكة العربية السعودية.",
+   "fieldname": "ta4",
+   "fieldtype": "Text",
+   "label": "Terms",
+   "read_only": 1
+  },
+  {
+   "default": "1.اسم الشركة: عبد الله فهد المطيري للخدمات المساندة.\n2.الرقم الضريبي: 301173179500003.",
+   "fieldname": "ta5",
+   "fieldtype": "Text",
+   "label": "Company Tax Information",
+   "read_only": 1
+  },
+  {
+   "default": "\n1.إصدار الأموال:\n\n\nيقدم ضابط دفع النقد طلب إصدار عهد نقدية إلى مدير المالية، موضحًا الغرض من الأموال والمبلغ المطلوب.\nيراجع مدير المالية طلب إصدار العهد النقدية، ويتأكد من استيفاء جميع الشروط المطلوبة.\nفي حال الموافقة على طلب العهد النقدية، يوافق مدير المالية على طلب الإصدار.\nلا يتم قبول أي طلب عهدة يزيد مبلغها عن (10.000) ريال في الشهر إلا بموافقة خطية من المدير العام.\nلن يتم دفع مبلغ عهدة جديدة إذا لم يتم تصفية المبلغ السابق.\n\n\n2.دفع الأموال:\n\nيقدم ضابط دفع النقد طلب دفع من نفس النموذج ويتم تحويل المبلغ المطلوب.\nيحتفظ ضابط دفع النقد بنسخة من أمر إصدار العهد النقدية والوثائق الداعمة.\n\n\n\n3.تصفية العهد النقدية:\n\nيقدم مصفي العهد النقدية الوثائق الداعمة إلى مدير المالية، مما يثبت إصدار الأموال من العهد النقدية.\nيراجع مدير المالية الوثائق الداعمة، ويتأكد من استيفاء جميع الشروط المطلوبة.\n\nفي حال استيفاء جميع الشروط المطلوبة، يقوم مدير المالية بتصفية العهد النقدية.\n\nيجب أن تكون الفواتير بصيغة PDF، ولن يتم تصفية أي فاتورة عبارة عن صورة أو لقطة شاشة.\n\n\"يُشترط لتصفية العهد النقدية إحضار الفواتير الأصلية لمطابقتها مع النسخ الإلكترونية (PDF). في حالة تواجد طالب العهدة النقدية خارج منطقة مقر الشركة الرئيسي، يُسمح بتصفية الفواتير المُرسلة إلكترونيًا. \nومع ذلك، يُطلب من طالب العهدة إرسال الفواتير الأصلية عبر البريد أو وسائل أخرى مُعتمدة. \n\nيجب المحافظة على الفواتير الورقية وضمان سلامتها لتجنب أي تلف قد يعيق وضوح المعلومات المُدونة بها.\"",
+   "fieldname": "ta6",
+   "fieldtype": "Text",
+   "label": "Procedures",
+   "read_only": 1
+  },
+  {
+   "default": "1.الالتزام بدفع الأموال للغرض المحدد:\nيجب على ضابط دفع النقد دفع الأموال من العهد النقدية للغرض المحدد.\n\nفي حال دفع الأموال من العهد النقدية لغرض آخر، يكون ضابط دفع النقد مسؤولاً مالياً عن الأموال المصروفة.\nالالتزام بإضافة بيانات الشركة الضريبية في الفاتورة.\n\n2.الالتزام بدفع الأموال بسعر تنافسي:\n\nيجب على ضابط دفع النقد الحصول على سعر تنافسي للسلع أو الخدمات التي يتم شراؤها من العهد النقدية.\nفي حال عدم الحصول على سعر تنافسي، يكون ضابط دفع النقد مسؤولاً مالياً عن الفرق في السعر.\n\n3.العقوبات:\n\nفي حالة مخالفة أي من أحكام هذه السياسة، سيتم اتخاذ الإجراءات التأديبية المناسبة ضد الموظف المخالف، وفقًا لقانون العمل السعودي.",
+   "fieldname": "ta7",
+   "fieldtype": "Text",
+   "label": "Obligations",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.policy ==1",
+   "fieldname": "applicant_information_section",
+   "fieldtype": "Section Break",
+   "label": "Applicant Information"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee ID",
+   "options": "Employee",
+   "remember_last_selected_value": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Department"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "column_break_branch",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.branch",
+   "fieldname": "branch",
+   "fieldtype": "Data",
+   "label": "Branch"
+  },
+  {
+   "fetch_from": "employee.bank_ac_no",
+   "fieldname": "bank_ac_no",
+   "fieldtype": "Data",
+   "label": "Bank A/C No.",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_dates",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "issue_date",
+   "fieldtype": "Date",
+   "label": "Issue Date",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.issue_date",
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.issue_date",
+   "fieldname": "petty_cash_information_section",
+   "fieldtype": "Section Break",
+   "label": "Petty Cash Information"
+  },
+  {
+   "description": "Company bank account the petty cash is paid from.",
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_amount",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "petty_cash_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Petty Cash Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_declaration",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Save, print with the Petty Cash Format, sign, then attach the signed form here.",
+   "fieldname": "attach_the_declaration",
+   "fieldtype": "Attach",
+   "label": "Attach the Declaration"
+  },
+  {
+   "depends_on": "eval:doc.petty_cash_amount",
+   "fieldname": "justifications_for_the_request_section",
+   "fieldtype": "Section Break",
+   "label": "Justifications for the request"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Category",
+   "options": "--- Select ---\nCash payments for employees without bank accounts.\nLiving expenses for new employees.\nCovering travel and work-related expenses.\nEmergency expenses.\nMinor expenses.\nEmergency reserve.\nPurchases.\nUrgent purchases.",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "column_break_description",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "petty_cash_description",
+   "fieldtype": "Small Text",
+   "label": "Petty Cash Description",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.workflow_state == 'Waiting for liquidation' || doc.workflow_state == 'Paid'",
+   "fieldname": "liquidation_of_petty_cash_section",
+   "fieldtype": "Section Break",
+   "label": "Petty Cash Liquidation"
+  },
+  {
+   "depends_on": "eval:doc.workflow_state == 'Waiting for liquidation'",
+   "fieldname": "liquidation_of_petty_cash",
+   "fieldtype": "Table",
+   "label": "Petty Cash Liquidation",
+   "options": "Petty Cash Liquidation Item"
+  },
+  {
+   "fieldname": "balance_remaining",
+   "fieldtype": "Currency",
+   "label": "Balance Remaining",
+   "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "naming_series",
+   "options": "PC-.YYYY.-"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Petty Cash",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "group": "Liquidation",
+   "link_doctype": "Liquidation Petty Cash",
+   "link_fieldname": "petty_cash_no"
+  },
+  {
+   "group": "PR",
+   "link_doctype": "Expense Request Afmco",
+   "link_fieldname": "tax_invoice_number"
+  }
+ ],
+ "modified": "2026-09-25 13:00:00.000000",
+ "module": "Financial Operations",
+ "name": "Petty Cash",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Request User",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accountant",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

@@ -1,0 +1,92 @@
+/* Copyright (c) 2026, AFMCO and contributors */
+
+.wps-file {
+	display: flex;
+	flex-direction: column;
+	gap: var(--margin-md, 15px);
+	padding-block: var(--padding-md, 15px);
+}
+
+.wps-file .wps-file-empty {
+	padding: var(--padding-xl, 30px);
+	text-align: center;
+	color: var(--text-muted);
+}
+
+.wps-file .wps-file-summary {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--margin-xl, 30px);
+}
+
+.wps-file .wps-file-summary b {
+	font-size: var(--text-xl, 18px);
+}
+
+.wps-file .wps-file-label {
+	display: block;
+	font-size: var(--text-sm, 12px);
+	color: var(--text-muted);
+}
+
+.wps-file .wps-file-problems {
+	padding: var(--padding-md, 15px);
+	border: 1px solid var(--red-200, #fcc);
+	border-radius: var(--border-radius-md, 8px);
+	background: var(--red-50, #fff5f5);
+}
+
+.wps-file .wps-file-heading {
+	font-weight: 600;
+	margin-block-end: var(--margin-sm, 10px);
+}
+
+.wps-file .wps-file-problems ul {
+	margin: 0;
+	padding-inline-start: var(--padding-lg, 20px);
+}
+
+.wps-file .wps-file-problems li span {
+	margin-inline-start: var(--margin-sm, 10px);
+}
+
+.wps-file .wps-file-problem {
+	color: var(--red-600, #c00);
+}
+
+.wps-file .wps-file-grid {
+	overflow-x: auto;
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius-md, 8px);
+}
+
+.wps-file .wps-file-grid table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: var(--text-sm, 12px);
+	font-variant-numeric: tabular-nums;
+}
+
+.wps-file .wps-file-grid th,
+.wps-file .wps-file-grid td {
+	padding: var(--padding-xs, 5px) var(--padding-sm, 10px);
+	border-block-end: 1px solid var(--border-color);
+	text-align: start;
+	white-space: nowrap;
+}
+
+.wps-file .wps-file-grid thead th {
+	background: var(--subtle-fg);
+	color: var(--text-muted);
+	font-weight: 600;
+}
+
+.wps-file .wps-file-grid tfoot td {
+	font-weight: 600;
+	background: var(--subtle-fg);
+}
+
+.wps-file .wps-file-grid tr.wps-file-flagged td {
+	background: var(--red-50, #fff5f5);
+}

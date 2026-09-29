@@ -1,0 +1,104 @@
+{
+ "creation": "2024-07-27 16:25:38.725095",
+ "description": "Child table for tracking government payment for iqama renewal.",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "medical_insurance_issue",
+  "traffic_violations",
+  "issue_in_renewal",
+  "dependent_fees",
+  "two_year_plan",
+  "renewal_expiration_violation_on_employee",
+  "renewal_period",
+  "sadad_invoice_number",
+  "name1"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "medical_insurance_issue",
+   "fieldtype": "Check",
+   "label": "Medical Insurance issue"
+  },
+  {
+   "columns": 2,
+   "default": "0",
+   "fieldname": "traffic_violations",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Traffic Violations"
+  },
+  {
+   "columns": 2,
+   "default": "0",
+   "fieldname": "issue_in_renewal",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Issue in Renewal"
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "dependent_fees",
+   "fieldtype": "Check",
+   "label": "Dependent Fees"
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "two_year_plan",
+   "fieldtype": "Check",
+   "label": "Two Year Plan"
+  },
+  {
+   "default": "0",
+   "fieldname": "renewal_expiration_violation_on_employee",
+   "fieldtype": "Check",
+   "label": "Renewal expiration violation on employee"
+  },
+  {
+   "columns": 1,
+   "fieldname": "renewal_period",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Renewal Period"
+  },
+  {
+   "columns": 2,
+   "fieldname": "sadad_invoice_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "SADAD Invoice Number"
+  },
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "name"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "modified": "2024-08-22 13:58:59.110371",
+ "module": "People and Payroll",
+ "name": "Iqama Renewal Payment Tracking Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1
+}

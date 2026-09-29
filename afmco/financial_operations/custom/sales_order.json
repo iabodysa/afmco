@@ -1,0 +1,71 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Sales Order",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "idx": "20",
+   "insert_after": "dimension_col_break",
+   "is_system_generated": "1",
+   "label": "Employee",
+   "module": "Financial Operations",
+   "name": "Sales Order-employee",
+   "options": "Employee"
+  }
+ ],
+ "doctype": "Sales Order",
+ "property_setters": [
+  {
+   "doc_type": "Sales Order",
+   "doctype_or_field": "DocField",
+   "field_name": "base_rounded_total",
+   "module": "Financial Operations",
+   "name": "Sales Order-base_rounded_total-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Sales Order",
+   "doctype_or_field": "DocField",
+   "field_name": "disable_rounded_total",
+   "module": "Financial Operations",
+   "name": "Sales Order-disable_rounded_total-default",
+   "property": "default",
+   "property_type": "Text",
+   "value": "1"
+  },
+  {
+   "doc_type": "Sales Order",
+   "doctype_or_field": "DocField",
+   "field_name": "rounded_total",
+   "module": "Financial Operations",
+   "name": "Sales Order-rounded_total-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Sales Order",
+   "doctype_or_field": "DocField",
+   "field_name": "rounded_total",
+   "module": "Financial Operations",
+   "name": "Sales Order-rounded_total-print_hide",
+   "property": "print_hide",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Sales Order",
+   "doctype_or_field": "DocField",
+   "field_name": "scan_barcode",
+   "is_system_generated": "1",
+   "module": "Financial Operations",
+   "name": "Sales Order-scan_barcode-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  }
+ ],
+ "sync_on_migrate": 1
+}

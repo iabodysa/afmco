@@ -1,0 +1,29 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Branch",
+   "fieldname": "delinquent_limit",
+   "fieldtype": "Percent",
+   "hidden": "1",
+   "idx": "0",
+   "insert_after": "loan_restructure_limit",
+   "label": "Delinquent Limit %",
+   "module": "People and Payroll",
+   "name": "Branch-delinquent_limit"
+  },
+  {
+   "dt": "Branch",
+   "fieldname": "loan_restructure_limit",
+   "fieldtype": "Percent",
+   "hidden": "1",
+   "idx": "0",
+   "insert_after": "branch",
+   "label": "Restructure Limit %",
+   "module": "People and Payroll",
+   "name": "Branch-loan_restructure_limit"
+  }
+ ],
+ "doctype": "Branch",
+ "property_setters": [],
+ "sync_on_migrate": 1
+}

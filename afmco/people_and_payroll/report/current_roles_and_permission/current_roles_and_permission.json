@@ -1,0 +1,19 @@
+{
+ "creation": "2024-08-07 14:25:58.326295",
+ "doctype": "Report",
+ "is_standard": "Yes",
+ "letter_head": null,
+ "letterhead": null,
+ "modified": "2024-08-18 21:01:17.159860",
+ "module": "People and Payroll",
+ "name": "Current Roles and Permission",
+ "owner": "Administrator",
+ "ref_doctype": "DocPerm",
+ "report_name": "Current Roles and Permission",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

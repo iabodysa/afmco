@@ -1,0 +1,290 @@
+{
+ "allow_copy": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:unified_number",
+ "creation": "2023-11-28 00:29:49.744311",
+ "description": " ",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "engine": "InnoDB",
+ "field_order": [
+  "details",
+  "company_name",
+  "column_break_parent_company",
+  "parent_company",
+  "is_group",
+  "registration_info",
+  "cr",
+  "unified_number",
+  "column_break_establishment",
+  "establishment_number",
+  "gosi",
+  "column_break_chamber",
+  "cc",
+  "municipal_license",
+  "column_break_tax",
+  "tax_id",
+  "other_id",
+  "lft",
+  "rgt",
+  "old_parent",
+  "rabet_muqeem_integrator_section",
+  "app_id",
+  "column_break_app_key",
+  "app_key",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "details",
+   "fieldtype": "Section Break",
+   "label": "Company Details",
+   "oldfieldtype": "Section Break"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Company",
+   "oldfieldname": "company_name",
+   "oldfieldtype": "Data",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_parent_company",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.is_group",
+   "fieldname": "parent_company",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Parent Company",
+   "options": "Corporation"
+  },
+  {
+   "bold": 1,
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group"
+  },
+  {
+   "fieldname": "registration_info",
+   "fieldtype": "Section Break",
+   "label": "Registration Info",
+   "oldfieldtype": "Section Break",
+   "width": "50%"
+  },
+  {
+   "fieldname": "cr",
+   "fieldtype": "Data",
+   "label": "Commercial Registration Number"
+  },
+  {
+   "fieldname": "unified_number",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Unified Number",
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_establishment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "establishment_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Establishment Number"
+  },
+  {
+   "fieldname": "gosi",
+   "fieldtype": "Data",
+   "label": "GOSI Subscription Number"
+  },
+  {
+   "fieldname": "column_break_chamber",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cc",
+   "fieldtype": "Data",
+   "label": "Chamber of Commerce Subscription"
+  },
+  {
+   "fieldname": "municipal_license",
+   "fieldtype": "Data",
+   "label": "Municipal License"
+  },
+  {
+   "fieldname": "column_break_tax",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tax_id",
+   "fieldtype": "Data",
+   "label": "Tax ID"
+  },
+  {
+   "fieldname": "other_id",
+   "fieldtype": "Data",
+   "label": "Other ID"
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Lft",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Rgt",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "old_parent",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rabet_muqeem_integrator_section",
+   "fieldtype": "Section Break",
+   "label": "Rabet Muqeem Integrator"
+  },
+  {
+   "fieldname": "app_id",
+   "fieldtype": "Data",
+   "label": "Application ID"
+  },
+  {
+   "fieldname": "column_break_app_key",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "app_key",
+   "fieldtype": "Data",
+   "label": "Application Key"
+  },
+  {
+   "default": "CO-.YYYY.-",
+   "fetch_from": "doc.unified_number",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "naming_series",
+   "options": "CO-.YYYY.-",
+   "reqd": 1
+  }
+ ],
+ "icon": "fa fa-building",
+ "is_tree": 1,
+ "migration_hash": "ac271515db97557e95fcfb0d852d0cde",
+ "modified": "2026-09-25 12:00:00.000000",
+ "module": "People and Payroll",
+ "name": "Corporation",
+ "name_case": "Title Case",
+ "naming_rule": "By fieldname",
+ "nsm_parent_field": "parent_company",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Accounts User",
+   "set_user_permissions": "0"
+  },
+  {
+   "read": 1,
+   "role": "Employee",
+   "set_user_permissions": "0"
+  },
+  {
+   "read": 1,
+   "role": "HR User",
+   "set_user_permissions": "0"
+  },
+  {
+   "read": 1,
+   "role": "Purchase User",
+   "set_user_permissions": "0"
+  },
+  {
+   "read": 1,
+   "role": "Support Team",
+   "set_user_permissions": "0"
+  },
+  {
+   "read": 1,
+   "role": "Projects User",
+   "set_user_permissions": "0"
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Request User",
+   "set_user_permissions": "0",
+   "share": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "set_user_permissions": "0",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "unified_number",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "ASC",
+ "title_field": "company_name",
+ "track_changes": 1
+}
