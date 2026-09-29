@@ -970,3 +970,7 @@ class IqamaControl {
 		);
 	}
 }
+
+// The page script is evaluated in its own scope, so the ic_*.js modules
+// loaded by frappe.require can only extend the class through window.
+window.IqamaControl = IqamaControl;
