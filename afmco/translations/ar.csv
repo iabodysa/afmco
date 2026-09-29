@@ -832,6 +832,7 @@ Issue Final Exit during the Probationary Period,إصدار خروج نهائي �
 Issue Iqama,إصدار الإقامة
 Item,الصنف
 Items,الأصناف
+Journal Entry Draft Limit per User,حد مسودات القيود لكل مستخدم
 JV Based on Submitted SI,قيد يومي بناءً على فواتير المبيعات المعتمدة
 JV Created for Renewal Fees,أُنشئ قيد يومي لرسوم التجديد
 JV Created for SADAD Invoice,أُنشئ قيد يومي لفاتورة سداد
@@ -906,6 +907,7 @@ Location URL,رابط الموقع
 Location where passenger boarded,موقع صعود الراكب
 Lug Wrench,مفتاح العجلات
 Lug Wrench Image,صورة مفتاح العجلات
+Maximum draft Journal Entries one user can hold. 0 removes the limit.,أقصى عدد من مسودات القيود لكل مستخدم. القيمة 0 تلغي الحد.
 MOL EUN,الرقم الموحد لوزارة الموارد البشرية
 MOL No,رقم وزارة الموارد البشرية
 Madinah,المدينة المنورة
@@ -1979,7 +1981,7 @@ Phone number of emergency contact,رقم هاتف جهة الاتصال في ح�
 Project the labour is assigned to,المشروع المكلف به العامل
 Relationship of emergency contact,صلة القرابة بجهة الاتصال في حالات الطوارئ
 Unique identification number for Iqama,رقم الهوية الخاص بالإقامة
-You cannot create more than 20 drafts. Submit or delete one of your current drafts.,لا يمكن إنشاء أكثر من 20 مسودة. يجب استكمال أو حذف إحدى المسودات الحالية.
+You cannot create more than {0} drafts. Submit or delete one of your current drafts.,لا يمكن إنشاء أكثر من {0} مسودة. يجب استكمال أو حذف إحدى المسودات الحالية.
 The document cannot be approved before the required documents are attached.,لا يمكن اعتماد المستند قبل إرفاق المستندات المطلوبة.
 A clear career path,مسار وظيفي واضح
 "A professional appearance and courteous dealings with colleagues, supervisors and clients.",مظهر مهني وتعامل لبق مع الزملاء والرؤساء والعملاء.

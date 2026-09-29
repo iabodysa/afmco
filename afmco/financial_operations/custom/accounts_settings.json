@@ -1,0 +1,21 @@
+{
+ "custom_fields": [
+  {
+   "default": "50",
+   "description": "Maximum draft Journal Entries one user can hold. 0 removes the limit.",
+   "dt": "Accounts Settings",
+   "fieldname": "afmco_journal_entry_draft_limit",
+   "fieldtype": "Int",
+   "insert_after": "journals_section",
+   "label": "Journal Entry Draft Limit per User",
+   "module": "Financial Operations",
+   "name": "Accounts Settings-afmco_journal_entry_draft_limit",
+   "non_negative": 1
+  }
+ ],
+ "custom_perms": [],
+ "doctype": "Accounts Settings",
+ "links": [],
+ "property_setters": [],
+ "sync_on_migrate": 1
+}
