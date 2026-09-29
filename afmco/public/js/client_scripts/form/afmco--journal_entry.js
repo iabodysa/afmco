@@ -7,6 +7,7 @@ frappe.ui.form.on('Journal Entry', {
         er_remove_section(frm); 
         er_status(frm);
         er_buttons(frm);
+        je_attachments(frm);
         // Don't load details automatically to improve performance
     }
 });
@@ -404,3 +405,65 @@ function er_fill($container, rows) {
     $container.removeClass('text-muted').html(html);
 }
 
+
+// Attachments of the entry and its Payment Requisition, previewed without leaving the form
+function je_attachments(frm) {
+    if (frm.je_attachments_wrapper) {
+        frm.je_attachments_wrapper.remove();
+        frm.je_attachments_wrapper = null;
+    }
+    if (frm.is_new()) return;
+
+    frappe.xcall('afmco.financial_operations.api.journal_entry.get_attachments', { name: frm.doc.name }).then(files => {
+        if (!files || !files.length || frm.je_attachments_wrapper) return;
+
+        const wrapper = $(`
+            <div class="row form-section card-section visible-section">
+                <div class="section-head">${__('Attachments')} (${files.length})</div>
+                <div class="section-body">
+                    <div class="form-column col-sm-12 je-attachment-list" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+                </div>
+            </div>
+        `);
+        const $list = wrapper.find('.je-attachment-list');
+        files.forEach(file => {
+            const source = file.attached_to_doctype === 'Journal Entry' ? __('Journal Entry') : __('Payment Requisition');
+            $(`<button type="button" class="btn btn-default btn-sm"></button>`)
+                .append($('<span></span>').text(file.file_name || file.file_url))
+                .append($('<span class="text-muted" style="margin-inline-start: 6px;"></span>').text(source))
+                .on('click', () => je_preview(file))
+                .appendTo($list);
+        });
+
+        const dashboard = frm.$wrapper.find('.form-dashboard');
+        if (dashboard.length) {
+            wrapper.insertAfter(dashboard);
+        } else {
+            wrapper.insertBefore(frm.$wrapper.find('.form-section:first'));
+        }
+        frm.je_attachments_wrapper = wrapper;
+    });
+}
+
+function je_preview(file) {
+    const url = encodeURI(file.file_url);
+    const ext = (file.file_url.split('?')[0].split('.').pop() || '').toLowerCase();
+    let body;
+    if (['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'].includes(ext)) {
+        body = `<img src="${url}" style="max-width: 100%; display: block; margin: auto;">`;
+    } else if (ext === 'pdf') {
+        body = `<iframe src="${url}" style="width: 100%; height: 75vh; border: 0;"></iframe>`;
+    } else {
+        window.open(url, '_blank');
+        return;
+    }
+    const d = new frappe.ui.Dialog({
+        title: frappe.utils.escape_html(file.file_name || file.file_url),
+        size: 'extra-large',
+        fields: [{ fieldtype: 'HTML', fieldname: 'preview' }],
+        primary_action_label: __('Open in New Tab'),
+        primary_action: () => window.open(url, '_blank'),
+    });
+    d.fields_dict.preview.$wrapper.html(body);
+    d.show();
+}
