@@ -69,15 +69,6 @@
   },
   {
    "collapsible": 1,
-   "icon": "chart-line",
-   "label": "Financial Analysis Dashboard",
-   "link_to": "Financial Analysis Dashboard",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
-   "collapsible": 1,
    "icon": "layout-dashboard",
    "label": "Expense Request Dashboard",
    "link_to": "Expense Request Dashboard",
@@ -114,7 +105,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-09-29 23:30:00.000000",
+ "modified": "2026-09-30 01:30:00.000000",
  "module": "Financial Operations",
  "name": "Financial Operations",
  "owner": "Administrator",
