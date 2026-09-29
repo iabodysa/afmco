@@ -1,4 +1,4 @@
-frappe.listview_settings['Expense Request Afmco'] = {
+frappe.listview_settings['Payment Requisition'] = {
     onload: function(listview) {
         // Add button using official Frappe Page API
         let btn = listview.page.add_inner_button(__('Show Archive'), function() {

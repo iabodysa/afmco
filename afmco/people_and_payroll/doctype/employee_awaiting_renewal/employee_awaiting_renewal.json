@@ -40,7 +40,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Payment Order Number (SADAD)",
-   "options": "Expense Request Afmco",
+   "options": "Payment Requisition",
    "read_only": 1
   },
   {
@@ -48,7 +48,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Payment Order Number (Renewal)",
-   "options": "Expense Request Afmco",
+   "options": "Payment Requisition",
    "read_only": 1
   },
   {

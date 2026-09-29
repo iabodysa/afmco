@@ -10,7 +10,7 @@
    "label": "Expense Request",
    "module": "Financial Operations",
    "name": "Journal Entry-expense_request_cf",
-   "options": "Expense Request Afmco",
+   "options": "Payment Requisition",
    "unique": "1"
   },
   {

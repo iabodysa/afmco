@@ -83,8 +83,8 @@
    "type": "Card Break"
   },
   {
-   "label": "Payment Request",
-   "link_to": "Expense Request Afmco",
+   "label": "Payment Requisition",
+   "link_to": "Payment Requisition",
    "link_type": "DocType",
    "type": "Link"
   },
@@ -102,7 +102,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-09-26 00:00:00.000000",
+ "modified": "2026-09-29 23:30:00.000000",
  "module": "People and Payroll",
  "name": "Operations",
  "number_cards": [
@@ -126,7 +126,7 @@
    "doc_view": "List",
    "format": "{} JV Not Created",
    "label": "PR",
-   "link_to": "Expense Request Afmco",
+   "link_to": "Payment Requisition",
    "stats_filter": "{\r\n    \"jv_status\": [\"IN\" , [\"JV Not Created\"]]\r\n}",
    "type": "DocType"
   },

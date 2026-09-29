@@ -4,7 +4,7 @@
  "links": [
   {
    "idx": "1",
-   "link_doctype": "Expense Request Afmco",
+   "link_doctype": "Payment Requisition",
    "link_fieldname": "tax_invoice_number",
    "parent": "Loan Application",
    "parentfield": "links",

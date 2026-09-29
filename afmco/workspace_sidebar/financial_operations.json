@@ -16,8 +16,8 @@
   {
    "collapsible": 1,
    "icon": "receipt",
-   "label": "Expense Request",
-   "link_to": "Expense Request Afmco",
+   "label": "Payment Requisition",
+   "link_to": "Payment Requisition",
    "link_type": "DocType",
    "open_in_new_tab": 1,
    "type": "Link"
@@ -114,7 +114,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-09-25 23:45:00.000000",
+ "modified": "2026-09-29 23:30:00.000000",
  "module": "Financial Operations",
  "name": "Financial Operations",
  "owner": "Administrator",

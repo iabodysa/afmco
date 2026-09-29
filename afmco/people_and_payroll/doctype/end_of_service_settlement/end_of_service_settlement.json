@@ -481,7 +481,7 @@
  "links": [
   {
    "group": "Reference",
-   "link_doctype": "Expense Request Afmco",
+   "link_doctype": "Payment Requisition",
    "link_fieldname": "tax_invoice_number"
   }
  ],

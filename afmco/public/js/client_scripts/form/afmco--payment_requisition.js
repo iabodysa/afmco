@@ -1,4 +1,4 @@
-/** Client script for Expense Request Afmco. */
+/** Client script for Payment Requisition. */
 
 // Shared helpers ---------------------------------------------------------------
 const user_language = frappe.boot.user.language || 'en';
@@ -254,13 +254,13 @@ function bindAfmcoDashboardEvents() {
         .on('click.afmcoTransferRow', '.afmco-transfer-row', function() {
             const documentName = $(this).attr('data-docname');
             if (documentName) {
-                frappe.set_route('Form', 'Expense Request Afmco', documentName);
+                frappe.set_route('Form', 'Payment Requisition', documentName);
             }
         });
 }
 
 // Form events ------------------------------------------------------------------
-frappe.ui.form.on('Expense Request Afmco', {
+frappe.ui.form.on('Payment Requisition', {
 
     setup(frm) {
         if (!frm.doc.created_by) {
@@ -932,7 +932,7 @@ async function fetchAllAccountTransfers(frm, pageSize = 500) {
     let start = 0;
 
     while (true) {
-        const batch = await fetchListRecords('Expense Request Afmco', {
+        const batch = await fetchListRecords('Payment Requisition', {
             filters: [
                 ['account_no', '=', accountNumber],
                 ['workflow_state', '!=', 'Rejected'],
@@ -1670,7 +1670,7 @@ function processCompletedWorkflowTransitions(frm) {
 function getWorkflowLogs(frm) {
     if (typeof frappe === 'undefined' || !frappe.model || !frappe.model.docinfo) return null;
     const docinfo = frappe.model.docinfo;
-    const doctypeKey = frm.doctype || "Expense Request Afmco";
+    const doctypeKey = frm.doctype || "Payment Requisition";
     const docKey = frm.doc.name;
 
     return docinfo[doctypeKey]?.[docKey]?.workflow_logs || null;
@@ -1764,7 +1764,7 @@ function show_document_changes_dashboard(frm) {
     return fetchListRecords('Version', {
         filters: {
             docname: frm.docname,
-            ref_doctype: 'Expense Request Afmco'
+            ref_doctype: 'Payment Requisition'
         },
         fields: ['creation', 'modified_by', 'data'],
         order_by: 'creation desc',

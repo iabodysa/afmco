@@ -146,7 +146,7 @@ def mark_paid_settlements():
     for eos in eos_docs:
         try:
             pr = frappe.db.get_value(
-                "Expense Request Afmco",
+                "Payment Requisition",
                 {"tax_invoice_number": eos.name},
                 ["name", "workflow_state"]
             )

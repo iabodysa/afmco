@@ -18,6 +18,6 @@ const SB_STATE_COLOR = {
 	cancelled: "red",
 };
 const SB_ROUTES = {
-	payment_request: "Expense Request Afmco",
+	payment_request: "Payment Requisition",
 	journal_entry: "Journal Entry",
 };

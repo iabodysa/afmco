@@ -14,7 +14,7 @@ frappe.ui.form.on('Loan Application', {
                             const bank_account_no = r.message.bank_ac_no;
                             const employee_cost_center = r.message.cost_center;
 
-                            const paymentRequest = frappe.model.get_new_doc('Expense Request Afmco');
+                            const paymentRequest = frappe.model.get_new_doc('Payment Requisition');
                             paymentRequest.tax_invoice_number = frm.doc.name;
                             paymentRequest.account_no = bank_account_no; 
                             paymentRequest.beneficiary_name = `${frm.doc.applicant_name} | ${frm.doc.applicant}`;

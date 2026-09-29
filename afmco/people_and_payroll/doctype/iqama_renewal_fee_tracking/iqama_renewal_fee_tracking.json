@@ -250,7 +250,7 @@
    "fieldname": "payment_request_doc_number_residency_renewal",
    "fieldtype": "Link",
    "label": "PR Document Link(Residency Renewal)",
-   "options": "Expense Request Afmco",
+   "options": "Payment Requisition",
    "read_only": 1
   },
   {
@@ -274,7 +274,7 @@
    "fieldname": "payment_request_doc_number_sadad_invoice",
    "fieldtype": "Link",
    "label": "PR Document Link(SADAD Invoice)",
-   "options": "Expense Request Afmco",
+   "options": "Payment Requisition",
    "read_only": 1
   },
   {

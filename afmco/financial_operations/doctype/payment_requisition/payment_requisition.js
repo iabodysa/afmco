@@ -1,7 +1,7 @@
 // Copyright (c) 2026, AFMCO and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Expense Request Afmco', {
+frappe.ui.form.on('Payment Requisition', {
 	setup: function (frm) {
 		if (frm.doc.created_by == undefined) {
 			frm.set_value('created_by', frappe.session.user)

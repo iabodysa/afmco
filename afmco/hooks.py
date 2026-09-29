@@ -94,7 +94,7 @@ after_migrate = [
 # Permissions evaluated in scripted ways
 
 permission_query_conditions = {
-	"Expense Request Afmco": "afmco.financial_operations.doctype.expense_request_afmco.expense_request_afmco.get_permission_query_conditions",
+	"Payment Requisition": "afmco.financial_operations.doctype.payment_requisition.payment_requisition.get_permission_query_conditions",
 }
 #
 # has_permission = {

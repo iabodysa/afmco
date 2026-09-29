@@ -30,7 +30,7 @@ frappe.ui.form.on('Petty Cash', {
                 payment_type: 'Petty Cash'
             };
 
-            const expenseRequest = frappe.model.get_new_doc('Expense Request Afmco');
+            const expenseRequest = frappe.model.get_new_doc('Payment Requisition');
             Object.assign(expenseRequest, expenseRequestData);
 
             frappe.set_route('Form', expenseRequest.doctype, expenseRequest.name);

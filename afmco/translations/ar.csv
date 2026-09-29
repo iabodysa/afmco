@@ -1066,6 +1066,7 @@ Over time Hours,ساعات العمل الإضافي
 Overtime Assignment Request,طلب تكليف بعمل إضافي
 Overtime Cost,تكلفة العمل الإضافي
 Overtime Value,قيمة العمل الإضافي
+Payment Requisition,أمر الدفع
 PR Creation Date (Residency Renewal),تاريخ إنشاء أمر الدفع (تجديد الإقامة)
 PR Creation Date (SADAD Invoice),تاريخ إنشاء أمر الدفع (فاتورة سداد)
 PR Document Link(Residency Renewal),رابط مستند أمر الدفع (تجديد الإقامة)
@@ -2809,7 +2810,7 @@ May Salary To,راتب  مايو الى,ildress Labours
 Number of Days,عدد الأيام,ildress Labours
 Deduction Days,أيام الخصم,ildress Labours
 Actual Working Days,أيام العمل الفعلية,ildress Labours
-Reason of Urgency,سبب الاستعجال,Expense Request Afmco
+Reason of Urgency,سبب الاستعجال,Payment Requisition
 Cash Payment Voucher,سنـد دفــع نقـــدي,Cash Payment Voucher
 No.,رقــم,Cash Payment Voucher
 Name:,الإســـــــم:,Cash Payment Voucher

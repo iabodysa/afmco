@@ -574,7 +574,7 @@ Object.assign(IqamaControl.prototype, {
 	_render_pr_back(payment_request, updated, unlinked, amount) {
 		const bands = [
 			`<p>${ic_escape(t("created"))}: <a href="${frappe.utils.get_form_link(
-				"Expense Request Afmco",
+				"Payment Requisition",
 				payment_request.name
 			)}">${ic_escape(payment_request.name)}</a> — ${ic_escape(ic_money(amount))}</p>`,
 			`<p>${ic_escape(t("updated_records"))}: <b>${ic_count(updated.length)}</b></p>`,

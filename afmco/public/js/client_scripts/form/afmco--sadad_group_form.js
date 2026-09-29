@@ -76,7 +76,7 @@ frappe.ui.form.on('SADAD Group', {
         payment_type: 'SADAD Payment'
       };
 
-      const expenseRequest = frappe.model.get_new_doc('Expense Request Afmco');
+      const expenseRequest = frappe.model.get_new_doc('Payment Requisition');
       Object.keys(expenseRequestData).forEach(key => {
         expenseRequest[key] = expenseRequestData[key];
       });

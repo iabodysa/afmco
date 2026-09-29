@@ -217,7 +217,7 @@
    "fieldname": "payment_request_number",
    "fieldtype": "Link",
    "label": "Payment Request Number",
-   "options": "Expense Request Afmco"
+   "options": "Payment Requisition"
   },
   {
    "fieldname": "section_html_content",

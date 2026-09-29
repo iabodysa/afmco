@@ -79,7 +79,7 @@ updateFieldValueAndRefreshForm: function(frm, fieldName, value) {
       frm.add_custom_button(frappe._('Create PR'), () => {
         frm.set_value('pr_status', 'PR Created');
         frm.save();
-        const expenseRequest = frappe.model.get_new_doc('Expense Request Afmco');
+        const expenseRequest = frappe.model.get_new_doc('Payment Requisition');
         expenseRequest.tax_invoice_number = frm.doc.name;
         expenseRequest.beneficiary_name = `${frm.doc.employee_name} ${frm.doc.employee}`;
         expenseRequest.amount = frm.doc.amount;

@@ -15,15 +15,6 @@
   },
   {
    "collapsible": 1,
-   "icon": "users",
-   "label": "Employee Dependent",
-   "link_to": "Employee Dependent",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
-   "collapsible": 1,
    "icon": "credit-card",
    "label": "IBAN Update",
    "link_to": "IBAN Update",
@@ -250,7 +241,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-09-29 22:00:00.000000",
+ "modified": "2026-09-29 23:30:00.000000",
  "module": "People and Payroll",
  "name": "People and Payroll",
  "owner": "Administrator",

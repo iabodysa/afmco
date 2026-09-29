@@ -427,8 +427,8 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
         
                         if (successList.length > 0) {
                             // Create a new Expense Request
-                            //const paymentRequest = frappe.model.get_new_doc('Expense Request Afmco');
-                            let paymentRequest = frappe.model.get_new_doc('Expense Request Afmco'); // new
+                            //const paymentRequest = frappe.model.get_new_doc('Payment Requisition');
+                            let paymentRequest = frappe.model.get_new_doc('Payment Requisition'); // new
                             paymentRequest.beneficiary_name = payment_type === 'PR Created for Work Cards' ? 'وزارة الموارد البشرية (مكتب العمل)' : 'خدمات المقيمين وزارة الداخلية';
                             paymentRequest.amount = total_amount;  // Total amount calculated from all documents
                             paymentRequest.project = 'الادارة رئيسي - Head Office - AF';

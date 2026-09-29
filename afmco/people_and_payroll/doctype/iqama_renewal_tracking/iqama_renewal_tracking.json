@@ -228,14 +228,14 @@
    "fieldname": "custom_pr_reference",
    "fieldtype": "Link",
    "label": "PR Reference",
-   "options": "Expense Request Afmco",
+   "options": "Payment Requisition",
    "read_only": 1
   },
   {
    "fieldname": "custom_pr_reference_2",
    "fieldtype": "Link",
    "label": "PR Reference 2",
-   "options": "Expense Request Afmco",
+   "options": "Payment Requisition",
    "read_only": 1
   },
   {

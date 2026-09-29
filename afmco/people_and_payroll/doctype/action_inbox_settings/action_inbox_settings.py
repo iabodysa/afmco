@@ -13,7 +13,7 @@ DOCUMENT_TYPES = (
 		("Cancelled", "Paid"),
 	),
 	(
-		"Expense Request Afmco",
+		"Payment Requisition",
 		(
 			"Pending",
 			"Financial Controller",
