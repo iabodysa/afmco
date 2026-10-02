@@ -132,6 +132,7 @@ scheduler_events = {
 		"afmco.people_and_payroll.doctype.iqama_renewal_fee_tracking.iqama_renewal_fee_tracking.check_iqama_renewal_v2",
 		"afmco.people_and_payroll.doctype.iqama_renewal_tracking.iqama_renewal_tracking.check_iqama_renewal",
 		"afmco.people_and_payroll.leave_application.set_employees_on_leave",
+		"afmco.financial_operations.doctype.payment_approver.payment_approver.restore_user_permissions",
 	],
 	"hourly": [
 		"afmco.people_and_payroll.iqama.check_iqama_expiration",

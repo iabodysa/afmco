@@ -3185,3 +3185,4 @@ Workflow Action,إجراء سير العمل
 {0} applied,تم تنفيذ {0}
 jane@example.com,name@afmco.sa
 Years,سنوات
+Restricts this user to the Payment Requisitions addressed to this approver,يقصر هذا المستخدم على أوامر الدفع الموجهة إلى هذا المعتمد

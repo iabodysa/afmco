@@ -237,7 +237,7 @@
    "allow_in_quick_entry": 1,
    "fieldname": "payment_approver",
    "fieldtype": "Link",
-   "ignore_user_permissions": 1,
+   "ignore_user_permissions": 0,
    "label": "Payment Approver",
    "link_filters": "[[\"Payment Approver\",\"active\",\"=\",1]]",
    "no_copy": 1,
