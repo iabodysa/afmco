@@ -24,6 +24,15 @@
   },
   {
    "collapsible": 1,
+   "icon": "credit-card",
+   "label": "SADAD Bulk Payments",
+   "link_to": "sadad-bulk",
+   "link_type": "Page",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
    "icon": "wallet",
    "label": "Petty Cash",
    "link_to": "Petty Cash",
@@ -105,7 +114,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-09-30 01:30:00.000000",
+ "modified": "2026-10-02 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Financial Operations",
  "owner": "Administrator",

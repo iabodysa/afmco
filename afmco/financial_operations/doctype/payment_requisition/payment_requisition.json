@@ -24,7 +24,6 @@
   "beneficiary_name",
   "amount",
   "amount_in_words",
-  "column_break_remark",
   "remark",
   "payment_details_section",
   "cost_center",
@@ -105,10 +104,6 @@
    "fieldname": "amount_in_words",
    "fieldtype": "Read Only",
    "label": "Amount in Words"
-  },
-  {
-   "fieldname": "column_break_remark",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "column_break_supplier",
@@ -354,7 +349,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-09-27 12:00:00.000000",
+ "modified": "2026-10-02 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",
