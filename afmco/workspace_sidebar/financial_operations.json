@@ -24,6 +24,15 @@
   },
   {
    "collapsible": 1,
+   "icon": "credit-card",
+   "label": "SADAD Bulk Payments",
+   "link_to": "sadad-bulk",
+   "link_type": "Page",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
    "icon": "wallet",
    "label": "Petty Cash",
    "link_to": "Petty Cash",
