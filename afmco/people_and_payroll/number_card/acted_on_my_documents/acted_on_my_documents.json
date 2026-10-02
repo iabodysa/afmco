@@ -1,11 +1,12 @@
 {
+ "color": "#29CD42",
  "doctype": "Number Card",
  "document_type": "ToDo",
  "is_public": 1,
  "is_standard": 1,
  "label": "Acted On My Documents",
  "method": "afmco.people_and_payroll.api.my_work_center.get_activity_on_my_documents_count",
- "modified": "2026-09-28 14:00:00.000000",
+ "modified": "2026-10-02 12:00:00.000000",
  "module": "People and Payroll",
  "name": "Acted On My Documents",
  "type": "Custom"

@@ -1,5 +1,6 @@
 {
  "aggregate_function_based_on": "amount",
+ "color": "#ECAD4B",
  "creation": "2024-06-15 08:53:14.288008",
  "doctype": "Number Card",
  "document_type": "Payment Requisition",
@@ -8,7 +9,7 @@
  "function": "Sum",
  "is_standard": 1,
  "label": "Awaiting Payment (AlAhli Bank)",
- "modified": "2026-09-25 23:45:00.000000",
+ "modified": "2026-10-02 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Amount Awaiting Payment AlAhli Bank",
  "report_function": "Sum",

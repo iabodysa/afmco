@@ -89,6 +89,7 @@
   {
    "child": 1,
    "collapsible": 1,
+   "icon": "user-check",
    "label": "Payment Approver",
    "link_to": "Payment Approver",
    "link_type": "DocType",
@@ -98,6 +99,7 @@
   {
    "child": 1,
    "collapsible": 1,
+   "icon": "landmark",
    "label": "Saudi Bank",
    "link_to": "Saudi Bank",
    "link_type": "DocType",
@@ -105,7 +107,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-09-30 01:30:00.000000",
+ "modified": "2026-10-02 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Financial Operations",
  "owner": "Administrator",

@@ -1,4 +1,5 @@
 {
+ "color": "#CB2929",
  "creation": "2024-06-15 04:43:48.572496",
  "doctype": "Number Card",
  "document_type": "Payment Requisition",
@@ -7,7 +8,7 @@
  "function": "Count",
  "is_standard": 1,
  "label": "Count of Paid Orders Without JV Created This Year",
- "modified": "2026-09-26 12:00:00.000000",
+ "modified": "2026-10-02 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Count of Paid Orders Without JV Created This Year",
  "report_function": "Sum",

@@ -179,6 +179,7 @@
   {
    "child": 1,
    "collapsible": 1,
+   "icon": "key-round",
    "label": "Current Roles and Permission",
    "link_to": "Current Roles and Permission",
    "link_type": "Report",
@@ -188,6 +189,7 @@
   {
    "child": 1,
    "collapsible": 1,
+   "icon": "sheet",
    "label": "Salary Register WPS",
    "link_to": "Salary Register WPS",
    "link_type": "Report",
@@ -207,6 +209,7 @@
   {
    "child": 1,
    "collapsible": 1,
+   "icon": "network",
    "label": "Department",
    "link_to": "Department",
    "link_type": "DocType",
@@ -216,6 +219,7 @@
   {
    "child": 1,
    "collapsible": 1,
+   "icon": "building-2",
    "label": "Corporation",
    "link_to": "Corporation",
    "link_type": "DocType",
@@ -225,6 +229,7 @@
   {
    "child": 1,
    "collapsible": 1,
+   "icon": "building",
    "label": "Establishment",
    "link_to": "Establishment",
    "link_type": "DocType",
@@ -234,6 +239,7 @@
   {
    "child": 1,
    "collapsible": 1,
+   "icon": "handshake",
    "label": "Sponsor",
    "link_to": "Sponsor",
    "link_type": "DocType",
@@ -241,7 +247,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-09-29 23:30:00.000000",
+ "modified": "2026-10-02 12:00:00.000000",
  "module": "People and Payroll",
  "name": "People and Payroll",
  "owner": "Administrator",

@@ -75,6 +75,7 @@ doctype_list_js = _client_script_registry.DOCTYPE_LIST_JS
 after_install = "afmco.install.after_install"
 after_migrate = [
 	"afmco.financial_operations.zatca_workspace.remove_premium_promotion",
+	"afmco.vendor_desk_style.fill_empty_vendor_desk_style",
 ]
 
 # Uninstallation
