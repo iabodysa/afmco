@@ -24,6 +24,10 @@ before_request = [
 	"afmco.desk_host.redirect_desk_to_app_host",
 ]
 
+page_renderer = [
+	"afmco.doctype_case_page.DocTypeCaseNotFoundPage",
+]
+
 # Includes in <head>
 # ------------------
 

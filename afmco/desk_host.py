@@ -9,7 +9,16 @@ from werkzeug.utils import redirect
 
 DESK_HOST = "app.afmco.sa"
 SITE_HOSTS = frozenset({"afmco.sa", "www.afmco.sa"})
-APP_HOST_PATHS = ("/app", "/desk", "/login", "/me", "/hrms", "/update-password")
+APP_HOST_PATHS = (
+	"/app",
+	"/desk",
+	"/login",
+	"/me",
+	"/hrms",
+	"/update-password",
+	"/api/method/login",
+	"/api/method/logout",
+)
 
 
 def redirect_desk_to_app_host():
@@ -19,4 +28,4 @@ def redirect_desk_to_app_host():
 	if not any(request.path == path or request.path.startswith(path + "/") for path in APP_HOST_PATHS):
 		return
 	url = get_current_url("https", DESK_HOST, request.root_path, request.path, request.query_string)
-	abort(redirect(iri_to_uri(url), 302))
+	abort(redirect(iri_to_uri(url), 302 if request.method == "GET" else 307))
