@@ -220,10 +220,6 @@ Calculated transportation allowance,بدل النقل المحسوب
 Calculation,الحساب
 Cancel Exit Re-Entry Visa,إلغاء تأشيرة الخروج والعودة
 Cancel Final Exit Visa,إلغاء تأشيرة الخروج النهائي
-Cancel Journal Entry,إلغاء القيد اليومي
-Cancellation Reason,سبب الإلغاء
-Cancellation Request,طلب إلغاء
-Cancellation Request created successfully.,أُنشئ طلب الإلغاء بنجاح.
 Cannot create Payment Request for document {0} because employee {1} is not Active.,لا يمكن إنشاء طلب دفع للمستند {0} لأن الموظف {1} غير نشط.
 Car Problem,مشكلة في السيارة
 Car Status,حالة السيارة
@@ -837,7 +833,6 @@ License Plate,لوحة المركبة
 Lights,الأضواء
 Link to the original transfer request,رابط طلب النقل الأصلي
 Links to related documentation,روابط المستندات ذات الصلة
-Liquidation Petty Cash No.,رقم تصفية العهدة النقدية
 List of Iqamas with Renewal Issues,قائمة الإقامات التي بها مشكلات تجديد
 Liter Price,سعر اللتر
 Loading Dashboard...,جارٍ تحميل لوحة المعلومات...
@@ -1077,7 +1072,6 @@ Person who added the document,الشخص الذي أضاف المستند
 Personal Belongings List,قائمة المتعلقات الشخصية
 Personal Information,المعلومات الشخصية
 Petrol 91,بنزين 91
-Petty Cash No.,رقم العهدة النقدية
 Phase,المرحلة
 Photo,الصورة
 Physical condition of the asset,الحالة المادية للأصل
@@ -1410,7 +1404,6 @@ Sub Policy Number,رقم الوثيقة الفرعية
 Submit a leave request if you do not have an account in the employee app.,قدّم طلب إجازتك إذا لم يكن لك حساب في تطبيق الموظفين.
 Submit Salary Slips,اعتماد قسائم الرواتب
 Submit your job application and CV to AFMCO.,قدّم طلب التوظيف وسيرتك الذاتية إلى أفمكو.
-Submitting...,جارٍ الاعتماد...
 Subscriber’s name,اسم المشترك
 Subscription Section,قسم الاشتراك
 Subscription type,نوع الاشتراك
@@ -1450,7 +1443,6 @@ Target Location is required while transferring Asset {0},الموقع المست
 Target Location or To Employee is required while receiving Asset {0},الموقع المستهدف أو الموظف المستلم مطلوب عند استلام الأصل {0}
 Target date for next review,التاريخ المستهدف للمراجعة القادمة
 Tax Code,الرمز الضريبي
-Tax Invoice Number,رقم الفاتورة الضريبية
 Tax Refund provided to Tourists (AED),الضريبة المستردة للسياح (درهم)
 Tax Withholding Category,فئة استقطاع الضريبة
 AFMCO Operations,عمليات أفمكو
@@ -1606,7 +1598,6 @@ Ventilation System Operational,نظام التهوية يعمل
 Ventilation and Air Conditioning,التهوية والتكييف
 Verify By,تحقق بواسطة
 Version Number,رقم الإصدار
-View Journal Entry,عرض القيد اليومي
 Visa Cost ( 24 Months),تكلفة التأشيرة (24 شهرًا)
 Visa Details,تفاصيل التأشيرة
 Visa Duration (Days),مدة التأشيرة (أيام)
@@ -2503,8 +2494,6 @@ Edit Document,تحرير المستند,Employee
 Please take the necessary steps to renew the Iqama to ensure compliance with residency and labor regulations.,يرجى اتخاذ الإجراءات اللازمة لتجديد الإقامة لضمان الامتثال للوائح العمل والإقامة.,Employee
 Iqama Expired,الإقامة منتهية,Employee
 View Employee Dues,عرض مديونيات الموظف,Employee
-Are you sure you want to cancel the journal entry?,هل أنت متأكد من رغبتك في إلغاء القيد المحاسبي؟,Cancellation Request
-The journal entry was cancelled successfully,تم إلغاء القيد المحاسبي بنجاح,Cancellation Request
 Found,تم العثور على,End of Service Settlement
 previous leave settlements for this employee:,تصفية إجازات سابقة لهذا الموظف:,End of Service Settlement
 Settlement No.,رقم التصفية,End of Service Settlement

@@ -6,7 +6,6 @@ frappe.ui.form.on('Journal Entry', {
     refresh(frm) {
         er_remove_section(frm); 
         er_status(frm);
-        er_buttons(frm);
         je_attachments(frm);
         // Don't load details automatically to improve performance
     }
@@ -14,43 +13,6 @@ frappe.ui.form.on('Journal Entry', {
 
 const DT_ER = 'Payment Requisition';
 const DT_CM = 'Comment';
-
-function er_buttons(frm) {
-    frm.clear_custom_buttons();
-    if (frm.doc.docstatus === 1) {
-        frm.add_custom_button(__('Cancellation Request'), () => {
-            const d = new frappe.ui.Dialog({
-                title: __('Cancellation Request'),
-                fields: [{ fieldname: 'reason', fieldtype: 'Small Text', label: __('Cancellation Reason'), reqd: 1 }],
-                primary_action_label: __('Submit'),
-                primary_action: v => {
-                    d.set_primary_action(__('Submitting...'));
-                    d.disable_primary_action();
-                    frappe.call({
-                        method: 'frappe.client.insert',
-                        freeze: true,
-                        args: {
-                            doc: {
-                                doctype: 'Cancellation Request',
-                                cancellation_reason: v.reason,
-                                journal_entry: frm.doc.name,
-                                requested_by: frappe.session.user,
-                                request_date: frappe.datetime.now_datetime()
-                            }
-                        }
-                    }).then(() => {
-                        frappe.show_alert({ message: __('Cancellation Request created successfully.'), indicator: 'green' });
-                        d.hide();
-                    }).finally(() => {
-                        d.enable_primary_action();
-                        d.set_primary_action(__('Submit'));
-                    });
-                }
-            });
-            d.show();
-        }, __('Actions'));
-    }
-}
 
 function er_load_details(frm) {
     if (!frm.doc.expense_request_cf) {

@@ -27,11 +27,6 @@ DOCUMENT_TYPES = (
 		("Rejected", "Paid", "Cancelled"),
 	),
 	("IBAN Update", ("Pending",), ("Approved", "Rejected", "Cancelled")),
-	(
-		"Liquidation Petty Cash",
-		("Pending", "Waiting Accountant Approval", "Waiting Manager Approval"),
-		("Rejected", "Paid"),
-	),
 	("Overtime Assignment Request", ("Pending", "Approved", "Document Upload"), ("Cancelled", "Paid", "Rejected")),
 	(
 		"Petty Cash",

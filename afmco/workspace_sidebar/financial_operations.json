@@ -63,29 +63,9 @@
   {
    "child": 1,
    "collapsible": 1,
-   "icon": "ban",
-   "label": "Cancellation Request",
-   "link_to": "Cancellation Request",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
-   "child": 1,
-   "collapsible": 1,
    "icon": "wallet",
    "label": "Petty Cash",
    "link_to": "Petty Cash",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
-   "child": 1,
-   "collapsible": 1,
-   "icon": "coins",
-   "label": "Liquidation Petty Cash",
-   "link_to": "Liquidation Petty Cash",
    "link_type": "DocType",
    "open_in_new_tab": 1,
    "type": "Link"
@@ -150,7 +130,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-03 18:00:00.000000",
+ "modified": "2026-10-03 23:50:00.000000",
  "module": "Financial Operations",
  "name": "Financial Operations",
  "owner": "Administrator",
