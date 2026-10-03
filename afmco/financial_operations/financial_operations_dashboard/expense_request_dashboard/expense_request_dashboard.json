@@ -1,6 +1,27 @@
 {
  "cards": [
   {
+   "card": "Total Amounts Awaiting Payment"
+  },
+  {
+   "card": "Amount Awaiting Payment AlAhli Bank"
+  },
+  {
+   "card": "Count of Paid Orders Without JV Created This Year"
+  },
+  {
+   "card": "Payment Requisitions Rejected This Month"
+  },
+  {
+   "card": "Petty Cash Awaiting Liquidation"
+  },
+  {
+   "card": "Petty Cash Pending Approval"
+  },
+  {
+   "card": "Open SADAD Batches Amount"
+  },
+  {
    "card": "Monthly Expense Request Count"
   },
   {
@@ -20,31 +41,11 @@
   },
   {
    "card": "Monthly Paid Salary Requests Count"
-  },
-  {
-   "card": "Count of Paid Orders Without JV Created This Year"
-  },
-  {
-   "card": "Count of Orders Awaiting General Manager Approval"
-  },
-  {
-   "card": "Total Amounts Awaiting Payment"
-  },
-  {
-   "card": "Amount Awaiting Payment AlAhli Bank"
   }
  ],
  "charts": [
   {
    "chart": "Monthly Paid Expense Request Amount",
-   "width": "Full"
-  },
-  {
-   "chart": "Weekly Paid Expense Request Count",
-   "width": "Full"
-  },
-  {
-   "chart": "Pending Bank Payments by Payment Date",
    "width": "Full"
   },
   {
@@ -56,7 +57,23 @@
    "width": "Half"
   },
   {
+   "chart": "Pending Bank Payments by Payment Date",
+   "width": "Full"
+  },
+  {
+   "chart": "Monthly Petty Cash Issued Amount",
+   "width": "Half"
+  },
+  {
+   "chart": "Monthly SADAD Batch Amount",
+   "width": "Half"
+  },
+  {
    "chart": "Last Quarter Paid Expense Request Amount by Project",
+   "width": "Full"
+  },
+  {
+   "chart": "Weekly Paid Expense Request Count",
    "width": "Full"
   }
  ],
@@ -64,7 +81,7 @@
  "dashboard_name": "Expense Request Dashboard",
  "doctype": "Dashboard",
  "is_standard": 1,
- "modified": "2026-09-25 23:45:00.000000",
+ "modified": "2026-10-03 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Expense Request Dashboard",
  "owner": "Administrator"

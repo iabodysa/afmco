@@ -1,0 +1,20 @@
+{
+ "aggregate_function_based_on": "total_amount",
+ "color": "#29CD42",
+ "creation": "2026-10-03 12:00:00.000000",
+ "doctype": "Number Card",
+ "document_type": "SADAD Batch",
+ "dynamic_filters_json": "[]",
+ "filters_json": "[[\"SADAD Batch\",\"docstatus\",\"=\",0,false]]",
+ "function": "Sum",
+ "is_standard": 1,
+ "label": "Open SADAD Batches Amount",
+ "modified": "2026-10-03 12:00:00.000000",
+ "module": "Financial Operations",
+ "name": "Open SADAD Batches Amount",
+ "owner": "Administrator",
+ "report_function": "Sum",
+ "show_percentage_stats": 1,
+ "stats_time_interval": "Weekly",
+ "type": "Document Type"
+}

@@ -1,17 +1,18 @@
 {
  "based_on": "creation",
- "chart_name": "Monthly Paid Expense Request Amount",
+ "chart_name": "Monthly SADAD Batch Amount",
  "chart_type": "Sum",
- "color": "#449CF0",
- "creation": "2024-06-15 05:38:08.038631",
+ "color": "#29CD42",
+ "creation": "2026-10-03 12:00:00.000000",
  "doctype": "Dashboard Chart",
- "document_type": "Payment Requisition",
- "filters_json": "[[\"Payment Requisition\",\"workflow_state\",\"=\",\"Paid\",false]]",
+ "document_type": "SADAD Batch",
+ "filters_json": "[[\"SADAD Batch\",\"docstatus\",\"=\",1,false]]",
  "group_by_type": "Count",
  "is_standard": 1,
  "modified": "2026-10-03 12:00:00.000000",
  "module": "Financial Operations",
- "name": "Monthly Paid Expense Request Amount",
+ "name": "Monthly SADAD Batch Amount",
+ "owner": "Administrator",
  "roles": [
   {
    "role": "Accounts Manager"
@@ -27,5 +28,5 @@
  "timeseries": 1,
  "timespan": "Last Year",
  "type": "Bar",
- "value_based_on": "amount"
+ "value_based_on": "total_amount"
 }

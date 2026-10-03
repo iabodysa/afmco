@@ -6,15 +6,15 @@
  "creation": "2024-06-15 03:47:57.165198",
  "doctype": "Dashboard Chart",
  "document_type": "Payment Requisition",
- "filters_json": "[[\"Payment Requisition\",\"workflow_state\",\"!=\",\"Paid\",false],[\"Payment Requisition\",\"workflow_state\",\"!=\",\"Rejected\",false],[\"Payment Requisition\",\"workflow_state\",\"!=\",\"Pending\",false]]",
+ "filters_json": "[[\"Payment Requisition\",\"workflow_state\",\"not in\",[\"Paid\",\"Rejected\",\"Cancelled\"],false]]",
  "group_by_based_on": "workflow_state",
  "group_by_type": "Count",
  "is_public": 1,
  "is_standard": 1,
- "modified": "2026-09-25 23:45:00.000000",
+ "modified": "2026-10-03 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Open Expense Requests by Status",
- "number_of_groups": 5,
+ "number_of_groups": 8,
  "roles": [
   {
    "role": "Accounts Manager"
