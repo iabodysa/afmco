@@ -1,5 +1,4 @@
 from . import __version__ as app_version  # noqa: F401
-from afmco.client_scripts import registry as _client_script_registry
 
 app_name = "afmco"
 app_title = "AFMCO"
@@ -50,8 +49,23 @@ web_include_css = "/assets/afmco/css/login.css"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-doctype_js = _client_script_registry.DOCTYPE_JS
-doctype_list_js = _client_script_registry.DOCTYPE_LIST_JS
+doctype_js = {
+	"Employee": "public/js/employee.js",
+	"Employee Checkin": "public/js/employee_checkin.js",
+	"Journal Entry": "public/js/journal_entry.js",
+	"Leave Application": "public/js/leave_application.js",
+	"Loan": "public/js/loan.js",
+	"Loan Application": "public/js/loan_application.js",
+	"Payroll Entry": "public/js/payroll_entry.js",
+	"Purchase Invoice": "public/js/purchase_invoice.js",
+	"Salary Slip": "public/js/salary_slip.js",
+	"Sales Invoice": "public/js/sales_invoice_form.js",
+	"Task": "public/js/task.js",
+}
+doctype_list_js = {
+	"Employee": "public/js/employee_list.js",
+	"Salary Slip": "public/js/salary_slip_list.js",
+}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
