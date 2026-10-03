@@ -46,7 +46,7 @@
   },
   {
    "label": "Payroll",
-   "link_count": 5,
+   "link_count": 6,
    "link_type": "DocType",
    "type": "Card Break"
   },
@@ -78,6 +78,12 @@
    "label": "WPS Salary File",
    "link_to": "wps-file",
    "link_type": "Page",
+   "type": "Link"
+  },
+  {
+   "label": "Temporary IBAN",
+   "link_to": "Temporary IBAN",
+   "link_type": "DocType",
    "type": "Link"
   },
   {
@@ -149,7 +155,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-03 20:00:00.000000",
+ "modified": "2026-10-03 21:00:00.000000",
  "module": "People and Payroll",
  "name": "Operations",
  "number_cards": [

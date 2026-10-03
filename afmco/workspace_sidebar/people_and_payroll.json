@@ -25,6 +25,16 @@
   {
    "child": 1,
    "collapsible": 1,
+   "icon": "user",
+   "label": "Employee",
+   "link_to": "Employee",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
    "icon": "scan-search",
    "label": "Employee ID Checker",
    "link_to": "employee-id-checker",
@@ -124,10 +134,60 @@
   {
    "child": 1,
    "collapsible": 1,
+   "icon": "calculator",
+   "label": "Payroll Entry",
+   "link_to": "Payroll Entry",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "receipt",
+   "label": "Salary Slip",
+   "link_to": "Salary Slip",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "file-pen",
+   "label": "Salary Structure Assignment",
+   "link_to": "Salary Structure Assignment",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "hand-coins",
+   "label": "Additional Salary",
+   "link_to": "Additional Salary",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
    "icon": "file-output",
    "label": "WPS Salary File",
    "link_to": "wps-file",
    "link_type": "Page",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "landmark",
+   "label": "Temporary IBAN",
+   "link_to": "Temporary IBAN",
+   "link_type": "DocType",
    "open_in_new_tab": 1,
    "type": "Link"
   },
@@ -301,7 +361,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-03 18:00:00.000000",
+ "modified": "2026-10-03 21:00:00.000000",
  "module": "People and Payroll",
  "name": "People and Payroll",
  "owner": "Administrator",

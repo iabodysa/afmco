@@ -3062,3 +3062,8 @@ Export All Requisitions to Excel,تصدير كل الأوامر إلى Excel
 {0} w,{0} أسبوع
 {0} M,{0} شهر
 {0} y,{0} سنة
+EOS,مكافأة نهاية الخدمة
+PR,طلب دفع
+Vacation Allowance,بدل إجازة
+Employees on leave today,الموظفون في إجازة اليوم
+Accounting Team,فريق المحاسبة
