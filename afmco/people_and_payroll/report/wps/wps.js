@@ -79,15 +79,13 @@ function handlePrimaryAction(values, filters, dialog) {
 
     filters.bank_format = values.bank_format;
     filters.file_type = values.file_type;
-    if (values.generate_cmd) {
-        fetchSalaryDataForCmd(filters, values, dialog);
-    } else {
-        fetchSalaryData(filters, values, dialog);
+    fetchSalaryData(filters, values, dialog, values.generate_cmd);
+    if (!values.generate_cmd) {
         dialog.hide();
     }
 }
 
-function fetchSalaryData(filters, values, dialog) {
+function fetchSalaryData(filters, values, dialog, generateCmd) {
     let all_data = [];
     const fields = [
         "payroll_entry", "labor_office_file_number", "employee", "employee_name", "bank_name", "bank_account_no", "iban_holder_name",
@@ -110,7 +108,7 @@ function fetchSalaryData(filters, values, dialog) {
                     if (r.message.length === 1000) {
                         fetchData(start + 1000);
                     } else {
-                        prepareAndShowFiles(all_data, values, filters, false, dialog);
+                        prepareAndShowFiles(all_data, values, filters, generateCmd, dialog);
                     }
                 } else {
                     frappe.msgprint(__("No data returned from report."));
@@ -215,29 +213,13 @@ function handleFileDownload(file_name, encoded_rows, file_type, bank_format, row
 }
 
 function generateFile(rows, file_name, file_type, bank_format) {
-    let content = "";
     let data;
-    const ncbkHeaders = ["Bank", "Account Number", "Total Salary", "Transaction Reference", "Employee Name", "National ID/Iqama ID", "Employee Address", "Basic Salary", "Housing Allowance", "Other Earnings", "Deductions"];
     const sibcHeaders = ["Employee", "First Name", "Middle Name", "Last Name", "Bank Name", "Bank Account No.", "Basic", "Housing", "Other Allowance", "Deduction", "Net Pay", "Remark"];
 
     if (bank_format === "NCBK") {
-        data = [ncbkHeaders];
+        data = [ncbkHeaders()];
         rows.forEach(row => {
-            let rowData = [
-                row.bank_name || '',
-                row.bank_account_no || '',
-                row.net_pay || '',
-                row.remark || '',
-                row.iban_holder_name || row.employee_name || '',
-                row.employee || '',
-                "RUH",
-                row.basic33 || '',
-                row.housing33 || '',
-                row.other_allowance33 || '',
-                row.deduction33 || ''
-            ];
-            data.push(rowData);
-            content += rowData.join(",") + "\n";
+            data.push(ncbkRow(row));
         });
     } else {
         data = [sibcHeaders];
@@ -258,7 +240,6 @@ function generateFile(rows, file_name, file_type, bank_format) {
                 row.remark || ''
             ];
             data.push(rowData);
-            content += rowData.join(",") + "\n";
         });
     }
 
@@ -267,6 +248,26 @@ function generateFile(rows, file_name, file_type, bank_format) {
     } else {
         frappe.tools.downloadify(data, null, file_name + ".csv");
     }
+}
+
+function ncbkHeaders() {
+    return ["Bank", "Account Number", "Total Salary", "Transaction Reference", "Employee Name", "National ID/Iqama ID", "Employee Address", "Basic Salary", "Housing Allowance", "Other Earnings", "Deductions"];
+}
+
+function ncbkRow(row) {
+    return [
+        row.bank_name || '',
+        row.bank_account_no || '',
+        row.net_pay || '',
+        row.remark || '',
+        row.iban_holder_name || row.employee_name || '',
+        row.employee || '',
+        "RUH",
+        row.basic33 || '',
+        row.housing33 || '',
+        row.other_allowance33 || '',
+        row.deduction33 || ''
+    ];
 }
 
 function splitEmployeeName(full_name) {
@@ -285,22 +286,9 @@ function generateCmdScript(files, outputFolderName, dialog) {
 
     files.forEach(file => {
         cmd_script += `echo Creating file: "%dir_name%\\${file.name}.csv"\n`;
-        cmd_script += `echo Bank,Account Number,Total Salary,Transaction Reference,Employee Name,National ID/Iqama ID,Employee Address,Basic Salary,Housing Allowance,Other Earnings,Deductions > "%dir_name%\\${file.name}.csv"\n`;
+        cmd_script += `echo ${ncbkHeaders().join(",")} > "%dir_name%\\${file.name}.csv"\n`;
         file.rows.forEach(row => {
-            let rowData = [
-                row.bank_name || '',
-                row.bank_account_no || '',
-                row.net_pay || '',
-                row.remark || '',
-                row.iban_holder_name || row.employee_name || '',
-                row.employee || '',
-                "RUH",
-                row.basic33 || '',
-                row.housing33 || '',
-                row.other_allowance33 || '',
-                row.deduction33 || ''
-            ];
-            cmd_script += `echo ${rowData.map(value => `"${value}"`).join(",")} >> "%dir_name%\\${file.name}.csv"\n`;
+            cmd_script += `echo ${ncbkRow(row).map(value => `"${value}"`).join(",")} >> "%dir_name%\\${file.name}.csv"\n`;
         });
     });
 
@@ -310,43 +298,4 @@ function generateCmdScript(files, outputFolderName, dialog) {
     link.download = `${outputFolderName}.bat`;
     link.click();
     dialog.hide();
-}
-
-function fetchSalaryDataForCmd(filters, values, dialog) {
-    let all_data = [];
-    const fields = [
-        "payroll_entry", "labor_office_file_number", "employee", "employee_name", "bank_name", "bank_account_no", "iban_holder_name",
-        "basic33", "housing33", "other_allowance33", "deduction33", "net_pay", "remark"
-    ];
-
-    function fetchData(start = 0) {
-        frappe.call({
-            method: "frappe.client.get_list",
-            args: {
-                doctype: "Salary Slip",
-                filters: { payroll_entry: filters.payroll_entry },
-                fields: fields,
-                limit_start: start,
-                limit_page_length: 1000
-            },
-            callback: function(r) {
-                if (Array.isArray(r.message) && r.message.length > 0) {
-                    all_data = all_data.concat(r.message);
-                    if (r.message.length === 1000) {
-                        fetchData(start + 1000);
-                    } else {
-                        let groupedData = groupDataByLaborOfficeNumber(all_data);
-                        let files = createFiles(groupedData, values, filters);
-                        generateCmdScript(files, values.output_file_name || 'NewFolder', dialog);
-                    }
-                } else {
-                    frappe.msgprint(__("No data returned from report."));
-                }
-            },
-            error: function(error) {
-                frappe.msgprint(__("Error fetching data: ") + error.message);
-            }
-        });
-    }
-    fetchData();
 }
