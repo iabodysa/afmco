@@ -103,4 +103,7 @@ DOCTYPE_LIST_JS = {
 	'Iqama Renewal Tracking': [
 		'public/js/client_scripts/list/afmco--iqama_renewal_tracking_list.js',
 	],
+	'Salary Slip': [
+		'public/js/client_scripts/list/afmco--salary_slip_list.js',
+	],
 }
