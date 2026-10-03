@@ -24,27 +24,6 @@
    "translatable": "1"
   },
   {
-   "dt": "Company",
-   "fieldname": "crc",
-   "fieldtype": "Link",
-   "idx": "105",
-   "insert_after": "crc_registration_details",
-   "label": "CRC",
-   "module": "Financial Operations",
-   "name": "Company-crc",
-   "options": "Registration Details"
-  },
-  {
-   "dt": "Company",
-   "fieldname": "crc_registration_details",
-   "fieldtype": "Section Break",
-   "idx": "104",
-   "insert_after": "section_break_28",
-   "label": "CRC Registration Details",
-   "module": "Financial Operations",
-   "name": "Company-crc_registration_details"
-  },
-  {
    "depends_on": "eval:doc.create_jv_on_si_submit==1",
    "dt": "Company",
    "fieldname": "default_jv_credit_account_cf",
@@ -71,17 +50,6 @@
    "module": "Financial Operations",
    "name": "Company-default_jv_debit_account_cf",
    "options": "Account"
-  },
-  {
-   "dt": "Company",
-   "fieldname": "delinquent_limit",
-   "fieldtype": "Percent",
-   "hidden": "1",
-   "idx": "0",
-   "insert_after": "loan_restructure_limit",
-   "label": "Delinquent Limit % (Overall)",
-   "module": "Financial Operations",
-   "name": "Company-delinquent_limit"
   },
   {
    "dt": "Company",
