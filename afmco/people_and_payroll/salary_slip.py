@@ -35,10 +35,11 @@ class AfmcoSalarySlip:
 		temporary_iban = frappe.db.get_value(
 			"Temporary IBAN",
 			{"employee": self.employee, "docstatus": 1, "active": 1},
-			["name", "iban", "bank_name"],
+			["name", "iban", "bank_name", "iban_holder_name"],
 			as_dict=True,
 		)
 		self.temporary_iban = temporary_iban.name if temporary_iban else None
+		self.iban_holder_name = temporary_iban.iban_holder_name if temporary_iban else None
 		if temporary_iban:
 			self.bank_account_no = temporary_iban.iban
 			self.bank_name = temporary_iban.bank_name

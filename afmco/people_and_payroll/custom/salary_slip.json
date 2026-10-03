@@ -132,7 +132,6 @@
   },
   {
    "dt": "Salary Slip",
-   "fetch_from": "temporary_iban.iban_holder_name",
    "fieldname": "iban_holder_name",
    "fieldtype": "Data",
    "idx": "105",
