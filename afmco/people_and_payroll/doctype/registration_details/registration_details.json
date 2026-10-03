@@ -13,9 +13,7 @@
   "date",
   "expired_date",
   "registration_details_section",
-  "mol_eun",
-  "mol_no",
-  "gosi"
+  "mol_eun"
  ],
  "fields": [
   {
@@ -63,22 +61,10 @@
    "fieldname": "mol_eun",
    "fieldtype": "Data",
    "label": "MOL EUN"
-  },
-  {
-   "fieldname": "mol_no",
-   "fieldtype": "Table",
-   "label": "MOL No",
-   "options": "Labour Office Registration Item"
-  },
-  {
-   "fieldname": "gosi",
-   "fieldtype": "Table",
-   "label": "gosi",
-   "options": "Social Insurance Registration Item"
   }
  ],
  "index_web_pages_for_search": 1,
- "modified": "2024-08-11 01:09:23.781518",
+ "modified": "2026-10-03 12:00:00.000000",
  "module": "People and Payroll",
  "name": "Registration Details",
  "name_case": "Title Case",

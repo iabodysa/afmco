@@ -25,8 +25,6 @@
   "sadad_invoice_number",
   "section_payment_details",
   "payment_details",
-  "employees_awaiting_renewal",
-  "resident_balance",
   "payment_type",
   "payment_request_iqama_list",
   "section_totals",
@@ -161,20 +159,6 @@
    "options": "Iqama Renewal Payment Tracking Item"
   },
   {
-   "depends_on": "eval:doc.witing ",
-   "fieldname": "employees_awaiting_renewal",
-   "fieldtype": "Table",
-   "label": "Employees Awaiting Renewal",
-   "options": "Employee Awaiting Renewal"
-  },
-  {
-   "depends_on": "eval:doc.muqeem_balance ",
-   "fieldname": "resident_balance",
-   "fieldtype": "Table",
-   "label": "Resident Balance",
-   "options": "Resident Balance"
-  },
-  {
    "depends_on": "eval:doc.pr2",
    "fieldname": "payment_type",
    "fieldtype": "Select",
@@ -234,7 +218,7 @@
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "issingle": 1,
- "modified": "2024-08-25 16:13:27.563742",
+ "modified": "2026-10-03 12:00:00.000000",
  "module": "People and Payroll",
  "name": "iQama Renewal Payment Management",
  "owner": "Administrator",

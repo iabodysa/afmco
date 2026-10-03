@@ -18,10 +18,7 @@ ASSIGNED CITY,المدينة المخصصة
 Abha,أبها
 Abs Light,لمبة نظام منع انغلاق الفرامل ABS
 Abs Light Image,صورة لمبة ABS
-Absence deduction,خصم الغياب
-Absence deduction2,خصم الغياب 2
 Absent Day,يوم غياب
-Absents,الغيابات
 Abu Dhabi,أبوظبي
 Acceptable,مقبول
 Acceptance,القبول
@@ -47,7 +44,6 @@ Action Owner,مسؤول الإجراء
 Actual Hours,الساعات الفعلية
 Actual consumption after driver adjustment,الاستهلاك الفعلي بعد تعديل السائق
 Actual steps implemented,الخطوات المنفذة فعليًا
-Actual working days,أيام العمل الفعلية
 Actual/360,فعلي/360
 Actual/365,فعلي/365
 Actual/Actual,فعلي/فعلي
@@ -96,7 +92,6 @@ All created assets passed validation!,اجتازت جميع الأصول الم�
 "All rights reserved © AFMCO Ltd. for Logistics Services, 2024.",جميع الحقوق محفوظة © شركة أفمكو المحدودة للخدمات اللوجستية، 2024.
 Allow Cancel,السماح بالإلغاء
 Allowance for tickets,بدل التذاكر
-Alosaimi timesheet,سجل دوام العصيمي
 Amount Has Been Split As per Total Number of Depreciation.,قُسِّم المبلغ حسب إجمالي عدد أقساط الإهلاك.
 Amount of expense,مبلغ المصروف
 Amount that has been paid against this advance,المبلغ المدفوع مقابل هذه السلفة
@@ -163,14 +158,12 @@ Auto-generated trip title,عنوان الرحلة المُنشأ تلقائيً�
 BASIC 2,الأساسي 2
 BASIC SALARY,الراتب الأساسي
 BASIC WAGE,الأجر الأساسي
-BU1 Cluster,مجموعة BU1
 Back Glass,الزجاج الخلفي
 Back Glass Image,صورة الزجاج الخلفي
 Back to Original Page,العودة إلى الصفحة الأصلية
 Backward Lights,الأضواء الخلفية
 Backward Lights Image,صورة الأضواء الخلفية
 Baladiya Card Expiry Date,تاريخ انتهاء بطاقة البلدية
-Balance After Renewal,الرصيد بعد التجديد
 Balance Amount,مبلغ الرصيد
 Balance Remaining,الرصيد المتبقي
 Bank Entry Created,أُنشئ القيد البنكي
@@ -183,7 +176,6 @@ Bank Reconciliation Statement by Period,كشف التسوية البنكية ح�
 Bank code,رمز البنك
 Banking Information,المعلومات البنكية
 Barcode generated from Iqama ID,باركود مُنشأ من رقم الإقامة
-Barn cafe,مقهى بارن
 Base Salary,الراتب الأساسي
 Basic Details,البيانات الأساسية
 Battery Light,لمبة البطارية
@@ -194,8 +186,6 @@ Beneficiary Information,بيانات المستفيد
 Bengali,البنغالية
 Bill Amount,مبلغ الفاتورة
 Bilingual Tax Invoice,فاتورة ضريبية ثنائية اللغة
-Binzagr GT,بن زقر GT
-Binzagr cluster,مجموعة بن زقر
 Bishah,بيشة
 Black listed,في القائمة السوداء
 Boarding Information,بيانات الصعود
@@ -204,7 +194,6 @@ Border ID,رقم الحدود
 Border ID or Iqama ID,رقم الحدود أو رقم الإقامة
 Border Number,رقم الحدود
 Both Debit and Credit values cannot be zero for depreciation on {0},لا يمكن أن تكون قيمتا المدين والدائن صفرًا للإهلاك في {0}
-Branch name,اسم الفرع
 Break And Hazard Lights,أضواء الفرامل والتحذير
 Break And Hazard Lights Image,صورة أضواء الفرامل والتحذير
 Brief impact summary,ملخص موجز للأثر
@@ -240,7 +229,6 @@ Car Status,حالة السيارة
 Car exhaust smoke,دخان عادم السيارة
 Car exhaust smoke  Image,صورة دخان عادم السيارة
 Card Payment,الدفع بالبطاقة
-Carrefour Bikers,دراجات كارفور
 Case Details,تفاصيل الحالة
 Cash Custody and Petty Expenses Policy,سياسة العهد النقدية والمصروفات النثرية
 Cell Number,رقم الجوال
@@ -293,8 +281,6 @@ Contact Message,رسالة تواصل
 Contact phone number,رقم هاتف التواصل
 Contract Duration (Months),مدة العقد (أشهر)
 Contract Start Date,تاريخ بدء العقد
-Contract basic salary,الراتب الأساسي في العقد
-Contract start date,تاريخ بدء العقد
 Contract status is active and in good standing.,حالة العقد نشطة وسليمة.
 Contractor,المقاول
 Convert,تحويل
@@ -380,44 +366,11 @@ Date of last vacation clearance,تاريخ آخر مخالصة إجازة
 Date of publication,تاريخ النشر
 Date when document was added,تاريخ إضافة المستند
 Dawadmi,الدوادمي
-Day1,اليوم 1
-Day10,اليوم 10
-Day11,اليوم 11
-Day12,اليوم 12
-Day13,اليوم 13
-Day14,اليوم 14
-Day15,اليوم 15
-Day16,اليوم 16
-Day17,اليوم 17
-Day18,اليوم 18
-Day19,اليوم 19
-Day2,اليوم 2
-Day20,اليوم 20
-Day21,اليوم 21
-Day22,اليوم 22
-Day23,اليوم 23
-Day24,اليوم 24
-Day25,اليوم 25
-Day26,اليوم 26
-Day27,اليوم 27
-Day28,اليوم 28
-Day29,اليوم 29
-Day3,اليوم 3
-Day30,اليوم 30
-Day31,اليوم 31
-Day4,اليوم 4
-Day5,اليوم 5
-Day6,اليوم 6
-Day7,اليوم 7
-Day8,اليوم 8
-Day9,اليوم 9
 Days Past Due,أيام التأخر في السداد
 Days Past Due Threshold,حد أيام التأخر في السداد
 Days for which Holidays are blocked for this department.,الأيام المحظورة فيها الإجازات لهذا القسم.
 Deceleration,التباطؤ
 December,ديسمبر
-Decrease pay transactions (Leave),حركات تخفيض الأجر (إجازة)
-Dedaction,الخصم
 Default Account,الحساب الافتراضي
 Default Employee Advance Account,حساب سلف الموظفين الافتراضي
 Default Expense Claim Payable Account,حساب مطالبات المصروفات المستحقة الدفع الافتراضي
@@ -490,11 +443,9 @@ Emergency Contact Number,رقم الطوارئ
 Emergency Contact Relationship,صلة قرابة جهة الطوارئ
 Emergency Exit,مخرج الطوارئ
 Emergency Exits Clear,مخارج الطوارئ غير معترضة
-Emp Name,اسم الموظف
 Employee (Sponsor),الموظف (الكفيل)
 Employee Analysis Report,تقرير تحليل الموظفين
 Employee Analysis Report - {0},تقرير تحليل الموظفين - {0}
-Employee Awaiting Renewal,موظف بانتظار التجديد
 Employee Data Update 2024,تحديث بيانات الموظفين 2024
 Employee Department,قسم الموظف
 Employee Dependent,مرافق الموظف
@@ -534,7 +485,6 @@ Employee {0} does not belongs to the company {1},الموظف {0} لا يتبع 
 Employee {0} excluded due to renewal issue.,استُبعد الموظف {0} بسبب مشكلة في التجديد.
 Employee-wise Journal Entry created for Payroll Entry:,أُنشئ قيد يومي لكل موظف لقيد الرواتب:
 Employees,الموظفون
-Employees Awaiting Renewal,موظفون بانتظار التجديد
 Employees Complaints,شكاوى الموظفين
 Employees Count,عدد الموظفين
 Employees Details,تفاصيل الموظفين
@@ -542,12 +492,10 @@ Employment Active,على رأس العمل
 Employment Contract Overview,نظرة عامة على عقد العمل
 Employment Details,تفاصيل التوظيف
 Employment Inactive,خارج العمل
-Employment type,نوع التوظيف
 Enable Actions Section,تفعيل قسم الإجراءات
 Enable Attachments Section,تفعيل قسم المرفقات
 Enable Financial Section,تفعيل القسم المالي
 End Location,موقع النهاية
-End date,تاريخ الانتهاء
 End of Service (Months),نهاية الخدمة (أشهر)
 Ending Contract (From Qiwa),العقود المنتهية (من قوى)
 English,الإنجليزية
@@ -651,7 +599,6 @@ Fire Extinguisher,طفاية الحريق
 Fire Extinguisher Imgage,صورة طفاية الحريق
 Fire Extinguishers,طفايات الحريق
 Fire Safety,السلامة من الحريق
-First Mile,الميل الأول
 First Response Time for Tickets,وقت الاستجابة الأولى للتذاكر
 Fixed Day off,يوم إجازة ثابت
 Fixed food allowance,بدل طعام ثابت
@@ -666,7 +613,6 @@ Form Information,بيانات النموذج
 Format: 0000XXX (4 digits followed by 3 English letters),الصيغة: 0000XXX (أربعة أرقام تليها ثلاثة أحرف إنجليزية)
 Found,موجود
 Freelancer,عمل حر
-Friday OT H,ساعات العمل الإضافي يوم الجمعة
 From Employee,من الموظف
 From linked transfer request,من طلب النقل المرتبط
 Front Lights,الأضواء الأمامية
@@ -684,7 +630,6 @@ GOSI (Months),التأمينات الاجتماعية (أشهر)
 GPS coordinates or map link,إحداثيات GPS أو رابط الخريطة
 General Administrative Expenses (Months),المصروفات الإدارية العامة (أشهر)
 General administrative expenses,المصروفات الإدارية العامة
-General deduction,خصم عام
 General release details,تفاصيل الإصدار العامة
 Generate 4 Ticket Images,إنشاء 4 صور للتذكرة
 Generate BAT File,إنشاء ملف BAT
@@ -713,7 +658,6 @@ Government Payment {0} does not have account {1} or already matched against othe
 Grade,الدرجة
 Grade must be between 1 and 10.,يجب أن تكون الدرجة بين 1 و10.
 Gross Purchase Amount,إجمالي مبلغ الشراء
-Gross Salary,إجمالي الراتب
 Group Type,نوع المجموعة
 Gweiiyyah,القويعية
 HD Agent,موظف الدعم
@@ -742,7 +686,6 @@ Helpdesk,مكتب المساعدة
 Helpdesk Contact,جهة اتصال مكتب المساعدة
 Helpdesk Reports,تقارير مكتب المساعدة
 Hindi,الهندية
-Hokair Timesheet,سجل دوام الحكير
 Hood,غطاء المحرك
 Hood Image,صورة غطاء المحرك
 Horoob,هروب
@@ -768,7 +711,6 @@ ID Number,رقم الهوية
 ID Number CF,رقم الهوية
 ID at Company,الرقم لدى الشركة
 ID or iQama,الهوية أو الإقامة
-IQAMA NO.,رقم الإقامة
 IRAC Provisioning Configuration,إعدادات مخصصات IRAC
 IT Asset,أصل تقنية المعلومات
 IT Asset Depreciation Schedule,جدول إهلاك أصل تقنية المعلومات
@@ -792,7 +734,6 @@ Incorrect Movement Purpose,غرض الحركة غير صحيح
 Increase Rate (out of 100),نسبة الزيادة (من 100)
 Increase Reason,سبب الزيادة
 Increase Reason(Optional),سبب الزيادة (اختياري)
-Increase pay transactions (Leave),حركات زيادة الأجر (إجازة)
 Individual Profit,الربح الفردي
 Initial Diagnosis,التشخيص الأولي
 Inprocess,قيد المعالجة
@@ -821,7 +762,6 @@ Iqama Expiry Date,تاريخ انتهاء الإقامة
 Iqama Fee,رسوم الإقامة
 Iqama ID,رقم الإقامة
 Iqama Id,رقم الإقامة
-Iqama No,رقم الإقامة
 Iqama Number,رقم الإقامة
 Iqama Renewal Amount,مبلغ تجديد الإقامة
 Iqama Renewal Management,إدارة تجديد الإقامات
@@ -917,7 +857,6 @@ Lug Wrench,مفتاح العجلات
 Lug Wrench Image,صورة مفتاح العجلات
 Maximum draft Journal Entries one user can hold. 0 removes the limit.,أقصى عدد من مسودات القيود لكل مستخدم. القيمة 0 تلغي الحد.
 MOL EUN,الرقم الموحد لوزارة الموارد البشرية
-MOL No,رقم وزارة الموارد البشرية
 Madinah,المدينة المنورة
 Maintenance Issue,مشكلة صيانة
 Maintenance Result,نتيجة الصيانة
@@ -962,9 +901,7 @@ Municipal License,رخصة البلدية
 Muqeem,مقيم
 Muqeem document not found,لم يُعثر على مستند مقيم
 Muqeem info,بيانات مقيم
-Mutairi Binzagr BU6,المطيري بن زقر BU6
 My Location,موقعي
-NATIONALITY,الجنسية
 New AFMCO employees arriving at King Khalid International Airport,موظفو أفمكو الجدد عند وصولهم إلى مطار الملك خالد الدولي
 No account needed.,لا يحتاج حسابًا.
 No attachments,لا توجد مرفقات
@@ -973,7 +910,6 @@ Najran,نجران
 Name of the accommodation unit,اسم وحدة السكن
 Name of the asset being issued or returned,اسم الأصل المسلَّم أو المُعاد
 Name or title of the document,اسم المستند أو عنوانه
-National  Iqama Id,رقم الهوية الوطنية / الإقامة
 National Unified No,الرقم الوطني الموحد
 Nationality,الجنسية
 Net Pay Amount,صافي مبلغ الأجر
@@ -1007,7 +943,6 @@ No differences found between the document and employee data.,لا توجد فر�
 No draft Salary Slips found for this Payroll Entry.,لم يُعثر على قسائم رواتب مسودة لقيد الرواتب هذا.
 No employees found in the employeelist.,لم يُعثر على موظفين في قائمة الموظفين.
 No items are marked as assets. Please check the items and mark them as assets if needed.,لا توجد أصناف معلَّمة كأصول. يرجى مراجعة الأصناف وتعليمها كأصول عند الحاجة.
-No of Days Present,عدد أيام الحضور
 No outstanding cheques or deposits in this period,لا توجد شيكات أو إيداعات معلقة في هذه الفترة
 No passengers added yet,لم يُضف ركاب بعد
 No schedules found to create entries.,لم يُعثر على جداول لإنشاء القيود.
@@ -1018,7 +953,6 @@ No workflow history available,لا يوجد سجل لسير العمل
 No. of Shipments,عدد الشحنات
 No. of children,عدد الأبناء
 Normal Duty Time,وقت الدوام العادي
-Normal OT H,ساعات العمل الإضافي العادية
 Not OK,غير سليم
 Note: {0},ملاحظة: {0}
 Notes(Optional),ملاحظات (اختياري)
@@ -1032,8 +966,6 @@ Number of Employees,عدد الموظفين
 Number of shipments per day,عدد الشحنات يوميًا
 Number of vacation days per year,عدد أيام الإجازة السنوية
 Number to Hire,العدد المطلوب توظيفه
-O.T HOURS,ساعات العمل الإضافي
-OP Bonus,مكافأة التشغيل
 Open in Apex,فتح في Apex
 Open in New Tab,فتح في تبويب جديد
 Open the form,فتح النموذج
@@ -1067,7 +999,6 @@ Operations - Logistics Solutions,العمليات - الحلول اللوجست�
 Operations - Manpower Solutions,العمليات - حلول القوى العاملة
 Other Allowance,بدل آخر
 Other Allw,بدلات أخرى
-Other Allw.,بدلات أخرى
 Other Details,تفاصيل أخرى
 Other ID,هوية أخرى
 Other Issue Image,صورة مشكلة أخرى
@@ -1114,12 +1045,8 @@ Passport Number,رقم جواز السفر
 Passport number,رقم جواز السفر
 Paste Excel Data,لصق بيانات Excel
 "Paste data copied from Excel, the first row must contain headers.",الصق البيانات المنسوخة من Excel، ويجب أن يحتوي الصف الأول على العناوين.
-Pay Roll,الرواتب
-Payment Billed (SADAD),الدفعة المفوترة (سداد)
 Payment Entry Series,سلسلة سندات الدفع
 Payment Management (Trial),إدارة المدفوعات (تجريبي)
-Payment Order Number (Renewal),رقم أمر الدفع (التجديد)
-Payment Order Number (SADAD),رقم أمر الدفع (سداد)
 Payment Order created successfully:,أُنشئ أمر الدفع بنجاح:
 Payment Order is already created.,سبق إنشاء أمر الدفع.
 Payment Order is not required for Company Transport.,لا يلزم أمر دفع لنقل الشركة.
@@ -1128,7 +1055,6 @@ Payment Request Number,رقم طلب الدفع
 Payment Request already created for document {0} for employee {1}.,سبق إنشاء طلب دفع للمستند {0} للموظف {1}.
 Payment Required,يلزم الدفع
 Payment invoice number,رقم فاتورة الدفع
-Payment methods,طرق الدفع
 Payment of MOI - Expatriates,مدفوعات وزارة الداخلية - المقيمون
 Payment of MOI - Expatriates List,قائمة مدفوعات وزارة الداخلية - المقيمون
 Payroll Clearing Account,حساب تسوية الرواتب
@@ -1148,7 +1074,6 @@ Person responsible for resolution,الشخص المسؤول عن المعالج�
 Person who added the document,الشخص الذي أضاف المستند
 Personal Belongings List,قائمة المتعلقات الشخصية
 Personal Information,المعلومات الشخصية
-Personnel number,الرقم الشخصي
 Petrol 91,بنزين 91
 Petty Cash Liquidation,تصفية العهدة النقدية
 Petty Cash Liquidation Item,بند تصفية العهدة النقدية
@@ -1298,7 +1223,6 @@ Renewal Expiration Violation on Employee,مخالفة انتهاء التجدي�
 Renewal Fee Amount,مبلغ رسوم التجديد
 Renewal Fee Amount for Advance Payments,مبلغ رسوم التجديد للدفعات المقدمة
 Renewal Fee Amount for Current Year,مبلغ رسوم التجديد للسنة الحالية
-Renewal Fees Paid,رسوم التجديد المدفوعة
 Renewal Management (Trial),إدارة التجديد (تجريبي)
 Renewal Overdue,التجديد متأخر
 Renewal Preference updated successfully.,تم تحديث تفضيل التجديد بنجاح.
@@ -1481,7 +1405,6 @@ Status updated to:,تم تحديث الحالة إلى:
 "Std work hrs: 8H/day, 6 days/wk. Overtime is 1.5x/hr beyond 8H/day. Enter daily work hrs (max 12H).",ساعات العمل المعتادة: 8 ساعات يوميًا، 6 أيام أسبوعيًا. العمل الإضافي 1.5 ضعف أجر الساعة لما يزيد على 8 ساعات يوميًا. أدخل ساعات العمل اليومية (12 ساعة كحد أقصى).
 Stop Car Date,تاريخ إيقاف السيارة
 Stop Working,توقف عن العمل
-Store,المتجر
 Store Name,اسم المتجر
 Sub Policy Number,رقم الوثيقة الفرعية
 Submit a leave request if you do not have an account in the employee app.,قدّم طلب إجازتك إذا لم يكن لك حساب في تطبيق الموظفين.
@@ -1585,25 +1508,20 @@ Total Months,إجمالي الأشهر
 Total Net Pay,إجمالي صافي الأجر
 Total Net Pay is 0. No Journal Entry created.,إجمالي صافي الأجر صفر. لم يُنشأ قيد يومي.
 Total New Salary,إجمالي الراتب الجديد
-Total No Days,إجمالي عدد الأيام
 Total Number of Depreciation Must Be Greater Than Zero.,يجب أن يكون إجمالي عدد أقساط الإهلاك أكبر من صفر.
-Total OT,إجمالي العمل الإضافي
 Total Passengers,إجمالي الركاب
 Total Profit,إجمالي الربح
 Total Records,إجمالي السجلات
 Total Salary,إجمالي الراتب
 Total Salary (Months),إجمالي الراتب (أشهر)
-Total Vehicles,إجمالي المركبات
 Total and VAT Calculation,حساب الإجمالي وضريبة القيمة المضافة
 Total cost including profit margin,إجمالي التكلفة شامل هامش الربح
 Total cost including profit margin and VAT,إجمالي التكلفة شامل هامش الربح وضريبة القيمة المضافة
 Total daily distance traveled,إجمالي المسافة اليومية المقطوعة
 Total daily fuel cost in SAR,إجمالي تكلفة الوقود اليومية بالريال
 Total expected passengers,إجمالي الركاب المتوقع
-Total leave days,إجمالي أيام الإجازة
 Total liters needed,إجمالي اللترات المطلوبة
 Total monthly cost,إجمالي التكلفة الشهرية
-Total overtime hours,إجمالي ساعات العمل الإضافي
 Total worker cost per month before tax,إجمالي تكلفة العامل الشهرية قبل الضريبة
 Total working Days,إجمالي أيام العمل
 Transfer Reason,سبب النقل
@@ -1681,9 +1599,7 @@ Vehicle Kit,عدة المركبة
 Vehicle Manager,مدير المركبات
 Vehicle Owner,مالك المركبة
 Vehicle Team,فريق المركبات
-Vehicles,المركبات
 Vendor,المورد
-Vendors,الموردون
 Ventilation System Operational,نظام التهوية يعمل
 Ventilation and Air Conditioning,التهوية والتكييف
 Verify By,تحقق بواسطة
@@ -1732,18 +1648,15 @@ Windshield Image,صورة الزجاج الأمامي
 Within renewal window ({0} – {1}). Legal review required.,ضمن مهلة التجديد ({0} – {1}). تلزم مراجعة قانونية.
 Woman,امرأة
 Work Designation,المسمى الوظيفي
-Work Location,موقع العمل
 Work Permit,رخصة العمل
 Work Permit (Annual),رخصة العمل (سنوية)
 Work Permit Fee,رسوم رخصة العمل
 Worker,العامل
 Worker's Contract Duration Cost,تكلفة مدة عقد العامل
 Working Hours Per Day,ساعات العمل اليومية
-Working days,أيام العمل
 Workshop Supervisor Name,اسم مشرف الورشة
 Workshop Supervisor Notes,ملاحظات مشرف الورشة
 Workshop Supervisor Signature,توقيع مشرف الورشة
-Wroking Days,أيام العمل
 Yanbu,ينبع
 Yearly Summary,الملخص السنوي
 Years of Service,سنوات الخدمة
@@ -1751,7 +1664,6 @@ You are updating {0} document(s),أنت تحدّث {0} مستند
 You can not enter current voucher in 'Against Government Payment' column,لا يمكنك إدخال السند الحالي في عمود 'مقابل المدفوعات الحكومية'
 "You cannot uncheck ""Accrual Entry Created"" once it has been set.","لا يمكنك إلغاء تحديد ""Accrual Entry Created"" بعد تعيينه."
 "You cannot uncheck ""Bank Entry Created"" once it has been set.","لا يمكنك إلغاء تحديد ""Bank Entry Created"" بعد تعيينه."
-absent/contracting,غائب/متعاقد
 account,الحساب
 address,العنوان
 age,العمر
@@ -1773,13 +1685,11 @@ discuss,مناقشة
 do they live with you now in ksa,هل يعيشون معك حاليًا في المملكة
 do you have any healh problems,هل تعاني من أي مشكلات صحية
 employees,الموظفون
-end date,تاريخ الانتهاء
 english,الإنجليزية
 facility closed,المنشأة مغلقة
 flexible,مرن
 for hours beyond 8 per day.,للساعات التي تتجاوز 8 ساعات يوميًا.
 generated,مُنشأ
-gosi,التأمينات الاجتماعية
 hindi,الهندية
 hotels,الفنادق
 iQama Expired,إقامة منتهية
@@ -1799,7 +1709,6 @@ mobile,الجوال
 months remaining,الأشهر المتبقية
 multiple,متعدد
 nationality,الجنسية
-no,لا
 other,أخرى
 over-500k,أكثر من 500 ألف
 packaging,التغليف
@@ -1812,7 +1721,6 @@ promo 2,عرض ترويجي 2
 regenerated,أُعيد إنشاؤه
 rejected,مرفوض
 sex,الجنس
-start date,تاريخ البدء
 stop working,توقف عن العمل
 supervisor,المشرف
 the annual fees for exit and re-entry visas.,الرسوم السنوية لتأشيرات الخروج والعودة.
@@ -2110,10 +2018,7 @@ Contract Vacation Allowance,بدل إجازة العقد
 End of Service Settlement,مكافأة نهاية الخدمة
 Location,الموقع
 Timesheet Details,بيانات سجل الدوام
-Payroll Details,بيانات الرواتب
-Attendance Details,بيانات الحضور
 Request Details,بيانات الطلب
-Vehicle Attendance,حضور المركبات
 Basic Information,المعلومات الأساسية
 Age and Service,العمر ومدة الخدمة
 Dependents,المعالون
@@ -2123,7 +2028,6 @@ Urgency,الاستعجال
 Supplier and Purchase Order,المورد وأمر الشراء
 Workflow,سير العمل
 Vehicle,المركبة
-Labour Details,بيانات العمال
 Invoice Details,بيانات الفاتورة
 Payment Details,بيانات الدفع
 Totals,الإجماليات
@@ -2268,8 +2172,6 @@ Sri Lanka,سيريلانكي,Demonym variant
 Saudi Bank,بنك سعودي
 Iqama Renewal Fee Tracking,متابعة رسوم تجديد الإقامة
 Settlement Deduction Item,بند خصم المخالصة
-Labour Office Registration Item,بند تسجيل مكتب العمل
-Social Insurance Registration Item,بند تسجيل التأمينات الاجتماعية
 HR Services,خدمات الموارد البشرية
 Payroll Services,خدمات الرواتب
 Iqama,الإقامة
@@ -2780,33 +2682,6 @@ Important Notice,إشعار هام,End of Service Settlement
 "Based on the End of Service Reason, it appears the employee <strong>does not qualify</strong> for a ticket allowance. Currently, the ticket allowance is set to <strong>{0}</strong>.",وفقًا لسبب نهاية الخدمة، يبدو أن الموظف <strong>لا يستحق</strong> بدل تذكرة. حالياً، تم تعيين بدل التذكرة إلى <strong>{0}</strong>.,End of Service Settlement
 Do you still wish to proceed with allocating the ticket allowance?,هل ترغب في المتابعة ودفع بدل التذكرة على الرغم من ذلك؟,End of Service Settlement
 This action is irreversible once confirmed.,هذا الإجراء لا رجعة فيه بمجرد التأكيد.,End of Service Settlement
-Other,أخرى,Barn cafe
-Leaves,الاجازات,Barn cafe
-Housing Allowance,بدل سكن,Barn cafe
-Food Allowance,بدل طعام,Barn cafe
-Overtime Allowance,بدل عمل اضافي,Barn cafe
-Transportation Allowance,بدل مواصلات,Barn cafe
-Other Allowances,بدلات اخرى,Barn cafe
-Leave Adjustment,تعديل اجازة,Barn cafe
-Salary Adjustment,تعديل الراتب,Barn cafe
-Special Allowances,بدلات خاصه,Barn cafe
-Lateness,التاخير,Barn cafe
-Social Insurance,التامينات الاجتماعية,Barn cafe
-Absence,الغياب,Barn cafe
-Salary Adjustment 1,تعديل الراتب1,Barn cafe
-Penalties,عقوبات,Barn cafe
-Sales Shortage,نقص المبيعات,Barn cafe
-Total Deductions,اجمالي الخصميات,Barn cafe
-Worker Name,اسم العامل,ildress Labours
-Station Name,إسم المحطة,ildress Labours
-Station Number,رقم المحطة,ildress Labours
-Branch,الفرع,ildress Labours
-Work Start Date,تاريخ بداية العمل,ildress Labours
-May Salary From,راتب مايو من,ildress Labours
-May Salary To,راتب  مايو الى,ildress Labours
-Number of Days,عدد الأيام,ildress Labours
-Deduction Days,أيام الخصم,ildress Labours
-Actual Working Days,أيام العمل الفعلية,ildress Labours
 Reason of Urgency,سبب الاستعجال,Payment Requisition
 Cash Payment Voucher,سنـد دفــع نقـــدي,Cash Payment Voucher
 No.,رقــم,Cash Payment Voucher
