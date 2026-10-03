@@ -1,6 +1,6 @@
 {
  "app": "afmco",
- "content": "[{\"id\":\"h6fVPlufwo\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"afmcoLvTdy\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Employees on leave today\",\"col\":4}},{\"id\":\"hCpgkbwkjn\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Your Shortcuts</span>\",\"col\":12}},{\"id\":\"0LwlLpOalA\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PR\",\"col\":4}},{\"id\":\"N80k4NjvdN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"EOS\",\"col\":4}},{\"id\":\"G2V2sqLIdl\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"nZE_MIC2MD\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Workspace</span>\",\"col\":12}},{\"id\":\"IG28Z4jTsv\",\"type\":\"card\",\"data\":{\"card_name\":\"Finance\",\"col\":4}},{\"id\":\"ZJQeDCWoSh\",\"type\":\"card\",\"data\":{\"card_name\":\"iQama Renewal Management\",\"col\":4}},{\"id\":\"bB0nAgrFWX\",\"type\":\"card\",\"data\":{\"card_name\":\"HR\",\"col\":4}},{\"id\":\"Vl_GzwiPcX\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Cancellation Request\",\"col\":4}},{\"id\":\"Wt4EXv6p6G\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><a href=\\\"https://care.afmco.sa/helpdesk\\\">Help Desk</a></span>\",\"col\":12}}]",
+ "content": "[{\"id\":\"h6fVPlufwo\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"afmcoLvTdy\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Employees on leave today\",\"col\":4}},{\"id\":\"hCpgkbwkjn\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Your Shortcuts</span>\",\"col\":12}},{\"id\":\"0LwlLpOalA\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PR\",\"col\":4}},{\"id\":\"N80k4NjvdN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"EOS\",\"col\":4}},{\"id\":\"G2V2sqLIdl\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"nZE_MIC2MD\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Workspace</span>\",\"col\":12}},{\"id\":\"opsCard001\",\"type\":\"card\",\"data\":{\"card_name\":\"Employees\",\"col\":3}},{\"id\":\"opsCard002\",\"type\":\"card\",\"data\":{\"card_name\":\"Payroll\",\"col\":3}},{\"id\":\"opsCard003\",\"type\":\"card\",\"data\":{\"card_name\":\"Iqama\",\"col\":3}},{\"id\":\"opsCard004\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":3}},{\"id\":\"opsCard005\",\"type\":\"card\",\"data\":{\"card_name\":\"Finance\",\"col\":3}},{\"id\":\"Vl_GzwiPcX\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Cancellation Request\",\"col\":4}},{\"id\":\"Wt4EXv6p6G\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><a href=\\\"https://care.afmco.sa/helpdesk\\\">Help Desk</a></span>\",\"col\":12}}]",
  "creation": "2023-11-20 23:22:43.887633",
  "doctype": "Workspace",
  "hide_custom": 1,
@@ -9,26 +9,8 @@
  "label": "Operations",
  "links": [
   {
-   "label": "Salary Slip",
-   "link_to": "Salary Slip",
-   "link_type": "DocType",
-   "type": "Link"
-  },
-  {
-   "label": "Salary Structure Assignment",
-   "link_to": "Salary Structure Assignment",
-   "link_type": "DocType",
-   "type": "Link"
-  },
-  {
-   "label": "Additional Salary",
-   "link_to": "Additional Salary",
-   "link_type": "DocType",
-   "type": "Link"
-  },
-  {
-   "label": "HR",
-   "link_count": 4,
+   "label": "Employees",
+   "link_count": 5,
    "link_type": "DocType",
    "type": "Card Break"
   },
@@ -57,16 +39,82 @@
    "type": "Link"
   },
   {
-   "description": "iQama Renewal Management v2 (Trial Version) streamlines the renewal process for residency permits, handling expiration tracking, issue resolution, and payment processing efficiently.",
-   "label": "iQama Renewal Management",
-   "link_count": 2,
+   "label": "IBAN Update",
+   "link_to": "IBAN Update",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Payroll",
+   "link_count": 5,
    "link_type": "DocType",
    "type": "Card Break"
+  },
+  {
+   "label": "Payroll Entry",
+   "link_to": "Payroll Entry",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Salary Slip",
+   "link_to": "Salary Slip",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Salary Structure Assignment",
+   "link_to": "Salary Structure Assignment",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Additional Salary",
+   "link_to": "Additional Salary",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "WPS Salary File",
+   "link_to": "wps-file",
+   "link_type": "Page",
+   "type": "Link"
+  },
+  {
+   "label": "Iqama",
+   "link_count": 3,
+   "link_type": "DocType",
+   "type": "Card Break"
+  },
+  {
+   "label": "Iqama Renewal Control",
+   "link_to": "iqama-control",
+   "link_type": "Page",
+   "type": "Link"
   },
   {
    "label": "Iqama Renewal Tracking",
    "link_to": "Iqama Renewal Tracking",
    "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Iqama Renewal Management",
+   "link_to": "Iqama Renewal Management",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Reports",
+   "link_count": 2,
+   "link_type": "DocType",
+   "type": "Card Break"
+  },
+  {
+   "is_query_report": 1,
+   "label": "Expense Request Report",
+   "link_to": "Expense Request",
+   "link_type": "Report",
    "type": "Link"
   },
   {
@@ -95,14 +143,13 @@
    "type": "Link"
   },
   {
-   "is_query_report": 1,
-   "label": "Expense Request Report",
-   "link_to": "Expense Request",
-   "link_type": "Report",
+   "label": "Cancellation Request",
+   "link_to": "Cancellation Request",
+   "link_type": "DocType",
    "type": "Link"
   }
  ],
- "modified": "2026-09-30 00:30:00.000000",
+ "modified": "2026-10-03 20:00:00.000000",
  "module": "People and Payroll",
  "name": "Operations",
  "number_cards": [
