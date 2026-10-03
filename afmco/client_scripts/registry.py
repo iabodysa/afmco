@@ -42,9 +42,6 @@ DOCTYPE_JS = {
 	'Leave Application': [
 		'public/js/client_scripts/form/afmco--leave_application.js',
 	],
-	'Liquidation Petty Cash': [
-		'public/js/client_scripts/form/afmco--liquidation_petty_cash_form.js',
-	],
 	'Loan': [
 		'public/js/client_scripts/form/afmco--loan.js',
 	],

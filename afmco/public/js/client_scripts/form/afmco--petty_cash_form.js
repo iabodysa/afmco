@@ -1,5 +1,18 @@
+const RETIRED_CATEGORIES = [
+    'Cash payments for employees without bank accounts.',
+    'Living expenses for new employees.',
+    'Minor expenses.',
+    'Emergency reserve.',
+];
+
 frappe.ui.form.on('Petty Cash', {
     refresh: function(frm) {
+        const options = frappe.meta.get_docfield('Petty Cash', 'category').options.split('\n');
+        frm.set_df_property(
+            'category',
+            'options',
+            options.filter((option) => !RETIRED_CATEGORIES.includes(option) || option === frm.doc.category)
+        );
           if (frm.doc.workflow_state === 'Document Upload') {
             frm.add_custom_button(
                 frappe._('Create PR'),
