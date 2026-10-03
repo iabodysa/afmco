@@ -146,6 +146,7 @@ Assignment Type,نوع التخصيص
 Associated project reference,مرجع المشروع المرتبط
 "At-least one of priority, team and ticket type is required",يجب تحديد واحد على الأقل من الأولوية أو الفريق أو نوع التذكرة
 Attach Bill,إرفاق الفاتورة
+Attach the signed declaration before moving the request out of Pending.,أرفق الإقرار الموقّع قبل نقل الطلب من حالة قيد الانتظار.
 Attached Reports,التقارير المرفقة
 Attached Reports Detels,تفاصيل التقارير المرفقة
 Attachments View,عرض المرفقات

@@ -155,7 +155,8 @@
    "description": "Save, print with the Petty Cash Format, sign, then attach the signed form here.",
    "fieldname": "attach_the_declaration",
    "fieldtype": "Attach",
-   "label": "Attach the Declaration"
+   "label": "Attach the Declaration",
+   "mandatory_depends_on": "eval:!doc.__islocal"
   },
   {
    "depends_on": "eval:doc.petty_cash_amount",
@@ -213,7 +214,7 @@
    "link_fieldname": "tax_invoice_number"
   }
  ],
- "modified": "2026-10-03 12:00:00.000000",
+ "modified": "2026-10-03 18:00:00.000000",
  "module": "Financial Operations",
  "name": "Petty Cash",
  "naming_rule": "By \"Naming Series\" field",
