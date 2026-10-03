@@ -90,7 +90,7 @@ function handlePrimaryAction(values, filters, dialog) {
 function fetchSalaryData(filters, values, dialog) {
     let all_data = [];
     const fields = [
-        "payroll_entry", "labor_office_file_number", "employee", "employee_name", "bank_name", "bank_account_no",
+        "payroll_entry", "labor_office_file_number", "employee", "employee_name", "bank_name", "bank_account_no", "iban_holder_name",
         "basic33", "housing33", "other_allowance33", "deduction33", "net_pay", "remark"
     ];
 
@@ -228,7 +228,7 @@ function generateFile(rows, file_name, file_type, bank_format) {
                 row.bank_account_no || '',
                 row.net_pay || '',
                 row.remark || '',
-                row.employee_name || '',
+                row.iban_holder_name || row.employee_name || '',
                 row.employee || '',
                 "RUH",
                 row.basic33 || '',
@@ -242,7 +242,7 @@ function generateFile(rows, file_name, file_type, bank_format) {
     } else {
         data = [sibcHeaders];
         rows.forEach(row => {
-            let employee_name = splitEmployeeName(row.employee_name);
+            let employee_name = splitEmployeeName(row.iban_holder_name || row.employee_name);
             let rowData = [
                 row.employee,
                 employee_name.first_name,
@@ -292,7 +292,7 @@ function generateCmdScript(files, outputFolderName, dialog) {
                 row.bank_account_no || '',
                 row.net_pay || '',
                 row.remark || '',
-                row.employee_name || '',
+                row.iban_holder_name || row.employee_name || '',
                 row.employee || '',
                 "RUH",
                 row.basic33 || '',
@@ -315,7 +315,7 @@ function generateCmdScript(files, outputFolderName, dialog) {
 function fetchSalaryDataForCmd(filters, values, dialog) {
     let all_data = [];
     const fields = [
-        "payroll_entry", "labor_office_file_number", "employee", "employee_name", "bank_name", "bank_account_no",
+        "payroll_entry", "labor_office_file_number", "employee", "employee_name", "bank_name", "bank_account_no", "iban_holder_name",
         "basic33", "housing33", "other_allowance33", "deduction33", "net_pay", "remark"
     ];
 

@@ -40,6 +40,12 @@
    "width": 0
   },
   {
+   "fieldname": "iban_holder_name",
+   "fieldtype": "Data",
+   "label": "IBAN Holder Name",
+   "width": 0
+  },
+  {
    "fieldname": "basic33",
    "fieldtype": "Currency",
    "label": "Basic",
@@ -88,7 +94,7 @@
  "name": "WPS",
  "owner": "Administrator",
  "prepared_report": 0,
- "query": "SELECT\n    payroll_entry,\n    labor_office_file_number,\n    employee,\n    employee_name,\n    bank_name,\n    bank_account_no,\n    basic33,\n    housing33,\n    other_allowance33,\n    deduction33,\n    net_pay,\n    remark\nFROM\n    `tabSalary Slip`\nWHERE\n    payroll_entry = %(payroll_entry)s",
+ "query": "SELECT\n    payroll_entry,\n    labor_office_file_number,\n    employee,\n    employee_name,\n    bank_name,\n    bank_account_no,\n    iban_holder_name,\n    basic33,\n    housing33,\n    other_allowance33,\n    deduction33,\n    net_pay,\n    remark\nFROM\n    `tabSalary Slip`\nWHERE\n    payroll_entry = %(payroll_entry)s",
  "ref_doctype": "Salary Slip",
  "report_name": "WPS",
  "report_type": "Query Report",

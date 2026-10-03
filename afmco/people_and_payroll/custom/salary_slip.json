@@ -131,6 +131,19 @@
    "permlevel": "1"
   },
   {
+   "dt": "Salary Slip",
+   "fetch_from": "temporary_iban.iban_holder_name",
+   "fieldname": "iban_holder_name",
+   "fieldtype": "Data",
+   "idx": "105",
+   "insert_after": "temporary_iban",
+   "label": "IBAN Holder Name",
+   "module": "People and Payroll",
+   "name": "Salary Slip-iban_holder_name",
+   "permlevel": "1",
+   "read_only": "1"
+  },
+  {
    "allow_on_submit": "1",
    "dt": "Salary Slip",
    "fetch_from": "employee.labor_office_file_number",
@@ -167,6 +180,19 @@
    "name": "Salary Slip-remark",
    "permlevel": "1",
    "translatable": "1"
+  },
+  {
+   "dt": "Salary Slip",
+   "fieldname": "temporary_iban",
+   "fieldtype": "Link",
+   "idx": "104",
+   "insert_after": "bank_account_no",
+   "label": "Temporary IBAN",
+   "module": "People and Payroll",
+   "name": "Salary Slip-temporary_iban",
+   "options": "Temporary IBAN",
+   "permlevel": "1",
+   "read_only": "1"
   }
  ],
  "doctype": "Salary Slip",

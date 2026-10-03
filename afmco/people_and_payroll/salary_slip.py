@@ -29,3 +29,26 @@ class AfmcoSalarySlip:
 				"account",
 				cache=True,
 			)
+
+	def pull_emp_details(self):
+		super().pull_emp_details()
+		temporary_iban = frappe.db.get_value(
+			"Temporary IBAN",
+			{"employee": self.employee, "docstatus": 1, "active": 1},
+			["name", "iban", "bank_name"],
+			as_dict=True,
+		)
+		self.temporary_iban = temporary_iban.name if temporary_iban else None
+		if temporary_iban:
+			self.bank_account_no = temporary_iban.iban
+			self.bank_name = temporary_iban.bank_name
+
+	def on_submit(self):
+		super().on_submit()
+		if not (self.temporary_iban and self.payroll_entry):
+			return
+		temporary_iban = frappe.get_doc("Temporary IBAN", self.temporary_iban)
+		if self.payroll_entry in {row.payroll_entry for row in temporary_iban.wps_used}:
+			return
+		temporary_iban.append("wps_used", {"payroll_entry": self.payroll_entry})
+		temporary_iban.save()
