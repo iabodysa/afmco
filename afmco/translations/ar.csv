@@ -3186,3 +3186,6 @@ Workflow Action,إجراء سير العمل
 jane@example.com,name@afmco.sa
 Years,سنوات
 Restricts this user to the Payment Requisitions addressed to this approver,يقصر هذا المستخدم على أوامر الدفع الموجهة إلى هذا المعتمد
+"Salary Slip Custom (Excel)",قسائم الرواتب المخصصة (Excel)
+Please check at least one row to export.,يرجى تحديد صف واحد على الأقل للتصدير.
+"Generating Excel export for {0} records...",جارٍ إنشاء ملف Excel لعدد {0} من السجلات...

@@ -3,6 +3,9 @@
 
 frappe.ui.form.on('Payment Requisition', {
 	setup: function (frm) {
+		frm.set_query('payment_approver', () => ({
+			query: 'afmco.financial_operations.api.payment_approver.active_approvers',
+		}))
 		if (frm.doc.created_by == undefined) {
 			frm.set_value('created_by', frappe.session.user)
 		}
