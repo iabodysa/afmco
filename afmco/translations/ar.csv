@@ -3064,3 +3064,11 @@ Export All Requisitions to Excel,تصدير كل الأوامر إلى Excel
 {0} w,{0} أسبوع
 {0} M,{0} شهر
 {0} y,{0} سنة
+Monthly Petty Cash Issued Amount,مبالغ العهد النقدية المصروفة شهريًا
+Monthly SADAD Batch Amount,مبالغ دفعات سداد الشهرية
+Petty Cash Awaiting Liquidation,العهد النقدية بانتظار التصفية
+Petty Cash Pending Approval,العهد النقدية بانتظار الاعتماد
+Open SADAD Batches Amount,مبالغ دفعات سداد المفتوحة
+Payment Requisitions Rejected This Month,أوامر الدفع المرفوضة هذا الشهر
+Monthly Payment Requisition Count,عدد أوامر الدفع الشهرية
+Monthly EOS Payment Requisitions Count,عدد أوامر دفع مكافأة نهاية الخدمة الشهرية

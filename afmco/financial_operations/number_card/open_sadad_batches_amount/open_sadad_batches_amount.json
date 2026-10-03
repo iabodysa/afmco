@@ -1,6 +1,6 @@
 {
  "aggregate_function_based_on": "total_amount",
- "color": "#29CD42",
+ "color": "#ECAD4B",
  "creation": "2026-10-03 12:00:00.000000",
  "doctype": "Number Card",
  "document_type": "SADAD Batch",
@@ -9,7 +9,7 @@
  "function": "Sum",
  "is_standard": 1,
  "label": "Open SADAD Batches Amount",
- "modified": "2026-10-03 12:00:00.000000",
+ "modified": "2026-10-03 18:00:00.000000",
  "module": "Financial Operations",
  "name": "Open SADAD Batches Amount",
  "owner": "Administrator",
