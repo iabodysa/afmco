@@ -165,6 +165,7 @@ Backward Lights,الأضواء الخلفية
 Backward Lights Image,صورة الأضواء الخلفية
 Baladiya Card Expiry Date,تاريخ انتهاء بطاقة البلدية
 Balance Amount,مبلغ الرصيد
+Bank Account No.,رقم الحساب البنكي
 Bank Entry Created,أُنشئ القيد البنكي
 Bank Entry Settings,إعدادات القيد البنكي
 Bank Entry has already been created for this Payroll Entry.,سبق إنشاء القيد البنكي لقيد الرواتب هذا.
@@ -509,6 +510,7 @@ Error displaying Bank Entry settings:,خطأ في عرض إعدادات القي
 Error during pre-check validation: {0},خطأ أثناء التحقق المسبق: {0}
 Error fetching Salary Slips: {0},خطأ في جلب قسائم الرواتب: {0}
 Error fetching data,خطأ في جلب البيانات
+Error fetching data: ,خطأ في جلب البيانات: 
 Error fetching data:,خطأ في جلب البيانات:
 Error in get_query:,خطأ في get_query:
 Error loading financial data,خطأ في تحميل البيانات المالية

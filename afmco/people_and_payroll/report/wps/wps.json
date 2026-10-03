@@ -1,0 +1,103 @@
+{
+ "add_total_row": 1,
+ "columns": [
+  {
+   "fieldname": "payroll_entry",
+   "fieldtype": "Link",
+   "label": "Payroll Entry",
+   "options": "Payroll Entry",
+   "width": 0
+  },
+  {
+   "fieldname": "labor_office_file_number",
+   "fieldtype": "Data",
+   "label": "Labor Office File Number",
+   "width": 0
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee",
+   "width": 0
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "width": 0
+  },
+  {
+   "fieldname": "bank_name",
+   "fieldtype": "Data",
+   "label": "Bank Name",
+   "width": 0
+  },
+  {
+   "fieldname": "bank_account_no",
+   "fieldtype": "Data",
+   "label": "Bank Account No.",
+   "width": 0
+  },
+  {
+   "fieldname": "basic33",
+   "fieldtype": "Currency",
+   "label": "Basic",
+   "width": 0
+  },
+  {
+   "fieldname": "housing33",
+   "fieldtype": "Currency",
+   "label": "Housing",
+   "width": 0
+  },
+  {
+   "fieldname": "other_allowance33",
+   "fieldtype": "Currency",
+   "label": "Other Allowance",
+   "width": 0
+  },
+  {
+   "fieldname": "deduction33",
+   "fieldtype": "Currency",
+   "label": "Deduction",
+   "width": 0
+  },
+  {
+   "fieldname": "net_pay",
+   "fieldtype": "Currency",
+   "label": "Net Pay",
+   "width": 0
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Data",
+   "label": "Remark",
+   "width": 0
+  }
+ ],
+ "creation": "2024-07-09 18:33:50.504081",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "is_standard": "Yes",
+ "letter_head": "ترويسة الطباعة بالشعار الجديد",
+ "modified": "2026-10-03 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "People and Payroll",
+ "name": "WPS",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n    payroll_entry,\n    labor_office_file_number,\n    employee,\n    employee_name,\n    bank_name,\n    bank_account_no,\n    basic33,\n    housing33,\n    other_allowance33,\n    deduction33,\n    net_pay,\n    remark\nFROM\n    `tabSalary Slip`\nWHERE\n    payroll_entry = %(payroll_entry)s",
+ "ref_doctype": "Salary Slip",
+ "report_name": "WPS",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Payroll User"
+  },
+  {
+   "role": "HR Manager"
+  }
+ ]
+}
