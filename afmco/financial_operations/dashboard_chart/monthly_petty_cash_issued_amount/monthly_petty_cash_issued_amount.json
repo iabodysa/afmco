@@ -1,17 +1,18 @@
 {
  "based_on": "creation",
- "chart_name": "Monthly Paid Expense Request Amount",
+ "chart_name": "Monthly Petty Cash Issued Amount",
  "chart_type": "Sum",
- "color": "#449CF0",
- "creation": "2024-06-15 05:38:08.038631",
+ "color": "#7575FF",
+ "creation": "2026-10-03 12:00:00.000000",
  "doctype": "Dashboard Chart",
- "document_type": "Payment Requisition",
- "filters_json": "[[\"Payment Requisition\",\"workflow_state\",\"=\",\"Paid\",false]]",
+ "document_type": "Petty Cash",
+ "filters_json": "[[\"Petty Cash\",\"workflow_state\",\"in\",[\"Document Upload\",\"Waiting for liquidation\",\"Paid\"],false]]",
  "group_by_type": "Count",
  "is_standard": 1,
  "modified": "2026-10-03 12:00:00.000000",
  "module": "Financial Operations",
- "name": "Monthly Paid Expense Request Amount",
+ "name": "Monthly Petty Cash Issued Amount",
+ "owner": "Administrator",
  "roles": [
   {
    "role": "Accounts Manager"
@@ -27,5 +28,5 @@
  "timeseries": 1,
  "timespan": "Last Year",
  "type": "Bar",
- "value_based_on": "amount"
+ "value_based_on": "petty_cash_amount"
 }

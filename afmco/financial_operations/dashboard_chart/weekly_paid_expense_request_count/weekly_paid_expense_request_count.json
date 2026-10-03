@@ -9,9 +9,20 @@
  "filters_json": "[[\"Payment Requisition\",\"workflow_state\",\"=\",\"Paid\",false]]",
  "group_by_type": "Count",
  "is_standard": 1,
- "modified": "2026-09-25 23:45:00.000000",
+ "modified": "2026-10-03 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Weekly Paid Expense Request Count",
+ "roles": [
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "General Manager"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
  "time_interval": "Weekly",
  "timeseries": 1,
  "timespan": "Last Year",
