@@ -9,7 +9,7 @@ from afmco.desk_host import DESK_HOST
 
 no_cache = 1
 
-SUPPORT_URL = "https://care.afmco.sa/complaints"
+SUPPORT_URL = "https://care.afmco.sa/"
 APP_URL = f"https://{DESK_HOST}"
 PAGE_LANGUAGES = ("en", "ar")
 LANGUAGE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365
