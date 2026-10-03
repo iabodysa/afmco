@@ -51,4 +51,4 @@ class AfmcoSalarySlip:
 		if self.payroll_entry in {row.payroll_entry for row in temporary_iban.wps_used}:
 			return
 		temporary_iban.append("wps_used", {"payroll_entry": self.payroll_entry})
-		temporary_iban.save()
+		temporary_iban.save(ignore_permissions=True)
