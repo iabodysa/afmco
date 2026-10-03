@@ -166,6 +166,7 @@ Backward Lights,الأضواء الخلفية
 Backward Lights Image,صورة الأضواء الخلفية
 Baladiya Card Expiry Date,تاريخ انتهاء بطاقة البلدية
 Balance Amount,مبلغ الرصيد
+Bank Account No.,رقم الحساب البنكي
 Bank Entry Created,أُنشئ القيد البنكي
 Bank Entry Settings,إعدادات القيد البنكي
 Bank Entry has already been created for this Payroll Entry.,سبق إنشاء القيد البنكي لقيد الرواتب هذا.
@@ -480,6 +481,7 @@ Employee list table section,قسم جدول قائمة الموظفين
 Employee status is {0}. Contract handling not required.,حالة الموظف {0}. لا يلزم إجراء على العقد.
 Employee status updated successfully,تم تحديث حالة الموظف بنجاح
 Employee updated successfully.,تم تحديث الموظف بنجاح.
+Employee {0} already has active Temporary IBAN {1},الموظف {0} لديه آيبان مؤقت نشط {1}
 Employee {0} does not belongs to the company {1},الموظف {0} لا يتبع الشركة {1}
 Employee {0} excluded due to renewal issue.,استُبعد الموظف {0} بسبب مشكلة في التجديد.
 Employee-wise Journal Entry created for Payroll Entry:,أُنشئ قيد يومي لكل موظف لقيد الرواتب:
@@ -510,6 +512,7 @@ Error displaying Bank Entry settings:,خطأ في عرض إعدادات القي
 Error during pre-check validation: {0},خطأ أثناء التحقق المسبق: {0}
 Error fetching Salary Slips: {0},خطأ في جلب قسائم الرواتب: {0}
 Error fetching data,خطأ في جلب البيانات
+Error fetching data: ,خطأ في جلب البيانات: 
 Error fetching data:,خطأ في جلب البيانات:
 Error in get_query:,خطأ في get_query:
 Error loading financial data,خطأ في تحميل البيانات المالية
@@ -700,6 +703,7 @@ I have read and agree to the Terms and Conditions and Privacy Policy,قرأت ا
 I understand and will comply with the Financial Policy .,أفهم السياسة المالية وسألتزم بها.
 IBAN Certificate,شهادة الآيبان
 IBAN Details,تفاصيل الآيبان
+IBAN Holder Name,اسم صاحب الآيبان
 IBAN Mismatch,عدم تطابق الآيبان
 IBAN Must be 24 Digits and Start with SA,يجب أن يتكون الآيبان من 24 خانة ويبدأ بـ SA
 IBAN Update,تحديث الآيبان
@@ -1432,7 +1436,10 @@ Supporting files and documents,الملفات والمستندات الداعم�
 Suspended,موقوف
 System Management Tools,أدوات إدارة النظام
 System User,مستخدم النظام
+Temporary IBAN WPS Run,مسير حماية الأجور للآيبان المؤقت
+Temporary IBAN,آيبان مؤقت
 This request moved to Apex as a Transport Request. New requests are created in Apex.,انتقل هذا الطلب إلى Apex باسم Transport Request. الطلبات الجديدة تُنشأ في Apex.
+WPS Used,مسيرات حماية الأجور المستخدمة
 to the AFMCO family,في أسرة أفمكو
 TOTAL OT,إجمالي العمل الإضافي
 TRANSFERED TO ANOTHER COMPANY,منقول إلى شركة أخرى
