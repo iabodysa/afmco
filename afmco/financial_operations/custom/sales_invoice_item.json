@@ -6,24 +6,11 @@
    "fieldname": "day_hour",
    "fieldtype": "Data",
    "idx": "8",
-   "insert_after": "delivery_date",
+   "insert_after": "item_name",
    "is_system_generated": "1",
    "label": "Quantity",
    "module": "Financial Operations",
    "name": "Sales Invoice Item-day_hour",
-   "translatable": "1"
-  },
-  {
-   "dt": "Sales Invoice Item",
-   "fieldname": "delivery_date",
-   "fieldtype": "Date",
-   "idx": "7",
-   "insert_after": "item_name",
-   "is_system_generated": "1",
-   "label": "Delivery Date",
-   "module": "Financial Operations",
-   "name": "Sales Invoice Item-delivery_date",
-   "print_hide": "1",
    "translatable": "1"
   },
   {
