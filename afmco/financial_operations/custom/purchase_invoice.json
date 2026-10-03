@@ -70,26 +70,6 @@
   {
    "doc_type": "Purchase Invoice",
    "doctype_or_field": "DocField",
-   "field_name": "additional_discount_account",
-   "module": "Financial Operations",
-   "name": "Purchase Invoice-additional_discount_account-hidden",
-   "property": "hidden",
-   "property_type": "Check",
-   "value": "1"
-  },
-  {
-   "doc_type": "Purchase Invoice",
-   "doctype_or_field": "DocField",
-   "field_name": "additional_discount_account",
-   "module": "Financial Operations",
-   "name": "Purchase Invoice-additional_discount_account-mandatory_depends_on",
-   "property": "mandatory_depends_on",
-   "property_type": "Code",
-   "value": ""
-  },
-  {
-   "doc_type": "Purchase Invoice",
-   "doctype_or_field": "DocField",
    "field_name": "base_rounded_total",
    "module": "Financial Operations",
    "name": "Purchase Invoice-base_rounded_total-hidden",
