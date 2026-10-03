@@ -93,7 +93,7 @@ class LaborOperationalCostsQuotationCalculator(Document):
 
 		total_cost = total_cost_per_worker * (self.number_to_hire or 1)
 
-		total_cost_excluding_salary_vat_profit = (
+		cost_excl_salary_vat = (
 			annual_air_ticket + leave_salary + end_of_service + medical_insurance + exit_and_reentry_visa_fees +
 			visa_cost + medical_exam_fee + iqama_cost + work_permit +
 			sponsorship_transfer_fees + gosi + agency_fees + ajeer_fees +
@@ -119,7 +119,7 @@ class LaborOperationalCostsQuotationCalculator(Document):
 
 		self.overtime_cost = overtime_cost
 
-		self.total_cost_excluding_salary_vat_profit = total_cost_excluding_salary_vat_profit
+		self.cost_excl_salary_vat = cost_excl_salary_vat
 
 		self.individual_profit = individual_profit
 
@@ -129,4 +129,4 @@ class LaborOperationalCostsQuotationCalculator(Document):
 
 		self.workers_contract_duration_cost = self.total_monthly_billing * self.contract_duration or 0
 
-		self.total_cost_with_vat_contract_duration = self.total_cost_with_profit_and_vat * self.contract_duration or 0
+		self.cost_with_vat_duration = self.total_cost_with_profit_and_vat * self.contract_duration or 0

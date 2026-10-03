@@ -32,23 +32,23 @@ class IqamaRenewalFeeTracking(Document):
 			current_year_end_date = frappe.utils.get_last_day(frappe.utils.get_first_day(iqama_expiration_date).replace(month=12))
 
 			if renewal_end_date <= current_year_end_date:
-				self.sadad_invoice_amount_for_current_year = sadad_invoice_amount
-				self.sadad_invoice_amount_for_advance_payments = 0
-				self.renewal_fee_amount_for_current_year = renewal_fee_amount
-				self.renewal_fee_amount_for_advance_payments = 0
+				self.sadad_amount_this_year = sadad_invoice_amount
+				self.sadad_advance_amount = 0
+				self.renewal_fee_this_year = renewal_fee_amount
+				self.renewal_advance_fee = 0
 			else:
 				days_in_current_year = (current_year_end_date - next_renewal_start_date).days + 1
 				total_days = (renewal_end_date - next_renewal_start_date).days + 1
-				self.sadad_invoice_amount_for_current_year = (sadad_invoice_amount * days_in_current_year) / total_days
-				self.sadad_invoice_amount_for_advance_payments = sadad_invoice_amount - self.sadad_invoice_amount_for_current_year
-				self.renewal_fee_amount_for_current_year = (renewal_fee_amount * days_in_current_year) / total_days
-				self.renewal_fee_amount_for_advance_payments = renewal_fee_amount - self.renewal_fee_amount_for_current_year
+				self.sadad_amount_this_year = (sadad_invoice_amount * days_in_current_year) / total_days
+				self.sadad_advance_amount = sadad_invoice_amount - self.sadad_amount_this_year
+				self.renewal_fee_this_year = (renewal_fee_amount * days_in_current_year) / total_days
+				self.renewal_advance_fee = renewal_fee_amount - self.renewal_fee_this_year
 
 			self.total_amount = (
-				self.sadad_invoice_amount_for_current_year +
-				self.sadad_invoice_amount_for_advance_payments +
-				self.renewal_fee_amount_for_current_year +
-				self.renewal_fee_amount_for_advance_payments
+				self.sadad_amount_this_year +
+				self.sadad_advance_amount +
+				self.renewal_fee_this_year +
+				self.renewal_advance_fee
 			)
 
 			if any([
@@ -62,11 +62,11 @@ class IqamaRenewalFeeTracking(Document):
 
 		elif self.get('renewal_preference') == "NO":
 			self.sadad_invoice_amount = 0
-			self.sadad_invoice_amount_for_current_year = 0
-			self.sadad_invoice_amount_for_advance_payments = 0
+			self.sadad_amount_this_year = 0
+			self.sadad_advance_amount = 0
 			self.renewal_fee_amount = 0
-			self.renewal_fee_amount_for_current_year = 0
-			self.renewal_fee_amount_for_advance_payments = 0
+			self.renewal_fee_this_year = 0
+			self.renewal_advance_fee = 0
 			self.total_amount = 0
 
 

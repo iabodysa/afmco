@@ -80,14 +80,14 @@ frappe.ui.form.on('Iqama Renewal Tracking', {
         }
     },
 
-    exempt_from_financial_compensation: function(frm) {
+    exempt_compensation: function(frm) {
         try {
-            if (frm.doc.exempt_from_financial_compensation) {
+            if (frm.doc.exempt_compensation) {
                 frm.set_value('renewal_duration', '1 year');
             }
             calculateFees(frm);
         } catch (error) {
-            logError(error, 'exempt_from_financial_compensation');
+            logError(error, 'exempt_compensation');
         }
     },
 
@@ -416,7 +416,7 @@ function calculateFees(frm) {
     let workPermitFee = 0;
     let months = getMonthsFromDuration(frm.doc.renewal_duration);
 
-    if (frm.doc.exempt_from_financial_compensation) {
+    if (frm.doc.exempt_compensation) {
         if (months !== 12) {
             showNotification('Duration must be 1 year for exempted cases.');
             frm.set_value('renewal_duration', '1 year');

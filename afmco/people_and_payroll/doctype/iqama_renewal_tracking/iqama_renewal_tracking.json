@@ -38,7 +38,7 @@
   "contract_date",
   "refundable_balance",
   "iqama_renewal_issue",
-  "exempt_from_financial_compensation",
+  "exempt_compensation",
   "column_break_2cypm",
   "muqeem_balance",
   "muqeem_balance_after_renewal",
@@ -257,7 +257,7 @@
   },
   {
    "default": "0",
-   "fieldname": "exempt_from_financial_compensation",
+   "fieldname": "exempt_compensation",
    "fieldtype": "Check",
    "label": "Exempt from Financial Compensation"
   },

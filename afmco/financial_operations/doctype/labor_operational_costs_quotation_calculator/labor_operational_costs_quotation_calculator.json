@@ -92,14 +92,14 @@
   "discount",
   "total_profit",
   "profit_and_vat_section",
-  "total_cost_excluding_salary_vat_profit",
+  "cost_excl_salary_vat",
   "total_monthly_billing",
   "workers_contract_duration_cost",
   "column_break_totals_with_vat",
   "total_cost_with_profit",
   "vat",
   "total_cost_with_profit_and_vat",
-  "total_cost_with_vat_contract_duration",
+  "cost_with_vat_duration",
   "naming_series"
  ],
  "fields": [
@@ -656,7 +656,7 @@
    "read_only": 1
   },
   {
-   "fieldname": "total_cost_excluding_salary_vat_profit",
+   "fieldname": "cost_excl_salary_vat",
    "fieldtype": "Currency",
    "label": "Total Cost excluding Salary, VAT, and Profit",
    "options": "Currency",
@@ -710,7 +710,7 @@
    "read_only": 1
   },
   {
-   "fieldname": "total_cost_with_vat_contract_duration",
+   "fieldname": "cost_with_vat_duration",
    "fieldtype": "Currency",
    "label": "Total Cost with VAT (Contract Duration)",
    "options": "Currency",

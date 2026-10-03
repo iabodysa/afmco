@@ -9,7 +9,7 @@ from frappe.utils import flt, get_link_to_form
 class AfmcoSalesInvoice:
 	def on_submit(self):
 		super().on_submit()
-		if frappe.db.get_value("Company", self.company, "enable_jv_creation_on_sales_invoice_submit_cf") != 1:
+		if frappe.db.get_value("Company", self.company, "create_jv_on_si_submit") != 1:
 			return
 		default_jv_debit_account_cf = frappe.db.get_value("Company", self.company, "default_jv_debit_account_cf")
 		default_jv_credit_account_cf = frappe.db.get_value("Company", self.company, "default_jv_credit_account_cf")

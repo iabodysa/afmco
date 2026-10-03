@@ -12,7 +12,7 @@ from afmco.people_and_payroll.doctype.action_inbox_settings.action_inbox_setting
 @frappe.whitelist()
 def get_pending_actions() -> dict:
 	result = _pending(
-		get_int("action_inbox_workflow_action_limit"),
+		get_int("workflow_action_limit"),
 		get_int("action_inbox_todo_limit"),
 	)
 	_attach_transitions(result["workflow_actions"])

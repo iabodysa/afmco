@@ -25,7 +25,7 @@
   "advance_account",
   "mode_of_payment",
   "column_break_salary_repayment",
-  "repay_unclaimed_amount_from_salary",
+  "unclaimed_salary_repay",
   "more_info_section",
   "status",
   "column_break_amended_from",
@@ -156,7 +156,7 @@
   },
   {
    "default": "0",
-   "fieldname": "repay_unclaimed_amount_from_salary",
+   "fieldname": "unclaimed_salary_repay",
    "fieldtype": "Check",
    "hidden": 1,
    "label": "Repay Unclaimed Amount from Salary"
