@@ -1,4 +1,6 @@
 frappe.listview_settings['Payment Requisition'] = {
+    add_fields: ["if_it__urgent"],
+
     onload: function(listview) {
         // Add button using official Frappe Page API
         let btn = listview.page.add_inner_button(__('Show Archive'), function() {

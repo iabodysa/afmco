@@ -163,7 +163,7 @@
    "default": "0",
    "fieldname": "verify_payment",
    "fieldtype": "Check",
-   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Already paid"
   },
   {
@@ -171,7 +171,6 @@
    "default": "0",
    "fieldname": "if_it__urgent",
    "fieldtype": "Check",
-   "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Urgent"
   },
@@ -349,7 +348,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-02 12:00:00.000000",
+ "modified": "2026-10-03 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",
