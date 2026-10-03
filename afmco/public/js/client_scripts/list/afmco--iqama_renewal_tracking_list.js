@@ -257,13 +257,13 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                             'reqd': 1
                         },
                         {
-                            'fieldname': 'exempt_from_financial_compensation',
+                            'fieldname': 'exempt_compensation',
                             'fieldtype': 'Check',
                             'label': __('Exempt from Financial Compensation')
                         }
                     ],
                     function(values) {
-                        (async function update_sadad_and_exemption(docs, sadad_number, exempt_from_financial_compensation) {
+                        (async function update_sadad_and_exemption(docs, sadad_number, exempt_compensation) {
                             for (const doc of docs) {
                                 try {
                                     // Fetch the document to get the current values
@@ -273,8 +273,8 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                                     await frappe.db.set_value('Iqama Renewal Tracking', doc.name, 'sadad_invoice', sadad_number);
                                     
                                     // Update exemption status
-                                    let new_status = exempt_from_financial_compensation ? 1 : 0;
-                                    await frappe.db.set_value('Iqama Renewal Tracking', doc.name, 'exempt_from_financial_compensation', new_status);
+                                    let new_status = exempt_compensation ? 1 : 0;
+                                    await frappe.db.set_value('Iqama Renewal Tracking', doc.name, 'exempt_compensation', new_status);
             
                                     // Check and update renewal duration and work permit fee if exempted
                                     if (new_status) {
@@ -292,7 +292,7 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                             }
                             frappe.msgprint(__('SADAD number and exemption status updated successfully.'));
                             listview.refresh();
-                        })(selected_docs, values.sadad_number, values.exempt_from_financial_compensation);
+                        })(selected_docs, values.sadad_number, values.exempt_compensation);
                     },
                     __('Enter SADAD Number & Exemption Status'),
                     __('Update')

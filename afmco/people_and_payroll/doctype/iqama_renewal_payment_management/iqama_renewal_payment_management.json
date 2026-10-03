@@ -16,7 +16,7 @@
   "create_payment_request",
   "create_jv",
   "create_bank_file",
-  "list_of_iqamas_with_renewal_issues",
+  "iqama_renewal_issues",
   "section_invoice",
   "month",
   "column_break_corporation",
@@ -113,7 +113,7 @@
   },
   {
    "depends_on": "eval:doc.issue",
-   "fieldname": "list_of_iqamas_with_renewal_issues",
+   "fieldname": "iqama_renewal_issues",
    "fieldtype": "Heading",
    "label": "List of Iqamas with Renewal Issues"
   },

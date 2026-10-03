@@ -317,7 +317,7 @@ function ic_post_comment(row, content) {
 function ic_preference_patch(row, values) {
 	const months = ic_duration_period(values.renewal_duration).months;
 	const iqama_fee = IC_IQAMA_FEE[months] || 0;
-	const work_permit_fee = cint(row.exempt_from_financial_compensation)
+	const work_permit_fee = cint(row.exempt_compensation)
 		? IC_EXEMPT_WORK_PERMIT_FEE
 		: IC_WORK_PERMIT_FEE[months] || 0;
 	const muqeem_after = flt(row.muqeem_balance) + iqama_fee;
@@ -344,19 +344,19 @@ function ic_preference_patch(row, values) {
 function ic_sadad_patch(row, values) {
 	const patch = {
 		sadad_invoice: values.sadad_invoice,
-		exempt_from_financial_compensation: cint(values.exempt_from_financial_compensation),
+		exempt_compensation: cint(values.exempt_compensation),
 	};
 
-	const was_exempt = cint(row.exempt_from_financial_compensation);
-	if (patch.exempt_from_financial_compensation === was_exempt) return patch;
+	const was_exempt = cint(row.exempt_compensation);
+	if (patch.exempt_compensation === was_exempt) return patch;
 
-	patch.renewal_duration = patch.exempt_from_financial_compensation
+	patch.renewal_duration = patch.exempt_compensation
 		? IC_EXEMPT_DURATION
 		: row.renewal_duration;
 
 	const months = ic_duration_period(patch.renewal_duration).months;
 	const iqama_fee = IC_IQAMA_FEE[months] || 0;
-	const work_permit_fee = patch.exempt_from_financial_compensation
+	const work_permit_fee = patch.exempt_compensation
 		? IC_EXEMPT_WORK_PERMIT_FEE
 		: IC_WORK_PERMIT_FEE[months] || 0;
 	const muqeem_after = flt(row.muqeem_balance) + iqama_fee;
@@ -535,10 +535,10 @@ const IC_ACTIONS = [
 				default: ic_common_value(rows, "sadad_invoice"),
 			},
 			{
-				fieldname: "exempt_from_financial_compensation",
+				fieldname: "exempt_compensation",
 				fieldtype: "Check",
 				label: t("f_exempt"),
-				default: ic_common_value(rows, "exempt_from_financial_compensation"),
+				default: ic_common_value(rows, "exempt_compensation"),
 				description: t("exempt_hint"),
 			},
 		],

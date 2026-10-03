@@ -7,7 +7,7 @@
  "field_order": [
   "document_types",
   "action_inbox_window_days",
-  "action_inbox_workflow_action_limit",
+  "workflow_action_limit",
   "action_inbox_todo_limit",
   "work_center_recent_hours",
   "work_center_activity_hours"
@@ -29,7 +29,7 @@
   },
   {
    "default": "200",
-   "fieldname": "action_inbox_workflow_action_limit",
+   "fieldname": "workflow_action_limit",
    "fieldtype": "Int",
    "label": "Inbox Workflow Action Limit",
    "non_negative": 1

@@ -107,11 +107,11 @@ frappe.ui.form.on('iQama Renewal Payment Management', {
 		try {
 			const filters_sadad_invoice = [
 				['status', '=', 'Awaiting Renewal'],
-				['payment_request_doc_number_sadad_invoice', '=', frm.doc.payment_request_number]
+				['sadad_invoice_pr_no', '=', frm.doc.payment_request_number]
 			];
 			const filters_residency_renewal = [
 				['status', '=', 'Awaiting Renewal'],
-				['payment_request_doc_number_residency_renewal', '=', frm.doc.payment_request_number]
+				['residency_renewal_pr_no', '=', frm.doc.payment_request_number]
 			];
 			const fields_sadad_invoice = ['employee', 'renewal_period', 'sadad_invoice_number'];
 			const fields_residency_renewal = ['employee', 'renewal_period'];
@@ -277,7 +277,7 @@ function save_issue_changes(frm) {
 						issue_in_renewal: row.issue_in_renewal,
 						dependent_fees: row.dependent_fees,
 						two_year_plan: row.two_year_plan,
-						renewal_expiration_violation_on_employee: row.renewal_expiration_violation_on_employee,
+						renewal_violation_flag: row.renewal_violation_flag,
 						status: 'Issue Preventing Renewal',
 						sadad_invoice_creation_date: frappe.datetime.now_datetime(),
 						created_by_sadad_invoice: frappe.session.user,
@@ -332,17 +332,17 @@ function fetch_and_set_pr_options(frm) {
 				['status', '=', 'Awaiting Renewal']
 			],
 			limit_page_length: false,
-			fields: ['payment_request_doc_number_residency_renewal', 'payment_request_doc_number_sadad_invoice'],
+			fields: ['residency_renewal_pr_no', 'sadad_invoice_pr_no'],
 		},
 		callback: function(r) {
 			if (r.message) {
 				let paymentRequestNumbers = new Set();
 				r.message.forEach(d => {
-					if (d.payment_request_doc_number_residency_renewal) {
-						paymentRequestNumbers.add(d.payment_request_doc_number_residency_renewal);
+					if (d.residency_renewal_pr_no) {
+						paymentRequestNumbers.add(d.residency_renewal_pr_no);
 					}
-					if (d.payment_request_doc_number_sadad_invoice) {
-						paymentRequestNumbers.add(d.payment_request_doc_number_sadad_invoice);
+					if (d.sadad_invoice_pr_no) {
+						paymentRequestNumbers.add(d.sadad_invoice_pr_no);
 					}
 				});
 				frm.set_query('payment_request_number', function() {
@@ -378,7 +378,7 @@ function fetch_and_fill_child_table(frm) {
 			doctype: 'Iqama Renewal Fee Tracking',
 			limit_page_length: false,
 			filters: filters,
-			fields: ['employee', 'sadad_invoice_number', 'renewal_period', 'traffic_violations', 'issue_in_renewal', 'medical_insurance_issue', 'dependent_fees', 'two_year_plan', 'renewal_expiration_violation_on_employee', 'name'],
+			fields: ['employee', 'sadad_invoice_number', 'renewal_period', 'traffic_violations', 'issue_in_renewal', 'medical_insurance_issue', 'dependent_fees', 'two_year_plan', 'renewal_violation_flag', 'name'],
 		},
 		callback: function(r) {
 			if (r.message) {
@@ -392,7 +392,7 @@ function fetch_and_fill_child_table(frm) {
 						issue_in_renewal: d.issue_in_renewal,
 						dependent_fees: d.dependent_fees,
 						two_year_plan: d.two_year_plan,
-						renewal_expiration_violation_on_employee: d.renewal_expiration_violation_on_employee,
+						renewal_violation_flag: d.renewal_violation_flag,
 						name1: d.name,
 						medical_insurance_issue: d.medical_insurance_issue
 					});
@@ -414,9 +414,9 @@ function fetch_and_fill_payment_request_iqama_list(frm) {
 			['dependent_fees', '=', 0]
 		];
 		if (frm.doc.payment_type === 'PR Created for Work Cards') {
-			filters.push(['payment_request_doc_number_sadad_invoice', '=', '']);
+			filters.push(['sadad_invoice_pr_no', '=', '']);
 		} else if (frm.doc.payment_type === 'PR Created for Iqama Renewal') {
-			filters.push(['payment_request_doc_number_residency_renewal', '=', '']);
+			filters.push(['residency_renewal_pr_no', '=', '']);
 		}
 		frappe.call({
 			method: 'frappe.client.get_list',
@@ -518,7 +518,7 @@ function fetch_and_set_queries(frm) {
 				] : null,
 				frm.doc.corporation ? ['corporation', '=', frm.doc.corporation] : null,
 			].filter(Boolean),
-			fields: ['employee', 'medical_insurance_issue', 'traffic_violations', 'issue_in_renewal', 'dependent_fees', 'two_year_plan', 'renewal_expiration_violation_on_employee', 'renewal_period', 'sadad_invoice_number', 'name']
+			fields: ['employee', 'medical_insurance_issue', 'traffic_violations', 'issue_in_renewal', 'dependent_fees', 'two_year_plan', 'renewal_violation_flag', 'renewal_period', 'sadad_invoice_number', 'name']
 		},
 		callback: function(r) {
 			if (r.message) {
@@ -531,7 +531,7 @@ function fetch_and_set_queries(frm) {
 						issue_in_renewal: d.issue_in_renewal,
 						dependent_fees: d.dependent_fees,
 						two_year_plan: d.two_year_plan,
-						renewal_expiration_violation_on_employee: d.renewal_expiration_violation_on_employee,
+						renewal_violation_flag: d.renewal_violation_flag,
 						renewal_period: d.renewal_period,
 						sadad_invoice_number: d.sadad_invoice_number,
 						name1: d.name
@@ -552,7 +552,7 @@ function fetch_and_set_queries_issue(frm) {
 			filters: [
 				['status', '=', 'Issue Preventing Renewal']
 			],
-			fields: ['employee', 'sadad_invoice_number', 'renewal_period', 'traffic_violations', 'issue_in_renewal', 'dependent_fees', 'two_year_plan', 'renewal_expiration_violation_on_employee', 'name', ],
+			fields: ['employee', 'sadad_invoice_number', 'renewal_period', 'traffic_violations', 'issue_in_renewal', 'dependent_fees', 'two_year_plan', 'renewal_violation_flag', 'name', ],
 		},
 		callback: function(r) {
 			if (r.message) {
@@ -566,7 +566,7 @@ function fetch_and_set_queries_issue(frm) {
 						issue_in_renewal: d.issue_in_renewal,
 						dependent_fees: d.dependent_fees,
 						two_year_plan: d.two_year_plan,
-						renewal_expiration_violation_on_employee: d.renewal_expiration_violation_on_employee,
+						renewal_violation_flag: d.renewal_violation_flag,
 						name1: d.name,
 					});
 				});
@@ -658,16 +658,16 @@ async function createPaymentRequest(frm) {
 				let updates = {};
 				if (frm.doc.payment_type === 'PR Created for Work Cards') {
 					updates = {
-						'payment_request_doc_number_sadad_invoice': expenseRequest.name,
-						'payment_request_creation_date_sadad_invoice': getCurrentDate(),
-						'payment_request_creation_user_sadad_invoice': getCurrentUser(),
+						'sadad_invoice_pr_no': expenseRequest.name,
+						'sadad_invoice_pr_date': getCurrentDate(),
+						'sadad_invoice_pr_user': getCurrentUser(),
 						'status': 'Awaiting Payment'
 					};
 				} else if (frm.doc.payment_type === 'PR Created for Iqama Renewal') {
 					updates = {
-						'payment_request_doc_number_residency_renewal': expenseRequest.name,
-						'payment_request_creation_date_residency_renewal': getCurrentDate(),
-						'payment_request_creation_user_residency_renewal': getCurrentUser(),
+						'residency_renewal_pr_no': expenseRequest.name,
+						'residency_renewal_pr_date': getCurrentDate(),
+						'residency_renewal_pr_user': getCurrentUser(),
 						'status': 'Awaiting Renewal'
 					};
 				}
@@ -696,14 +696,14 @@ function create_journal_entries(frm) {
 	try {
 		const filters_sadad_invoice = [
 			['jv_created_for_sadad_invoice', '=', 0],
-			['payment_request_doc_number_sadad_invoice', '=', frm.doc.payment_request_number]
+			['sadad_invoice_pr_no', '=', frm.doc.payment_request_number]
 		];
 		const filters_residency_renewal = [
 			['jv_created_for_renewal_fees', '=', 0],
-			['payment_request_doc_number_residency_renewal', '=', frm.doc.payment_request_number]
+			['residency_renewal_pr_no', '=', frm.doc.payment_request_number]
 		];
-		const fields_sadad_invoice = ['name', 'employee', 'cost_center', 'sadad_invoice_number', 'sadad_invoice_amount', 'sadad_invoice_amount_for_current_year', 'sadad_invoice_amount_for_advance_payments'];
-		const fields_residency_renewal = ['name', 'employee', 'cost_center', 'renewal_fee_amount', 'renewal_fee_amount_for_current_year', 'renewal_fee_amount_for_advance_payments'];
+		const fields_sadad_invoice = ['name', 'employee', 'cost_center', 'sadad_invoice_number', 'sadad_invoice_amount', 'sadad_amount_this_year', 'sadad_advance_amount'];
+		const fields_residency_renewal = ['name', 'employee', 'cost_center', 'renewal_fee_amount', 'renewal_fee_this_year', 'renewal_advance_fee'];
 		frappe.call({
 			method: 'frappe.client.get_list',
 			args: {
@@ -724,17 +724,17 @@ function create_journal_entries(frm) {
 						remarks += `Invoice Number: ${row.sadad_invoice_number}\n`;
 						let row_debit_current = frappe.model.add_child(journal_entry, 'Journal Entry Account', 'accounts');
 						row_debit_current.account = '512008 - م - رسوم مكتب عمل ( تشغيل ) - M - Office fees (operation) - AF';
-						row_debit_current.debit = parseFloat(row.sadad_invoice_amount_for_current_year);
-						row_debit_current.debit_in_account_currency = parseFloat(row.sadad_invoice_amount_for_current_year);
+						row_debit_current.debit = parseFloat(row.sadad_amount_this_year);
+						row_debit_current.debit_in_account_currency = parseFloat(row.sadad_amount_this_year);
 						row_debit_current.account_type = 'Expense Account';
 						row_debit_current.cost_center = row.cost_center;
 						row_debit_current.employee = row.employee;
 						row_debit_current.user_remark = remarks;
-						if (row.sadad_invoice_amount_for_advance_payments > 0) {
+						if (row.sadad_advance_amount > 0) {
 							let row_debit_advance = frappe.model.add_child(journal_entry, 'Journal Entry Account', 'accounts');
 							row_debit_advance.account = '126005 - مصروفات مقدمة رسوم مكتب عمل - Upfront expenses, office fees - AF';
-							row_debit_advance.debit = parseFloat(row.sadad_invoice_amount_for_advance_payments);
-							row_debit_advance.debit_in_account_currency = parseFloat(row.sadad_invoice_amount_for_advance_payments);
+							row_debit_advance.debit = parseFloat(row.sadad_advance_amount);
+							row_debit_advance.debit_in_account_currency = parseFloat(row.sadad_advance_amount);
 							row_debit_advance.account_type = 'Expense Account';
 							row_debit_advance.cost_center = row.cost_center;
 							row_debit_advance.employee = row.employee;
@@ -783,17 +783,17 @@ function create_journal_entries(frm) {
 									let row_debit_current = frappe.model.add_child(journal_entry, 'Journal Entry Account', 'accounts');
 									row_debit_current.account = '512004 - م - رسوم الجوازات (تشغيل) - M - Passport fees (operating) - AF';
 									row_debit_current.account_type = 'Expense Account';
-									row_debit_current.debit = parseFloat(row.renewal_fee_amount_for_current_year);
-									row_debit_current.debit_in_account_currency = parseFloat(row.renewal_fee_amount_for_current_year);
+									row_debit_current.debit = parseFloat(row.renewal_fee_this_year);
+									row_debit_current.debit_in_account_currency = parseFloat(row.renewal_fee_this_year);
 									row_debit_current.cost_center = row.cost_center;
 									row_debit_current.employee = row.employee;
 									row_debit_current.user_remark = remarks;
-									if (row.sadad_invoice_amount_for_advance_payments > 0) {
+									if (row.sadad_advance_amount > 0) {
 										let row_debit_advance = frappe.model.add_child(journal_entry, 'Journal Entry Account', 'accounts');
 										row_debit_advance.account = '126004 - مصروفات مقدمة رسوم جوازات - Advance expenses, passport fees - AF';
 										row_debit_advance.account_type = 'Expense Account';
-										row_debit_advance.debit = parseFloat(row.renewal_fee_amount_for_advance_payments);
-										row_debit_advance.debit_in_account_currency = parseFloat(row.renewal_fee_amount_for_advance_payments);
+										row_debit_advance.debit = parseFloat(row.renewal_advance_fee);
+										row_debit_advance.debit_in_account_currency = parseFloat(row.renewal_advance_fee);
 										row_debit_advance.cost_center = row.cost_center;
 										row_debit_advance.employee = row.employee;
 										row_debit_advance.user_remark = remarks;
@@ -839,17 +839,17 @@ function fetch_and_set_jv_options(frm) {
 		args: {
 			doctype: 'Iqama Renewal Fee Tracking',
 			limit_page_length: false,
-			fields: ['payment_request_doc_number_residency_renewal', 'payment_request_doc_number_sadad_invoice'],
+			fields: ['residency_renewal_pr_no', 'sadad_invoice_pr_no'],
 		},
 		callback: function(r) {
 			if (r.message) {
 				let paymentRequestNumbers = new Set();
 				r.message.forEach(d => {
-					if (d.payment_request_doc_number_residency_renewal) {
-						paymentRequestNumbers.add(d.payment_request_doc_number_residency_renewal);
+					if (d.residency_renewal_pr_no) {
+						paymentRequestNumbers.add(d.residency_renewal_pr_no);
 					}
-					if (d.payment_request_doc_number_sadad_invoice) {
-						paymentRequestNumbers.add(d.payment_request_doc_number_sadad_invoice);
+					if (d.sadad_invoice_pr_no) {
+						paymentRequestNumbers.add(d.sadad_invoice_pr_no);
 					}
 				});
 				frm.set_query('payment_request_number', function() {

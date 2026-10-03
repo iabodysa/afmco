@@ -35,21 +35,21 @@
   "column_break_sadad_creator",
   "created_by_sadad_invoice",
   "section_payment_requests",
-  "payment_request_doc_number_residency_renewal",
-  "payment_request_creation_date_residency_renewal",
-  "payment_request_creation_user_residency_renewal",
+  "residency_renewal_pr_no",
+  "residency_renewal_pr_date",
+  "residency_renewal_pr_user",
   "column_break_sadad_payment_request",
-  "payment_request_doc_number_sadad_invoice",
-  "payment_request_creation_date_sadad_invoice",
-  "payment_request_creation_user_sadad_invoice",
+  "sadad_invoice_pr_no",
+  "sadad_invoice_pr_date",
+  "sadad_invoice_pr_user",
   "amount_section",
   "sadad_invoice_amount",
-  "sadad_invoice_amount_for_current_year",
-  "sadad_invoice_amount_for_advance_payments",
+  "sadad_amount_this_year",
+  "sadad_advance_amount",
   "column_break_renewal_fees",
   "renewal_fee_amount",
-  "renewal_fee_amount_for_current_year",
-  "renewal_fee_amount_for_advance_payments",
+  "renewal_fee_this_year",
+  "renewal_advance_fee",
   "section_break_total_amount",
   "total_amount",
   "processes_section",
@@ -57,7 +57,7 @@
   "jv_created_for_sadad_invoice",
   "jv_created_for_renewal_fees",
   "column_break_violations",
-  "renewal_expiration_violation_on_employee",
+  "renewal_violation_flag",
   "column_break_issues",
   "issue_in_renewal",
   "traffic_violations",
@@ -247,20 +247,20 @@
    "label": "Payment Requests"
   },
   {
-   "fieldname": "payment_request_doc_number_residency_renewal",
+   "fieldname": "residency_renewal_pr_no",
    "fieldtype": "Link",
    "label": "PR Document Link(Residency Renewal)",
    "options": "Payment Requisition",
    "read_only": 1
   },
   {
-   "fieldname": "payment_request_creation_date_residency_renewal",
+   "fieldname": "residency_renewal_pr_date",
    "fieldtype": "Date",
    "label": "PR Creation Date (Residency Renewal)",
    "read_only": 1
   },
   {
-   "fieldname": "payment_request_creation_user_residency_renewal",
+   "fieldname": "residency_renewal_pr_user",
    "fieldtype": "Link",
    "label": "PR User (Residency Renewal)",
    "options": "User",
@@ -271,20 +271,20 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "payment_request_doc_number_sadad_invoice",
+   "fieldname": "sadad_invoice_pr_no",
    "fieldtype": "Link",
    "label": "PR Document Link(SADAD Invoice)",
    "options": "Payment Requisition",
    "read_only": 1
   },
   {
-   "fieldname": "payment_request_creation_date_sadad_invoice",
+   "fieldname": "sadad_invoice_pr_date",
    "fieldtype": "Date",
    "label": "PR Creation Date (SADAD Invoice)",
    "read_only": 1
   },
   {
-   "fieldname": "payment_request_creation_user_sadad_invoice",
+   "fieldname": "sadad_invoice_pr_user",
    "fieldtype": "Link",
    "label": "PR User (SADAD Invoice)",
    "options": "User",
@@ -303,14 +303,14 @@
    "read_only": 1
   },
   {
-   "fieldname": "sadad_invoice_amount_for_current_year",
+   "fieldname": "sadad_amount_this_year",
    "fieldtype": "Currency",
    "label": "Sadad Invoice Amount for Current Year",
    "options": "Currency",
    "read_only": 1
   },
   {
-   "fieldname": "sadad_invoice_amount_for_advance_payments",
+   "fieldname": "sadad_advance_amount",
    "fieldtype": "Currency",
    "label": "Sadad Invoice Amount for Advance Payments",
    "options": "Currency",
@@ -328,14 +328,14 @@
    "read_only": 1
   },
   {
-   "fieldname": "renewal_fee_amount_for_current_year",
+   "fieldname": "renewal_fee_this_year",
    "fieldtype": "Currency",
    "label": "Renewal Fee Amount for Current Year",
    "options": "Currency",
    "read_only": 1
   },
   {
-   "fieldname": "renewal_fee_amount_for_advance_payments",
+   "fieldname": "renewal_advance_fee",
    "fieldtype": "Currency",
    "label": "Renewal Fee Amount for Advance Payments",
    "options": "Currency",
@@ -382,7 +382,7 @@
   },
   {
    "default": "0",
-   "fieldname": "renewal_expiration_violation_on_employee",
+   "fieldname": "renewal_violation_flag",
    "fieldtype": "Check",
    "label": "Renewal Expiration Violation on Employee",
    "read_only": 1

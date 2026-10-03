@@ -48,7 +48,7 @@
   "payroll_cost_center",
   "column_break_pr_status",
   "pr_status",
-  "create_pr_for_sadad",
+  "create_sadad_pr",
   "naming_series",
   "column_break_visa_period",
   "start",
@@ -295,7 +295,7 @@
    "allow_on_submit": 1
   },
   {
-   "fieldname": "create_pr_for_sadad",
+   "fieldname": "create_sadad_pr",
    "fieldtype": "Button",
    "label": "Create PR for Sadad"
   },

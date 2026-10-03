@@ -858,7 +858,7 @@ frappe.ui.form.on('Vacation Allowance', {
   employee: function(frm) {
         updateDashboards(frm);
     },
-  create_pr_for_sadad: function(frm) {
+  create_sadad_pr: function(frm) {
         let VisaAmount = frm.doc.days1 === '30' ? 200 : frm.doc.days1 === '60' ? 200 : frm.doc.days1 === '90' ? 300 : frm.doc.days1 === '120' ? 400 : 0;
         const expenseRequest = frappe.model.get_new_doc('Payment Requisition');
         expenseRequest.tax_invoice_number = frm.doc.name;

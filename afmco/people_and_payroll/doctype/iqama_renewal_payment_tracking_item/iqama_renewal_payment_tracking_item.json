@@ -11,7 +11,7 @@
   "issue_in_renewal",
   "dependent_fees",
   "two_year_plan",
-  "renewal_expiration_violation_on_employee",
+  "renewal_violation_flag",
   "renewal_period",
   "sadad_invoice_number",
   "name1"
@@ -65,7 +65,7 @@
   },
   {
    "default": "0",
-   "fieldname": "renewal_expiration_violation_on_employee",
+   "fieldname": "renewal_violation_flag",
    "fieldtype": "Check",
    "label": "Renewal expiration violation on employee"
   },
