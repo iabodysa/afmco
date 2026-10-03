@@ -1,0 +1,40 @@
+{
+ "add_total_row": 1,
+ "creation": "2025-10-04 15:19:42.549103",
+ "doctype": "Report",
+ "is_standard": "Yes",
+ "json": "{\n  \"columns\": [\n    {\n      \"fieldname\": \"journal_entry\",\n      \"label\": \"Journal Entry\",\n      \"fieldtype\": \"Link\",\n      \"options\": \"Journal Entry\",\n      \"width\": 150\n    },\n    {\n      \"fieldname\": \"posting_date\",\n      \"label\": \"Posting Date\",\n      \"fieldtype\": \"Date\",\n      \"width\": 100\n    },\n    {\n      \"fieldname\": \"employee\",\n      \"label\": \"Employee\",\n      \"fieldtype\": \"Link\",\n      \"options\": \"Employee\",\n      \"width\": 150\n    },\n    {\n      \"fieldname\": \"account\",\n      \"label\": \"Account\",\n      \"fieldtype\": \"Link\",\n      \"options\": \"Account\",\n      \"width\": 250\n    },\n    {\n      \"fieldname\": \"debit\",\n      \"label\": \"Debit\",\n      \"fieldtype\": \"Currency\",\n      \"width\": 120\n    },\n    {\n      \"fieldname\": \"credit\",\n      \"label\": \"Credit\",\n      \"fieldtype\": \"Currency\",\n      \"width\": 120\n    },\n    {\n      \"fieldname\": \"remarks\",\n      \"label\": \"Remarks\",\n      \"fieldtype\": \"Small Text\",\n      \"width\": 200\n    },\n    {\n      \"fieldname\": \"company\",\n      \"label\": \"Company\",\n      \"fieldtype\": \"Link\",\n      \"options\": \"Company\",\n      \"width\": 150\n    }\n  ],\n  \"filters\": [\n    {\n      \"fieldname\": \"company\",\n      \"label\": \"Company\",\n      \"fieldtype\": \"Link\",\n      \"options\": \"Company\"\n    },\n    {\n      \"fieldname\": \"from_date\",\n      \"label\": \"From Date\",\n      \"fieldtype\": \"Date\"\n    },\n    {\n      \"fieldname\": \"to_date\",\n      \"label\": \"To Date\",\n      \"fieldtype\": \"Date\"\n    },\n    {\n      \"fieldname\": \"employee\",\n      \"label\": \"Employee\",\n      \"fieldtype\": \"Link\",\n      \"options\": \"Employee\"\n    }\n  ]\n}",
+ "letter_head": null,
+ "modified": "2026-10-03 12:00:00.000000",
+ "module": "Financial Operations",
+ "name": "Journal Entry Employees Draft",
+ "owner": "Administrator",
+ "prepared_report": 1,
+ "query": "SELECT \n    je.name as journal_entry,\n    je.posting_date,\n    jea.party as employee,\n    jea.account,\n    jea.debit,\n    jea.credit,\n    jea.user_remark as remarks,\n    je.company\nFROM \n    `tabJournal Entry` je\nINNER JOIN \n    `tabJournal Entry Account` jea ON je.name = jea.parent\nWHERE \n    je.docstatus = 0\n    AND jea.party_type = 'Employee'\n    AND jea.party IS NOT NULL\n    AND (%(company)s IS NULL OR %(company)s = '' OR je.company = %(company)s)\n    AND (%(from_date)s IS NULL OR %(from_date)s = '' OR je.posting_date >= %(from_date)s)\n    AND (%(to_date)s IS NULL OR %(to_date)s = '' OR je.posting_date <= %(to_date)s)\n    AND (%(employee)s IS NULL OR %(employee)s = '' OR jea.party = %(employee)s)\nORDER BY \n    je.posting_date DESC, je.name, jea.idx",
+ "ref_doctype": "Journal Entry",
+ "report_name": "Journal Entry Employees Draft",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Auditor"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Accountant"
+  },
+  {
+   "role": "Employee Self Service"
+  },
+  {
+   "role": "Internal Auditor"
+  },
+  {
+   "role": "Journal Entry Approver"
+  }
+ ]
+}

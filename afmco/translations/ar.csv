@@ -3189,3 +3189,4 @@ Restricts this user to the Payment Requisitions addressed to this approver,يق�
 "Salary Slip Custom (Excel)",قسائم الرواتب المخصصة (Excel)
 Please check at least one row to export.,يرجى تحديد صف واحد على الأقل للتصدير.
 "Generating Excel export for {0} records...",جارٍ إنشاء ملف Excel لعدد {0} من السجلات...
+Export All Requisitions to Excel,تصدير كل الأوامر إلى Excel

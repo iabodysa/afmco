@@ -1,0 +1,154 @@
+{
+ "app": "afmco",
+ "content": "[{\"id\":\"1A2B3C4D5E\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Accounting Team</span>\",\"col\":12}},{\"id\":\"VLWSuRiAxL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Journal Entry\",\"col\":3}},{\"id\":\"TJrbMdLGPe\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PR\",\"col\":3}},{\"id\":\"airBKLui6F\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sales Invoice\",\"col\":3}},{\"id\":\"w1RZ8xGZvH\",\"type\":\"card\",\"data\":{\"card_name\":\"Report\",\"col\":4}},{\"id\":\"FpvrWtG2bF\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b></b><a href=\\\"https://www.alahliecorp.com/eCorpNew/login\\\">Alahli Bank</a></span>\",\"col\":12}},{\"id\":\"4DJ1urHoPj\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><a href=\\\"https://flexxbusiness.saib.com.sa/ui/?lang=ar\\\">SAIB Bank</a><b></b></span>\",\"col\":12}}]",
+ "creation": "2024-08-15 18:54:08.228392",
+ "doctype": "Workspace",
+ "hide_custom": 1,
+ "icon": "accounting",
+ "idx": 0,
+ "indicator_color": "green",
+ "label": "Accounting Team",
+ "links": [
+  {
+   "label": "PR",
+   "link_to": "Payment Requisition",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Journal Entry",
+   "link_to": "Journal Entry",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Journal Entry Template",
+   "link_to": "Journal Entry Template",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Terms and Conditions",
+   "link_to": "Terms and Conditions",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Mode of Payment",
+   "link_to": "Mode of Payment",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "Emad Report",
+   "link_to": "EMAD 2",
+   "link_type": "Report",
+   "report_ref_doctype": "GL Entry",
+   "type": "Link"
+  },
+  {
+   "label": "Report",
+   "link_count": 6,
+   "link_type": "DocType",
+   "type": "Card Break"
+  },
+  {
+   "is_query_report": 1,
+   "label": "General Ledger",
+   "link_to": "General Ledger",
+   "link_type": "Report",
+   "type": "Link"
+  },
+  {
+   "is_query_report": 1,
+   "label": "Accounts Receivable",
+   "link_to": "Accounts Receivable",
+   "link_type": "Report",
+   "type": "Link"
+  },
+  {
+   "is_query_report": 1,
+   "label": "EMAD 2",
+   "link_to": "EMAD 2",
+   "link_type": "Report",
+   "type": "Link"
+  },
+  {
+   "label": "Employee Financial Summary",
+   "link_to": "Employee Financial Summary",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "is_query_report": 1,
+   "label": "Journal Entry Employees Draft",
+   "link_to": "Journal Entry Employees Draft",
+   "link_type": "Report",
+   "type": "Link"
+  },
+  {
+   "is_query_report": 1,
+   "label": "Bank Reconciliation Statement by Period",
+   "link_to": "Bank Reconciliation Statement by Period",
+   "link_type": "Report",
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-10-03 00:00:00.000000",
+ "module": "Financial Operations",
+ "name": "Accounting Team",
+ "owner": "Administrator",
+ "public": 1,
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Auditor"
+  },
+  {
+   "role": "Accountant"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  }
+ ],
+ "sequence_id": 4.0,
+ "shortcuts": [
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "format": "{} Draft",
+   "icon": "book-open",
+   "label": "Journal Entry",
+   "link_to": "Journal Entry",
+   "stats_filter": "[[\"Journal Entry\",\"docstatus\",\"=\",\"0\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "format": "{} JV Not Created",
+   "icon": "banknote-arrow-down",
+   "label": "PR",
+   "link_to": "Payment Requisition",
+   "stats_filter": "[[\"Payment Requisition\",\"jv_status\",\"=\",\"JV Not Created\",false],[\"Payment Requisition\",\"workflow_state\",\"=\",\"Paid\",false],[\"Payment Requisition\",\"creation\",\"Timespan\",\"this year\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "format": "{} Zatca",
+   "icon": "receipt",
+   "label": "Sales Invoice",
+   "link_to": "Sales Invoice",
+   "stats_filter": "[[\"Sales Invoice\",\"custom_zatca_status\",\"=\",\"Not Submitted\",false],[\"Sales Invoice\",\"creation\",\"Timespan\",\"this year\",false]]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Accounting Team",
+ "type": "Workspace"
+}
