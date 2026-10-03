@@ -37,30 +37,31 @@ BANK_CODES = {
 }
 
 
+def validate_saudi_iban(iban):
+	if not iban:
+		frappe.throw(_("IBAN is missing"))
+	if not iban.startswith("SA"):
+		frappe.throw(_("IBAN number must start with 'SA'."))
+	if len(iban) != 24:
+		frappe.throw(_("IBAN No. must be exactly 24 digits. Current length: {0}").format(len(iban)))
+	if not re.fullmatch(r"\d+", iban[2:]):
+		frappe.throw(_("The IBAN number must have 22 digits following 'SA'."))
+	bank_code = iban[4:6]
+	if bank_code not in BANK_CODES:
+		frappe.throw(_("Invalid bank code: {0}").format(bank_code))
+	return BANK_CODES[bank_code]
+
+
 class IBANUpdate(Document):
 	def validate(self):
 		if frappe.flags.in_install or frappe.flags.in_migrate:
 			return
-		self.validate_iban()
+		self.bank_name = validate_saudi_iban(self.iban)
 
 	def before_submit(self):
 		if frappe.flags.in_install or frappe.flags.in_migrate:
 			return
 		self.update_employee_bank_details()
-
-	def validate_iban(self):
-		if not self.iban:
-			frappe.throw(_("IBAN is missing"))
-		if not self.iban.startswith("SA"):
-			frappe.throw(_("IBAN number must start with 'SA'."))
-		if len(self.iban) != 24:
-			frappe.throw(_("IBAN No. must be exactly 24 digits. Current length: {0}").format(len(self.iban)))
-		if not re.fullmatch(r"\d+", self.iban[2:]):
-			frappe.throw(_("The IBAN number must have 22 digits following 'SA'."))
-		bank_code = self.iban[4:6]
-		if bank_code not in BANK_CODES:
-			frappe.throw(_("Invalid bank code: {0}").format(bank_code))
-		self.bank_name = BANK_CODES[bank_code]
 
 	def update_employee_bank_details(self):
 		if not self.employee:

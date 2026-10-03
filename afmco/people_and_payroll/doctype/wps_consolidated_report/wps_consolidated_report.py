@@ -292,35 +292,11 @@ class WPSConsolidatedReport(Document):
             
             # Extract project name from cost center
             cost_center = slips[0].get("cost_center", "") if slips else ""
-#           project_name = self._extract_project_name_from_cost_center(cost_center)
             project_name = ' - '.join([p.strip() for p in cost_center.split('-') if not any('\u0600' <= c <= '\u06FF' for c in p)][:2])
             
             # Format: <MOL_No> <CR> <EmployeeCount> <TotalAmount> <HundredsColumn> <ProjectName> <MonAbbr> <YY>.csv
-#           return f"{office} {corporation_cr} {len(slips)} {total_net:.2f} {halalas} {project_name} {month_abbr} {year_two_digit}.{self.file_type.lower()}"
             return f"{office} {corporation_cr} {len(slips)} {int(total_net)} {halalas} {project_name} {month_abbr} {year_two_digit}.{self.file_type.lower()}"
     
-    def _extract_project_name_from_cost_center(self, cost_center: str) -> str:
-        if not cost_center:
-            return "Project"
-        
-        # Format: "Barns Alzaini - Labours - بارنز الزيني - عمال - AF"
-        # Extract first English segment
-        parts = cost_center.split(' - ')
-        if parts:
-            # Take the first part (English project name)
-            project_name = parts[0].strip()
-            
-            # Check if last part is a 2-letter company code
-            if len(parts) > 1:
-                last_part = parts[-1].strip()
-                if len(last_part) == 2 and last_part.isalpha() and last_part.isupper():
-                    # Don't include the company code
-                    pass
-            
-            return project_name if project_name else "Project"
-        
-        return "Project"
-
     def _build_matrix_rows(self, slips: List[dict]):
         if self.bank_format == "NCBK":
             headers = EMP_HEADERS_NCBK
