@@ -87,8 +87,6 @@ All Salaries,جميع الرواتب
 All Salary Slips have been processed.,تمت معالجة جميع قسائم الرواتب.
 All Salary Slips have been submitted successfully.,تم اعتماد جميع قسائم الرواتب بنجاح.
 All Salary Slips have zero Net Pay – nothing to export.,جميع قسائم الرواتب صافيها صفر، ولا يوجد ما يُصدَّر.
-All assets created successfully!,أُنشئت جميع الأصول بنجاح!
-All created assets passed validation!,اجتازت جميع الأصول المنشأة التحقق!
 "All rights reserved © AFMCO Ltd. for Logistics Services, 2024.",جميع الحقوق محفوظة © شركة أفمكو المحدودة للخدمات اللوجستية، 2024.
 Allow Cancel,السماح بالإلغاء
 Allowance for tickets,بدل التذاكر
@@ -134,10 +132,8 @@ Asset Created: {0},أُنشئ الأصل: {0}
 Asset Inventory,جرد الأصول
 Asset Type,نوع الأصل
 Asset created for Item:,أُنشئ أصل للصنف:
-Asset creation cancelled.,أُلغي إنشاء الأصل.
 Asset {0} does not belongs to the custodian {1},الأصل {0} لا يخص أمين العهدة {1}
 Asset {0} does not belongs to the location {1},الأصل {0} لا يخص الموقع {1}
-"Assets created successfully, but the following items failed:",أُنشئت الأصول بنجاح، لكن تعذر إنشاء الأصناف التالية:
 Assign Date,تاريخ التخصيص
 Assign to,إسناد إلى
 Assignment,التخصيص
@@ -306,7 +302,6 @@ Cost of work permit divided by 12,تكلفة رخصة العمل مقسومة ع
 Costs associated with the localization program.,التكاليف المرتبطة ببرنامج التوطين.
 Could not find mobile number for the selected driver.,تعذر العثور على رقم جوال السائق المحدد.
 Count of passengers who boarded,عدد الركاب الذين صعدوا
-Create Assets,إنشاء الأصول
 Create Bank Entry,إنشاء قيد بنكي
 Create Bank File,إنشاء ملف البنك
 Create Bulk Payment Order,إنشاء أمر دفع مجمع
@@ -939,7 +934,6 @@ No data with credit to export,لا توجد بيانات دائنة للتصدي
 No differences found between the document and employee data.,لا توجد فروقات بين المستند وبيانات الموظف.
 No draft Salary Slips found for this Payroll Entry.,لم يُعثر على قسائم رواتب مسودة لقيد الرواتب هذا.
 No employees found in the employeelist.,لم يُعثر على موظفين في قائمة الموظفين.
-No items are marked as assets. Please check the items and mark them as assets if needed.,لا توجد أصناف معلَّمة كأصول. يرجى مراجعة الأصناف وتعليمها كأصول عند الحاجة.
 No outstanding cheques or deposits in this period,لا توجد شيكات أو إيداعات معلقة في هذه الفترة
 No passengers added yet,لم يُضف ركاب بعد
 No schedules found to create entries.,لم يُعثر على جداول لإنشاء القيود.
@@ -1460,9 +1454,7 @@ The date and time of the visit.,تاريخ ووقت الزيارة.
 The field cannot be empty.,لا يمكن ترك الحقل فارغًا.
 The field must have at least 5 characters.,يجب ألا يقل الحقل عن 5 أحرف.
 The first Approver in the list will be set as the default Approver.,سيُعيَّن أول معتمد في القائمة معتمدًا افتراضيًا.
-The following created assets failed validation:,فشل التحقق من الأصول المنشأة التالية:
 The following documents are missing IBAN numbers:,المستندات التالية ينقصها رقم الآيبان:
-The following items are marked as assets. Do you want to create assets for them?,الأصناف التالية معلَّمة كأصول. هل تريد إنشاء أصول لها؟
 The issue must be closed by the date,يجب إغلاق المشكلة بحلول التاريخ
 The latitude of the visitor's location.,خط عرض موقع الزائر.
 The longitude of location.,خط طول الموقع.

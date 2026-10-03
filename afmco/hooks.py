@@ -59,7 +59,6 @@ doctype_js = {
 	"Loan": "public/js/loan.js",
 	"Loan Application": "public/js/loan_application.js",
 	"Payroll Entry": "public/js/payroll_entry.js",
-	"Purchase Invoice": "public/js/purchase_invoice.js",
 	"Salary Slip": "public/js/salary_slip.js",
 	"Sales Invoice": "public/js/sales_invoice_form.js",
 	"Task": "public/js/task.js",
