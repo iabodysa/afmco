@@ -124,26 +124,6 @@
   {
    "doc_type": "Salary Structure Assignment",
    "doctype_or_field": "DocField",
-   "field_name": "column_break_18",
-   "module": "People and Payroll",
-   "name": "Salary Structure Assignment-column_break_18-hidden",
-   "property": "hidden",
-   "property_type": "Check",
-   "value": "1"
-  },
-  {
-   "doc_type": "Salary Structure Assignment",
-   "doctype_or_field": "DocField",
-   "field_name": "earnings_and_taxation_section",
-   "module": "People and Payroll",
-   "name": "Salary Structure Assignment-earnings_and_taxation_section-hidden",
-   "property": "hidden",
-   "property_type": "Check",
-   "value": "1"
-  },
-  {
-   "doc_type": "Salary Structure Assignment",
-   "doctype_or_field": "DocField",
    "field_name": "employee",
    "module": "People and Payroll",
    "name": "Salary Structure Assignment-employee-in_list_view",
@@ -179,7 +159,7 @@
    "name": "Salary Structure Assignment-main-field_order",
    "property": "field_order",
    "property_type": "Data",
-   "value": "[\"employee\", \"employee_name\", \"department\", \"designation\", \"grade\", \"column_break_6\", \"salary_structure\", \"from_date\", \"income_tax_slab\", \"column_break_11\", \"company\", \"payroll_payable_account\", \"currency\", \"housing\", \"section_break_7\", \"base\", \"custom_housing\", \"column_break_9\", \"variable\", \"commission\", \"custom_update\", \"column_break_15\", \"transportation_allowance\", \"food_allowance\", \"column_break_17\", \"supervisor_allowance\", \"attendance_allowance\", \"amended_from\", \"earnings_and_taxation_section\", \"taxable_earnings_till_date\", \"column_break_20\", \"tax_deducted_till_date\", \"section_break_17\", \"payroll_cost_centers\"]"
+   "value": "[\"employee\", \"employee_name\", \"department\", \"designation\", \"grade\", \"column_break_6\", \"salary_structure\", \"from_date\", \"income_tax_slab\", \"column_break_11\", \"company\", \"payroll_payable_account\", \"currency\", \"housing\", \"section_break_7\", \"base\", \"custom_housing\", \"column_break_9\", \"variable\", \"commission\", \"custom_update\", \"column_break_15\", \"transportation_allowance\", \"food_allowance\", \"column_break_17\", \"supervisor_allowance\", \"attendance_allowance\", \"amended_from\", \"taxable_earnings_till_date\", \"column_break_20\", \"tax_deducted_till_date\", \"section_break_17\", \"payroll_cost_centers\"]"
   },
   {
    "doc_type": "Salary Structure Assignment",

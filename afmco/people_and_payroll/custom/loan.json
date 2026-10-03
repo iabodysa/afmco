@@ -58,16 +58,7 @@
   }
  ],
  "doctype": "Loan",
- "links": [
-  {
-   "idx": "1",
-   "link_doctype": "Additional Salary",
-   "link_fieldname": "custom_loan",
-   "parent": "Loan",
-   "parentfield": "links",
-   "parenttype": "DocType"
-  }
- ],
+ "links": [],
  "property_setters": [
   {
    "doc_type": "Loan",
