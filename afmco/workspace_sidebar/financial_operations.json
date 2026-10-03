@@ -91,16 +91,6 @@
    "type": "Link"
   },
   {
-   "child": 1,
-   "collapsible": 1,
-   "icon": "hand-coins",
-   "label": "Employee Petty Cash",
-   "link_to": "Employee Petty Cash",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
    "collapsible": 1,
    "icon": "book-open",
    "indent": 1,
