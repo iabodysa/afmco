@@ -1,0 +1,31 @@
+{
+ "add_total_row": 1,
+ "creation": "2023-08-26 11:56:57.293160",
+ "doctype": "Report",
+ "is_standard": "Yes",
+ "json": "{\"columns\": [{\"fieldname\": \"posting_date\", \"fieldtype\": \"Date\", \"label\": \"Posting Date\", \"width\": 90}, {\"fieldname\": \"account\", \"fieldtype\": \"Link\", \"label\": \"Account\", \"options\": \"Account\", \"width\": 180}, {\"fieldname\": \"debit\", \"fieldtype\": \"Float\", \"label\": \"Debit (SAR)\", \"width\": 100}, {\"fieldname\": \"credit\", \"fieldtype\": \"Float\", \"label\": \"Credit (SAR)\", \"width\": 100}, {\"fieldname\": \"balance\", \"fieldtype\": \"Float\", \"label\": \"Balance (SAR)\", \"width\": 130}, {\"fieldname\": \"voucher_no\", \"fieldtype\": \"Dynamic Link\", \"label\": \"Voucher No\", \"options\": \"voucher_type\", \"width\": 180}, {\"fieldname\": \"remarks\", \"label\": \"Remarks\", \"width\": 400}]}",
+ "letter_head": null,
+ "modified": "2026-10-03 00:00:00.000000",
+ "module": "Financial Operations",
+ "name": "EMAD 2",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "GL Entry",
+ "reference_report": "General Ledger",
+ "report_name": "EMAD 2",
+ "report_type": "Custom Report",
+ "roles": [
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Auditor"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accountant"
+  }
+ ]
+}

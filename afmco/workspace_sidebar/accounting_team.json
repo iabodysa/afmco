@@ -1,0 +1,55 @@
+{
+ "app": "afmco",
+ "creation": "2026-10-03 00:00:00.000000",
+ "doctype": "Workspace Sidebar",
+ "header_icon": "accounting",
+ "items": [
+  {
+   "collapsible": 1,
+   "doctype": "Workspace Sidebar Item",
+   "icon": "home",
+   "idx": 1,
+   "label": "Home",
+   "link_to": "Accounting Team",
+   "link_type": "Workspace",
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "doctype": "Workspace Sidebar Item",
+   "icon": "book-open",
+   "idx": 2,
+   "label": "Journal Entry",
+   "link_to": "Journal Entry",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "doctype": "Workspace Sidebar Item",
+   "icon": "banknote-arrow-down",
+   "idx": 3,
+   "label": "PR",
+   "link_to": "Payment Requisition",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "doctype": "Workspace Sidebar Item",
+   "icon": "receipt",
+   "idx": 4,
+   "label": "Sales Invoice",
+   "link_to": "Sales Invoice",
+   "link_type": "DocType",
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-10-03 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Financial Operations",
+ "name": "Accounting Team",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "Accounting Team"
+}

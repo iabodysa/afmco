@@ -31,6 +31,19 @@ frappe.listview_settings['Payment Requisition'] = {
 
         // Set default style class
         btn.addClass('btn-default');
+
+        if (frappe.user.has_role('Accountant')) {
+            listview.page.add_inner_button(__('Export All Requisitions to Excel'), function() {
+                open_url_post('/api/method/frappe.core.doctype.data_export.exporter.export_data', {
+                    doctype: 'Payment Requisition',
+                    with_data: 1,
+                    all_doctypes: 0,
+                    file_type: 'Excel',
+                    export_without_column_meta: true,
+                    filters: '{}'
+                });
+            });
+        }
     },
 
     refresh: function(listview) {
