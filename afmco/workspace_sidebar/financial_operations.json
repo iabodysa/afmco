@@ -8,62 +8,17 @@
    "collapsible": 1,
    "icon": "home",
    "label": "Home",
-   "link_to": "Operations",
+   "link_to": "Accounting Team",
    "link_type": "Workspace",
    "open_in_new_tab": 1,
    "type": "Link"
   },
   {
    "collapsible": 1,
-   "icon": "receipt",
-   "label": "Payment Requisition",
-   "link_to": "Payment Requisition",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
-   "collapsible": 1,
-   "icon": "credit-card",
-   "label": "SADAD Bulk Payments",
-   "link_to": "sadad-bulk",
-   "link_type": "Page",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
-   "collapsible": 1,
-   "icon": "wallet",
-   "label": "Petty Cash",
-   "link_to": "Petty Cash",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
-   "collapsible": 1,
-   "icon": "coins",
-   "label": "Liquidation Petty Cash",
-   "link_to": "Liquidation Petty Cash",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
-   "collapsible": 1,
-   "icon": "hand-coins",
-   "label": "Employee Petty Cash",
-   "link_to": "Employee Petty Cash",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
-   "collapsible": 1,
-   "icon": "ban",
-   "label": "Cancellation Request",
-   "link_to": "Cancellation Request",
-   "link_type": "DocType",
+   "icon": "layout-dashboard",
+   "label": "Expense Request Dashboard",
+   "link_to": "Expense Request Dashboard",
+   "link_type": "Dashboard",
    "open_in_new_tab": 1,
    "type": "Link"
   },
@@ -78,10 +33,99 @@
   },
   {
    "collapsible": 1,
-   "icon": "layout-dashboard",
-   "label": "Expense Request Dashboard",
-   "link_to": "Expense Request Dashboard",
-   "link_type": "Dashboard",
+   "icon": "banknote",
+   "indent": 1,
+   "label": "Payments",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Section Break"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "receipt",
+   "label": "Payment Requisition",
+   "link_to": "Payment Requisition",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "credit-card",
+   "label": "SADAD Bulk Payments",
+   "link_to": "sadad-bulk",
+   "link_type": "Page",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "ban",
+   "label": "Cancellation Request",
+   "link_to": "Cancellation Request",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "wallet",
+   "label": "Petty Cash",
+   "link_to": "Petty Cash",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "coins",
+   "label": "Liquidation Petty Cash",
+   "link_to": "Liquidation Petty Cash",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "hand-coins",
+   "label": "Employee Petty Cash",
+   "link_to": "Employee Petty Cash",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "collapsible": 1,
+   "icon": "book-open",
+   "indent": 1,
+   "label": "Accounting",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Section Break"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "book-open",
+   "label": "Journal Entry",
+   "link_to": "Journal Entry",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "receipt",
+   "label": "Sales Invoice",
+   "link_to": "Sales Invoice",
+   "link_type": "DocType",
    "open_in_new_tab": 1,
    "type": "Link"
   },
@@ -116,7 +160,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-02 12:00:00.000000",
+ "modified": "2026-10-03 18:00:00.000000",
  "module": "Financial Operations",
  "name": "Financial Operations",
  "owner": "Administrator",

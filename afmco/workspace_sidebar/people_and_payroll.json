@@ -15,32 +15,15 @@
   },
   {
    "collapsible": 1,
-   "icon": "credit-card",
-   "label": "IBAN Update",
-   "link_to": "IBAN Update",
+   "icon": "users",
+   "indent": 1,
+   "label": "Employees",
    "link_type": "DocType",
    "open_in_new_tab": 1,
-   "type": "Link"
+   "type": "Section Break"
   },
   {
-   "collapsible": 1,
-   "icon": "clock-plus",
-   "label": "Overtime Assignment Request",
-   "link_to": "Overtime Assignment Request",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
-   "collapsible": 1,
-   "icon": "calendar-minus",
-   "label": "Leave Application",
-   "link_to": "Leave Application",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
+   "child": 1,
    "collapsible": 1,
    "icon": "scan-search",
    "label": "Employee ID Checker",
@@ -50,6 +33,77 @@
    "type": "Link"
   },
   {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "credit-card",
+   "label": "IBAN Update",
+   "link_to": "IBAN Update",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "calendar-minus",
+   "label": "Leave Application",
+   "link_to": "Leave Application",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "clock-plus",
+   "label": "Overtime Assignment Request",
+   "link_to": "Overtime Assignment Request",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "plane",
+   "label": "Vacation Allowance",
+   "link_to": "Vacation Allowance",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "sliders-horizontal",
+   "label": "Employee Salary Adjustment",
+   "link_to": "Employee Salary Adjustment",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "wallet",
+   "label": "Employee Financial Summary",
+   "link_to": "Employee Financial Summary",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "icon": "user-minus",
+   "label": "End of Service Settlement",
+   "link_to": "End of Service Settlement",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Link"
+  },
+  {
+   "child": 1,
    "collapsible": 1,
    "icon": "mail",
    "label": "Contact Message",
@@ -60,41 +114,25 @@
   },
   {
    "collapsible": 1,
-   "icon": "user-minus",
-   "label": "End of Service Settlement",
-   "link_to": "End of Service Settlement",
+   "icon": "banknote",
+   "indent": 1,
+   "label": "Payroll",
    "link_type": "DocType",
    "open_in_new_tab": 1,
-   "type": "Link"
+   "type": "Section Break"
   },
   {
+   "child": 1,
    "collapsible": 1,
-   "icon": "plane",
-   "label": "Vacation Allowance",
-   "link_to": "Vacation Allowance",
-   "link_type": "DocType",
+   "icon": "file-output",
+   "label": "WPS Salary File",
+   "link_to": "wps-file",
+   "link_type": "Page",
    "open_in_new_tab": 1,
    "type": "Link"
   },
   {
-   "collapsible": 1,
-   "icon": "sliders-horizontal",
-   "label": "Employee Salary Adjustment",
-   "link_to": "Employee Salary Adjustment",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
-   "collapsible": 1,
-   "icon": "wallet",
-   "label": "Employee Financial Summary",
-   "link_to": "Employee Financial Summary",
-   "link_type": "DocType",
-   "open_in_new_tab": 1,
-   "type": "Link"
-  },
-  {
+   "child": 1,
    "collapsible": 1,
    "icon": "file-spreadsheet",
    "label": "WPS Consolidated Report",
@@ -104,6 +142,7 @@
    "type": "Link"
   },
   {
+   "child": 1,
    "collapsible": 1,
    "icon": "shield",
    "label": "Gosi",
@@ -114,6 +153,16 @@
   },
   {
    "collapsible": 1,
+   "icon": "id-card",
+   "indent": 1,
+   "label": "Iqama",
+   "link_type": "DocType",
+   "open_in_new_tab": 1,
+   "type": "Section Break"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
    "icon": "layout-dashboard",
    "label": "Iqama Renewal Control",
    "link_to": "iqama-control",
@@ -122,6 +171,7 @@
    "type": "Link"
   },
   {
+   "child": 1,
    "collapsible": 1,
    "icon": "refresh-cw",
    "label": "Iqama Renewal Tracking",
@@ -131,6 +181,7 @@
    "type": "Link"
   },
   {
+   "child": 1,
    "collapsible": 1,
    "icon": "refresh-ccw",
    "label": "Iqama Renewal Fee Tracking",
@@ -140,6 +191,7 @@
    "type": "Link"
   },
   {
+   "child": 1,
    "collapsible": 1,
    "icon": "list-checks",
    "label": "Iqama Renewal Management",
@@ -149,6 +201,7 @@
    "type": "Link"
   },
   {
+   "child": 1,
    "collapsible": 1,
    "icon": "receipt",
    "label": "iQama Renewal Payment Management",
@@ -158,6 +211,7 @@
    "type": "Link"
   },
   {
+   "child": 1,
    "collapsible": 1,
    "icon": "stamp",
    "label": "Employee Visa",
@@ -247,7 +301,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-02 12:00:00.000000",
+ "modified": "2026-10-03 18:00:00.000000",
  "module": "People and Payroll",
  "name": "People and Payroll",
  "owner": "Administrator",
