@@ -1,17 +1,17 @@
 {
  "based_on": "creation",
- "chart_name": "Weekly Paid Expense Request Count",
- "chart_type": "Count",
+ "chart_name": "Monthly Paid Payment Requisition Amount",
+ "chart_type": "Sum",
  "color": "#449CF0",
- "creation": "2024-06-13 23:08:47.594524",
+ "creation": "2024-06-15 05:38:08.038631",
  "doctype": "Dashboard Chart",
  "document_type": "Payment Requisition",
  "filters_json": "[[\"Payment Requisition\",\"workflow_state\",\"=\",\"Paid\",false]]",
  "group_by_type": "Count",
  "is_standard": 1,
- "modified": "2026-10-03 12:00:00.000000",
+ "modified": "2026-10-04 12:00:00.000000",
  "module": "Financial Operations",
- "name": "Weekly Paid Expense Request Count",
+ "name": "Monthly Paid Payment Requisition Amount",
  "roles": [
   {
    "role": "Accounts Manager"
@@ -23,8 +23,9 @@
    "role": "System Manager"
   }
  ],
- "time_interval": "Weekly",
+ "time_interval": "Monthly",
  "timeseries": 1,
  "timespan": "Last Year",
- "type": "Line"
+ "type": "Bar",
+ "value_based_on": "amount"
 }

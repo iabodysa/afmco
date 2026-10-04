@@ -2169,12 +2169,12 @@ Employee Payslip,قسيمة راتب الموظف
 Vacation Allowance Statement,بيان بدل الإجازة
 Vacation Allowance Undertaking,تعهد
 Sales Invoice Credit Note,إشعار دائن لفاتورة المبيعات
-Expense Request Dashboard,لوحة طلبات الدفع
+Payment Requisition Dashboard,لوحة طلبات الدفع
 Pending Bank Payments by Payment Date,المدفوعات البنكية المعلقة حسب تاريخ الدفع
-Last Quarter Paid Expense Request Amount by Project,مبالغ طلبات الدفع المدفوعة في الربع الماضي حسب المشروع
-Monthly Paid Expense Request Amount,مبالغ طلبات الدفع المدفوعة شهريًا
-Weekly Paid Expense Request Count,عدد طلبات الدفع المدفوعة أسبوعيًا
-Open Expense Requests by Status,طلبات الدفع المفتوحة حسب الحالة
+Last Quarter Paid Payment Requisition Amount by Project,مبالغ طلبات الدفع المدفوعة في الربع الماضي حسب المشروع
+Monthly Paid Payment Requisition Amount,مبالغ طلبات الدفع المدفوعة شهريًا
+Weekly Paid Payment Requisition Count,عدد طلبات الدفع المدفوعة أسبوعيًا
+Open Payment Requisitions by Status,طلبات الدفع المفتوحة حسب الحالة
 Amount Awaiting Bank Entry by Payment Type,المبالغ بانتظار القيد البنكي حسب نوع الدفع
 Monthly Expense Request Count,عدد طلبات الدفع الشهرية
 Monthly EOS Expense Requests Count,عدد طلبات دفع مكافأة نهاية الخدمة الشهرية
