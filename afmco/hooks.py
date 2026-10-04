@@ -55,6 +55,7 @@ web_include_css = "/assets/afmco/css/login.css"
 
 # include js in doctype views
 doctype_js = {
+	"Data Import": "public/js/data_import.js",
 	"Employee": "public/js/employee.js",
 	"Employee Checkin": "public/js/employee_checkin.js",
 	"Journal Entry": "public/js/journal_entry.js",
