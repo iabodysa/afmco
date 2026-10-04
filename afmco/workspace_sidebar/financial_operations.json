@@ -8,7 +8,7 @@
    "collapsible": 1,
    "icon": "home",
    "label": "Home",
-   "link_to": "Accounting Team",
+   "link_to": "Financial Operations",
    "link_type": "Workspace",
    "open_in_new_tab": 1,
    "type": "Link"
@@ -130,7 +130,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-04 12:00:00.000000",
+ "modified": "2026-10-05 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Financial Operations",
  "owner": "Administrator",
