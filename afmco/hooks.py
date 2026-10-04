@@ -15,7 +15,7 @@ add_to_apps_screen = [
 		"name": app_name,
 		"logo": "/assets/afmco/images/afmco-app-icon.svg",
 		"title": app_title,
-		"route": "/desk/operations",
+		"route": "/desk/people-and-payroll",
 	}
 ]
 

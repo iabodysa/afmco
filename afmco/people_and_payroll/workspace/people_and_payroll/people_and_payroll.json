@@ -6,7 +6,7 @@
  "hide_custom": 1,
  "icon": "organization",
  "idx": 2,
- "label": "Operations",
+ "label": "People and Payroll",
  "links": [
   {
    "label": "Employees",
@@ -149,9 +149,9 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-03 23:50:00.000000",
+ "modified": "2026-10-05 12:00:00.000000",
  "module": "People and Payroll",
- "name": "Operations",
+ "name": "People and Payroll",
  "number_cards": [
   {
    "label": "Employees on leave today",
@@ -180,6 +180,6 @@
    "type": "DocType"
   }
  ],
- "title": "Operations",
+ "title": "People and Payroll",
  "type": "Workspace"
 }

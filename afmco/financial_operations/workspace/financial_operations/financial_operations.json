@@ -7,7 +7,7 @@
  "icon": "accounting",
  "idx": 0,
  "indicator_color": "green",
- "label": "Accounting Team",
+ "label": "Financial Operations",
  "links": [
   {
    "label": "PR",
@@ -80,9 +80,9 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-04 12:09:00.000000",
+ "modified": "2026-10-05 12:00:00.000000",
  "module": "Financial Operations",
- "name": "Accounting Team",
+ "name": "Financial Operations",
  "owner": "Administrator",
  "public": 1,
  "roles": [
@@ -135,6 +135,6 @@
    "type": "DocType"
   }
  ],
- "title": "Accounting Team",
+ "title": "Financial Operations",
  "type": "Workspace"
 }
