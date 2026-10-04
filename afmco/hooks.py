@@ -142,6 +142,7 @@ extend_doctype_class = {
 	"Salary Slip": "afmco.people_and_payroll.salary_slip.AfmcoSalarySlip",
 	"Salary Structure Assignment": "afmco.people_and_payroll.salary_structure_assignment.AfmcoSalaryStructureAssignment",
 	"Sales Invoice": "afmco.financial_operations.sales_invoice.AfmcoSalesInvoice",
+	"Workspace Sidebar": "afmco.desk_views.BlockedModuleItems",
 }
 
 # Scheduled Tasks
@@ -187,6 +188,7 @@ doc_events = {
 }
 
 override_whitelisted_methods = {
+	"frappe.desk.desktop.get_desktop_page": "afmco.people_and_payroll.api.desktop.get_desktop_page",
 	"toggle_archive_view": "afmco.financial_operations.api.expense_request.toggle_archive_view",
 }
 
