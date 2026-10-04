@@ -3090,3 +3090,101 @@ This payslip is confidential and intended for the named employee only.,هذه ا
 Assessor Signature,توقيع المقيّم
 Compliance Score,نسبة الامتثال
 Checklist Item,بند التقييم
+01. استفسار عام / General Inquiry,01. استفسار عام
+02. اعتراض على خصم من الراتب / Objection to Salary Deduction,02. اعتراض على خصم من الراتب
+03. تأخر صرف الراتب / Delayed Salary Payment,03. تأخر صرف الراتب
+04. مشكلة في الحساب البنكي / Bank Account Issue,04. مشكلة في الحساب البنكي
+05. صرف بدلات / Allowances Disbursement,05. صرف بدلات
+06. صرف خارج دوام / Overtime Payment,06. صرف خارج دوام
+07. صرف مكافآت / Bonuses Disbursement,07. صرف مكافآت
+08. طلب إجازة / Leave Request,08. طلب إجازة
+09. اعتراض على أيام الغياب / Objection to Absent Days,09. اعتراض على أيام الغياب
+10. تقديم إجازة مرضية / Submitting Sick Leave,10. تقديم إجازة مرضية
+11. طلب تأشيرة خروج وعودة / Request for Exit/Re-entry Visa,11. طلب تأشيرة خروج وعودة
+12. صرف بدل إجازة / Leave Allowance Payment,12. صرف بدل إجازة
+13. طلب صرف مكافأة نهاية الخدمة بعد انتهاء العقد / End-of-Service Benefits Request after Contract Termination,13. طلب صرف مكافأة نهاية الخدمة بعد انتهاء العقد
+14. طلب سلفة / Loan Request,14. طلب سلفة
+15. تجديد التأمين / Insurance Renewal,15. تجديد التأمين
+16. تعويضات علاج / Treatment Compensation,16. تعويضات علاج
+17. مشاكل تأمين / Insurance Issues,17. مشاكل تأمين
+18. إصابة عمل / Work Injury,18. إصابة عمل
+19. تجديد الإقامة / Residency Renewal,19. تجديد الإقامة
+20. طلب مواصلات / Transportation Request,20. طلب مواصلات
+21. طلب وقود / Fuel Request,21. طلب وقود
+22. اعتراض على الوقود / Objection to Fuel,22. اعتراض على الوقود
+23. طلبات المركبات / Vehicle Requests,23. طلبات المركبات
+24. تفويض مركبة / Vehicle Authorization,24. تفويض مركبة
+25. تحديث تفويض مركبة / Update Vehicle Authorization,25. تحديث تفويض مركبة
+26. حوادث / Accidents,26. حوادث
+27. السكن / Housing,27. السكن
+28. طلب صيانة / Maintenance Request,28. طلب صيانة
+29. طلب معدات / Equipment Request,29. طلب معدات
+30. المسائل القانونية / Legal Matters,30. المسائل القانونية
+31. سوء معاملة في المستودع / Misbehavior in Warehouse,31. سوء معاملة في المستودع
+32. سوء تصرف من موظف / Misconduct by Employee,32. سوء تصرف من موظف
+33. غير ذلك / Others,33. غير ذلك
+"34. الإبلاغ عن اختلاس أو سرقة أو استغلال / Reporting Embezzlement, Theft, or Exploitation",34. الإبلاغ عن اختلاس أو سرقة أو استغلال
+Abha (أبها),أبها
+Action Taken,الإجراء المتخذ
+Additional comments or observations,ملاحظات أو تعليقات إضافية
+Al Kharj (الخرج),الخرج
+Al Khobar (الخُبر),الخُبر
+Applicant,مقدم الطلب
+Are evacuation roles assigned,هل تم تحديد أدوار الإخلاء
+Assessment Date,تاريخ التقييم
+Assessor Comments,ملاحظات المقيّم
+Assessor User,المستخدم المقيّم
+Buraidah (بريدة),بريدة
+Complaint Type,نوع الشكوى
+Compliant,ملتزم
+Cost Center PR,أوامر الدفع حسب مركز التكلفة
+Dammam (الدمام),الدمام
+Date for next scheduled assessment,تاريخ التقييم المجدول القادم
+Date of Complaint,تاريخ الشكوى
+Drill Communication Briefing Done,تمت إحاطة التمرين والتواصل
+Emergency Policy Awareness,الوعي بسياسة الطوارئ
+Evacuation Roles Assigned,تحديد أدوار الإخلاء
+Exit Leave Policy Awareness,الوعي بسياسة الخروج والإجازات
+First Aid AED Training Done,تم التدريب على الإسعافات الأولية وجهاز الصدمات
+Grievance Policy Awareness,الوعي بسياسة التظلمات
+Hafr Al Batin (حفر الباطن),حفر الباطن
+Hail (حائل),حائل
+Has drill and communication briefing been done,هل تمت إحاطة التمرين والتواصل
+Has first aid and AED training been completed,هل اكتمل التدريب على الإسعافات الأولية وجهاز الصدمات الكهربائية
+Health Issues Found,وجود مشكلات صحية
+Hofuf (الهفوف),الهفوف
+Is participant aware of emergency policy,هل المشارك على علم بسياسة الطوارئ
+Is participant aware of exit/leave policy,هل المشارك على علم بسياسة الخروج والإجازات
+Is participant aware of grievance policy,هل المشارك على علم بسياسة التظلمات
+Is participant aware of medical insurance,هل المشارك على علم بالتأمين الطبي
+Issues Identification,تحديد المشكلات
+Jeddah (جدة),جدة
+Jizan (جازان),جازان
+Jubail (الجبيل),الجبيل
+Khamis Mushait (خميس مشيط),خميس مشيط
+Last year PR Amount,مبلغ أوامر الدفع للسنة الماضية
+Last year PR count,عدد أوامر الدفع للسنة الماضية
+List of training actions needed if any,قائمة إجراءات التدريب المطلوبة إن وجدت
+Mecca (مكة),مكة
+Medical Insurance Awareness,الوعي بالتأمين الطبي
+Medina (المدينة المنورة),المدينة المنورة
+Najran (نجران),نجران
+Needs Training,يحتاج إلى تدريب
+Next Assessment Date,تاريخ التقييم القادم
+Non-Compliant,غير ملتزم
+Overall Status,الحالة العامة
+Policy Awareness,الوعي بالسياسات
+Qunfudah (القنفذة),القنفذة
+Riyadh (الرياض),الرياض
+Sabya (صبيا),صبيا
+Safety Issues Found,وجود مشكلات سلامة
+Sakaka (سكاكا),سكاكا
+Ta'if (الطائف),الطائف
+Tabuk (تبوك),تبوك
+TC-.YYYY.-,TC-.YYYY.-
+Team Care,رعاية الفريق
+Training Actions Required,إجراءات التدريب المطلوبة
+Were any health issues found,هل وجدت أي مشكلات صحية
+Were any safety issues found,هل وجدت أي مشكلات سلامة
+Working ID,الرقم الوظيفي
+Yanbu (ينبع),ينبع
