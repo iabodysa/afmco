@@ -33,7 +33,10 @@ page_renderer = [
 # include js, css files in header of desk.html
 app_include_css = "afmco_form_grid.bundle.css"
 
-boot_session = "afmco.desktop_icon_fallback.fill_missing_desktop_icons"
+boot_session = [
+	"afmco.desktop_icon_fallback.fill_missing_desktop_icons",
+	"afmco.people_and_payroll.fleet_navigation.remove_from_boot_sidebars",
+]
 # app_include_js = "/assets/afmco/js/afmco.js"
 
 # include js, css files in header of web template
@@ -95,6 +98,7 @@ after_install = "afmco.install.after_install"
 after_migrate = [
 	"afmco.financial_operations.zatca_workspace.remove_premium_promotion",
 	"afmco.vendor_desk_style.fill_empty_vendor_desk_style",
+	"afmco.people_and_payroll.fleet_navigation.remove_from_workspaces",
 ]
 
 # Uninstallation
