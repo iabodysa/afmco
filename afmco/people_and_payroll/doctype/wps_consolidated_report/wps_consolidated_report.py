@@ -15,6 +15,8 @@ from frappe import _
 from frappe.model.document import Document
 
 # -----------------------------------------------------------------------------
+FILE_EXTENSIONS = {"CSV": "csv", "Excel": "xlsx"}
+
 EMP_HEADERS_NCBK = [
     "Bank", "Account Number", "Total Salary", "Transaction Reference",
     "Employee Name", "National ID/Iqama ID", "Employee Address",
@@ -274,7 +276,7 @@ class WPSConsolidatedReport(Document):
         if is_hold_file:
             # Format: WPS_Hold_File_YYMMDD.csv
             today = datetime.now()
-            return f"WPS_Hold_File_{today.strftime('%y%m%d')}.{self.file_type.lower()}"
+            return f"WPS_Hold_File_{today.strftime('%y%m%d')}.{FILE_EXTENSIONS[self.file_type]}"
         else:
             # Get date info from first slip
             end_date = slips[0].get("end_date") if slips else datetime.now()
@@ -295,7 +297,7 @@ class WPSConsolidatedReport(Document):
             project_name = ' - '.join([p.strip() for p in cost_center.split('-') if not any('\u0600' <= c <= '\u06FF' for c in p)][:2])
             
             # Format: <MOL_No> <CR> <EmployeeCount> <TotalAmount> <HundredsColumn> <ProjectName> <MonAbbr> <YY>.csv
-            return f"{office} {corporation_cr} {len(slips)} {int(total_net)} {halalas} {project_name} {month_abbr} {year_two_digit}.{self.file_type.lower()}"
+            return f"{office} {corporation_cr} {len(slips)} {int(total_net)} {halalas} {project_name} {month_abbr} {year_two_digit}.{FILE_EXTENSIONS[self.file_type]}"
     
     def _build_matrix_rows(self, slips: List[dict]):
         if self.bank_format == "NCBK":
