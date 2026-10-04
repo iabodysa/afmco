@@ -3057,3 +3057,31 @@ Tax Invoice Number,رقم الفاتورة الضريبية
 Traffic Violations,مخالفات مرورية
 Two Year Plan,خطة السنتين
 No submitted salary slips with net pay in this payroll entry,لا توجد قسائم رواتب معتمدة بصافي راتب في قيد الرواتب هذا,WPS File
+Total Including VAT,الإجمالي شامل الضريبة
+Clearing End of Service,تصفية مستحقات نهاية الخدمة
+Duration of Service,مدة الخدمة
+Amounts Due,المبالغ المستحقة
+Total End of Service Benefits,إجمالي مستحقات مكافأة نهاية الخدمة
+Salaries Due,رواتب مستحقة
+Penalty Clause,الشرط الجزائي
+Fingerprint,البصمة
+Acknowledgement,إقرار بالمستحقات
+Clearance Declaration,إقرار مخالصة
+"I hereby acknowledge my agreement to the above-mentioned entitlements and commit to not contest the company in any capacity in the future, in relation to any entitlements or rights associated with my period of employment at the company, or regarding the receipt of my salaries and legal entitlements.",أقر بموافقتي على المستحقات الموضحة أعلاه، وأتعهد بعدم منازعة الشركة أمام أي جهة كانت مستقبلاً، فيما يتعلق بأي مستحقات أو حقوق خاصة بفترة عملي لدي الشركة أو فيما يتعلق بالحصول على رواتبي ومستحقاتي النظامية. وإنني قد وقعت على هذه المخالصة بمحض إرادتي واختياري الكاملين دون ضغط أو إكراه من أحد وأبرئ ذمة الشركة من أي مطالبة مستقبلية من أي حق من الحقوق المتعلقة بفترة العمل.
+"I, the undersigned: .......................................................................",أنا الموقع أدناه: .......................................................................
+"(..........................) nationality, who works for ..............................................................",(..........................) الجنسية، والذي يعمل لدى ..............................................................
+"In my capacity as (..................................................), hereby acknowledge that I have received all my rights and entitlements from the company until the date of / / , in accordance with the Saudi Arabian labor laws, the company’s regulations, and the employment contract signed between myself and the company, on the occasion of the termination of our employment relationship.",بصفتي (..................................................)، أقر بموجبه بأنني قد تسلمت جميع حقوقي ومستحقاتي من الشركة حتى تاريخ / / ، وفقاً لأنظمة العمل في المملكة العربية السعودية ولوائح الشركة والعقد الموقع بيني وبين الشركة، بمناسبة انتهاء علاقة العمل بيننا.
+"Furthermore, I confirm that I have received all documents and certificates I had previously submitted to the company at the start of my employment or during my service, and I release the company from any and all claims or entitlements related to my employment period or any legal or financial claims.",وأقر بموجب هذا الإقرار بأنني قد استلمت كافة الأوراق والشهادات التي قدمتها للشركة عند بداية العمل أو خلال فترة خدمتي، وأبرئ ذمة الشركة من أي حقوق أو مستحقات قد تكون لي، سواء كانت تلك المستحقات متعلقة بفترة عملي لدى الشركة أو متعلقة بأي مطالبة قانونية أو مالية.
+"I further declare that I have no future rights or claims against the company, and I commit not to pursue any future financial or legal claims against the company.",كما أؤكد أنه ليس لدي أي حقوق مستقبلية تجاه الشركة، وألتزم بعدم الرجوع على الشركة بأي مطالبة مالية أو قانونية مستقبلاً.
+"I also acknowledge that I have signed this declaration of my own free will, without any pressure or coercion, and I release the company from any future obligations or rights.",أقر كذلك أنني قمت بالتوقيع على هذا الإقرار بكامل إرادتي، دون أي ضغوط أو إكراه، وأبرئ ذمة الشركة من أي التزامات أو حقوق مستقبلية.
+"Sincerely,",والله ولي التوفيق،
+Employee Details,بيانات الموظف
+Document No,رقم المستند
+Total Earnings,إجمالي المستحقات
+Total Deductions,إجمالي الاستقطاعات
+This payslip is confidential and intended for the named employee only.,هذه القسيمة سرية ومخصصة للموظف المذكور فقط.
+{0} Saudi Riyals only,فقط {0} ريال سعودي لا غير
+{0} Saudi Riyals and {1} Halalas only,فقط {0} ريال سعودي و {1} هللة لا غير
+Assessor Signature,توقيع المقيّم
+Compliance Score,نسبة الامتثال
+Checklist Item,بند التقييم
