@@ -394,7 +394,6 @@ Document {0} for employee {1} has no SADAD number. Please try again after adding
 Door Image,صورة الباب
 Download CSV,تنزيل CSV
 Download Employee Card,تنزيل بطاقة الموظف
-Download Files,تنزيل الملفات
 Download Sources,مصادر التنزيل
 Download URL,رابط التنزيل
 Download WPS,تنزيل ملف حماية الأجور
@@ -502,7 +501,6 @@ Error displaying Bank Entry settings:,خطأ في عرض إعدادات القي
 Error during pre-check validation: {0},خطأ أثناء التحقق المسبق: {0}
 Error fetching Salary Slips: {0},خطأ في جلب قسائم الرواتب: {0}
 Error fetching data,خطأ في جلب البيانات
-Error fetching data: ,خطأ في جلب البيانات: 
 Error fetching data:,خطأ في جلب البيانات:
 Error in get_query:,خطأ في get_query:
 Error loading financial data,خطأ في تحميل البيانات المالية
@@ -624,7 +622,6 @@ General Administrative Expenses (Months),المصروفات الإدارية ا�
 General administrative expenses,المصروفات الإدارية العامة
 General release details,تفاصيل الإصدار العامة
 Generate 4 Ticket Images,إنشاء 4 صور للتذكرة
-Generate BAT File,إنشاء ملف BAT
 Generate Pre-Check Report,إنشاء تقرير التحقق المسبق
 Generated BAT Script,برنامج BAT النصي المُنشأ
 Generated ZIP File,ملف ZIP المُنشأ
@@ -926,7 +923,6 @@ No comments yet,لا توجد ملاحظات بعد
 No data found.,لم يُعثر على بيانات.
 No data matching the criteria to export,لا توجد بيانات تطابق المعايير للتصدير
 No data matching the criteria to process,لا توجد بيانات تطابق المعايير للمعالجة
-No data returned from report.,لم يُرجع التقرير أي بيانات.
 No data with credit to export,لا توجد بيانات دائنة للتصدير
 No differences found between the document and employee data.,لا توجد فروقات بين المستند وبيانات الموظف.
 No draft Salary Slips found for this Payroll Entry.,لم يُعثر على قسائم رواتب مسودة لقيد الرواتب هذا.
@@ -992,7 +988,6 @@ Other ID,هوية أخرى
 Other Issue Image,صورة مشكلة أخرى
 Out City,خارج المدينة
 OutSource Co,شركة التعهيد
-Output File Name,اسم ملف الإخراج
 Outside Kingdom,خارج المملكة
 Outside Roof,السقف الخارجي
 Outside Roof Image,صورة السقف الخارجي
@@ -1113,7 +1108,6 @@ Please select at least one Payroll Entry,يرجى اختيار قيد رواتب
 Please select at least one Payroll Entry before generating ZIP.,يرجى اختيار قيد رواتب واحد على الأقل قبل إنشاء ملف ZIP.
 Please select at least one Payroll Entry before running pre-check.,يرجى اختيار قيد رواتب واحد على الأقل قبل تشغيل التحقق المسبق.
 Please select at least one document.,يرجى اختيار مستند واحد على الأقل.
-Please select both Bank Format and File Type,يرجى اختيار صيغة ملف البنك ونوع الملف
 Please select documents to approve renewal.,يرجى اختيار المستندات لاعتماد التجديد.
 Please select documents to confirm payment.,يرجى اختيار المستندات لتأكيد الدفع.
 Please select documents to create payment request.,يرجى اختيار المستندات لإنشاء طلب دفع.
@@ -3064,3 +3058,4 @@ SADAD Invoice Number,رقم فاتورة سداد
 Tax Invoice Number,رقم الفاتورة الضريبية
 Traffic Violations,مخالفات مرورية
 Two Year Plan,خطة السنتين
+No submitted salary slips with net pay in this payroll entry,لا توجد قسائم رواتب معتمدة بصافي راتب في قيد الرواتب هذا,WPS File

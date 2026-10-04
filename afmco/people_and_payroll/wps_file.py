@@ -139,3 +139,17 @@ def build_file(slips, file_format):
 	builder.bank_format = file_format
 	headers, rows = builder._build_matrix_rows(slips)
 	return f"WPS_{file_format}_{len(slips)}_Rows.csv", builder._make_csv(headers, rows).decode("utf-8")
+
+
+def build_payroll_entry_file(payroll_entry, bank_format, file_type):
+	builder = frappe.new_doc("WPS Consolidated Report")
+	builder.name = payroll_entry
+	builder.bank_format = bank_format
+	builder.file_type = file_type
+	builder.append("payroll_entries", {"payroll_entry": payroll_entry})
+	builder._validate_selects()
+	files, bat_blocks = builder._build_files(builder._group_by_labor_office(builder._fetch_slips()))
+	if not files:
+		frappe.throw(_("No submitted salary slips with net pay in this payroll entry", context="WPS File"))
+	content, filename, _single_file = builder._bundle_files(files, builder._build_bat_script(bat_blocks))
+	return filename, content.getvalue()
