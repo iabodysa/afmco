@@ -40,15 +40,8 @@
    "type": "Link"
   },
   {
-   "label": "Emad Report",
-   "link_to": "EMAD 2",
-   "link_type": "Report",
-   "report_ref_doctype": "GL Entry",
-   "type": "Link"
-  },
-  {
    "label": "Report",
-   "link_count": 6,
+   "link_count": 5,
    "link_type": "DocType",
    "type": "Card Break"
   },
@@ -63,13 +56,6 @@
    "is_query_report": 1,
    "label": "Accounts Receivable",
    "link_to": "Accounts Receivable",
-   "link_type": "Report",
-   "type": "Link"
-  },
-  {
-   "is_query_report": 1,
-   "label": "EMAD 2",
-   "link_to": "EMAD 2",
    "link_type": "Report",
    "type": "Link"
   },
@@ -94,7 +80,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-03 00:00:00.000000",
+ "modified": "2026-10-04 12:09:00.000000",
  "module": "Financial Operations",
  "name": "Accounting Team",
  "owner": "Administrator",
