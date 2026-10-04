@@ -63,7 +63,7 @@ def get_slips(company, from_date, to_date, payroll_entry=None, bank_name=None):
 	slips = frappe.get_list(
 		"Salary Slip",
 		filters=filters,
-		fields=["name", "payroll_entry", *FILE_FIELDS],
+		fields=["name", "payroll_entry", "iban_holder_name", *FILE_FIELDS],
 		order_by="name asc",
 	)
 	for slip in slips:
