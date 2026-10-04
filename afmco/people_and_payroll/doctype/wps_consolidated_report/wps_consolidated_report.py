@@ -156,7 +156,7 @@ class WPSConsolidatedReport(Document):
                     "Salary Slip",
                     filters={"payroll_entry": pe, "docstatus": 1},
                     fields=[
-                        "name", "employee", "employee_name", "payroll_entry",
+                        "name", "employee", "employee_name", "iban_holder_name", "payroll_entry",
                         "labor_office_file_number", "bank_name", "bank_account_no",
                         "basic33", "housing33", "other_allowance33", "deduction33",
                         "remark", "net_pay", "custom_hold", "start_date", "end_date",
@@ -306,7 +306,7 @@ class WPSConsolidatedReport(Document):
                     s.get("bank_account_no", ""),
                     s.get("net_pay", ""),
                     s.get("remark", ""),
-                    s.get("employee_name", ""),
+                    s.get("iban_holder_name") or s.get("employee_name", ""),
                     s.get("employee", ""),
                     "RUH",
                     s.get("basic33", ""),
@@ -320,7 +320,7 @@ class WPSConsolidatedReport(Document):
             headers = EMP_HEADERS_SIBC
             rows = []
             for s in slips:
-                first, mid, last = self._split_name(s.get("employee_name"))
+                first, mid, last = self._split_name(s.get("iban_holder_name") or s.get("employee_name"))
                 rows.append(
                     [
                         s.get("employee", ""),

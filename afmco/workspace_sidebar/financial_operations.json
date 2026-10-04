@@ -16,8 +16,8 @@
   {
    "collapsible": 1,
    "icon": "layout-dashboard",
-   "label": "Expense Request Dashboard",
-   "link_to": "Expense Request Dashboard",
+   "label": "Payment Requisition Dashboard",
+   "link_to": "Payment Requisition Dashboard",
    "link_type": "Dashboard",
    "open_in_new_tab": 1,
    "type": "Link"
@@ -130,7 +130,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-03 23:50:00.000000",
+ "modified": "2026-10-04 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Financial Operations",
  "owner": "Administrator",

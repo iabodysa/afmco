@@ -61,54 +61,6 @@
    "label": "Enable JV Creation On Sales Invoice Submit",
    "module": "Financial Operations",
    "name": "Company-create_jv_on_si_submit"
-  },
-  {
-   "dt": "Company",
-   "fieldname": "jv_series",
-   "fieldtype": "Data",
-   "idx": "25",
-   "insert_after": "date_of_establishment",
-   "is_system_generated": "1",
-   "label": "JV Series",
-   "module": "Financial Operations",
-   "name": "Company-jv_series",
-   "translatable": "1"
-  },
-  {
-   "dt": "Company",
-   "fieldname": "payment_entry_series",
-   "fieldtype": "Data",
-   "idx": "28",
-   "insert_after": "purchase_invoice_series",
-   "is_system_generated": "1",
-   "label": "Payment Entry Series",
-   "module": "Financial Operations",
-   "name": "Company-payment_entry_series",
-   "translatable": "1"
-  },
-  {
-   "dt": "Company",
-   "fieldname": "purchase_invoice_series",
-   "fieldtype": "Data",
-   "idx": "27",
-   "insert_after": "sales_invoice_series",
-   "is_system_generated": "1",
-   "label": "Purchase Invoice Series",
-   "module": "Financial Operations",
-   "name": "Company-purchase_invoice_series",
-   "translatable": "1"
-  },
-  {
-   "dt": "Company",
-   "fieldname": "sales_invoice_series",
-   "fieldtype": "Data",
-   "idx": "26",
-   "insert_after": "jv_series",
-   "is_system_generated": "1",
-   "label": "Sales Invoice Series",
-   "module": "Financial Operations",
-   "name": "Company-sales_invoice_series",
-   "translatable": "1"
   }
  ],
  "doctype": "Company",

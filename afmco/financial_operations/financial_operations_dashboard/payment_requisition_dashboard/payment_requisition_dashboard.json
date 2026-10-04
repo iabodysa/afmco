@@ -45,11 +45,11 @@
  ],
  "charts": [
   {
-   "chart": "Monthly Paid Expense Request Amount",
+   "chart": "Monthly Paid Payment Requisition Amount",
    "width": "Full"
   },
   {
-   "chart": "Open Expense Requests by Status",
+   "chart": "Open Payment Requisitions by Status",
    "width": "Half"
   },
   {
@@ -69,20 +69,20 @@
    "width": "Half"
   },
   {
-   "chart": "Last Quarter Paid Expense Request Amount by Project",
+   "chart": "Last Quarter Paid Payment Requisition Amount by Project",
    "width": "Full"
   },
   {
-   "chart": "Weekly Paid Expense Request Count",
+   "chart": "Weekly Paid Payment Requisition Count",
    "width": "Full"
   }
  ],
  "creation": "2024-06-13 23:08:52.759371",
- "dashboard_name": "Expense Request Dashboard",
+ "dashboard_name": "Payment Requisition Dashboard",
  "doctype": "Dashboard",
  "is_standard": 1,
- "modified": "2026-10-03 12:00:00.000000",
+ "modified": "2026-10-04 12:00:00.000000",
  "module": "Financial Operations",
- "name": "Expense Request Dashboard",
+ "name": "Payment Requisition Dashboard",
  "owner": "Administrator"
 }

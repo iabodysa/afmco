@@ -107,7 +107,6 @@ Annual leave allowance,بدل الإجازة السنوية
 Annual leave salary,راتب الإجازة السنوية
 Any notes from the driver,أي ملاحظات من السائق
 App File,ملف التطبيق
-App Release,إصدار التطبيق
 Appliances Regularly Maintained,صيانة الأجهزة بانتظام
 Application ID,معرّف التطبيق
 Application Key,مفتاح التطبيق
@@ -394,7 +393,6 @@ Document {0} for employee {1} has no SADAD number. Please try again after adding
 Door Image,صورة الباب
 Download CSV,تنزيل CSV
 Download Employee Card,تنزيل بطاقة الموظف
-Download Files,تنزيل الملفات
 Download Sources,مصادر التنزيل
 Download URL,رابط التنزيل
 Download WPS,تنزيل ملف حماية الأجور
@@ -502,7 +500,6 @@ Error displaying Bank Entry settings:,خطأ في عرض إعدادات القي
 Error during pre-check validation: {0},خطأ أثناء التحقق المسبق: {0}
 Error fetching Salary Slips: {0},خطأ في جلب قسائم الرواتب: {0}
 Error fetching data,خطأ في جلب البيانات
-Error fetching data: ,خطأ في جلب البيانات: 
 Error fetching data:,خطأ في جلب البيانات:
 Error in get_query:,خطأ في get_query:
 Error loading financial data,خطأ في تحميل البيانات المالية
@@ -624,7 +621,6 @@ General Administrative Expenses (Months),المصروفات الإدارية ا�
 General administrative expenses,المصروفات الإدارية العامة
 General release details,تفاصيل الإصدار العامة
 Generate 4 Ticket Images,إنشاء 4 صور للتذكرة
-Generate BAT File,إنشاء ملف BAT
 Generate Pre-Check Report,إنشاء تقرير التحقق المسبق
 Generated BAT Script,برنامج BAT النصي المُنشأ
 Generated ZIP File,ملف ZIP المُنشأ
@@ -777,7 +773,6 @@ JV Based on Submitted SI,قيد يومي بناءً على فواتير المب
 JV Created for Renewal Fees,أُنشئ قيد يومي لرسوم التجديد
 JV Created for Sadad Invoice,أُنشئ قيد يومي لفاتورة سداد
 JV Due Date,تاريخ استحقاق القيد
-JV Series,سلسلة القيود اليومية
 Jack,الرافعة
 January,يناير
 Jazan,جازان
@@ -873,7 +868,6 @@ Missed renewal window. Follow up with HR / Legal immediately.,فاتت مهلة 
 Missing IBAN,الآيبان غير موجود
 Missing required authentication fields,حقول المصادقة المطلوبة غير مكتملة
 Mobile,الجوال
-Mobile App,تطبيق الجوال
 Mobile Cost (Annual),تكلفة الجوال (سنوية)
 Mobile number of supervisor,رقم جوال المشرف
 Model,الطراز
@@ -927,7 +921,6 @@ No comments yet,لا توجد ملاحظات بعد
 No data found.,لم يُعثر على بيانات.
 No data matching the criteria to export,لا توجد بيانات تطابق المعايير للتصدير
 No data matching the criteria to process,لا توجد بيانات تطابق المعايير للمعالجة
-No data returned from report.,لم يُرجع التقرير أي بيانات.
 No data with credit to export,لا توجد بيانات دائنة للتصدير
 No differences found between the document and employee data.,لا توجد فروقات بين المستند وبيانات الموظف.
 No draft Salary Slips found for this Payroll Entry.,لم يُعثر على قسائم رواتب مسودة لقيد الرواتب هذا.
@@ -993,7 +986,6 @@ Other ID,هوية أخرى
 Other Issue Image,صورة مشكلة أخرى
 Out City,خارج المدينة
 OutSource Co,شركة التعهيد
-Output File Name,اسم ملف الإخراج
 Outside Kingdom,خارج المملكة
 Outside Roof,السقف الخارجي
 Outside Roof Image,صورة السقف الخارجي
@@ -1034,7 +1026,6 @@ Passport Number,رقم جواز السفر
 Passport number,رقم جواز السفر
 Paste Excel Data,لصق بيانات Excel
 "Paste data copied from Excel, the first row must contain headers.",الصق البيانات المنسوخة من Excel، ويجب أن يحتوي الصف الأول على العناوين.
-Payment Entry Series,سلسلة سندات الدفع
 Payment Management (Trial),إدارة المدفوعات (تجريبي)
 Payment Order created successfully:,أُنشئ أمر الدفع بنجاح:
 Payment Order is already created.,سبق إنشاء أمر الدفع.
@@ -1115,7 +1106,6 @@ Please select at least one Payroll Entry,يرجى اختيار قيد رواتب
 Please select at least one Payroll Entry before generating ZIP.,يرجى اختيار قيد رواتب واحد على الأقل قبل إنشاء ملف ZIP.
 Please select at least one Payroll Entry before running pre-check.,يرجى اختيار قيد رواتب واحد على الأقل قبل تشغيل التحقق المسبق.
 Please select at least one document.,يرجى اختيار مستند واحد على الأقل.
-Please select both Bank Format and File Type,يرجى اختيار صيغة ملف البنك ونوع الملف
 Please select documents to approve renewal.,يرجى اختيار المستندات لاعتماد التجديد.
 Please select documents to confirm payment.,يرجى اختيار المستندات لتأكيد الدفع.
 Please select documents to create payment request.,يرجى اختيار المستندات لإنشاء طلب دفع.
@@ -1161,7 +1151,6 @@ Project association details,بيانات الارتباط بالمشروع
 Property manager,مدير العقار
 Property Owner,مالك العقار
 Proposed Action,الإجراء المقترح
-Purchase Invoice Series,سلسلة فواتير الشراء
 Purchase Receipt,استلام المشتريات
 Qiwa,قوى
 Quality rating of resolution approach,تقييم جودة أسلوب المعالجة
@@ -1306,7 +1295,6 @@ Salary Information,بيانات الراتب
 Salary Slip,قسيمة الراتب
 Salary for Last Month of Previous Year,راتب الشهر الأخير من السنة السابقة
 Salary slip submitted successfully.,اعتُمدت قسيمة الراتب بنجاح.
-Sales Invoice Series,سلسلة فواتير المبيعات
 Sample picture of a fire extinguisher.,صورة نموذجية لطفاية الحريق.
 Sample picture of cleaning tools.,صورة نموذجية لأدوات التنظيف.
 Sample picture of the bathrooms.,صورة نموذجية لدورات المياه.
@@ -2071,7 +2059,6 @@ One ticket allowance per year of leave deferred with Operations Management appro
 "If the applicant lacks authorization, add the ID number to the account number.",إذا لم تكن لدى مقدم الطلب صلاحية، فأضف رقم الهوية إلى رقم الحساب.
 "Save, print with the Petty Cash Format, sign, then attach the signed form here.",احفظ النموذج واطبعه بصيغة Petty Cash Format، ثم وقّعه وأرفقه هنا.
 Days on which staff in this department cannot take leave.,الأيام التي لا يُسمح فيها لموظفي القسم بأخذ إجازة.
-"Fill only for a past year, as 4 digits (e.g. 2024).",يُعبأ فقط لسنة سابقة، بأربعة أرقام (مثل 2024).
 Enter up to 12 hours; hours above 8 are charged as overtime at 1.5 times the hourly rate.,أدخل 12 ساعة كحد أقصى، وما زاد عن 8 ساعات يُحسب عمل إضافي بمرة ونصف أجر الساعة.
 One-time costs are spread over 24 months in the monthly cost.,التكاليف لمرة واحدة تتوزع على 24 شهر في التكلفة الشهرية.
 Company bank account the petty cash is paid from.,حساب الشركة البنكي اللي تُدفع منه العهدة.
@@ -2174,12 +2161,12 @@ Employee Payslip,قسيمة راتب الموظف
 Vacation Allowance Statement,بيان بدل الإجازة
 Vacation Allowance Undertaking,تعهد
 Sales Invoice Credit Note,إشعار دائن لفاتورة المبيعات
-Expense Request Dashboard,لوحة طلبات الدفع
+Payment Requisition Dashboard,لوحة طلبات الدفع
 Pending Bank Payments by Payment Date,المدفوعات البنكية المعلقة حسب تاريخ الدفع
-Last Quarter Paid Expense Request Amount by Project,مبالغ طلبات الدفع المدفوعة في الربع الماضي حسب المشروع
-Monthly Paid Expense Request Amount,مبالغ طلبات الدفع المدفوعة شهريًا
-Weekly Paid Expense Request Count,عدد طلبات الدفع المدفوعة أسبوعيًا
-Open Expense Requests by Status,طلبات الدفع المفتوحة حسب الحالة
+Last Quarter Paid Payment Requisition Amount by Project,مبالغ طلبات الدفع المدفوعة في الربع الماضي حسب المشروع
+Monthly Paid Payment Requisition Amount,مبالغ طلبات الدفع المدفوعة شهريًا
+Weekly Paid Payment Requisition Count,عدد طلبات الدفع المدفوعة أسبوعيًا
+Open Payment Requisitions by Status,طلبات الدفع المفتوحة حسب الحالة
 Amount Awaiting Bank Entry by Payment Type,المبالغ بانتظار القيد البنكي حسب نوع الدفع
 Monthly Expense Request Count,عدد طلبات الدفع الشهرية
 Monthly EOS Expense Requests Count,عدد طلبات دفع مكافأة نهاية الخدمة الشهرية
@@ -3069,3 +3056,4 @@ SADAD Invoice Number,رقم فاتورة سداد
 Tax Invoice Number,رقم الفاتورة الضريبية
 Traffic Violations,مخالفات مرورية
 Two Year Plan,خطة السنتين
+No submitted salary slips with net pay in this payroll entry,لا توجد قسائم رواتب معتمدة بصافي راتب في قيد الرواتب هذا,WPS File
