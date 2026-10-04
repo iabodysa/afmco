@@ -775,7 +775,6 @@ Items,الأصناف
 Journal Entry Draft Limit per User,حد مسودات القيود لكل مستخدم
 JV Based on Submitted SI,قيد يومي بناءً على فواتير المبيعات المعتمدة
 JV Created for Renewal Fees,أُنشئ قيد يومي لرسوم التجديد
-JV Created for SADAD Invoice,أُنشئ قيد يومي لفاتورة سداد
 JV Created for Sadad Invoice,أُنشئ قيد يومي لفاتورة سداد
 JV Due Date,تاريخ استحقاق القيد
 JV Series,سلسلة القيود اليومية
@@ -864,7 +863,6 @@ March,مارس
 Mecca,مكة المكرمة
 Medical Exam Fee (24 months),رسوم الفحص الطبي (24 شهرًا)
 Medical Insurance (Annual),التأمين الطبي (سنوي)
-Medical Insurance Issue,مشكلة التأمين الطبي
 Medina,المدينة المنورة
 Message Content,محتوى الرسالة
 Message Greeting,تحية الرسالة
@@ -3055,3 +3053,19 @@ Open SADAD Batches Amount,مبالغ دفعات سداد المفتوحة
 Payment Requisitions Rejected This Month,أوامر الدفع المرفوضة هذا الشهر
 Monthly Payment Requisition Count,عدد أوامر الدفع الشهرية
 Monthly EOS Payment Requisitions Count,عدد أوامر دفع مكافأة نهاية الخدمة الشهرية
+Assign To Employee,إسناد إلى موظف
+Bank Payment Date,تاريخ الدفع البنكي
+Dependent Fees,رسوم المرافقين
+Expense Request,طلب الدفع
+File No,رقم الملف
+Iqama Expiration Date,تاريخ انتهاء الإقامة
+Iqama Renewal Tracking Report,تقرير متابعة تجديد الإقامات
+Issue in Renewal,مشكلة في التجديد
+JV Status,حالة القيد اليومي
+PR Status,حالة طلب الشراء
+Renewal Preference,الرغبة في التجديد
+SADAD Invoice,فاتورة سداد
+SADAD Invoice Number,رقم فاتورة سداد
+Tax Invoice Number,رقم الفاتورة الضريبية
+Traffic Violations,مخالفات مرورية
+Two Year Plan,خطة السنتين
