@@ -775,7 +775,6 @@ Items,الأصناف
 Journal Entry Draft Limit per User,حد مسودات القيود لكل مستخدم
 JV Based on Submitted SI,قيد يومي بناءً على فواتير المبيعات المعتمدة
 JV Created for Renewal Fees,أُنشئ قيد يومي لرسوم التجديد
-JV Created for SADAD Invoice,أُنشئ قيد يومي لفاتورة سداد
 JV Created for Sadad Invoice,أُنشئ قيد يومي لفاتورة سداد
 JV Due Date,تاريخ استحقاق القيد
 JV Series,سلسلة القيود اليومية
@@ -864,7 +863,6 @@ March,مارس
 Mecca,مكة المكرمة
 Medical Exam Fee (24 months),رسوم الفحص الطبي (24 شهرًا)
 Medical Insurance (Annual),التأمين الطبي (سنوي)
-Medical Insurance Issue,مشكلة التأمين الطبي
 Medina,المدينة المنورة
 Message Content,محتوى الرسالة
 Message Greeting,تحية الرسالة

@@ -42,69 +42,6 @@
    "label": "SADAD Invoice Number",
    "mandatory": 0,
    "wildcard_filter": 0
-  },
-  {
-   "fieldname": "resident_balance",
-   "fieldtype": "Check",
-   "label": "Resident Balance",
-   "mandatory": 0,
-   "wildcard_filter": 0
-  },
-  {
-   "fieldname": "jv_created_for_sadad_invoice",
-   "fieldtype": "Check",
-   "label": "JV Created for SADAD Invoice",
-   "mandatory": 0,
-   "wildcard_filter": 0
-  },
-  {
-   "fieldname": "jv_created_for_renewal_fees",
-   "fieldtype": "Check",
-   "label": "JV Created for Renewal Fees",
-   "mandatory": 0,
-   "wildcard_filter": 0
-  },
-  {
-   "fieldname": "renewal_expiration_violation_on_employee",
-   "fieldtype": "Check",
-   "label": "Renewal Expiration Violation on Employee",
-   "mandatory": 0,
-   "wildcard_filter": 0
-  },
-  {
-   "fieldname": "issue_in_renewal",
-   "fieldtype": "Check",
-   "label": "Issue in Renewal",
-   "mandatory": 0,
-   "wildcard_filter": 0
-  },
-  {
-   "fieldname": "traffic_violations",
-   "fieldtype": "Check",
-   "label": "Traffic Violations",
-   "mandatory": 0,
-   "wildcard_filter": 0
-  },
-  {
-   "fieldname": "two_year_plan",
-   "fieldtype": "Check",
-   "label": "Two Year Plan",
-   "mandatory": 0,
-   "wildcard_filter": 0
-  },
-  {
-   "fieldname": "medical_insurance_issue",
-   "fieldtype": "Check",
-   "label": "Medical Insurance Issue",
-   "mandatory": 0,
-   "wildcard_filter": 0
-  },
-  {
-   "fieldname": "dependent_fees",
-   "fieldtype": "Check",
-   "label": "Dependent Fees",
-   "mandatory": 0,
-   "wildcard_filter": 0
   }
  ],
  "is_standard": "Yes",
