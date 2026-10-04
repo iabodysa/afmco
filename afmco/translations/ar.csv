@@ -777,7 +777,6 @@ JV Based on Submitted SI,قيد يومي بناءً على فواتير المب
 JV Created for Renewal Fees,أُنشئ قيد يومي لرسوم التجديد
 JV Created for Sadad Invoice,أُنشئ قيد يومي لفاتورة سداد
 JV Due Date,تاريخ استحقاق القيد
-JV Series,سلسلة القيود اليومية
 Jack,الرافعة
 January,يناير
 Jazan,جازان
@@ -1034,7 +1033,6 @@ Passport Number,رقم جواز السفر
 Passport number,رقم جواز السفر
 Paste Excel Data,لصق بيانات Excel
 "Paste data copied from Excel, the first row must contain headers.",الصق البيانات المنسوخة من Excel، ويجب أن يحتوي الصف الأول على العناوين.
-Payment Entry Series,سلسلة سندات الدفع
 Payment Management (Trial),إدارة المدفوعات (تجريبي)
 Payment Order created successfully:,أُنشئ أمر الدفع بنجاح:
 Payment Order is already created.,سبق إنشاء أمر الدفع.
@@ -1161,7 +1159,6 @@ Project association details,بيانات الارتباط بالمشروع
 Property manager,مدير العقار
 Property Owner,مالك العقار
 Proposed Action,الإجراء المقترح
-Purchase Invoice Series,سلسلة فواتير الشراء
 Purchase Receipt,استلام المشتريات
 Qiwa,قوى
 Quality rating of resolution approach,تقييم جودة أسلوب المعالجة
@@ -1306,7 +1303,6 @@ Salary Information,بيانات الراتب
 Salary Slip,قسيمة الراتب
 Salary for Last Month of Previous Year,راتب الشهر الأخير من السنة السابقة
 Salary slip submitted successfully.,اعتُمدت قسيمة الراتب بنجاح.
-Sales Invoice Series,سلسلة فواتير المبيعات
 Sample picture of a fire extinguisher.,صورة نموذجية لطفاية الحريق.
 Sample picture of cleaning tools.,صورة نموذجية لأدوات التنظيف.
 Sample picture of the bathrooms.,صورة نموذجية لدورات المياه.
