@@ -6,7 +6,7 @@
  "doctype": "Print Format",
  "font": "Default",
  "font_size": 14,
- "html": "{% import \"afmco/templates/print/cash_voucher.html\" as cv %}{{ cv.render(doc, \"Cash Payment Voucher\") }}",
+ "html": "{% import \"afmco/templates/print/voucher.html\" as cv %}{{ cv.render(doc, \"Cash Payment Voucher\") }}",
  "margin_bottom": 6.0,
  "margin_left": 6.0,
  "margin_right": 6.0,
