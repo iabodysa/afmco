@@ -5,20 +5,21 @@
 {% macro pct(v) -%}{{ '%g' | format(frappe.utils.flt(v or 0, 2)) }}%{%- endmacro %}
 
 {% macro styles(orientation='Portrait') -%}
+{%- set sp = '2.5mm' if orientation == 'Landscape' else '4mm' -%}
 <style>
 {%- if orientation == 'Landscape' %}
 .print-format { orientation: Landscape; }
 @page { size: A4 landscape; }
 {%- endif %}
 .print-format {
-  margin-top: 25mm;
-  margin-bottom: 13mm;
-  header-spacing: 3;
-  margin-left: 11mm;
-  margin-right: 11mm;
+  margin-top: 30mm;
+  margin-bottom: 16mm;
+  header-spacing: 4;
+  margin-left: 12mm;
+  margin-right: 12mm;
   padding: 0 !important;
   min-height: 0 !important;
-  font-size: 8.5pt;
+  font-size: 8pt;
 }
 html body .print-format, body .print-format { margin: 0 !important; padding: 0 !important; min-height: 0 !important; }
 html body, body[onload] { padding: 0 !important; margin: 0 !important; }
@@ -30,104 +31,104 @@ html body, body[onload] { padding: 0 !important; margin: 0 !important; }
 .print-format .afm .en, .print-format .afm .num, .print-format .afm .ltr, .print-format .afm .num span, .print-format .afm .ltr2 {
   font-family: "Noto Sans", "DejaVu Sans", sans-serif !important;
 }
-.print-format .afm { color: #171717; font-size: 8.5pt; line-height: 14px; font-weight: normal; direction: rtl; text-align: right; -webkit-print-color-adjust: exact; }
+.print-format .afm { color: #1a1a1a; font-size: 8pt; line-height: 13px; font-weight: normal; direction: rtl; text-align: right; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .afm * { box-sizing: border-box; }
 .print-format .afm p { margin: 0 !important; }
 .afm b, .afm strong { font-weight: bold; }
-.afm .num { white-space: nowrap; direction: ltr; unicode-bidi: embed; text-align: right; }
+.afm .num { white-space: nowrap; direction: ltr; unicode-bidi: embed; text-align: right; font-variant-numeric: tabular-nums; }
 .afm .ctr { text-align: center !important; }
 .afm .ltr { direction: ltr; unicode-bidi: embed; }
 .afm table { width: 100%; border-collapse: collapse; table-layout: fixed; border-spacing: 0; }
-.print-format .afm td, .print-format .afm th { padding: 1px 4px !important; vertical-align: middle !important; word-wrap: break-word; }
+.print-format .afm td, .print-format .afm th { padding: 2px 4px !important; vertical-align: middle !important; word-wrap: break-word; border: 0; }
 
-.afm-hdr .logo img { height: 48px; width: auto; display: block; }
-.print-format .afm-hdr td { padding: 0 !important; vertical-align: middle !important; border: 0 !important; }
-.afm-hdr .ids td { font-size: 8.5pt; line-height: 14px; white-space: nowrap; vertical-align: baseline !important; }
-.print-format .afm-hdr .ids td { padding: 0 4px 0 0 !important; }
-.afm-hdr .ids td.num { text-align: right !important; }
-.afm-hdr .ids .k { font-size: 7pt; color: #5f5f5f; }
-.afm-hdr .ids .k.ltr { font-size: 6pt; }
-.afm-hdr .rule td { height: 8px; }
-.print-format .afm-hdr .rule .thin { border-bottom: 0.75pt solid #00844e !important; }
-.print-format .afm-hdr .rule .thick { border-bottom: 2.4pt solid #00844e !important; }
+.print-format .afm-hdr td { padding: 0 !important; vertical-align: top !important; border: 0 !important; }
+.print-format .afm-hdr td.logo { text-align: right; }
+body:last-child .print-format .afm-hdr td.logo img, .print-format .afm-hdr td.logo img { height: 15mm !important; width: auto !important; max-width: none !important; max-height: none !important; object-fit: contain; display: inline-block; }
+.afm-hdr .ids td { font-size: 8pt; line-height: 13px; white-space: nowrap; vertical-align: baseline !important; color: #1a1a1a; }
+.print-format .afm-hdr .ids td { padding: 0 0 2px 4px !important; }
+.afm-hdr .ids .k { font-size: 6.5pt; color: #6b6b6b; }
+.afm-hdr .ids .k.ltr { font-size: 6pt; letter-spacing: 0.4px; }
 
-.print-format .afm-ftr td { border-top: 0.75pt solid #00844e !important; padding: 4px 0 0 0 !important; font-size: 7pt; line-height: 12px; color: #5f5f5f; vertical-align: top !important; }
+.print-format .afm-ftr td { border-top: 0.75pt solid #00824e !important; padding: 3px 0 0 0 !important; font-size: 6.5pt; line-height: 11px; color: #00824e; vertical-align: top !important; }
+.afm-ftr .co { white-space: nowrap; color: #1a1a1a; }
+.afm-ftr .ltr2 { direction: ltr; text-align: right; white-space: nowrap; letter-spacing: 0.8px; }
+.afm-ftr .pg { white-space: nowrap; color: #1a1a1a; }
 .afm-ftr .ltr { white-space: nowrap; }
-.afm-ftr .co { white-space: nowrap; }
-.afm-ftr .ltr2 { direction: ltr; text-align: right; white-space: nowrap; padding: 0 4px 0 0; }
-.afm-ftr .pg { white-space: nowrap; color: #171717; }
 
-.afm.inv .en { font-size: 7pt; line-height: 12px; color: #5f5f5f; direction: ltr; unicode-bidi: embed; }
-.afm.inv .ar { font-size: 7pt; line-height: 12px; color: #5f5f5f; }
-.print-format .afm.inv td, .print-format .afm.inv th { border: 0.75pt solid #d0d0d0; }
-.afm.inv .lb-en { text-align: right; white-space: nowrap; }
-.afm.inv .lb-ar { text-align: left; white-space: nowrap; }
-.afm.inv .v { font-size: 8.5pt; line-height: 14px; color: #171717; white-space: nowrap; }
+.afm.inv .en { font-size: 6pt; line-height: 10px; color: #6b6b6b; direction: ltr; unicode-bidi: embed; letter-spacing: 0.2px; }
+.afm.inv .ar { font-size: 6.5pt; line-height: 10px; color: #6b6b6b; }
+.afm.inv .lb-en { text-align: left; white-space: nowrap; }
+.afm.inv td.lb { white-space: nowrap; vertical-align: top !important; }
+.print-format .afm.inv td.lb { border-left: 0.5pt solid #ececec; }
+.afm.inv .lb-ar { text-align: right; white-space: nowrap; }
+.afm.inv .v { font-size: 8pt; line-height: 13px; color: #1a1a1a; white-space: nowrap; }
 .afm.inv .v.wrap { white-space: normal; }
 .afm.inv .v.b { font-weight: bold; }
-.afm.inv .v.num { text-align: center; }
 
-.afm.inv .inv-title { margin: 0 0 6px 0; }
-.print-format .afm.inv .inv-title th { background: #00844e; color: #ffffff; border: 0; padding: 1px 8px !important; white-space: nowrap; }
-.afm.inv .inv-title .t-en { text-align: right; font-size: 8.5pt; line-height: 20px; font-weight: bold; }
-.afm.inv .inv-title .t-en .ltr { font-family: "Noto Sans", "DejaVu Sans", sans-serif !important; }
-.afm.inv .inv-title .t-ar { text-align: left; font-size: 13pt; line-height: 20px; font-weight: bold; }
+.afm.inv .inv-title { margin: 0 0 {{ sp }} 0; }
+.print-format .afm.inv .inv-title td { padding: 0 0 1.5mm 0 !important; border-bottom: 1pt solid #00824e; vertical-align: bottom !important; }
+.afm.inv .inv-title .t-ar { text-align: right; font-size: 15pt; line-height: 22px; font-weight: bold; color: #00824e; white-space: nowrap; }
+.afm.inv .inv-title .t-en { text-align: left; font-size: 10pt; line-height: 16px; font-weight: bold; color: #1a1a1a; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap; }
 
-.afm.inv .inv-top { margin: 0 0 6px 0; }
-.print-format .afm.inv .inv-top > tbody > tr > td { border: 0; padding: 0 !important; vertical-align: top !important; }
+.afm.inv .inv-top { margin: 0 0 {{ sp }} 0; }
+.print-format .afm.inv .inv-top > tbody > tr > td { padding: 0 !important; vertical-align: top !important; }
 .print-format .afm.inv .inv-top td.qr { text-align: left; }
-.afm.inv .inv-top td.qr img { width: 96px; height: 96px; display: block; margin: 0 0 0 auto; }
+body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.inv .inv-top td.qr img { width: 26mm !important; height: 26mm !important; max-width: none !important; display: block; margin: 0 auto 0 0; }
+.print-format .afm.inv .inv-kv td { border-bottom: 0.5pt solid #dcdcdc; }
+.print-format .afm.inv .inv-kv tr:first-child td { border-top: 0.5pt solid #dcdcdc; }
+.afm.inv .inv-kv .v { text-align: right; }
 
-.afm.inv .inv-parties { margin: 0 0 6px 0; }
-.afm.inv .inv-party.hd .en, .afm.inv .inv-party.hd .ar { color: #00844e; font-weight: bold; }
-.print-format .afm.inv .inv-party.hd td { border-top: 1.2pt solid #00844e; }
-.print-format .afm.inv .inv-party td.v.wrap { vertical-align: top !important; }
+.afm.inv .inv-parties { margin: 0 0 {{ sp }} 0; }
+.print-format .afm.inv .inv-parties > tbody > tr > td { padding: 0 !important; vertical-align: top !important; }
+.print-format .afm.inv .inv-party td { border-bottom: 0.5pt solid #dcdcdc; vertical-align: top !important; }
+.print-format .afm.inv .inv-party tr.hd td { border-bottom: 1pt solid #00824e; padding-bottom: 1px !important; }
+.afm.inv .inv-party tr.hd .en, .afm.inv .inv-party tr.hd .ar { color: #00824e; font-weight: bold; font-size: 7.5pt; line-height: 12px; }
+.print-format .afm.inv .inv-kv td.v, .print-format .afm.inv .inv-party td.v { vertical-align: top !important; }
+.afm.inv .inv-party .v { text-align: right; }
+.afm.inv .inv-party .v.num { text-align: right; }
 
 .print-format .afm.inv table.inv-items { table-layout: auto; margin: 0; }
 .afm.inv .inv-items thead { display: table-header-group; }
 .afm.inv .inv-items tr { page-break-inside: avoid; }
-.print-format .afm.inv .inv-items th { background: #f4f4f4; border-top: 1.2pt solid #00844e; text-align: right !important; vertical-align: bottom !important; white-space: nowrap; font-weight: normal; }
+.print-format .afm.inv .inv-items th { background: #f2f7f4; border-top: 1pt solid #00824e; border-bottom: 0.5pt solid #00824e; text-align: right !important; vertical-align: bottom !important; white-space: nowrap; font-weight: normal; padding: 2px 3px !important; }
 .print-format .afm.inv .inv-items th.t { text-align: center !important; }
 .afm.inv .inv-items th .en, .afm.inv .inv-items th .ar, .afm.inv .inv-items th .cu { display: block; white-space: nowrap; }
-.afm.inv .inv-items th .en, .afm.inv .inv-items th .cu { font-size: 6pt; line-height: 10px; color: #5f5f5f; }
-.afm.inv .inv-items th .ar { font-weight: bold; color: #171717; }
+.afm.inv .inv-items th .en, .afm.inv .inv-items th .cu { font-size: 5.5pt; line-height: 9px; color: #6b6b6b; }
+.afm.inv .inv-items th .ar { font-size: 6.5pt; line-height: 11px; font-weight: bold; color: #1a1a1a; }
 .print-format .afm.inv .inv-items th.n { width: 1%; }
-.print-format .afm.inv table.inv-items th, .print-format .afm.inv table.inv-items td { padding: 1px 3px !important; }
-.print-format .afm.inv .inv-items th.m { width: 16mm; }
-.print-format .afm.inv .inv-items td { font-size: 8pt; line-height: 13px; }
+.print-format .afm.inv .inv-items th.m { width: {{ '20mm' if orientation == 'Landscape' else '15mm' }}; }
+.print-format .afm.inv .inv-items td { font-size: 7.5pt; line-height: 12px; padding: 1.5px 3px !important; border-bottom: 0.5pt solid #e3e3e3; }
 .print-format .afm.inv .inv-items td.num { text-align: right !important; white-space: nowrap; }
-.print-format .afm.inv .inv-items td.txt { text-align: center !important; }
+.print-format .afm.inv .inv-items td.txt { text-align: right !important; }
+.print-format .afm.inv .inv-items td.txt.ltr { direction: ltr; text-align: right !important; }
 .print-format .afm.inv .inv-items td.txt p, .print-format .afm.inv .inv-items td.txt div { margin: 0 !important; }
-.afm.inv .inv-items .sub { color: #5f5f5f; font-size: 6.5pt; padding: 0 0 0 3px; }
-.print-format .afm.inv .inv-items tr.sum td { background: #f4f4f4; font-weight: bold; }
+.afm.inv .inv-items .sub { color: #6b6b6b; font-size: 6pt; padding: 0 0 0 3px; }
+.print-format .afm.inv .inv-items tr.sum td { background: #f2f7f4; font-weight: bold; border-top: 0.5pt solid #00824e; border-bottom: 1pt solid #00824e; }
 
-.afm.inv .inv-close { margin: 6px 0 0 0; page-break-inside: avoid; }
+.afm.inv .inv-close { margin: {{ sp }} 0 0 0; page-break-inside: avoid; }
 .afm.inv .inv-close tr { page-break-inside: avoid; }
-.print-format .afm.inv .inv-close > tbody > tr > td { border: 0; padding: 0 !important; vertical-align: top !important; }
-.print-format .afm.inv .inv-close > tbody > tr > td.side { padding: 0 0 0 8px !important; }
-.print-format .afm.inv .inv-band td { background: #f4f4f4; border-top: 1.2pt solid #00844e; }
-.afm.inv .inv-band .en, .afm.inv .inv-band .ar { color: #171717; font-weight: bold; }
-.print-format .afm.inv .inv-tot td.num { font-size: 8.5pt; line-height: 14px; font-weight: bold; text-align: right; }
-.print-format .afm.inv .inv-tot tr.grand td { background: #00844e; color: #ffffff; border-color: #00844e; }
-.afm.inv .inv-tot tr.grand .en, .afm.inv .inv-tot tr.grand .ar { color: #ffffff; font-weight: bold; }
+.print-format .afm.inv .inv-close > tbody > tr > td { padding: 0 !important; vertical-align: top !important; }
+.print-format .afm.inv .inv-close > tbody > tr > td.side { padding: 0 6mm 0 0 !important; }
+.print-format .afm.inv .inv-tot td { border-bottom: 0.5pt solid #dcdcdc; }
+.print-format .afm.inv .inv-tot tr:first-child td { border-top: 1pt solid #00824e; }
 .print-format .afm.inv .inv-tot td.lb-en, .print-format .afm.inv .inv-tot td.lb-ar { white-space: normal; }
+.print-format .afm.inv .inv-tot td.num { font-size: 8pt; line-height: 13px; font-weight: bold; text-align: right; }
+.print-format .afm.inv .inv-tot tr.grand td { background: #00824e; color: #ffffff; border-bottom: 0; padding-top: 3px !important; padding-bottom: 3px !important; }
+.afm.inv .inv-tot tr.grand .en, .afm.inv .inv-tot tr.grand .ar { color: #ffffff; font-weight: bold; font-size: 7.5pt; }
+.print-format .afm.inv .inv-tot tr.grand td.num { font-size: 9.5pt; }
+.print-format .afm.inv .inv-words td { font-size: 7pt; line-height: 11px; color: #6b6b6b; padding: 2px 0 0 0 !important; }
+
 .afm.inv .pair { display: table; width: 100%; }
-.afm.inv .pair .en { display: table-cell; text-align: left; white-space: nowrap; }
+.afm.inv .pair .en { display: table-cell; text-align: left; white-space: nowrap; padding: 0 0 0 3px; }
 .afm.inv .pair .ar { display: table-cell; text-align: right; white-space: nowrap; }
-.print-format .afm.inv .inv-words td { font-size: 8pt; line-height: 13px; padding: 2px 4px !important; }
-
-.afm.inv .inv-notes { border-top: 1.2pt solid #00844e; padding: 1px 0 0 0; }
-.afm.inv .inv-notes .hd .en, .afm.inv .inv-notes .hd .ar { color: #00844e; font-weight: bold; }
+.afm.inv .inv-notes { border-top: 1pt solid #00824e; padding: 2px 0 0 0; }
 .afm.inv .inv-notes .hd { margin: 0 0 2px 0; }
-.print-format .afm.inv .inv-notes p { font-size: 7.5pt; line-height: 12px; color: #171717; direction: ltr; text-align: left; }
-.print-format .afm.inv .inv-notes p.qrn { color: #5f5f5f; font-size: 6.5pt; line-height: 10px; }
+.afm.inv .inv-notes .hd .en, .afm.inv .inv-notes .hd .ar { color: #00824e; font-weight: bold; font-size: 7.5pt; line-height: 12px; }
+.print-format .afm.inv .inv-notes p { font-size: 7pt; line-height: 11px; color: #1a1a1a; direction: ltr; text-align: left; }
+.print-format .afm.inv .inv-notes .bank { margin: 0 0 3mm 0; }
+.print-format .afm.inv .inv-notes p.qrn { color: #6b6b6b; font-size: 6pt; line-height: 9px; }
 .print-format .afm.inv .inv-notes p.qrn.ar { direction: rtl; text-align: right; }
-.print-format .afm.inv .inv-notes .bank { margin: 0 0 4px 0; }
-
-.afm.inv .inv-stamp img { height: 80px; width: 170px; display: block; margin: 4px 0 0 0; }
-{%- if orientation == 'Landscape' %}
-.print-format .afm.inv .inv-items th.m { width: 21mm; }
-{%- endif %}
+.print-format .afm.inv .inv-stamp img { height: {{ '18mm' if orientation == 'Landscape' else '22mm' }}; width: auto; max-width: none; object-fit: contain; display: block; margin: 2mm 0 0 0; }
 
 .print-format .page-break:last-child, .print-format .page-break:last-of-type { page-break-after: auto !important; }
 </style>
@@ -156,35 +157,33 @@ html body, body[onload] { padding: 0 !important; margin: 0 !important; }
 <div id="header-html">
 <div class="afm afm-hdr" dir="rtl" lang="ar">
   <table>
-    <colgroup><col style="width:30mm"><col><col style="width:66mm"></colgroup>
+    <colgroup><col><col style="width:62mm"></colgroup>
     <tr>
       <td class="logo">{% if afm.logo %}<img src="{{ afm.logo }}" alt="AFMCO">{% endif %}</td>
-      <td></td>
       <td>
         <table class="ids">
-          <colgroup><col style="width:24mm"><col><col style="width:14mm"></colgroup>
+          <colgroup><col style="width:24mm"><col><col style="width:13mm"></colgroup>
           {%- if afm.vat %}
           {%- set _k = _('Tax Id', lang='ar') %}
-          <tr><td class="k">{{ _k if _k != 'Tax Id' else '' }}</td><td class="num ctr"><b>{{ afm.vat }}</b></td><td class="k ltr" style="text-align:left;">VAT No.</td></tr>
+          <tr><td class="k">{{ _k if _k != 'Tax Id' else '' }}</td><td class="num"><b>{{ afm.vat }}</b></td><td class="k ltr" style="text-align:left;">VAT No.</td></tr>
           {%- endif %}
           {%- if afm.cr %}
           {%- set _k = _('Commercial Registration Number', lang='ar') %}
-          <tr><td class="k">{{ _k if _k != 'Commercial Registration Number' else '' }}</td><td class="num ctr"><b>{{ afm.cr }}</b></td><td class="k ltr" style="text-align:left;">CR No.</td></tr>
+          <tr><td class="k">{{ _k if _k != 'Commercial Registration Number' else '' }}</td><td class="num"><b>{{ afm.cr }}</b></td><td class="k ltr" style="text-align:left;">CR No.</td></tr>
           {%- endif %}
         </table>
       </td>
     </tr>
   </table>
-  <table class="rule"><colgroup><col style="width:22%"><col></colgroup><tr><td class="thick"></td><td class="thin"></td></tr></table>
 </div>
 </div>
 {%- set _pg = _('Page', lang='ar') %}
 <div id="footer-html">
 <div class="afm afm-ftr" dir="rtl" lang="ar">
   <table>
-    <colgroup><col><col style="width:40mm"><col style="width:34mm"></colgroup>
+    <colgroup><col><col style="width:36mm"><col style="width:30mm"></colgroup>
     <tr>
-      <td><span class="co">{{ afm.name_ar }}</span>{% if afm.addr %} &nbsp;|&nbsp; {{ afm.addr }}{% endif %}<div class="ltr2">{{ afm.name_en }} &nbsp;|&nbsp; T {{ afm.phone }} &nbsp;|&nbsp; {{ afm.web }}</div></td>
+      <td><span class="co">{{ afm.name_ar }}</span>{% if afm.addr %} &nbsp;|&nbsp; {{ afm.addr }}{% endif %}<div class="ltr2">{{ afm.name_en }} &nbsp;&nbsp; T {{ afm.phone }} &nbsp;&nbsp; {{ afm.web }}</div></td>
       <td class="num ctr">{{ doc.name }}</td>
       <td class="pg" style="text-align:left;">{% if _pg != 'Page' %}{{ _pg }}&nbsp; {% endif %}<span class="ltr">Page <span class="page"></span> / <span class="topage"></span></span></td>
     </tr>
@@ -201,40 +200,56 @@ html body, body[onload] { padding: 0 !important; margin: 0 !important; }
   ('Issue Date', _("Issue Date", "ar", ctx), frappe.utils.formatdate(doc.posting_date, 'yyyy-mm-dd'), 'num'),
   ('Supply Date', _("Supply Date", "ar", ctx), frappe.utils.formatdate(doc.posting_date, 'yyyy-mm-dd'), 'num')
 ] + extra_meta -%}
-{%- set parties = [
-  ('Name', _("Name", "ar", ctx), afm.name_ar, 'Name', _("Name", "ar", ctx), buyer_name if buyer_name is not none else doc.customer_name, 'b wrap', 'b wrap'),
-  ('Address', _("Address", "ar", ctx), doc.company_address_display or '', 'Address', _("Address", "ar", ctx), (buyer_address if buyer_address is not none else doc.address_display) or '', 'wrap', 'wrap'),
-  ('VAT No.', _("Tax Id", "ar"), doc.company_tax_id or '', 'VAT No.', _("Tax Id", "ar"), doc.tax_id or '', 'num', 'num'),
-  ('Seller CR', _("Commercial Registration", "ar", ctx), afm.cr, 'Client CR', _("Commercial Registration", "ar", ctx), buyer_cr, 'num', 'num')
+{%- set seller = [
+  ('Name', _("Name", "ar", ctx), afm.name_ar, 'b wrap'),
+  ('Address', _("Address", "ar", ctx), doc.company_address_display or '', 'wrap'),
+  ('VAT No.', _("Tax Id", "ar"), doc.company_tax_id or '', 'num'),
+  ('CR No.', _("Commercial Registration", "ar", ctx), afm.cr, 'num')
+] -%}
+{%- set buyer = [
+  ('Name', _("Name", "ar", ctx), buyer_name if buyer_name is not none else doc.customer_name, 'b wrap'),
+  ('Address', _("Address", "ar", ctx), (buyer_address if buyer_address is not none else doc.address_display) or '', 'wrap'),
+  ('VAT No.', _("Tax Id", "ar"), doc.tax_id or '', 'num'),
+  ('CR No.', _("Commercial Registration", "ar", ctx), buyer_cr, 'num')
 ] -%}
 
 <div class="afm inv" dir="rtl" lang="ar">
   <table class="inv-title"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>
-    <tr><th class="t-en"><span class="ltr">{{ t[0] }}</span></th><th class="t-ar">{{ t[1] }}</th></tr>
+    <tr><td class="t-ar">{{ t[1] }}</td><td class="t-en"><span class="ltr">{{ t[0] }}</span></td></tr>
   </table>
 
-  <table class="inv-top"><colgroup><col><col style="width:30mm"></colgroup>
+  <table class="inv-top"><colgroup><col style="width:118mm"><col><col style="width:26mm"></colgroup>
     <tr>
       <td class="meta">
-        <table class="inv-kv"><colgroup><col style="width:22%"><col><col style="width:22%"></colgroup>
+        <table class="inv-kv"><colgroup><col style="width:42mm"><col></colgroup>
         {%- for en, ar, value, cls in meta %}
         {%- if value or loop.index <= 3 %}
-        <tr><td class="lb-en"><span class="en">{{ en }}</span></td><td class="v ctr {{ cls }}">{{ value or '' }}</td><td class="lb-ar"><span class="ar">{{ ar }}</span></td></tr>
+        <tr><td class="lb"><div class="pair"><span class="ar">{{ ar }}</span><span class="en">{{ en }}</span></div></td><td class="v {{ cls }}">{{ value or '' }}</td></tr>
         {%- endif %}
         {%- endfor %}
         </table>
       </td>
+      <td></td>
       <td class="qr">{% if qr %}<img src="{{ qr }}" alt="ZATCA QR">{% endif %}</td>
     </tr>
   </table>
 
-  <table class="inv-party inv-parties"><colgroup><col style="width:12%"><col style="width:26%"><col style="width:12%"><col style="width:12%"><col style="width:26%"><col style="width:12%"></colgroup>
-    <tr class="inv-party hd"><td class="lb-en"><span class="en">Seller</span></td><td></td><td class="lb-ar"><span class="ar">{{ _("Supplier", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Client</span></td><td></td><td class="lb-ar"><span class="ar">{{ _("Buyer", "ar", ctx) }}</span></td></tr>
-    {%- for en_s, ar_s, v_s, en_b, ar_b, v_b, cls_s, cls_b in parties %}
-    {%- if v_s or v_b %}
-    <tr><td class="lb-en"><span class="en">{{ en_s }}</span></td><td class="v ctr {{ cls_s }}">{{ v_s or '' }}</td><td class="lb-ar"><span class="ar">{{ ar_s }}</span></td><td class="lb-en"><span class="en">{{ en_b }}</span></td><td class="v ctr {{ cls_b }}">{{ v_b or '' }}</td><td class="lb-ar"><span class="ar">{{ ar_b }}</span></td></tr>
-    {%- endif %}
+  <table class="inv-parties"><colgroup><col><col style="width:6mm"><col></colgroup>
+    <tr>
+    {%- for head_en, head_ar, rows in [('Seller', _("Supplier", "ar", ctx), seller), ('Client', _("Buyer", "ar", ctx), buyer)] %}
+      {%- if not loop.first %}<td></td>{% endif %}
+      <td>
+        <table class="inv-party"><colgroup><col style="width:30mm"><col></colgroup>
+          <tr class="hd"><td colspan="2"><div class="pair"><span class="ar">{{ head_ar }}</span><span class="en">{{ head_en }}</span></div></td></tr>
+          {%- for en, ar, value, cls in rows %}
+          {%- if value %}
+          <tr><td class="lb"><div class="pair"><span class="ar">{{ ar }}</span><span class="en">{{ en }}</span></div></td><td class="v {{ cls }}">{{ value }}</td></tr>
+          {%- endif %}
+          {%- endfor %}
+        </table>
+      </td>
     {%- endfor %}
+    </tr>
   </table>
 
   <table class="inv-items">
@@ -250,27 +265,24 @@ html body, body[onload] { padding: 0 !important; margin: 0 !important; }
     </tbody>
   </table>
 
-  <table class="inv-close"><colgroup><col style="width:{{ '56%' if (notes or qr_note or stamp) else '100%' }}">{% if notes or qr_note or stamp %}<col>{% endif %}</colgroup><tr>
+  <table class="inv-close"><colgroup><col style="width:{{ '60%' if (notes or qr_note or stamp) else '100%' }}">{% if notes or qr_note or stamp %}<col>{% endif %}</colgroup><tr>
   <td class="main">
-    <table class="inv-band"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>
-      <tr><td class="lb-en"><span class="en">Total Amount ({{ cur }})</span></td><td class="lb-ar"><span class="ar">{{ _("Total Amounts", "ar", ctx) }}</span></td></tr>
-    </table>
-    <table class="inv-tot"><colgroup><col style="width:40%"><col style="width:36%"><col style="width:24%"></colgroup>
-      <tr><td class="lb-en"><span class="en">Total (Excluding VAT)</span></td><td class="lb-ar"><span class="ar">{{ _("Total (Excluding VAT)", "ar", ctx) }}</span></td><td class="num">{{ money(doc.total) }}</td></tr>
-      <tr><td class="lb-en"><span class="en">Discount</span></td><td class="lb-ar"><span class="ar">{{ _("Total Discounts", "ar", ctx) }}</span></td><td class="num">{{ money(doc.discount_amount) }}</td></tr>
-      <tr><td class="lb-en"><span class="en">Total Taxable Amount (Excluding VAT)</span></td><td class="lb-ar"><span class="ar">{{ _("Total Taxable Amount (Excluding VAT)", "ar", ctx) }}</span></td><td class="num">{{ money(doc.net_total) }}</td></tr>
-      <tr><td class="lb-en"><span class="en">Total VAT</span></td><td class="lb-ar"><span class="ar">{{ _("Total VAT", "ar", ctx) }}</span></td><td class="num">{{ money(doc.total_taxes_and_charges) }}</td></tr>
-      <tr class="grand"><td class="lb-en"><span class="en">Total Amount Due</span></td><td class="lb-ar"><span class="ar">{{ _("Total Amount Due", "ar", ctx) }}</span></td><td class="num">{{ money(doc.grand_total) }}</td></tr>
+    <table class="inv-tot"><colgroup><col style="width:39%"><col style="width:39%"><col style="width:22%"></colgroup>
+      <tr><td class="lb-ar"><span class="ar">{{ _("Total (Excluding VAT)", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Total (Excluding VAT)</span></td><td class="num">{{ money(doc.total) }}</td></tr>
+      <tr><td class="lb-ar"><span class="ar">{{ _("Total Discounts", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Discount</span></td><td class="num">{{ money(doc.discount_amount) }}</td></tr>
+      <tr><td class="lb-ar"><span class="ar">{{ _("Total Taxable Amount (Excluding VAT)", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Total Taxable Amount (Excluding VAT)</span></td><td class="num">{{ money(doc.net_total) }}</td></tr>
+      <tr><td class="lb-ar"><span class="ar">{{ _("Total VAT", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Total VAT</span></td><td class="num">{{ money(doc.total_taxes_and_charges) }}</td></tr>
+      <tr class="grand"><td class="lb-ar"><span class="ar">{{ _("Total Amount Due", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Total Amount Due ({{ cur }})</span></td><td class="num">{{ money(doc.grand_total) }}</td></tr>
     </table>
     {%- if doc.in_words %}
-    <table class="inv-words"><tr><td class="ctr" dir="auto">{{ doc.get_formatted("in_words") }}</td></tr></table>
+    <table class="inv-words"><tr><td dir="auto">{{ doc.get_formatted("in_words") }}</td></tr></table>
     {%- endif %}
   </td>
   {%- if notes or qr_note or stamp %}
   <td class="side">
     <div class="inv-notes">
       {%- if notes %}
-      <div class="pair hd"><span class="en">Notes</span><span class="ar">{{ _("Notes", "ar") }}</span></div>
+      <div class="pair hd"><span class="ar">{{ _("Notes", "ar") }}</span><span class="en">Notes</span></div>
       <div class="bank">{% for line in notes %}<p>{{ line }}</p>{% endfor %}</div>
       {%- endif %}
       {%- if qr_note %}
