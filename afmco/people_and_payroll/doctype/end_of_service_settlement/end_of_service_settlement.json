@@ -41,7 +41,6 @@
   "hr_procedures_section",
   "end_of_service_reason",
   "term",
-  "s_id",
   "check1",
   "check2",
   "check3",
@@ -294,12 +293,6 @@
    "options": "\nTransfer of sponsorship\nFinal Exit"
   },
   {
-   "depends_on": "eval: doc.term == 'Transfer of sponsorship'",
-   "fieldname": "s_id",
-   "fieldtype": "Data",
-   "label": "The new sponsor’s ID number"
-  },
-  {
    "default": "0",
    "fieldname": "check1",
    "fieldtype": "Check",
@@ -320,6 +313,7 @@
   {
    "fieldname": "attach_34",
    "fieldtype": "Attach",
+   "hidden": 1,
    "label": "Please print the form, sign the employee and attach it"
   },
   {
@@ -485,7 +479,7 @@
    "link_fieldname": "tax_invoice_number"
   }
  ],
- "modified": "2026-09-26 00:00:00.000000",
+ "modified": "2026-10-06 00:00:00.000000",
  "module": "People and Payroll",
  "name": "End of Service Settlement",
  "naming_rule": "By \"Naming Series\" field",
