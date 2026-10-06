@@ -1,0 +1,133 @@
+{% macro styles() -%}
+<style>
+@page { size: 210mm 99mm; margin: 6mm; }
+.print-format { page-width: 210mm; page-height: 99mm; margin-top: 6mm; margin-bottom: 6mm; margin-left: 6mm; margin-right: 6mm; }
+html body .print-format { margin: 0 !important; }
+@media print { html body .print-format { padding: 0 !important; width: auto !important; max-width: none !important; min-height: 0 !important; } }
+@media screen { html body .print-format { width: 210mm !important; max-width: 210mm !important; min-height: 99mm !important; padding: 6mm !important; } }
+.print-format .cv, .print-format .cv div, .print-format .cv td, .print-format .cv span { font-family: "Noto Sans Arabic", "Noto Sans", "DejaVu Sans", Tahoma, sans-serif; }
+.print-format .cv { color: #171717; font-size: 8pt; line-height: 4mm; page-break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.cv table { width: 100%; border-collapse: collapse; table-layout: fixed; border-spacing: 0; }
+.print-format .cv table td { padding: 0; border: 0; vertical-align: middle; line-height: 4mm; }
+.cv .ltr, .cv .num { direction: ltr; unicode-bidi: embed; font-family: "Noto Sans", "DejaVu Sans", sans-serif; }
+.cv .num { white-space: nowrap; }
+.cv .hdr .logo img { height: 9mm; width: auto; display: block; }
+.print-format .cv .hdr .t-ar { font-size: 13pt; line-height: 5.6mm; font-weight: bold; color: #00844e; text-align: center; }
+.print-format .cv .hdr .t-en { font-size: 7pt; line-height: 3.2mm; font-weight: bold; color: #072b1a; text-align: center; letter-spacing: 0.5px; }
+.cv .hdr .void { font-size: 8pt; font-weight: bold; color: #e60000; text-align: center; }
+.print-format .cv .ids td { font-size: 6.5pt; line-height: 3.2mm; white-space: nowrap; text-align: left; color: #5f5f5f; }
+.cv .ids b { color: #171717; }
+.print-format .cv .rule td { height: 1.2mm; line-height: 1.2mm; font-size: 1px; }
+.cv .rule .thick { border-bottom: 2pt solid #00844e; }
+.cv .rule .thin { border-bottom: 0.75pt solid #00844e; }
+.cv .rows { margin-top: 1.5mm; }
+.print-format .cv .rows td { padding: 0.35mm 0; vertical-align: top; }
+.cv .k-ar { font-weight: bold; color: #072b1a; text-align: right; padding-left: 2mm !important; }
+.cv .k-en { font-size: 7pt; color: #5f5f5f; text-align: left; padding-right: 2mm !important; direction: ltr; }
+.cv .fill { position: relative; min-height: 4mm; line-height: 4mm; border-bottom: 0.5pt solid #00844e; overflow: hidden; }
+.cv .fill .stars { position: absolute; top: 0; right: 0; bottom: 0; left: 0; overflow: hidden; line-height: 4mm; color: #8a8a8a; direction: ltr; text-align: justify; z-index: 0; }
+.cv .fill .val { position: relative; z-index: 1; line-height: 4mm; background-color: #ffffff; padding: 0 1.5mm; font-weight: bold; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.cv .fill.amount .val { font-size: 9pt; }
+.print-format .cv.frame { height: 86mm; }
+.print-format .cv tr.top > td { height: 1mm; vertical-align: top; padding-bottom: 2mm; }
+.print-format .cv tr.sig > td { border: 0.75pt solid #00844e; vertical-align: top; text-align: center; font-size: 7pt; line-height: 3.4mm; padding-top: 0.8mm; }
+.print-format .cv tr.sig > td.stamp { border-style: dashed; }
+.cv tr.sig .en { display: block; font-size: 6pt; color: #5f5f5f; direction: ltr; }
+.print-format .cv tr.sig > td.gap { border: 0; }
+</style>
+{%- endmacro %}
+
+{% macro stars() -%}{{ "* " * 600 }}{%- endmacro %}
+
+{% macro fill(value, cls="") -%}
+<div class="fill {{ cls }}"><div class="stars">{{ stars() }}</div>{% if value %}<span class="val">{{ value }}</span>{% endif %}</div>
+{%- endmacro %}
+
+{% macro row(key, ctx, en, value, cls="") -%}
+<tr>
+	<td class="k-ar">{{ _(key, "ar", ctx) }}</td>
+	<td>{{ fill(value, cls) }}</td>
+	<td class="k-en">{{ en }}</td>
+</tr>
+{%- endmacro %}
+
+{% macro render(doc, title) -%}
+{%- set co = frappe.db.get_value("Company", doc.company, ["tax_id", "company_logo", "default_currency"], as_dict=1) or {} -%}
+{%- set zbs = frappe.db.get_value("ZATCA Business Settings", {"company": doc.company}, "name") if doc.company else none -%}
+{%- set ns = namespace(cr="", party="") -%}
+{%- if zbs -%}{%- for r in frappe.get_doc("ZATCA Business Settings", zbs).other_ids -%}{%- if r.type_code == "CRN" and r.value and not ns.cr -%}{%- set ns.cr = r.value -%}{%- endif -%}{%- endfor -%}{%- endif -%}
+{%- for a in doc.accounts -%}{%- if a.party and not ns.party -%}{%- set ns.party = a.party -%}{%- endif -%}{%- endfor -%}
+{%- set amt = (doc.total_amount or doc.total_debit or 0) | abs -%}
+{%- set cur = doc.total_amount_currency or co.default_currency or "SAR" -%}
+{%- set c = frappe.db.get_value("Currency", cur, ["currency_name", "fraction", "fraction_units"], as_dict=1) or {} -%}
+{%- set whole = amt | int -%}
+{%- set frac = ((amt - whole) * (c.fraction_units or 100)) | round | int -%}
+{%- set words = frappe.utils.in_words(whole) ~ " " ~ _(c.currency_name or cur) if whole or not frac else "" -%}
+{%- if frac -%}{%- set words = (words ~ " " ~ _("and") ~ " " if words else "") ~ frappe.utils.in_words(frac) ~ " " ~ _(c.fraction or "") -%}{%- endif -%}
+{%- set remark = doc.user_remark or doc.remark -%}
+{%- set extra = [doc.mode_of_payment] if doc.mode_of_payment else [] -%}
+{%- if doc.cheque_no -%}{%- set extra = extra + [_("Reference / Cheque No.", "ar") ~ ' <span class="num">' ~ doc.cheque_no ~ "</span>"] -%}{%- endif -%}
+{%- if doc.cheque_date -%}{%- set extra = extra + [_("Reference / Cheque Date", "ar") ~ ' <span class="num">' ~ frappe.utils.formatdate(doc.cheque_date) ~ "</span>"] -%}{%- endif -%}
+{{ styles() }}
+<table class="cv frame" dir="rtl" lang="ar">
+<colgroup><col><col style="width:3mm"><col><col style="width:3mm"><col><col style="width:3mm"><col></colgroup>
+<tr class="top"><td colspan="7">
+	<table class="hdr">
+		<colgroup><col style="width:52mm"><col><col style="width:52mm"></colgroup>
+		<tr>
+			<td>
+				<table class="ids">
+					{%- if co.tax_id %}<tr><td><span class="ltr">VAT No.</span> <b class="num">{{ co.tax_id }}</b></td></tr>{% endif %}
+					{%- if ns.cr %}<tr><td><span class="ltr">CR No.</span> <b class="num">{{ ns.cr }}</b></td></tr>{% endif %}
+				</table>
+			</td>
+			<td>
+				<div class="t-ar">{{ _(title, "ar", title) }}</div>
+				<div class="t-en ltr">{{ title }}</div>
+				{%- if doc.docstatus == 2 %}<div class="void">{{ _("CANCELLED") }}</div>{% endif %}
+			</td>
+			<td class="logo"><img src="{{ co.company_logo or '/files/afmco-logo-full-1200w.png' }}" alt="AFMCO"></td>
+		</tr>
+	</table>
+	<table class="rule"><colgroup><col><col style="width:22%"></colgroup><tr><td class="thin"></td><td class="thick"></td></tr></table>
+	<table class="rows">
+		<colgroup><col style="width:24mm"><col><col style="width:24mm"></colgroup>
+		<tr>
+			<td class="k-ar">{{ _("No.", "ar", title) }}</td>
+			<td>
+				<table>
+					<colgroup><col><col style="width:6mm"><col style="width:22mm"><col></colgroup>
+					<tr>
+						<td>{{ fill('<span class="num">' ~ doc.name ~ '</span>') }}</td>
+						<td></td>
+						<td class="k-ar">{{ _("Date:", "ar", title) }}</td>
+						<td>{{ fill('<span class="num">' ~ frappe.utils.formatdate(doc.posting_date) ~ '</span>') }}</td>
+					</tr>
+				</table>
+			</td>
+			<td class="k-en">No. / Date</td>
+		</tr>
+		{{ row("Name:", title, "Name", doc.pay_to_recd_from or ns.party) }}
+		{{ row("Amount:", title, "Amount", cur ~ " ** " ~ frappe.utils.fmt_money(amt, 2) ~ " **", "amount num") }}
+		<tr>
+			<td class="k-ar">{{ _("Amount in Words", "ar") }}</td>
+			<td>{{ fill(_("Only {0} and nothing more").format(words)) }}</td>
+			<td class="k-en">Amount in Words</td>
+		</tr>
+		{{ row("Being for", title, "Being for", remark) }}
+		{%- if extra %}
+		{{ row("Mode of Payment", none, "Mode of Payment", extra | join("  |  ")) }}
+		{%- endif %}
+	</table>
+</td></tr>
+		<tr class="sig">
+			<td>{{ _("Received By", "ar", title) }}<span class="en">Received By</span></td>
+			<td class="gap"></td>
+			<td>{{ _("Finance Manager", "ar", title) }}<span class="en">Finance Manager</span></td>
+			<td class="gap"></td>
+			<td>{{ _("General Manager", "ar", title) }}<span class="en">General Manager</span></td>
+			<td class="gap"></td>
+			<td class="stamp">{{ _("Company Stamp", "ar") }}<span class="en">Company Stamp</span></td>
+		</tr>
+</table>
+{%- endmacro %}
