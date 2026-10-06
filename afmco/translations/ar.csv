@@ -3217,3 +3217,392 @@ Signature of the Acknowledger,توقيع المقر بما فيه
 Employee Signature,توقيع الموظف
 Financial Policy,السياسة المالية
 Policy Acknowledged,تم الإقرار
+-- Choose Bills --,-- اختر الفواتير --
+-- Choose Employee Benefits --,-- اختر مزايا الموظفين --
+-- Others --,-- أخرى --
+--- Choose from List ---,--- اختر من القائمة ---
+--- Select ---,--- اختر ---
+1-End of term or mutual agreement,1- انتهاء مدة العقد أو باتفاق الطرفين
+2-Termination by the employer,2- إنهاء العقد من قبل صاحب العمل
+3-Termination by the employer under Article 80,3- إنهاء العقد من قبل صاحب العمل وفق المادة 80
+4-Termination due to force majeure,4- إنهاء العقد بسبب القوة القاهرة
+5-Termination of the contract by the female employee during the first six months of marriage or during the first three months of childbirth,5- إنهاء العاملة للعقد خلال الأشهر الستة الأولى من الزواج أو خلال الأشهر الثلاثة الأولى من الولادة
+6-Termination by the employee under Article 81,6- إنهاء العقد من قبل العامل وفق المادة 81
+7-Termination by the employee or termination of employment by the employee for reasons other than those specified in Article 81,7- إنهاء العقد من قبل العامل أو ترك العامل العمل لأسباب غير الواردة في المادة 81
+8-Resignation,8- الاستقالة
+</div>,</div>
+</table>,</table>
+</td>,</td>
+</tr>,</tr>
+"<div style=""background:#16a34a; padding:16px; text-align:center;"">","<div style=""background:#16a34a; padding:16px; text-align:center;"">"
+"<div style=""background:#f9fafb; padding:12px 14px;"">","<div style=""background:#f9fafb; padding:12px 14px;"">"
+"<div style=""background:#f9fafb; padding:12px; text-align:center; border-top:1px solid #e5e7eb;"">","<div style=""background:#f9fafb; padding:12px; text-align:center; border-top:1px solid #e5e7eb;"">"
+"<div style=""border:1px dashed #d1d5db; border-radius:10px; overflow:hidden;"">","<div style=""border:1px dashed #d1d5db; border-radius:10px; overflow:hidden;"">"
+"<div style=""color:#ffffff; font-weight:700; font-size:16px;"">Employee Transfer Request</div>","<div style=""color:#ffffff; font-weight:700; font-size:16px;"">طلب نقل موظف</div>"
+"<div style=""display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;"">","<div style=""display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;"">"
+"<div style=""display:flex; justify-content:space-between; align-items:center; font-weight:700; color:#111827;"">","<div style=""display:flex; justify-content:space-between; align-items:center; font-weight:700; color:#111827;"">"
+"<div style=""font-family:Arial,Helvetica,sans-serif; max-width:420px; margin:0 auto; background:#ffffff; border:1px solid #e5e7eb; border-radius:12px; overflow:hidden;"">","<div style=""font-family:Arial,Helvetica,sans-serif; max-width:420px; margin:0 auto; background:#ffffff; border:1px solid #e5e7eb; border-radius:12px; overflow:hidden;"">"
+"<div style=""height:8px;""></div>","<div style=""height:8px;""></div>"
+"<div style=""margin-top:12px; padding:10px 12px; background:#f0fdf4; border:1px solid #86efac; border-radius:8px; color:#14532d;"">","<div style=""margin-top:12px; padding:10px 12px; background:#f0fdf4; border:1px solid #86efac; border-radius:8px; color:#14532d;"">"
+"<div style=""margin-top:8px; padding:10px 12px; background:#ecfeff; border:1px solid #bae6fd; border-radius:8px; color:#0c4a6e;"">","<div style=""margin-top:8px; padding:10px 12px; background:#ecfeff; border:1px solid #bae6fd; border-radius:8px; color:#0c4a6e;"">"
+"<div style=""padding:14px;"">","<div style=""padding:14px;"">"
+"<div style=""text-align:center; margin-top:14px;"">","<div style=""text-align:center; margin-top:14px;"">"
+"<img src=""http://afmco.sa/files/Logo-01.png"" alt=""AFMCO""","<img src=""http://afmco.sa/files/Logo-01.png"" alt=""AFMCO"""
+"<img src=""http://afmco.sa/files/Logo-01.png"" alt=""AFMCO"" style=""max-width:70px; opacity:.9;"">","<img src=""http://afmco.sa/files/Logo-01.png"" alt=""AFMCO"" style=""max-width:70px; opacity:.9;"">"
+"<p style=""margin:6px 0 0; font-size:11px; color:#6b7280;"">AFMCO Operations System</p>","<p style=""margin:6px 0 0; font-size:11px; color:#6b7280;"">نظام عمليات AFMCO</p>"
+"<table style=""width:100%; border-collapse:collapse;"">","<table style=""width:100%; border-collapse:collapse;"">"
+"<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">Driver</td>","<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">السائق</td>"
+"<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">Dropoff</td>","<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">التنزيل</td>"
+"<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">Pickup</td>","<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">الاستلام</td>"
+"<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">Status</td>","<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">الحالة</td>"
+"<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">Supplier IBAN</td>","<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">آيبان المورد</td>"
+"<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">Supplier Mobile</td>","<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">جوال المورد</td>"
+"<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">Supplier</td>","<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">المورد</td>"
+"<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">Transport Type</td>","<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">نوع النقل</td>"
+"<td style=""padding:10px 14px; text-align:right;"">","<td style=""padding:10px 14px; text-align:right;"">"
+"<tr style=""border-top:1px dashed #d1d5db;"">","<tr style=""border-top:1px dashed #d1d5db;"">"
+A,A
+AAAL,AAAL
+AFMCO,AFMCO
+ALBI,ALBI
+ARNB,ARNB
+Account Audit Failed,فشل تدقيق الحساب
+Account audit is already loading...,تدقيق الحساب قيد التحميل...
+Account audit pagination did not advance.,لم يتقدم ترقيم صفحات تدقيق الحساب.
+Account number field is empty.,حقل رقم الحساب فارغ.
+Accountant,المحاسب
+Accounting Procedures,الإجراءات المحاسبية
+Accounts Details,بيانات الحسابات
+Advance Balance Information,بيانات رصيد السلفة
+Al Hokair - الحكير,الحكير
+Al Idress - الإدريس,الإدريس
+Al Osaimi - العصيمي,العصيمي
+Al Youser - اليسر,اليسر
+Al Zain - الزيني,الزيني
+Alahli Bank,البنك الأهلي
+Almozon Food  - المزن فود,المزن فود
+Already paid,مدفوع مسبقاً
+Alternative Reward,المكافأة البديلة
+Amazon JED - امازون جدة,امازون جدة
+Amazon RUH - امازون الرياض,امازون الرياض
+Amount in Words,المبلغ كتابة
+Apex,Apex
+Applicant Information,بيانات مقدم الطلب
+Aramex - آرامكس,آرامكس
+Archived records displayed,تم عرض السجلات المؤرشفة
+Archived records hidden,تم إخفاء السجلات المؤرشفة
+Attach the Declaration,أرفق الإقرار
+Awatif Co - عواطف,عواطف
+BJAZ,BJAZ
+BMUS,BMUS
+BNPA,BNPA
+BSFR,BSFR
+Balance Loan Amount,رصيد القرض المتبقي
+Bank Payment Date or Posting Date is invalid.,تاريخ الدفع البنكي أو تاريخ الإدخال غير صالح.
+Bank Transfer,تحويل بنكي
+Bank cheque,شيك بنكي
+Barn Café Al Amjad - بارن كافيه الامجاد,بارن كافيه الامجاد
+Barn Café Sadara - بارن كافية صدارة,بارن كافية صدارة
+Beneficiary name,اسم المستفيد
+Biller,المفوتر
+Binzagr - بن زقر,بن زقر
+Bon Café - بون كافيه,بون كافيه
+CARD,CARD
+CHAS,CHAS
+CO-.YYYY.-,CO-.YYYY.-
+COMMISSION,العمولة
+Calculation-.YYYY.-,Calculation-.YYYY.-
+Car Wash - كارلو,كارلو
+Car damage,أضرار السيارة
+Carrefour Bikers - كارفور توصيل,كارفور توصيل
+Carrefour Cleaners - كارفور نظافة,كارفور نظافة
+Carrefour Pickers - كارفور تحميل,كارفور تحميل
+Carrefour Stockers - كارفور تصفيف ارفف,كارفور تصفيف ارفف
+Carrefour Trolly Boy - كارفور خدمات العربيات,كارفور خدمات العربيات
+Cash Payment,دفع نقدي
+Cash Payment if Account Suspended,دفع نقدي في حال إيقاف الحساب
+Cash Supplier Name,اسم المورد النقدي
+Cash Supplier Tax No,الرقم الضريبي للمورد النقدي
+Cash payments for employees without bank accounts.,مدفوعات نقدية للموظفين الذين ليس لديهم حسابات بنكية.
+Change of profession,تغيير المهنة
+Changes History Failed,فشل تحميل سجل التغييرات
+Check Account Transactions,مراجعة حركات الحساب
+Cinna Bon Sasco -  -سينا بون ساسكو,سينا بون ساسكو
+Claim type,نوع المطالبة
+Clearing end of service,تصفية نهاية الخدمة
+Clearing vacation allowance,تصفية بدل الإجازة
+Commercial Registration Number,رقم السجل التجاري
+Company name,اسم الشركة
+Company:company:default_currency,Company:company:default_currency
+Contract Date,تاريخ العقد
+Cost-.YYYY.-,Cost-.YYYY.-
+Covering travel and work-related expenses.,تغطية مصاريف السفر والعمل.
+Create PR,إنشاء أمر دفع
+Create PR for Sadad,إنشاء أمر دفع لسداد
+Current Request,الطلب الحالي
+Customer Name in Arabic,اسم العميل بالعربية
+DBAK,DBAK
+DEUT,DEUT
+DHL - دي اتش ال,دي اتش ال
+Data Overview,نظرة عامة على البيانات
+Data Records,سجلات البيانات
+Date Of Rejoing,تاريخ المباشرة
+Days of EOS,أيام نهاية الخدمة
+Debt,المديونية
+Debt Owed by Employee,المديونية المستحقة على الموظف
+Delinquent Limit %,حد التعثر %
+Document Changes History,سجل تغييرات المستند
+Driving License,رخصة القيادة
+Due Amount,المبلغ المستحق
+Duration of service ( Days ),مدة الخدمة (أيام)
+Duration of service (years),مدة الخدمة (سنوات)
+EBIL,EBIL
+ECOM,ECOM
+EMP Cost Center,مركز تكلفة الموظف
+Emergency expenses.,مصاريف طارئة.
+Emergency reserve.,احتياطي للطوارئ.
+Employee Classification,تصنيف الموظف
+Employee List,قائمة الموظفين
+Employee Loan,قرض موظف
+Employee Status,حالة الموظف
+Employee Update,تحديث بيانات الموظف
+Employee details,بيانات الموظف
+Enable JV Creation On Sales Invoice Submit,تفعيل إنشاء القيد اليومي عند اعتماد فاتورة المبيعات
+End of Service Reason,سبب انتهاء الخدمة
+EndDate,تاريخ النهاية
+Enter Reason for Urgency,أدخل سبب الاستعجال
+Establishment Name,اسم المنشأة
+Establishment Number,رقم المنشأة
+Exit-.YYYY.-,Exit-.YYYY.-
+Extend exit and re-entry visa (1 month),تمديد تأشيرة خروج وعودة (شهر واحد)
+Failed to update the request. Please try again.,تعذر تحديث الطلب. يرجى المحاولة مرة أخرى.
+Fees for the financial counterpart of work permits,رسوم المقابل المالي لرخص العمل
+Fees for the financial counterpart of work permits (Exempted),رسوم المقابل المالي لرخص العمل (معفى)
+Final Balance,الرصيد النهائي
+Final Exit,خروج نهائي
+GOSI,التأمينات الاجتماعية
+GOSI Subscription Number,رقم الاشتراك في التأمينات الاجتماعية
+GULF,GULF
+HR Procedures,إجراءات الموارد البشرية
+HR note,ملاحظة الموارد البشرية
+HR-UP-,HR-UP-
+Has a final exit visa been issued or the sponsorship transferred?,هل صدرت تأشيرة خروج نهائي أو نُقلت الكفالة؟
+Hide Archive,إخفاء الأرشيف
+House of Donuts - بيت الدونات,بيت الدونات
+IBAN contains spaces or formatting issues.,رقم الآيبان يحتوي على مسافات أو تنسيق غير صحيح.
+IBAN spaces removed and formatted successfully!,تمت إزالة المسافات من رقم الآيبان وتنسيقه بنجاح!
+IBAN-.YYYY.-,IBAN-.YYYY.-
+ICBK,ICBK
+INMA,INMA
+International Transfer,تحويل دولي
+Intra-NCB Transfer,تحويل داخلي في البنك الأهلي
+Iqama Renewal Issue,مشكلة تجديد الإقامة
+Iqama Renewal Tracking,متابعة تجديد الإقامة
+Issue or renew residence permit,إصدار أو تجديد الإقامة
+JV,قيد يومي
+JV Created,تم إنشاء القيد اليومي
+JV Not Created,لم يُنشأ القيد اليومي
+Jarir - جرير,جرير
+Journal Entry Dialog Failed,فشل فتح نافذة القيد اليومي
+Journal Entry Employees Draft,مسودات القيود اليومية للموظفين
+Journal Entry Not Created,لم يُنشأ القيد اليومي
+Journal Entry contains a row without an account.,يحتوي القيد اليومي على سطر بدون حساب.
+Journal Entry contains an invalid amount.,يحتوي القيد اليومي على مبلغ غير صالح.
+Journal Entry creation is not configured for payment type: {0},إنشاء القيد اليومي غير مُعدّ لنوع الدفع: {0}
+"Journal Entry is not balanced. Debit: {0}, Credit: {1}",القيد اليومي غير متوازن. المدين: {0}، الدائن: {1}
+Journal Entry must contain both debit and credit amounts.,يجب أن يحتوي القيد اليومي على مبالغ مدينة ودائنة.
+Justifications for the request,مبررات الطلب
+Kayan RUH - كيان الرياض,كيان الرياض
+Kun Sports - كون للرياضة,كون للرياضة
+Kyan Tabouk - كيان تبوك,كيان تبوك
+Last working day,آخر يوم عمل
+Legal Note,ملاحظة قانونية
+Legal Procedures,الإجراءات القانونية
+Living expenses for new employees.,مصاريف معيشة للموظفين الجدد.
+Loading account audit data...,جارٍ تحميل بيانات تدقيق الحساب...
+Loan Account,حساب القرض
+Loan Amount,مبلغ القرض
+Loan Repayment,سداد القرض
+Loc,Loc
+Local Bank Transfer,تحويل بنكي محلي
+Mahara Co - مهارة,مهارة
+Mark as Urgent,تحديد كطلب عاجل
+Marking this request as urgent will notify all concerned parties for immediate action. Please provide a clear justification for the urgency.,تحديد هذا الطلب كعاجل سيُشعر جميع الأطراف المعنية لاتخاذ إجراء فوري. يرجى توضيح سبب الاستعجال بوضوح.
+Masdar Al Hayat - مصدر حياة,مصدر حياة
+Maximum Allowed Limit,الحد الأقصى المسموح
+Medical Insurance Bill Payment,سداد فاتورة التأمين الطبي
+Medical Insurance issue,مشكلة التأمين الطبي
+Minor expenses.,مصاريف نثرية.
+Missing shipments,شحنات مفقودة
+Modification Date,تاريخ التعديل
+Muqeem Balance,رصيد مقيم
+Muqeem Balance After Renewal,رصيد مقيم بعد التجديد
+Muslim,مسلم
+NBOB,NBOB
+NBOK,NBOK
+NBOP,NBOP
+NCBK,NCBK
+NO,لا
+Nana Biker - نعناع تحميل,نعناع تحميل
+Nana Pickers - نعناع توصيل,نعناع توصيل
+New Iqama Expiration Date,تاريخ انتهاء الإقامة الجديد
+Ninja Delivery - نينجا توصيل,نينجا توصيل
+No changes history found for this document.,لا يوجد سجل تغييرات لهذا المستند.
+No employee account record linked to this IBAN.,لا يوجد سجل حساب موظف مرتبط بهذا الآيبان.
+No previous transaction totals,لا توجد إجماليات لحركات سابقة
+No previous transfers found for this account.,لا توجد تحويلات سابقة لهذا الحساب.
+No reason provided,لم يُذكر سبب
+No structured SADAD rows with Type and Amount were found in the remark.,لم يُعثر في الملاحظة على صفوف سداد منظمة تحتوي على النوع والمبلغ.
+No valid Journal Entry rows were generated.,لم يُنشأ أي سطر صالح للقيد اليومي.
+Non-Muslim,غير مسلم
+Noon Jed - نون جدة,نون جدة
+Noon RUH - نون الرياض,نون الرياض
+Not Created,لم يُنشأ
+Not eligible for a ticket allowance,غير مستحق لبدل التذاكر
+Not updated,لم يُحدَّث
+Number of tickets,عدد التذاكر
+OT,العمل الإضافي
+OTR-.YYYY.-,OTR-.YYYY.-
+Office - الأدارة,الإدارة
+Order Details,تفاصيل الطلب
+Osama Zaid - أسامة زيد,أسامة زيد
+Other Allowances,بدلات أخرى
+Other Payment,دفعة أخرى
+Other.,أخرى.
+Overtime,العمل الإضافي
+PC-.YYYY.-,PC-.YYYY.-
+PR Created,تم إنشاء أمر الدفع
+PR Not Created,لم يُنشأ أمر الدفع
+PR-.YYYY.-,PR-.YYYY.-
+PR2,PR2
+PUP,PUP
+Passport Fee Payment,سداد رسوم الجواز
+Payment Approver,معتمد الدفع
+Payment Date,تاريخ الدفع
+Payment Request Iqama List,قائمة إقامات طلب الدفع
+Payment of SADAD By Group,دفع سداد حسب المجموعة
+Payroll (Salary),الرواتب
+Permission Role {0} is already held by Payment Approver {1},دور الصلاحية {0} مُسند مسبقاً إلى معتمد الدفع {1}
+Petty Cash,العهدة النقدية
+Petty Cash Amount,مبلغ العهدة النقدية
+Petty Cash Balance,رصيد العهدة النقدية
+Petty Cash Description,وصف العهدة النقدية
+Petty Cash Information,بيانات العهدة النقدية
+Please note that this document is pending approval from the {0}. Ensure all required verifications are completed before proceeding.,يرجى العلم أن هذا المستند بانتظار اعتماد {0}. تأكد من استكمال جميع التحققات المطلوبة قبل المتابعة.
+"Please print the form, sign the employee and attach it",يرجى طباعة النموذج وتوقيع الموظف عليه ثم إرفاقه
+Please review the request data and try again.,يرجى مراجعة بيانات الطلب والمحاولة مرة أخرى.
+Please select a valid mode of payment from the dropdown list.,يرجى اختيار طريقة دفع صحيحة من القائمة.
+Please select a valid payment type from the dropdown list.,يرجى اختيار نوع دفع صحيح من القائمة.
+Please verify Bank Payment Date or Posting Date for year allocation.,يرجى التحقق من تاريخ الدفع البنكي أو تاريخ الإدخال لتوزيع المبلغ على السنوات.
+Please verify the accuracy of the IBAN to avoid errors during banking transactions.,يرجى التحقق من صحة رقم الآيبان لتجنب الأخطاء أثناء العمليات البنكية.
+Postion,المسمى الوظيفي
+Preparing Journal Entry...,جارٍ تجهيز القيد اليومي...
+Previous Transactions,الحركات السابقة
+Previous Transactions Total,إجمالي الحركات السابقة
+Previous Transfers,التحويلات السابقة
+Principal Amount,أصل القرض
+Purchases.,مشتريات.
+RGN,RGN
+RIBL,RIBL
+RJHI,RJHI
+Radwa Co - رضوى,رضوى
+Re-.YYYY.-.employee.-.##,Re-.YYYY.-.employee.-.##
+Re2-.YYYY.-.employee.-.##,Re2-.YYYY.-.employee.-.##
+Record,السجل
+Record Details,تفاصيل السجل
+Recruitment,استقدام
+Refundable Balance,الرصيد القابل للاسترداد
+Registration Status,حالة التسجيل
+Religion,الديانة
+Remotely - عن بعد,عن بعد
+Renewal List,قائمة التجديد
+Renewal Period,مدة التجديد
+Renewal Procedures,إجراءات التجديد
+Renewal expiration violation on employee,مخالفة انتهاء التجديد على الموظف
+Renewal of IQama,تجديد الإقامة
+Renewal of IQama violations,مخالفات تجديد الإقامة
+Repay From Salary,السداد من الراتب
+Repayment Details,تفاصيل السداد
+Request Breakdown,تفصيل الطلب
+Required account is missing: {0},حساب مطلوب غير موجود: {0}
+Restructure Limit %,حد إعادة الهيكلة %
+Reward,المكافأة
+SABB,SABB
+SADAD Group,مجموعة سداد
+SADAD Payment,دفعة سداد
+SADAD Setup,إعداد سداد
+SADAD amount must be a valid positive number.,يجب أن يكون مبلغ سداد رقماً موجباً صحيحاً.
+SADAD service type is not configured: {0},نوع خدمة سداد غير مُعدّ: {0}
+SADAD-.YYYY.-,SADAD-.YYYY.-
+SADAD-B-.YYYY.-,SADAD-B-.YYYY.-
+SAIB Bank,البنك السعودي للاستثمار
+SAMA,SAMA
+SAMB,SAMB
+SBOI,SBOI
+SIBC,SIBC
+SMB - البسامي,البسامي
+SMSA,SMSA
+SMSA Freelancer - سمسا فري لانسر,سمسا فري لانسر
+SMSA Labours - سمسا عمال,سمسا عمال
+SPO,SPO
+STCJ,STCJ
+Sadad Invoice,فاتورة سداد
+Sadad Invoice Number,رقم فاتورة سداد
+Salary Per Day,الراتب اليومي
+Salary Register WPS,سجل رواتب حماية الأجور
+Show Archive,عرض الأرشيف
+Showing the latest {0} of {1} transfers. Totals include all records.,عرض آخر {0} من أصل {1} تحويلاً. الإجماليات تشمل جميع السجلات.
+Staff No,الرقم الوظيفي
+StartDate,تاريخ البداية
+Supplier Name in Arabic,اسم المورد بالعربية
+TCZT,TCZT
+TIBAN-.YYYY.-,TIBAN-.YYYY.-
+Termination type,نوع إنهاء الخدمة
+The Journal Entry dialog could not be opened. Please try again.,تعذر فتح نافذة القيد اليومي. يرجى المحاولة مرة أخرى.
+The Journal Entry was not created: {0},لم يُنشأ القيد اليومي: {0}
+"The account audit could not be loaded. Please verify your permission and connection, then try again.",تعذر تحميل تدقيق الحساب. يرجى التحقق من صلاحياتك والاتصال ثم المحاولة مرة أخرى.
+The account audit returned an invalid response.,أعاد تدقيق الحساب استجابة غير صالحة.
+The document changes history could not be loaded. Please try again.,تعذر تحميل سجل تغييرات المستند. يرجى المحاولة مرة أخرى.
+The request has been marked as urgent. An email notification has been sent to all concerned parties.,تم تحديد الطلب كعاجل، وأُرسل إشعار بالبريد الإلكتروني إلى جميع الأطراف المعنية.
+This request is already marked as urgent with reason: {0},هذا الطلب محدد مسبقاً كعاجل بالسبب: {0}
+This transaction has been documented as settled. Please ensure all necessary approvals and authorizations are verified before proceeding.,تم توثيق هذه العملية كمسددة. يرجى التأكد من استكمال جميع الموافقات والصلاحيات اللازمة قبل المتابعة.
+Ticket Allowance,بدل التذاكر
+Ticket allowance,بدل التذاكر
+Tools,الأدوات
+Total EOS,إجمالي نهاية الخدمة
+Total Including Current Request,الإجمالي شاملاً الطلب الحالي
+Total salary,إجمالي الراتب
+Traffic Violation Balance,رصيد المخالفات المرورية
+Transfer of sponsorship,نقل الكفالة
+Trinsportation,النقل
+Type (Arabic),النوع (بالعربية)
+Unified National Number,الرقم الوطني الموحد
+Unified Number,الرقم الموحد
+Unknown Account,حساب غير معروف
+Updating List...,جارٍ تحديث القائمة...
+Urgent purchases.,مشتريات عاجلة.
+VA-.YYYY.-,VA-.YYYY.-
+Valid Saudi IBAN (SA),آيبان سعودي صالح (SA)
+Was a liquidation form signed by the employee attached?,هل أُرفق نموذج المخالصة موقّعاً من الموظف؟
+Work Permit Fee Payment,سداد رسوم رخصة العمل
+You do not have the necessary permission to modify this document.,ليس لديك الصلاحية اللازمة لتعديل هذا المستند.
+Z FM - PICKUP,Z FM - PICKUP
+cell_number,رقم الجوال
+contract end date,تاريخ نهاية العقد
+contract start date,تاريخ بداية العقد
+iQama Expiration,تاريخ انتهاء الإقامة
+iQama No.,رقم الإقامة
+iQama Renewal Payment Management,إدارة مدفوعات تجديد الإقامة
+indebtedness,المديونية
+loan Schedule,جدول القرض
+naming_series,سلسلة الترقيم
+note,ملاحظة
+payroll_cost_center,مركز تكلفة الرواتب
+"style=""max-width:90px; display:block; margin:0 auto 6px; filter:brightness(0) invert(1) contrast(110%);"">","style=""max-width:90px; display:block; margin:0 auto 6px; filter:brightness(0) invert(1) contrast(110%);"">"
+ticket_allowance_confirmed,تأكيد بدل التذاكر
+unique_log_id,معرّف السجل الفريد
+unpaid,غير مدفوع
+vacation allowance (day),بدل الإجازة (يوم)
+vacation allowance amount,مبلغ بدل الإجازة
+vacation days per year,أيام الإجازة في السنة
+سينا بون ساسكو - Cinna Bon Sasco,سينا بون ساسكو
