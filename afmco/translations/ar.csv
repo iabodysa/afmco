@@ -2644,23 +2644,23 @@ Important Notice,إشعار هام,End of Service Settlement
 Do you still wish to proceed with allocating the ticket allowance?,هل ترغب في المتابعة ودفع بدل التذكرة على الرغم من ذلك؟,End of Service Settlement
 This action is irreversible once confirmed.,هذا الإجراء لا رجعة فيه بمجرد التأكيد.,End of Service Settlement
 Reason of Urgency,سبب الاستعجال,Payment Requisition
-Cash Payment Voucher,سنـد دفــع نقـــدي,Cash Payment Voucher
-No.,رقــم,Cash Payment Voucher
-Name:,الإســـــــم:,Cash Payment Voucher
-Amount:,المبلغ :,Cash Payment Voucher
+Cash Payment Voucher,سند دفع نقدي,Cash Payment Voucher
+No.,رقم السند,Cash Payment Voucher
+Name:,يصرف إلى,Cash Payment Voucher
+Amount:,المبلغ,Cash Payment Voucher
 Being for,وذلك مقابل,Cash Payment Voucher
-Date:,التـاريخ :,Cash Payment Voucher
+Date:,التاريخ,Cash Payment Voucher
 General Manager,المدير العام,Cash Payment Voucher
-Finance Manager,المدير المـــالي,Cash Payment Voucher
-Received By,المستلـــم,Cash Payment Voucher
-No.,رقــم,Cash Receipt Voucher
-Name:,الإســـــــم:,Cash Receipt Voucher
-Amount:,المبلغ :,Cash Receipt Voucher
+Finance Manager,المدير المالي,Cash Payment Voucher
+Received By,المستلم,Cash Payment Voucher
+No.,رقم السند,Cash Receipt Voucher
+Name:,استلمنا من,Cash Receipt Voucher
+Amount:,المبلغ,Cash Receipt Voucher
 Being for,وذلك مقابل,Cash Receipt Voucher
-Date:,التـاريخ :,Cash Receipt Voucher
+Date:,التاريخ,Cash Receipt Voucher
 General Manager,المدير العام,Cash Receipt Voucher
-Finance Manager,المدير المـــالي,Cash Receipt Voucher
-Received By,المستلـــم,Cash Receipt Voucher
+Finance Manager,المدير المالي,Cash Receipt Voucher
+Received By,المستلم,Cash Receipt Voucher
 Quotation,عرض أسعار,Manpower Quotation
 Client,العميل,Manpower Quotation
 Validity,صلاحية العرض,Manpower Quotation
@@ -3606,12 +3606,9 @@ vacation allowance (day),بدل الإجازة (يوم)
 vacation allowance amount,مبلغ بدل الإجازة
 vacation days per year,أيام الإجازة في السنة
 سينا بون ساسكو - Cinna Bon Sasco,سينا بون ساسكو
-"I, the undersigned, hereby acknowledge that I have received the aforementioned amount as a cash custody from the company. I commit to maintaining this custody and exclusively using it for the purposes and requirements specified by the company. I also pledge not to dispose of this custody without prior approval from my direct superior, and to settle the custody within the specified period. My responsibility for it remains until I receive a clearance document regarding it from the relevant administration of the company.",أقر أنا الموقع أدناه، بأنني تسلمت المبلغ المذكور أعلاه كعهدة نقدية من الشركة، وأتعهد بالمحافظة عليها واستخدامها حصرياً للأغراض والمتطلبات التي تحددها الشركة. كما أتعهد بعدم التصرف في هذه العهدة إلا بناءً على موافقة مسبقة من مرجعي المباشر، والتزامي بتصفية العهدة خلال المدة المحددة، وتظل مسؤوليتي قائمة عنها حتى استلامي لمستند إخلاء طرف بشأنها من الإدارة المختصة بالشركة.
-"I, the undersigned, hereby acknowledge that all the liquidation invoices I submit will be authentic and accurate. I bear full responsibility in case any of these invoices are non-compliant with tax requirements, forged, or tampered with, or in case of entering agreements with suppliers involving added commissions or personal benefits without prior written approval from the company. In the event of any such violations, the company reserves the right to notify the relevant official authorities when necessary to claim compensation amounting to one hundred thousand (100,000) Saudi Riyals, in addition to any losses and damages caused to the company.","أقر أنا، الموقع أدناه، بأن جميع فواتير التصفية التي أقدمها ستكون حقيقية وصحيحة. أتحمل كامل المسؤولية في حالة كون أي من هذه الفواتير غير مطابقة للشروط الضريبية أو مزورة أو متلاعب بها، أو في حالة إبرامي لاتفاقات مع الموردين تتضمن إضافة عمولات أو تحقيق استفادات شخصية دون موافقة خطية مسبقة من الشركة. في حال ارتكاب أي من هذه المخالفات، تحتفظ الشركة بالحق في إبلاغ الجهات الرسمية المختصة عند الحاجة لتحصيل تعويض قدره مائة ألف (100,000) ريال سعودي، بالإضافة إلى الخسائر والأضرار التي تسببت للشركة."
 Only {0} and nothing more,فقط {0} لا غير
 Saudi Riyal,ريال سعودي
 Halala,هللة
 Company Stamp,ختم الشركة
-Due Date,تاريخ الاستحقاق
 Beneficiary Name,اسم المستفيد
 Amount,المبلغ,Payment Advice
