@@ -3606,3 +3606,18 @@ vacation allowance (day),بدل الإجازة (يوم)
 vacation allowance amount,مبلغ بدل الإجازة
 vacation days per year,أيام الإجازة في السنة
 سينا بون ساسكو - Cinna Bon Sasco,سينا بون ساسكو
+Sr,م,Tax Invoice
+Item Name,اسم الصنف,Tax Invoice
+Description,الوصف,Tax Invoice
+Qty,الكمية,Tax Invoice
+Day/Hour,ايام/ساعات,Tax Invoice
+Extra Hours,الساعات الإضافية,Tax Invoice
+Total Hours,إجمالي الساعات,Tax Invoice
+Unit Price,سعر الوحدة,Tax Invoice
+VAT,مبلغ الضريبة,Tax Invoice
+Amount Excl. VAT,المبلغ بدون ضريبة,Tax Invoice
+Due Date,تاريخ الاستحقاق,Tax Invoice
+Invoice Remark,وصف الفاتورة,Tax Invoice
+Credit Note,إشعار دائن,Tax Invoice
+Subtotal,إجمالي,Tax Invoice
+This QR code is encoded as per ZATCA e-invoicing requirements,رمز الاستجابة السريع مشفر بحسب متطلبات هيئة الزكاة والضريبة والجمارك للفوترة الالكترونية,Tax Invoice

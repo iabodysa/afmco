@@ -1,0 +1,35 @@
+{%- from "afmco/templates/print/tax_invoice.html" import styles, invoice, money, qty, pct -%}
+{%- set ctx = "Samsa Tax Invoice" -%}
+{{ styles(orientation) }}
+{%- set columns = [
+  {'en': 'Product', 'ar': _("Products", "ar", ctx), 'kind': 't'},
+  {'en': 'Qty', 'ar': _("Quantity", "ar", ctx), 'kind': 'n'},
+  {'en': 'Rate', 'ar': _("Rate", "ar", ctx), 'kind': 'm'},
+  {'en': 'Value', 'ar': _("Value", "ar", ctx), 'kind': 'm'},
+  {'en': 'Discount', 'ar': _("Discount", "ar", ctx), 'kind': 'm'},
+  {'en': 'Taxable Amount', 'ar': _("Taxable Amount", "ar", ctx), 'kind': 'm'},
+  {'en': 'Tax %', 'ar': _("Tax Rate", "ar", ctx), 'kind': 'n'},
+  {'en': 'Tax Amount', 'ar': _("Tax Amount", "ar", ctx), 'kind': 'm'},
+  {'en': 'Total inclusive of VAT', 'ar': _("Total inclusive of VAT", "ar", ctx), 'kind': 'm'}
+] -%}
+{%- set extra_meta = [
+  ('P.O. No.', _("Purchase Order Number", "ar", ctx), doc.po_no or '', ''),
+  ('P.O. Date', _("Purchase Order Date", "ar", ctx), frappe.utils.formatdate(doc.po_date, 'yyyy-mm-dd') if doc.po_date else '', 'num')
+] -%}
+{%- call invoice(doc, columns, extra_meta=extra_meta) %}
+{%- for item in doc.items %}
+{%- set s_desc = ((item.description or '') | replace('&nbsp;', ' ') | striptags).split() | join(' ') or item.item_name or '' -%}
+{%- set s_ar = (s_desc | select('ge', '؀') | select('le', 'ۿ') | list | length) > 0 %}
+<tr>
+  <td class="txt{{ '' if s_ar else ' ltr' }}">{{ s_desc }}</td>
+  <td class="num">{{ qty(item.qty) }}</td>
+  <td class="num">{{ money(item.rate) }}</td>
+  <td class="num">{{ money(item.amount) }}</td>
+  <td class="num">{{ money((item.amount or 0) - (item.net_amount or 0)) }}</td>
+  <td class="num">{{ money(item.net_amount) }}</td>
+  <td class="num">{{ pct(item.get('tax_rate') or 15) }}</td>
+  <td class="num">{{ money(item.get('tax_amount')) }}</td>
+  <td class="num">{{ money(item.get('total_amount')) }}</td>
+</tr>
+{%- endfor %}
+{%- endcall %}
