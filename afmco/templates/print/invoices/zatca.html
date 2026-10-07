@@ -1,0 +1,306 @@
+{%- macro money(v) -%}{{ frappe.utils.fmt_money(v or 0, 2) }}{%- endmacro -%}
+{%- macro qty(v) -%}{%- set q = v or 0 -%}{{ frappe.utils.fmt_money(q, 0) if q == (q | int) else frappe.utils.fmt_money(q, 2) }}{%- endmacro -%}
+{%- macro pct(v) -%}{{ '%g' | format(frappe.utils.flt(v or 0, 2)) }}%{%- endmacro -%}
+
+{%- macro lbl(key, en=none, stack=false, ctx=none) -%}
+{%- set ar = _(key, lang='ar', context=ctx) -%}{%- if ar != key -%}{%- set ar = ar | replace('%c' | format(1600), '') -%}{%- endif -%}{%- set e = en or key -%}
+{%- if stack -%}{% if ar != key %}<span class="ar">{{ ar }}</span>{% endif %}<span class="en">{{ e }}</span>
+{%- else -%}<span class="pair">{% if ar != key %}<span class="ar">{{ ar }}</span>{% else %}<span class="ar ltr">{{ e }}</span>{% endif %}{% if ar != key %}<span class="en">{{ e }}</span>{% endif %}</span>
+{%- endif -%}
+{%- endmacro -%}
+
+{%- macro kvgrid(items, cols) -%}
+{%- set ns = namespace(f=[], row=[], w=0, rows=[]) -%}
+{%- for it in items -%}{%- if it[2] -%}{%- set ns.f = ns.f + [it] -%}{%- endif -%}{%- endfor -%}
+{%- for it in ns.f -%}
+  {%- set sp = it[3] if it | length > 3 else 1 -%}
+  {%- if ns.w + sp > cols -%}{%- set ns.rows = ns.rows + [ns.row] -%}{%- set ns.row = [] -%}{%- set ns.w = 0 -%}{%- endif -%}
+  {%- set ns.row = ns.row + [it] -%}{%- set ns.w = ns.w + sp -%}
+{%- endfor -%}
+{%- if ns.row -%}{%- set ns.rows = ns.rows + [ns.row] -%}{%- endif -%}
+{%- if ns.rows -%}
+<table class="kv">
+  <colgroup>{% for i in range(cols) %}<col style="width:{{ (100 / cols) | round(3) }}%">{% endfor %}</colgroup>
+  {%- for r in ns.rows %}
+  <tr>
+    {%- set rn = namespace(w=0) -%}
+    {%- for it in r -%}{%- set sp = it[3] if it | length > 3 else 1 -%}{%- set rn.w = rn.w + sp %}
+    <td{% if sp > 1 %} colspan="{{ sp }}"{% endif %}>{{ lbl(it[0], it[1], ctx=(it[5] if it | length > 5 else none)) }}<span class="v {{ it[4] if it | length > 4 else '' }}">{{ it[2] }}</span></td>
+    {%- endfor -%}
+    {%- if rn.w < cols %}<td class="empty" colspan="{{ cols - rn.w }}"></td>{% endif %}
+  </tr>
+  {%- endfor %}
+</table>
+{%- endif -%}
+{%- endmacro -%}
+
+{%- macro title_block(t_key, t_en, meta, cols=4) -%}
+{%- set t_ar = _(t_key, lang='ar') -%}
+<table class="head">
+  <colgroup><col style="width:24%"><col style="width:76%"></colgroup>
+  <tr>
+    <td><span class="t-ar">{{ t_ar if t_ar != t_key else t_en }}</span>{% if t_ar != t_key %}<span class="t-en">{{ t_en }}</span>{% endif %}</td>
+    <td>{{ kvgrid(meta, cols) }}</td>
+  </tr>
+</table>
+{%- endmacro -%}
+
+{%- macro parties_block(parties, cols=12) -%}
+{%- for p in parties -%}
+{%- if p[0] -%}
+<table class="kv kv-plabel"><colgroup><col></colgroup><tr><td class="plabel">{{ lbl(p[0], p[1]) }}</td></tr></table>
+{%- endif -%}
+{{ kvgrid(p[2], cols) }}
+{%- endfor -%}
+{%- endmacro -%}
+
+{%- macro items_table(rows, columns) -%}
+{%- set ns = namespace(c=[]) -%}
+{%- for c in columns -%}{%- if c.get('show', true) -%}{%- set ns.c = ns.c + [c] -%}{%- endif -%}{%- endfor -%}
+<table class="items">
+  <colgroup>{% for c in ns.c %}<col{% if c.w %} style="width:{{ c.w }}%"{% endif %}>{% endfor %}</colgroup>
+  <thead>
+    <tr>{% for c in ns.c %}<th{% if c.t == 'money' %} class="n"{% endif %}>{{ lbl(c.l, c.en, stack=true) }}</th>{% endfor %}</tr>
+  </thead>
+  <tbody>
+  {%- for r in rows %}
+    <tr>
+    {%- for c in ns.c -%}
+      {%- set v = r.get(c.k) -%}
+      {%- if c.t == 'idx' %}<td class="num ctr">{{ v }}</td>
+      {%- elif c.t == 'qty' %}<td class="num ctr">{{ qty(v) }}</td>
+      {%- elif c.t == 'money' %}<td class="num">{{ money(v) }}</td>
+      {%- elif c.t == 'pct' %}<td class="num ctr">{% if v %}{{ pct(v) }}{% endif %}</td>
+      {%- elif c.t == 'text' %}<td>{{ v or '' }}{% if r.get(c.k ~ '_sub') %} <span class="sub">{{ r.get(c.k ~ '_sub') }}</span>{% endif %}</td>
+      {%- else %}<td class="ctr">{{ v or '' }}</td>
+      {%- endif -%}
+    {%- endfor %}
+    </tr>
+  {%- endfor %}
+  </tbody>
+</table>
+{%- endmacro -%}
+
+{%- macro totals_block(lines, grand) -%}
+<table class="tot">
+  <colgroup><col style="width:66%"><col style="width:34%"></colgroup>
+  {%- for l in lines %}{% if l | length < 4 or l[3] %}
+  <tr><td>{{ lbl(l[0], l[1]) }}</td><td class="num">{{ money(l[2]) }}</td></tr>
+  {%- endif %}{% endfor %}
+  <tr class="grand"><td>{{ lbl(grand[0], grand[1]) }}</td><td class="num">{{ money(grand[2]) }}</td></tr>
+</table>
+{%- endmacro -%}
+
+{%- macro zatca_block(doc, details=none) -%}
+{%- set z = namespace(d=details, src=none) -%}
+{%- if z.d is none and doc.doctype == 'Sales Invoice' and frappe.db.exists('Sales Invoice Additional Fields', {'sales_invoice': doc.name}) -%}
+  {%- set z.d = get_phase_2_print_format_details(doc) -%}
+{%- endif -%}
+{%- set z.src = ((z.d.siaf.qr_image_src if z.d and z.d.siaf else none) or doc.get('ksa_einv_qr')) -%}
+{%- if z.src %}<img src="{{ z.src }}" alt="ZATCA QR">{% endif -%}
+{%- endmacro -%}
+
+{%- macro signature_block(signers) -%}
+<table class="sign">
+  <colgroup>{% for s in signers %}{% if not loop.first %}<col style="width:5%">{% endif %}<col>{% endfor %}</colgroup>
+  <tr>{% for s in signers %}{% if not loop.first %}<td class="gap"></td>{% endif %}<td>{{ lbl(s[0], s[1], ctx=(s[2] if s | length > 2 else none)) }}</td>{% endfor %}</tr>
+</table>
+{%- endmacro -%}
+
+{%- macro band_block(qr_html, middle_html, totals_html, qr_w=28, totals_w=48) -%}
+<table class="band">
+  <colgroup>{% if qr_html | trim %}<col style="width:{{ qr_w }}mm">{% endif %}<col><col style="width:{{ totals_w }}%"></colgroup>
+  <tr>
+    {%- if qr_html | trim %}<td class="qr">{{ qr_html }}</td>{% endif %}
+    <td class="words">{{ middle_html }}</td>
+    <td>{{ totals_html }}</td>
+  </tr>
+</table>
+{%- endmacro -%}
+
+{%- macro notes_block(remarks, terms) -%}
+{%- set rm = (remarks or '') | trim -%}
+{%- set tx = (terms or '') | replace('<p><br></p>', '') -%}
+{%- set nn = namespace(txt='', img='') -%}
+{%- set _parts = tx.split('<img') -%}
+{%- set nn.txt = _parts[0] -%}
+{%- for pt in _parts[1:] -%}
+  {%- set _ab = pt.split('>', 1) -%}
+  {%- set nn.img = nn.img ~ '<img' ~ _ab[0] ~ '>' -%}
+  {%- set nn.txt = nn.txt ~ (_ab[1] if _ab | length > 1 else '') -%}
+{%- endfor -%}
+{%- set has_rm = rm and rm != 'No Remarks' -%}
+{%- set has_tx = (nn.txt | striptags | trim) != '' -%}
+{%- if has_rm or has_tx or nn.img %}
+<table class="note">
+  <colgroup><col>{% if nn.img %}<col style="width:48%">{% endif %}</colgroup>
+  <tr>
+    <td>
+      {%- if has_rm %}{%- set rm_ar = rm | select('ge', '\u0600') | select('le', '\u06ff') | list | length > 0 -%}
+      {{ lbl('Remarks', 'Remarks') }}<div class="rmv{{ '' if rm_ar else ' ltrv' }}">{{ rm }}</div>{% endif %}
+      {%- if has_tx %}{{ nn.txt }}{% endif %}
+    </td>
+    {%- if nn.img %}<td class="stamp">{{ nn.img }}</td>{% endif %}
+  </tr>
+</table>
+{%- endif -%}
+{%- endmacro -%}
+
+{%- set _afm_co = frappe.db.get_value('Company', doc.company, ['company_name', 'company_name_in_arabic', 'tax_id', 'company_logo'], as_dict=1) or {} -%}
+{%- set _afm_zbs = frappe.db.get_value('ZATCA Business Settings', {'company': doc.company}, 'name') if doc.company else none -%}
+{%- set _afm_ns = namespace(cr='', street='', postal='') -%}
+{%- if _afm_zbs -%}
+  {%- set _afm_z = frappe.get_doc('ZATCA Business Settings', _afm_zbs) -%}
+  {%- for r in _afm_z.other_ids -%}{%- if r.type_code == 'CRN' and r.value and not _afm_ns.cr -%}{%- set _afm_ns.cr = r.value -%}{%- endif -%}{%- endfor -%}
+  {%- set _afm_ns.street = _afm_z.street or '' -%}{%- set _afm_ns.postal = _afm_z.postal_code or '' -%}
+{%- endif -%}
+
+{%- set afm = {
+  'name_ar': _afm_co.company_name_in_arabic or _afm_co.company_name or doc.company,
+  'name_en': 'AFMCO Ltd. for Support Services',
+  'vat': _afm_co.tax_id or '',
+  'cr': _afm_ns.cr,
+  'logo': _afm_co.company_logo or '/files/afmco-logo-full-1200w.png',
+  'addr': [_afm_ns.street, _afm_ns.postal] | select | join(' - '),
+  'phone': '011 242 5473',
+  'web': 'www.afmcoltd.com'
+} -%}
+<div id="header-html">
+<div class="afm afm-hdr" dir="rtl" lang="ar">
+  <table>
+    <colgroup><col style="width:30mm"><col><col style="width:66mm"></colgroup>
+    <tr>
+      <td class="logo">{% if afm.logo %}<img src="{{ afm.logo }}" alt="AFMCO">{% endif %}</td>
+      <td></td>
+      <td>
+        <table class="ids">
+          <colgroup><col style="width:24mm"><col><col style="width:14mm"></colgroup>
+          {%- if afm.vat %}
+          {%- set _k = _('Tax Id', lang='ar') %}
+          <tr><td class="k">{{ _k if _k != 'Tax Id' else '' }}</td><td class="num ctr"><b>{{ afm.vat }}</b></td><td class="k ltr" style="text-align:left;">VAT No.</td></tr>
+          {%- endif %}
+          {%- if afm.cr %}
+          {%- set _k = _('Commercial Registration Number', lang='ar') %}
+          <tr><td class="k">{{ _k if _k != 'Commercial Registration Number' else '' }}</td><td class="num ctr"><b>{{ afm.cr }}</b></td><td class="k ltr" style="text-align:left;">CR No.</td></tr>
+          {%- endif %}
+        </table>
+      </td>
+    </tr>
+  </table>
+  <table class="rule"><colgroup><col style="width:22%"><col></colgroup><tr><td class="thick"></td><td class="thin"></td></tr></table>
+</div>
+</div>
+
+{%- set _pg = _('Page', lang='ar') -%}
+<div id="footer-html">
+<div class="afm afm-ftr" dir="rtl" lang="ar">
+  <table>
+    <colgroup><col><col style="width:40mm"><col style="width:34mm"></colgroup>
+    <tr>
+      <td><span class="co">{{ afm.name_ar }}</span>{% if afm.addr %} &nbsp;|&nbsp; {{ afm.addr }}{% endif %}<div class="ltr2">{{ afm.name_en }}{% if afm.phone %} &nbsp;|&nbsp; T {{ afm.phone }}{% endif %}{% if afm.web %} &nbsp;|&nbsp; {{ afm.web }}{% endif %}</div></td>
+      <td class="num ctr">{{ doc.name }}</td>
+      <td class="pg" style="text-align:left;">{% if _pg != 'Page' %}{{ _pg }}&nbsp; {% endif %}<span class="ltr">Page <span class="page"></span> / <span class="topage"></span></span></td>
+    </tr>
+  </table>
+</div>
+</div>
+
+{%- set details = get_phase_2_print_format_details(doc) if frappe.db.exists('Sales Invoice Additional Fields', {'sales_invoice': doc.name}) else none -%}
+{%- set siaf = details.siaf if details else none -%}
+
+{%- set _cust = (frappe.db.get_value('Customer', doc.customer, ['tax_id', 'custom_vat_registration_number', 'custom_b2c'], as_dict=1) if not siaf and doc.customer else none) or {} -%}
+{%- set _addr = (frappe.db.get_value('Address', doc.customer_address, ['address_line1', 'custom_area', 'city', 'pincode'], as_dict=1) if not siaf and doc.customer_address else none) or {} -%}
+{%- set itt = (siaf.invoice_type_transaction if siaf else ('0200000' if _cust.get('custom_b2c') else '0100000')) or '' -%}
+{%- set simplified = itt[:2] == '02' -%}
+
+{%- if doc.is_return -%}{%- set t_key, t_en = ('Simplified Tax Invoice Credit Note' if simplified else 'Standard Tax Invoice Credit Note'), 'Credit Note' -%}
+{%- elif doc.get('is_debit_note') -%}{%- set t_key, t_en = ('Simplified Tax Invoice Debit Note' if simplified else 'Standard Tax Invoice Debit Note'), 'Debit Note' -%}
+{%- elif simplified -%}{%- set t_key, t_en = 'Simplified Tax Invoice', 'Simplified Tax Invoice' -%}
+{%- else -%}{%- set t_key, t_en = 'Standard Tax Invoice', 'Tax Invoice' -%}
+{%- endif -%}
+
+{%- set _refs = ((doc.get('custom_return_against_additional_references') or []) | map(attribute='sales_invoice') | list) + [doc.return_against] if (doc.is_return or doc.get('is_debit_note')) else [] -%}
+{%- set _refs = _refs | select('string') | unique | sort | list -%}
+{%- set ret_ref = (_refs[0] if _refs | length == 1 else (_refs[0] ~ ' - ' ~ _refs[-1])) if _refs else '' -%}
+
+{%- set b_vat = ((siaf.buyer_vat_registration_number if siaf else '') or doc.tax_id or _cust.get('custom_vat_registration_number') or _cust.get('tax_id') or '') | trim -%}
+{%- if siaf -%}{%- set _b_parts = [siaf.buyer_street_name, siaf.buyer_district, siaf.buyer_city, siaf.buyer_postal_code] -%}
+{%- elif _addr -%}{%- set _b_parts = [_addr.address_line1, _addr.custom_area, _addr.city, _addr.pincode] -%}
+{%- else -%}{%- set _b_parts = [(doc.address_display or '') | replace('<br>', ',') | replace('<br/>', ',') | replace('<br />', ',') | replace('\n', ',') | striptags] -%}{%- endif -%}
+
+{%- set _b_tok = (_b_parts | select | map('string') | join(',')).split(',') | map('trim') | reject('in', ['', 'None', 'none', 'null']) | unique | list -%}
+{%- set _an = namespace(t=[]) -%}
+{%- for t in _b_tok -%}{%- set _an.t = _an.t + [(t | replace(' ', '&nbsp;')) if t | length <= 24 else t] -%}{%- endfor -%}
+{%- set b_addr = _an.t | join(', ') -%}
+{%- set b_oid = (details.buyer_other_id if details else '') or '' -%}
+
+{%- set show_desc = false -%}
+
+{%- set item_taxes = get_item_wise_tax_details(doc) or {} -%}
+{%- set ns = namespace(rows=[], disc=false, uoms=[]) -%}
+{%- for row in doc.items -%}
+  {%- set it = item_taxes.get(row.name, {}) -%}
+  {%- set r_pct = row.get('tax_rate') or it.get('rate') or 0 -%}
+  {%- set r_tax = (row.get('tax_amount') or it.get('amount') or 0) / (doc.conversion_rate or 1) -%}
+  {%- set nm = (row.item_name or row.item_code or '') | trim -%}
+  {%- set ds = ((row.description or '') | replace('&nbsp;', ' ') | striptags).split() | join(' ') if show_desc else '' -%}
+  {%- if ds and ds != nm and ds.startswith(nm) -%}{%- set nm, ds = ds, '' -%}{%- elif ds == nm -%}{%- set ds = '' -%}{%- endif -%}
+  {%- if row.discount_percentage -%}{%- set ns.disc = true -%}{%- endif -%}
+  {%- if row.uom and row.uom not in ns.uoms -%}{%- set ns.uoms = ns.uoms + [row.uom] -%}{%- endif -%}
+  {%- set ns.rows = ns.rows + [{
+    'idx': row.idx, 'desc': nm, 'desc_sub': ds | truncate(120), 'uom': row.uom,
+    'qty': row.qty, 'rate': row.rate, 'disc': row.discount_percentage,
+    'taxable': row.amount, 'pct': r_pct, 'tax': r_tax, 'total': r_tax + row.net_amount
+  }] -%}
+{%- endfor -%}
+{%- set cur = doc.currency -%}
+
+<div class="afm" dir="rtl" lang="ar">
+
+{{ title_block(t_key, t_en, [
+  ['Invoice Number', 'Invoice No.', doc.name, 2 if doc.name | length > 16 else 1, 'ltr b'],
+  ['Invoice Date', 'Issue Date', doc.get_formatted('posting_date'), 1, 'num'],
+  ['Supply Date', 'Supply Date', doc.get_formatted('value_date') if doc.get('value_date') and doc.value_date != doc.posting_date else '', 1, 'num', 'Samsa Tax Invoice'],
+  ['Due Date', 'Due Date', doc.get_formatted('due_date') if doc.due_date and doc.due_date != doc.posting_date else '', 1, 'num'],
+  ["Customer's Purchase Order", 'PO No.', doc.po_no, 2 if (doc.po_no or '') | length > 18 else 1],
+  ['Return Against', 'Return Against', ret_ref, 2 if ret_ref | length > 16 else 1, 'num'],
+  ['Project', 'Project', doc.project, 1],
+], 4) }}
+
+{{ parties_block([[none, '', [
+  ['Customer Name', 'Customer', (doc.customer_name or doc.customer) | trim, 4 if b_oid else 5, 'b'],
+  ['Tax Id', 'VAT No.', b_vat, 2, 'num'],
+  [(details.buyer_other_id_name if details else '') or 'ID', 'Other ID', b_oid, 2, 'num'],
+  ['Address', 'Address', b_addr, 4 if b_oid else 5, 'wrap'],
+]]], 12) }}
+
+{{ items_table(ns.rows, [
+  {'k': 'idx', 'l': '#', 'en': '#', 'w': 4, 't': 'idx'},
+  {'k': 'desc', 'l': 'Description', 'en': 'Description', 'w': none, 't': 'text'},
+  {'k': 'uom', 'l': 'UOM', 'en': 'Unit', 'w': 8, 't': 'plain', 'show': ns.uoms | length > 1},
+  {'k': 'qty', 'l': 'Qty', 'en': 'Qty', 'w': 7, 't': 'qty'},
+  {'k': 'rate', 'l': 'Unit Price', 'en': 'Unit Price ' ~ cur, 'w': 10, 't': 'money'},
+  {'k': 'disc', 'l': 'Discount Percentage', 'en': 'Disc. %', 'w': 8.5, 't': 'pct', 'show': false},
+  {'k': 'taxable', 'l': 'Taxable Amount', 'en': 'Taxable ' ~ cur, 'w': 13.5, 't': 'money'},
+  {'k': 'pct', 'l': 'Tax Rate', 'en': 'VAT %', 'w': 9, 't': 'pct'},
+  {'k': 'tax', 'l': 'VAT Amount', 'en': 'VAT ' ~ cur, 'w': 10, 't': 'money'},
+  {'k': 'total', 'l': 'Total With VAT', 'en': 'Total ' ~ cur, 'w': 13, 't': 'money'},
+]) }}
+
+{%- set vat_pct = (' ' ~ pct(doc.taxes[0].rate)) if doc.taxes and doc.taxes[0].rate else '' -%}
+{%- set qr_html %}{{ zatca_block(doc, details) }}{% endset -%}
+{%- set mid_html %}
+  {%- if doc.in_words %}{{ lbl('Amount in Words', 'Amount in words') }}<div class="w">{%- set _aw = ((doc.rounded_total if (doc.rounded_total and not doc.disable_rounded_total) else doc.grand_total) or 0) | abs -%}{%- set _ar = _aw | int -%}{%- set _ah = ((_aw - _ar) * 100) | round | int -%}{%- set _sym = frappe.db.get_value('Currency', doc.currency, 'symbol') or doc.currency -%}{{ frappe.utils.in_words(_ar) }} {{ _sym }}{% if _ah %} <span style="white-space:nowrap">{{ _('and', lang='ar') }} <span class="num">{{ '%02d' | format(_ah) }}/100</span></span>{% endif %}</div>{% endif %}
+  {{ signature_block([['Received By', 'Received by', 'Cash Receipt Voucher'], ['Approved By', 'Approved by']]) }}
+{%- endset -%}
+{%- set tot_html %}{{ totals_block([
+  ['Total', 'Total excl. VAT', doc.total, doc.discount_amount],
+  ['Discount Amount', 'Discount', doc.discount_amount, doc.discount_amount],
+  ['Total Taxable Amount', 'Total Taxable', doc.net_total],
+  ['VAT Amount', 'VAT' ~ vat_pct, doc.total_taxes_and_charges],
+], ['Total With VAT', 'Total incl. VAT ' ~ cur, doc.grand_total]) }}{% endset -%}
+{{ band_block(qr_html, mid_html, tot_html) }}
+
+{{ notes_block(doc.remarks, doc.terms) }}
+
+</div>
