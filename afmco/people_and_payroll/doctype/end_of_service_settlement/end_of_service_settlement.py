@@ -60,11 +60,18 @@ def is_due(end_date, today) -> bool:
     return today > end_date
 
 
+def service_duration(record) -> str:
+    total_days = frappe.utils.cint(frappe.utils.flt(_value(record, "duration_of_service")))
+    years, remaining_days = divmod(total_days, 365)
+    months, days = divmod(remaining_days, 30)
+    return f"{years} Year(s), {months} Month(s), {days} Day(s)"
+
+
 def feedback_for(record) -> str:
     lines = ["End of Service Benefits:"]
     for label, field in FEEDBACK_LINES:
-        value = _value(record, field)
-        lines.append(f"- {label}: {value}")
+        value = service_duration(record) if field == "duration_of_service" else _value(record, field)
+        lines.append(f"- {label}: {'' if value is None else value}")
     return "\n".join(lines)
 
 
