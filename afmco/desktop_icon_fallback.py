@@ -8,6 +8,8 @@ from frappe.boot import get_icon_style
 
 
 def fill_missing_desktop_icons(bootinfo):
+	if not bootinfo.desktop_icons:
+		return
 	variant = get_icon_style().lower()
 	installed = frappe.get_installed_apps()
 	for icon in bootinfo.desktop_icons:

@@ -43,8 +43,9 @@ def recount_cards(links):
 
 
 def remove_from_boot_sidebars(bootinfo):
-	for sidebar in bootinfo.workspace_sidebar_item.values():
-		sidebar["items"] = [item for item in sidebar["items"] if item["link_to"] not in FLEET_TARGETS]
+	sidebars = bootinfo.module_sidebars or bootinfo.workspace_sidebar_item or {}
+	for sidebar in sidebars.values():
+		sidebar["items"] = [item for item in sidebar["items"] if item.get("link_to") not in FLEET_TARGETS]
 
 
 def remove_from_workspaces():
