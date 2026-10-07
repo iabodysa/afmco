@@ -6,7 +6,12 @@
 
 {% macro styles(orientation='Portrait') -%}
 {%- set sp = '2.5mm' if orientation == 'Landscape' else '4mm' -%}
+{%- set fonts = frappe.utils.get_url() ~ '/assets/afmco/fonts' -%}
 <style>
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 400; src: url('{{ fonts }}/Montserrat-Regular.ttf') format('truetype'); }
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 700; src: url('{{ fonts }}/Montserrat-Bold.ttf') format('truetype'); }
+@font-face { font-family: "Tajawal"; font-style: normal; font-weight: 400; src: url('{{ fonts }}/Tajawal-Regular.ttf') format('truetype'); }
+@font-face { font-family: "Tajawal"; font-style: normal; font-weight: 700; src: url('{{ fonts }}/Tajawal-Bold.ttf') format('truetype'); }
 {%- if orientation == 'Landscape' %}
 .print-format { orientation: Landscape; }
 @page { size: A4 landscape; }
@@ -25,11 +30,8 @@ html body .print-format, body .print-format { margin: 0 !important; padding: 0 !
 html body, body[onload] { padding: 0 !important; margin: 0 !important; }
 .print-format .letter-head, .print-format .letter-head-footer { display: none !important; }
 
-.print-format .afm, .print-format .afm td, .print-format .afm th, .print-format .afm div, .print-format .afm span, .print-format .afm p {
-  font-family: "Noto Sans Arabic", "Noto Sans", "DejaVu Sans", sans-serif !important;
-}
-.print-format .afm .en, .print-format .afm .num, .print-format .afm .ltr, .print-format .afm .num span, .print-format .afm .ltr2 {
-  font-family: "Noto Sans", "DejaVu Sans", sans-serif !important;
+.print-format .afm, .print-format .afm td, .print-format .afm th, .print-format .afm div, .print-format .afm span, .print-format .afm p, .print-format .afm b {
+  font-family: "Montserrat", "Tajawal", "Noto Sans Arabic", sans-serif !important;
 }
 .print-format .afm { color: #1a1a1a; font-size: 8pt; line-height: 13px; font-weight: normal; direction: rtl; text-align: right; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .afm * { box-sizing: border-box; }
@@ -93,11 +95,11 @@ body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.in
 .print-format .afm.inv .inv-items th { background: #f2f7f4; border-top: 1pt solid #00824e; border-bottom: 0.5pt solid #00824e; text-align: right !important; vertical-align: bottom !important; white-space: nowrap; font-weight: normal; padding: 2px 3px !important; }
 .print-format .afm.inv .inv-items th.t { text-align: center !important; }
 .afm.inv .inv-items th .en, .afm.inv .inv-items th .ar, .afm.inv .inv-items th .cu { display: block; white-space: nowrap; }
-.afm.inv .inv-items th .en, .afm.inv .inv-items th .cu { font-size: 5.5pt; line-height: 9px; color: #6b6b6b; }
+.afm.inv .inv-items th .en, .afm.inv .inv-items th .cu { font-size: 5pt; line-height: 8px; color: #6b6b6b; letter-spacing: 0; }
 .afm.inv .inv-items th .ar { font-size: 6.5pt; line-height: 11px; font-weight: bold; color: #1a1a1a; }
 .print-format .afm.inv .inv-items th.n { width: 1%; }
-.print-format .afm.inv .inv-items th.m { width: {{ '20mm' if orientation == 'Landscape' else '15mm' }}; }
-.print-format .afm.inv .inv-items td { font-size: 7.5pt; line-height: 12px; padding: 1.5px 3px !important; border-bottom: 0.5pt solid #e3e3e3; }
+.print-format .afm.inv .inv-items th.m { width: {{ '20mm' if orientation == 'Landscape' else '14mm' }}; }
+.print-format .afm.inv .inv-items td { font-size: 7pt; line-height: 10px; padding: 1px 3px !important; border-bottom: 0.5pt solid #e3e3e3; }
 .print-format .afm.inv .inv-items td.num { text-align: right !important; white-space: nowrap; }
 .print-format .afm.inv .inv-items td.txt { text-align: right !important; }
 .print-format .afm.inv .inv-items td.txt.ltr { direction: ltr; text-align: right !important; }
