@@ -551,6 +551,7 @@ frappe.ui.form.on('Payment Requisition', {
         processCompletedWorkflowTransitions(frm);
         addCreateJVButton(frm);
         addSupportingPackButton(frm);
+        addAccountsBotButton(frm);
     },
 
     remark(frm) {
@@ -621,6 +622,21 @@ function addSupportingPackButton(frm) {
 
     if (frm.doc.jv_status === 'JV Created') {
         frm.add_custom_button(buttonLabel, () => chooseSupportingPackEntry(frm));
+    }
+}
+
+function addAccountsBotButton(frm) {
+    const buttonLabel = __('Account Bot');
+    frm.remove_custom_button(buttonLabel);
+
+    if (frm.doc.__onload && frm.doc.__onload.accounts_bot_allowed) {
+        frm.add_custom_button(buttonLabel, () => {
+            frappe.call({
+                method: 'afmco.financial_operations.api.accounts_bot.set_accounts_bot',
+                args: { name: frm.doc.name },
+                freeze: true,
+            }).then(() => frm.reload_doc());
+        });
     }
 }
 

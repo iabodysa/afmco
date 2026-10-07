@@ -37,6 +37,7 @@
   "bank_payment_date",
   "column_break_jv_status",
   "jv_status",
+  "accounts_bot_cf",
   "tax_invoice_number",
   "open_reference_document",
   "purchase_details_section",
@@ -145,6 +146,17 @@
    "in_standard_filter": 1,
    "label": "JV Status",
    "options": "\nJV Created\nJV Not Created"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "accounts_bot_cf",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Accounts Bot",
+   "no_copy": 1,
+   "read_only": 1,
+   "show_on_timeline": 1
   },
   {
    "fieldname": "amended_from",
@@ -349,7 +361,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-08 09:00:00.000000",
+ "modified": "2026-10-08 10:00:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",
@@ -366,6 +378,10 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Accountant Bot"
   }
  ],
  "quick_entry": 1,

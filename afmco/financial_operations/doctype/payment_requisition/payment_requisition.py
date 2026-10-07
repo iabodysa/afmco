@@ -7,7 +7,36 @@ from frappe.model.document import Document
 from erpnext import get_default_company
 from frappe.utils import  money_in_words
 
+ACCOUNTS_ROLES = ("Accounts User", "Accounts Manager")
+
+
 class PaymentRequisition(Document):
+	def onload(self):
+		self.set_onload(
+			"accounts_bot_allowed",
+			not self.accounts_bot_cf
+			and bool(set(ACCOUNTS_ROLES).intersection(frappe.get_roles()))
+			and not self.accounts_bot_refusal(),
+		)
+
+	def accounts_bot_refusal(self) -> str | None:
+		if self.docstatus != 1 or self.workflow_state != "Paid":
+			return _("Only a submitted Payment Requisition in Paid state can be sent to the Accounts Bot.")
+		if self.jv_status == "JV Created" or frappe.db.exists(
+			"Journal Entry", {"expense_request_cf": self.name, "docstatus": ["<", 2]}
+		):
+			return _("A Journal Entry already exists for this Payment Requisition.")
+		return None
+
+	def queue_for_accounts_bot(self) -> str:
+		if self.accounts_bot_cf:
+			return "already queued"
+		if refusal := self.accounts_bot_refusal():
+			frappe.throw(refusal)
+		self.db_set("accounts_bot_cf", 1, update_modified=True, notify=True)
+		self.save_version()
+		return "queued"
+
 	def validate(self):
 		if self.amount:
 			self.amount_in_words=money_in_words(self.amount,frappe.get_cached_value("Company", get_default_company(), "default_currency"))

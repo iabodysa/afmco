@@ -13399,3 +13399,8 @@ Valuation Rate,سعر التقييم الافتراضي
 Invoice Portion,نصيب الفاتورة
 Hold Type,نوع الحظر
 Summary,الملخص
+Account Bot,بوت المحاسبة
+Accounts Bot,بوت المحاسبة
+Accountant Bot,بوت المحاسبة
+Only a submitted Payment Requisition in Paid state can be sent to the Accounts Bot.,لا يُرسل إلى بوت المحاسبة إلا طلب صرف معتمد في حالة مدفوع.
+A Journal Entry already exists for this Payment Requisition.,يوجد قيد يومية لطلب الصرف هذا مسبقًا.

@@ -32,6 +32,23 @@ def make_png(width: int, height: int) -> bytes:
 	return output.getvalue()
 
 
+def make_text_pdf() -> bytes:
+	pdf = pikepdf.Pdf.new()
+	pdf.add_blank_page(page_size=(A4_WIDTH_POINTS, 842))
+	pdf.pages[0].Contents = pdf.make_stream(b"BT /F1 12 Tf 72 720 Td (Small text page) Tj ET\n" * 200)
+	output = io.BytesIO()
+	pdf.save(output, compress_streams=False)
+	return output.getvalue()
+
+
+def uncompressed_pages(content: bytes) -> int:
+	return sum(
+		1
+		for page in pikepdf.Pdf.open(io.BytesIO(content)).pages
+		if "/Contents" in page.obj and "/Filter" not in page.obj.Contents
+	)
+
+
 def page_widths(content: bytes) -> list[int]:
 	return [round(float(page.mediabox[2])) for page in pikepdf.Pdf.open(io.BytesIO(content)).pages]
 
@@ -156,6 +173,19 @@ class TestRequisitionPack(IntegrationTestCase):
 
 		self.assertEqual(page_widths(content), [200, 300, 300, A4_WIDTH_POINTS, 400])
 		self.assertEqual(skipped, ["sheet.xlsx"])
+
+	def test_merge_always_compresses_small_text_pdf(self):
+		requisition = make_requisition()
+		text_pdf = make_text_pdf()
+		attach_file(requisition, "small.pdf", text_pdf)
+
+		content, _ = requisition_pack.merge(
+			make_pdf(200), requisition_pack.requisition_files(requisition), downsample=False
+		)
+
+		self.assertLess(len(text_pdf), requisition_pack.MEGABYTE)
+		self.assertGreater(uncompressed_pages(text_pdf), 0)
+		self.assertEqual(uncompressed_pages(content), 0)
 
 	def test_downsample_bounds_image_resolution_and_keeps_it_otherwise(self):
 		content = make_png(2480, 3508)
