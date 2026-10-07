@@ -21,10 +21,19 @@ GROUPS = {
 
 class TestEmployeeConnections(TestCase):
 	def setUp(self):
-		self.links = json.loads(EMPLOYEE_JSON.read_text(encoding="utf-8")).get("links") or []
+		self.doc = json.loads(EMPLOYEE_JSON.read_text(encoding="utf-8"))
+		self.links = self.doc.get("links") or []
 
 	def test_each_doctype_sits_in_its_connections_group(self):
 		self.assertEqual({row["link_doctype"]: row["group"] for row in self.links}, GROUPS)
+
+	def test_links_order_has_no_id_for_a_retired_link(self):
+		links_order = next(
+			json.loads(p["value"])
+			for p in self.doc.get("property_setters") or []
+			if p["name"] == "Employee-main-links_order"
+		)
+		self.assertEqual(len(links_order), len(self.links))
 
 	def test_rows_sync_onto_employee_in_place(self):
 		for row in self.links:
