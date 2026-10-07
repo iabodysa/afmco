@@ -1,35 +1,13 @@
 frappe.ui.form.on('Employee', {
     refresh: function(frm) {
         frm.page.add_menu_item(__('Download Employee Card'), function() {
-            generate_employee_card(frm);
+            create_card_image(frm);
         });
     }
 });
 
-function generate_employee_card(frm) {
-    if (!frm.doc.id_number_cf) {
-        frappe.prompt([
-            {
-                fieldname: 'employee_id',
-                label: 'Employee ID',
-                fieldtype: 'Data',
-                reqd: 1,
-                description: 'Please enter the Employee ID to generate the card'
-            }
-        ],
-        function(values) {
-            frm.set_value('id_number_cf', values.employee_id);
-            frm.save().then(() => {
-                create_card_image(frm);
-            });
-        },
-        'Enter Employee ID',
-        'Generate Card'
-        );
-        return;
-    }
-
-    create_card_image(frm);
+function employee_card_id(frm) {
+    return frm.doc.id_number_cf || frm.doc.name;
 }
 
 function create_card_image(frm) {
@@ -77,7 +55,7 @@ function create_card_image(frm) {
         ctx.fillText('COMPANY', 210, 85);
         continueCardCreation();
     };
-    logoImg.src = 'https://afmco.sa/files/Logo-01.png';
+    logoImg.src = frappe.urllib.get_full_url('/files/Logo-01.png');
 
     function continueCardCreation() {
         // Employee photo section
@@ -91,7 +69,7 @@ function create_card_image(frm) {
             drawModernLayout(ctx, null, frm);
             saveCanvasAsAttachment(canvas, frm);
         };
-        employeeImg.src = frm.doc.image || 'https://afmco.sa/files/avatar.jpg';
+        employeeImg.src = frm.doc.image || frappe.urllib.get_full_url('/files/avatar.jpg');
     }
 }
 
@@ -181,7 +159,7 @@ function drawModernLayout(ctx, img, frm) {
     ctx.stroke();
 
     // ID Number only
-    drawInfoCard(ctx, 60, 460, 'ID NUMBER', frm.doc.id_number_cf, '#072B1A');
+    drawInfoCard(ctx, 60, 460, 'ID NUMBER', employee_card_id(frm), '#072B1A');
 
     // Footer section
     ctx.fillStyle = '#072B1A';
@@ -247,7 +225,7 @@ function roundedRect(ctx, x, y, width, height, radius) {
 
 function saveCanvasAsAttachment(canvas, frm) {
     canvas.toBlob(function(blob) {
-        let filename = `employee_id_card_${frm.doc.id_number_cf}_${new Date().getTime()}.png`;
+        let filename = `employee_id_card_${employee_card_id(frm)}_${new Date().getTime()}.png`;
 
         let formData = new FormData();
         formData.append('file', blob, filename);
