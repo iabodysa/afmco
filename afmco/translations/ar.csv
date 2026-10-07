@@ -17,6 +17,7 @@ Actual Hours,الساعات الفعلية
 Actual/360,فعلي/360
 Actual/365,فعلي/365
 Actual/Actual,فعلي/فعلي
+Add Supplier Details,إضافة بيانات المورد
 Added {0} Payroll Entries,أُضيفت {0} من مسيرات الرواتب
 Adjust for Previous Salary Difference,تسوية فرق الراتب السابق
 Advance Account,حساب السلف
@@ -76,6 +77,7 @@ Bank Format,صيغة ملف البنك
 Bank Name,اسم البنك
 Bank Reconciliation Statement by Period,كشف التسوية البنكية حسب الفترة
 Bank code,رمز البنك
+Banking Information,المعلومات البنكية
 Base Salary,الراتب الأساسي
 Basic Details,البيانات الأساسية
 Beneficiary Information,بيانات المستفيد
@@ -129,11 +131,15 @@ Corporation CR,السجل التجاري للمؤسسة
 Cost Calculation Details,تفاصيل احتساب التكلفة
 Create Bank Entry,إنشاء قيد بنكي
 Create Bank File,إنشاء ملف البنك
+Create Bulk Payment Order,إنشاء أمر دفع مجمع
+Create Expense Request,إنشاء طلب دفع
 Create JV,إنشاء قيد يومية
 Create Opening Leave Allocation,إنشاء تخصيص الإجازات الافتتاحي
+Create Payment Order,إنشاء أمر دفع
 Created By,أنشئ بواسطة
 Created By (SADAD Invoice),أنشئ بواسطة (فاتورة سداد)
 Creating Journal Entry...,جارٍ إنشاء قيد اليومية...
+Creating payment order...,جارٍ إنشاء أمر الدفع...
 Creation Date,تاريخ الإنشاء
 Current Address Description,وصف العنوان الحالي
 Current Roles and Permission,الأدوار والصلاحيات الحالية
@@ -171,6 +177,7 @@ Document {0} for employee {1} has no SADAD number. Please try again after adding
 Download Employee Card,تنزيل بطاقة الموظف
 Download WPS,تنزيل ملف حماية الأجور
 Download ZIP,تنزيل الملف المضغوط
+Driver Mobile Number,رقم جوال السائق
 Dropoff,التنزيل
 Dropoff Location,موقع التنزيل
 Dubai,دبي
@@ -211,6 +218,7 @@ Employment Active,على رأس العمل
 Employment Contract Overview,نظرة عامة على عقد العمل
 Employment Details,تفاصيل التوظيف
 Employment Inactive,خارج العمل
+End Location,موقع النهاية
 End of Service (Months),مكافأة نهاية الخدمة (أشهر)
 Ending Contract (From Qiwa),العقود المنتهية (من قوى)
 English,الإنجليزية
@@ -235,6 +243,7 @@ Exit and return visa,تأشيرة خروج وعودة
 Expected salary,الراتب المتوقع
 Expense Approver,مسؤول الموافقة على المصروفات
 Expense Request Report,تقرير طلبات المصروفات
+Expense Request created successfully,أُنشئ طلب الدفع بنجاح
 Experiences,الخبرات
 Expired Date,تاريخ الانتهاء
 Expired Iqama,إقامة منتهية
@@ -245,22 +254,29 @@ Extend Exit Re-Entry Visa,تمديد تأشيرة الخروج والعودة
 Extend Passport Validity,تمديد صلاحية جواز السفر
 Extend Visit Visa,تمديد تأشيرة الزيارة
 Extend exit and re-entry visa (1) month,تمديد تأشيرة الخروج والعودة شهرًا واحدًا
+Failed documents:,المستندات التي فشلت:
 Failed to copy data to clipboard.,تعذر نسخ البيانات إلى الحافظة.
 Failed to copy to clipboard,تعذر النسخ إلى الحافظة
 Failed to copy {0},تعذر نسخ {0}
+Failed to create Expense Request: {0},تعذر إنشاء طلب الدفع: {0}
 Failed to create Journal Entry for Payroll Entry:,تعذر إنشاء قيد اليومية لمسير الرواتب:
 Failed to fetch Salary Slip:,تعذر جلب قسيمة الراتب:
 Failed to generate ZIP file. Please check the logs for details.,تعذر إنشاء الملف المضغوط. يرجى مراجعة السجلات للتفاصيل.
 Failed to load details,تعذر تحميل التفاصيل
+Failed to load documents: {0},تعذر تحميل المستندات: {0}
 Failed to process ZIP file. Please check the logs.,تعذر معالجة الملف المضغوط. يرجى مراجعة السجلات.
 Failed to retrieve the bank account number and cost center for the applicant.,تعذر جلب رقم الحساب البنكي ومركز التكلفة لمقدم الطلب.
 Failed to submit Salary Slip:,تعذر اعتماد قسيمة الراتب:
+Failed to update documents: {0},تعذر تحديث المستندات: {0}
+Failed to validate employees: {0},تعذر التحقق من الموظفين: {0}
 February,فبراير
 Fees per Transfer,الرسوم لكل تحويل
 Fetch Details,جلب التفاصيل
 Fetch Salary,جلب الراتب
+Fetching documents...,جارٍ جلب المستندات...
 Fetching payroll entries...,جارٍ جلب مسيرات الرواتب...
 Fetching salary slips...,جارٍ جلب قسائم الرواتب...
+File already exists: {0},الملف موجود مسبقًا: {0}
 Filter Employees,تصفية الموظفين
 Finance Book,الدفتر المالي
 Financial,مالي
@@ -274,6 +290,7 @@ Fuel Cost (Months),تكلفة الوقود (أشهر)
 Fujairah,الفجيرة
 GOSI (Months),التأمينات الاجتماعية (أشهر)
 General Administrative Expenses (Months),المصروفات الإدارية العامة (أشهر)
+Generate 4 Ticket Images,إنشاء 4 صور للتذكرة
 Generate Pre-Check Report,إنشاء تقرير التحقق المسبق
 Generated BAT Script,برنامج BAT النصي المُنشأ
 Generated ZIP File,الملف المضغوط المُنشأ
@@ -315,12 +332,14 @@ Housing Allowance,بدل السكن
 Housing Cost (Months),تكلفة السكن (أشهر)
 Housing Team,فريق السكن
 Housing old,السكن السابق
+"However, failed to update status on the following documents:",ومع ذلك، تعذر تحديث الحالة في المستندات التالية:
 Hub Sync ID,معرّف مزامنة المركز
 I have read and agree to the Terms and Conditions and Privacy Policy,قرأت الشروط والأحكام وسياسة الخصوصية وأوافق عليها
 I understand and will comply with the Financial Policy .,أفهم السياسة المالية وسألتزم بها.
 IBAN Certificate,شهادة الآيبان
 IBAN Details,تفاصيل الآيبان
 IBAN Holder Name,اسم صاحب الآيبان
+IBAN Mismatch,عدم تطابق الآيبان
 IBAN Update,تحديث الآيبان
 IBAN Verified,تم التحقق من الآيبان
 ID,المعرّف
@@ -329,6 +348,8 @@ ID Number CF,رقم الهوية
 ID or iQama,الهوية أو الإقامة
 IRAC Provisioning Configuration,إعدادات مخصصات IRAC
 IT Asset,أصل تقنية المعلومات
+Image attached: {0},أُرفقت الصورة: {0}
+Image data is empty.,بيانات الصورة فارغة.
 Import Excel Data,استيراد بيانات Excel
 Important,مهم
 In Process,قيد المعالجة
@@ -341,6 +362,7 @@ Input Required,يلزم الإدخال
 Integration Status,حالة التكامل
 Interest Day-Count Convention,طريقة احتساب أيام الفائدة
 Invalid IBAN,آيبان غير صالح
+Invalid Mobile,رقم جوال غير صالح
 Invalid action,إجراء غير صالح
 Iqama Copy,نسخة الإقامة
 Iqama Cost (Annual),تكلفة الإقامة (سنوية)
@@ -391,6 +413,7 @@ Legal user,مستخدم الشؤون القانونية
 License Plate,لوحة المركبة
 List of Iqamas with Renewal Issues,قائمة الإقامات التي بها مشكلات تجديد
 Loading details...,جارٍ تحميل التفاصيل...
+Loading documents...,جارٍ تحميل المستندات...
 Loan,القرض
 Loan Classification Range,نطاق تصنيف القروض
 Loan Classification Ranges,نطاقات تصنيف القروض
@@ -398,6 +421,7 @@ Loan IRAC Provisioning Configuration,إعدادات مخصصات IRAC للقرو
 Loan Repayment created for {0} on {1},أُنشئ سداد القرض لـ {0} في {1}
 Loan Settings,إعدادات القروض
 Localization Costs (Months),تكاليف التوطين (أشهر)
+Location Title,اسم الموقع
 Maximum draft Journal Entries one user can hold. 0 removes the limit.,أقصى عدد من مسودات القيود لكل مستخدم. القيمة 0 تلغي الحد.
 MOL EUN,الرقم الموحد للمنشأة
 Make Accrual Entry,إنشاء قيد استحقاق
@@ -406,8 +430,12 @@ Man,رجل
 March,مارس
 Medical Exam Fee (24 months),رسوم الفحص الطبي (24 شهرًا)
 Medical Insurance (Annual),التأمين الطبي (سنوي)
+Message Greeting,تحية الرسالة
+Message Language,لغة الرسالة
 Minimum days between Disbursement date and first Repayment date,الحد الأدنى للأيام بين تاريخ الصرف وتاريخ أول قسط
+Mismatched documents,مستندات غير متطابقة
 Missed renewal window. Follow up with HR / Legal immediately.,فاتت مهلة التجديد. تابع مع الموارد البشرية / الشؤون القانونية فورًا.
+Missing IBAN,الآيبان غير موجود
 Mobile,الجوال
 Mobile Cost (Annual),تكلفة الجوال (سنوية)
 Model,الطراز
@@ -429,6 +457,7 @@ No Payroll Entries match your criteria.,لا توجد مسيرات رواتب ت
 No Recruitment Fee,لا توجد رسوم استقدام
 No Salary Slips found for payment.,لم يُعثر على قسائم رواتب للدفع.
 No Salary Slips found.,لم يُعثر على قسائم رواتب.
+No Valid Documents,لا توجد مستندات صالحة
 No WPS files found. Please generate WPS ZIP first.,لم يُعثر على ملفات حماية الأجور. يرجى إنشاء الملف المضغوط أولًا.
 No comments yet,لا توجد تعليقات بعد
 No data found.,لم يُعثر على بيانات.
@@ -444,6 +473,7 @@ No workflow history available,لا يوجد سجل لسير العمل
 No. of children,عدد الأبناء
 November,نوفمبر
 Number of Dependents,عدد التابعين
+Number of Documents,عدد المستندات
 Number of Employees,عدد الموظفين
 Number of vacation days per year,عدد أيام الإجازة السنوية
 Number to Hire,العدد المطلوب توظيفه
@@ -485,6 +515,7 @@ PR User (SADAD Invoice),مستخدم طلب الصرف (فاتورة سداد)
 Parent Company,الشركة الأم
 Partly Claimed and Returned,مطالب به جزئيًا ومرتجع
 Passenger,الراكب
+Passenger Count,عدد الركاب
 Passengers,الركاب
 Passport Expiry Date,تاريخ انتهاء جواز السفر
 Passport No,رقم جواز السفر
@@ -492,6 +523,9 @@ Passport Number,رقم جواز السفر
 Paste Excel Data,لصق بيانات Excel
 "Paste data copied from Excel, the first row must contain headers.",الصق البيانات المنسوخة من Excel، ويجب أن يحتوي الصف الأول على العناوين.
 Payment Entry Series,سلسلة سندات الدفع
+Payment Order created successfully:,أُنشئ أمر الدفع بنجاح:
+Payment Order is already created.,سبق إنشاء أمر الدفع.
+Payment Order is not required for Company Transport.,لا يلزم أمر دفع لنقل الشركة.
 Payment Request Details,تفاصيل طلب الصرف
 Payment Request Number,رقم طلب الصرف
 Payment Request already created for document {0} for employee {1}.,سبق إنشاء طلب صرف للمستند {0} للموظف {1}.
@@ -513,13 +547,23 @@ Personal Information,المعلومات الشخصية
 Phase,المرحلة
 Photo,الصورة
 Pickup Location,موقع الاستلام
+"Please complete the required information for unregistered passengers in the ""Passengers"" tab.","يرجى استكمال البيانات المطلوبة للركاب غير المسجلين في تبويب ""الركاب""."
 Please delete the Employee {0} to cancel this document,يرجى حذف الموظف {0} لإلغاء هذا المستند
 Please enter Employee IDs first.,يرجى إدخال الأرقام الوظيفية أولًا.
+Please enter a valid Google Maps link for dropoff location,يرجى إدخال رابط خرائط Google صالح لموقع التنزيل
+Please enter a valid Google Maps link for pickup location,يرجى إدخال رابط خرائط Google صالح لموقع الاستلام
+Please enter a valid Saudi IBAN (SA + 22 digits),يرجى إدخال آيبان سعودي صالح (SA + 22 رقمًا)
+Please enter a valid Saudi IBAN.,يرجى إدخال آيبان سعودي صالح.
+Please enter a valid Saudi mobile number,يرجى إدخال رقم جوال سعودي صالح
+Please enter a valid Saudi mobile number.,يرجى إدخال رقم جوال سعودي صالح.
 Please enter a valid cell number with at least 9 digits.,يرجى إدخال رقم جوال صالح لا يقل عن 9 أرقام.
+Please enter supplier mobile number before sending,يرجى إدخال رقم جوال المورد قبل الإرسال
 Please fill out all required fields.,يرجى تعبئة جميع الحقول المطلوبة.
 Please fill the field: {0},يرجى تعبئة الحقل: {0}
+Please fill the required fields: {0},يرجى تعبئة الحقول المطلوبة: {0}
 Please select Bank Fees Account and VAT Account if applying fees.,يرجى اختيار حساب الرسوم البنكية وحساب ضريبة القيمة المضافة عند تطبيق الرسوم.
 Please select Payroll Entry,يرجى اختيار مسير الرواتب
+"Please select Transport Type as ""Supplier"" or ""Ticket Purchase"" to create Payment Order.","يرجى اختيار نوع النقل ""Supplier"" أو ""Ticket Purchase"" لإنشاء أمر الدفع."
 Please select a Payment Request first,يرجى اختيار طلب صرف أولًا
 Please select an Employee to compare.,يرجى اختيار موظف للمقارنة.
 Please select an Employee.,يرجى اختيار موظف.
@@ -527,6 +571,7 @@ Please select an employee first.,يرجى اختيار موظف أولًا.
 Please select at least one Payroll Entry,يرجى اختيار مسير رواتب واحد على الأقل
 Please select at least one Payroll Entry before generating ZIP.,يرجى اختيار مسير رواتب واحد على الأقل قبل إنشاء الملف المضغوط.
 Please select at least one Payroll Entry before running pre-check.,يرجى اختيار مسير رواتب واحد على الأقل قبل تشغيل التحقق المسبق.
+Please select at least one document.,يرجى اختيار مستند واحد على الأقل.
 Please select documents to approve renewal.,يرجى اختيار المستندات للموافقة على التجديد.
 Please select documents to confirm payment.,يرجى اختيار المستندات لتأكيد الدفع.
 Please select documents to create payment request.,يرجى اختيار المستندات لإنشاء طلب صرف.
@@ -589,6 +634,7 @@ Replacement,الاستبدال
 Report Generated At,وقت إنشاء التقرير
 Reprint Exit Re-Entry Visa,إعادة طباعة تأشيرة الخروج والعودة
 Request Date,تاريخ الطلب
+Request Scenario,سيناريو الطلب
 Request User,مستخدم الطلبات
 Requested By,مقدم الطلب
 Reschedule Date,تاريخ إعادة الجدولة
@@ -623,6 +669,8 @@ Salary Information,بيانات الراتب
 Salary Slip,قسيمة الراتب
 Salary for Last Month of Previous Year,راتب الشهر الأخير من السنة السابقة
 Sales Invoice Series,سلسلة فواتير المبيعات
+Saudi IBAN format: SA followed by 22 digits,صيغة الآيبان السعودي: SA يليها 22 رقمًا
+Saudi mobile format: 05XXXXXXXX or 9665XXXXXXXX,صيغة الجوال السعودي: 05XXXXXXXX أو 9665XXXXXXXX
 Schedule Request,جدولة الطلب
 Schedule for Later,جدولة لاحقًا
 Scheduled Hours,الساعات المجدولة
@@ -632,8 +680,12 @@ Search employees...,ابحث عن الموظفين...
 Select Payment Type,اختر نوع الدفع
 Select Salaries,اختر الرواتب
 Select reschedule date,اختر تاريخ إعادة الجدولة
+"Selected documents must use ""Supplier"" transport type and not be cancelled or rejected.","يجب أن يكون نوع النقل في المستندات المحددة ""Supplier"" وألا تكون ملغاة أو مرفوضة."
+Selected documents status:,حالة المستندات المحددة:
 Self-Service Employee,موظف الخدمة الذاتية
 Send WhatsApp,إرسال واتساب
+Send WhatsApp to Driver,إرسال واتساب إلى السائق
+Send WhatsApp to Supplier,إرسال واتساب إلى المورد
 Senior Tenure,خدمة طويلة
 September,سبتمبر
 Service Codes,رموز الخدمات
@@ -659,8 +711,16 @@ Submit a leave request if you do not have an account in the employee app.,قدّ
 Submit Salary Slips,اعتماد قسائم الرواتب
 Submit your job application and CV to AFMCO.,قدّم طلب التوظيف وسيرتك الذاتية إلى أفمكو.
 Success Rate,نسبة النجاح
+Successfully created Payment Order:,أُنشئ أمر الدفع بنجاح:
+Successfully updated {0} document(s),تم تحديث {0} مستند بنجاح
 Supervisor,المشرف
 Supervisor Allowance,بدل الإشراف
+Supervisor Contacts,جهات اتصال المشرف
+Supplier Bank Account Number,رقم الحساب البنكي للمورد
+Supplier Bank Account Number is not a valid Saudi IBAN.,رقم الحساب البنكي للمورد ليس آيبان سعوديًا صالحًا.
+Supplier IBAN,آيبان المورد
+Supplier Information,بيانات المورد
+Supplier Mobile,جوال المورد
 Support Policy,سياسة الدعم
 Suspended,موقوف
 System Management Tools,أدوات إدارة النظام
@@ -678,9 +738,11 @@ Terms,الشروط
 Text of a WhatsApp Message to the Employee,نص رسالة واتساب للموظف
 The data must contain at least one header row and one data row.,يجب أن تحتوي البيانات على صف عناوين واحد وصف بيانات واحد على الأقل.
 The first Approver in the list will be set as the default Approver.,سيُعيَّن أول مسؤول موافقة في القائمة بوصفه مسؤول الموافقة الافتراضي.
+The following documents are missing IBAN numbers:,المستندات التالية ينقصها رقم الآيبان:
 The issue must be closed by the date,يجب إغلاق المشكلة بحلول التاريخ
 The ticket allowance will be allocated as per your decision.,سيُخصَّص بدل التذاكر حسب قرارك.
 There was an error creating the Expense Request.,حدث خطأ أثناء إنشاء طلب المصروف.
+This request must be in Approved state before creating an Expense Request.,يجب أن يكون هذا الطلب في حالة معتمد قبل إنشاء طلب دفع.
 This will generate WPS files and cannot be undone. Continue?,سيؤدي هذا إلى إنشاء ملفات حماية الأجور ولا يمكن التراجع عنه. هل تريد المتابعة؟
 This will regenerate the ZIP file. Continue?,سيؤدي هذا إلى إعادة إنشاء ملف ZIP. هل تريد المتابعة؟
 Ticket,التذكرة
@@ -688,6 +750,7 @@ Ticket Analytics,تحليلات التذاكر
 Ticket Configuration,إعدادات التذاكر
 Ticket Summary,ملخص التذاكر
 Ticket Type,نوع التذكرة
+"Tip: Use ""Add Supplier Details"" button to update IBAN","تلميح: استخدم زر ""Add Supplier Details"" لتحديث الآيبان"
 Title,المسمى
 "Total Cost excluding Salary, VAT, and Profit",إجمالي التكلفة دون الراتب وضريبة القيمة المضافة والربح
 Total Cost with VAT (Contract Duration),إجمالي التكلفة شامل ضريبة القيمة المضافة (مدة العقد)
@@ -697,16 +760,20 @@ Total Debit must equal Total Credit. The difference is,يجب أن يساوي إ
 Total Fees,إجمالي الرسوم
 Total Net Pay,إجمالي صافي الراتب
 Total New Salary,إجمالي الراتب الجديد
+Total Passengers,إجمالي الركاب
 Total Profit,إجمالي الربح
 Total Records,إجمالي السجلات
 Total Salary,إجمالي الراتب
 Total Salary (Months),إجمالي الراتب (أشهر)
 Total and VAT Calculation,حساب الإجمالي وضريبة القيمة المضافة
 Total worker cost per month before tax,إجمالي تكلفة العامل الشهرية قبل الضريبة
+Transport Type,نوع النقل
 Transportation Allowance,بدل النقل
 Transportation Cost (Months),تكلفة النقل (أشهر)
 Travel Before,السفر قبل
 Trip Details,تفاصيل الرحلة
+Trip Locations,مواقع الرحلة
+Trip Notes,ملاحظات الرحلة
 Type IQama,نوع الإقامة
 Type of Visa,نوع التأشيرة
 Types (Arabic),الأنواع (عربي)
@@ -717,9 +784,14 @@ Umm Al Quwain,أم القيوين
 Unable to calculate contract. Check joining date.,تعذر حساب العقد. تحقق من تاريخ المباشرة.
 Unexpected Increase,زيادة غير متوقعة
 Uniform Cost (Annual),تكلفة الزي الموحد (سنوية)
+Unregistered Employee,موظف غير مسجل
+Update All,تحديث الكل
 Update Information Service,خدمة تحديث البيانات
 Update Renewal Preference,تحديث رغبة التجديد
 Update SADAD Number,تحديث رقم السداد
+Updating documents...,جارٍ تحديث المستندات...
+Updating source documents...,جارٍ تحديث المستندات المصدر...
+Uploading image...,جارٍ رفع الصورة...
 Urdu,الأردية
 VAT (15%),ضريبة القيمة المضافة (15%)
 VAT Account,حساب ضريبة القيمة المضافة
@@ -727,6 +799,7 @@ VAT Amount (15%),مبلغ ضريبة القيمة المضافة (15%)
 VAT Emirate,إمارة ضريبة القيمة المضافة
 Vacation Day,يوم إجازة
 Vacation Days,أيام الإجازة
+Validate IBAN format,التحقق من صيغة الآيبان
 Validity Dates,تواريخ السريان
 Vehicle Cost (Months),تكلفة المركبة (أشهر)
 Vehicle Expenses,مصروفات المركبات
@@ -751,7 +824,9 @@ Waiting Sadad,بانتظار السداد
 Waiting To join The Work,بانتظار مباشرة العمل
 Warning: processing more than 10 Payroll Entries may take longer,تحذير: قد تستغرق معالجة أكثر من 10 مسيرات رواتب وقتًا أطول
 Watch Period Post Loan Restructure (In Days),فترة المراقبة بعد إعادة هيكلة القرض (بالأيام)
+WhatsApp Driver,واتساب السائق
 WhatsApp Message,رسالة واتساب
+WhatsApp Supplier,واتساب المورد
 Within renewal window ({0} – {1}). Legal review required.,ضمن مهلة التجديد ({0} – {1}). تلزم مراجعة قانونية.
 Work Permit,رخصة العمل
 Work Permit (Annual),رخصة العمل (سنوية)
@@ -761,6 +836,7 @@ Worker's Contract Duration Cost,تكلفة مدة عقد العامل
 Working Hours Per Day,ساعات العمل اليومية
 Yearly Summary,الملخص السنوي
 Years of Service,سنوات الخدمة
+You are updating {0} document(s),أنت تحدّث {0} مستند
 "You cannot uncheck ""Accrual Entry Created"" once it has been set.","لا يمكنك إلغاء تحديد ""Accrual Entry Created"" بعد تعيينه."
 "You cannot uncheck ""Bank Entry Created"" once it has been set.","لا يمكنك إلغاء تحديد ""Bank Entry Created"" بعد تعيينه."
 account,الحساب
@@ -812,6 +888,7 @@ urdu,الأردية
 witing,بالانتظار
 worker's monthly cost,التكلفة الشهرية للعامل
 {0} copied to clipboard,نُسخ {0} إلى الحافظة
+"{0} uploaded, {1} skipped (already attached)",رُفع {0}، وتم تخطي {1} (مرفق مسبقًا)
 "✅ Employee analysis complete. {0} records processed, {1} found.",✅ اكتمل تحليل الموظفين. عولج {0} سجل، ووُجد {1}.
 🔍 Analyze Employees,🔍 تحليل الموظفين
 Learn more,اعرف المزيد
@@ -1078,6 +1155,7 @@ Labor Operating Costs Quotation,عرض سعر تكاليف التشغيل الع
 Cash Payment Voucher,سند دفع نقدي
 Manpower Quotation,عرض أسعار العمالة
 Cash Receipt Voucher,سند قبض نقدي
+Samsa Tax Invoice,فاتورة ضريبية سمسا
 Payment Request Form,نموذج طلب صرف
 Employee Profile,تعريف الموظف
 Detailed Salary Slip,قسيمة راتب تفصيلية
@@ -1588,7 +1666,6 @@ Taxable Amount,المبلغ الخاضع للضريبة,Samsa Tax Invoice
 Tax Rate,نسبة الضريبة,Samsa Tax Invoice
 Tax Amount,مبلغ الضريبة,Samsa Tax Invoice
 Total inclusive of VAT,شامل ضريبة القيمة المضافة,Samsa Tax Invoice
-Total Amounts,المبالغ الاجمالية,Samsa Tax Invoice
 Total (Excluding VAT),الإجمالي (غير شامل ضريبة القيمة المضافة),Samsa Tax Invoice
 Total Discounts,مجموع الخصومات,Samsa Tax Invoice
 Total Taxable Amount (Excluding VAT),الإجمالي الخاضع للضريبة (غير شامل ضريبة القيمة المضافة),Samsa Tax Invoice
@@ -13143,6 +13220,7 @@ Showing,عرض
 Only {0} and nothing more,فقط {0} لا غير
 Saudi Riyal,ريال سعودي
 Halala,هللة
+Company Stamp,ختم الشركة
 Beneficiary Name,اسم المستفيد
 Amount,المبلغ,Payment Advice
 Sr,م,Tax Invoice
