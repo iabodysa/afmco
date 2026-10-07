@@ -11,7 +11,7 @@ Account (Other),الحساب (أخرى)
 Account Holder Name,اسم صاحب الحساب
 Accounting Details,التفاصيل المحاسبية
 Accounting Entries,القيود المحاسبية
-Accounts,أدارة الحسابات
+Accounts,إدارة الحسابات
 Accrued Expenses,المصروفات المستحقة
 Actual Hours,الساعات الفعلية
 Actual/360,فعلي/360
@@ -7150,7 +7150,7 @@ STATEMENT OF ACCOUNTS,كشف حساب
 Statement Of Accounts,كشف حساب
 Statement PDF Password,كلمة مرور ملف PDF للكشف
 Statement Period,فترة الكشف
-Stock,أدارة المستودعات
+Stock,إدارة المستودعات
 Stock Asset Account,حساب أصول المخزون
 Stock Assets,أصول المخزون
 Stock cannot be updated against the following Delivery Notes: {0},لا يمكن تحديث المخزون مقابل سندات التسليم التالية: {0}
@@ -7184,7 +7184,6 @@ Successfully updated {0} records.,تم تحديث {0} من السجلات بنج
 Supplier Invoice Date,تاريخ فاتورة المورد
 Supplier Invoice No exists in Purchase Invoice {0},رقم فاتورة المورد موجود في فاتورة المشتريات {0}
 Supplier Item,صنف المورد
-Supplier Ledger Summary,العناوين وجهات الاتصال
 Supplier Warehouse,مستودع المورد
 Suspected Discount Amount,مبلغ الخصم المشتبه به
 System will notify to increase or decrease quantity or amount ,سيُشعر النظام بزيادة الكمية أو المبلغ أو تقليلهما 
@@ -9589,7 +9588,6 @@ Clear Last Scanned Warehouse,مسح آخر مستودع ممسوح ضوئيًا
 Company Name cannot be Company,لا يمكن أن يكون اسم الشركة Company
 Create New Contact,إنشاء جهة اتصال جديدة
 Create Payment Request,إنشاء طلب صرف
-Declare Lost,تسجيل
 Delete Demo Data,حذف البيانات التجريبية
 Demo data cleared,تم مسح البيانات التجريبية
 Download CSV Template,تنزيل قالب CSV
@@ -13344,7 +13342,7 @@ In,الدخول
 Equity,حقوق ملكية
 Operation,العمليات الانتاجية
 POS,نقاط البيع
-Projects,أدارة المشاريع
+Projects,إدارة المشاريع
 All Supplier Groups,المجموعة الرئيسية
 Customer Name,العميل
 Sales Register,تقرير المبيعات والمرتجعات
@@ -13372,23 +13370,23 @@ Exit,تفاصيل الاستقالة
 Sales Taxes and Charges Template,قالب الضرائب علي المبيعات
 Reports,التقارير
 Set Advances and Allocate (FIFO),FIFO ربط الدفعات المقدمة بناء علي
-Manufacturing,أدارة التصنيع
+Manufacturing,إدارة التصنيع
 Email Id,البريد الالكتروني
 Purchase Taxes and Charges Template,قالب الضرائب علي المشتريات
 Party Type,نوع الحساب
 Timeless Night,النمط الداكن
 Item-wise Purchase Register,تقرير المشتريات علي مستوي الصنف
-Selling,أدارة المبيعات
+Selling,إدارة المبيعات
 Supplier Addresses And Contacts,الموردين وجهات الاتصال
 Remarks,التعليقات
 Shift Type,الورديات
 Attendance Request,طلب حضور وانصراف
 Subcontracting,تعاقد بالباطن
-Human Resources,أدارة الموارد البشرية
+Human Resources,إدارة الموارد البشرية
 Salutation,البادئة
 Management,الادارة
 Salary Register,تقرير الرواتب الشهرية
-Buying,أدارة المشتريات
+Buying,إدارة المشتريات
 Payroll,الرواتب
 Loyalty Points,نقاط العملاء
 Employee Checkin,تسجيل حضور وانصراف
@@ -13421,3 +13419,13 @@ The Accounts Bot already created the Journal Entry for this Payment Requisition.
 Accounts Bot Status,حالة بوت المحاسبة
 Accounts Bot Note,ملاحظة بوت المحاسبة
 Accounts Bot Updated,آخر تحديث من بوت المحاسبة
+Benefit Application,طلب مزايا
+Benefit Claim,مطالبة مزايا
+Employee CTC Break-up,تفاصيل التكلفة على الشركة للموظف
+Employee Hours Utilization,استخدام ساعات الموظفين
+Exemption Declaration,إقرار الإعفاء
+Exemption Submission Proof,إثبات تقديم الإعفاء
+Hiring Pipeline,مسار التوظيف
+Holiday List Assignment,إسناد قائمة العطلات
+Job Portal,بوابة الوظائف
+Leave Balance Summary,ملخص رصيد الإجازات
