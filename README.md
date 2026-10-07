@@ -23,6 +23,13 @@ bench get-app https://github.com/iabodysa/afmco
 bench --site $SITE_NAME install-app afmco
 ```
 
+## Third-party fonts
+
+Shipped in `afmco/public/fonts/`, each under the SIL Open Font License 1.1 in the licence file beside it:
+
+- Saudi Riyal Font © Emran Alhaddad - Used under SIL Open Font License 1.1 (`OFL-SaudiRiyal.txt`)
+- Montserrat © The Montserrat Project Authors - Used under SIL Open Font License 1.1 (`OFL-Montserrat.txt`)
+- Tajawal © Boutros International - Used under SIL Open Font License 1.1 (`OFL-Tajawal.txt`)
 
 ## License
 
