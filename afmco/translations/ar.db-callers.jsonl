@@ -1,0 +1,262 @@
+fmt:jsonl|keys:key,caller|key:ar.csv source string whose live caller sits only in the production database|caller:doctype:field of the first live hit, unnamed where the scan kept none
+{"key": "(..........................) nationality, who works for ..............................................................", "caller": "unnamed"}
+{"key": ", and that I enjoy all the employment rights set out in the Saudi Labor Law and the approved Work Regulations of the company.", "caller": "Print Format:html"}
+{"key": "2025 AD", "caller": "Print Format:html"}
+{"key": "30 days", "caller": "unnamed"}
+{"key": "A copy has been sent to Payroll to prepare the payroll based on the advance leave pay.", "caller": "Print Format:html"}
+{"key": "AL Mutairy Co", "caller": "unnamed"}
+{"key": "Abdullah Fahad Al-Mutairi Support Services Company", "caller": "Print Format:html"}
+{"key": "Absent Day", "caller": "Print Format:html"}
+{"key": "Abu Dhabi", "caller": "unnamed"}
+{"key": "Acknowledgement and Declaration", "caller": "unnamed"}
+{"key": "Actual/360", "caller": "unnamed"}
+{"key": "Actual/365", "caller": "unnamed"}
+{"key": "Actual/Actual", "caller": "unnamed"}
+{"key": "Add Supplier Details", "caller": "Client Script:script"}
+{"key": "Additional Benefits", "caller": "Print Format:html"}
+{"key": "Ai", "caller": "unnamed"}
+{"key": "Ajman", "caller": "unnamed"}
+{"key": "Amount:", "caller": "unnamed"}
+{"key": "Amounts Due", "caller": "unnamed"}
+{"key": "Approved by", "caller": "unnamed"}
+{"key": "Assessor Signature", "caller": "Print Format:html"}
+{"key": "At my personal request and wish, my annual leave pay for the current year", "caller": "Print Format:html"}
+{"key": "Authorised Signatory", "caller": "Print Format:html"}
+{"key": "Banking Information", "caller": "Client Script:script"}
+{"key": "Cash Custody Receipt", "caller": "unnamed"}
+{"key": "Cash Payment Voucher", "caller": "unnamed"}
+{"key": "Cash Receipt Voucher", "caller": "Print Format:html"}
+{"key": "Checklist Item", "caller": "Print Format:html"}
+{"key": "Clearance Declaration", "caller": "Print Format:html"}
+{"key": "Clearing End of Service", "caller": "unnamed"}
+{"key": "Collection Offset Logic Based On", "caller": "unnamed"}
+{"key": "Company Stamp", "caller": "Print Format:html"}
+{"key": "Compliance Score", "caller": "Print Format:html"}
+{"key": "Contract duration: Two Gregorian years.", "caller": "Print Format:html"}
+{"key": "Cost per Worker", "caller": "Print Format:html"}
+{"key": "Create Bulk Payment Order", "caller": "Client Script:script"}
+{"key": "Create Expense Request", "caller": "Client Script:script"}
+{"key": "Create Payment Order", "caller": "Client Script:script"}
+{"key": "Creating payment order...", "caller": "Client Script:script"}
+{"key": "Custody Amount", "caller": "Print Format:html"}
+{"key": "Custody Issue Date", "caller": "Print Format:html"}
+{"key": "Customer Signature", "caller": "Print Format:html"}
+{"key": "Customer:", "caller": "unnamed"}
+{"key": "Date:", "caller": "unnamed"}
+{"key": "Days Past Due Threshold", "caller": "unnamed"}
+{"key": "Declaration and Commitment", "caller": "unnamed"}
+{"key": "Departments", "caller": "unnamed"}
+{"key": "Detailed Salary Slip", "caller": "Print Format:html"}
+{"key": "Does not include equipment or tools.", "caller": "Print Format:html"}
+{"key": "Driver Mobile Number", "caller": "Client Script:script"}
+{"key": "Dropoff", "caller": "Print Format:html"}
+{"key": "Dropoff Location", "caller": "Print Format:html"}
+{"key": "Dubai", "caller": "unnamed"}
+{"key": "Duration of Service", "caller": "unnamed"}
+{"key": "Employee", "caller": "Custom Field:label"}
+{"key": "Employee Number:", "caller": "Print Format:html"}
+{"key": "Employee Profile", "caller": "Property Setter:value"}
+{"key": "Employee Signature", "caller": "Print Format:html"}
+{"key": "End Location", "caller": "Client Script:script"}
+{"key": "Exemption Reason Code", "caller": "unnamed"}
+{"key": "Expense Request created successfully", "caller": "Client Script:script"}
+{"key": "Failed documents:", "caller": "Client Script:script"}
+{"key": "Failed to create Expense Request: {0}", "caller": "Client Script:script"}
+{"key": "Failed to load documents: {0}", "caller": "Client Script:script"}
+{"key": "Failed to update documents: {0}", "caller": "Client Script:script"}
+{"key": "Failed to validate employees: {0}", "caller": "Client Script:script"}
+{"key": "Fetching documents...", "caller": "Client Script:script"}
+{"key": "File already exists: {0}", "caller": "Client Script:script"}
+{"key": "Financial Policy", "caller": "unnamed"}
+{"key": "Fleet", "caller": "unnamed"}
+{"key": "Fujairah", "caller": "unnamed"}
+{"key": "Full Name:", "caller": "unnamed"}
+{"key": "Furthermore, I confirm that I have received all documents and certificates I had previously submitted to the company at the start of my employment or during my service, and I release the company from any and all claims or entitlements related to my employment period or any legal or financial claims.", "caller": "unnamed"}
+{"key": "General Manager", "caller": "unnamed"}
+{"key": "General Manager Signature", "caller": "Print Format:html"}
+{"key": "General Terms & Conditions", "caller": "Print Format:html"}
+{"key": "Generate 4 Ticket Images", "caller": "Client Script:script"}
+{"key": "GitHub Sync ID", "caller": "unnamed"}
+{"key": "Google Console", "caller": "unnamed"}
+{"key": "Grand Total Including Tax", "caller": "Print Format:html"}
+{"key": "Halala", "caller": "unnamed"}
+{"key": "Health Certificate Included", "caller": "Print Format:html"}
+{"key": "Housing Included", "caller": "Print Format:html"}
+{"key": "However, failed to update status on the following documents:", "caller": "Client Script:script"}
+{"key": "Hub Sync ID", "caller": "unnamed"}
+{"key": "I acknowledge that I am still in service with", "caller": "Print Format:html"}
+{"key": "I acknowledge that my annual leave starts on ___ / ___ / 2025 AD for ____________ days, and I commit to actually taking the leave according to the schedule approved by the company management.", "caller": "Print Format:html"}
+{"key": "I acknowledge that the advance payment of leave pay gives me no additional right to claim other amounts for the leave, and I undertake not to submit additional financial claims as work allowance or leave compensation as long as I take my leave on its set date.", "caller": "Print Format:html"}
+{"key": "I also acknowledge that I have signed this declaration of my own free will, without any pressure or coercion, and I release the company from any future obligations or rights.", "caller": "unnamed"}
+{"key": "I bear full legal and administrative responsibility for the accuracy of this undertaking, and I agree to its keeping in my employment file at the company for reliance when needed.", "caller": "Print Format:html"}
+{"key": "I further declare that I have no future rights or claims against the company, and I commit not to pursue any future financial or legal claims against the company.", "caller": "unnamed"}
+{"key": "I hereby acknowledge my agreement to the above-mentioned entitlements and commit to not contest the company in any capacity in the future, in relation to any entitlements or rights associated with my period of employment at the company, or regarding the receipt of my salaries and legal entitlements.", "caller": "unnamed"}
+{"key": "I state that the amount paid to me is my annual leave pay in advance, under Article (109) of the Labor Law, and is in no case a compensation in lieu of the leave or a waiver of it.", "caller": "Print Format:html"}
+{"key": "I undertake not to work in any form during the leave (full time, part time or additional assignments), and I understand that any work during the leave requires prior written approval of the company management only, without any additional financial obligation unless agreed in writing.", "caller": "Print Format:html"}
+{"key": "I, being of full legal capacity, acknowledge the following:", "caller": "Print Format:html"}
+{"key": "I, the undersigned, hereby confirm that the documents submitted with this request are accurate and have been carefully verified. I commit to monitoring all procedures following the disbursement process to ensure there are no delays or violations that may arise from this operation, and I acknowledge my responsibility for compensating any losses due to errors that may appear in the provided data. I pledge to comply with all financial and administrative policies and procedures in force at the company, and I fully understand the legal responsibilities associated with submitting unaltered or tampered documents. I also commit to submitting all invoices related to the request to the company's financial management, ensuring that these invoices comply with the required tax standards and accurately reflect all costs and expenses associated with the request.", "caller": "unnamed"}
+{"key": "I, the undersigned: .......................................................................", "caller": "unnamed"}
+{"key": "IBAN Mismatch", "caller": "Client Script:script"}
+{"key": "IBAN Verification Status", "caller": "Print Format:html"}
+{"key": "ID/Iqama Number:", "caller": "Print Format:html"}
+{"key": "IRAC Provisioning Configuration", "caller": "unnamed"}
+{"key": "Image attached: {0}", "caller": "Client Script:script"}
+{"key": "Image data is empty.", "caller": "Client Script:script"}
+{"key": "Implementation avg. 10 days (subject to profession, nationality, & selection).", "caller": "Print Format:html"}
+{"key": "Important", "caller": "unnamed"}
+{"key": "In my capacity as (..................................................), hereby acknowledge that I have received all my rights and entitlements from the company until the date of / / , in accordance with the Saudi Arabian labor laws, the company’s regulations, and the employment contract signed between myself and the company, on the occasion of the termination of our employment relationship.", "caller": "Print Format:html"}
+{"key": "Includes all employee expenses: (Iqama, GOSI, Work Permit, Bank Account, Medical Insurance, Monthly Salary, End of Service, & Vacation Allowance).", "caller": "Print Format:html"}
+{"key": "Includes provision of housing and transportation.", "caller": "Print Format:html"}
+{"key": "Interest Day-Count Convention", "caller": "unnamed"}
+{"key": "International Recruitment Fees Included", "caller": "Print Format:html"}
+{"key": "Invalid Mobile", "caller": "Client Script:script"}
+{"key": "Is Exempt", "caller": "unnamed"}
+{"key": "Is Zero Rated", "caller": "unnamed"}
+{"key": "Job Title:", "caller": "Print Format:html"}
+{"key": "Labor Operating Costs Quotation", "caller": "Print Format:html"}
+{"key": "Loading documents...", "caller": "Client Script:script"}
+{"key": "Loan Classification Ranges", "caller": "unnamed"}
+{"key": "Loan Settings", "caller": "unnamed"}
+{"key": "Location Title", "caller": "Client Script:script"}
+{"key": "Man", "caller": "unnamed"}
+{"key": "Manpower Quotation", "caller": "Property Setter:value"}
+{"key": "Message Greeting", "caller": "Client Script:script"}
+{"key": "Message Language", "caller": "Client Script:script"}
+{"key": "Messrs.", "caller": "Print Format:html"}
+{"key": "Mismatched documents", "caller": "Client Script:script"}
+{"key": "Missing IBAN", "caller": "Client Script:script"}
+{"key": "Mobile Number:", "caller": "Print Format:html"}
+{"key": "NPA Flag", "caller": "unnamed"}
+{"key": "Name:", "caller": "unnamed"}
+{"key": "No Valid Documents", "caller": "Client Script:script"}
+{"key": "Not Verified", "caller": "Print Format:html"}
+{"key": "Number of Documents", "caller": "Client Script:script"}
+{"key": "Number of Workers", "caller": "Print Format:html"}
+{"key": "Offer valid for one week from date of issue.", "caller": "Print Format:html"}
+{"key": "Out City", "caller": "Print Format:html"}
+{"key": "Passenger", "caller": "unnamed"}
+{"key": "Passenger Count", "caller": "Client Script:script"}
+{"key": "Passengers", "caller": "Custom Field:options"}
+{"key": "Passport Expiry Date", "caller": "unnamed"}
+{"key": "Pay Cycle", "caller": "Print Format:html"}
+{"key": "Payment Advice", "caller": "unnamed"}
+{"key": "Payment Order created successfully:", "caller": "Client Script:script"}
+{"key": "Payment Order is already created.", "caller": "Client Script:script"}
+{"key": "Payment Order is not required for Company Transport.", "caller": "Client Script:script"}
+{"key": "Payment Request Form", "caller": "Print Format:html"}
+{"key": "Penalty Clause", "caller": "unnamed"}
+{"key": "Pending Leaves", "caller": "Print Format:html"}
+{"key": "Permit Number", "caller": "unnamed"}
+{"key": "Phase", "caller": "unnamed"}
+{"key": "Pickup Location", "caller": "Print Format:html"}
+{"key": "Please complete the required information for unregistered passengers in the \"Passengers\" tab.", "caller": "Client Script:script"}
+{"key": "Please enter a valid Google Maps link for dropoff location", "caller": "Client Script:script"}
+{"key": "Please enter a valid Google Maps link for pickup location", "caller": "Client Script:script"}
+{"key": "Please enter a valid Saudi IBAN (SA + 22 digits)", "caller": "Client Script:script"}
+{"key": "Please enter a valid Saudi IBAN.", "caller": "Client Script:script"}
+{"key": "Please enter a valid Saudi mobile number", "caller": "Client Script:script"}
+{"key": "Please enter a valid Saudi mobile number.", "caller": "Client Script:script"}
+{"key": "Please enter supplier mobile number before sending", "caller": "Client Script:script"}
+{"key": "Please fill the required fields: {0}", "caller": "Client Script:script"}
+{"key": "Please select Transport Type as \"Supplier\" or \"Ticket Purchase\" to create Payment Order.", "caller": "Client Script:script"}
+{"key": "Please select at least one document.", "caller": "Client Script:script"}
+{"key": "Policy Acknowledged", "caller": "Print Format:html"}
+{"key": "Prepared By", "caller": "Print Format:html"}
+{"key": "Procedure Follow-up Record", "caller": "Print Format:html"}
+{"key": "Purpose of Payment", "caller": "unnamed"}
+{"key": "Quota", "caller": "unnamed"}
+{"key": "Quotation No.:", "caller": "Print Format:html"}
+{"key": "Ras Al Khaimah", "caller": "unnamed"}
+{"key": "Rate PerDay - Hour", "caller": "unnamed"}
+{"key": "Received By", "caller": "unnamed"}
+{"key": "Received Payment as Above", "caller": "Print Format:html"}
+{"key": "Recoverable Reverse Charge (Percentage)", "caller": "unnamed"}
+{"key": "Recoverable Standard Rated Expenses (AED)", "caller": "unnamed"}
+{"key": "Reference / Cheque Date", "caller": "unnamed"}
+{"key": "Reference / Cheque No.", "caller": "unnamed"}
+{"key": "Renewal Stopped", "caller": "unnamed"}
+{"key": "Request Date", "caller": "unnamed"}
+{"key": "Request Scenario", "caller": "Client Script:script"}
+{"key": "Restructure Limit % (Overall)", "caller": "unnamed"}
+{"key": "Reverse Charge Applicable", "caller": "unnamed"}
+{"key": "Salaries Due", "caller": "Print Format:html"}
+{"key": "Salary and Benefit Details", "caller": "Print Format:html"}
+{"key": "Samsa Tax Invoice", "caller": "Print Format:html"}
+{"key": "Saudi Arabia", "caller": "unnamed"}
+{"key": "Saudi IBAN format: SA followed by 22 digits", "caller": "Client Script:script"}
+{"key": "Saudi Riyal", "caller": "unnamed"}
+{"key": "Saudi mobile format: 05XXXXXXXX or 9665XXXXXXXX", "caller": "Client Script:script"}
+{"key": "Selected documents must use \"Supplier\" transport type and not be cancelled or rejected.", "caller": "Client Script:script"}
+{"key": "Selected documents status:", "caller": "Client Script:script"}
+{"key": "Send WhatsApp to Driver", "caller": "Client Script:script"}
+{"key": "Send WhatsApp to Supplier", "caller": "Client Script:script"}
+{"key": "Settlement and Liability", "caller": "unnamed"}
+{"key": "Sharjah", "caller": "unnamed"}
+{"key": "Signature of the Acknowledger", "caller": "unnamed"}
+{"key": "Signature:", "caller": "unnamed"}
+{"key": "Sincerely,", "caller": "unnamed"}
+{"key": "Social Insurance (GOSI)", "caller": "unnamed"}
+{"key": "Sponsorship Transfer Fees Included", "caller": "Print Format:html"}
+{"key": "Subtotal", "caller": "unnamed"}
+{"key": "Successfully created Payment Order:", "caller": "Client Script:script"}
+{"key": "Successfully updated {0} document(s)", "caller": "Client Script:script"}
+{"key": "Supervisor", "caller": "unnamed"}
+{"key": "Supervisor Contacts", "caller": "Client Script:script"}
+{"key": "Supplier Bank Account Number", "caller": "Client Script:script"}
+{"key": "Supplier Bank Account Number is not a valid Saudi IBAN.", "caller": "Client Script:script"}
+{"key": "Supplier IBAN", "caller": "Client Script:script"}
+{"key": "Supplier Information", "caller": "Client Script:script"}
+{"key": "Supplier Mobile", "caller": "Client Script:script"}
+{"key": "System Management Tools", "caller": "unnamed"}
+{"key": "Tax Refund provided to Tourists (AED)", "caller": "unnamed"}
+{"key": "Thank you for your interest in AFMCO Logistics Services. We are pleased to present our quotation for labor operating costs, which includes all contract, benefit and cost details as shown below.", "caller": "Print Format:html"}
+{"key": "Thank you for your interest in our services. If you have any questions or additional needs, please do not hesitate to contact us.", "caller": "Print Format:html"}
+{"key": "The direct manager has reviewed and approved the leave.", "caller": "Print Format:html"}
+{"key": "The following documents are missing IBAN numbers:", "caller": "Client Script:script"}
+{"key": "The leave has been recorded in the Human Resources records.", "caller": "Print Format:html"}
+{"key": "This payslip is confidential and intended for the named employee only.", "caller": "Print Format:html"}
+{"key": "This quotation is valid for 30 days from the issue date. The general contract terms include providing all documents required for employment and following all company policies and procedures.", "caller": "Print Format:html"}
+{"key": "This request must be in Approved state before creating an Expense Request.", "caller": "Client Script:script"}
+{"key": "This undertaking was issued on: ___ / ___ / 2025 AD", "caller": "Print Format:html"}
+{"key": "Tip: Use \"Add Supplier Details\" button to update IBAN", "caller": "Client Script:script"}
+{"key": "To approve, please sign below and return to proceed with contract preparation.", "caller": "Print Format:html"}
+{"key": "Total Cost Before Tax", "caller": "Print Format:html"}
+{"key": "Total Deductions", "caller": "unnamed"}
+{"key": "Total End of Service Benefits", "caller": "unnamed"}
+{"key": "Total Passengers", "caller": "Client Script:script"}
+{"key": "Transport Type", "caller": "Client Script:script"}
+{"key": "Transportation Included", "caller": "Print Format:html"}
+{"key": "Trip Details", "caller": "Print Format:html"}
+{"key": "Trip Locations", "caller": "Client Script:script"}
+{"key": "Trip Notes", "caller": "Client Script:script"}
+{"key": "Umm Al Quwain", "caller": "unnamed"}
+{"key": "Undertaking for Advance Payment of Annual Leave Pay", "caller": "Print Format:html"}
+{"key": "Unregistered Employee", "caller": "Client Script:script"}
+{"key": "Update All", "caller": "Client Script:script"}
+{"key": "Updating documents...", "caller": "Client Script:script"}
+{"key": "Updating source documents...", "caller": "Client Script:script"}
+{"key": "Uploading image...", "caller": "Client Script:script"}
+{"key": "VAT Emirate", "caller": "unnamed"}
+{"key": "VAT Registration Number", "caller": "unnamed"}
+{"key": "Vacation Allowance Statement", "caller": "Print Format:html"}
+{"key": "Vacation Allowance Undertaking", "caller": "Print Format:html"}
+{"key": "Vacation Day", "caller": "Custom Field:label"}
+{"key": "Vacation Days", "caller": "unnamed"}
+{"key": "Validate IBAN format", "caller": "Client Script:script"}
+{"key": "Visa Cost Included", "caller": "Print Format:html"}
+{"key": "Voucher Date", "caller": "unnamed"}
+{"key": "Watch Period Post Loan Restructure (In Days)", "caller": "unnamed"}
+{"key": "WhatsApp Driver", "caller": "Client Script:script"}
+{"key": "WhatsApp Supplier", "caller": "Client Script:script"}
+{"key": "Work Permit", "caller": "unnamed"}
+{"key": "You are updating {0} document(s)", "caller": "Client Script:script"}
+{"key": "delivery", "caller": "unnamed"}
+{"key": "employees", "caller": "unnamed"}
+{"key": "has been paid in advance to ease my personal financial circumstances, without affecting my full right to take my statutory annual leave.", "caller": "Print Format:html"}
+{"key": "other", "caller": "unnamed"}
+{"key": "party", "caller": "unnamed"}
+{"key": "print builder", "caller": "unnamed"}
+{"key": "supervisor", "caller": "unnamed"}
+{"key": "{0} Saudi Riyals and {1} Halalas only", "caller": "Print Format:html"}
+{"key": "{0} Saudi Riyals only", "caller": "Print Format:html"}
+{"key": "{0} uploaded, {1} skipped (already attached)", "caller": "Client Script:script"}
