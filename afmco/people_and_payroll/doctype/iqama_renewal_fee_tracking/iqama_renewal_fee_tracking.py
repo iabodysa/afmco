@@ -133,7 +133,7 @@ def process(items: Iterable, apply: Callable[[object], None]) -> dict[str, objec
     return {"updated": updated, "errors": errors}
 
 
-def check_iqama_renewal_v2() -> dict[str, object]:
+def check_iqama_renewal_fee() -> dict[str, object]:
     import frappe
 
     today = frappe.utils.getdate(frappe.utils.nowdate())
