@@ -15,3 +15,4 @@ afmco.patches.v16_0.move_journal_entry_employee_to_first_tab
 afmco.patches.v16_0.stop_employee_transfer_request_creation
 afmco.patches.v16_0.retire_fleet_doctypes
 afmco.patches.v16_0.retire_fuel_doctypes
+afmco.patches.v16_0.grant_employee_permlevel_one
