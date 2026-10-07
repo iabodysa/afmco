@@ -1,13 +1,14 @@
 {% macro styles() -%}
 {% include "afmco/templates/print/fonts.html" %}
+{{ saudi_riyal_font_face() }}
 <style>
 @page { size: 210mm 99mm; margin: 7mm 8mm; }
 .print-format { page-width: 210mm; page-height: 99mm; margin-top: 7mm; margin-bottom: 7mm; margin-left: 8mm; margin-right: 8mm; }
 html body .print-format { margin: 0 !important; }
 @media print { html body .print-format { padding: 0 !important; width: auto !important; max-width: none !important; min-height: 0 !important; } }
 @media screen { html body .print-format { width: 210mm !important; max-width: 210mm !important; min-height: 99mm !important; padding: 7mm 8mm !important; } }
-.print-format .cv, .print-format .cv div, .print-format .cv td, .print-format .cv span, .print-format .cv b { font-family: "Tajawal", "Montserrat", sans-serif; }
-.print-format .cv .ltr, .print-format .cv .num, .print-format .cv .en { font-family: "Tajawal", "Montserrat", "DejaVu Sans", sans-serif; direction: ltr; unicode-bidi: embed; }
+.print-format .cv, .print-format .cv div, .print-format .cv td, .print-format .cv span, .print-format .cv b { font-family: "Saudi Riyal", "Tajawal", "Montserrat", sans-serif; }
+.print-format .cv .ltr, .print-format .cv .num, .print-format .cv .en { font-family: "Saudi Riyal", "Tajawal", "Montserrat", "DejaVu Sans", sans-serif; direction: ltr; unicode-bidi: embed; }
 .print-format .cv { color: #072b1a; font-size: 8pt; line-height: 4mm; page-break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .print-format .cv table { width: 100%; border-collapse: collapse; table-layout: fixed; border-spacing: 0; margin: 0; }
 .print-format .cv table td { padding: 0 !important; border: 0; vertical-align: bottom !important; line-height: 4mm; }
@@ -118,7 +119,7 @@ html body .print-format .cv td.logo img { height: 11mm !important; width: auto !
 {{ _("Only {0} and nothing more").format(w) }}
 {%- endmacro %}
 
-{% macro figures(amount, currency) -%}{{ currency }} ** {{ frappe.utils.fmt_money(amount, 2) }} **{%- endmacro %}
+{% macro figures(amount, currency) -%}{% if currency == "SAR" %}<span class="riyal">&#x20C1;</span>{% else %}{{ currency }}{% endif %} ** {{ frappe.utils.fmt_money(amount, 2) }} **{%- endmacro %}
 
 {% macro foot(company) -%}
 {%- set co = frappe.db.get_value("Company", company, ["tax_id", "website", "phone_no"], as_dict=1) if company else none -%}

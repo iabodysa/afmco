@@ -7,6 +7,7 @@
 {% macro styles(orientation='Portrait') -%}
 {%- set sp = '2.5mm' if orientation == 'Landscape' else '4mm' -%}
 {% include "afmco/templates/print/fonts.html" %}
+{{ saudi_riyal_font_face() }}
 <style>
 {%- if orientation == 'Landscape' %}
 .print-format { orientation: Landscape; }
@@ -27,7 +28,7 @@ html body, body[onload] { padding: 0 !important; margin: 0 !important; }
 .print-format .letter-head, .print-format .letter-head-footer { display: none !important; }
 
 .print-format .afm, .print-format .afm td, .print-format .afm th, .print-format .afm div, .print-format .afm span, .print-format .afm p, .print-format .afm b {
-  font-family: "Tajawal", "Montserrat", sans-serif !important;
+  font-family: "Saudi Riyal", "Tajawal", "Montserrat", sans-serif !important;
 }
 .print-format .afm { color: #1a1a1a; font-size: 8pt; line-height: 13px; font-weight: normal; direction: rtl; text-align: right; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .afm * { box-sizing: border-box; }
@@ -192,6 +193,7 @@ body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.in
 {%- set qr = ((details.siaf.qr_image_src if details and details.siaf else none) or doc.get('ksa_einv_qr') or doc.get('custom_einvoicing_qr')) -%}
 {%- set buyer_cr = ((details.buyer_other_id if details else '') or doc.get('client_ccr_no') or '') -%}
 {%- set cur = doc.currency or '' -%}
+{%- set cur_mark = '<span class="riyal">&#x20C1;</span>' if cur == 'SAR' else cur -%}
 {%- set t = title or ('Tax Invoice', _("Tax Invoice", "ar", ctx)) -%}
 {%- set meta = [
   ('Invoice No.', _("Invoice Number", "ar", ctx), doc.name, 'b num'),
@@ -254,7 +256,7 @@ body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.in
     <thead>
       <tr>
         {%- for c in columns %}
-        <th class="{{ c.kind }}"><span class="en">{{ c.en }}</span><span class="ar">{{ c.ar }}</span><span class="cu">{{ cur if c.kind == 'm' else '' }}&nbsp;</span></th>
+        <th class="{{ c.kind }}"><span class="en">{{ c.en }}</span><span class="ar">{{ c.ar }}</span><span class="cu">{{ cur_mark if c.kind == 'm' else '' }}&nbsp;</span></th>
         {%- endfor %}
       </tr>
     </thead>
@@ -270,7 +272,7 @@ body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.in
       <tr><td class="lb-ar"><span class="ar">{{ _("Total Discounts", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Discount</span></td><td class="num">{{ money(doc.discount_amount) }}</td></tr>
       <tr><td class="lb-ar"><span class="ar">{{ _("Total Taxable Amount (Excluding VAT)", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Total Taxable Amount (Excluding VAT)</span></td><td class="num">{{ money(doc.net_total) }}</td></tr>
       <tr><td class="lb-ar"><span class="ar">{{ _("Total VAT", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Total VAT</span></td><td class="num">{{ money(doc.total_taxes_and_charges) }}</td></tr>
-      <tr class="grand"><td class="lb-ar"><span class="ar">{{ _("Total Amount Due", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Total Amount Due ({{ cur }})</span></td><td class="num">{{ money(doc.grand_total) }}</td></tr>
+      <tr class="grand"><td class="lb-ar"><span class="ar">{{ _("Total Amount Due", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Total Amount Due ({{ cur_mark }})</span></td><td class="num">{{ money(doc.grand_total) }}</td></tr>
     </table>
     {%- if doc.in_words %}
     <table class="inv-words"><tr><td dir="auto">{{ doc.get_formatted("in_words") }}</td></tr></table>
