@@ -1,11 +1,13 @@
 # Copyright (c) 2026, AFMCO and contributors
 # For license information, please see license.txt
 
+from datetime import date
 from unittest import TestCase
 
 from afmco.people_and_payroll.doctype.end_of_service_settlement.end_of_service_settlement import (
 	employee_values,
 	feedback_for,
+	pending_filters,
 )
 
 SETTLEMENT = {
@@ -42,3 +44,9 @@ class TestEndOfServiceFeedback(TestCase):
 			employee_values(SETTLEMENT)["reason_for_leaving"],
 			"Exit-2026-00001 | 1-End of term or mutual agreement",
 		)
+
+	def test_resignation_letter_date_is_settlement_creation_date(self):
+		self.assertEqual(employee_values(SETTLEMENT)["resignation_letter_date"], date(2026, 1, 1))
+
+	def test_pending_filters_select_submitted_settlements_not_yet_updated(self):
+		self.assertEqual(pending_filters(), {"docstatus": 1, "employee_status": ["!=", "Updated"]})

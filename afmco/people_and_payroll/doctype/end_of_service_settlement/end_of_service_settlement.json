@@ -66,6 +66,7 @@
   "status_section",
   "employee_status",
   "employee_prior_status",
+  "employee_prior_values",
   "column_break_pr_status",
   "pr_status",
   "ticket_allowance_confirmed",
@@ -440,6 +441,14 @@
    "read_only": 1
   },
   {
+   "fieldname": "employee_prior_values",
+   "fieldtype": "JSON",
+   "hidden": 1,
+   "label": "Employee Values Before Relieving",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
    "fieldname": "column_break_pr_status",
    "fieldtype": "Column Break"
   },
@@ -479,7 +488,7 @@
    "link_fieldname": "tax_invoice_number"
   }
  ],
- "modified": "2026-10-06 00:00:00.000000",
+ "modified": "2026-10-07 12:00:00.000000",
  "module": "People and Payroll",
  "name": "End of Service Settlement",
  "naming_rule": "By \"Naming Series\" field",

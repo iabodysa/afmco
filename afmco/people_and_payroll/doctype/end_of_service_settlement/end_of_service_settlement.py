@@ -8,14 +8,13 @@ from frappe.model.document import Document
 
 class EndofServiceSettlement(Document):
     def on_update(self):
-        if not self.has_value_changed("workflow_state"):
-            return
-        if self.workflow_state == PENDING_STATE and self.employee_status != DONE_MARKER:
-            today = frappe.utils.getdate(frappe.utils.nowdate())
-            if is_due(frappe.utils.getdate(self.date_2) if self.date_2 else None, today):
-                relieve_employee(self)
-        elif self.workflow_state == CANCELLED_STATE:
+        if self.has_value_changed("workflow_state") and self.workflow_state == CANCELLED_STATE:
             restore_employee(self)
+
+    def on_submit(self):
+        today = frappe.utils.getdate(frappe.utils.nowdate())
+        if self.employee_status != DONE_MARKER and is_due(frappe.utils.getdate(self.date_2) if self.date_2 else None, today):
+            relieve_employee(self)
 
     def on_cancel(self):
         restore_employee(self)
@@ -23,12 +22,12 @@ class EndofServiceSettlement(Document):
 
 EOS_DOCTYPE = "End of Service Settlement"
 EMPLOYEE_DOCTYPE = "Employee"
-PENDING_STATE = "Approved"
 DONE_MARKER = "Updated"
 NOT_DONE_MARKER = "Not updated"
 CANCELLED_STATE = "Cancelled"
 LEFT_STATUS = "Left"
 RELIEVING_SAVEPOINT = "afmco_employee_relieving"
+RELIEVING_FIELDS = ("relieving_date", "feedback", "reason_for_leaving", "resignation_letter_date")
 
 FEEDBACK_LINES = (
     ("Employee Name", "employee_name"),
@@ -51,7 +50,7 @@ def _value(record, field: str):
 
 
 def pending_filters() -> dict[str, object]:
-    return {"workflow_state": PENDING_STATE, "employee_status": ["!=", DONE_MARKER]}
+    return {"docstatus": 1, "employee_status": ["!=", DONE_MARKER]}
 
 
 def is_due(end_date, today) -> bool:
@@ -81,16 +80,23 @@ def employee_values(record) -> dict[str, object]:
         "relieving_date": _value(record, "date_2"),
         "feedback": feedback_for(record),
         "reason_for_leaving": f"{_value(record, 'name')} | {_value(record, 'end_of_service_reason')}",
-        "resignation_letter_date": _value(record, "creation"),
+        "resignation_letter_date": frappe.utils.getdate(_value(record, "creation")),
     }
 
 
 def relieve_employee(document) -> None:
     employee = frappe.get_doc(EMPLOYEE_DOCTYPE, document.employee)
     prior_status = employee.status
+    prior_values = {field: employee.get(field) for field in RELIEVING_FIELDS}
     employee.update(employee_values(document))
     employee.save(ignore_permissions=True)
-    document.db_set({"employee_status": DONE_MARKER, "employee_prior_status": prior_status})
+    document.db_set(
+        {
+            "employee_status": DONE_MARKER,
+            "employee_prior_status": prior_status,
+            "employee_prior_values": frappe.as_json(prior_values),
+        }
+    )
 
 
 def restore_employee(document) -> None:
@@ -99,9 +105,10 @@ def restore_employee(document) -> None:
     employee = frappe.get_doc(EMPLOYEE_DOCTYPE, document.employee)
     if employee.status != LEFT_STATUS or not (employee.reason_for_leaving or "").startswith(f"{document.name} | "):
         return
-    employee.update({"status": document.employee_prior_status, "relieving_date": None, "reason_for_leaving": None})
+    prior_values = frappe.parse_json(document.employee_prior_values or "{}")
+    employee.update({"status": document.employee_prior_status, **{field: prior_values.get(field) for field in RELIEVING_FIELDS}})
     employee.save(ignore_permissions=True)
-    document.db_set({"employee_status": NOT_DONE_MARKER, "employee_prior_status": None})
+    document.db_set({"employee_status": NOT_DONE_MARKER, "employee_prior_status": None, "employee_prior_values": None})
 
 
 def process(records: Iterable[dict], apply: Callable[[dict], None]) -> dict[str, object]:
