@@ -13404,3 +13404,20 @@ Accounts Bot,بوت المحاسبة
 Accountant Bot,بوت المحاسبة
 Only a submitted Payment Requisition in Paid state can be sent to the Accounts Bot.,لا يُرسل إلى بوت المحاسبة إلا طلب صرف معتمد في حالة مدفوع.
 A Journal Entry already exists for this Payment Requisition.,يوجد قيد يومية لطلب الصرف هذا مسبقًا.
+Request Sent,تم إرسال الطلب
+Received by Accounts Bot,استلم البوت الطلب
+Reading Payment Requisition,جاري قراءة أمر الدفع
+Reviewing Attachments,جاري مراجعة المرفقات
+Matching Employees and Accounts,جاري مطابقة الموظفين والحسابات
+Drafting Journal Entry,جاري إعداد القيد
+Verifying Journal Entry,جاري التحقق من القيد
+Journal Entry Created,تم إنشاء القيد
+Stopped - Needs Review,توقف - يحتاج مراجعة
+Retry Account Bot,إعادة الإرسال إلى بوت المحاسبة
+Accounts Bot has not picked up the request yet,البوت ما استلم الطلب للحين
+Only a stopped Accounts Bot request can be retried.,لا تُعاد إلا الطلبات المتوقفة لدى بوت المحاسبة.
+{0} is not an Accounts Bot status.,{0} ليست حالة من حالات بوت المحاسبة.
+The Accounts Bot already created the Journal Entry for this Payment Requisition.,أنشأ بوت المحاسبة قيد اليومية لطلب الصرف هذا مسبقًا.
+Accounts Bot Status,حالة بوت المحاسبة
+Accounts Bot Note,ملاحظة بوت المحاسبة
+Accounts Bot Updated,آخر تحديث من بوت المحاسبة

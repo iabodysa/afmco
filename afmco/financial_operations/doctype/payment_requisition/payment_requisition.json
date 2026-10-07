@@ -38,6 +38,9 @@
   "column_break_jv_status",
   "jv_status",
   "accounts_bot_cf",
+  "accounts_bot_status",
+  "accounts_bot_note",
+  "accounts_bot_updated",
   "tax_invoice_number",
   "open_reference_document",
   "purchase_details_section",
@@ -157,6 +160,34 @@
    "no_copy": 1,
    "read_only": 1,
    "show_on_timeline": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "accounts_bot_status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Accounts Bot Status",
+   "no_copy": 1,
+   "options": "\nRequest Sent\nReceived by Accounts Bot\nReading Payment Requisition\nReviewing Attachments\nMatching Employees and Accounts\nDrafting Journal Entry\nVerifying Journal Entry\nJournal Entry Created\nStopped - Needs Review",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "accounts_bot_note",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Accounts Bot Note",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "accounts_bot_updated",
+   "fieldtype": "Datetime",
+   "hidden": 1,
+   "label": "Accounts Bot Updated",
+   "no_copy": 1,
+   "read_only": 1
   },
   {
    "fieldname": "amended_from",
@@ -361,7 +392,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-08 10:00:00.000000",
+ "modified": "2026-10-08 11:00:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",

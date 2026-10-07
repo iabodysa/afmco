@@ -512,6 +512,10 @@ function bindAfmcoDashboardEvents() {
 // Form events ------------------------------------------------------------------
 frappe.ui.form.on('Payment Requisition', {
 
+    on_hide(frm) {
+        stopAccountsBotStatus(frm);
+    },
+
     setup(frm) {
         if (!frm.doc.created_by) {
             frm.set_value('created_by', frappe.session.user);
@@ -625,19 +629,78 @@ function addSupportingPackButton(frm) {
     }
 }
 
-function addAccountsBotButton(frm) {
-    const buttonLabel = __('Account Bot');
-    frm.remove_custom_button(buttonLabel);
+const ACCOUNTS_BOT_STOPPED = 'Stopped - Needs Review';
+const ACCOUNTS_BOT_CREATED = 'Journal Entry Created';
+const ACCOUNTS_BOT_REQUEST_SENT = 'Request Sent';
+const ACCOUNTS_BOT_PICKUP_MINUTES = 15;
 
-    if (frm.doc.__onload && frm.doc.__onload.accounts_bot_allowed) {
-        frm.add_custom_button(buttonLabel, () => {
-            frappe.call({
-                method: 'afmco.financial_operations.api.accounts_bot.set_accounts_bot',
-                args: { name: frm.doc.name },
-                freeze: true,
-            }).then(() => frm.reload_doc());
-        });
+function addAccountsBotButton(frm) {
+    const sendLabel = __('Account Bot');
+    const retryLabel = __('Retry Account Bot');
+    frm.remove_custom_button(sendLabel);
+    frm.remove_custom_button(retryLabel);
+    const onload = frm.doc.__onload || {};
+
+    if (onload.accounts_bot_allowed && !frm.doc.accounts_bot_status) {
+        frm.add_custom_button(sendLabel, () => callAccountsBot(frm, 'set_accounts_bot'));
     }
+    if (onload.accounts_bot_viewer && frm.doc.accounts_bot_status === ACCOUNTS_BOT_STOPPED) {
+        frm.add_custom_button(retryLabel, () => callAccountsBot(frm, 'retry_accounts_bot'));
+    }
+    renderAccountsBotIntro(frm);
+    listenAccountsBotStatus(frm);
+}
+
+function callAccountsBot(frm, method) {
+    frappe.call({
+        method: `afmco.financial_operations.api.accounts_bot.${method}`,
+        args: { name: frm.doc.name },
+        freeze: true,
+    }).then(() => frm.reload_doc());
+}
+
+function renderAccountsBotIntro(frm) {
+    const status = frm.doc.accounts_bot_status;
+    if (!status || !(frm.doc.__onload || {}).accounts_bot_viewer) {
+        frm.set_intro();
+        return;
+    }
+    let text = `${__('Accounts Bot')}: ${__(status)}`;
+    let color = 'blue';
+    if (status === ACCOUNTS_BOT_CREATED) {
+        color = 'green';
+    } else if (status === ACCOUNTS_BOT_STOPPED) {
+        color = 'orange';
+    } else if (
+        status === ACCOUNTS_BOT_REQUEST_SENT &&
+        frm.doc.accounts_bot_updated &&
+        moment().diff(frappe.datetime.str_to_obj(frm.doc.accounts_bot_updated), 'minutes') >= ACCOUNTS_BOT_PICKUP_MINUTES
+    ) {
+        color = 'yellow';
+        text += ` — ${__('Accounts Bot has not picked up the request yet')}`;
+    }
+    if (frm.doc.accounts_bot_note && color !== 'blue' && color !== 'yellow') {
+        text += ` — ${frm.doc.accounts_bot_note}`;
+    }
+    frm.set_intro(text, color);
+}
+
+function stopAccountsBotStatus(frm) {
+    if (frm.accountsBotStatusHandler) {
+        frappe.realtime.off('accounts_bot_status', frm.accountsBotStatusHandler);
+    }
+}
+
+function listenAccountsBotStatus(frm) {
+    stopAccountsBotStatus(frm);
+    frm.accountsBotStatusHandler = data => {
+        if (!data || data.name !== frm.doc.name) return;
+        frm.doc.accounts_bot_status = data.status;
+        frm.doc.accounts_bot_note = data.note;
+        frm.doc.accounts_bot_updated = data.updated;
+        addAccountsBotButton(frm);
+    };
+    frappe.realtime.on('accounts_bot_status', frm.accountsBotStatusHandler);
 }
 
 function chooseSupportingPackEntry(frm) {

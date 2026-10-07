@@ -5,19 +5,26 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 from erpnext import get_default_company
-from frappe.utils import  money_in_words
+from frappe.utils import  money_in_words, now
+from frappe.utils.html_utils import sanitize_html
 
 ACCOUNTS_ROLES = ("Accounts User", "Accounts Manager")
+ACCOUNTS_BOT_VIEWER_ROLES = (*ACCOUNTS_ROLES, "System Manager")
+ACCOUNTS_BOT_ROLE = "Accountant Bot"
+REQUEST_SENT = "Request Sent"
+JOURNAL_ENTRY_CREATED = "Journal Entry Created"
+STOPPED = "Stopped - Needs Review"
 
 
 class PaymentRequisition(Document):
 	def onload(self):
+		roles = set(frappe.get_roles())
+		refusal = self.accounts_bot_refusal()
 		self.set_onload(
 			"accounts_bot_allowed",
-			not self.accounts_bot_cf
-			and bool(set(ACCOUNTS_ROLES).intersection(frappe.get_roles()))
-			and not self.accounts_bot_refusal(),
+			not self.accounts_bot_cf and bool(roles.intersection(ACCOUNTS_ROLES)) and not refusal,
 		)
+		self.set_onload("accounts_bot_viewer", bool(roles.intersection(ACCOUNTS_BOT_VIEWER_ROLES)))
 
 	def accounts_bot_refusal(self) -> str | None:
 		if self.docstatus != 1 or self.workflow_state != "Paid":
@@ -33,9 +40,43 @@ class PaymentRequisition(Document):
 			return "already queued"
 		if refusal := self.accounts_bot_refusal():
 			frappe.throw(refusal)
-		self.db_set("accounts_bot_cf", 1, update_modified=True, notify=True)
+		self.db_set(
+			{"accounts_bot_cf": 1, "accounts_bot_status": REQUEST_SENT, "accounts_bot_updated": now()},
+			update_modified=True,
+			notify=True,
+		)
 		self.save_version()
 		return "queued"
+
+	def retry_accounts_bot(self) -> None:
+		if self.accounts_bot_status != STOPPED:
+			frappe.throw(_("Only a stopped Accounts Bot request can be retried."))
+		if refusal := self.accounts_bot_refusal():
+			frappe.throw(refusal)
+		self.db_set(
+			{"accounts_bot_status": REQUEST_SENT, "accounts_bot_note": None, "accounts_bot_updated": now()},
+			update_modified=True,
+			notify=True,
+		)
+
+	def set_accounts_bot_status(self, status: str, note: str | None = None) -> None:
+		if not status or status not in self.meta.get_options("accounts_bot_status").split("\n"):
+			frappe.throw(_("{0} is not an Accounts Bot status.").format(status))
+		if self.accounts_bot_status == JOURNAL_ENTRY_CREATED and status != JOURNAL_ENTRY_CREATED:
+			frappe.throw(_("The Accounts Bot already created the Journal Entry for this Payment Requisition."))
+		values = {
+			"accounts_bot_status": status,
+			"accounts_bot_note": sanitize_html(note, always_sanitize=True) if note else None,
+			"accounts_bot_updated": now(),
+		}
+		self.db_set(values, update_modified=False)
+		frappe.publish_realtime(
+			"accounts_bot_status",
+			{"name": self.name, "status": status, "note": values["accounts_bot_note"], "updated": values["accounts_bot_updated"]},
+			doctype=self.doctype,
+			docname=self.name,
+			after_commit=True,
+		)
 
 	def validate(self):
 		if self.amount:

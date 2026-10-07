@@ -6,7 +6,11 @@ from unittest.mock import patch
 import frappe
 from frappe.tests import IntegrationTestCase
 
-from afmco.financial_operations.api.accounts_bot import set_accounts_bot
+from afmco.financial_operations.api.accounts_bot import (
+	retry_accounts_bot,
+	set_accounts_bot,
+	set_accounts_bot_status,
+)
 from afmco.financial_operations.test_requisition_pack import make_journal_entry, make_requisition
 from afmco.patches.v16_0 import grant_accountant_bot_permissions
 
@@ -52,6 +56,7 @@ class TestAccountsBot(IntegrationTestCase):
 	def setUp(self):
 		make_user(ACCOUNTS_USER, ("Accounts User", READER_ROLE))
 		make_user(OTHER_USER, (READER_ROLE,))
+		make_user(BOT_USER, ("Accountant Bot",))
 
 	def tearDown(self):
 		frappe.set_user("Administrator")
@@ -88,6 +93,9 @@ class TestAccountsBot(IntegrationTestCase):
 			"Payment Requisition", requisition, ["accounts_bot_cf", "modified", "modified_by"]
 		)
 		self.assertEqual(flag, 1)
+		self.assertEqual(
+			frappe.db.get_value("Payment Requisition", requisition, "accounts_bot_status"), "Request Sent"
+		)
 		self.assertGreater(modified, before)
 		self.assertEqual(modified_by, ACCOUNTS_USER)
 		self.assertIn("doc_update", [call.args[0] for call in publish.call_args_list])
@@ -120,8 +128,83 @@ class TestAccountsBot(IntegrationTestCase):
 
 	def test_accountant_bot_reads_requisition_and_creates_comment(self):
 		grant_accountant_bot_permissions.execute()
-		make_user(BOT_USER, ("Accountant Bot",))
 		self.assertTrue(frappe.has_permission("Payment Requisition", "read", user=BOT_USER))
 		self.assertTrue(frappe.has_permission("Comment", "create", user=BOT_USER))
 		self.assertTrue(frappe.has_permission("Comment", "read", user=BOT_USER))
 		self.assertFalse(frappe.has_permission("Payment Requisition", "write", user=BOT_USER))
+
+	def queued_requisition(self) -> str:
+		requisition = make_paid_requisition()
+		frappe.set_user(ACCOUNTS_USER)
+		set_accounts_bot(requisition)
+		frappe.set_user(BOT_USER)
+		return requisition
+
+	def test_status_refuses_user_without_accountant_bot_role(self):
+		requisition = self.queued_requisition()
+		frappe.set_user(ACCOUNTS_USER)
+		self.assertRaises(frappe.PermissionError, set_accounts_bot_status, requisition, "Drafting Journal Entry")
+
+	def test_status_refuses_value_outside_select_options(self):
+		requisition = self.queued_requisition()
+		self.assertRaises(frappe.ValidationError, set_accounts_bot_status, requisition, "Posted")
+		self.assertRaises(frappe.ValidationError, set_accounts_bot_status, requisition, "")
+		self.assertEqual(
+			frappe.db.get_value("Payment Requisition", requisition, "accounts_bot_status"), "Request Sent"
+		)
+
+	def test_status_refuses_moving_back_from_journal_entry_created(self):
+		requisition = self.queued_requisition()
+		set_accounts_bot_status(requisition, "Journal Entry Created")
+		self.assertRaises(
+			frappe.ValidationError, set_accounts_bot_status, requisition, "Drafting Journal Entry"
+		)
+		self.assertEqual(
+			frappe.db.get_value("Payment Requisition", requisition, "accounts_bot_status"),
+			"Journal Entry Created",
+		)
+
+	def test_status_stores_sanitized_note_keeps_modified_and_publishes_to_document_room(self):
+		requisition = self.queued_requisition()
+		before = frappe.db.get_value("Payment Requisition", requisition, "modified")
+		note = '<a href="/app/journal-entry/ACC-JV-1">ACC-JV-1</a><script>alert(1)</script>'
+
+		with patch("frappe.publish_realtime") as publish:
+			set_accounts_bot_status(requisition, "Journal Entry Created", note)
+
+		status, stored, modified = frappe.db.get_value(
+			"Payment Requisition", requisition, ["accounts_bot_status", "accounts_bot_note", "modified"]
+		)
+		self.assertEqual(status, "Journal Entry Created")
+		self.assertIn('href="/app/journal-entry/ACC-JV-1"', stored)
+		self.assertNotIn("<script", stored)
+		self.assertEqual(modified, before)
+		publish.assert_called_once()
+		self.assertEqual(publish.call_args.args[0], "accounts_bot_status")
+		self.assertEqual(publish.call_args.args[1]["status"], "Journal Entry Created")
+		self.assertEqual(publish.call_args.args[1]["note"], stored)
+		self.assertEqual(publish.call_args.kwargs["doctype"], "Payment Requisition")
+		self.assertEqual(publish.call_args.kwargs["docname"], requisition)
+
+	def test_retry_resets_stopped_request_bumps_modified_and_notifies(self):
+		requisition = self.queued_requisition()
+		set_accounts_bot_status(requisition, "Stopped - Needs Review", "Employee account missing")
+		before = frappe.db.get_value("Payment Requisition", requisition, "modified")
+
+		frappe.set_user(ACCOUNTS_USER)
+		with patch("frappe.publish_realtime") as publish:
+			retry_accounts_bot(requisition)
+
+		flag, status, note, modified = frappe.db.get_value(
+			"Payment Requisition",
+			requisition,
+			["accounts_bot_cf", "accounts_bot_status", "accounts_bot_note", "modified"],
+		)
+		self.assertEqual((flag, status, note), (1, "Request Sent", None))
+		self.assertGreater(modified, before)
+		self.assertIn("doc_update", [call.args[0] for call in publish.call_args_list])
+
+	def test_retry_refuses_request_that_is_not_stopped(self):
+		requisition = self.queued_requisition()
+		frappe.set_user(ACCOUNTS_USER)
+		self.assertRaises(frappe.ValidationError, retry_accounts_bot, requisition)
