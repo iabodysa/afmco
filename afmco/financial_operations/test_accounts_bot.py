@@ -4,6 +4,7 @@
 from unittest.mock import patch
 
 import frappe
+from frappe.permissions import add_permission, update_permission_property
 from frappe.tests import IntegrationTestCase
 
 from afmco.financial_operations.api.accounts_bot import (
@@ -11,7 +12,9 @@ from afmco.financial_operations.api.accounts_bot import (
 	set_accounts_bot,
 	set_accounts_bot_status,
 )
-from afmco.financial_operations.test_requisition_pack import make_journal_entry, make_requisition
+from afmco.financial_operations.api.requisition_pack import attach_pack
+from afmco.financial_operations.test_journal_entry import submit
+from afmco.financial_operations.test_requisition_pack import make_journal_entry, make_pdf, make_requisition
 from afmco.patches.v16_0 import grant_accountant_bot_permissions
 
 ACCOUNTS_USER = "accounts-bot-clerk@example.com"
@@ -208,3 +211,32 @@ class TestAccountsBot(IntegrationTestCase):
 		requisition = self.queued_requisition()
 		frappe.set_user(ACCOUNTS_USER)
 		self.assertRaises(frappe.ValidationError, retry_accounts_bot, requisition)
+
+	def grant_bot_journal_entry_write(self):
+		add_permission("Journal Entry", "Accountant Bot")
+		update_permission_property("Journal Entry", "Accountant Bot", 0, "write", 1)
+		frappe.clear_cache(doctype="Journal Entry")
+
+	def test_accountant_bot_attaches_pack_to_draft_journal_entry(self):
+		self.grant_bot_journal_entry_write()
+		requisition = make_requisition()
+		journal_entry = make_journal_entry(requisition)
+
+		frappe.set_user(BOT_USER)
+		with patch("frappe.get_print", return_value=make_pdf(200)):
+			result = attach_pack(requisition, journal_entry)
+
+		self.assertEqual(result["skipped"], [])
+		self.assertEqual(
+			frappe.db.get_value("File", {"file_url": result["file_url"]}, "attached_to_name"), journal_entry
+		)
+
+	def test_accountant_bot_cannot_attach_pack_to_submitted_journal_entry(self):
+		self.grant_bot_journal_entry_write()
+		requisition = make_requisition()
+		journal_entry = make_journal_entry(requisition)
+		submit(journal_entry)
+
+		frappe.set_user(BOT_USER)
+		with patch("frappe.get_print", return_value=make_pdf(200)):
+			self.assertRaises(frappe.PermissionError, attach_pack, requisition, journal_entry)

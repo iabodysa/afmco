@@ -13293,6 +13293,8 @@ Preparing the supporting pack...,جارٍ تجهيز ملف المستندات �
 The supporting pack is being prepared and will be attached to {0}.,يجري تجهيز ملف المستندات المؤيدة وسيُرفق بقيد اليومية {0}.
 The supporting pack is attached to {0}.,أُرفق ملف المستندات المؤيدة بقيد اليومية {0}.
 Not included: {0},لم يُضمَّن: {0}
+Attached separately: {0},أُرفق بشكل منفصل: {0}
+Journal Entry {0} must be a draft to receive the supporting pack.,يجب أن يكون قيد اليومية {0} مسودة لإرفاق ملف المستندات المؤيدة.
 Journal Entry {0} is not linked to Payment Requisition {1}.,قيد اليومية {0} غير مرتبط بطلب الصرف {1}.
 Allocated Amount,تخصيص المبلغ
 Outstanding Amount,المبلغ المستحق

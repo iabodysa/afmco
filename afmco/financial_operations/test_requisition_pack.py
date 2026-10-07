@@ -241,3 +241,35 @@ class TestRequisitionPack(IntegrationTestCase):
 
 		with self.assertRaises(frappe.ValidationError):
 			attach_pack(make_requisition(), journal_entry)
+
+	def test_attach_pack_attaches_excel_by_same_file_url_once_and_lists_other_types_not_included(self):
+		requisition = make_requisition()
+		attach_file(requisition, "separate-invoice.pdf", make_pdf(300))
+		attach_file(requisition, "separate-sheet.xlsx", b"xlsx workbook bytes")
+		attach_file(requisition, "separate-legacy.xls", b"xls workbook bytes")
+		attach_file(requisition, "separate-notes.csv", b"a,b\n1,2\n")
+		attach_file(requisition, "separate-memo.docx", b"docx bytes")
+		journal_entry = make_journal_entry(requisition)
+		sources = {f.file_name: f for f in requisition_pack.requisition_files(requisition)}
+
+		with patch("frappe.get_print", return_value=make_pdf(200)):
+			attach_pack(requisition, journal_entry)
+			result = attach_pack(requisition, journal_entry)
+
+		attached = frappe.get_all(
+			"File",
+			filters={"attached_to_doctype": "Journal Entry", "attached_to_name": journal_entry},
+			fields=["file_name", "file_url", "is_private"],
+		)
+		urls = [f.file_url for f in attached]
+		self.assertEqual(len(attached), 3)
+		for name in ("separate-sheet.xlsx", "separate-legacy.xls"):
+			self.assertEqual(urls.count(sources[name].file_url), 1)
+		for name in ("separate-notes.csv", "separate-memo.docx", "separate-invoice.pdf"):
+			self.assertNotIn(sources[name].file_url, urls)
+		self.assertTrue(all(f.is_private for f in attached))
+		self.assertEqual(result["attached"], ["separate-sheet.xlsx", "separate-legacy.xls"])
+		self.assertEqual(result["skipped"], ["separate-notes.csv", "separate-memo.docx"])
+		pack = next(f for f in attached if f.file_name == f"{requisition}-pack.pdf")
+		with open(frappe.get_doc("File", {"file_url": pack.file_url, "attached_to_name": journal_entry}).get_full_path(), "rb") as stored:
+			self.assertEqual(page_widths(stored.read()), [200, 300])

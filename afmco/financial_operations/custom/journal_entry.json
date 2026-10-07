@@ -11,7 +11,7 @@
    "module": "Financial Operations",
    "name": "Journal Entry-expense_request_cf",
    "options": "Payment Requisition",
-   "unique": "1"
+   "unique": "0"
   },
   {
    "dt": "Journal Entry",
@@ -24,7 +24,7 @@
    "module": "Financial Operations",
    "name": "Journal Entry-jv_based_on_submitted_si_cf",
    "options": "Sales Invoice",
-   "unique": "1"
+   "unique": "0"
   },
   {
    "dt": "Journal Entry",

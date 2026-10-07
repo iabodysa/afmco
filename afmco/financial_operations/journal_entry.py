@@ -6,6 +6,7 @@ from frappe import _
 from frappe.utils import cint, get_link_to_form
 
 DRAFT_LIMIT_FIELD = "afmco_journal_entry_draft_limit"
+SINGLE_ACTIVE_LINK_FIELDS = ("expense_request_cf", "jv_based_on_submitted_si_cf")
 
 
 class AfmcoJournalEntry:
@@ -46,6 +47,7 @@ class AfmcoJournalEntry:
 
 	def validate(self):
 		super().validate()
+		self.validate_single_active_links()
 		if not self.expense_request_cf:
 			return
 		frappe.db.set_value("Payment Requisition", self.expense_request_cf, "jv_status", "JV Created")
@@ -58,6 +60,16 @@ class AfmcoJournalEntry:
 			title=_("Expense Request"),
 			alert=1,
 		)
+
+	def validate_single_active_links(self):
+		for fieldname in SINGLE_ACTIVE_LINK_FIELDS:
+			value = self.get(fieldname)
+			if value and frappe.db.exists(
+				self.doctype, {fieldname: value, "docstatus": ["<", 2], "name": ["!=", self.name]}
+			):
+				frappe.throw(
+					_("{0} must be unique").format(_(self.meta.get_label(fieldname))), frappe.UniqueValidationError
+				)
 
 	def on_cancel(self):
 		super().on_cancel()

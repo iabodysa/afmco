@@ -18,6 +18,7 @@ DOWNSAMPLE_DPI = 150
 DOWNSAMPLE_QUALITY = 75
 A4_INCHES = (8.27, 11.69)
 IMAGE_EXTENSIONS = {"png", "jpg", "jpeg", "gif", "bmp", "tif", "tiff", "webp"}
+EXCEL_EXTENSIONS = {"xlsx", "xls"}
 
 
 def pack_file_name(requisition: str) -> str:
@@ -56,8 +57,12 @@ def image_pdf(content: bytes, downsample: bool) -> pikepdf.Pdf:
 	return pikepdf.Pdf.open(io.BytesIO(output.getvalue()))
 
 
+def file_extension(file: dict) -> str:
+	return Path(file.file_name or file.file_url or "").suffix.lower().lstrip(".")
+
+
 def attachment_pdf(file: dict, downsample: bool) -> pikepdf.Pdf | None:
-	extension = Path(file.file_name or file.file_url or "").suffix.lower().lstrip(".")
+	extension = file_extension(file)
 	if extension != "pdf" and extension not in IMAGE_EXTENSIONS:
 		return None
 	if (file.file_url or "").startswith(("http://", "https://")):
@@ -113,4 +118,29 @@ def attach(requisition: str, journal_entry: str) -> dict:
 			"content": content,
 		}
 	).insert()
-	return {"file_url": file.file_url, "skipped": skipped}
+	separate = attach_excel(files, journal_entry)
+	return {
+		"file_url": file.file_url,
+		"skipped": [name for name in skipped if name not in separate],
+		"attached": separate,
+	}
+
+
+def attach_excel(files: list[dict], journal_entry: str) -> list[str]:
+	excel = [f for f in files if file_extension(f) in EXCEL_EXTENSIONS]
+	present = set(
+		frappe.get_all(
+			"File",
+			filters={
+				"attached_to_doctype": JOURNAL_ENTRY,
+				"attached_to_name": journal_entry,
+				"file_url": ["in", [f.file_url for f in excel] or [""]],
+			},
+			pluck="file_url",
+		)
+	)
+	for f in excel:
+		if f.file_url not in present:
+			frappe.get_doc("File", f.name).create_attachment_copy(JOURNAL_ENTRY, journal_entry)
+			present.add(f.file_url)
+	return [f.file_name for f in excel]

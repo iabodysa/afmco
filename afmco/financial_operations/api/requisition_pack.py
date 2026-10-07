@@ -13,6 +13,11 @@ def attach_pack(requisition: str, journal_entry: str) -> dict:
 	frappe.get_doc(PAYMENT_REQUISITION, requisition).check_permission("read")
 	entry = frappe.get_doc(JOURNAL_ENTRY, journal_entry)
 	entry.check_permission("write")
+	if entry.docstatus != 0:
+		frappe.throw(
+			_("Journal Entry {0} must be a draft to receive the supporting pack.").format(journal_entry),
+			frappe.PermissionError,
+		)
 	if entry.get("expense_request_cf") != requisition:
 		frappe.throw(
 			_("Journal Entry {0} is not linked to Payment Requisition {1}.").format(

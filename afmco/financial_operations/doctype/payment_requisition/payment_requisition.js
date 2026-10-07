@@ -742,6 +742,9 @@ function attachSupportingPack(frm, journalEntry) {
             return;
         }
         let text = __('The supporting pack is attached to {0}.', [journalEntry]);
+        if (message.attached.length) {
+            text += '<br>' + __('Attached separately: {0}', [message.attached.map(frappe.utils.escape_html).join(', ')]);
+        }
         if (message.skipped.length) {
             text += '<br>' + __('Not included: {0}', [message.skipped.map(frappe.utils.escape_html).join(', ')]);
         }
