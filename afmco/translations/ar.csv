@@ -915,8 +915,8 @@ Letter Head Name,اسم الترويسة
 Refreshing...,جارٍ التحديث...
 Close Condition,شرط الإغلاق
 Assignment Days,أيام التعيين
-Posting Time,وقت الادخال
-Edit Posting Date and Time,تعديل وقت الادخال
+Posting Time,وقت الإدخال
+Edit Posting Date and Time,تعديل وقت الإدخال
 Consider for Tax Withholding,مراعاة استقطاع الضريبة
 On Net Total,على صافي الإجمالي
 In Words,المبلغ كتابةً
@@ -995,7 +995,7 @@ Payment Details,تفاصيل الدفع
 Totals,الإجماليات
 Payment Request,طلب الصرف
 Company,الشركة
-Depreciation,اهلاك
+Depreciation,إهلاك
 Organization,الجهة
 Renewal,التجديد
 Payment Requests,طلبات الصرف
@@ -1589,9 +1589,9 @@ Tax Rate,نسبة الضريبة,Samsa Tax Invoice
 Tax Amount,مبلغ الضريبة,Samsa Tax Invoice
 Total inclusive of VAT,شامل ضريبة القيمة المضافة,Samsa Tax Invoice
 Total Amounts,المبالغ الاجمالية,Samsa Tax Invoice
-Total (Excluding VAT),(الاجمالي (غير شامل ضريبة القيمة المضافة),Samsa Tax Invoice
+Total (Excluding VAT),الإجمالي (غير شامل ضريبة القيمة المضافة),Samsa Tax Invoice
 Total Discounts,مجموع الخصومات,Samsa Tax Invoice
-Total Taxable Amount (Excluding VAT),(الإجمالي الخاضع اللضريبه (غير شامل ضريبه القيمه  المضافة),Samsa Tax Invoice
+Total Taxable Amount (Excluding VAT),الإجمالي الخاضع للضريبة (غير شامل ضريبة القيمة المضافة),Samsa Tax Invoice
 Total VAT,مجموع ضريبة القيمة المضافة,Samsa Tax Invoice
 Total Amount Due,إجمالي المبلغ المستحق,Samsa Tax Invoice
 Basic Information,المعلومات الأساسية,Employee Profile
@@ -2715,7 +2715,7 @@ Block Modules,حظر الوحدات
 Bold,عريض
 Bounced,مرتد
 Brute Force Security,الحماية من هجمات القوة الغاشمة
-Build,أنشاء
+Build,إنشاء
 Bulk Actions,الإجراءات الجماعية
 Bulk Delete,حذف جماعي
 "By ""Naming Series"" field","حسب حقل ""سلسلة الترقيم"""
@@ -3788,7 +3788,7 @@ New Document Shared {0},مستند جديد تمت مشاركته {0}
 New Notification,إشعار جديد
 Next Form Tour,الجولة التعريفية التالية بالنموذج
 Next on Click,الانتقال للتالي عند النقر
-No Tags,لاتوجد وسوم
+No Tags,لا توجد وسوم
 Non-Conforming,غير نمطي
 Not Permitted,غير مسموح
 Note Seen By,مشاهدو الملاحظة
@@ -4461,7 +4461,7 @@ You can add dynamic properties from the document by using Jinja templating.,يم
 About,حول
 Add a {0} Chart,إضافة مخطط {0}
 Add attachment,إضافة مرفق
-Add Child,اضافة حساب
+Add Child,إضافة حساب
 Add CSS,إضافة CSS
 Add multiple,إضافة متعددة
 Add new tab,إضافة علامة تبويب جديدة
@@ -4682,7 +4682,7 @@ Import Zip,استيراد ملف مضغوط
 "In {0}, {1} is required in {2} rows.",في {0}، {1} مطلوب في {2} صفوف.
 Include Disabled,تضمين المعطّل
 Include indentation,تضمين المسافة البادئة
-Insert Above,ادراج بالأعلي
+Insert Above,إدراج بالأعلى
 Insert Below,إدراج أسفل
 Insert Column Left,إدراج عمود يسارًا
 Insert Column Right,إدراج عمود يمينًا
@@ -4891,7 +4891,7 @@ Submitted document cannot be converted back to draft while transitioning from <b
 Submitting,جارٍ الاعتماد,Freeze message while submitting a document
 Supported Variables:,المتغيرات المدعومة:
 Switch Camera,تبديل الكاميرا
-Switch Theme,تغير السمات
+Switch Theme,تغيير السمات
 Switch theme,تبديل السمة
 Switch to CRM,التبديل إلى CRM
 Switching Camera,جارٍ تبديل الكاميرا
@@ -5616,7 +5616,7 @@ Apply Rule On Other,تطبيق القاعدة على صنف آخر
 As on Date,كما في تاريخ
 "As the field {0} is enabled, the field {1} is mandatory.",نظرًا لتمكين الحقل {0}، يكون الحقل {1} إلزاميًا.
 "As the field {0} is enabled, the value of the field {1} should be more than 1.",نظرًا لتمكين الحقل {0}، يجب أن تكون قيمة الحقل {1} أكبر من 1.
-Asset Depreciation Ledger,دفتر استاذ اهلاك الأصول
+Asset Depreciation Ledger,دفتر أستاذ إهلاك الأصول
 Asset Depreciations and Balances,إهلاك الأصول والأرصدة
 Asset Disposal,استبعاد الأصل
 Asset Name,اسم الأصل
@@ -5922,7 +5922,7 @@ Debit and Credit not equal for {0} #{1}. Difference is {2}.,المدين وال�
 Debit in Company Currency,مدين بعملة الشركة
 Debit Note Issued,تم إصدار إشعار مدين
 "Debit Note will update it's own outstanding amount, even if 'Return Against' is specified.","سيحدّث الإشعار المدين مبلغه المستحق، حتى في حال تحديد ""مرتجع مقابل""."
-Debit To,مدين الي :
+Debit To,مدين إلى :
 Debit to,مدين إلى
 Debit To is required,مدين إلى مطلوب
 Debit-Credit Mismatch,عدم تطابق المدين والدائن
@@ -6156,7 +6156,7 @@ Group By Customer,تجميع حسب العميل
 Group by Party,تجميع حسب الطرف
 Group By Supplier,تجميع حسب المورد
 Group by Voucher,تجميع حسب السند
-Group same items,دمج الاصناف المكررة في صف واحد
+Group same items,دمج الأصناف المكررة في صف واحد
 Has Item Scanned,تم مسح الصنف ضوئيًا
 Header Text,نص الرأس
 Heads (or groups) against which Accounting Entries are made and balances are maintained.,البنود (أو المجموعات) التي تُسجَّل عليها القيود المحاسبية وتُحفَظ أرصدتها.
@@ -6285,7 +6285,7 @@ Is Internal Supplier,مورد داخلي
 Is Mandatory,إلزامي
 Is Old Subcontracting Flow,مسار التعاقد من الباطن القديم
 Is Opening,هل هو افتتاحي
-Is Opening Entry,هل هو  قيد افتتاحي
+Is Opening Entry,هل هو قيد افتتاحي
 Is Paid,مدفوع
 Is Period Closing Voucher Entry,قيد ناتج عن إقفال الفترة
 Is Recursive,متكرر
@@ -6295,7 +6295,7 @@ Is Rule Evaluated,تم تقييم القاعدة
 Is Subcontracted,متعاقد عليه من الباطن
 Is Tax Withholding Account,حساب استقطاع ضريبي
 Is this Tax included in Basic Rate?,هل هذه الضريبة متضمنة في السعر الأساسي؟
-Issue,شكوي
+Issue,شكوى
 Issued,تم الصرف
 Item Code,رمز الصنف
 Item Code > Item Group > Brand,رمز الصنف > مجموعة الأصناف > العلامة التجارية
@@ -6520,7 +6520,7 @@ Password Required,كلمة المرور مطلوبة
 Password used to open password-protected PDF statements for this account. Stored encrypted.,كلمة المرور المستخدمة لفتح كشوف الحساب بصيغة PDF المحمية بكلمة مرور لهذا الحساب. تُخزَّن مشفرة.
 Past Due Date,تجاوز تاريخ الاستحقاق
 Pause,إيقاف مؤقت
-Pay To / Recd From,دفع الي / استلام من
+Pay To / Recd From,دفع إلى / استلام من
 Payable,ذمم دائنة
 Payable Account,حساب الذمم الدائنة
 Payment Account,حساب الدفع
@@ -6580,7 +6580,7 @@ Per Received,نسبة الاستلام
 "Per-table extraction data for PDF statements (rows, bbox, page image, column mapping). Edited via the banking app.",بيانات الاستخراج لكل جدول في كشوف الحساب بصيغة PDF (الصفوف، وbbox، وصورة الصفحة، ومطابقة الأعمدة). تُعدَّل عبر تطبيق الخدمات البنكية.
 Percentage (%),النسبة المئوية (%)
 Period Closed,الفترة مقفلة
-Period Closing Voucher,قيد اغلاق الفترة
+Period Closing Voucher,قيد إغلاق الفترة
 Period Closing Voucher {0} GL Entry Cancellation Failed,فشل إلغاء قيد دفتر الأستاذ لقيد إقفال الفترة {0}
 Period Closing Voucher {0} GL Entry Processing Failed,فشلت معالجة قيد دفتر الأستاذ لقيد إقفال الفترة {0}
 Period Start Date,تاريخ بدء الفترة
@@ -6753,7 +6753,7 @@ Purchase Receipt Required for item {},سند استلام المشتريات م�
 Purchase Receipt {0} is not submitted,سند استلام المشتريات {0} غير معتمد
 Purchase Taxes and Charges,ضرائب ورسوم المشتريات
 Purchased,مشترى
-Qty as per Stock UOM,الكمية بناء علي وحدة قياس المنتج
+Qty as per Stock UOM,الكمية بناءً على وحدة قياس المنتج
 Quantity and Amount,الكمية والمبلغ
 Quantity and Rate,الكمية والسعر
 Quick Journal Entry,قيد يومية سريع
@@ -6778,7 +6778,7 @@ Receivable/Payable Account: {0} doesn't belong to company {1},حساب الذم�
 Receive,استلام
 Received Amount,المبلغ المستلم
 Received Amount (Company Currency),المبلغ المستلم (عملة الشركة)
-Received Items To Be Billed,الأصناف المستلمة الغير مفوترة
+Received Items To Be Billed,الأصناف المستلمة غير المفوترة
 Received On,استُلم في
 Received Qty,الكمية المستلمة
 Receiving,استلام
@@ -6812,8 +6812,8 @@ Refresh Plaid Link,إعادة تحميل رابط Plaid
 Regular,عادي
 Rejected Serial and Batch Bundle,حزمة الرقم التسلسلي والتشغيلة المرفوضة
 Rejected Serial No,الرقم التسلسلي المرفوض
-Rejected Warehouse,ححدد مخزن الكميات المرفوضة
-Release Date,تاريخ ايقاف الحظر
+Rejected Warehouse,حدد مخزن الكميات المرفوضة
+Release Date,تاريخ إيقاف الحظر
 Release date must be in the future,يجب أن يكون تاريخ فك الحجز في المستقبل
 Remark,البيان
 Rename Not Allowed,إعادة التسمية غير مسموح بها
@@ -7052,7 +7052,7 @@ Stock Expenses,مصروفات المخزون
 Stock In Hand,المخزون المتوفر
 Stock Manager,مدير المخزون
 Stock Qty,كمية المخزون
-Stock Received But Not Billed,المخزون المستلم الغير مفوتر
+Stock Received But Not Billed,المخزون المستلم غير المفوتر
 Stock transactions were created or modified after the Stock Closing Entry {0} was generated. Regenerate it before submitting the Period Closing Voucher.,تم إنشاء حركات مخزون أو تعديلها بعد إنشاء قيد إقفال المخزون {0}. أعد إنشاءه قبل اعتماد قيد إقفال الفترة.
 Stock UOM,وحدة قياس المنتج
 Stock Update Not Allowed,تحديث المخزون غير مسموح
@@ -7295,7 +7295,7 @@ Write Off Amount (Company Currency),مبلغ الشطب (عملة الشركة)
 Write Off Based On,الشطب بناءً على
 Write Off Cost Center,مركز تكلفة الشطب
 Write Off Difference Amount,شطب مبلغ الفرق
-Write Off Entry,قيد اطفاء
+Write Off Entry,قيد إطفاء
 Writeoff,شطب
 Year End Date,تاريخ نهاية السنة
 Year Name,اسم السنة
@@ -7922,7 +7922,7 @@ This will automatically run transaction matching rules on unreconciled transacti
 This will be auto-populated if not set.,ستتم تعبئته تلقائيًا إذا لم يُعيَّن.
 "This will just suggest creating a new entry, and will not automatically create it.",سيقترح هذا إنشاء قيد جديد فقط، ولن ينشئه تلقائيًا.
 "To select more than one transaction at a time, press and hold the shift key.",لتحديد أكثر من حركة في الوقت نفسه، اضغط مع الاستمرار على مفتاح Shift.
-Total Amount,المبلغ الأجمالي
+Total Amount,المبلغ الإجمالي
 Total Credit,إجمالي الدائن
 Total Credits,إجمالي الدائن
 Total Debit,إجمالي المدين
@@ -8094,7 +8094,7 @@ Item-wise Purchase History,سجل المشتريات حسب الصنف
 Items & Pricing,الاصناف والتسعير
 Items To Be Requested,الأصناف المطلوب طلبها
 Items to Order and Receive,الاصناف للتسليم والطلب
-Last Purchase Rate,اخر سعر شراء
+Last Purchase Rate,آخر سعر شراء
 Lead Time (Days),مدة التوريد (أيام)
 Link to Material Request,ربط بطلب المواد
 Link to Material Requests,ربط بطلبات المواد
@@ -8794,7 +8794,7 @@ BOM Secondary Item,الصنف الثانوي لقائمة المواد
 BOM Secondary Item Reference,مرجع الصنف الثانوي لقائمة المواد
 BOM Stock Analysis,تحليل مخزون قائمة المواد
 BOM Tree,شجرة قائمة المواد
-BOM Update Tool,اداة تحديث جداول المواد
+BOM Update Tool,أداة تحديث جداول المواد
 BOM Updation already in progress. Please wait until {0} is complete.,تحديث قائمة المواد قيد التنفيذ حاليًا. يرجى الانتظار حتى يكتمل {0}.
 BOM Variance Report,تقرير فروقات قائمة المواد
 BOM Website Item,صنف قائمة المواد على الموقع الإلكتروني
@@ -9331,7 +9331,7 @@ You cannot change the rate if BOM is mentioned against any Item.,لا يمكنك
 {0} items to return,{0} أصناف للإرجاع
 {0} not found for item {1},{0} غير موجود للصنف {1}
 "{0}, complete the operation {1} before the operation {2}.",{0}، أكمل العملية {1} قبل العملية {2}.
-All Departments,كل الاقسام
+All Departments,كل الأقسام
 All Territories,جميع المناطق البيعية
 "SMS Settings.allowed_roles not found. Update the Frappe Framework app to a version that includes this field, then re-run bench migrate.",الحقل SMS Settings.allowed_roles غير موجود. حدّث تطبيق Frappe Framework إلى إصدار يتضمن هذا الحقل، ثم أعد تشغيل bench migrate.
 Your order is out for delivery!,طلبك في الطريق إليك!
@@ -9883,7 +9883,7 @@ Sales Order {0} is not available for production,أمر البيع {0} غير م�
 Sales Partner Target Variance Based On Item Group,فرق مستهدفات شريك المبيعات بناءً على مجموعة الأصناف
 Sales Partner Target Variance based on Item Group,فرق مستهدفات شريك المبيعات بناءً على مجموعة الأصناف
 Sales Person Commission Summary,ملخص عمولة مندوب المبيعات
-Sales Person-wise Transaction Summary,ملخص المبيعات علي مستوي مندوب المبيعات
+Sales Person-wise Transaction Summary,ملخص المبيعات على مستوى مندوب المبيعات
 Sales Pipeline,خط المبيعات
 "Search by customer name, phone, email.",البحث حسب اسم العميل، الهاتف، البريد الإلكتروني.
 "Search by item code, serial number or barcode",ابحث باستخدام رمز الصنف أو الرقم التسلسلي أو الرمز الشريطي
@@ -10100,7 +10100,7 @@ Employee {0} not found,الموظف {0} غير موجود
 Empty To Delete List,قائمة الحذف فارغة
 EMU Of Charge,وحدة EMU للشحنة الكهربائية
 EMU of current,وحدة EMU للتيار الكهربائي
-Enable Provisional Accounting For Non Stock Items,تمكين المخزون للاصناف الغير المخزنية
+Enable Provisional Accounting For Non Stock Items,تمكين المخزون للأصناف غير المخزنية
 Enabling this option will allow you to record - <br><br> 1. Advances Received in a <b>Liability Account</b> instead of the <b>Asset Account</b><br><br>2. Advances Paid in an <b>Asset Account</b> instead of the <b> Liability Account</b>,سيتيح لك تفعيل هذا الخيار تسجيل - <br><br> 1. الدفعات المقدمة المستلمة في <b>حساب التزامات</b> بدلًا من <b>حساب الأصول</b><br><br>2. الدفعات المقدمة المدفوعة في <b>حساب أصول</b> بدلًا من <b> حساب الالتزامات</b>
 Encashment Date,تاريخ التعويض النقدي
 Error getting details for {0}: {1},خطأ في جلب تفاصيل {0}: {1}
@@ -10555,7 +10555,7 @@ Batch Details,تفاصيل التشغيلة
 Batch Expiry Date,تاريخ انتهاء صلاحية التشغيلة
 Batch ID,معرف التشغيلة
 Batch ID is mandatory,معرف التشغيلة إلزامي
-Batch Item Expiry Status,حالة تاريخ صلاحية الصنف علي مستوي الدفعة
+Batch Item Expiry Status,حالة تاريخ صلاحية الصنف على مستوى الدفعة
 Batch Item settings,إعدادات صنف التشغيلة
 Batch No is mandatory,رقم التشغيلة إلزامي
 Batch No {0} does not exists,رقم التشغيلة {0} غير موجود
@@ -10573,7 +10573,7 @@ Batch UOM,وحدة قياس التشغيلة
 Batch {0} and Warehouse,التشغيلة {0} والمستودع
 Batch {0} of Item {1} has expired.,انتهت صلاحية التشغيلة {0} للصنف {1}.
 Batch {0} of Item {1} is disabled.,تم تعطيل التشغيلة {0} من الصنف {1}.
-Batch-Wise Balance History,رصيد المخزون علي مستوي الدفعات
+Batch-Wise Balance History,رصيد المخزون على مستوى الدفعات
 Batchwise Valuation,التقييم حسب التشغيلة
 Before reconciliation,قبل التسوية
 Bin,رصيد الصنف في المستودع
@@ -10879,7 +10879,7 @@ Item Row {0}: {1} {2} does not exist in above '{1}' table,صف الصنف {0}: {
 Item valuation rate is recalculated considering landed cost voucher amount,يُعاد احتساب سعر تقييم الصنف مع مراعاة مبلغ سند تكلفة الوصول
 Item valuation reposting in progress. Report might show incorrect item valuation.,جارٍ إعادة ترحيل تقييم الأصناف. قد يعرض التقرير تقييمًا غير صحيح للأصناف.
 Item Variant Attribute,سمة متغير الصنف
-Item Variant Settings,اعدادات متغيرات الاصناف
+Item Variant Settings,إعدادات متغيرات الأصناف
 Item Variant {0} already exists with same attributes,متغير الصنف {0} موجود مسبقًا بالسمات نفسها
 Item variant {0} exists with same attributes,متغير الصنف {0} موجود بالسمات نفسها
 Item Variants updated,تم تحديث متغيرات الصنف
@@ -10905,7 +10905,7 @@ Items Catalogue,كتالوج الأصناف
 Items Filter,تصفية الأصناف
 Items to Be Repost,الأصناف المطلوب إعادة ترحيلها
 Items under this warehouse will be suggested,ستُقترح الأصناف الموجودة في هذا المستودع
-Itemwise Recommended Reorder Level,اعادة الطلب علي مستي الصنف
+Itemwise Recommended Reorder Level,إعادة الطلب على مستوى الصنف
 JAN,JAN
 Landed Cost,تكلفة الوصول
 Landed Cost Help,مساعدة تكلفة الوصول
@@ -11260,7 +11260,7 @@ Serial No and Batch Selector cannot be use when Use Serial / Batch Fields is ena
 Serial No and Batch Traceability,تتبع الرقم التسلسلي والتشغيلة
 Serial No Count,عدد الأرقام التسلسلية
 Serial No Ledger,دفتر أستاذ الرقم التسلسلي
-Serial No Service Contract Expiry,تاريخ نهاية عقد الصيانة بناء علي الرقم المتسلسل
+Serial No Service Contract Expiry,تاريخ نهاية عقد الصيانة بناءً على الرقم المتسلسل
 Serial No Status,حالة الرقم المتسلسل
 Serial No status sync has been queued. Reload the report after a few minutes.,أُضيفت مزامنة حالة الأرقام التسلسلية إلى قائمة الانتظار. أعد تحميل التقرير بعد بضع دقائق.
 Serial No Warranty Expiry,نهاية ضمان الرقم المتسلسل
@@ -13223,7 +13223,7 @@ Tax Amount,بمبلغ الضريبة
 Expense Claim Type,نوع مطالبة المصروف
 In,الدخول
 Equity,حقوق ملكية
-Operation,العمليات الانتاجية
+Operation,العمليات الإنتاجية
 POS,نقاط البيع
 Projects,إدارة المشاريع
 All Supplier Groups,المجموعة الرئيسية
@@ -13235,7 +13235,7 @@ User Remark,التعليقات
 Name,الاسم
 Chargeable,خصوم
 Unit of Measure (UOM),وحدات القياس
-Feedback,معلومات اخري
+Feedback,معلومات أخرى
 Delete Transactions,مسح جميع البيانات
 Sales,المبيعات
 Loyalty Program,برنامج النقاط
@@ -13250,15 +13250,15 @@ Branch,المشاريع
 Parent Task,مهمة فرعية
 Multi Currency,تعدد العملات
 Exit,تفاصيل الاستقالة
-Sales Taxes and Charges Template,قالب الضرائب علي المبيعات
+Sales Taxes and Charges Template,قالب الضرائب على المبيعات
 Reports,التقارير
 Set Advances and Allocate (FIFO),FIFO ربط الدفعات المقدمة بناء علي
 Manufacturing,إدارة التصنيع
 Email Id,البريد الالكتروني
-Purchase Taxes and Charges Template,قالب الضرائب علي المشتريات
+Purchase Taxes and Charges Template,قالب الضرائب على المشتريات
 Party Type,نوع الحساب
 Timeless Night,النمط الداكن
-Item-wise Purchase Register,تقرير المشتريات علي مستوي الصنف
+Item-wise Purchase Register,تقرير المشتريات على مستوى الصنف
 Selling,إدارة المبيعات
 Supplier Addresses And Contacts,الموردين وجهات الاتصال
 Remarks,التعليقات
@@ -13267,7 +13267,7 @@ Attendance Request,طلب حضور وانصراف
 Subcontracting,تعاقد بالباطن
 Human Resources,إدارة الموارد البشرية
 Salutation,البادئة
-Management,الادارة
+Management,الإدارة
 Salary Register,تقرير الرواتب الشهرية
 Buying,إدارة المشتريات
 Payroll,الرواتب
