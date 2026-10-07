@@ -33,10 +33,6 @@ page_renderer = [
 # include js, css files in header of desk.html
 app_include_css = "afmco_form_grid.bundle.css"
 
-boot_session = [
-	"afmco.desktop_icon_fallback.fill_missing_desktop_icons",
-	"afmco.people_and_payroll.fleet_navigation.remove_from_boot_sidebars",
-]
 # app_include_js = "/assets/afmco/js/afmco.js"
 
 # include js, css files in header of web template
@@ -99,7 +95,6 @@ after_install = "afmco.install.after_install"
 after_migrate = [
 	"afmco.financial_operations.zatca_workspace.remove_premium_promotion",
 	"afmco.vendor_desk_style.fill_empty_vendor_desk_style",
-	"afmco.people_and_payroll.fleet_navigation.remove_from_workspaces",
 ]
 
 # Uninstallation
@@ -142,7 +137,6 @@ extend_doctype_class = {
 	"Salary Slip": "afmco.people_and_payroll.salary_slip.AfmcoSalarySlip",
 	"Salary Structure Assignment": "afmco.people_and_payroll.salary_structure_assignment.AfmcoSalaryStructureAssignment",
 	"Sales Invoice": "afmco.financial_operations.sales_invoice.AfmcoSalesInvoice",
-	"Workspace Sidebar": "afmco.desk_views.BlockedModuleItems",
 }
 
 # Scheduled Tasks
@@ -192,7 +186,6 @@ jinja = {
 }
 
 override_whitelisted_methods = {
-	"frappe.desk.desktop.get_desktop_page": "afmco.people_and_payroll.api.desktop.get_desktop_page",
 	"toggle_archive_view": "afmco.financial_operations.api.expense_request.toggle_archive_view",
 }
 
