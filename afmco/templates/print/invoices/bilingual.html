@@ -1,7 +1,7 @@
 {%- from "afmco/templates/print/tax_invoice.html" import styles, invoice, money -%}
 {%- set ctx = "Tax Invoice" -%}
 {{ styles(orientation) }}
-{%- macro q(v) -%}{%- set x = frappe.utils.flt(v or 0) | abs -%}{{ '%g' | format(frappe.utils.flt(x, 2)) }}{%- endmacro -%}
+{%- macro q(v) -%}{%- set x = frappe.utils.flt(v or 0) -%}{{ '%g' | format(frappe.utils.flt(x, 2)) }}{%- endmacro -%}
 {%- set columns = [
   {'en': 'Sr', 'ar': _("Sr", "ar", ctx), 'kind': 'n'},
   {'en': 'Item Name', 'ar': _("Item Name", "ar", ctx), 'kind': 't'},

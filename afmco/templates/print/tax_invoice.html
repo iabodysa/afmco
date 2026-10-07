@@ -1,6 +1,6 @@
-{% macro money(v) -%}{{ frappe.utils.fmt_money((v or 0) | abs, 2) }}{%- endmacro %}
+{% macro money(v) -%}{{ frappe.utils.fmt_money(v or 0, 2) }}{%- endmacro %}
 
-{% macro qty(v) -%}{%- set q = (v or 0) | abs -%}{{ frappe.utils.fmt_money(q, 0) if q == (q | int) else frappe.utils.fmt_money(q, 2) }}{%- endmacro %}
+{% macro qty(v) -%}{%- set q = v or 0 -%}{{ frappe.utils.fmt_money(q, 0) if q == (q | int) else frappe.utils.fmt_money(q, 2) }}{%- endmacro %}
 
 {% macro pct(v) -%}{{ '%g' | format(frappe.utils.flt(v or 0, 2)) }}%{%- endmacro %}
 
