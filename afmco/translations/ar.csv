@@ -2644,7 +2644,8 @@ Important Notice,إشعار هام,End of Service Settlement
 Do you still wish to proceed with allocating the ticket allowance?,هل ترغب في المتابعة ودفع بدل التذكرة على الرغم من ذلك؟,End of Service Settlement
 This action is irreversible once confirmed.,هذا الإجراء لا رجعة فيه بمجرد التأكيد.,End of Service Settlement
 Reason of Urgency,سبب الاستعجال,Payment Requisition
-Cash Payment Voucher,سند دفع نقدي,Cash Payment Voucher
+Cash Payment Voucher,سند صرف,Cash Payment Voucher
+Cash Receipt Voucher,سند قبض,Cash Receipt Voucher
 No.,رقم السند,Cash Payment Voucher
 Name:,يصرف إلى,Cash Payment Voucher
 Amount:,المبلغ,Cash Payment Voucher

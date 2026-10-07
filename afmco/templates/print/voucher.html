@@ -1,12 +1,16 @@
 {% macro styles() -%}
 <style>
+@font-face { font-family: "Montserrat"; font-weight: 400; font-style: normal; src: url("/assets/afmco/fonts/Montserrat-Regular.ttf") format("truetype"); unicode-range: U+0000-024F, U+2000-206F, U+20AC; }
+@font-face { font-family: "Montserrat"; font-weight: 700; font-style: normal; src: url("/assets/afmco/fonts/Montserrat-Bold.ttf") format("truetype"); unicode-range: U+0000-024F, U+2000-206F, U+20AC; }
+@font-face { font-family: "Tajawal"; font-weight: 400; font-style: normal; src: url("/assets/afmco/fonts/Tajawal-Regular.ttf") format("truetype"); unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Tajawal"; font-weight: 700; font-style: normal; src: url("/assets/afmco/fonts/Tajawal-Bold.ttf") format("truetype"); unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF; }
 @page { size: 210mm 99mm; margin: 7mm 8mm; }
 .print-format { page-width: 210mm; page-height: 99mm; margin-top: 7mm; margin-bottom: 7mm; margin-left: 8mm; margin-right: 8mm; }
 html body .print-format { margin: 0 !important; }
 @media print { html body .print-format { padding: 0 !important; width: auto !important; max-width: none !important; min-height: 0 !important; } }
 @media screen { html body .print-format { width: 210mm !important; max-width: 210mm !important; min-height: 99mm !important; padding: 7mm 8mm !important; } }
-.print-format .cv, .print-format .cv div, .print-format .cv td, .print-format .cv span, .print-format .cv b { font-family: "Noto Sans Arabic", "Montserrat", "Noto Sans", "DejaVu Sans", Tahoma, sans-serif; }
-.print-format .cv .ltr, .print-format .cv .num, .print-format .cv .en { font-family: "Montserrat", "Noto Sans", "DejaVu Sans", sans-serif; direction: ltr; unicode-bidi: embed; }
+.print-format .cv, .print-format .cv div, .print-format .cv td, .print-format .cv span, .print-format .cv b { font-family: "Montserrat", "Tajawal", "Noto Sans Arabic", "DejaVu Sans", sans-serif; }
+.print-format .cv .ltr, .print-format .cv .num, .print-format .cv .en { font-family: "Montserrat", "Tajawal", "DejaVu Sans", sans-serif; direction: ltr; unicode-bidi: embed; }
 .print-format .cv { color: #072b1a; font-size: 8pt; line-height: 4mm; page-break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .print-format .cv table { width: 100%; border-collapse: collapse; table-layout: fixed; border-spacing: 0; margin: 0; }
 .print-format .cv table td { padding: 0 !important; border: 0; vertical-align: bottom !important; line-height: 4mm; }
@@ -120,14 +124,16 @@ html body .print-format .cv td.logo img { height: 11mm !important; width: auto !
 {% macro figures(amount, currency) -%}{{ currency }} ** {{ frappe.utils.fmt_money(amount, 2) }} **{%- endmacro %}
 
 {% macro foot(company) -%}
-{%- set tax_id = frappe.db.get_value("Company", company, "tax_id") if company else none -%}
+{%- set co = frappe.db.get_value("Company", company, ["tax_id", "website", "phone_no"], as_dict=1) if company else none -%}
 {%- set zbs = frappe.db.get_value("ZATCA Business Settings", {"company": company}, "name") if company else none -%}
 {%- set ns = namespace(cr="") -%}
 {%- if zbs -%}{%- for r in frappe.get_doc("ZATCA Business Settings", zbs).other_ids -%}{%- if r.type_code == "CRN" and r.value and not ns.cr -%}{%- set ns.cr = r.value -%}{%- endif -%}{%- endfor -%}{%- endif -%}
 {%- set parts = [] -%}
-{%- if tax_id %}{% set parts = parts + ["VAT No. " ~ tax_id] %}{% endif -%}
+{%- if co and co.tax_id %}{% set parts = parts + ["VAT No. " ~ co.tax_id] %}{% endif -%}
 {%- if ns.cr %}{% set parts = parts + ["CR No. " ~ ns.cr] %}{% endif -%}
-<div class="foot-line en">{{ (parts + ["www.afmcoltd.com", "T: 0112425473", "Riyadh 11689 Saudi Arabia"]) | join("   |   ") }}</div>
+{%- if co and co.website %}{% set parts = parts + [co.website] %}{% endif -%}
+{%- if co and co.phone_no %}{% set parts = parts + ["T: " ~ co.phone_no] %}{% endif -%}
+{%- if parts %}<div class="foot-line en">{{ parts | join("   |   ") }}</div>{% endif -%}
 {%- endmacro %}
 
 {% macro page(company, sigs) -%}
@@ -141,7 +147,10 @@ html body .print-format .cv td.logo img { height: 11mm !important; width: auto !
 	<td class="{{ cls }}"><div class="cap">{{ _(key, "ar", ctx) }}<span class="en">{{ en }}</span></div></td>
 	{%- endfor %}
 </tr>
-<tr class="foot"><td colspan="{{ sigs | length * 2 - 1 }}">{{ foot(company) }}</td></tr>
+{%- set foot_html = foot(company) | trim %}
+{%- if foot_html %}
+<tr class="foot"><td colspan="{{ sigs | length * 2 - 1 }}">{{ foot_html }}</td></tr>
+{%- endif %}
 </table>
 </div>
 {%- endmacro %}
