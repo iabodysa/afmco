@@ -1,0 +1,215 @@
+{% macro styles() -%}
+<style>
+@font-face { font-family: "Montserrat"; font-weight: 400; font-style: normal; src: url("/assets/afmco/fonts/Montserrat-Regular.ttf") format("truetype"); unicode-range: U+0000-024F, U+2000-206F, U+20AC; }
+@font-face { font-family: "Montserrat"; font-weight: 700; font-style: normal; src: url("/assets/afmco/fonts/Montserrat-Bold.ttf") format("truetype"); unicode-range: U+0000-024F, U+2000-206F, U+20AC; }
+@font-face { font-family: "Tajawal"; font-weight: 400; font-style: normal; src: url("/assets/afmco/fonts/Tajawal-Regular.ttf") format("truetype"); unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Tajawal"; font-weight: 700; font-style: normal; src: url("/assets/afmco/fonts/Tajawal-Bold.ttf") format("truetype"); unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF; }
+@page { size: 210mm 99mm; margin: 7mm 8mm; }
+.print-format { page-width: 210mm; page-height: 99mm; margin-top: 7mm; margin-bottom: 7mm; margin-left: 8mm; margin-right: 8mm; }
+html body .print-format { margin: 0 !important; }
+@media print { html body .print-format { padding: 0 !important; width: auto !important; max-width: none !important; min-height: 0 !important; } }
+@media screen { html body .print-format { width: 210mm !important; max-width: 210mm !important; min-height: 99mm !important; padding: 7mm 8mm !important; } }
+.print-format .cv, .print-format .cv div, .print-format .cv td, .print-format .cv span, .print-format .cv b { font-family: "Montserrat", "Tajawal", "Noto Sans Arabic", "DejaVu Sans", sans-serif; }
+.print-format .cv .ltr, .print-format .cv .num, .print-format .cv .en { font-family: "Montserrat", "Tajawal", "DejaVu Sans", sans-serif; direction: ltr; unicode-bidi: embed; }
+.print-format .cv { color: #072b1a; font-size: 8pt; line-height: 4mm; page-break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.print-format .cv table { width: 100%; border-collapse: collapse; table-layout: fixed; border-spacing: 0; margin: 0; }
+.print-format .cv table td { padding: 0 !important; border: 0; vertical-align: bottom !important; line-height: 4mm; }
+.print-format table.cv.frame { height: 84mm; width: 100%; table-layout: fixed; border-collapse: collapse; }
+.print-format .cv tr.top > td { height: 1mm; vertical-align: top !important; padding: 0 0 3mm 0 !important; }
+.print-format .cv .num { white-space: nowrap; }
+.print-format .cv .hdr > tbody > tr > td, .print-format .cv .hdr > tr > td { vertical-align: middle !important; }
+.print-format .cv td.logo { text-align: right; }
+html body .print-format .cv td.logo img { height: 11mm !important; width: auto !important; max-width: 100% !important; object-fit: contain; display: inline-block; }
+.print-format .cv .title-ar { font-size: 14pt; line-height: 6.4mm; font-weight: bold; color: #072b1a; text-align: center; }
+.print-format .cv .title-en { font-size: 6.5pt; line-height: 3.4mm; color: #00844e; text-align: center; text-transform: uppercase; letter-spacing: 1.6px; }
+.print-format .cv .void { font-size: 7pt; line-height: 3.4mm; font-weight: bold; color: #c62828; text-align: center; letter-spacing: 1px; }
+.print-format .cv .meta td { padding: 0.5mm 0 !important; }
+.print-format .cv .keyline { border-bottom: 1pt solid #00844e; height: 0; margin: 2.6mm 0 1.6mm 0; }
+.print-format .cv .rows > tbody > tr > td, .print-format .cv .rows > tr > td { padding: 1.1mm 0 !important; }
+.print-format .cv .k-ar { font-weight: bold; color: #072b1a; text-align: right; padding-left: 2mm !important; white-space: nowrap; overflow: hidden; }
+.print-format .cv .k-en { font-size: 6.2pt; color: #5c6b63; text-align: left; padding-right: 2mm !important; white-space: nowrap; overflow: hidden; }
+.print-format .cv .fill { position: relative; min-height: 4mm; line-height: 4mm; border-bottom: 0.5pt solid #00844e; overflow: hidden; }
+.print-format .cv .fill .stars { position: absolute; top: 0; right: 0; bottom: 0; left: 0; overflow: hidden; line-height: 4mm; color: #9aa59f; direction: ltr; text-align: justify; letter-spacing: 0.4px; }
+.print-format .cv .fill .val { position: relative; line-height: 4mm; background-color: #ffffff; padding: 0 1.5mm; font-weight: bold; color: #000000; }
+.print-format .cv .fill.amount { background-color: #f8f5ee; }
+.print-format .cv .fill.amount .stars { color: #b3aa92; }
+.print-format .cv .fill.amount .val { background-color: #f8f5ee; font-size: 9.5pt; }
+.print-format .cv .lead { font-size: 6.5pt; line-height: 3.4mm; color: #5c6b63; padding-top: 1mm; }
+.print-format .cv tr.sig > td { border: 0.5pt solid #00844e; vertical-align: top !important; text-align: center; padding: 0 !important; }
+.print-format .cv tr.sig > td.stamp { border-style: dashed; }
+.print-format .cv tr.sig > td.gap { border: 0; }
+.print-format .cv tr.sig .cap { background-color: #f8f5ee; border-bottom: 0.5pt solid #00844e; font-size: 7pt; line-height: 3.4mm; font-weight: bold; padding: 0.6mm 0; }
+.print-format .cv tr.sig .cap .en { display: block; font-size: 5.6pt; line-height: 2.8mm; font-weight: normal; color: #5c6b63; }
+.print-format .cv tr.foot > td { height: 6mm; vertical-align: bottom !important; padding: 0 !important; }
+.print-format .cv .foot-line { border-top: 0.5pt solid #00844e; padding-top: 1.6mm; margin-top: 1.2mm; font-size: 5.8pt; line-height: 3mm; color: #00844e; letter-spacing: 0.8px; text-align: center; white-space: nowrap; overflow: hidden; }
+.cv-pg { page-break-after: always; }
+.cv-pg:last-child { page-break-after: auto; }
+.print-format .cv.face { position: relative; height: 84mm; }
+.print-format .cv.face .chq { position: absolute; font-size: 9pt; line-height: 4mm; }
+.print-format .cv.face .chq .fill { border-bottom: 0; }
+</style>
+{%- endmacro %}
+
+{% macro stars() -%}{{ "* " * 600 }}{%- endmacro %}
+
+{% macro fill(value, cls="") -%}
+<div class="fill {{ cls }}"><div class="stars">{{ stars() }}</div>{% if value %}<span class="val">{{ value }}</span>{% endif %}</div>
+{%- endmacro %}
+
+{% macro num(value) -%}{% if value %}<span class="num">{{ value }}</span>{% endif %}{%- endmacro %}
+
+{% macro row(key, ctx, en, value, cls="") -%}
+<tr>
+	<td class="k-ar">{{ _(key, "ar", ctx) }}</td>
+	<td>{{ fill(value, cls) }}</td>
+	<td class="k-en en">{{ en }}</td>
+</tr>
+{%- endmacro %}
+
+{% macro pair(a, b) -%}
+<tr>
+	<td class="k-ar">{{ _(a[0], "ar", a[1]) }}</td>
+	<td>
+		<table>
+			<colgroup><col><col style="width:4mm"><col style="width:22mm"><col></colgroup>
+			<tr>
+				<td>{{ fill(a[3]) }}</td>
+				<td></td>
+				<td class="k-ar">{{ _(b[0], "ar", b[1]) }}</td>
+				<td>{{ fill(b[3]) }}</td>
+			</tr>
+		</table>
+	</td>
+	<td class="k-en en">{{ a[2] }} / {{ b[2] }}</td>
+</tr>
+{%- endmacro %}
+
+{% macro head(company, title, ctx, meta, void=false) -%}
+{%- set logo = frappe.db.get_value("Company", company, "company_logo") if company else none -%}
+<table class="hdr">
+	<colgroup><col style="width:46mm"><col><col style="width:66mm"></colgroup>
+	<tr>
+		<td class="logo"><img src="{{ logo or '/assets/afmco/images/afmco-logo.png' }}" alt="AFMCO"></td>
+		<td>
+			<div class="title-ar">{{ _(title, "ar", ctx) }}</div>
+			<div class="title-en en">{{ title }}</div>
+			{%- if void %}<div class="void en">{{ _("CANCELLED") }}</div>{% endif %}
+		</td>
+		<td>
+			<table class="meta">
+				<colgroup><col style="width:18mm"><col><col style="width:12mm"></colgroup>
+				{%- for key, kctx, en, value in meta %}
+				<tr>
+					<td class="k-ar">{{ _(key, "ar", kctx) }}</td>
+					<td>{{ fill(value) }}</td>
+					<td class="k-en en">{{ en }}</td>
+				</tr>
+				{%- endfor %}
+			</table>
+		</td>
+	</tr>
+</table>
+<div class="keyline"></div>
+{%- endmacro %}
+
+{% macro words(amount, currency) -%}
+{%- set c = frappe.db.get_value("Currency", currency, ["currency_name", "fraction", "fraction_units"], as_dict=1) or {} -%}
+{%- set whole = amount | int -%}
+{%- set frac = ((amount - whole) * (c.fraction_units or 100)) | round | int -%}
+{%- set w = frappe.utils.in_words(whole) ~ " " ~ _(c.currency_name or currency) if whole or not frac else "" -%}
+{%- if frac -%}{%- set w = (w ~ " " ~ _("and") ~ " " if w else "") ~ frappe.utils.in_words(frac) ~ " " ~ _(c.fraction or "") -%}{%- endif -%}
+{{ _("Only {0} and nothing more").format(w) }}
+{%- endmacro %}
+
+{% macro figures(amount, currency) -%}{{ currency }} ** {{ frappe.utils.fmt_money(amount, 2) }} **{%- endmacro %}
+
+{% macro foot(company) -%}
+{%- set co = frappe.db.get_value("Company", company, ["tax_id", "website", "phone_no"], as_dict=1) if company else none -%}
+{%- set zbs = frappe.db.get_value("ZATCA Business Settings", {"company": company}, "name") if company else none -%}
+{%- set ns = namespace(cr="") -%}
+{%- if zbs -%}{%- for r in frappe.get_doc("ZATCA Business Settings", zbs).other_ids -%}{%- if r.type_code == "CRN" and r.value and not ns.cr -%}{%- set ns.cr = r.value -%}{%- endif -%}{%- endfor -%}{%- endif -%}
+{%- set parts = [] -%}
+{%- if co and co.tax_id %}{% set parts = parts + ["VAT No. " ~ co.tax_id] %}{% endif -%}
+{%- if ns.cr %}{% set parts = parts + ["CR No. " ~ ns.cr] %}{% endif -%}
+{%- if co and co.website %}{% set parts = parts + [co.website] %}{% endif -%}
+{%- if co and co.phone_no %}{% set parts = parts + ["T: " ~ co.phone_no] %}{% endif -%}
+{%- if parts %}<div class="foot-line en">{{ parts | join("   |   ") }}</div>{% endif -%}
+{%- endmacro %}
+
+{% macro page(company, sigs) -%}
+<div class="cv-pg">
+<table class="cv frame" dir="rtl" lang="ar">
+<colgroup>{% for s in sigs %}{% if not loop.first %}<col style="width:3mm">{% endif %}<col>{% endfor %}</colgroup>
+<tr class="top"><td colspan="{{ sigs | length * 2 - 1 }}">{{ caller() }}</td></tr>
+<tr class="sig">
+	{%- for key, ctx, en, cls in sigs %}
+	{%- if not loop.first %}<td class="gap"></td>{% endif %}
+	<td class="{{ cls }}"><div class="cap">{{ _(key, "ar", ctx) }}<span class="en">{{ en }}</span></div></td>
+	{%- endfor %}
+</tr>
+{%- set foot_html = foot(company) | trim %}
+{%- if foot_html %}
+<tr class="foot"><td colspan="{{ sigs | length * 2 - 1 }}">{{ foot_html }}</td></tr>
+{%- endif %}
+</table>
+</div>
+{%- endmacro %}
+
+{% macro render(doc, title) -%}
+{%- set ns = namespace(party="") -%}
+{%- for a in doc.accounts -%}{%- if a.party and not ns.party -%}{%- set ns.party = a.party -%}{%- endif -%}{%- endfor -%}
+{%- set amt = (doc.total_amount or doc.total_debit or 0) | abs -%}
+{%- set cur = doc.total_amount_currency or frappe.db.get_value("Company", doc.company, "default_currency") or "SAR" -%}
+{%- set extra = [doc.mode_of_payment] if doc.mode_of_payment else [] -%}
+{%- if doc.cheque_no -%}{%- set extra = extra + [_("Cheque Number", "ar") ~ " " ~ num(doc.cheque_no)] -%}{%- endif -%}
+{%- if doc.cheque_date -%}{%- set extra = extra + [_("Cheque Date", "ar") ~ " " ~ num(frappe.utils.formatdate(doc.cheque_date))] -%}{%- endif -%}
+{%- set party_en = "Paid To" if title == "Cash Payment Voucher" else "Received From" -%}
+{{ styles() }}
+{% call page(doc.company, [("Received By", title, "Received By", ""), ("Finance Manager", title, "Finance Manager", ""), ("General Manager", title, "General Manager", ""), ("Company Stamp", none, "Company Stamp", "stamp")]) %}
+	{{ head(doc.company, title, title, [("No.", title, "No.", num(doc.name)), ("Date:", title, "Date", num(frappe.utils.formatdate(doc.posting_date)))], doc.docstatus == 2) }}
+	<table class="rows">
+		<colgroup><col style="width:27mm"><col><col style="width:27mm"></colgroup>
+		{{ row("Name:", title, party_en, doc.pay_to_recd_from or ns.party) }}
+		{{ row("Amount:", title, "Amount", figures(amt, cur), "amount num") }}
+		{{ row("Amount in Words", none, "Amount in Words", words(amt, cur)) }}
+		{{ row("Being for", title, "Being For", doc.user_remark or doc.remark) }}
+		{%- if extra %}
+		{{ row("Mode of Payment", none, "Mode of Payment", extra | join("  |  ")) }}
+		{%- endif %}
+	</table>
+{% endcall %}
+{%- endmacro %}
+
+{% macro payment_advice(doc) -%}
+{%- set amt = (doc.total_amount or doc.total_debit or 0) | abs -%}
+{%- set cur = doc.total_amount_currency or frappe.db.get_value("Company", doc.company, "default_currency") or "SAR" -%}
+{%- set title = "Payment Advice" -%}
+{{ styles() }}
+{% call page(doc.company, [("Prepared By", none, "Prepared By", ""), ("Authorised Signatory", none, "Authorised Signatory", ""), ("Received Payment as Above", none, "Received Payment as Above", ""), ("Company Stamp", none, "Company Stamp", "stamp")]) %}
+	{{ head(doc.company, title, none, [("Voucher No", none, "No.", num(doc.name)), ("Voucher Date", none, "Date", num(frappe.utils.formatdate(doc.get("voucher_date") or doc.posting_date)))], doc.docstatus == 2) }}
+	<table class="rows">
+		<colgroup><col style="width:27mm"><col><col style="width:27mm"></colgroup>
+		{{ row("Beneficiary Name", none, "Paid To", doc.pay_to_recd_from) }}
+		{%- if doc.cheque_no or doc.cheque_date %}
+		{{ pair(("Cheque Number", none, "Cheque No.", num(doc.cheque_no)), ("Cheque Date", none, "Cheque Date", num(frappe.utils.formatdate(doc.cheque_date) if doc.cheque_date else ""))) }}
+		{%- endif %}
+		{{ row("Amount", title, "Amount", figures(amt, cur), "amount num") }}
+		{{ row("Amount in Words", none, "Amount in Words", words(amt, cur)) }}
+		{{ row("References", none, "References", doc.remark) }}
+	</table>
+	<div class="lead">{{ _("This amount is in full / part settlement of the listed bills", "ar") }} <span class="en">This amount is in full / part settlement of the listed bills</span></div>
+{% endcall %}
+{%- if doc.cheque_no %}
+<div class="cv-pg">
+<div class="cv face" dir="ltr">
+	<div class="chq" style="top: 0.4cm; left: 5.9cm;"><b>_____________</b></div>
+	<div class="chq" style="top: 0.7cm; left: 6cm;"><b>A/C Payee</b></div>
+	<div class="chq" style="top: 0.7cm; left: 5.9cm;"><b>_____________</b></div>
+	<div class="chq" style="top: 0.9cm; left: 12cm; width: 4cm;">{{ fill(num(frappe.utils.formatdate(doc.cheque_date) if doc.cheque_date else "")) }}</div>
+	<div class="chq" style="top: 1.9cm; left: 1cm; width: 10cm;" dir="rtl">{{ fill(doc.pay_to_recd_from) }}</div>
+	<div class="chq" style="top: 2.6cm; left: 1cm; width: 7cm;" dir="rtl">{{ fill(words(amt, cur)) }}</div>
+	<div class="chq" style="top: 3.7cm; left: 12cm; width: 4cm;">{{ fill(num("** " ~ frappe.utils.fmt_money(amt, 2) ~ " **")) }}</div>
+</div>
+</div>
+{%- endif %}
+{%- endmacro %}
