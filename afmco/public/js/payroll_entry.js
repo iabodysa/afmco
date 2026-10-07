@@ -105,7 +105,7 @@ async function executeAllVerifications(frm) {
     frappe.hide_progress(); 
 
     frm.doc.previous_results = allWarnings.size === 0 ? __('No issues found.', null, 'Payroll Entry') : Array.from(allWarnings).map(warning => `<li>${warning}</li>`).join('');
-    await logErrors(frm.errorList);
+    await logErrors(frm, frm.errorList);
 
     frm.remove_custom_button(__('Verify Data', null, 'Payroll Entry'));
     if (frm.doc.previous_results) {
@@ -288,24 +288,20 @@ function collectError(errorList, employee, error, functionName, docType) {
         docType: docType
     });
 }
-async function logErrors(errorList) {
+async function logErrors(frm, errorList) {
     if (!errorList || errorList.length === 0) return;
 
     const errorMessages = errorList.map(error => 
         `Error occurred in function: ${error.functionName}\nDocument Type: ${error.docType}\nEmployee: ${error.employee}\nError Message: ${error.message}\nStack Trace: ${error.stack}\nTimestamp: ${frappe.datetime.now_datetime()}\n\n`
     ).join('\n\n');
 
-    const title = `Errors during verification in Payroll Entry`;
     const fullMessage = `The following errors were encountered during the verification process:\n\n${errorMessages}`;
 
     await frappe.call({
-        method: "frappe.client.insert",
+        method: "afmco.people_and_payroll.api.payroll_entry.log_verification_errors",
         args: {
-            doc: {
-                doctype: "Error Log",
-                method: title,
-                error: fullMessage
-            }
+            payroll_entry: frm.is_new() ? null : frm.doc.name,
+            message: fullMessage
         }
     });
 }
