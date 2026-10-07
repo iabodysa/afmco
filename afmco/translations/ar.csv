@@ -1633,23 +1633,24 @@ Important Notice,إشعار مهم,End of Service Settlement
 Do you still wish to proceed with allocating the ticket allowance?,هل ما زلت ترغب في المتابعة وتخصيص بدل التذاكر؟,End of Service Settlement
 This action is irreversible once confirmed.,هذا الإجراء لا رجعة فيه بمجرد التأكيد.,End of Service Settlement
 Reason of Urgency,سبب الاستعجال,Payment Requisition
-Cash Payment Voucher,سنـد دفــع نقـــدي,Cash Payment Voucher
-No.,رقم,Cash Payment Voucher
-Name:,الإســـــــم:,Cash Payment Voucher
-Amount:,المبلغ :,Cash Payment Voucher
+Cash Payment Voucher,سند صرف,Cash Payment Voucher
+No.,رقم السند,Cash Payment Voucher
+Name:,يصرف إلى,Cash Payment Voucher
+Amount:,المبلغ,Cash Payment Voucher
+Cash Receipt Voucher,سند قبض,Cash Receipt Voucher
 Being for,وذلك مقابل,Cash Payment Voucher
-Date:,التـاريخ :,Cash Payment Voucher
+Date:,التاريخ,Cash Payment Voucher
 General Manager,المدير العام,Cash Payment Voucher
 Finance Manager,المدير المالي,Cash Payment Voucher
-Received By,المستلـــم,Cash Payment Voucher
-No.,رقم,Cash Receipt Voucher
-Name:,الإســـــــم:,Cash Receipt Voucher
-Amount:,المبلغ :,Cash Receipt Voucher
+Received By,المستلم,Cash Payment Voucher
+No.,رقم السند,Cash Receipt Voucher
+Name:,استلمنا من,Cash Receipt Voucher
+Amount:,المبلغ,Cash Receipt Voucher
 Being for,وذلك مقابل,Cash Receipt Voucher
-Date:,التـاريخ :,Cash Receipt Voucher
+Date:,التاريخ,Cash Receipt Voucher
 General Manager,المدير العام,Cash Receipt Voucher
 Finance Manager,المدير المالي,Cash Receipt Voucher
-Received By,المستلـــم,Cash Receipt Voucher
+Received By,المستلم,Cash Receipt Voucher
 Quotation,عرض سعر,Manpower Quotation
 Client,العميل,Manpower Quotation
 Validity,سريان العرض,Manpower Quotation
@@ -13261,3 +13262,24 @@ result,نتيجة
 results,نتائج
 Search for Jobs,البحث عن وظائف
 Showing,عرض
+Only {0} and nothing more,فقط {0} لا غير
+Saudi Riyal,ريال سعودي
+Halala,هللة
+Company Stamp,ختم الشركة
+Beneficiary Name,اسم المستفيد
+Amount,المبلغ,Payment Advice
+Sr,م,Tax Invoice
+Item Name,اسم الصنف,Tax Invoice
+Description,الوصف,Tax Invoice
+Qty,الكمية,Tax Invoice
+Day/Hour,ايام/ساعات,Tax Invoice
+Extra Hours,الساعات الإضافية,Tax Invoice
+Total Hours,إجمالي الساعات,Tax Invoice
+Unit Price,سعر الوحدة,Tax Invoice
+VAT,مبلغ الضريبة,Tax Invoice
+Amount Excl. VAT,المبلغ بدون ضريبة,Tax Invoice
+Due Date,تاريخ الاستحقاق,Tax Invoice
+Invoice Remark,وصف الفاتورة,Tax Invoice
+Credit Note,إشعار دائن,Tax Invoice
+Subtotal,إجمالي,Tax Invoice
+This QR code is encoded as per ZATCA e-invoicing requirements,رمز الاستجابة السريع مشفر بحسب متطلبات هيئة الزكاة والضريبة والجمارك للفوترة الالكترونية,Tax Invoice

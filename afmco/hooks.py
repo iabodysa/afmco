@@ -187,6 +187,10 @@ doc_events = {
 	},
 }
 
+jinja = {
+	"methods": ["afmco.financial_operations.asset_label.asset_qr_data_uri"],
+}
+
 override_whitelisted_methods = {
 	"frappe.desk.desktop.get_desktop_page": "afmco.people_and_payroll.api.desktop.get_desktop_page",
 	"toggle_archive_view": "afmco.financial_operations.api.expense_request.toggle_archive_view",

@@ -1,0 +1,20 @@
+{
+ "css": "",
+ "custom_format": 1,
+ "default_print_language": "en",
+ "doc_type": "Sales Invoice",
+ "doctype": "Print Format",
+ "font_size": 14,
+ "html": "{%- set orientation = \"Landscape\" -%}\n{% include \"afmco/templates/print/invoices/tawasol.html\" %}\n",
+ "margin_bottom": 15.0,
+ "margin_left": 15.0,
+ "margin_right": 15.0,
+ "margin_top": 15.0,
+ "modified": "2026-10-07 12:00:00.000000",
+ "module": "Financial Operations",
+ "name": "Tawasol Tax Invoice Landscape",
+ "owner": "Administrator",
+ "page_number": "Hide",
+ "print_format_type": "Jinja",
+ "standard": "Yes"
+}

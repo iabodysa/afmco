@@ -1,0 +1,296 @@
+{% macro money(v) -%}{{ frappe.utils.fmt_money((v or 0) | abs, 2) }}{%- endmacro %}
+
+{% macro qty(v) -%}{%- set q = (v or 0) | abs -%}{{ frappe.utils.fmt_money(q, 0) if q == (q | int) else frappe.utils.fmt_money(q, 2) }}{%- endmacro %}
+
+{% macro pct(v) -%}{{ '%g' | format(frappe.utils.flt(v or 0, 2)) }}%{%- endmacro %}
+
+{% macro styles(orientation='Portrait') -%}
+{%- set sp = '2.5mm' if orientation == 'Landscape' else '4mm' -%}
+{% include "afmco/templates/print/fonts.html" %}
+<style>
+{%- if orientation == 'Landscape' %}
+.print-format { orientation: Landscape; }
+@page { size: A4 landscape; }
+{%- endif %}
+.print-format {
+  margin-top: 30mm;
+  margin-bottom: 16mm;
+  header-spacing: 4;
+  margin-left: 12mm;
+  margin-right: 12mm;
+  padding: 0 !important;
+  min-height: 0 !important;
+  font-size: 8pt;
+}
+html body .print-format, body .print-format { margin: 0 !important; padding: 0 !important; min-height: 0 !important; }
+html body, body[onload] { padding: 0 !important; margin: 0 !important; }
+.print-format .letter-head, .print-format .letter-head-footer { display: none !important; }
+
+.print-format .afm, .print-format .afm td, .print-format .afm th, .print-format .afm div, .print-format .afm span, .print-format .afm p, .print-format .afm b {
+  font-family: "Montserrat", "Tajawal", sans-serif !important;
+}
+.print-format .afm { color: #1a1a1a; font-size: 8pt; line-height: 13px; font-weight: normal; direction: rtl; text-align: right; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.afm * { box-sizing: border-box; }
+.print-format .afm p { margin: 0 !important; }
+.afm b, .afm strong { font-weight: bold; }
+.afm .num { white-space: nowrap; direction: ltr; unicode-bidi: embed; text-align: right; font-variant-numeric: tabular-nums; }
+.afm .ctr { text-align: center !important; }
+.afm .ltr { direction: ltr; unicode-bidi: embed; }
+.afm table { width: 100%; border-collapse: collapse; table-layout: fixed; border-spacing: 0; }
+.print-format .afm td, .print-format .afm th { padding: 2px 4px !important; vertical-align: middle !important; word-wrap: break-word; border: 0; }
+
+.print-format .afm-hdr td { padding: 0 !important; vertical-align: top !important; border: 0 !important; }
+.print-format .afm-hdr td.logo { text-align: right; }
+body:last-child .print-format .afm-hdr td.logo img, .print-format .afm-hdr td.logo img { height: 15mm !important; width: auto !important; max-width: none !important; max-height: none !important; object-fit: contain; display: inline-block; }
+.afm-hdr .ids td { font-size: 8pt; line-height: 13px; white-space: nowrap; vertical-align: baseline !important; color: #1a1a1a; }
+.print-format .afm-hdr .ids td { padding: 0 0 2px 4px !important; }
+.afm-hdr .ids .k { font-size: 6.5pt; color: #6b6b6b; }
+.afm-hdr .ids .k.ltr { font-size: 6pt; letter-spacing: 0.4px; }
+
+.print-format .afm-ftr td { border-top: 0.75pt solid #00824e !important; padding: 3px 0 0 0 !important; font-size: 6.5pt; line-height: 11px; color: #00824e; vertical-align: top !important; }
+.afm-ftr .co { white-space: nowrap; color: #1a1a1a; }
+.afm-ftr .ltr2 { direction: ltr; text-align: right; white-space: nowrap; letter-spacing: 0.8px; }
+.afm-ftr .pg { white-space: nowrap; color: #1a1a1a; }
+.afm-ftr .ltr { white-space: nowrap; }
+
+.afm.inv .en { font-size: 6pt; line-height: 10px; color: #6b6b6b; direction: ltr; unicode-bidi: embed; letter-spacing: 0.2px; }
+.afm.inv .ar { font-size: 6.5pt; line-height: 10px; color: #6b6b6b; }
+.afm.inv .lb-en { text-align: left; white-space: nowrap; }
+.afm.inv td.lb { white-space: nowrap; vertical-align: top !important; }
+.print-format .afm.inv td.lb { border-left: 0.5pt solid #ececec; }
+.afm.inv .lb-ar { text-align: right; white-space: nowrap; }
+.afm.inv .v { font-size: 8pt; line-height: 13px; color: #1a1a1a; white-space: nowrap; }
+.afm.inv .v.wrap { white-space: normal; }
+.afm.inv .v.b { font-weight: bold; }
+
+.afm.inv .inv-title { margin: 0 0 {{ sp }} 0; }
+.print-format .afm.inv .inv-title td { padding: 0 0 1.5mm 0 !important; border-bottom: 1pt solid #00824e; vertical-align: bottom !important; }
+.afm.inv .inv-title .t-ar { text-align: right; font-size: 15pt; line-height: 22px; font-weight: bold; color: #00824e; white-space: nowrap; }
+.afm.inv .inv-title .t-en { text-align: left; font-size: 10pt; line-height: 16px; font-weight: bold; color: #1a1a1a; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap; }
+
+.afm.inv .inv-top { margin: 0 0 {{ sp }} 0; }
+.print-format .afm.inv .inv-top > tbody > tr > td { padding: 0 !important; vertical-align: top !important; }
+.print-format .afm.inv .inv-top td.qr { text-align: left; }
+body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.inv .inv-top td.qr img { width: 26mm !important; height: 26mm !important; max-width: none !important; display: block; margin: 0 auto 0 0; }
+.print-format .afm.inv .inv-kv td { border-bottom: 0.5pt solid #dcdcdc; }
+.print-format .afm.inv .inv-kv tr:first-child td { border-top: 0.5pt solid #dcdcdc; }
+.afm.inv .inv-kv .v { text-align: right; }
+
+.afm.inv .inv-parties { margin: 0 0 {{ sp }} 0; }
+.print-format .afm.inv .inv-parties > tbody > tr > td { padding: 0 !important; vertical-align: top !important; }
+.print-format .afm.inv .inv-party td { border-bottom: 0.5pt solid #dcdcdc; vertical-align: top !important; }
+.print-format .afm.inv .inv-party tr.hd td { border-bottom: 1pt solid #00824e; padding-bottom: 1px !important; }
+.afm.inv .inv-party tr.hd .en, .afm.inv .inv-party tr.hd .ar { color: #00824e; font-weight: bold; font-size: 7.5pt; line-height: 12px; }
+.print-format .afm.inv .inv-kv td.v, .print-format .afm.inv .inv-party td.v { vertical-align: top !important; }
+.afm.inv .inv-party .v { text-align: right; }
+.afm.inv .inv-party .v.num { text-align: right; }
+
+.print-format .afm.inv table.inv-items { table-layout: auto; margin: 0; }
+.afm.inv .inv-items thead { display: table-header-group; }
+.afm.inv .inv-items tr { page-break-inside: avoid; }
+.print-format .afm.inv .inv-items th { background: #f2f7f4; border-top: 1pt solid #00824e; border-bottom: 0.5pt solid #00824e; text-align: right !important; vertical-align: bottom !important; white-space: nowrap; font-weight: normal; padding: 2px 3px !important; }
+.print-format .afm.inv .inv-items th.t { text-align: center !important; }
+.afm.inv .inv-items th .en, .afm.inv .inv-items th .ar, .afm.inv .inv-items th .cu { display: block; white-space: nowrap; }
+.afm.inv .inv-items th .en, .afm.inv .inv-items th .cu { font-size: 5pt; line-height: 8px; color: #6b6b6b; letter-spacing: 0; }
+.afm.inv .inv-items th .ar { font-size: 6.5pt; line-height: 11px; font-weight: bold; color: #1a1a1a; }
+.print-format .afm.inv .inv-items th.n { width: 1%; }
+.print-format .afm.inv .inv-items th.m { width: {{ '20mm' if orientation == 'Landscape' else '14mm' }}; }
+.print-format .afm.inv .inv-items td { font-size: 7pt; line-height: 10px; padding: 1px 3px !important; border-bottom: 0.5pt solid #e3e3e3; }
+.print-format .afm.inv .inv-items td.num { text-align: right !important; white-space: nowrap; }
+.print-format .afm.inv .inv-items td.txt { text-align: right !important; }
+.print-format .afm.inv .inv-items td.txt.ltr { direction: ltr; text-align: right !important; }
+.print-format .afm.inv .inv-items td.txt p, .print-format .afm.inv .inv-items td.txt div { margin: 0 !important; }
+.afm.inv .inv-items .sub { color: #6b6b6b; font-size: 6pt; padding: 0 0 0 3px; }
+.print-format .afm.inv .inv-items tr.sum td { background: #f2f7f4; font-weight: bold; border-top: 0.5pt solid #00824e; border-bottom: 1pt solid #00824e; }
+
+.afm.inv .inv-close { margin: {{ sp }} 0 0 0; page-break-inside: avoid; }
+.afm.inv .inv-close tr { page-break-inside: avoid; }
+.print-format .afm.inv .inv-close > tbody > tr > td { padding: 0 !important; vertical-align: top !important; }
+.print-format .afm.inv .inv-close > tbody > tr > td.side { padding: 0 6mm 0 0 !important; }
+.print-format .afm.inv .inv-tot td { border-bottom: 0.5pt solid #dcdcdc; }
+.print-format .afm.inv .inv-tot tr:first-child td { border-top: 1pt solid #00824e; }
+.print-format .afm.inv .inv-tot td.lb-en, .print-format .afm.inv .inv-tot td.lb-ar { white-space: normal; }
+.print-format .afm.inv .inv-tot td.num { font-size: 8pt; line-height: 13px; font-weight: bold; text-align: right; }
+.print-format .afm.inv .inv-tot tr.grand td { background: #00824e; color: #ffffff; border-bottom: 0; padding-top: 3px !important; padding-bottom: 3px !important; }
+.afm.inv .inv-tot tr.grand .en, .afm.inv .inv-tot tr.grand .ar { color: #ffffff; font-weight: bold; font-size: 7.5pt; }
+.print-format .afm.inv .inv-tot tr.grand td.num { font-size: 9.5pt; }
+.print-format .afm.inv .inv-words td { font-size: 7pt; line-height: 11px; color: #6b6b6b; padding: 2px 0 0 0 !important; }
+
+.afm.inv .pair { display: table; width: 100%; }
+.afm.inv .pair .en { display: table-cell; text-align: left; white-space: nowrap; padding: 0 0 0 3px; }
+.afm.inv .pair .ar { display: table-cell; text-align: right; white-space: nowrap; }
+.afm.inv .inv-notes { border-top: 1pt solid #00824e; padding: 2px 0 0 0; }
+.afm.inv .inv-notes .hd { margin: 0 0 2px 0; }
+.afm.inv .inv-notes .hd .en, .afm.inv .inv-notes .hd .ar { color: #00824e; font-weight: bold; font-size: 7.5pt; line-height: 12px; }
+.print-format .afm.inv .inv-notes p { font-size: 7pt; line-height: 11px; color: #1a1a1a; direction: ltr; text-align: left; }
+.print-format .afm.inv .inv-notes .bank { margin: 0 0 3mm 0; }
+.print-format .afm.inv .inv-notes p.qrn { color: #6b6b6b; font-size: 6pt; line-height: 9px; }
+.print-format .afm.inv .inv-notes p.qrn.ar { direction: rtl; text-align: right; }
+.print-format .afm.inv .inv-stamp img { height: {{ '18mm' if orientation == 'Landscape' else '22mm' }}; width: auto; max-width: none; object-fit: contain; display: block; margin: 2mm 0 0 0; }
+
+.print-format .page-break:last-child, .print-format .page-break:last-of-type { page-break-after: auto !important; }
+</style>
+{%- endmacro %}
+
+{% macro invoice(doc, columns, title=None, extra_meta=[], buyer_name=None, buyer_address=None, notes=[], qr_note=False, stamp=None) -%}
+{%- set ctx = "Samsa Tax Invoice" -%}
+{%- set _co = frappe.db.get_value('Company', doc.company, ['company_name', 'company_name_in_arabic', 'tax_id', 'company_logo'], as_dict=1) or {} -%}
+{%- set _zbs = frappe.db.get_value('ZATCA Business Settings', {'company': doc.company}, 'name') if doc.company else none -%}
+{%- set _ns = namespace(cr='', street='', postal='') -%}
+{%- if _zbs -%}
+  {%- set _z = frappe.get_doc('ZATCA Business Settings', _zbs) -%}
+  {%- for r in _z.other_ids -%}{%- if r.type_code == 'CRN' and r.value and not _ns.cr -%}{%- set _ns.cr = r.value -%}{%- endif -%}{%- endfor -%}
+  {%- set _ns.street = _z.street or '' -%}{%- set _ns.postal = _z.postal_code or '' -%}
+{%- endif -%}
+{%- set afm = {
+  'name_ar': _co.company_name_in_arabic or _co.company_name or doc.company,
+  'name_en': 'AFMCO Ltd. for Support Services',
+  'vat': _co.tax_id or '',
+  'cr': _ns.cr,
+  'logo': _co.company_logo or '/files/afmco-logo-full-1200w.png',
+  'addr': [_ns.street, _ns.postal] | select | join(' - '),
+  'phone': '011 242 5473',
+  'web': 'www.afmcoltd.com'
+} -%}
+<div id="header-html">
+<div class="afm afm-hdr" dir="rtl" lang="ar">
+  <table>
+    <colgroup><col><col style="width:62mm"></colgroup>
+    <tr>
+      <td class="logo">{% if afm.logo %}<img src="{{ afm.logo }}" alt="AFMCO">{% endif %}</td>
+      <td>
+        <table class="ids">
+          <colgroup><col style="width:24mm"><col><col style="width:13mm"></colgroup>
+          {%- if afm.vat %}
+          {%- set _k = _('Tax Id', lang='ar') %}
+          <tr><td class="k">{{ _k if _k != 'Tax Id' else '' }}</td><td class="num"><b>{{ afm.vat }}</b></td><td class="k ltr" style="text-align:left;">VAT No.</td></tr>
+          {%- endif %}
+          {%- if afm.cr %}
+          {%- set _k = _('Commercial Registration Number', lang='ar') %}
+          <tr><td class="k">{{ _k if _k != 'Commercial Registration Number' else '' }}</td><td class="num"><b>{{ afm.cr }}</b></td><td class="k ltr" style="text-align:left;">CR No.</td></tr>
+          {%- endif %}
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+{%- set _pg = _('Page', lang='ar') %}
+<div id="footer-html">
+<div class="afm afm-ftr" dir="rtl" lang="ar">
+  <table>
+    <colgroup><col><col style="width:36mm"><col style="width:30mm"></colgroup>
+    <tr>
+      <td><span class="co">{{ afm.name_ar }}</span>{% if afm.addr %} &nbsp;|&nbsp; {{ afm.addr }}{% endif %}<div class="ltr2">{{ afm.name_en }} &nbsp;&nbsp; T {{ afm.phone }} &nbsp;&nbsp; {{ afm.web }}</div></td>
+      <td class="num ctr">{{ doc.name }}</td>
+      <td class="pg" style="text-align:left;">{% if _pg != 'Page' %}{{ _pg }}&nbsp; {% endif %}<span class="ltr">Page <span class="page"></span> / <span class="topage"></span></span></td>
+    </tr>
+  </table>
+</div>
+</div>
+{%- set details = get_phase_2_print_format_details(doc) if frappe.db.exists('Sales Invoice Additional Fields', {'sales_invoice': doc.name}) else none -%}
+{%- set qr = ((details.siaf.qr_image_src if details and details.siaf else none) or doc.get('ksa_einv_qr') or doc.get('custom_einvoicing_qr')) -%}
+{%- set buyer_cr = ((details.buyer_other_id if details else '') or doc.get('client_ccr_no') or '') -%}
+{%- set cur = doc.currency or '' -%}
+{%- set t = title or ('Tax Invoice', _("Tax Invoice", "ar", ctx)) -%}
+{%- set meta = [
+  ('Invoice No.', _("Invoice Number", "ar", ctx), doc.name, 'b num'),
+  ('Issue Date', _("Issue Date", "ar", ctx), frappe.utils.formatdate(doc.posting_date, 'yyyy-mm-dd'), 'num'),
+  ('Supply Date', _("Supply Date", "ar", ctx), frappe.utils.formatdate(doc.posting_date, 'yyyy-mm-dd'), 'num')
+] + extra_meta -%}
+{%- set seller = [
+  ('Name', _("Name", "ar", ctx), afm.name_ar, 'b wrap'),
+  ('Address', _("Address", "ar", ctx), doc.company_address_display or '', 'wrap'),
+  ('VAT No.', _("Tax Id", "ar"), doc.company_tax_id or '', 'num'),
+  ('CR No.', _("Commercial Registration", "ar", ctx), afm.cr, 'num')
+] -%}
+{%- set buyer = [
+  ('Name', _("Name", "ar", ctx), buyer_name if buyer_name is not none else doc.customer_name, 'b wrap'),
+  ('Address', _("Address", "ar", ctx), (buyer_address if buyer_address is not none else doc.address_display) or '', 'wrap'),
+  ('VAT No.', _("Tax Id", "ar"), doc.tax_id or '', 'num'),
+  ('CR No.', _("Commercial Registration", "ar", ctx), buyer_cr, 'num')
+] -%}
+
+<div class="afm inv" dir="rtl" lang="ar">
+  <table class="inv-title"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+    <tr><td class="t-ar">{{ t[1] }}</td><td class="t-en"><span class="ltr">{{ t[0] }}</span></td></tr>
+  </table>
+
+  <table class="inv-top"><colgroup><col style="width:118mm"><col><col style="width:26mm"></colgroup>
+    <tr>
+      <td class="meta">
+        <table class="inv-kv"><colgroup><col style="width:42mm"><col></colgroup>
+        {%- for en, ar, value, cls in meta %}
+        {%- if value or loop.index <= 3 %}
+        <tr><td class="lb"><div class="pair"><span class="ar">{{ ar }}</span><span class="en">{{ en }}</span></div></td><td class="v {{ cls }}">{{ value or '' }}</td></tr>
+        {%- endif %}
+        {%- endfor %}
+        </table>
+      </td>
+      <td></td>
+      <td class="qr">{% if qr %}<img src="{{ qr }}" alt="ZATCA QR">{% endif %}</td>
+    </tr>
+  </table>
+
+  <table class="inv-parties"><colgroup><col><col style="width:6mm"><col></colgroup>
+    <tr>
+    {%- for head_en, head_ar, rows in [('Seller', _("Supplier", "ar", ctx), seller), ('Client', _("Buyer", "ar", ctx), buyer)] %}
+      {%- if not loop.first %}<td></td>{% endif %}
+      <td>
+        <table class="inv-party"><colgroup><col style="width:30mm"><col></colgroup>
+          <tr class="hd"><td colspan="2"><div class="pair"><span class="ar">{{ head_ar }}</span><span class="en">{{ head_en }}</span></div></td></tr>
+          {%- for en, ar, value, cls in rows %}
+          {%- if value %}
+          <tr><td class="lb"><div class="pair"><span class="ar">{{ ar }}</span><span class="en">{{ en }}</span></div></td><td class="v {{ cls }}">{{ value }}</td></tr>
+          {%- endif %}
+          {%- endfor %}
+        </table>
+      </td>
+    {%- endfor %}
+    </tr>
+  </table>
+
+  <table class="inv-items">
+    <thead>
+      <tr>
+        {%- for c in columns %}
+        <th class="{{ c.kind }}"><span class="en">{{ c.en }}</span><span class="ar">{{ c.ar }}</span><span class="cu">{{ cur if c.kind == 'm' else '' }}&nbsp;</span></th>
+        {%- endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {{ caller() }}
+    </tbody>
+  </table>
+
+  <table class="inv-close"><colgroup><col style="width:{{ '60%' if (notes or qr_note or stamp) else '100%' }}">{% if notes or qr_note or stamp %}<col>{% endif %}</colgroup><tr>
+  <td class="main">
+    <table class="inv-tot"><colgroup><col style="width:39%"><col style="width:39%"><col style="width:22%"></colgroup>
+      <tr><td class="lb-ar"><span class="ar">{{ _("Total (Excluding VAT)", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Total (Excluding VAT)</span></td><td class="num">{{ money(doc.total) }}</td></tr>
+      <tr><td class="lb-ar"><span class="ar">{{ _("Total Discounts", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Discount</span></td><td class="num">{{ money(doc.discount_amount) }}</td></tr>
+      <tr><td class="lb-ar"><span class="ar">{{ _("Total Taxable Amount (Excluding VAT)", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Total Taxable Amount (Excluding VAT)</span></td><td class="num">{{ money(doc.net_total) }}</td></tr>
+      <tr><td class="lb-ar"><span class="ar">{{ _("Total VAT", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Total VAT</span></td><td class="num">{{ money(doc.total_taxes_and_charges) }}</td></tr>
+      <tr class="grand"><td class="lb-ar"><span class="ar">{{ _("Total Amount Due", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Total Amount Due ({{ cur }})</span></td><td class="num">{{ money(doc.grand_total) }}</td></tr>
+    </table>
+    {%- if doc.in_words %}
+    <table class="inv-words"><tr><td dir="auto">{{ doc.get_formatted("in_words") }}</td></tr></table>
+    {%- endif %}
+  </td>
+  {%- if notes or qr_note or stamp %}
+  <td class="side">
+    <div class="inv-notes">
+      {%- if notes %}
+      <div class="pair hd"><span class="ar">{{ _("Notes", "ar") }}</span><span class="en">Notes</span></div>
+      <div class="bank">{% for line in notes %}<p>{{ line }}</p>{% endfor %}</div>
+      {%- endif %}
+      {%- if qr_note %}
+      <p class="qrn">This QR code is encoded as per ZATCA e-invoicing requirements</p>
+      <p class="qrn ar">{{ _("This QR code is encoded as per ZATCA e-invoicing requirements", "ar", "Tax Invoice") }}</p>
+      {%- endif %}
+      {%- if stamp %}<div class="inv-stamp"><img src="{{ stamp }}" alt="stamp"></div>{% endif %}
+    </div>
+  </td>
+  {%- endif %}
+  </tr></table>
+</div>
+{%- endmacro %}
