@@ -1,0 +1,40 @@
+{%- from "afmco/templates/print/tax_invoice.html" import styles, invoice -%}
+{%- set ctx = "Tax Invoice" -%}
+{{ styles(orientation) }}
+{%- set columns = [
+  {'en': 'Sr', 'ar': _("Sr", "ar", ctx), 'kind': 'n'},
+  {'en': 'Item Name', 'ar': _("Item Name", "ar", ctx), 'kind': 't'},
+  {'en': 'Description', 'ar': _("Description", "ar", ctx), 'kind': 't'},
+  {'en': 'Qty', 'ar': _("Qty", "ar", ctx), 'kind': 'n'},
+  {'en': 'Day/Hour', 'ar': _("Day/Hour", "ar", ctx), 'kind': 'n'},
+  {'en': 'Extra Hours', 'ar': _("Extra Hours", "ar", ctx), 'kind': 'n'},
+  {'en': 'Unit Price', 'ar': _("Unit Price", "ar", ctx), 'kind': 'm'},
+  {'en': 'VAT', 'ar': _("VAT", "ar", ctx), 'kind': 'm'},
+  {'en': 'Amount Excl. VAT', 'ar': _("Amount Excl. VAT", "ar", ctx), 'kind': 'm'}
+] -%}
+{%- set extra_meta = [
+  ('Due Date', _("Due Date", "ar", ctx), doc.due_date or '', 'num'),
+  ('Invoice Remark', _("Invoice Remark", "ar", ctx), doc.po_no or '', 'wrap')
+] -%}
+{%- set title = ((doc.select_print_heading or 'Credit Note'), _("Credit Note", "ar", ctx)) if doc.is_return == 1 else none -%}
+{%- set notes = [
+  'Saudi National Bank (SNB)',
+  'Account Name: Abdullah Fahad Al-Mutairi Est For Contracting',
+  'IBAN No: SA9310000026662075000107',
+  'Account No: 26662075000107'
+] -%}
+{%- call invoice(doc, columns, title=title, extra_meta=extra_meta, buyer_name=doc.customer, buyer_address=doc.customer_name_in_arabic, notes=notes, qr_note=True) %}
+{%- for row in doc.items %}
+<tr>
+  <td class="num">{{ row.idx or '' }}</td>
+  <td class="txt">{{ row.item_name or '' }}</td>
+  <td class="txt">{{ row.description or '' }}</td>
+  <td class="num">{{ row.day_hour or '' }}</td>
+  <td class="num">{{ row.stock_qty|round(2) or '' }}</td>
+  <td class="num">{{ row.extra_hours or '' }}</td>
+  <td class="num">{{ row.rate|round(2) }}</td>
+  <td class="num">{{ ((row.net_amount|round(2)) * 0.15)|round(2) }}<span class="sub">15%</span></td>
+  <td class="num">{{ row.amount }}</td>
+</tr>
+{%- endfor %}
+{%- endcall %}
