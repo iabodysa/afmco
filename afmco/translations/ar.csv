@@ -70,7 +70,6 @@ Attendance Allowance,بدل الحضور
 August,أغسطس
 BASIC 2,الأساسي 2
 BASIC WAGE,الأجر الأساسي
-Back to Original Page,العودة إلى الصفحة الأصلية
 Balance Amount,مبلغ الرصيد
 Bank Account No.,رقم الحساب البنكي
 Bank Entry Created,أُنشئ القيد البنكي
@@ -210,7 +209,6 @@ Employee Insurance,تأمين الموظف
 Employee Nationality,جنسية الموظف
 Employee Salary Adjustment,تعديل راتب الموظف
 Employee Sponsor Name,اسم كفيل الموظف
-Employee Summary,ملخص الموظف
 Employee Update Table,جدول تحديث الموظف
 Employee Visa,تأشيرة الموظف
 Employee card saved to attachments successfully,حُفظت بطاقة الموظف في المرفقات بنجاح
@@ -241,7 +239,6 @@ Error creating Bank Journal Entry:,خطأ في إنشاء القيد البنك�
 Error displaying Bank Entry settings:,خطأ في عرض إعدادات القيد البنكي:
 Error during pre-check validation: {0},خطأ أثناء التحقق المسبق: {0}
 Error in get_query:,خطأ في get_query:
-Error loading financial data,خطأ في تحميل البيانات المالية
 Error occurred while fetching Payroll Entries.,حدث خطأ أثناء جلب مسيرات الرواتب.
 Error occurred while saving the card,حدث خطأ أثناء حفظ البطاقة
 Error parsing data. Please check the format.,خطأ في تحليل البيانات. يرجى التحقق من الصيغة.
@@ -1464,7 +1461,6 @@ Relation,الصلة,Employee
 Iqama Expiry,انتهاء الإقامة,Employee
 No Muqeem data yet — run the advanced sync from the Muqeem script.,لا توجد بيانات مقيم بعد — شغّل المزامنة المتقدمة من سكربت مقيم.,Employee
 The employee is already linked to an approved leave policy,الموظف مرتبط مسبقًا بسياسة إجازات معتمدة,Employee
-A leave allocation already exists for this period,يوجد تخصيص إجازة لهذه الفترة مسبقًا,Employee
 Edit Document,تعديل المستند,Employee
 Please take the necessary steps to renew the Iqama to ensure compliance with residency and labor regulations.,يرجى اتخاذ الإجراءات اللازمة لتجديد الإقامة لضمان الامتثال للوائح العمل والإقامة.,Employee
 Iqama Expired,الإقامة منتهية,Employee
@@ -1737,7 +1733,6 @@ Designation,المسمى الوظيفي,Employee
 Monthly Salary,الراتب الشهري,Employee
 {0} Saudi Riyals,{0} ريال سعودي,Employee
 This certificate was issued at the employee's request without any liability on the company.,هذا التعريف صدر بناءً على طلب الموظف دون أدنى مسؤولية على الشركة.,Employee
-Back to Original Page,العودة للصفحة الأصلية,Employee
 Important Notice,تنبيه مهم,Employee
 The employee has an outstanding debt of {0} Saudi Riyals.,الموظف عليه مديونية بقيمة {0} ريال سعودي.,Employee
 View Leave,عرض الإجازة,Payroll Entry
@@ -13283,3 +13278,9 @@ Invoice Remark,وصف الفاتورة,Tax Invoice
 Credit Note,إشعار دائن,Tax Invoice
 Subtotal,إجمالي,Tax Invoice
 This QR code is encoded as per ZATCA e-invoicing requirements,رمز الاستجابة السريع مشفر بحسب متطلبات هيئة الزكاة والضريبة والجمارك للفوترة الالكترونية,Tax Invoice
+Add at least one leave type,أضف نوع إجازة واحدًا على الأقل
+Leave Allocations created: {0},تم إنشاء تخصيصات الإجازات: {0}
+Opening leave allocation is only for active employees,التخصيص الافتتاحي للإجازات متاح للموظفين النشطين فقط
+Opening leave allocations created: {0},تم إنشاء التخصيصات الافتتاحية للإجازات: {0}
+Opening leave balance for the employee covering the period from the date of joining until the end of the contract year.,رصيد إجازة افتتاحي للموظف يغطي الفترة من تاريخ التعيين حتى نهاية السنة العقدية.
+Leave,الإجازات
