@@ -2011,7 +2011,7 @@ Penalty Clause,الشرط الجزائي
 Fingerprint,البصمة
 Acknowledgement,الإقرار
 Clearance Declaration,إقرار مخالصة
-"I hereby acknowledge my agreement to the above-mentioned entitlements and commit to not contest the company in any capacity in the future, in relation to any entitlements or rights associated with my period of employment at the company, or regarding the receipt of my salaries and legal entitlements.",أقر بموافقتي على المستحقات الموضحة أعلاه، وأتعهد بعدم منازعة الشركة أمام أي جهة كانت مستقبلاً، فيما يتعلق بأي مستحقات أو حقوق خاصة بفترة عملي لدي الشركة أو فيما يتعلق بالحصول على رواتبي ومستحقاتي النظامية. وإنني قد وقعت على هذه المخالصة بمحض إرادتي واختياري الكاملين دون ضغط أو إكراه من أحد وأبرئ ذمة الشركة من أي مطالبة مستقبلية من أي حق من الحقوق المتعلقة بفترة العمل.
+"I hereby acknowledge my agreement to the above-mentioned entitlements and commit to not contest the company in any capacity in the future, in relation to any entitlements or rights associated with my period of employment at the company, or regarding the receipt of my salaries and legal entitlements.",أقر بموافقتي على المستحقات الموضحة أعلاه، وأتعهد بعدم منازعة الشركة أمام أي جهة كانت مستقبلاً، فيما يتعلق بأي مستحقات أو حقوق خاصة بفترة عملي لدى الشركة أو فيما يتعلق بالحصول على رواتبي ومستحقاتي النظامية. وإنني قد وقعت على هذه المخالصة بمحض إرادتي واختياري الكاملين دون ضغط أو إكراه من أحد وأبرئ ذمة الشركة من أي مطالبة مستقبلية من أي حق من الحقوق المتعلقة بفترة العمل.
 "I, the undersigned: .......................................................................",أنا الموقع أدناه: .......................................................................
 "(..........................) nationality, who works for ..............................................................",(..........................) الجنسية، والذي يعمل لدى ..............................................................
 "In my capacity as (..................................................), hereby acknowledge that I have received all my rights and entitlements from the company until the date of / / , in accordance with the Saudi Arabian labor laws, the company’s regulations, and the employment contract signed between myself and the company, on the occasion of the termination of our employment relationship.",بصفتي (..................................................)، أقر بموجبه بأنني قد تسلمت جميع حقوقي ومستحقاتي من الشركة حتى تاريخ / / ، وفقاً لأنظمة العمل في المملكة العربية السعودية ولوائح الشركة والعقد الموقع بيني وبين الشركة، بمناسبة انتهاء علاقة العمل بيننا.
@@ -2657,7 +2657,7 @@ Contact Numbers,أرقام التواصل
 Contact Phone,هاتف جهة الاتصال
 Current,حالي
 Default Address Template cannot be deleted,لا يمكن حذف قالب العنوان الافتراضي
-Designation,المسمي الوظيفي
+Designation,المسمى الوظيفي
 Email Address,عنوان البريد الإلكتروني
 Email ID,البريد الإلكتروني
 Email IDs,عناوين البريد الإلكتروني
@@ -9476,7 +9476,7 @@ Progress (%),نسبة الإنجاز (%)
 Project Id,معرّف المشروع
 Project User,مستخدم المشروع
 Project will be accessible on the website to these users,سيكون المشروع متاحًا على الموقع الإلكتروني لهؤلاء المستخدمين
-Project wise Stock Tracking,تتبع المشاريع علي مستوي المخزون
+Project wise Stock Tracking,تتبع المشاريع على مستوى المخزون
 Project wise Stock Tracking ,تتبع المخزون حسب المشروع 
 Projects Setup,إعداد المشاريع
 Projects User,مستخدم المشاريع
@@ -13330,7 +13330,7 @@ Multi Currency,تعدد العملات
 Exit,تفاصيل الاستقالة
 Sales Taxes and Charges Template,قالب الضرائب على المبيعات
 Reports,التقارير
-Set Advances and Allocate (FIFO),FIFO ربط الدفعات المقدمة بناء علي
+Set Advances and Allocate (FIFO),FIFO ربط الدفعات المقدمة بناء على
 Manufacturing,إدارة التصنيع
 Email Id,البريد الالكتروني
 Purchase Taxes and Charges Template,قالب الضرائب على المشتريات
