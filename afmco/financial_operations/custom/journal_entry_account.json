@@ -10,7 +10,8 @@
    "label": "EMP Cost Center",
    "module": "Financial Operations",
    "name": "Journal Entry Account-employee",
-   "options": "Employee"
+   "options": "Employee",
+   "print_width": "12%"
   }
  ],
  "doctype": "Journal Entry Account",
@@ -24,6 +25,56 @@
    "property": "options",
    "property_type": "Text",
    "value": "\nSales Invoice\nPurchase Invoice\nJournal Entry\nSales Order\nPurchase Order\nExpense Claim\nAsset\nLoan\nPayroll Entry\nEmployee Advance\nExchange Rate Revaluation\nInvoice Discounting\nFees\nFull and Final Statement\nPayment Entry\nBank Transaction\nLoan Interest Accrual"
+  },
+  {
+   "doc_type": "Journal Entry Account",
+   "doctype_or_field": "DocField",
+   "field_name": "account",
+   "module": "Financial Operations",
+   "name": "Journal Entry Account-account-print_width",
+   "property": "print_width",
+   "property_type": "Data",
+   "value": "34%"
+  },
+  {
+   "doc_type": "Journal Entry Account",
+   "doctype_or_field": "DocField",
+   "field_name": "party_type",
+   "module": "Financial Operations",
+   "name": "Journal Entry Account-party_type-print_width",
+   "property": "print_width",
+   "property_type": "Data",
+   "value": "10%"
+  },
+  {
+   "doc_type": "Journal Entry Account",
+   "doctype_or_field": "DocField",
+   "field_name": "party",
+   "module": "Financial Operations",
+   "name": "Journal Entry Account-party-print_width",
+   "property": "print_width",
+   "property_type": "Data",
+   "value": "20%"
+  },
+  {
+   "doc_type": "Journal Entry Account",
+   "doctype_or_field": "DocField",
+   "field_name": "debit_in_account_currency",
+   "module": "Financial Operations",
+   "name": "Journal Entry Account-debit_in_account_currency-print_width",
+   "property": "print_width",
+   "property_type": "Data",
+   "value": "12%"
+  },
+  {
+   "doc_type": "Journal Entry Account",
+   "doctype_or_field": "DocField",
+   "field_name": "credit_in_account_currency",
+   "module": "Financial Operations",
+   "name": "Journal Entry Account-credit_in_account_currency-print_width",
+   "property": "print_width",
+   "property_type": "Data",
+   "value": "12%"
   }
  ],
  "sync_on_migrate": 1
