@@ -1,7 +1,11 @@
 <style>
-.afm-draft-mark { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 1000; pointer-events: none; display: flex; align-items: center; justify-content: center; }
-.afm-draft-mark div { transform: rotate(-30deg); text-align: center; color: rgba(198, 40, 40, 0.16); font-family: "Tajawal", "Montserrat", sans-serif; font-weight: bold; line-height: 1; white-space: nowrap; }
-.afm-draft-mark .ar { font-size: 96pt; direction: rtl; }
-.afm-draft-mark .en { font-size: 56pt; letter-spacing: 8px; direction: ltr; }
+.afm-draft-mark { position: fixed; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; z-index: 1000; pointer-events: none; display: table; table-layout: fixed; direction: ltr; }
+.afm-draft-mark-cell { display: table-cell; vertical-align: middle; text-align: center; }
+.afm-draft-mark-text { display: inline-block; -webkit-transform: rotate(-30deg); transform: rotate(-30deg); color: rgba(198, 40, 40, 0.16); font-family: "Tajawal", "Montserrat", sans-serif; font-weight: bold; line-height: 1; white-space: nowrap; }
+.afm-draft-mark-ar { display: block; font-size: 96pt; direction: rtl; }
+.afm-draft-mark-en { display: block; font-size: 56pt; letter-spacing: 8px; }
+@media print {
+	.afm-draft-mark { right: auto; bottom: auto; width: 180mm; height: 267mm; }
+}
 </style>
-<div class="afm-draft-mark" aria-hidden="true"><div><div class="ar">{{ _("DRAFT", "ar") }}</div><div class="en">DRAFT</div></div></div>
+<div class="afm-draft-mark" aria-hidden="true"><div class="afm-draft-mark-cell"><div class="afm-draft-mark-text"><span class="afm-draft-mark-ar">{{ _("DRAFT", "ar") }}</span><span class="afm-draft-mark-en">DRAFT</span></div></div></div>
