@@ -1,15 +1,12 @@
 {% macro styles() -%}
+{% include "afmco/templates/print/fonts.html" %}
 <style>
-@font-face { font-family: "Montserrat"; font-weight: 400; font-style: normal; src: url("/assets/afmco/fonts/Montserrat-Regular.ttf") format("truetype"); unicode-range: U+0000-024F, U+2000-206F, U+20AC; }
-@font-face { font-family: "Montserrat"; font-weight: 700; font-style: normal; src: url("/assets/afmco/fonts/Montserrat-Bold.ttf") format("truetype"); unicode-range: U+0000-024F, U+2000-206F, U+20AC; }
-@font-face { font-family: "Tajawal"; font-weight: 400; font-style: normal; src: url("/assets/afmco/fonts/Tajawal-Regular.ttf") format("truetype"); unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF; }
-@font-face { font-family: "Tajawal"; font-weight: 700; font-style: normal; src: url("/assets/afmco/fonts/Tajawal-Bold.ttf") format("truetype"); unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF; }
 @page { size: 210mm 99mm; margin: 7mm 8mm; }
 .print-format { page-width: 210mm; page-height: 99mm; margin-top: 7mm; margin-bottom: 7mm; margin-left: 8mm; margin-right: 8mm; }
 html body .print-format { margin: 0 !important; }
 @media print { html body .print-format { padding: 0 !important; width: auto !important; max-width: none !important; min-height: 0 !important; } }
 @media screen { html body .print-format { width: 210mm !important; max-width: 210mm !important; min-height: 99mm !important; padding: 7mm 8mm !important; } }
-.print-format .cv, .print-format .cv div, .print-format .cv td, .print-format .cv span, .print-format .cv b { font-family: "Montserrat", "Tajawal", "Noto Sans Arabic", "DejaVu Sans", sans-serif; }
+.print-format .cv, .print-format .cv div, .print-format .cv td, .print-format .cv span, .print-format .cv b { font-family: "Montserrat", "Tajawal", sans-serif; }
 .print-format .cv .ltr, .print-format .cv .num, .print-format .cv .en { font-family: "Montserrat", "Tajawal", "DejaVu Sans", sans-serif; direction: ltr; unicode-bidi: embed; }
 .print-format .cv { color: #072b1a; font-size: 8pt; line-height: 4mm; page-break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .print-format .cv table { width: 100%; border-collapse: collapse; table-layout: fixed; border-spacing: 0; margin: 0; }

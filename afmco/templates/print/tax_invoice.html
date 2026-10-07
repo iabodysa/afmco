@@ -6,12 +6,8 @@
 
 {% macro styles(orientation='Portrait') -%}
 {%- set sp = '2.5mm' if orientation == 'Landscape' else '4mm' -%}
-{%- set fonts = frappe.utils.get_url() ~ '/assets/afmco/fonts' -%}
+{% include "afmco/templates/print/fonts.html" %}
 <style>
-@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 400; src: url('{{ fonts }}/Montserrat-Regular.ttf') format('truetype'); }
-@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 700; src: url('{{ fonts }}/Montserrat-Bold.ttf') format('truetype'); }
-@font-face { font-family: "Tajawal"; font-style: normal; font-weight: 400; src: url('{{ fonts }}/Tajawal-Regular.ttf') format('truetype'); }
-@font-face { font-family: "Tajawal"; font-style: normal; font-weight: 700; src: url('{{ fonts }}/Tajawal-Bold.ttf') format('truetype'); }
 {%- if orientation == 'Landscape' %}
 .print-format { orientation: Landscape; }
 @page { size: A4 landscape; }
@@ -31,7 +27,7 @@ html body, body[onload] { padding: 0 !important; margin: 0 !important; }
 .print-format .letter-head, .print-format .letter-head-footer { display: none !important; }
 
 .print-format .afm, .print-format .afm td, .print-format .afm th, .print-format .afm div, .print-format .afm span, .print-format .afm p, .print-format .afm b {
-  font-family: "Montserrat", "Tajawal", "Noto Sans Arabic", sans-serif !important;
+  font-family: "Montserrat", "Tajawal", sans-serif !important;
 }
 .print-format .afm { color: #1a1a1a; font-size: 8pt; line-height: 13px; font-weight: normal; direction: rtl; text-align: right; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .afm * { box-sizing: border-box; }
