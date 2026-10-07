@@ -181,6 +181,8 @@ scheduler_events = {
 #
 after_request = ["afmco.seo.add_robots_header"]
 
+pdf_body_html = "afmco.draft_watermark.pdf_body_html"
+
 doc_events = {
 	"File": {
 		"before_insert": "afmco.financial_operations.report_export.shorten_file_name",
