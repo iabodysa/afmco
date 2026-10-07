@@ -550,6 +550,7 @@ frappe.ui.form.on('Payment Requisition', {
         addUrgentButton(frm);
         processCompletedWorkflowTransitions(frm);
         addCreateJVButton(frm);
+        addSupportingPackButton(frm);
     },
 
     remark(frm) {
@@ -612,6 +613,61 @@ function addCreateJVButton(frm) {
     ) {
         frm.add_custom_button(buttonLabel, () => openCreateJVDialog(frm)).addClass('btn-primary');
     }
+}
+
+function addSupportingPackButton(frm) {
+    const buttonLabel = __('Supporting Pack');
+    frm.remove_custom_button(buttonLabel);
+
+    if (frm.doc.jv_status === 'JV Created') {
+        frm.add_custom_button(buttonLabel, () => chooseSupportingPackEntry(frm));
+    }
+}
+
+function chooseSupportingPackEntry(frm) {
+    frappe.db.get_list('Journal Entry', {
+        filters: { expense_request_cf: frm.doc.name, docstatus: ['<', 2] },
+        fields: ['name'],
+        order_by: 'creation desc',
+    }).then(entries => {
+        if (!entries.length) {
+            frappe.msgprint(__('No Journal Entry is linked to this Payment Requisition.'));
+        } else if (entries.length === 1) {
+            attachSupportingPack(frm, entries[0].name);
+        } else {
+            frappe.prompt(
+                {
+                    label: __('Journal Entry'),
+                    fieldname: 'journal_entry',
+                    fieldtype: 'Select',
+                    options: entries.map(entry => entry.name),
+                    default: entries[0].name,
+                    reqd: 1,
+                },
+                values => attachSupportingPack(frm, values.journal_entry),
+                __('Supporting Pack')
+            );
+        }
+    });
+}
+
+function attachSupportingPack(frm, journalEntry) {
+    frappe.call({
+        method: 'afmco.financial_operations.api.requisition_pack.attach_pack',
+        args: { requisition: frm.doc.name, journal_entry: journalEntry },
+        freeze: true,
+        freeze_message: __('Preparing the supporting pack...'),
+    }).then(({ message }) => {
+        if (message.queued) {
+            frappe.msgprint(__('The supporting pack is being prepared and will be attached to {0}.', [journalEntry]));
+            return;
+        }
+        let text = __('The supporting pack is attached to {0}.', [journalEntry]);
+        if (message.skipped.length) {
+            text += '<br>' + __('Not included: {0}', [message.skipped.map(frappe.utils.escape_html).join(', ')]);
+        }
+        frappe.msgprint(text);
+    });
 }
 
 function openCreateJVDialog(frm) {
