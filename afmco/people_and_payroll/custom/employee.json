@@ -539,6 +539,68 @@
   }
  ],
  "doctype": "Employee",
+ "links": [
+  {
+   "custom": 1,
+   "group": "Dues",
+   "hidden": 0,
+   "idx": 1,
+   "is_child_table": 0,
+   "link_doctype": "End of Service Settlement",
+   "link_fieldname": "employee",
+   "parent": "Employee",
+   "parentfield": "links",
+   "parenttype": "DocType"
+  },
+  {
+   "custom": 1,
+   "group": "Dues",
+   "hidden": 0,
+   "idx": 2,
+   "is_child_table": 0,
+   "link_doctype": "Vacation Allowance",
+   "link_fieldname": "employee",
+   "parent": "Employee",
+   "parentfield": "links",
+   "parenttype": "DocType"
+  },
+  {
+   "custom": 1,
+   "group": "Residency & Family",
+   "hidden": 0,
+   "idx": 3,
+   "is_child_table": 0,
+   "link_doctype": "Employee Visa",
+   "link_fieldname": "employee",
+   "parent": "Employee",
+   "parentfield": "links",
+   "parenttype": "DocType"
+  },
+  {
+   "custom": 1,
+   "group": "Residency & Family",
+   "hidden": 0,
+   "idx": 4,
+   "is_child_table": 0,
+   "link_doctype": "Employee Dependent",
+   "link_fieldname": "employee",
+   "parent": "Employee",
+   "parentfield": "links",
+   "parenttype": "DocType"
+  },
+  {
+   "custom": 1,
+   "group": "Residency & Family",
+   "hidden": 0,
+   "idx": 5,
+   "is_child_table": 0,
+   "link_doctype": "Employee Insurance",
+   "link_fieldname": "employee",
+   "parent": "Employee",
+   "parentfield": "links",
+   "parenttype": "DocType"
+  }
+ ],
  "property_setters": [
   {
    "doc_type": "Employee",
