@@ -1,6 +1,6 @@
 {
  "creation": "2026-09-25 04:10:16.411405",
- "css": ".print-format p { margin: 0 0 2px; line-height: 1.35; }\n.print-format .row.section-break { margin-bottom: 4px; }\n.print-format .table { margin-bottom: 6px; }\n.print-format .afm-items th, .print-format .afm-items td { vertical-align: middle; padding: 3px 4px !important; }\n.print-format .afm-items tr > :nth-child(1) { text-align: center !important; }\n.print-format .afm-items tr > :nth-child(2), .print-format .afm-items tr > :nth-child(3) { text-align: left !important; }\n.print-format .afm-items tr > :nth-child(n+4) { text-align: right !important; white-space: nowrap; }\n.print-format .afm-items tr:last-child > td { text-align: right !important; font-weight: bold; }\n.print-format .afm-items tr:last-child > td:first-child { text-align: center !important; }\n",
+ "css": ".print-format { orientation: Landscape; }\n@page { size: A4 landscape; }\n.print-format p { margin: 0 0 2px; line-height: 1.35; }\n.print-format .row.section-break { margin-bottom: 4px; }\n.print-format .table { margin-bottom: 6px; }\n.print-format .afm-items th, .print-format .afm-items td { vertical-align: middle; padding: 3px 4px !important; }\n.print-format .afm-items tr > :nth-child(1) { text-align: center !important; }\n.print-format .afm-items tr > :nth-child(2), .print-format .afm-items tr > :nth-child(3) { text-align: left !important; }\n.print-format .afm-items tr > :nth-child(n+4) { text-align: right !important; white-space: nowrap; }\n.print-format .afm-items tr:last-child > td { text-align: right !important; font-weight: bold; }\n.print-format .afm-items tr:last-child > td:first-child { text-align: center !important; }\n",
  "default_print_language": "en",
  "doc_type": "Sales Invoice",
  "doctype": "Print Format",
@@ -11,7 +11,7 @@
  "margin_left": 15.0,
  "margin_right": 15.0,
  "margin_top": 15.0,
- "modified": "2026-10-07 18:00:00.000000",
+ "modified": "2026-10-07 21:00:00.000000",
  "module": "Financial Operations",
  "name": "Al Hokair Tax Invoice",
  "owner": "Administrator",
