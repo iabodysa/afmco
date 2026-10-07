@@ -1,95 +1,41 @@
 "Pending My Action counts and lists workflow actions created in this many days, today included.","يحتسب ""بانتظار إجراء مني"" إجراءات سير العمل المُنشأة خلال هذا العدد من الأيام ويعرضها، بما فيها اليوم الحالي."
---Please Select--,--يرجى الاختيار--
-1-month,شهر واحد
-100k-250k,100 ألف - 250 ألف
-2% of the salary,2% من الراتب
-2-3-months,2-3 أشهر
-22 Submit Salary Slips,22 اعتماد قسائم الرواتب
-250k-500k,250 ألف - 500 ألف
-50k-100k,50 ألف - 100 ألف
-6-months,6 أشهر
 9 months,9 أشهر
-AFMCO Financial Management System,نظام أفمكو للإدارة المالية
 AFMCO Settings,إعدادات أفمكو
 AL Mutairy Co,شركة المطيري
 API Response,استجابة API
 Apply for a job,التقديم على وظيفة
-ASSIGNED CITY,المدينة المخصصة
-Abha,أبها
-Abs Light,لمبة نظام منع انغلاق الفرامل ABS
-Abs Light Image,صورة لمبة ABS
 Absent Day,يوم غياب
 Abu Dhabi,أبوظبي
-Acceptable,مقبول
-Acceptance,القبول
-Accommodation Location,موقع السكن
-Accomodation Location,موقع السكن
 Account (Head Office),الحساب (المركز الرئيسي)
 Account (Other),الحساب (أخرى)
 Account Holder Name,اسم صاحب الحساب
-Accountant Name,اسم المحاسب
-Accountant Signature,توقيع المحاسب
 Accounting Details,التفاصيل المحاسبية
 Accounting Entries,القيود المحاسبية
-Accounting Entries are reposted.,تمت إعادة ترحيل القيود المحاسبية.
-Accounting entries for this Government Payment need to be reposted. Please click on 'Repost' button to update.,القيود المحاسبية لهذه المدفوعات الحكومية تحتاج إلى إعادة ترحيل. يرجى الضغط على زر 'إعادة الترحيل' للتحديث.
 Accounts,الحسابات
-Accrued End of Service,مكافأة نهاية الخدمة المستحقة
-Accrued End of Service:,مكافأة نهاية الخدمة المستحقة:
 Accrued Expenses,المصروفات المستحقة
-Accrued Gosi,التأمينات الاجتماعية المستحقة
-Accrued Ticket,التذكرة المستحقة
-Accrued Vacation,الإجازة المستحقة
-Action Owner,مسؤول الإجراء
 Actual Hours,الساعات الفعلية
-Actual consumption after driver adjustment,الاستهلاك الفعلي بعد تعديل السائق
-Actual steps implemented,الخطوات المنفذة فعليًا
 Actual/360,فعلي/360
 Actual/365,فعلي/365
 Actual/Actual,فعلي/فعلي
 Add Supplier Details,إضافة بيانات المورد
-Add your requirements to be included in the prompt automatically,أضف متطلباتك لتُدرج في الطلب تلقائيًا
 Added {0} Payroll Entries,أُضيفت {0} من مسيرات الرواتب
-Additional Stop,توقف إضافي
-Additional comments about document,ملاحظات إضافية حول المستند
-Address Latitude,خط عرض العنوان
-Address Longitude,خط طول العنوان
-Adequate Room Ventilation,تهوية كافية للغرفة
 Adjust for Previous Salary Difference,تسوية فرق الراتب السابق
 Advance Account,حساب السلف
 Advance paid against {0} {1} cannot be greater than Grand Total {2},السلفة المدفوعة مقابل {0} {1} لا يمكن أن تتجاوز الإجمالي الكلي {2}
 Advanced expenses,المصروفات المقدمة
-Afif,عفيف
-Afmco Fleet,أسطول أفمكو
 Afmco Ltd.,شركة أفمكو المحدودة
-Against Government Payment {0} does not have any unmatched {1} entry,مقابل المدفوعات الحكومية {0} لا يوجد أي قيد {1} غير مطابق
 Agency Fees (24 months),رسوم الوكالة (24 شهرًا)
-Agency fees divided by 24,رسوم الوكالة مقسومة على 24
 Agent,موظف الدعم
 Agent Configuration,تهيئة موظف الدعم
 Ai,الذكاء الاصطناعي
-Airbag Light,لمبة الوسادة الهوائية
-Airbag Light Image,صورة لمبة الوسادة الهوائية
 Ajeer Fees (Annual),رسوم أجير (سنوية)
 Ajeer Notification End Date,تاريخ انتهاء إشعار أجير
 Ajeer from,أجير من
 Ajman,عجمان
-Al Baha,الباحة
-Al Bahah,الباحة
-Al Jouf,الجوف
-Al Kharj,الخرج
-Al Khobar,الخبر
-Al Lith,الليث
-Al Qassim,القصيم
-Al-Muzahmiyyah,المزاحمية
 All Journal Entries were created successfully and the button has been disabled.,أُنشئت جميع القيود اليومية بنجاح وتم تعطيل الزر.
 All Salaries,جميع الرواتب
-All Salary Slips have been processed.,تمت معالجة جميع قسائم الرواتب.
-All Salary Slips have been submitted successfully.,تم اعتماد جميع قسائم الرواتب بنجاح.
 All Salary Slips have zero Net Pay – nothing to export.,جميع قسائم الرواتب صافيها صفر، ولا يوجد ما يُصدَّر.
-"All rights reserved © AFMCO Ltd. for Logistics Services, 2024.",جميع الحقوق محفوظة © شركة أفمكو المحدودة للخدمات اللوجستية، 2024.
 Allow Cancel,السماح بالإلغاء
-Allowance for tickets,بدل التذاكر
 Amount Has Been Split As per Total Number of Depreciation.,قُسِّم المبلغ حسب إجمالي عدد أقساط الإهلاك.
 Amount of expense,مبلغ المصروف
 Amount that has been paid against this advance,المبلغ المدفوع مقابل هذه السلفة
@@ -98,264 +44,121 @@ An error occurred while checking salary slips or adding buttons. Please check co
 An error occurred while creating the Journal Entry:,حدث خطأ أثناء إنشاء قيد اليومية:
 An error occurred while creating the Payment Request. Please try again.,حدث خطأ أثناء إنشاء طلب الصرف. يرجى المحاولة مرة أخرى.
 An error occurred while fetching Employee data. Please try again.,حدث خطأ أثناء جلب بيانات الموظف. أعد المحاولة.
-An error occurred while submitting Salary Slips:,حدث خطأ أثناء اعتماد قسائم الرواتب:
 An error occurred:,حدث خطأ:
 Analyzing Employees...,جارٍ تحليل الموظفين...
 Annual Air Ticket (Annual),تذكرة الطيران السنوية (سنوية)
-Annual end of service benefit,مكافأة نهاية الخدمة السنوية
-Annual leave allowance,بدل الإجازة السنوية
-Annual leave salary,راتب الإجازة السنوية
-Any notes from the driver,أي ملاحظات من السائق
-App File,ملف التطبيق
-Appliances Regularly Maintained,صيانة الأجهزة بانتظام
 Application ID,معرّف التطبيق
 Application Key,مفتاح التطبيق
 Apply / Approve Leaves,طلب الإجازات / الموافقة عليها
 Apply Bank Transfer Fees,تطبيق رسوم التحويل البنكي
-Apply Tax Withholding Amount,تطبيق مبلغ استقطاع الضريبة
 Approval Date,تاريخ الموافقة
-Approvals,الاعتمادات
 Approve,موافقة
 Approve Renewal,الموافقة على التجديد
 Approved By,وافق عليه
 Approvers,مسؤولو الموافقة
 April,أبريل
-Ar'ar,عرعر
 Arabic,العربية
-Arar,عرعر
-Are you sure you want to submit all Salary Slips for this Payroll Entry?,هل أنت متأكد من اعتماد جميع قسائم الرواتب لقيد الرواتب هذا؟
-Asir,عسير
-Asset Colour,لون الأصل
-Asset Condition,حالة الأصل
-Asset Created: {0},أُنشئ الأصل: {0}
-Asset Inventory,جرد الأصول
 Asset Type,نوع الأصل
-Asset created for Item:,أُنشئ أصل للصنف:
-Asset {0} does not belongs to the custodian {1},الأصل {0} لا يخص أمين العهدة {1}
-Asset {0} does not belongs to the location {1},الأصل {0} لا يخص الموقع {1}
-Assign Date,تاريخ التخصيص
-Assign to,إسناد إلى
 Assignment,الإسناد
 Assignment Details,تفاصيل التكليف
 Assignment Type,نوع التكليف
-Associated project reference,مرجع المشروع المرتبط
-"At-least one of priority, team and ticket type is required",يجب تحديد واحد على الأقل من الأولوية أو الفريق أو نوع التذكرة
-Attach Bill,إرفاق الفاتورة
 Attach the signed declaration before moving the request out of Pending.,أرفق الإقرار الموقّع قبل نقل الطلب من حالة قيد الانتظار.
 Attached Reports,التقارير المرفقة
-Attached Reports Detels,تفاصيل التقارير المرفقة
 Attachments View,عرض المرفقات
 Attachments,المرفقات
 Attendance Allowance,بدل الحضور
-Audit Finding,ملاحظة التدقيق
 August,أغسطس
-Authentication failed: {0},فشلت المصادقة: {0}
-Auto-generated trip title,عنوان الرحلة المُنشأ تلقائيًا
 BASIC 2,الأساسي 2
-BASIC SALARY,الراتب الأساسي
 BASIC WAGE,الأجر الأساسي
-Back Glass,الزجاج الخلفي
-Back Glass Image,صورة الزجاج الخلفي
 Back to Original Page,العودة إلى الصفحة الأصلية
-Backward Lights,الأضواء الخلفية
-Backward Lights Image,صورة الأضواء الخلفية
-Baladiya Card Expiry Date,تاريخ انتهاء بطاقة البلدية
 Balance Amount,مبلغ الرصيد
 Bank Account No.,رقم الحساب البنكي
 Bank Entry Created,أُنشئ القيد البنكي
 Bank Entry Settings,إعدادات القيد البنكي
-Bank Entry has already been created for this Payroll Entry.,سبق إنشاء القيد البنكي لقيد الرواتب هذا.
 Bank Fees Account,حساب الرسوم البنكية
 Bank Format,صيغة ملف البنك
 Bank Name,اسم البنك
 Bank Reconciliation Statement by Period,كشف التسوية البنكية حسب الفترة
 Bank code,رمز البنك
 Banking Information,المعلومات البنكية
-Barcode generated from Iqama ID,باركود مُنشأ من رقم الإقامة
 Base Salary,الراتب الأساسي
 Basic Details,البيانات الأساسية
-Battery Light,لمبة البطارية
-Battery Light Image,صورة لمبة البطارية
-Bearing ratio,نسبة التحمل
-Beneficiary ID,هوية المستفيد
 Beneficiary Information,بيانات المستفيد
 Bengali,البنغالية
 Bill Amount,مبلغ الفاتورة
-Bilingual Tax Invoice,فاتورة ضريبية ثنائية اللغة
-Bishah,بيشة
 Black listed,في القائمة السوداء
-Boarding Information,بيانات الصعود
-Body Damage,أضرار في الهيكل
 Border ID,رقم الحدود
 Border ID or Iqama ID,رقم الحدود أو رقم الإقامة
-Border Number,رقم الحدود
 Both Debit and Credit values cannot be zero for depreciation on {0},لا يمكن أن تكون قيمتا المدين والدائن صفرًا للإهلاك في {0}
-Break And Hazard Lights,أضواء الفرامل والتحذير
-Break And Hazard Lights Image,صورة أضواء الفرامل والتحذير
-Brief impact summary,ملخص موجز للأثر
-Brief incident title or subject,عنوان موجز للحادثة أو موضوعها
-Build Number,رقم البناء
 Building virtual WPS metadata...,جارٍ إعداد بيانات ملف حماية الأجور الظاهري...
-Bumper Image,صورة الصدام
-Buraidah,بريدة
-Buraydah,بريدة
 COMMENTS,التعليقات
 COMMISSION 2,العمولة 2
 Contact us,تواصل معنا
 CRC NO,رقم السجل التجاري
-CRC Registration Details,بيانات تسجيل السجل التجاري
-CSV Child Table Code,رمز CSV للجدول الفرعي
-CSV Code,رمز CSV
 Calculate,احسب
 Calculated Increase,الزيادة المحسوبة
-Calculated basic salary,الراتب الأساسي المحسوب
-Calculated contract duration in months,مدة العقد المحسوبة بالأشهر
-Calculated housing allowance,بدل السكن المحسوب
-Calculated transportation allowance,بدل النقل المحسوب
-Calculation,الحساب
 Cancel Exit Re-Entry Visa,إلغاء تأشيرة الخروج والعودة
 Cancel Final Exit Visa,إلغاء تأشيرة الخروج النهائي
 Cannot create Payment Request for document {0} because employee {1} is not Active.,لا يمكن إنشاء طلب صرف للمستند {0} لأن الموظف {1} غير نشط.
-Car Problem,مشكلة في السيارة
-Car Status,حالة السيارة
-Car exhaust smoke,دخان عادم السيارة
-Car exhaust smoke  Image,صورة دخان عادم السيارة
-Card Payment,الدفع بالبطاقة
 Case Details,تفاصيل الحالة
 Cash Custody and Petty Expenses Policy,سياسة العهد النقدية والمصروفات النثرية
-Cell Number,رقم الجوال
 Certificates,الشهادات
 Chamber of Commerce Subscription,اشتراك الغرفة التجارية
 Change Occupation,تغيير المهنة
-Change log and features,سجل التغييرات والمزايا
 Channels,القنوات
-Check Engine Light,لمبة فحص المحرك
-Check Engine Light Image,صورة لمبة فحص المحرك
 Check MOL Approval for Changing Occupation,التحقق من موافقة وزارة الموارد البشرية على تغيير المهنة
-Check if driver has heavy foot (deducts 3 km/liter),تحقق مما إذا كان السائق يضغط على دواسة الوقود بقوة (يُخصم 3 كم/لتر)
-Child Table CSV is required when Table field exists,ملف CSV للجدول الفرعي مطلوب عند وجود حقل جدول
 Child table for tracking government payment for iqama renewal.,جدول فرعي لمتابعة المدفوعات الحكومية لتجديد الإقامة.
 Christianity,المسيحية
-Circuit Breakers Functional,قواطع الكهرباء تعمل
 City Name,اسم المدينة
-City of work,مدينة العمل
 Cleaning Supplies Cost (Months),تكلفة مستلزمات التنظيف (أشهر)
-Cleanliness Status,حالة النظافة
-Clear Expense Request,تسوية طلب الدفع
 Click to view list for,اضغط لعرض قائمة
 Client Details,بيانات العميل
 Client Name,اسم العميل
-Client Request,طلب العميل
-Close Without Action,إغلاق دون إجراء
-Closure,الإغلاق
 Collection Offset Logic Based On,منطق مقاصة التحصيل بناءً على
 Collection Offset Sequence for Settlement Collection,تسلسل مقاصة التحصيل لتسوية التحصيل
 Collection Offset Sequence for Standard Asset,تسلسل مقاصة التحصيل للأصل المنتظم
 Collection Offset Sequence for Sub Standard Asset,تسلسل مقاصة التحصيل للأصل دون المستوى
 Collection Offset Sequence for Written Off Asset,تسلسل مقاصة التحصيل للأصل المشطوب
-Colour of the asset,لون الأصل
 Commissions (Months),العمولات (أشهر)
-Common Area Natural Ventilation Adequate,تهوية طبيعية كافية في المناطق المشتركة
 Company Details,بيانات الشركة
 Company Name In Arabic,اسم الشركة بالعربية
 Company Registration Certificate,شهادة تسجيل الشركة
-Company Salary,راتب الشركة
-Company or organization name,اسم الشركة أو المنشأة
-Complete Passenger Manifest,قائمة الركاب الكاملة
-Compliance Notice,إشعار الامتثال
-Comprehensive incident description,وصف شامل للحادثة
-Condition remarks upon return,ملاحظات الحالة عند الإرجاع
 Configure Payroll Entries,إعداد مسيرات الرواتب
 Confirm Payment,تأكيد الدفع
-Contact Directory,دليل جهات الاتصال
 Contact Message,رسالة تواصل
-Contact phone number,رقم هاتف التواصل
 Contract Duration (Months),مدة العقد (أشهر)
 Contract Start Date,تاريخ بدء العقد
 Contract status is active and in good standing.,حالة العقد نشطة وسليمة.
-Contractor,المقاول
 Convert,تحويل
-Coolant Temperature Light,لمبة حرارة المحرك
-Coolant Temperature Light Image,صورة لمبة حرارة المحرك
-Copied as plain text. Newsletter formatting failed.,نُسخ كنص عادي. تعذر تنسيق النشرة.
 Copy BAT Script,نسخ برنامج BAT النصي
 Copy Email Body,نسخ نص البريد الإلكتروني
-Copy Prompt,نسخ الطلب
 Corporation CR,السجل التجاري للمؤسسة
 Cost Calculation Details,تفاصيل احتساب التكلفة
-Cost and effectiveness assessment,تقييم التكلفة والفعالية
-Cost of Iqama divided by 12,تكلفة الإقامة مقسومة على 12
-Cost of SIM card,تكلفة شريحة الاتصال
-Cost of annual air ticket divided by 12,تكلفة تذكرة الطيران السنوية مقسومة على 12
-Cost of cleaning supplies,تكلفة مستلزمات التنظيف
-Cost of commissions,تكلفة العمولات
-Cost of housing,تكلفة السكن
-Cost of medical insurance,تكلفة التأمين الطبي
-Cost of mobile phone,تكلفة الهاتف الجوال
-Cost of safety shoes,تكلفة حذاء السلامة
-Cost of transportation,تكلفة النقل
-Cost of uniform,تكلفة الزي الموحد
-Cost of vehicle,تكلفة المركبة
-Cost of visa divided by 12 if employment type is 'Recruitment',تكلفة التأشيرة مقسومة على 12 إذا كان نوع التوظيف 'استقدام'
-Cost of work permit divided by 12,تكلفة رخصة العمل مقسومة على 12
-Costs associated with the localization program.,التكاليف المرتبطة ببرنامج التوطين.
-Could not find mobile number for the selected driver.,تعذر العثور على رقم جوال السائق المحدد.
-Count of passengers who boarded,عدد الركاب الذين صعدوا
 Create Bank Entry,إنشاء قيد بنكي
 Create Bank File,إنشاء ملف البنك
 Create Bulk Payment Order,إنشاء أمر دفع مجمع
-Create DocType,إنشاء نوع مستند
 Create Expense Request,إنشاء طلب دفع
-Create Inter Company Government Payment,إنشاء مدفوعات حكومية بين الشركات
 Create JV,إنشاء قيد يومية
-Create Leave Application,إنشاء طلب إجازة
 Create Opening Leave Allocation,إنشاء تخصيص الإجازات الافتتاحي
 Create Payment Order,إنشاء أمر دفع
 Created By,أنشئ بواسطة
 Created By (SADAD Invoice),أنشئ بواسطة (فاتورة سداد)
-Creating DocType...,جارٍ إنشاء نوع المستند...
 Creating Journal Entry...,جارٍ إنشاء قيد اليومية...
 Creating payment order...,جارٍ إنشاء أمر الدفع...
 Creation Date,تاريخ الإنشاء
-Criterion,المعيار
-Critical,حرج
 Current Address Description,وصف العنوان الحالي
 Current City,المدينة الحالية
 Current Housing Supervisor Mobile,جوال مشرف السكن الحالي
-Current Location,الموقع الحالي
-Current Odometer Value,قراءة العداد الحالية
-Current Odometer value,قراءة العداد الحالية
 Current Roles and Permission,الأدوار والصلاحيات الحالية
-Current Vehicle  Information,بيانات المركبة الحالية
-Current active version,الإصدار النشط الحالي
-Current price per liter in SAR,سعر اللتر الحالي بالريال
-Current project phase,مرحلة المشروع الحالية
-Current resolution status,حالة المعالجة الحالية
-Current status of accommodation,الحالة الحالية للسكن
-Custodian Update,تحديث أمين العهدة
-Custodian updated for the following assets:,حُدِّث أمين العهدة للأصول التالية:
-Custodies details,تفاصيل العهد
 Customer Signature,توقيع العميل
 Cv,السيرة الذاتية
-DRIVER EMAIL,البريد الإلكتروني للسائق
-Daily Consumption /SAR,الاستهلاك اليومي / ريال
-Damage,الضرر
-Damaged,تالف
-Dammam,الدمام
-Dashboard Image,صورة لوحة العدادات
-Dashboard Lights,لمبات لوحة العدادات
-Dashboard content not found to copy.,لم يُعثر على محتوى لوحة المعلومات لنسخه.
 Data copied to clipboard.,نُسخت البيانات إلى الحافظة.
 Data successfully converted and added to the field.,حُوِّلت البيانات وأضيفت إلى الحقل بنجاح.
 Date Of Rejoining,تاريخ العودة للعمل
-Date and time when incident was reported,تاريخ ووقت الإبلاغ عن الحادثة
 Date of Birth,تاريخ الميلاد
 Date of Joining,تاريخ المباشرة
 Date of entry,تاريخ الدخول
 Date of last vacation clearance,تاريخ آخر مخالصة إجازة
-Date of publication,تاريخ النشر
-Date when document was added,تاريخ إضافة المستند
-Dawadmi,الدوادمي
 Days Past Due,أيام التأخر في السداد
 Days Past Due Threshold,حد أيام التأخر في السداد
 Days for which Holidays are blocked for this department.,الأيام المحظورة فيها الإجازات لهذا القسم.
@@ -368,109 +171,55 @@ Default JV Credit Account,حساب القيد الدائن الافتراضي
 Default JV Debit Account,حساب القيد المدين الافتراضي
 Default Payroll Payable Account,حساب الرواتب المستحقة الدفع الافتراضي
 Default Shift,الوردية الافتراضية
-Definitions,التعريفات
 Delegation,التفويض
 Delivery Representative,مندوب التوصيل
 Department or Project,القسم أو المشروع
 Departments,الأقسام
 Depreciation Schedule,جدول الإهلاك
-Desired Timeline,الجدول الزمني المطلوب
 Destination City,مدينة الوجهة
-Detailed Description,الوصف التفصيلي
-Detailed Route with Locations,المسار التفصيلي مع المواقع
-Detailed description of project requirements,وصف تفصيلي لمتطلبات المشروع
 Details loaded successfully,حُمِّلت التفاصيل بنجاح
 Details of the Employee,بيانات الموظف
-Device,الجهاز
 Discount Rate,نسبة الخصم
-Distance from warehouse (Al Sulay) to delivery neighborhood,المسافة من المستودع (السلي) إلى حي التوصيل
-DocType Field Generator,مولّد حقول أنواع المستندات
-DocType Name,اسم نوع المستند
-DocType created:,أُنشئ نوع المستند:
-Document Link,رابط المستند
 Document to track and manage payment details for Iqama renewals.,مستند لمتابعة وإدارة تفاصيل مدفوعات تجديد الإقامات.
 Document {0} for employee {1} has no SADAD number. Please try again after adding the SADAD number.,المستند {0} للموظف {1} لا يحتوي على رقم سداد. أعد المحاولة بعد إضافة رقم سداد.
-Door Image,صورة الباب
-Download CSV,تنزيل CSV
 Download Employee Card,تنزيل بطاقة الموظف
-Download Sources,مصادر التنزيل
-Download URL,رابط التنزيل
 Download WPS,تنزيل ملف حماية الأجور
 Download ZIP,تنزيل الملف المضغوط
-Driver Information,بيانات السائق
-Driver Iqama,إقامة السائق
 Driver Mobile Number,رقم جوال السائق
-Driver Seat Floor,أرضية مقعد السائق
-Driver starting the trip,السائق الذي بدأ الرحلة
 Dropoff,التنزيل
 Dropoff Location,موقع التنزيل
 Dubai,دبي
-Due in a month,مستحق خلال شهر
 Duration must be 1 year for exempted cases.,يجب أن تكون المدة سنة واحدة للحالات المعفاة.
 E mail,البريد الإلكتروني
 E-Invoicing QR,رمز QR للفوترة الإلكترونية
-EMP ID,الرقم الوظيفي
-EMP NAME,اسم الموظف
 EMP Name,اسم الموظف
 EMP No,الرقم الوظيفي
-EMPL PHONE,هاتف الموظف
-Employee Transfer Requests moved to Apex. Opening Apex...,انتقلت طلبات نقل الموظفين إلى Apex. جارٍ فتح Apex...
-Employee Transfer Requests moved to Apex. This list stays for payment orders.,انتقلت طلبات نقل الموظفين إلى Apex. تبقى هذه القائمة لأوامر الدفع.
 EOS Calculations,حسابات نهاية الخدمة
 EOS document has been marked as Paid,تم تعليم مستند نهاية الخدمة كمدفوع
-Eastern Province,المنطقة الشرقية
-Either location or employee must be required,يجب تحديد الموقع أو الموظف
-Electrical Measures,إجراءات السلامة الكهربائية
-Electrical Wiring Safe,التمديدات الكهربائية آمنة
-Electrical and Air Conditioner Check,فحص الكهرباء والمكيفات
-Electricity Account Number,رقم حساب الكهرباء
-Electricity Bill Details,تفاصيل فاتورة الكهرباء
-Emad,عماد
-Email address for communication,البريد الإلكتروني للتواصل
 Email body copied to clipboard!,نُسخ نص البريد الإلكتروني إلى الحافظة!
-Emergency Contact Number,رقم الطوارئ
-Emergency Contact Relationship,صلة قرابة جهة الطوارئ
-Emergency Exit,مخرج الطوارئ
-Emergency Exits Clear,مخارج الطوارئ غير معترضة
 Employee (Sponsor),الموظف (الكفيل)
 Employee Analysis Report,تقرير تحليل الموظفين
-Employee Analysis Report - {0},تقرير تحليل الموظفين - {0}
 Employee Data Update 2024,تحديث بيانات الموظفين 2024
 Employee Department,قسم الموظف
 Employee Dependent,تابع الموظف
-Employee Escape,تغيب الموظف عن العمل
-Employee Escape cannot be submitted before Escape Date,لا يمكن اعتماد بلاغ تغيب الموظف قبل تاريخ التغيب
 Employee Financial Summary,الملخص المالي للموظف
-Employee Full Name,الاسم الكامل للموظف
 Employee Gosi,التأمينات الاجتماعية للموظف
-Employee HR,الموارد البشرية للموظف
-Employee IBAN No.Record Updated Successfully,تم تحديث سجل رقم الآيبان للموظف بنجاح
 Employee ID Checker,مدقق الرقم الوظيفي
-Employee ID scanned from barcode,رقم الموظف الممسوح من الباركود
 Employee IDs,الأرقام الوظيفية
 Employee Insurance,تأمين الموظف
-Employee List - Detailed Overview,قائمة الموظفين - نظرة تفصيلية
 Employee Nationality,جنسية الموظف
-Employee Salary,راتب الموظف
 Employee Salary Adjustment,تعديل راتب الموظف
-Employee Salary Hold,إيقاف راتب الموظف
 Employee Sponsor Name,اسم كفيل الموظف
 Employee Summary,ملخص الموظف
-Employee Thumb,بصمة الموظف
 Employee Update Table,جدول تحديث الموظف
 Employee Visa,تأشيرة الموظف
 Employee card saved to attachments successfully,حُفظت بطاقة الموظف في المرفقات بنجاح
 Employee data could not be fetched. Please try again.,تعذر جلب بيانات الموظف. أعد المحاولة.
-Employee department,قسم الموظف
 Employee has served more than 5 years. Project Manager review required.,خدمة الموظف تتجاوز 5 سنوات. تلزم مراجعة مدير المشروع.
-Employee iQama,إقامة الموظف
 Employee in probation period until {0}.,الموظف في فترة التجربة حتى {0}.
-Employee list table section,قسم جدول قائمة الموظفين
 Employee status is {0}. Contract handling not required.,حالة الموظف {0}. لا يلزم إجراء على العقد.
-Employee status updated successfully,تم تحديث حالة الموظف بنجاح
 Employee updated successfully.,تم تحديث الموظف بنجاح.
 Employee {0} already has active Temporary IBAN {1},الموظف {0} لديه آيبان مؤقت نشط {1}
-Employee {0} does not belongs to the company {1},الموظف {0} لا يتبع الشركة {1}
 Employee {0} excluded due to renewal issue.,استُبعد الموظف {0} بسبب مشكلة في التجديد.
 Employee-wise Journal Entry created for Payroll Entry:,أُنشئ قيد يومية لكل موظف لمسير الرواتب:
 Employees,الموظفون
@@ -481,85 +230,52 @@ Employment Active,على رأس العمل
 Employment Contract Overview,نظرة عامة على عقد العمل
 Employment Details,تفاصيل التوظيف
 Employment Inactive,خارج العمل
-Enable Actions Section,تفعيل قسم الإجراءات
-Enable Attachments Section,تفعيل قسم المرفقات
-Enable Financial Section,تفعيل القسم المالي
 End Location,موقع النهاية
 End of Service (Months),مكافأة نهاية الخدمة (أشهر)
 Ending Contract (From Qiwa),العقود المنتهية (من قوى)
 English,الإنجليزية
 Enter Renewal Preference,أدخل رغبة التجديد
-Enter the end date of the contract,أدخل تاريخ انتهاء العقد
-Enter the monthly salary,أدخل الراتب الشهري
-Enter the number of employees to hire,أدخل عدد الموظفين المطلوب توظيفهم
-Enter the start date of the contract,أدخل تاريخ بدء العقد
 Equipment Costs,تكاليف المعدات
 Error creating Accrual Entry:,خطأ في إنشاء قيد الاستحقاق:
 Error creating Bank Journal Entry:,خطأ في إنشاء القيد البنكي:
 Error displaying Bank Entry settings:,خطأ في عرض إعدادات القيد البنكي:
 Error during pre-check validation: {0},خطأ أثناء التحقق المسبق: {0}
-Error fetching Salary Slips: {0},خطأ في جلب قسائم الرواتب: {0}
-Error fetching data,خطأ في جلب البيانات
-Error fetching data:,خطأ في جلب البيانات:
 Error in get_query:,خطأ في get_query:
 Error loading financial data,خطأ في تحميل البيانات المالية
 Error occurred while fetching Payroll Entries.,حدث خطأ أثناء جلب مسيرات الرواتب.
 Error occurred while saving the card,حدث خطأ أثناء حفظ البطاقة
 Error parsing data. Please check the format.,خطأ في تحليل البيانات. يرجى التحقق من الصيغة.
-Error submitting Salary Slip {0}: {1},خطأ في اعتماد قسيمة الراتب {0}: {1}
 Error updating Renewal Preference for:,خطأ في تحديث رغبة التجديد لـ:
 Error updating SADAD number or exemption status for:,خطأ في تحديث رقم سداد أو حالة الإعفاء لـ:
 Error updating status for:,خطأ في تحديث الحالة لـ:
 Error while creating Journal Entry for depreciation on {0},خطأ أثناء إنشاء القيد اليومي للإهلاك في {0}
-Error while submitting salary slip:,خطأ أثناء اعتماد قسيمة الراتب:
-Error:,خطأ:
-Error: {0},خطأ: {0}
 Errors encountered for documents:,أخطاء في المستندات التالية:
-Escalation rule already exists for this criteria,توجد قاعدة تصعيد لهذه المعايير مسبقًا
-Escape,التغيب عن العمل
 Establishment,منشأة
-Estimated Budget,الموازنة التقديرية
-Estimated financial impact range,نطاق الأثر المالي التقديري
-Estimated project budget range,نطاق موازنة المشروع التقديري
-Evacuation Plan Displayed,خطة الإخلاء معروضة
-Evacuation and Emergency,الإخلاء والطوارئ
 Exit Reentry Visa Service,خدمة تأشيرة الخروج والعودة
 Exit and Re-Entry Visa Fees (Annual),رسوم تأشيرة الخروج والعودة (سنوية)
 Exit and return visa,تأشيرة خروج وعودة
-Expected additional fuel needed daily (liters),الوقود الإضافي المتوقع يوميًا (لتر)
-Expected distance per single shipment (km),المسافة المتوقعة للشحنة الواحدة (كم)
 Expected salary,الراتب المتوقع
 Expense Approver,مسؤول الموافقة على المصروفات
 Expense Request Report,تقرير طلبات المصروفات
-Expense Request cleared,تمت تسوية طلب الدفع
 Expense Request created successfully,أُنشئ طلب الدفع بنجاح
 Experiences,الخبرات
 Expired Date,تاريخ الانتهاء
 Expired Iqama,إقامة منتهية
 Expired?,منتهية؟
-Explain Issue,اشرح المشكلة
 Export CSV,تصدير CSV
 Export Excel,تصدير Excel
 Extend Exit Re-Entry Visa,تمديد تأشيرة الخروج والعودة
 Extend Passport Validity,تمديد صلاحية جواز السفر
 Extend Visit Visa,تمديد تأشيرة الزيارة
 Extend exit and re-entry visa (1) month,تمديد تأشيرة الخروج والعودة شهرًا واحدًا
-External Auditor,المدقق الخارجي
-Extra Amount( Not More Than 15 SAR),مبلغ إضافي (لا يتجاوز 15 ريالًا)
-Extra Days,أيام إضافية
 Failed documents:,المستندات التي فشلت:
 Failed to copy data to clipboard.,تعذر نسخ البيانات إلى الحافظة.
 Failed to copy to clipboard,تعذر النسخ إلى الحافظة
 Failed to copy {0},تعذر نسخ {0}
-Failed to create Asset,تعذر إنشاء الأصل
-Failed to create Asset for Item:,تعذر إنشاء الأصل للصنف:
 Failed to create Expense Request: {0},تعذر إنشاء طلب الدفع: {0}
-Failed to create IT Asset Movement.,تعذر إنشاء حركة أصل تقنية المعلومات.
 Failed to create Journal Entry for Payroll Entry:,تعذر إنشاء قيد اليومية لمسير الرواتب:
-Failed to export,تعذر التصدير
 Failed to fetch Salary Slip:,تعذر جلب قسيمة الراتب:
 Failed to generate ZIP file. Please check the logs for details.,تعذر إنشاء الملف المضغوط. يرجى مراجعة السجلات للتفاصيل.
-Failed to load dashboard data. Please try again.,تعذر تحميل بيانات لوحة المعلومات. يرجى المحاولة مرة أخرى.
 Failed to load details,تعذر تحميل التفاصيل
 Failed to load documents: {0},تعذر تحميل المستندات: {0}
 Failed to process ZIP file. Please check the logs.,تعذر معالجة الملف المضغوط. يرجى مراجعة السجلات.
@@ -568,8 +284,6 @@ Failed to submit Salary Slip:,تعذر اعتماد قسيمة الراتب:
 Failed to update documents: {0},تعذر تحديث المستندات: {0}
 Failed to validate employees: {0},تعذر التحقق من الموظفين: {0}
 February,فبراير
-Fees for Ajeer program,رسوم برنامج أجير
-Fees for sponsorship transfer,رسوم نقل الكفالة
 Fees per Transfer,الرسوم لكل تحويل
 Fetch Details,جلب التفاصيل
 Fetch Salary,جلب الراتب
@@ -577,49 +291,20 @@ Fetching documents...,جارٍ جلب المستندات...
 Fetching payroll entries...,جارٍ جلب مسيرات الرواتب...
 Fetching salary slips...,جارٍ جلب قسائم الرواتب...
 File already exists: {0},الملف موجود مسبقًا: {0}
-File and link configuration,إعدادات الملفات والروابط
 Filter Employees,تصفية الموظفين
-Filters and Fans Regularly Serviced,صيانة الفلاتر والمراوح بانتظام
 Finance Book,الدفتر المالي
 Financial,مالي
-Financial Impact,الأثر المالي
-Fire Alarm,إنذار الحريق
-Fire Extinguisher,طفاية الحريق
-Fire Extinguisher Imgage,صورة طفاية الحريق
-Fire Extinguishers,طفايات الحريق
-Fire Safety,السلامة من الحريق
 First Response Time for Tickets,وقت الاستجابة الأولى للتذاكر
-Fixed Day off,يوم إجازة ثابت
-Fixed food allowance,بدل طعام ثابت
 Fleet,الأسطول
 Fleet Procedures,إجراءات الأسطول
-Fleet User,مستخدم الأسطول
-Follow-up Date,تاريخ المتابعة
 Food Allowance,بدل الطعام
 For applicants from outside the company.,للمتقدمين من خارج الشركة.
-Force Update,تحديث إجباري
-Form Information,بيانات النموذج
-Format: 0000XXX (4 digits followed by 3 English letters),الصيغة: 0000XXX (أربعة أرقام تليها ثلاثة أحرف إنجليزية)
 Found,موجود
-Freelancer,عمل حر
 From Employee,من الموظف
-From linked transfer request,من طلب النقل المرتبط
-Front Lights,الأضواء الأمامية
-Front Lights Image,صورة الأضواء الأمامية
-Fuel,الوقود
 Fuel Cost (Months),تكلفة الوقود (أشهر)
-Fuel Rate /Shipment,معدل الوقود / شحنة
-Fuel Types,أنواع الوقود
-Fuel consumption based on distance,استهلاك الوقود حسب المسافة
-Fuel consumption rate from manufacturer (km/liter),معدل استهلاك الوقود حسب الشركة المصنعة (كم/لتر)
 Fujairah,الفجيرة
-Full name of the passenger,الاسم الكامل للراكب
-Full name of the person requesting quote,الاسم الكامل لطالب عرض السعر
 GOSI (Months),التأمينات الاجتماعية (أشهر)
-GPS coordinates or map link,إحداثيات GPS أو رابط الخريطة
 General Administrative Expenses (Months),المصروفات الإدارية العامة (أشهر)
-General administrative expenses,المصروفات الإدارية العامة
-General release details,تفاصيل الإصدار العامة
 Generate 4 Ticket Images,إنشاء 4 صور للتذكرة
 Generate Pre-Check Report,إنشاء تقرير التحقق المسبق
 Generated BAT Script,برنامج BAT النصي المُنشأ
@@ -628,28 +313,17 @@ Generated on,أُنشئ في
 Generating WPS ZIP,جارٍ إنشاء الملف المضغوط لحماية الأجور
 Generating summary...,جارٍ إعداد الملخص...
 Generation Failed,فشل الإنشاء
-Generator Prompt,طلب المولّد
 Get Update and Sync and Calculate,جلب التحديث والمزامنة والحساب
 Get Vacation allowance,جلب بدل الإجازة
 GitHub Sync ID,معرّف مزامنة GitHub
-Good Condition,حالة جيدة
-Google Chat webhook URL is not configured.,رابط Webhook لـ Google Chat غير مُعد.
 Google Console,وحدة تحكم Google
 Gosi,التأمينات الاجتماعية
 Gosi Details,تفاصيل التأمينات الاجتماعية
-Gosi Salary,راتب التأمينات الاجتماعية
 Gov Card,البطاقة الحكومية
-Government Payment,المدفوعات الحكومية
-Government Payment for Asset scrapping cannot be cancelled. Please restore the Asset.,لا يمكن إلغاء المدفوعات الحكومية الخاصة باستبعاد الأصل. يرجى استعادة الأصل.
-Government Payment type should be set as Depreciation Entry for asset depreciation,يجب ضبط نوع المدفوعات الحكومية على قيد إهلاك لإهلاك الأصول
-Government Payment {0} does not have account {1} or already matched against other voucher,المدفوعات الحكومية {0} لا تحتوي على الحساب {1} أو سبقت مطابقتها مع سند آخر
 Grade,الدرجة
 Grade must be between 1 and 10.,يجب أن تكون الدرجة بين 1 و10.
-Gross Purchase Amount,إجمالي مبلغ الشراء
 Group Type,نوع المجموعة
-Gweiiyyah,القويعية
 HD Agent,موظف الدعم
-HD Escalation Rule,قاعدة تصعيد الدعم
 HD Service Level Agreement,اتفاقية مستوى خدمة الدعم
 HD Settings,إعدادات مكتب المساعدة
 HD Team,فريق الدعم
@@ -659,23 +333,14 @@ HD Ticket Type,نوع تذكرة الدعم
 Hide,إخفاء
 HOUSING 2,السكن 2
 HR,الموارد البشرية
-Ha'il,حائل
-Hafar Al Baten,حفر الباطن
-Hail,حائل
-Has Financial Impact,يوجد أثر مالي
 Health Certificate Cost (24 months),تكلفة الشهادة الصحية (24 شهرًا)
 Health Insurance,التأمين الصحي
-Health Insurance Date,تاريخ التأمين الصحي
 Health Insurance No,رقم التأمين الصحي
 Health Insurance Provider,مزود التأمين الصحي
-Health and Hygiene,الصحة والنظافة
 Help Desk,مكتب المساعدة
 Helpdesk,مكتب المساعدة
-Helpdesk Contact,جهة اتصال مكتب المساعدة
 Helpdesk Reports,تقارير مكتب المساعدة
 Hindi,الهندية
-Hood,غطاء المحرك
-Hood Image,صورة غطاء المحرك
 Horoob,تغيب عن العمل
 Hourly Rate,أجر الساعة
 Housing Allowance,بدل السكن
@@ -684,73 +349,41 @@ Housing Team,فريق السكن
 Housing old,السكن السابق
 "However, failed to update status on the following documents:",ومع ذلك، تعذر تحديث الحالة في المستندات التالية:
 Hub Sync ID,معرّف مزامنة المركز
-Hufuf,الهفوف
 I have read and agree to the Terms and Conditions and Privacy Policy,قرأت الشروط والأحكام وسياسة الخصوصية وأوافق عليها
 I understand and will comply with the Financial Policy .,أفهم السياسة المالية وسألتزم بها.
 IBAN Certificate,شهادة الآيبان
 IBAN Details,تفاصيل الآيبان
 IBAN Holder Name,اسم صاحب الآيبان
 IBAN Mismatch,عدم تطابق الآيبان
-IBAN Must be 24 Digits and Start with SA,يجب أن يتكون الآيبان من 24 خانة ويبدأ بـ SA
 IBAN Update,تحديث الآيبان
-IBAN Updates,تحديثات الآيبان
 IBAN Verified,تم التحقق من الآيبان
 ID,المعرّف
 ID Number,رقم الهوية
 ID Number CF,رقم الهوية
-ID at Company,الرقم لدى الشركة
 ID or iQama,الهوية أو الإقامة
 IRAC Provisioning Configuration,إعدادات مخصصات IRAC
 IT Asset,أصل تقنية المعلومات
-IT Asset Depreciation Schedule,جدول إهلاك أصل تقنية المعلومات
-IT Asset Movement,حركة أصل تقنية المعلومات
-IT Asset Movement Item,بند حركة أصل تقنية المعلومات
-IT Asset Movement {0} created successfully,أُنشئت حركة أصل تقنية المعلومات {0} بنجاح
-IT Log,سجل تقنية المعلومات
 Image attached: {0},أُرفقت الصورة: {0}
 Image data is empty.,بيانات الصورة فارغة.
-Impact severity classification,تصنيف شدة الأثر
 Import Excel Data,استيراد بيانات Excel
 Important,مهم
-In City,داخل المدينة
 In Process,قيد المعالجة
-Incident Log,سجل الحوادث
-Incident classification and details,تصنيف الحادثة وتفاصيلها
 Include Health Certificate,تضمين الشهادة الصحية
-Include Serial Number,تضمين الرقم التسلسلي
 Includes accommodation or transportation,يشمل السكن أو النقل
-Incorrect Movement Purpose,غرض الحركة غير صحيح
 Increase Rate (out of 100),نسبة الزيادة (من 100)
-Increase Reason,سبب الزيادة
-Increase Reason(Optional),سبب الزيادة (اختياري)
 Individual Profit,الربح الفردي
-Initial Diagnosis,التشخيص الأولي
 Inprocess,قيد المعالجة
 Input Required,يلزم الإدخال
-Inside Roof,السقف الداخلي
-Inside Roof image,صورة السقف الداخلي
-Inspected Date,تاريخ الفحص
-Inspected Person,الشخص الذي تم فحصه
-Inspection By,الفحص بواسطة
-Install Date,تاريخ التركيب
 Integration Status,حالة التكامل
 Interest Day-Count Convention,طريقة احتساب أيام الفائدة
-Interface Bumpers,مصدات الواجهة
-Interior,المقصورة الداخلية
-Internal Auditor,المدقق الداخلي
-Internal build identifier,معرّف البناء الداخلي
 Invalid IBAN,آيبان غير صالح
 Invalid Mobile,رقم جوال غير صالح
 Invalid action,إجراء غير صالح
-Iqama Barcode,باركود الإقامة
 Iqama Copy,نسخة الإقامة
 Iqama Cost (Annual),تكلفة الإقامة (سنوية)
 Iqama Duration in Months,مدة الإقامة بالأشهر
 Iqama Expiry,انتهاء الإقامة
 Iqama Expiry Date,تاريخ انتهاء الإقامة
-Iqama Fee,رسوم الإقامة
-Iqama ID,رقم الإقامة
-Iqama Id,رقم الإقامة
 Iqama Number,رقم الإقامة
 Iqama Renewal Amount,مبلغ تجديد الإقامة
 Iqama Renewal Management,إدارة تجديد الإقامة
@@ -774,29 +407,16 @@ JV Created for Renewal Fees,أُنشئ قيد يومية لرسوم التجدي
 JV Created for Sadad Invoice,أُنشئ قيد يومية لفاتورة سداد
 JV Due Date,تاريخ استحقاق القيد
 JV Series,سلسلة قيود اليومية
-Jack,الرافعة
 January,يناير
-Jazan,جازان
-Jeddah,جدة
 Job Title,المسمى الوظيفي
-Job application form,نموذج طلب توظيف
-Joining Details,بيانات الالتحاق
-Joining date,تاريخ الالتحاق
 Journal Entries have already been created for this IT Assets.,سبق إنشاء القيود اليومية لأصول تقنية المعلومات هذه.
-Journal Entry Approver,معتمد القيود اليومية
 Journal Entry created successfully for depreciation on {0},أُنشئ القيد اليومي للإهلاك في {0} بنجاح
-Journal Entry created: {0},أُنشئ القيد اليومي: {0}
-Journal Entry {0} created successfully.,أُنشئ القيد اليومي {0} بنجاح.
 Journal Entry {0} is created.,أُنشئ قيد اليومية {0}.
-Jubail,الجبيل
 KSA E-Invoicing QR,رمز QR للفوترة الإلكترونية في المملكة
-Khamis Mushyt,خميس مشيط
-Labor Cost,تكلفة العمالة
 Labor File No.,رقم ملف مكتب العمل
 Labor Office File Number,رقم ملف مكتب العمل
 Labor Operational Costs Quotation Calculator,حاسبة عرض سعر التكاليف التشغيلية للعمالة
 Last Month Salary,راتب الشهر الماضي
-Last Odometer Value,آخر قراءة للعداد
 Last Salary Amount,مبلغ آخر راتب
 Last Salary Date,تاريخ آخر راتب
 Layout,التخطيط
@@ -805,28 +425,11 @@ Leave Approver,مسؤول موافقة الإجازات
 Leave Block List,قائمة حظر الإجازات
 Leave request,طلب إجازة
 Leave Salary (Months),راتب الإجازة (أشهر)
-Left Back Door Inside,الباب الخلفي الأيسر من الداخل
-Left Back Door Inside Image,صورة الباب الخلفي الأيسر من الداخل
-Left Back Wheel,العجلة الخلفية اليسرى
-Left Back Wheel Image,صورة العجلة الخلفية اليسرى
-Left Door Image,صورة الباب الأيسر
-Left Doors,الأبواب اليسرى
-Left Front Door Inside,الباب الأمامي الأيسر من الداخل
-Left Front Door Inside Image,صورة الباب الأمامي الأيسر من الداخل
-Left Front Wheel,العجلة الأمامية اليسرى
-Left Front Wheel Image,صورة العجلة الأمامية اليسرى
-Left Mirror,المرآة اليسرى
-Left Mirror Image,صورة المرآة اليسرى
 Legal Entity / Subsidiary with a separate Chart of Establishment belonging to the Organization.,كيان نظامي أو شركة تابعة لها دليل منشآت مستقل يتبع الجهة.
 Legal user,مستخدم الشؤون القانونية
 License Plate,لوحة المركبة
-Lights,الأضواء
-Link to the original transfer request,رابط طلب النقل الأصلي
-Links to related documentation,روابط المستندات ذات الصلة
 List of Iqamas with Renewal Issues,قائمة الإقامات التي بها مشكلات تجديد
-Liter Price,سعر اللتر
 Loading Dashboard...,جارٍ تحميل لوحة المعلومات...
-Loading dashboard data...,جارٍ تحميل بيانات لوحة المعلومات...
 Loading details...,جارٍ تحميل التفاصيل...
 Loading documents...,جارٍ تحميل المستندات...
 Loan,القرض
@@ -839,82 +442,41 @@ Localization Costs (Months),تكاليف التوطين (أشهر)
 Location Title,اسم الموقع
 Location Type,نوع الموقع
 Location URL,رابط الموقع
-Location where passenger boarded,موقع صعود الراكب
-Lug Wrench,مفتاح العجلات
-Lug Wrench Image,صورة مفتاح العجلات
 Maximum draft Journal Entries one user can hold. 0 removes the limit.,أقصى عدد من مسودات القيود لكل مستخدم. القيمة 0 تلغي الحد.
 MOL EUN,الرقم الموحد للمنشأة
-Madinah,المدينة المنورة
-Maintenance Issue,مشكلة صيانة
-Maintenance Result,نتيجة الصيانة
-Majma'ah,المجمعة
 Make Accrual Entry,إنشاء قيد استحقاق
 Make Bank Entry,إنشاء قيد بنكي
-Make Bank Entrys,إنشاء قيود بنكية
-Makkah,مكة المكرمة
 Man,رجل
-Mandatory update for users,تحديث إجباري للمستخدمين
-Manufacturer/Brand name,الشركة المصنعة / العلامة التجارية
 March,مارس
-Mecca,مكة المكرمة
 Medical Exam Fee (24 months),رسوم الفحص الطبي (24 شهرًا)
 Medical Insurance (Annual),التأمين الطبي (سنوي)
-Medina,المدينة المنورة
-Message Content,محتوى الرسالة
 Message Greeting,تحية الرسالة
 Message Language,لغة الرسالة
 Minimum days between Disbursement date and first Repayment date,الحد الأدنى للأيام بين تاريخ الصرف وتاريخ أول قسط
 Mismatched documents,مستندات غير متطابقة
 Missed renewal window. Follow up with HR / Legal immediately.,فاتت مهلة التجديد. تابع مع الموارد البشرية / الشؤون القانونية فورًا.
 Missing IBAN,الآيبان غير موجود
-Missing required authentication fields,حقول المصادقة المطلوبة غير مكتملة
 Mobile,الجوال
 Mobile Cost (Annual),تكلفة الجوال (سنوية)
-Mobile number of supervisor,رقم جوال المشرف
 Model,الطراز
-Model Number,رقم الطراز
-Model number or operating system,رقم الطراز أو نظام التشغيل
 Modified By,عُدِّل بواسطة
-Monitoring,المراقبة
 Month Name,اسم الشهر
-Monthly Accrued Amount,المبلغ المستحق شهريًا
-Monthly Consumption /SAR,الاستهلاك الشهري / ريال
-Monthly fuel cost,تكلفة الوقود الشهرية
-Muhayil Asir,محايل عسير
 Multiple,متعدد
 Municipal License,رخصة البلدية
 Muqeem,مقيم
-Muqeem document not found,لم يُعثر على مستند مقيم
-Muqeem info,بيانات مقيم
-My Location,موقعي
 New AFMCO employees arriving at King Khalid International Airport,موظفو أفمكو الجدد عند وصولهم إلى مطار الملك خالد الدولي
 No account needed.,لا يحتاج حسابًا.
 No attachments,لا توجد مرفقات
 NPA Flag,مؤشر الأصل غير العامل
-Najran,نجران
-Name of the accommodation unit,اسم وحدة السكن
-Name of the asset being issued or returned,اسم الأصل المسلَّم أو المُعاد
-Name or title of the document,اسم المستند أو عنوانه
 National Unified No,الرقم الوطني الموحد
 Nationality,الجنسية
-Net Pay Amount,صافي مبلغ الأجر
 Net Salary,صافي الراتب
-New Employee Status,الحالة الجديدة للموظف
 New Expiration Date,تاريخ الانتهاء الجديد
 New Housing Supervisor Mobile,جوال مشرف السكن الجديد
 New Information,البيانات الجديدة
-New Plate Number,رقم اللوحة الجديدة
-New Vehicle Type,نوع المركبة الجديدة
-Newsletter style report copied to clipboard.,نُسخ التقرير بنمط النشرة إلى الحافظة.
-No Attachments Needed,لا يلزم إرفاق مستندات
-No Employees,لا يوجد موظفون
-No Financial Impact,لا يوجد أثر مالي
-No Maintenance,لا توجد صيانة
-No Payment Required - Company Vehicle,لا يلزم الدفع - مركبة الشركة
 No Payroll Entries match your criteria.,لا توجد مسيرات رواتب تطابق المعايير.
 No Recruitment Fee,لا توجد رسوم استقدام
 No Salary Slips found for payment.,لم يُعثر على قسائم رواتب للدفع.
-No Salary Slips found for this Payroll Entry.,لم يُعثر على قسائم رواتب لقيد الرواتب هذا.
 No Salary Slips found.,لم يُعثر على قسائم رواتب.
 No Valid Documents,لا توجد مستندات صالحة
 No WPS files found. Please generate WPS ZIP first.,لم يُعثر على ملفات حماية الأجور. يرجى إنشاء الملف المضغوط أولًا.
@@ -925,77 +487,44 @@ No data matching the criteria to process,لا توجد بيانات تطابق �
 No data with credit to export,لا توجد بيانات دائنة للتصدير
 No differences found between the document and employee data.,لا توجد فروقات بين المستند وبيانات الموظف.
 No draft Salary Slips found for this Payroll Entry.,لم يُعثر على قسائم رواتب مسودة لمسير الرواتب هذا.
-No employees found in the employeelist.,لم يُعثر على موظفين في قائمة الموظفين.
 No outstanding cheques or deposits in this period,لا توجد شيكات أو إيداعات معلقة في هذه الفترة
-No passengers added yet,لم يُضف ركاب بعد
 No schedules found to create entries.,لم يُعثر على جداول لإنشاء القيود.
 No submitted Salary Slips found,لم يُعثر على قسائم رواتب معتمدة
-No unpaid salary slips found for this Payroll Entry.,لم يُعثر على قسائم رواتب غير مدفوعة لقيد الرواتب هذا.
 No valid Employee IDs found after parsing.,لم يُعثر على أرقام وظيفية صالحة بعد التحليل.
 No workflow history available,لا يوجد سجل لسير العمل
-No. of Shipments,عدد الشحنات
 No. of children,عدد الأبناء
-Normal Duty Time,وقت الدوام العادي
-Not OK,غير سليم
-Note: {0},ملاحظة: {0}
-Notes(Optional),ملاحظات (اختياري)
-Notification User,مستخدم الإشعار
 November,نوفمبر
 Number of Deliveries,عدد التوصيلات
 Number of Dependents,عدد التابعين
-Number of Depreciations Booked,عدد أقساط الإهلاك المسجلة
 Number of Documents,عدد المستندات
 Number of Employees,عدد الموظفين
-Number of shipments per day,عدد الشحنات يوميًا
 Number of vacation days per year,عدد أيام الإجازة السنوية
 Number to Hire,العدد المطلوب توظيفه
-Open in Apex,فتح في Apex
 Open in New Tab,فتح في علامة تبويب جديدة
 Open the form,فتح النموذج
 OT Hour,ساعة العمل الإضافي
-OTHER ALLOWANCE,بدلات أخرى
 OTHER ALLOWANCE 2,بدلات أخرى 2
-OTHER ALLOWANCE Details,تفاصيل البدلات الأخرى
-Obligations,الالتزامات
 Occupation,المهنة
 October,أكتوبر
-Odo Meter Issue Time,وقت قراءة العداد عند الإصدار
-Odometer Screen,شاشة العداد
-Odometer Screen Image,صورة شاشة العداد
 Odometer Value,قراءة العداد
-Offline Limit,حد عدم الاتصال
-Oil Pressure,ضغط الزيت
-Oil Pressure Image,صورة ضغط الزيت
 Old Parent,العنصر الرئيسي السابق
-Old Plate Number,رقم اللوحة القديمة
-Old Vehicle Type,نوع المركبة القديمة
 One-time Employment Costs,تكاليف التوظيف لمرة واحدة
 Only Draft documents can generate the ZIP,يمكن إنشاء الملف المضغوط للمستندات المسودة فقط
 Only Submitted documents can regenerate the ZIP,يمكن إعادة إنشاء الملف المضغوط للمستندات المعتمدة فقط
-Only fill this if using a past year (e.g. 2024) — must be 4 digits.,املأ هذا الحقل فقط عند استخدام سنة سابقة (مثل 2024)، ويجب أن يتكون من 4 أرقام.
-Only one Table field allowed per DocType,يُسمح بحقل جدول واحد فقط لكل نوع مستند
 Open General Ledger,فتح دفتر الأستاذ العام
 Operation User,مستخدم العمليات
-Operation Workspace,مساحة عمل العمليات
 Operational Costs,التكاليف التشغيلية
 Operations - Logistics Solutions,العمليات - الحلول اللوجستية
 Operations - Manpower Solutions,العمليات - حلول القوى العاملة
 Other Allowance,بدل آخر
-Other Allw,بدلات أخرى
 Other Details,تفاصيل أخرى
 Other ID,هوية أخرى
-Other Issue Image,صورة مشكلة أخرى
 Out City,خارج المدينة
 OutSource Co,شركة التعهيد
 Outside Kingdom,خارج المملكة
-Outside Roof,السقف الخارجي
-Outside Roof Image,صورة السقف الخارجي
-Outside Trunk / Back Door,صندوق السيارة / الباب الخلفي من الخارج
 Outstanding entries,القيود المعلقة
-Over time Hours,ساعات العمل الإضافي
 Overtime Assignment Request,طلب تكليف بعمل إضافي
 Overtime Cost,تكلفة العمل الإضافي
-Overtime Value,قيمة العمل الإضافي
 Payment Requisition,طلب الصرف
 Pending Action Window (Days),مدة عرض الإجراءات قيد الانتظار (بالأيام)
 PR Creation Date (Residency Renewal),تاريخ إنشاء طلب الصرف (تجديد الإقامة)
@@ -1006,37 +535,23 @@ PR Reference,مرجع طلب الصرف
 PR Reference 2,مرجع طلب الصرف 2
 PR User (Residency Renewal),مستخدم طلب الصرف (تجديد الإقامة)
 PR User (SADAD Invoice),مستخدم طلب الصرف (فاتورة سداد)
-Package ID,معرّف الحزمة
-Paid Loan,قرض مدفوع
-Palestine,فلسطين
-Palestinian Egyptian,فلسطيني مصري
 Parent Company,الشركة الأم
 Partly Claimed and Returned,مطالب به جزئيًا ومرتجع
 Passenger,الراكب
 Passenger Count,عدد الركاب
-Passenger Details,تفاصيل الركاب
-Passenger Seat Floor,أرضية مقعد الراكب
-Passenger Seat Floor Image,صورة أرضية مقعد الراكب
-Passenger Statistics,إحصائيات الركاب
-Passenger boarding records,سجلات صعود الركاب
-Passenger phone number,رقم هاتف الراكب
 Passengers,الركاب
 Passport Expiry Date,تاريخ انتهاء جواز السفر
 Passport No,رقم جواز السفر
 Passport Number,رقم جواز السفر
-Passport number,رقم جواز السفر
 Paste Excel Data,لصق بيانات Excel
 "Paste data copied from Excel, the first row must contain headers.",الصق البيانات المنسوخة من Excel، ويجب أن يحتوي الصف الأول على العناوين.
 Payment Entry Series,سلسلة سندات الدفع
-Payment Management (Trial),إدارة المدفوعات (تجريبي)
 Payment Order created successfully:,أُنشئ أمر الدفع بنجاح:
 Payment Order is already created.,سبق إنشاء أمر الدفع.
 Payment Order is not required for Company Transport.,لا يلزم أمر دفع لنقل الشركة.
 Payment Request Details,تفاصيل طلب الصرف
 Payment Request Number,رقم طلب الصرف
 Payment Request already created for document {0} for employee {1}.,سبق إنشاء طلب صرف للمستند {0} للموظف {1}.
-Payment Required,يلزم الدفع
-Payment invoice number,رقم فاتورة الدفع
 Payment of MOI - Expatriates,مدفوعات وزارة الداخلية - المقيمون
 Payment of MOI - Expatriates List,قائمة مدفوعات وزارة الداخلية - المقيمون
 Payroll Clearing Account,حساب تسوية الرواتب
@@ -1044,7 +559,6 @@ Payroll Cost Center,مركز تكلفة الرواتب
 Payroll Entries,مسيرات الرواتب
 Payroll Entry Filters,عوامل تصفية مسيرات الرواتب
 Payroll Entry Reference,مرجع مسير الرواتب
-Payroll Entry updated successfully.,تم تحديث قيد الرواتب بنجاح.
 Payroll Entry(ies) {0} already linked to report {1},مسيرات الرواتب {0} مرتبطة مسبقًا بالتقرير {1}
 Payroll User,مستخدم الرواتب
 Performance,الأداء
@@ -1052,54 +566,28 @@ Period Unit,وحدة الفترة
 Permanent Address Description,وصف العنوان الدائم
 Permission Role,دور الصلاحية
 Permit Number,رقم التصريح
-Person responsible for resolution,الشخص المسؤول عن المعالجة
-Person who added the document,الشخص الذي أضاف المستند
-Personal Belongings List,قائمة المتعلقات الشخصية
 Personal Information,المعلومات الشخصية
-Petrol 91,بنزين 91
 Phase,المرحلة
 Photo,الصورة
-Physical condition of the asset,الحالة المادية للأصل
-Physical location of incident,الموقع الفعلي للحادثة
 Pickup Location,موقع الاستلام
-Picture of the building from the outside.,صورة المبنى من الخارج.
-Picture of the entrance.,صورة المدخل.
-Plate Number,رقم اللوحة
-Play Store/App Store or Direct Link,متجر Play / App Store أو رابط مباشر
-Please Add Experiences,يرجى إضافة الخبرات
-Please Select,يرجى الاختيار
-Please add all certificates in one attachment.,يرجى إضافة جميع الشهادات في مرفق واحد.
-Please add at least one employee to the transfer request,يرجى إضافة موظف واحد على الأقل إلى طلب النقل
-"Please add the ID number to the account number if the applicant does not have the necessary authorization. If the applicant lacks the required permissions, kindly disregard the addition of the account number.",يرجى إضافة رقم الهوية إلى رقم الحساب إذا لم يكن لدى مقدم الطلب الصلاحية اللازمة، وإذا لم تتوفر لديه الصلاحيات المطلوبة فيرجى تجاهل إضافة رقم الحساب.
 "Please complete the required information for unregistered passengers in the ""Passengers"" tab.","يرجى استكمال البيانات المطلوبة للركاب غير المسجلين في تبويب ""الركاب""."
 Please delete the Employee {0} to cancel this document,يرجى حذف الموظف {0} لإلغاء هذا المستند
 Please enter Employee IDs first.,يرجى إدخال الأرقام الوظيفية أولًا.
 Please enter a valid Google Maps link for dropoff location,يرجى إدخال رابط خرائط Google صالح لموقع التنزيل
-Please enter a valid Google Maps link for location,يرجى إدخال رابط خرائط Google صالح للموقع
-Please enter a valid Google Maps link for location URL,يرجى إدخال رابط خرائط Google صالح لرابط الموقع
 Please enter a valid Google Maps link for pickup location,يرجى إدخال رابط خرائط Google صالح لموقع الاستلام
 Please enter a valid Saudi IBAN (SA + 22 digits),يرجى إدخال آيبان سعودي صالح (SA + 22 رقمًا)
 Please enter a valid Saudi IBAN.,يرجى إدخال آيبان سعودي صالح.
 Please enter a valid Saudi mobile number,يرجى إدخال رقم جوال سعودي صالح
-Please enter a valid Saudi mobile number for current supervisor,يرجى إدخال رقم جوال سعودي صالح للمشرف الحالي
-Please enter a valid Saudi mobile number for new supervisor,يرجى إدخال رقم جوال سعودي صالح للمشرف الجديد
-Please enter a valid Saudi mobile number for supplier,يرجى إدخال رقم جوال سعودي صالح للمورد
-Please enter a valid Saudi mobile number for the driver.,يرجى إدخال رقم جوال سعودي صالح للسائق.
 Please enter a valid Saudi mobile number.,يرجى إدخال رقم جوال سعودي صالح.
 Please enter a valid cell number with at least 9 digits.,يرجى إدخال رقم جوال صالح لا يقل عن 9 أرقام.
 Please enter supplier mobile number before sending,يرجى إدخال رقم جوال المورد قبل الإرسال
-Please fill Supplier Mobile before sending WhatsApp.,يرجى تعبئة جوال المورد قبل الإرسال عبر واتساب.
 Please fill out all required fields.,يرجى تعبئة جميع الحقول المطلوبة.
 Please fill the field: {0},يرجى تعبئة الحقل: {0}
 Please fill the required fields: {0},يرجى تعبئة الحقول المطلوبة: {0}
-Please mention why you do not have a bank account by your name in case its not your private bank account.,يرجى توضيح سبب عدم وجود حساب بنكي باسمك في حال لم يكن الحساب حسابك الشخصي.
-Please process this urgent request within 24 hours,يرجى معالجة هذا الطلب العاجل خلال 24 ساعة
-"Please save the form, then print it by selecting the 'Petty Cash Format'. After signing it, click here to attach the signed form.",يرجى حفظ النموذج ثم طباعته باختيار 'Petty Cash Format'، وبعد توقيعه اضغط هنا لإرفاق النموذج الموقع.
 Please select Bank Fees Account and VAT Account if applying fees.,يرجى اختيار حساب الرسوم البنكية وحساب ضريبة القيمة المضافة عند تطبيق الرسوم.
 Please select Payroll Entry,يرجى اختيار مسير الرواتب
 "Please select Transport Type as ""Supplier"" or ""Ticket Purchase"" to create Payment Order.","يرجى اختيار نوع النقل ""Supplier"" أو ""Ticket Purchase"" لإنشاء أمر الدفع."
 Please select a Payment Request first,يرجى اختيار طلب صرف أولًا
-Please select a driver.,يرجى اختيار سائق.
 Please select an Employee,يرجى اختيار موظف
 Please select an Employee to compare.,يرجى اختيار موظف للمقارنة.
 Please select an Employee.,يرجى اختيار موظف.
@@ -1118,15 +606,11 @@ Please select documents to update SADAD number or exemption status.,يرجى ا�
 Please select documents with status Awaiting Payment.,يرجى اختيار المستندات ذات الحالة بانتظار السداد.
 Please select only documents with status Awaiting Operations Approval.,يرجى اختيار المستندات ذات الحالة بانتظار موافقة العمليات فقط.
 Please select only documents with status New.,يرجى اختيار المستندات ذات الحالة جديد فقط.
-Please set DocType Name first,يرجى تحديد اسم نوع المستند أولًا
-Please set a Bank Account in the Payroll Entry.,يرجى تحديد حساب بنكي في قيد الرواتب.
-Please set a Default Salary Account in the Payroll Entry.,يرجى تحديد حساب الرواتب الافتراضي في قيد الرواتب.
 Please set both Payroll Payable Account and Payment Account.,يرجى تحديد حساب رواتب مستحقة الدفع وحساب الدفع.
 Please set the Available For Use Date.,يرجى تحديد تاريخ الجاهزية للاستخدام.
 Please set the Payroll Payable Account.,يرجى تحديد حساب رواتب مستحقة الدفع.
 Policy Info,بيانات الوثيقة
 Policy Number,رقم الوثيقة
-Poor,ضعيف
 Posting Date,تاريخ الترحيل
 Pre-Check Failed,فشل التحقق المسبق
 Pre-Check Validation,التحقق المسبق
@@ -1134,64 +618,29 @@ Pre-Check: Issues Found,التحقق المسبق: توجد مشكلات
 Pre-Check: Validation Passed,التحقق المسبق: نجح التحقق
 Pre-check passed! You can now submit the report.,نجح التحقق المسبق! يمكنك الآن اعتماد التقرير.
 Prefered Contact Email,البريد الإلكتروني المفضل للتواصل
-Preferred project timeline,الجدول الزمني المفضل للمشروع
-Premium,مميز
-Preparing results display...,جارٍ تجهيز عرض النتائج...
-Primary incident identification,التعريف الأولي للحادثة
-Procedures,الإجراءات
 Proceed to Submit,المتابعة إلى الاعتماد
 Processing Accrual Entry...,جارٍ معالجة قيد الاستحقاق...
-Processing Journal Entry...,جارٍ معالجة القيد اليومي...
-Processing Salary Slips...,جارٍ معالجة قسائم الرواتب...
-Processing: {0},جارٍ المعالجة: {0}
 Profit Margin (%),هامش الربح (%)
 Profit and Discount,الربح والخصم
 Project Branch,فرع المشروع
-Project Details,تفاصيل المشروع
-Project Link,رابط المشروع
-Project association details,بيانات الارتباط بالمشروع
 Property manager,مدير العقار
-Property Owner,مالك العقار
-Proposed Action,الإجراء المقترح
 Purchase Invoice Series,سلسلة فواتير الشراء
 Purchase Receipt,سند استلام المشتريات
 Qiwa,قوى
-Quality rating of resolution approach,تقييم جودة أسلوب المعالجة
-Quick Government Payment,مدفوعات حكومية سريعة
-Qunfudah,القنفذة
 Quota,الحصة
-Qurayyat,القريات
 Rabet Muqeem Integrator,رابط تكامل مقيم
-Rabigh,رابغ
-Radius,نصف القطر
-Rafga,رفحاء
 Ras Al Khaimah,رأس الخيمة
-Ready,جاهز
-Real Estate Address,عنوان العقار
-Real Estate Details,تفاصيل العقار
-Real Estate Location,موقع العقار
-Real Estate Name,اسم العقار
-Real Estate Owner,مالك العقار
-Real estate broker,الوسيط العقاري
-Reason for Changing,سبب التغيير
 Reason of Not Renewal is required when Renewal Preference is No.,"سبب عدم التجديد مطلوب عندما تكون رغبة التجديد ""لا""."
 Reason of Preventing Renewal,سبب منع التجديد
-Receipt Car Date,تاريخ استلام السيارة
-Recommended corrective actions,الإجراءات التصحيحية الموصى بها
 Recoverable Reverse Charge (Percentage),الاحتساب العكسي القابل للاسترداد (نسبة مئوية)
 Recoverable Standard Rated Expenses (AED),المصروفات الخاضعة للنسبة الأساسية القابلة للاسترداد (درهم)
 Recurring Employment Costs,تكاليف التوظيف المتكررة
-References:,المراجع:
 Referring the case to,إحالة الحالة إلى
 Regenerating ZIP,جارٍ إعادة إنشاء ملف ZIP
 Registration Info,بيانات التسجيل
-Regulator,منظم الضغط
 Reject,رفض
 Reject Renewal,رفض التجديد
-Related Documents,المستندات ذات الصلة
 Relationship,صلة القرابة
-Remarks5,ملاحظات 5
-Remotely,عن بعد
 Renew Iqama,تجديد الإقامة
 Renew Iqama Service,خدمة تجديد الإقامة
 Renew Passport,تجديد جواز السفر
@@ -1201,75 +650,31 @@ Renewal Expiration Violation on Employee,مخالفة انتهاء التجدي�
 Renewal Fee Amount,مبلغ رسوم التجديد
 Renewal Fee Amount for Advance Payments,مبلغ رسوم التجديد للدفعات المقدمة
 Renewal Fee Amount for Current Year,مبلغ رسوم التجديد للسنة الحالية
-Renewal Management (Trial),إدارة التجديد (تجريبي)
 Renewal Overdue,التجديد متأخر
 Renewal Preference updated successfully.,تم تحديث رغبة التجديد بنجاح.
 Renewal Required,يلزم التجديد
 Renewal Tracking Report (Trial),تقرير متابعة التجديد (تجريبي)
-Rent Details,تفاصيل الإيجار
-Rent End Date,تاريخ انتهاء الإيجار
-Rent Office,مكتب التأجير
-Rent Office (New),مكتب التأجير (الجديد)
-Rent Office (Old),مكتب التأجير (القديم)
-Rent Policy Number,رقم وثيقة التأجير
-Rent Start Date,تاريخ بدء الإيجار
 Repay Unclaimed Amount from Salary,استرداد المبلغ غير المطالب به من الراتب
 Replacement,الاستبدال
-Report Details,تفاصيل التقرير
 Report Generated At,وقت إنشاء التقرير
-Report copied (fallback). Formatting may vary.,نُسخ التقرير (طريقة بديلة). قد يختلف التنسيق.
-Reported By,أبلغ عنه
-Reported On,تاريخ البلاغ
-Reporting Manager,المدير المباشر
-Repost Accounting Entries,إعادة ترحيل القيود المحاسبية
-Repost Required,تلزم إعادة الترحيل
-Reposting...,جارٍ إعادة الترحيل...
 Reprint Exit Re-Entry Visa,إعادة طباعة تأشيرة الخروج والعودة
 Request Date,تاريخ الطلب
-Request Quote,طلب عرض سعر
 Request Scenario,سيناريو الطلب
 Request User,مستخدم الطلبات
-Request date,تاريخ الطلب
 Requested By,مقدم الطلب
-Requested by,طلب بواسطة
 Required Arrival Date,تاريخ الوصول المطلوب
 Required Arrival Time,وقت الوصول المطلوب
-Required Spare Parts,قطع الغيار المطلوبة
-Required arrival date cannot be in the past,لا يمكن أن يكون تاريخ الوصول المطلوب في الماضي
-Required data is missing for the comment insertion.,البيانات المطلوبة لإضافة الملاحظة غير مكتملة.
-Requirements and Confirmations,المتطلبات والتأكيدات
-Requires Action,يلزم إجراء
 Reschedule Date,تاريخ إعادة الجدولة
 Rescheduled,أُعيدت جدولته
 Resident Balance,رصيد المقيم
-Resignation Letter,خطاب الاستقالة
 Resolving commercial registration numbers...,جارٍ التحقق من أرقام السجلات التجارية...
-Response and tracking details,تفاصيل الاستجابة والمتابعة
 Restructure Limit % (Overall),حد إعادة الهيكلة % (الإجمالي)
-Results,النتائج
 Return Before,العودة قبل
 Return Before a Specific Date,العودة قبل تاريخ محدد
 Return Date,تاريخ الإرجاع
 Return back to work,العودة إلى العمل
 Returned,مرتجع
 Reverse Charge Applicable,ينطبق الاحتساب العكسي
-Reverse Government Payment,عكس المدفوعات الحكومية
-Review Request,مراجعة الطلب
-Review Ticket,مراجعة التذكرة
-Right Back Door Inside,الباب الخلفي الأيمن من الداخل
-Right Back Wheel,العجلة الخلفية اليمنى
-Right Back Wheel Image,صورة العجلة الخلفية اليمنى
-Right Door Image,صورة الباب الأيمن
-Right Doors,الأبواب اليمنى
-Right Front Door Inside,الباب الأمامي الأيمن من الداخل
-Right Front Door Inside Image,صورة الباب الأمامي الأيمن من الداخل
-Right Front Wheel,العجلة الأمامية اليمنى
-Right Front Wheel Image,صورة العجلة الأمامية اليمنى
-Right Mirror,المرآة اليمنى
-Right Mirror Image,صورة المرآة اليمنى
-Riyadh,الرياض
-Room No,رقم الغرفة
-Round trip distance from home to warehouse (km),مسافة الذهاب والعودة من السكن إلى المستودع (كم)
 SADAD Calculation,حساب سداد
 SADAD Setup Account,حساب إعدادات سداد
 SADAD Batch Item,بند دفعة سداد
@@ -1279,7 +684,6 @@ SADAD Group Item,بند مجموعة سداد
 SADAD Invoice Creation Date,تاريخ إنشاء فاتورة سداد
 SADAD Number,رقم سداد
 SADAD Type,نوع سداد
-SADAD code,رمز سداد
 SADAD number and exemption status updated successfully.,تم تحديث رقم السداد وحالة الإعفاء بنجاح.
 Send a message to the company administration.,أرسل رسالة إلى إدارة الشركة.
 Send your new bank account number for your salary. HR reviews it before it takes effect.,أرسل رقم حسابك البنكي الجديد لإيداع الراتب. تراجعه الموارد البشرية قبل اعتماده.
@@ -1289,117 +693,59 @@ Sadad Invoice Amount,مبلغ فاتورة سداد
 Sadad Invoice Amount for Advance Payments,مبلغ فاتورة سداد للدفعات المقدمة
 Sadad Invoice Amount for Current Year,مبلغ فاتورة سداد للسنة الحالية
 Safety Shoes Cost (Annual),تكلفة حذاء السلامة (سنوية)
-Safety Systems,أنظمة السلامة
-Safety and Evacuation,السلامة والإخلاء
-Sakaka,سكاكا
-Salary Compression,ضغط الرواتب
-Salary Difference,فرق الراتب
 Salary Information,بيانات الراتب
 Salary Slip,قسيمة الراتب
 Salary for Last Month of Previous Year,راتب الشهر الأخير من السنة السابقة
-Salary slip submitted successfully.,اعتُمدت قسيمة الراتب بنجاح.
 Sales Invoice Series,سلسلة فواتير المبيعات
-Sample picture of a fire extinguisher.,صورة نموذجية لطفاية الحريق.
-Sample picture of cleaning tools.,صورة نموذجية لأدوات التنظيف.
-Sample picture of the bathrooms.,صورة نموذجية لدورات المياه.
-Sample picture of the corridors.,صورة نموذجية للممرات.
-Sample picture of the emergency exit.,صورة نموذجية لمخرج الطوارئ.
-Sample picture of the kitchens.,صورة نموذجية للمطابخ.
-Sample picture of the rooms.,صورة نموذجية للغرف.
-Sanitation Facilities Clean,مرافق الصرف الصحي نظيفة
 Saudi IBAN format: SA followed by 22 digits,صيغة الآيبان السعودي: SA يليها 22 رقمًا
-Saudi Labor Law.,نظام العمل السعودي.
-Saudi Tax and Customs Regulations.,أنظمة الضرائب والجمارك السعودية.
 Saudi mobile format: 05XXXXXXXX or 9665XXXXXXXX,صيغة الجوال السعودي: 05XXXXXXXX أو 9665XXXXXXXX
-Scan Details,تفاصيل المسح
-Scanned Passengers,الركاب الممسوحون
-Schedule Information,بيانات الجدول الزمني
 Schedule Request,جدولة الطلب
 Schedule for Later,جدولة لاحقًا
 Scheduled Hours,الساعات المجدولة
 Scheduled for {0},مجدول في {0}
-Scissors Jack,الرافعة المقصية
-Scissors Jack Image,صورة الرافعة المقصية
 Search and Populate,بحث وتعبئة
 Search employees...,ابحث عن الموظفين...
 Select Payment Type,اختر نوع الدفع
 Select Salaries,اختر الرواتب
 Select reschedule date,اختر تاريخ إعادة الجدولة
-Select the job position,اختر الوظيفة
-Select the nationality of the employee,اختر جنسية الموظف
-"Select the replacement employee when the staff member leaves the project. If no replacement is available, the matter must be escalated to management immediately.",اختر الموظف البديل عند مغادرة الموظف للمشروع، وإذا لم يتوفر بديل فيجب رفع الأمر إلى الإدارة فورًا.
-Select the type of employment,اختر نوع التوظيف
-Select the type of fuel,اختر نوع الوقود
-Select the vehicle brand/type,اختر علامة المركبة / نوعها
 "Selected documents must use ""Supplier"" transport type and not be cancelled or rejected.","يجب أن يكون نوع النقل في المستندات المحددة ""Supplier"" وألا تكون ملغاة أو مرفوضة."
 Selected documents status:,حالة المستندات المحددة:
 Self-Service Employee,موظف الخدمة الذاتية
-Semantic version (e.g. 1.0.2),رقم الإصدار (مثل 1.0.2)
 Send WhatsApp,إرسال واتساب
 Send WhatsApp to Driver,إرسال واتساب إلى السائق
 Send WhatsApp to Supplier,إرسال واتساب إلى المورد
 Senior Tenure,خدمة طويلة
 September,سبتمبر
-Serial Number,الرقم التسلسلي
-Serial Number Format,صيغة الرقم التسلسلي
 Service Codes,رموز الخدمات
 Service Duration,مدة الخدمة
-Service Outage,انقطاع الخدمة
 Service Provider,مزود الخدمة
 Service Type,نوع الخدمة
-Severity Level,مستوى الخطورة
-Sewage Bill Details,تفاصيل فاتورة الصرف الصحي
 Sharjah,الشارقة
 Shift Request Approver,مسؤول الموافقة على طلبات الورديات
 Shipment Number,رقم الشحنة
 Show Changes,عرض التغييرات
-Sim Servecise,خدمات الشريحة
 Simple,بسيط
-Site / Location,الموقع
-Skakah,سكاكا
-Skipping salary slip {0} due to missing employee or net pay.,تم تخطي قسيمة الراتب {0} لعدم وجود الموظف أو صافي الأجر.
-Solution Effectiveness Rating,تقييم فعالية الحل
-Source of the incident report,مصدر بلاغ الحادثة
-Spare Tire,الإطار الاحتياطي
-Spare Wheel,العجلة الاحتياطية
-Spare Wheel Image,صورة العجلة الاحتياطية
 Special requests,طلبات خاصة
 Split Amount on Number,تقسيم المبلغ على عدد
 Sponsor,صاحب العمل
 Sponsor Name,اسم صاحب العمل
-Sponsorship Details,تفاصيل الكفالة
 Sponsorship Transfer,نقل الكفالة
 Sponsorship Transfer Fees ( 24 Months),رسوم نقل الكفالة (24 شهرًا)
-Staff Evacuation Training Status,حالة تدريب الموظفين على الإخلاء
-Start and End Times,أوقات البداية والنهاية
-Starting analysis...,جارٍ بدء التحليل...
-Starting point of the trip,نقطة بداية الرحلة
 Starting validation...,جارٍ بدء التحقق...
 Station,المحطة
-Status Report,تقرير الحالة
 Status has been changed to Awaiting Payment,تم تغيير الحالة إلى بانتظار الدفع
 Status has been changed to Rejected,تم تغيير الحالة إلى مرفوض
 Status updated to:,تم تحديث الحالة إلى:
-"Std work hrs: 8H/day, 6 days/wk. Overtime is 1.5x/hr beyond 8H/day. Enter daily work hrs (max 12H).",ساعات العمل المعتادة: 8 ساعات يوميًا، 6 أيام أسبوعيًا. العمل الإضافي 1.5 ضعف أجر الساعة لما يزيد على 8 ساعات يوميًا. أدخل ساعات العمل اليومية (12 ساعة كحد أقصى).
-Stop Car Date,تاريخ إيقاف السيارة
-Stop Working,توقف عن العمل
-Store Name,اسم المتجر
 Sub Policy Number,رقم الوثيقة الفرعية
 Submit a leave request if you do not have an account in the employee app.,قدّم طلب إجازتك إذا لم يكن لك حساب في تطبيق الموظف.
 Submit Salary Slips,اعتماد قسائم الرواتب
 Submit your job application and CV to AFMCO.,قدّم طلب التوظيف وسيرتك الذاتية إلى أفمكو.
-Subscriber’s name,اسم المشترك
-Subscription Section,قسم الاشتراك
-Subscription type,نوع الاشتراك
 Success Rate,نسبة النجاح
 Successfully created Payment Order:,أُنشئ أمر الدفع بنجاح:
 Successfully updated {0} document(s),تم تحديث {0} مستند بنجاح
-"Sudan, South",جنوب السودان
-Summary of financial or operational impact,ملخص الأثر المالي أو التشغيلي
 Supervisor,المشرف
 Supervisor Allowance,بدل الإشراف
 Supervisor Contacts,جهات اتصال المشرف
-Supervisor responsible for accommodation,المشرف المسؤول عن السكن
 Supplier Bank Account Number,رقم الحساب البنكي للمورد
 Supplier Bank Account Number is not a valid Saudi IBAN.,رقم الحساب البنكي للمورد ليس آيبان سعوديًا صالحًا.
 Supplier IBAN,آيبان المورد
@@ -1407,82 +753,44 @@ Supplier Information,بيانات المورد
 Supplier Mobile,جوال المورد
 Supplier or Driver Mobile,جوال المورد أو السائق
 Support Policy,سياسة الدعم
-Supporting documents and links,المستندات والروابط الداعمة
-Supporting files and documents,الملفات والمستندات الداعمة
 Suspended,موقوف
 System Management Tools,أدوات إدارة النظام
 System User,مستخدم النظام
 Temporary IBAN WPS Run,مسير حماية الأجور لرقم الآيبان المؤقت
 Temporary IBAN,رقم آيبان مؤقت
-This request moved to Apex as a Transport Request. New requests are created in Apex.,انتقل هذا الطلب إلى Apex باسم Transport Request. الطلبات الجديدة تُنشأ في Apex.
 WPS Used,مسيرات حماية الأجور المستخدمة
 to the AFMCO family,في أسرة أفمكو
-TOTAL OT,إجمالي العمل الإضافي
 TRANSFERED TO ANOTHER COMPANY,منقول إلى شركة أخرى
-Ta'if,الطائف
-Tab 2,تبويب 2
-Tabuk,تبوك
-Taif,الطائف
-Target Location is required while transferring Asset {0},الموقع المستهدف مطلوب عند نقل الأصل {0}
-Target Location or To Employee is required while receiving Asset {0},الموقع المستهدف أو الموظف المستلم مطلوب عند استلام الأصل {0}
-Target date for next review,التاريخ المستهدف للمراجعة القادمة
 Tax Code,الرمز الضريبي
 Tax Refund provided to Tourists (AED),الضريبة المستردة للسياح (درهم)
 Tax Withholding Category,فئة ضريبة الاستقطاع
-AFMCO Operations,عمليات أفمكو
 Temporary Location,موقع مؤقت
-Terminated,منتهية خدمته
-Termination Date,تاريخ إنهاء الخدمة
 Termination Penalty Clause,بند غرامة الإنهاء
 Terms,الشروط
 Text of a WhatsApp Message to the Employee,نص رسالة واتساب للموظف
-Thank you for your understanding and cooperation.,شكرًا لتفهمكم وتعاونكم.
-The Executive Regulations of the Saudi Labor Law.,اللائحة التنفيذية لنظام العمل السعودي.
-The browser and OS information.,بيانات المتصفح ونظام التشغيل.
 The data must contain at least one header row and one data row.,يجب أن تحتوي البيانات على صف عناوين واحد وصف بيانات واحد على الأقل.
-The date and time of the visit.,تاريخ ووقت الزيارة.
-The field cannot be empty.,لا يمكن ترك الحقل فارغًا.
-The field must have at least 5 characters.,يجب ألا يقل الحقل عن 5 أحرف.
 The first Approver in the list will be set as the default Approver.,سيُعيَّن أول مسؤول موافقة في القائمة بوصفه مسؤول الموافقة الافتراضي.
 The following documents are missing IBAN numbers:,المستندات التالية ينقصها رقم الآيبان:
 The issue must be closed by the date,يجب إغلاق المشكلة بحلول التاريخ
-The latitude of the visitor's location.,خط عرض موقع الزائر.
-The longitude of location.,خط طول الموقع.
-The task has been enqueued as a background job.,أُدرجت المهمة كعملية في الخلفية.
 The ticket allowance will be allocated as per your decision.,سيُخصَّص بدل التذاكر حسب قرارك.
-The visitor's IP address.,عنوان IP للزائر.
-The visitor's captured image.,الصورة الملتقطة للزائر.
 There was an error creating the Expense Request.,حدث خطأ أثناء إنشاء طلب المصروف.
-There was an error updating the employee status.,حدث خطأ أثناء تحديث حالة الموظف.
-This is the cost of the health certificate,هذه تكلفة الشهادة الصحية
-"This message and its attachments are intended solely for the designated recipient(s) and may contain confidential information. If you are not the intended recipient, please delete it immediately.",هذه الرسالة ومرفقاتها موجهة إلى المستلم المحدد فقط وقد تحتوي على معلومات سرية. إذا لم تكن المستلم المقصود فيرجى حذفها فورًا.
 This request must be in Approved state before creating an Expense Request.,يجب أن يكون هذا الطلب في حالة معتمد قبل إنشاء طلب دفع.
-This section contains one-time employment costs like recruitment and visa fees.,يحتوي هذا القسم على تكاليف التوظيف لمرة واحدة مثل رسوم الاستقدام والتأشيرة.
-This section contains recurring employment costs like monthly or annual costs.,يحتوي هذا القسم على تكاليف التوظيف المتكررة مثل التكاليف الشهرية أو السنوية.
 This will generate WPS files and cannot be undone. Continue?,سيؤدي هذا إلى إنشاء ملفات حماية الأجور ولا يمكن التراجع عنه. هل تريد المتابعة؟
 This will regenerate the ZIP file. Continue?,سيؤدي هذا إلى إعادة إنشاء ملف ZIP. هل تريد المتابعة؟
-Thumb,البصمة
 Ticket,التذكرة
 Ticket Analytics,تحليلات التذاكر
 Ticket Configuration,إعدادات التذاكر
-Ticket Purchase,شراء تذكرة
 Ticket Summary,ملخص التذاكر
 Ticket Type,نوع التذكرة
-Ticket type,نوع التذكرة
 "Tip: Use ""Add Supplier Details"" button to update IBAN","تلميح: استخدم زر ""Add Supplier Details"" لتحديث الآيبان"
-Tires / Wheels,الإطارات / العجلات
 Title,المسمى
 "Total Cost excluding Salary, VAT, and Profit",إجمالي التكلفة دون الراتب وضريبة القيمة المضافة والربح
 Total Cost with VAT (Contract Duration),إجمالي التكلفة شامل ضريبة القيمة المضافة (مدة العقد)
 Total Cost with VAT (Monthly),إجمالي التكلفة شامل ضريبة القيمة المضافة (شهري)
-Total Credit/ Debit Amount should be same as linked Government Payment,يجب أن يساوي إجمالي المبلغ الدائن/المدين المدفوعات الحكومية المرتبطة
 Total Days,إجمالي الأيام
 Total Debit must equal Total Credit. The difference is,يجب أن يساوي إجمالي المدين إجمالي الدائن. الفرق هو
 Total Fees,إجمالي الرسوم
-Total Maintenance Cost,إجمالي تكلفة الصيانة
-Total Months,إجمالي الأشهر
 Total Net Pay,إجمالي صافي الراتب
-Total Net Pay is 0. No Journal Entry created.,إجمالي صافي الأجر صفر. لم يُنشأ قيد يومي.
 Total New Salary,إجمالي الراتب الجديد
 Total Number of Depreciation Must Be Greater Than Zero.,يجب أن يكون إجمالي عدد أقساط الإهلاك أكبر من صفر.
 Total Passengers,إجمالي الركاب
@@ -1491,51 +799,25 @@ Total Records,إجمالي السجلات
 Total Salary,إجمالي الراتب
 Total Salary (Months),إجمالي الراتب (أشهر)
 Total and VAT Calculation,حساب الإجمالي وضريبة القيمة المضافة
-Total cost including profit margin,إجمالي التكلفة شامل هامش الربح
-Total cost including profit margin and VAT,إجمالي التكلفة شامل هامش الربح وضريبة القيمة المضافة
-Total daily distance traveled,إجمالي المسافة اليومية المقطوعة
-Total daily fuel cost in SAR,إجمالي تكلفة الوقود اليومية بالريال
-Total expected passengers,إجمالي الركاب المتوقع
-Total liters needed,إجمالي اللترات المطلوبة
-Total monthly cost,إجمالي التكلفة الشهرية
 Total worker cost per month before tax,إجمالي تكلفة العامل الشهرية قبل الضريبة
-Total working Days,إجمالي أيام العمل
 Transfer Reason,سبب النقل
-Transport Service,خدمة النقل
 Transport Type,نوع النقل
 Transportation Allowance,بدل النقل
 Transportation Cost (Months),تكلفة النقل (أشهر)
 Travel Before,السفر قبل
-Triangle Image,صورة المثلث التحذيري
-Triangle and First Aid,المثلث التحذيري والإسعافات الأولية
 Trip Details,تفاصيل الرحلة
 Trip Locations,مواقع الرحلة
 Trip Notes,ملاحظات الرحلة
-Trip Reference,مرجع الرحلة
-Trip Summary,ملخص الرحلة
-Trunk Back Door Inside,صندوق السيارة / الباب الخلفي من الداخل
-Trunk Back Door Inside Image,صورة صندوق السيارة / الباب الخلفي من الداخل
-Trunk/Back Door Image,صورة صندوق السيارة / الباب الخلفي
-Turkey,تركيا
 Type IQama,نوع الإقامة
-Type of Increase,نوع الزيادة
 Type of Visa,نوع التأشيرة
-Type of accommodation,نوع السكن
-Type of incident reported,نوع الحادثة المبلغ عنها
-Type of related document,نوع المستند المرتبط
-Type of service required,نوع الخدمة المطلوبة
 Types (Arabic),الأنواع (عربي)
 Types (English),الأنواع (إنجليزي)
 UNKNOWN,غير معروف
 Update your IBAN,تحديث رقم الآيبان
-URGENT - IMMEDIATE ACTION REQUIRED,عاجل - يلزم إجراء فوري
-URL or file path reference,رابط أو مسار الملف
 Umm Al Quwain,أم القيوين
 Unable to calculate contract. Check joining date.,تعذر حساب العقد. تحقق من تاريخ المباشرة.
 Unexpected Increase,زيادة غير متوقعة
 Uniform Cost (Annual),تكلفة الزي الموحد (سنوية)
-Unique serial number of the asset,الرقم التسلسلي الفريد للأصل
-Units,الوحدات
 Unregistered Employee,موظف غير مسجل
 Update All,تحديث الكل
 Update Information Service,خدمة تحديث البيانات
@@ -1543,43 +825,19 @@ Update Renewal Preference,تحديث رغبة التجديد
 Update SADAD Number,تحديث رقم السداد
 Updating documents...,جارٍ تحديث المستندات...
 Updating source documents...,جارٍ تحديث المستندات المصدر...
-Upload APK/IPA file directly,رفع ملف APK/IPA مباشرة
-Upload Date,تاريخ الرفع
-Uploaded By,رُفع بواسطة
 Uploading image...,جارٍ رفع الصورة...
 Urdu,الأردية
-Urgency and Status,الأولوية والحالة
-User Requirements,متطلبات المستخدم
 VAT (15%),ضريبة القيمة المضافة (15%)
 VAT Account,حساب ضريبة القيمة المضافة
 VAT Amount (15%),مبلغ ضريبة القيمة المضافة (15%)
 VAT Emirate,إمارة ضريبة القيمة المضافة
-VEHICLE ID,رقم المركبة
 Vacation Day,يوم إجازة
 Vacation Days,أيام الإجازة
 Validate IBAN format,التحقق من صيغة الآيبان
 Validity Dates,تواريخ السريان
-Value Added Tax (15% of total cost),ضريبة القيمة المضافة (15% من إجمالي التكلفة)
-Vehicle Assets,أصول المركبات
-Vehicle Condition,حالة المركبة
 Vehicle Cost (Months),تكلفة المركبة (أشهر)
-Vehicle Data Record Updated Successfully,تم تحديث سجل بيانات المركبة بنجاح
-Vehicle Detail,تفاصيل المركبة
-Vehicle Details,تفاصيل المركبة
-Vehicle Equipment,تجهيزات المركبة
-Vehicle Exit Date,تاريخ خروج المركبة
-Vehicle Exit Time,وقت خروج المركبة
 Vehicle Expenses,مصروفات المركبات
-Vehicle Information,بيانات المركبة
-Vehicle Kit,عدة المركبة
-Vehicle Manager,مدير المركبات
-Vehicle Owner,مالك المركبة
 Vehicle Team,فريق المركبات
-Vendor,المورد
-Ventilation System Operational,نظام التهوية يعمل
-Ventilation and Air Conditioning,التهوية والتكييف
-Verify By,تحقق بواسطة
-Version Number,رقم الإصدار
 Visa Cost ( 24 Months),تكلفة التأشيرة (24 شهرًا)
 Visa Details,تفاصيل التأشيرة
 Visa Duration (Days),مدة التأشيرة (أيام)
@@ -1590,53 +848,29 @@ Visa Number,رقم التأشيرة
 Visa Status,حالة التأشيرة
 Visa Type,نوع التأشيرة
 Visa issuance date,تاريخ إصدار التأشيرة
-Visitor Log,سجل الزوار
 Welcome to our new colleagues,مرحبًا بزملائنا الجدد
 WORKFLOW HISTORY,سجل سير العمل
 WPS Consolidated Report,تقرير حماية الأجور الموحد
 WPS File Metadata,بيانات ملف حماية الأجور
 WPS Report Reference,مرجع تقرير حماية الأجور
 WPS ZIP generated successfully with {0} file(s),أُنشئ ملف ZIP لحماية الأجور بنجاح ويضم {0} ملف
-Wadi Al Dawasir,وادي الدواسر
 Waiting Sadad,بانتظار السداد
 Waiting To join The Work,بانتظار مباشرة العمل
-Warning Triangle,المثلث التحذيري
 Warning: processing more than 10 Payroll Entries may take longer,تحذير: قد تستغرق معالجة أكثر من 10 مسيرات رواتب وقتًا أطول
-Waste Disposal Proper,التخلص من النفايات بشكل سليم
 Watch Period Post Loan Restructure (In Days),فترة المراقبة بعد إعادة هيكلة القرض (بالأيام)
-Water,المياه
-Water Account Number,رقم حساب المياه
-Water Bill Details,تفاصيل فاتورة المياه
-What's new in this version,الجديد في هذا الإصدار
 WhatsApp Driver,واتساب السائق
 WhatsApp Message,رسالة واتساب
-WhatsApp Messages,رسائل واتساب
 WhatsApp Supplier,واتساب المورد
-WhatsApp message opened,فُتحت رسالة واتساب
-When the barcode was scanned,وقت مسح الباركود
-When the driver started the trip,وقت بدء السائق للرحلة
-When the trip was completed,وقت اكتمال الرحلة
-Whether the passenger identity was verified,هل تم التحقق من هوية الراكب
-Windows / Windshield,النوافذ / الزجاج الأمامي
-Windshield,الزجاج الأمامي
-Windshield Image,صورة الزجاج الأمامي
 Within renewal window ({0} – {1}). Legal review required.,ضمن مهلة التجديد ({0} – {1}). تلزم مراجعة قانونية.
-Woman,امرأة
-Work Designation,المسمى الوظيفي
 Work Permit,رخصة العمل
 Work Permit (Annual),رخصة العمل (سنوية)
 Work Permit Fee,رسوم رخصة العمل
 Worker,العامل
 Worker's Contract Duration Cost,تكلفة مدة عقد العامل
 Working Hours Per Day,ساعات العمل اليومية
-Workshop Supervisor Name,اسم مشرف الورشة
-Workshop Supervisor Notes,ملاحظات مشرف الورشة
-Workshop Supervisor Signature,توقيع مشرف الورشة
-Yanbu,ينبع
 Yearly Summary,الملخص السنوي
 Years of Service,سنوات الخدمة
 You are updating {0} document(s),أنت تحدّث {0} مستند
-You can not enter current voucher in 'Against Government Payment' column,لا يمكنك إدخال السند الحالي في عمود 'مقابل المدفوعات الحكومية'
 "You cannot uncheck ""Accrual Entry Created"" once it has been set.","لا يمكنك إلغاء تحديد ""Accrual Entry Created"" بعد تعيينه."
 "You cannot uncheck ""Bank Entry Created"" once it has been set.","لا يمكنك إلغاء تحديد ""Bank Entry Created"" بعد تعيينه."
 account,الحساب
@@ -1647,43 +881,31 @@ application for employment,طلب توظيف
 approved,موافق عليه
 arabic,العربية
 bengali,البنغالية
-bonus,المكافأة
-cafes,المقاهي
 currency,العملة
 date,التاريخ
 date of birth,تاريخ الميلاد
 date of expiry,تاريخ الانتهاء
 date of issue,تاريخ الإصدار
 delivery,التوصيل
-discuss,مناقشة
 do they live with you now in ksa,هل يعيشون معك حاليًا في المملكة
 do you have any healh problems,هل تعاني من أي مشكلات صحية
 employees,الموظفون
 english,الإنجليزية
 facility closed,المنشأة مغلقة
-flexible,مرن
-for hours beyond 8 per day.,للساعات التي تتجاوز 8 ساعات يوميًا.
 generated,مُنشأ
 hindi,الهندية
-hotels,الفنادق
 iQama Expired,إقامة منتهية
-iQama Expiry Date,تاريخ انتهاء الإقامة
 iQama expiration date,تاريخ انتهاء الإقامة
 iQama issuance date,تاريخ إصدار الإقامة
 id,المعرّف
 id place of issue,مكان إصدار الهوية
 image,الصورة
-immediate,فوري
-invoice number,رقم الفاتورة
 job,الوظيفة
 marital status,الحالة الاجتماعية
 mobile,الجوال
 months remaining,الأشهر المتبقية
-multiple,متعدد
 nationality,الجنسية
 other,أخرى
-over-500k,أكثر من 500 ألف
-packaging,التغليف
 party,الطرف
 period,الفترة
 place of birth,مكان الميلاد
@@ -1693,32 +915,16 @@ promo 2,عرض ترويجي 2
 regenerated,أُعيد إنشاؤه
 rejected,مرفوض
 sex,الجنس
-stop working,توقف عن العمل
 supervisor,المشرف
-the annual fees for exit and re-entry visas.,الرسوم السنوية لتأشيرات الخروج والعودة.
-the medical exam fee for issuing residence permit.,رسوم الفحص الطبي لإصدار الإقامة.
-under-50k,أقل من 50 ألف
 update,تحديث
 updated the status,حدّث الحالة
 urdu,الأردية
-warehouses,المستودعات
 witing,بالانتظار
-work location,موقع العمل
 worker's monthly cost,التكلفة الشهرية للعامل
-workforce,القوى العاملة
 {0} copied to clipboard,نُسخ {0} إلى الحافظة
 "{0} uploaded, {1} skipped (already attached)",رُفع {0}، وتم تخطي {1} (مرفق مسبقًا)
-⏳ Trip request is pending approval.,⏳ طلب الرحلة بانتظار الاعتماد.
-⚠️ Rolling back previous actions due to error.,⚠️ جارٍ التراجع عن الإجراءات السابقة بسبب خطأ.
 "✅ Employee analysis complete. {0} records processed, {1} found.",✅ اكتمل تحليل الموظفين. عولج {0} سجل، ووُجد {1}.
-✅ Trip request has been approved and is ready for execution.,✅ اعتُمد طلب الرحلة وأصبح جاهزًا للتنفيذ.
-❌ Trip request has been rejected. Please review and resubmit if needed.,❌ رُفض طلب الرحلة. يرجى المراجعة وإعادة الإرسال عند الحاجة.
-🏁 Dropoff Location,🏁 موقع التنزيل
-📄 Generate Tickets,📄 إنشاء التذاكر
-📍 Pickup Location,📍 موقع الاستلام
-📝 Complete the trip details and submit for approval.,📝 أكمل تفاصيل الرحلة وأرسلها للاعتماد.
 🔍 Analyze Employees,🔍 تحليل الموظفين
-🚨 URGENT REQUEST - IMMEDIATE ACTION REQUIRED,🚨 طلب عاجل - يلزم إجراء فوري
 Learn more,اعرف المزيد
 Confirm,تأكيد,Confirm gravatar deletion prompt
 Delete Gravatar URLs,حذف روابط Gravatar
@@ -1738,7 +944,6 @@ Tenure,مدة الخدمة
 Sign In,تسجيل الدخول
 Welcome! Please sign in to continue.,مرحبًا! يرجى تسجيل الدخول للمتابعة.
 Forgot password?,نسيت كلمة المرور؟
-Chat With Us,تحدث معنا
 Username,اسم المستخدم
 Continue,متابعة
 Clear all filters,مسح جميع عوامل التصفية
@@ -1747,7 +952,6 @@ Saved Filters,عوامل التصفية المحفوظة
 Filter,تصفية
 Created On,تاريخ الإنشاء
 ID,المعرّف,Label of name column in report
-Server Scripts Disabled,البرامج النصية للخادم معطلة
 Receivables,الذمم المدينة
 Payables,الذمم الدائنة
 Payment Reconciliation,تسوية الدفعات
@@ -1770,7 +974,6 @@ Begin typing for results.,ابدأ الكتابة لعرض النتائج.
 Property Setter,محدد الخاصية
 Printing,الطباعة
 Employee Advance,سلفة الموظف
-Masters & Reports,البيانات الرئيسية والتقارير
 Claims,المطالبات
 Advances,السلف
 Accounting Reports,التقارير المحاسبية
@@ -1783,14 +986,6 @@ Employee Exits,إنهاء خدمات الموظفين
 Employee Information,معلومات الموظف
 Employee Birthday,أعياد ميلاد الموظفين
 Employees Working on a Holiday,الموظفون العاملون في يوم عطلة
-Total Outgoing Bills,إجمالي الفواتير الصادرة
-Total Incoming Bills,إجمالي الفواتير الواردة
-Total Incoming Payment,إجمالي المدفوعات الواردة
-Total Outgoing Payment,إجمالي المدفوعات الصادرة
-Incoming Bills (Purchase Invoice),الفواتير الواردة (فاتورة شراء)
-Outgoing Bills (Sales Invoice),الفواتير الصادرة (فاتورة مبيعات)
-Accounts Receivable Ageing,أعمار الذمم المدينة
-Accounts Payable Ageing,أعمار الذمم الدائنة
 Loan Product,منتج القرض
 Charges,الرسوم
 Loan Repayment Schedule,جدول سداد القرض
@@ -1814,11 +1009,6 @@ Quotation Trends,اتجاهات عروض الأسعار
 Inactive Customers,العملاء غير النشطين
 Customer Addresses And Contacts,عناوين العملاء وجهات الاتصال
 Sales Person Target Variance Based On Item Group,تباين أهداف مندوب المبيعات حسب مجموعة الأصناف
-Learn Sales Management,تعلّم إدارة المبيعات
-Learn Inventory Management,تعلّم إدارة المخزون
-Learn Manufacturing,تعلّم التصنيع
-Learn Project Management,تعلّم إدارة المشاريع
-Warehouse wise Stock Value,قيمة المخزون حسب المستودع
 Total Stock Value,إجمالي قيمة المخزون
 Total Warehouses,إجمالي المستودعات
 Total Active Items,إجمالي الأصناف النشطة
@@ -1836,8 +1026,6 @@ Letter Head Name,اسم الترويسة
 Refreshing...,جارٍ التحديث...
 Close Condition,شرط الإغلاق
 Assignment Days,أيام التعيين
-All Days,كل الأيام
-Weekends,عطلات نهاية الأسبوع
 Posting Time,وقت الترحيل
 Edit Posting Date and Time,تعديل تاريخ ووقت الترحيل
 Consider for Tax Withholding,مراعاة استقطاع الضريبة
@@ -1853,105 +1041,20 @@ Total Taxes and Charges,إجمالي الضرائب والرسوم
 Total Sanctioned Amount,إجمالي المبلغ المعتمد
 Issue a debit note against an existing Sales Invoice to adjust the rate. The quantity will be retained from the original invoice.,أصدِر إشعارًا مدينًا مقابل فاتورة مبيعات قائمة لتعديل السعر، مع الاحتفاظ بالكمية من الفاتورة الأصلية.
 Totals (Company Currency),الإجماليات (عملة الشركة)
-Current Vehicle Information,معلومات المركبة الحالية
 Accounts Closing,إقفال الحسابات
 HR & Payroll,الموارد البشرية والرواتب
-Zatca Setting,إعدادات ZATCA
-CR Number,رقم السجل التجاري
 Value Date,تاريخ القيمة
 Rate PerDay - Hour,السعر لكل يوم - ساعة
-Zatca Status,حالة ZATCA
-Zatca Tax Category,فئة ضريبة ZATCA
 Exemption Reason Code,رمز سبب الإعفاء
-Not Submitted,لم يُرسل
-Not submitted,لم يُرسل
-Date the labour joined the company,تاريخ التحاق العامل بالشركة
-Date when the passport expires,تاريخ انتهاء جواز السفر
-Details regarding the labour's sponsorship,تفاصيل كفالة العامل
-Generated QR code for quick access to labour details,رمز QR للوصول السريع إلى بيانات العامل
-Labour's bank account number,رقم الحساب البنكي للعامل
-Labour's contact number,رقم التواصل مع العامل
-Labour's date of birth,تاريخ ميلاد العامل
-Labour's full name,الاسم الكامل للعامل
-Labour's job title or role,المسمى الوظيفي للعامل
-Labour's nationality,جنسية العامل
-Labour's passport number,رقم جواز سفر العامل
-Location where the labour is accommodated,موقع سكن العامل
-Name of emergency contact,اسم جهة الاتصال في حالات الطوارئ
-Name of the labour's bank,اسم بنك العامل
-Phone number of emergency contact,رقم هاتف جهة الاتصال في حالات الطوارئ
-Project the labour is assigned to,المشروع المكلف به العامل
-Relationship of emergency contact,صلة القرابة بجهة الاتصال في حالات الطوارئ
-Unique identification number for Iqama,رقم الهوية الخاص بالإقامة
 You cannot create more than {0} drafts. Submit or delete one of your current drafts.,لا يمكنك إنشاء أكثر من {0} مسودة. اعتمد إحدى مسوداتك الحالية أو احذفها.
 The document cannot be approved before the required documents are attached.,لا يمكن الموافقة على المستند قبل إرفاق المستندات المطلوبة.
-A clear career path,مسار وظيفي واضح
-"A professional appearance and courteous dealings with colleagues, supervisors and clients.",مظهر مهني وتعامل لبق مع الزملاء والرؤساء والعملاء.
 AFMCO Employee Portal,بوابة موظفي أفمكو
 Abdullah Fahad Al-Mutairi Co. Ltd.,شركة عبدالله فهد المطيري المحدودة
-Avoid any conflict of interest or misuse of your position.,تجنّب أي تعارض في المصالح أو استغلال للوظيفة.
-Care for company assets,المحافظة على أصول الشركة
-"Clear, periodic performance reviews that recognize outstanding effort.",تقييم دوري واضح للأداء يقدّر الجهد المتميز.
-Complaint Line,خط الشكاوى
 Complaints email,بريد الشكاوى
-Concerns through the right channel,الملاحظات عبر القناة الرسمية
-Confidentiality of information,سرية المعلومات
-Contact HR,تواصل مع الموارد البشرية
 Continue to your workspace,المتابعة إلى مساحة عملك
-Continuous training,التدريب المستمر
-Courtesy with everyone,اللباقة مع الجميع
-Dignity and respect,الكرامة والاحترام
-Employee Complaint Platform,منصة الشكاوى للموظفين
-Every employee is treated with dignity. No form of harassment is tolerated.,نعامل كل موظف بكرامة واحترام، ونرفض أي شكل من أشكال المضايقة.
-"Everything you need, one sign-in away.",كل ما تحتاجه على بُعد تسجيل دخول واحد.
-Fair evaluation,التقييم المنصف
-"Fair, transparent policies in hiring, evaluation and promotion, without discrimination.",سياسات عادلة وشفافة في التوظيف والتقييم والترقية، دون أي تمييز.
-Fairness and equal opportunity,العدالة وتكافؤ الفرص
-Following safety rules,التقيّد بتعليمات السلامة
-"For any question, request or concern, reach Human Resources directly.",لأي استفسار أو طلب أو ملاحظة، تواصل مع الموارد البشرية مباشرة.
-HR Email,البريد الإلكتروني للموارد البشرية
-HR WhatsApp,واتساب الموارد البشرية
-HR is one call away.,الموارد البشرية على بُعد اتصال.
-Health and safety,الصحة والسلامة
-How we conduct ourselves at work.,كيف نتعامل في بيئة العمل.
-Integrity,النزاهة
-"Keep to working hours, attendance and the tasks assigned to you.",الالتزام بمواعيد العمل والحضور والمهام الموكلة إليك.
-Mastery,الإتقان
-No conflict of interest,لا تعارض في المصالح
-No task is urgent enough to justify cutting corners on safety.,لا توجد مهمة عاجلة إلى حدٍّ يبرّر التهاون في السلامة.
 Office phone,هاتف المكتب
-"One team,",فريق واحد،
-Our people are our real capital.,موظفونا رأس مالنا الحقيقي.
 Our values,قيمنا
-Page sections,أقسام الصفحة
-Periodic training programs and workshops that build your skills.,برامج تدريبية وورش عمل دورية تطوّر مهاراتك.
-Professional conduct,السلوك المهني
-"Protect company and client information, during and after your service.",المحافظة على سرية معلومات الشركة وعملائها أثناء الخدمة وبعدها.
-Punctuality and commitment,الانضباط والالتزام
-Raise any concern or complaint through the official HR channels.,رفع أي ملاحظة أو شكوى عبر قنوات الموارد البشرية الرسمية.
-Read the employee charter,اطّلع على ميثاق الموظف
-Room to grow and advance in your career with us.,فرص للنمو والتقدم في مسارك الوظيفي معنا.
-Safety first,السلامة أولًا
-Salaries and entitlements are paid in full and on schedule.,تُدفع الرواتب والمستحقات كاملةً وفي مواعيدها.
-Sign in to the portal,تسجيل الدخول إلى البوابة
-Team spirit,روح الفريق
-"The AFMCO employee portal: our values, your rights and duties, conduct at work, and your growth with us.",بوابة موظفي أفمكو: قيمنا، وحقوقك وواجباتك، والسلوك المهني، ونموّك معنا.
-"The values we work by, every day.",قيم نعمل بها كل يوم.
-"These are our commitments to every employee, in line with the Labor Law.",هذه التزاماتنا تجاه كل موظف، وفق نظام العمل.
 This portal is for AFMCO employees only.,هذه البوابة مخصصة لموظفي أفمكو فقط.
-"Use equipment, vehicles and materials responsibly, and report any damage.",استخدام المعدات والمركبات والمواد بمسؤولية، والإبلاغ عن أي تلف.
-Wages paid on time,دفع الأجور في مواعيدها
-"We do what is right in every task, whether or not anyone is watching.",نلتزم بالصواب في كل مهمة، سواء رآنا أحد أم لم يرَنا.
-"We provide a safe and healthy work environment that adheres to the highest occupational safety standards, providing comprehensive medical insurance for the employee and their family members.",نوفر بيئة عمل آمنة وصحية تلتزم بأعلى معايير السلامة المهنية، مع توفير التأمين الطبي الشامل للموظف وأفراد أسرته.
-"We share the load, support one another and succeed together.",نتقاسم المسؤولية، ويسند بعضنا بعضًا، وننجح معًا.
-We take pride in work done right the first time.,نعتز بالعمل المنجز على الوجه الصحيح من المرة الأولى.
-"Wear protective equipment where required, and report any hazard at once.",ارتداء معدات الوقاية حيثما يلزم، والإبلاغ الفوري عن أي خطر.
-What we count on from you.,ما نعوّل عليه منك.
-Your duties,واجباتك
-Your growth,نموّك المهني
-Your growth is part of our plan.,نموّك جزء من خطتنا.
-Your rights,حقوقك
-one standard of excellence.,ومعيار واحد للتميّز.
 Journal Entry Details,تفاصيل قيد اليومية
 Credit Bank Account,حساب البنك الدائن
 Employee Classification (for Accounting Routing),تصنيف الموظف (للتوجيه المحاسبي)
@@ -2009,7 +1112,6 @@ Renewal,التجديد
 Payment Requests,طلبات الصرف
 Products,المنتجات
 Amounts,المبالغ
-Notes and Reference,الملاحظات والمرجع
 Invoice,الفاتورة
 Notes,الملاحظات
 Attendance,الحضور
@@ -2024,7 +1126,6 @@ Reward and Tickets,المكافأة والتذاكر
 Sponsor Status,حالة صاحب العمل
 Asset Details,تفاصيل الأصل
 Department and Corporation,القسم والمؤسسة
-Hours above 8 a day are charged as overtime at 1.5 times the hourly rate.,الساعات التي تزيد على 8 في اليوم تُحسب عملًا إضافيًا بمرة ونصف أجر الساعة
 Calculated from the contract start and end dates.,تُحسب من تاريخ بدء العقد وتاريخ نهايته.
 "Enter the full monthly salary, including the food allowance.",أدخل الراتب الشهري كاملًا شاملًا بدل الطعام.
 "Monthly pay for hours above 8 a day, over 26 working days.",أجر الساعات الزائدة على 8 يوميًا عن 26 يوم عمل في الشهر.
@@ -2040,11 +1141,6 @@ Monthly share of half a month's salary for each year of service.,الحصة ال
 "Cost of all workers per month, including profit and before discount.",تكلفة جميع العمال شهريًا شاملة الربح وقبل الخصم.
 15% of the total after discount.,15% من الإجمالي بعد الخصم.
 "Monthly total for all workers after discount, including profit and VAT.",الإجمالي الشهري لجميع العمال بعد الخصم، شاملًا الربح وضريبة القيمة المضافة.
-"Semantic version, for example 1.0.2.",رقم الإصدار بصيغة مثل 1.0.2
-Makes this update mandatory for users.,يجعل هذا التحديث إلزاميًا للمستخدمين
-Marks this as the current version of the app.,يحدد هذا الإصدار كالإصدار الحالي للتطبيق
-Upload the APK or IPA file.,ارفع ملف APK أو IPA
-"Play Store, App Store, or direct download link.",رابط Play Store أو App Store أو رابط تنزيل مباشر
 "Name and occupation of parents, spouse and children.",اسم ومهنة الوالدين والزوج أو الزوجة والأبناء.
 "Height, weight, allergies and medical concerns.",الطول والوزن والحساسية والمشكلات الصحية.
 A short biography for the website and other publications.,نبذة مختصرة للموقع والمنشورات الأخرى.
@@ -2060,9 +1156,7 @@ Do not edit; these values are updated from GOSI.,لا تعدّل هذه البي
 "Select the replacement employee; if there is none, escalate to management at once.",اختر الموظف البديل، وإذا لم يتوفر بديل فارفع الموضوع للإدارة فورًا.
 "Two months' wage, owed if the employee ends the contract without a valid reason.",أجر شهرين يلتزم به الموظف إذا أنهى العقد من طرفه دون سبب مشروع.
 One ticket allowance per year of leave deferred with Operations Management approval.,بدل تذاكر واحد عن كل سنة يؤجل فيها الموظف إجازته بموافقة إدارة العمليات.
-"If the applicant lacks authorization, add the ID number to the account number.",إذا لم تكن لدى مقدم الطلب صلاحية، فأضف رقم الهوية إلى رقم الحساب.
 "Save, print with the Petty Cash Format, sign, then attach the signed form here.",احفظ النموذج واطبعه بصيغة Petty Cash Format، ثم وقّعه وأرفقه هنا.
-Days on which staff in this department cannot take leave.,الأيام التي لا يُسمح فيها لموظفي القسم بأخذ إجازة.
 "Fill only for a past year, as 4 digits (e.g. 2024).",يُعبأ فقط لسنة سابقة، بأربعة أرقام (مثل 2024).
 Enter up to 12 hours; hours above 8 are charged as overtime at 1.5 times the hourly rate.,أدخل 12 ساعة كحد أقصى، وما زاد على 8 ساعات يُحسب عملًا إضافيًا بمرة ونصف أجر الساعة.
 One-time costs are spread over 24 months in the monthly cost.,التكاليف لمرة واحدة تُوزَّع على 24 شهرًا في التكلفة الشهرية.
@@ -2070,102 +1164,38 @@ Company bank account the petty cash is paid from.,حساب الشركة البن
 Operations,العمليات
 Finance,المالية
 Care,الرعاية
-Al Muzahmiyah,المزاحمية
-Al Quwayiyah,القويعية
-Duwadimi,الدوادمي
-Kharj,الخرج
-Qunfudhah,القنفذة
-Rafha,رفحاء
-Wadi Dawasir,وادي الدواسر
-Makkah,مكة,City
-Madinah,المدينة,City
-Hufuf,الأحساء,City
-Jazan,جيزان,City
-Muhayil Asir,محايل,City
-Ethiopia,اثيوبيا,Nationality
-Eritrea,ارتيريا,Nationality
-Afghanistan,افغانستان,Nationality
-Jordan,الاردن,Nationality
-Sudan,السودان,Nationality
-Somalia,الصومال,Nationality
-Philippines,الفلبين,Nationality
-Niger,النيجر,Nationality
 India,الهند,Nationality
-Yemen,اليمن,Nationality
-Indonesia,اندونيسيا,Nationality
 Pakistan,باكستان,Nationality
 Bangladesh,بنغلاديش,Nationality
-Burkina Faso,بوركينافاسو,Nationality
-Chad,تشاد,Nationality
 Sri Lanka,سريلانكا,Nationality
-Syria,سوريا,Nationality
-"Palestinian Territory, Occupied",فلسطين,Nationality
-Kenya,كينيا,Nationality
-Lebanon,لبنان,Nationality
-Mali,مالي,Nationality
 Egypt,مصر,Nationality
-Myanmar,ميانمار,Nationality
 Nepal,نيبال,Nationality
-Nigeria,نيجيريا,Nationality
 Saudi Arabia,السعودية,Nationality
 Sri Lanka,سري لنكا,Nationality variant
-"Palestinian Territory, Occupied",فلسطيني بوثيقة مصرية,Nationality with Egyptian travel document
 India,هندي,Demonym
 Pakistan,باكستاني,Demonym
 Bangladesh,بنغلاديشي,Demonym
 Nepal,نيبالي,Demonym
-Sudan,سوداني,Demonym
 Egypt,مصري,Demonym
-Yemen,يمني,Demonym
 Saudi Arabia,سعودي,Demonym
-Ethiopia,اثيوبي,Demonym
-Eritrea,اريتيري,Demonym
-Jordan,اردني,Demonym
-Afghanistan,افغاني,Demonym
-Indonesia,اندونيسي,Demonym
-Chad,تشادي,Demonym
-Syria,سوري,Demonym
 Sri Lanka,سريلانكي,Demonym
-Somalia,صومالي,Demonym
-Philippines,فلبيني,Demonym
-"Palestinian Territory, Occupied",فلسطيني,Demonym
-Cameroon,كاميروني,Demonym
-Kenya,كيني,Demonym
-Lebanon,لبناني,Demonym
-Niger,نيجري,Demonym
-Nigeria,نيجيري,Demonym
-Bahrain,بحريني,Demonym
 Bangladesh,بنغالي,Demonym variant
-Eritrea,إريتري,Demonym variant
-Afghanistan,أفغانستاني,Demonym variant
 Sri Lanka,سيريلانكي,Demonym variant
 Saudi Bank,بنك سعودي
 Iqama Renewal Fee Tracking,متابعة رسوم تجديد الإقامة
 Settlement Deduction Item,بند خصم التسوية
-HR Services,خدمات الموارد البشرية
-Payroll Services,خدمات الرواتب
 Iqama,الإقامة
-Asset Barcode Label,ملصق باركود الأصل
-Al Hokair Tax Invoice,فاتورة ضريبية الحكير
-Contracting Establishment Tax Invoice,فاتورة ضريبية مؤسسة المقاولات
 Labor Operating Costs Quotation,عرض سعر تكاليف التشغيل العمالية
 Cash Payment Voucher,سند دفع نقدي
-Petty Cash Custody Receipt,سند استلام عهدة نقدية
 Manpower Quotation,عرض أسعار العمالة
 Cash Receipt Voucher,سند قبض نقدي
 Samsa Tax Invoice,فاتورة ضريبية سمسا
-Tawasol Tax Invoice,فاتورة ضريبية تواصل
-Disbursement Order,أمر دفع
 Payment Request Form,نموذج طلب صرف
 Employee ID Card,بطاقة هوية الموظف
 Employee Profile,تعريف الموظف
-Amazon Project Salary Slip,مسير رواتب مشروع أمازون
-End of Service Settlement Statement,بيان تصفية مستحقات نهاية الخدمة
 Detailed Salary Slip,قسيمة راتب تفصيلية
-Employee Payslip,قسيمة راتب الموظف
 Vacation Allowance Statement,بيان بدل الإجازة
 Vacation Allowance Undertaking,تعهد
-Sales Invoice Credit Note,إشعار دائن لفاتورة المبيعات
 Payment Requisition Dashboard,لوحة معلومات طلبات الصرف
 Pending Bank Payments by Payment Date,المدفوعات البنكية قيد الانتظار حسب تاريخ الدفع
 Last Quarter Paid Payment Requisition Amount by Project,مبالغ طلبات الصرف المدفوعة في الربع الماضي حسب المشروع
@@ -2174,7 +1204,6 @@ Weekly Paid Payment Requisition Count,عدد طلبات الصرف المدفو�
 Open Payment Requisitions by Status,طلبات الصرف المفتوحة حسب الحالة
 Amount Awaiting Bank Entry by Payment Type,المبالغ بانتظار القيد البنكي حسب نوع الدفع
 Monthly Expense Request Count,عدد طلبات المصروف الشهرية
-Monthly EOS Expense Requests Count,عدد طلبات دفع مكافأة نهاية الخدمة الشهرية
 Monthly Paid Employee Loan Requests Count,عدد طلبات سلف الموظفين المدفوعة شهريًا
 Monthly Paid Vacation Allowance Requests Count,عدد طلبات بدل الإجازة المدفوعة شهريًا
 Monthly Paid Petty Cash Requests Count,عدد طلبات العهدة النقدية المدفوعة شهريًا
@@ -2183,7 +1212,6 @@ Monthly Paid Salary Requests Count,عدد طلبات الرواتب المدفو
 Count of Paid Orders Without JV Created This Year,عدد الطلبات المدفوعة دون قيد يومية هذا العام
 Count of Orders Awaiting General Manager Approval,عدد الطلبات بانتظار موافقة المدير العام
 Total Amounts Awaiting Payment,إجمالي المبالغ بانتظار الدفع
-Amount Awaiting Payment AlAhli Bank,المبالغ بانتظار الدفع في البنك الأهلي
 Awaiting Payment (AlAhli Bank),بانتظار الدفع (البنك الأهلي)
 People and Payroll,الموارد البشرية والرواتب
 Financial Operations,العمليات المالية
@@ -2279,7 +1307,6 @@ Status,الحالة,Iqama Control
 Only {0} records can be moved at once.,يمكن نقل {0} سجل فقط في المرة الواحدة.,Iqama Control
 Deselect records to exclude,ألغِ تحديد السجلات التي تريد استثناءها,Iqama Control
 and {0} more,و{0} غيرها,Iqama Control
-{0}…,{0}…,Iqama Control
 Creating payment request…,جارٍ إنشاء طلب الصرف…,Iqama Control
 Select at least one record.,اختر سجلاً واحداً على الأقل.,Iqama Control
 Nothing to copy.,لا شيء لنسخه.,Iqama Control
@@ -2374,46 +1401,21 @@ Renewal Stopped,إيقاف التجديد,Iqama Control
 PR Created for Work Cards,أُنشئ طلب صرف رخص العمل,Iqama Control
 PR Created for Iqama Renewal,أُنشئ طلب صرف تجديد الإقامة,Iqama Control
 PR Created for Both Work Cards and Iqama Renewal,أُنشئ طلب صرف لرخص العمل وتجديد الإقامة معًا,Iqama Control
-Triage,الفرز,Iqama Control
 Dashboard,لوحة المعلومات,Iqama Control
 Batch,الدفعة,Iqama Control
-Ops approval,موافقة العمليات,Iqama Control
 Legal,الشؤون القانونية,Iqama Control
 Payment,السداد,Iqama Control
 Renewal,التجديد,Iqama Control
 Done,مكتمل,Iqama Control
-Awaiting payment,بانتظار السداد,Iqama Control
-Already expired,منتهية بالفعل,Iqama Control
-Over a year,أكثر من سنة,Iqama Control
-6-12 months,6-12 شهراً,Iqama Control
-3-6 months,3-6 أشهر,Iqama Control
-Under 3 months,أقل من 3 أشهر,Iqama Control
-Expiring soon,توشك على الانتهاء,Iqama Control
 Expired,منتهية,Iqama Control
-7 days,7 أيام,Iqama Control
 30 days,30 يوماً,Iqama Control
-Later,لاحقاً,Iqama Control
 Operations,العمليات,Iqama Control
 Accounts,الحسابات,Iqama Control
-Everything,كل شيء,Iqama Control
 Expires,تنتهي,Iqama Control
-New expiry,الانتهاء الجديد,Iqama Control
 Duration,المدة,Iqama Control
-Employee status,حالة الموظف,Iqama Control
-Employer file,ملف المنشأة,Iqama Control
 SADAD,سداد,Iqama Control
-Work card fee,رسوم رخصة العمل,Iqama Control
-Iqama fee,رسوم الإقامة,Iqama Control
 Payment requests,طلبات الصرف,Iqama Control
-Reason not renewed,سبب عدم التجديد,Iqama Control
-Payment request status,حالة طلب الصرف,Iqama Control
-Reschedule date,تاريخ الجدولة,Iqama Control
-Renewal preference,قرار التجديد,Iqama Control
 Traffic violations,المخالفات المرورية,Iqama Control
-Total amount,الإجمالي,Iqama Control
-Muqeem balance after renewal,رصيد مقيم بعد التجديد,Iqama Control
-Refundable balance,الرصيد القابل للاسترداد,Iqama Control
-Exempt from compensation,معفى من المقابل المالي,Iqama Control
 3 months,3 أشهر,Iqama Control
 6 months,6 أشهر,Iqama Control
 9 Months,9 أشهر,Iqama Control
@@ -2421,21 +1423,12 @@ Exempt from compensation,معفى من المقابل المالي,Iqama Control
 Active,نشط,Iqama Control
 Suspended,موقوف,Iqama Control
 Left,منتهي الخدمة,Iqama Control
-Send for operations approval,إرسال لموافقة العمليات,Iqama Control
 Schedule for Later,جدولة لاحقًا,Iqama Control
 Update SADAD Number,تحديث رقم السداد,Iqama Control
 Confirm Payment,تأكيد السداد,Iqama Control
-Enter SADAD Number,إدخال رقم السداد,Iqama Control
-Resume Renewal,استئناف التجديد,Iqama Control
-Confirm Renewal,تأكيد التجديد,Iqama Control
-Stop Renewal,إيقاف التجديد,Iqama Control
 Report an Issue,الإبلاغ عن مشكلة,Iqama Control
-Resolve Issue,حل المشكلة,Iqama Control
-Reopen Request,إعادة فتح الطلب,Iqama Control
 Reject Renewal,رفض التجديد,Iqama Control
 Approve Renewal,الموافقة على التجديد,Iqama Control
-Cancel Payment Request,إلغاء طلب الصرف,Iqama Control
-Confirm Legal Approval,تأكيد الموافقة القانونية,Iqama Control
 SAR,ر.س,Iqama Control
 Violations Cost,قيمة المخالفات,Employee
 Violations Count,عدد المخالفات,Employee
@@ -2510,9 +1503,7 @@ Error,خطأ,Vacation Allowance
 Unknown,غير معروف,Vacation Allowance
 Employee Name,اسم الموظف,Leave Application
 Employee ID,الرقم الوظيفي,Leave Application
-No Employees,لا يوجد موظفون,Leave Application
 E-Invoicing Integration Requirement Violation,مخالفة متطلبات الربط والتكامل للفوترة الإلكترونية,Sales Invoice
-"<b>Data entry error:</b><br>Under ZATCA requirements, negative values may not be sent in XML files.<br><br>Please enter quantities and prices as <b>positive</b> values; the system processes them as a return automatically based on the document type.",<b>خطأ في إدخال البيانات:</b><br>وفقاً لمتطلبات هيئة الزكاة والضريبة والجمارك (ZATCA)، يمنع إرسال قيم سالبة في ملفات الـ XML.<br><br>يرجى إدخال الكميات والأسعار كقيم <b>موجبة</b>، حيث يقوم النظام بمعالجتها كمرتجع آلياً بناءً على نوع المستند.,Sales Invoice
 No,لا,Iqama Control
 No data found to fetch.,لا توجد بيانات لجلبها.,Iqama Renewal Management
 Data fetched successfully.,تم جلب البيانات بنجاح.,Iqama Renewal Management
@@ -2633,14 +1624,12 @@ Name:,الاسم:,Labor Operating Costs Quotation
 Signature:,التوقيع:,Labor Operating Costs Quotation
 End of Service Settlement Notice,إشعار بوجود تصفية نهاية خدمة,Vacation Allowance
 "Dear user,",عزيزي المستخدم،,Vacation Allowance
-"All dues of this employee have already been settled, and our records hold a completed End of Service Settlement. Therefore, <strong>a vacation allowance payment cannot be made</strong> for this employee at this time.",نود إعلامك بأنه تم بالفعل تصفية جميع مستحقات هذا الموظف، ويوجد في سجلاتنا مستند تصفية نهاية خدمة مكتمل. وعليه، <strong>لا يمكن إجراء دفع بدل إجازة</strong> لهذا الموظف في الوقت الحالي.,Vacation Allowance
 Thank you for your understanding. Please verify the data and the work procedures in place before submitting any new request.,نشكرك على تفهمك ونطلب منك التحقق من صحة البيانات وإجراءات العمل المتبعة قبل محاولة تقديم أي طلبات جديدة.,Vacation Allowance
 Important Notice,إشعار مهم,Vacation Allowance
 Attention,تنبيه,End of Service Settlement
 "The duration of the employee's service is less than two years, which may affect certain calculations and entitlements.",مدة خدمة الموظف تقل عن عامين، مما قد يؤثر في بعض الحسابات والاستحقاقات.,End of Service Settlement
 Do you wish to continue?,هل ترغب في المتابعة؟,End of Service Settlement
 Important Notice,إشعار مهم,End of Service Settlement
-"Based on the End of Service Reason, it appears the employee <strong>does not qualify</strong> for a ticket allowance. Currently, the ticket allowance is set to <strong>{0}</strong>.",وفقًا لسبب نهاية الخدمة، يبدو أن الموظف <strong>لا يستحق</strong> بدل تذكرة. حالياً، تم تعيين بدل التذكرة إلى <strong>{0}</strong>.,End of Service Settlement
 Do you still wish to proceed with allocating the ticket allowance?,هل ما زلت ترغب في المتابعة وتخصيص بدل التذاكر؟,End of Service Settlement
 This action is irreversible once confirmed.,هذا الإجراء لا رجعة فيه بمجرد التأكيد.,End of Service Settlement
 Reason of Urgency,سبب الاستعجال,Payment Requisition
@@ -2669,7 +1658,6 @@ Hours,ساعات العمل,Manpower Quotation
 Quantity,العدد,Manpower Quotation
 Monthly Rate,السعر الشهري,Manpower Quotation
 Amount,المبلغ,Manpower Quotation
-Amount in Words:,المبلغ كتابة:,Manpower Quotation
 Net Total,صافي الإجمالي,Manpower Quotation
 VAT,الضريبة,Manpower Quotation
 Grand Total,الإجمالي الكلي,Manpower Quotation
@@ -2681,13 +1669,11 @@ Includes provision of housing and transportation.,يشمل العرض توفير
 Does not include equipment or tools.,لا يشمل العرض توفير المعدات أو الأدوات.,Manpower Quotation
 "Implementation avg. 10 days (subject to profession, nationality, & selection).",متوسط مدة التنفيذ 10 أيام، وتعتمد على المهنة والجنسية وآلية الاختيار.,Manpower Quotation
 "To approve, please sign below and return to proceed with contract preparation.",للاعتماد؛ يرجى التوقيع أدناه من قبل المفوض وإعادة الإرسال لإعداد العقد ومباشرة الإجراءات.,Manpower Quotation
-Abdullah Fahad Al-Mutairi Company,شركة عبدالله فهد المطيري,Manpower Quotation
 Payment Request,طلب صرف,Payment Request Form
 Beneficiary Information,معلومات المستفيد,Payment Request Form
 Beneficiary Name,اسم المستفيد,Payment Request Form
 Account Number,رقم الحساب,Payment Request Form
 Amount:,المبلغ:,Payment Request Form
-Amount in Words:,المبلغ بالكلمات:,Payment Request Form
 Purpose of Payment,غرض الدفع,Payment Request Form
 Declaration and Commitment,إقرار وتعهد,Payment Request Form
 "I, the undersigned, hereby confirm that the documents submitted with this request are accurate and have been carefully verified. I commit to monitoring all procedures following the disbursement process to ensure there are no delays or violations that may arise from this operation, and I acknowledge my responsibility for compensating any losses due to errors that may appear in the provided data. I pledge to comply with all financial and administrative policies and procedures in force at the company, and I fully understand the legal responsibilities associated with submitting unaltered or tampered documents. I also commit to submitting all invoices related to the request to the company's financial management, ensuring that these invoices comply with the required tax standards and accurately reflect all costs and expenses associated with the request.",أقر أنا الموقع أدناه بأن المستندات المقدمة لهذا الطلب صحيحة وقد تم التحقق من دقتها بعناية. مع التأكيد بالتزامي متابعة جميع الإجراءات التي تعقب عملية الدفع لضمان عدم حدوث أي تأخيرات أو مخالفات قد تنجم من هذه العملية، وأقر بمسؤوليتي عن تعويض أي خسائر ناتجة عن أخطاء قد تظهر في البيانات او المستندات المقدمة. كما أتعهد بالامتثال لجميع السياسات والإجراءات المالية والإدارية المعمول بها في الشركة، وأفهم تمامًا المسؤوليات القانونية المترتبة على تقديم مستندات غير معدلة أو متلاعب بها. بالإضافة ألتزم أيضًا بتقديم جميع الفواتير المتعلقة بالطلب إلى الإدارة المالية للشركة، مع التأكيد على أن هذه الفواتير تتوافق مع المعايير الضريبية المطلوبة وأنها تعكس جميع التكاليف والمصروفات المتعلقة بالطلب بشكل كامل ودقيق.,Payment Request Form
@@ -2704,7 +1690,6 @@ Purchase Order Number,رقم طلب الشراء,Samsa Tax Invoice
 Purchase Order Date,تاريخ أمر الشراء,Samsa Tax Invoice
 Supplier,المورد,Samsa Tax Invoice
 Buyer,المشتري,Samsa Tax Invoice
-Ersaa Al Jazeera Business Solutions Company,شركة إرساء الجزيرة لحلول الأعمال,Samsa Tax Invoice
 Name,الاسم,Samsa Tax Invoice
 Address,العنوان,Samsa Tax Invoice
 VAT Registration Number,رقم تسجيل ضريبة القيمة المضافة,Samsa Tax Invoice
@@ -2768,9 +1753,6 @@ Rejoin After Leave,المباشرة بعد الإجازة,Leave Application
 Date of Rejoining,تاريخ العودة,Leave Application
 The rejoining date must be the day after the leave end date. Please adjust the rejoining date.,يجب أن يكون تاريخ العودة هو اليوم التالي لتاريخ نهاية الإجازة. يرجى تعديل تاريخ العودة.,Leave Application
 An error occurred while adding the comment. Please try again.,حدث خطأ أثناء إضافة التعليق. أعد المحاولة.,Leave Application
-An error occurred while updating the employee status. Please try again.,حدث خطأ أثناء تحديث حالة الموظف. يرجى المحاولة مرة أخرى.,Leave Application
-Project Employee (Projects),موظف مشاريع (Projects)
-Administration Employee (Administration),موظف إدارة (Administration)
 WPS Salary File,ملف رواتب حماية الأجور
 WPS Salary File,ملف رواتب حماية الأجور,WPS File
 Issue WPS file,إصدار ملف حماية الأجور,WPS File
@@ -3025,7 +2007,6 @@ Restricts this user to the Payment Requisitions addressed to this approver,يق�
 Please check at least one row to export.,يرجى تحديد صف واحد على الأقل للتصدير.
 "Generating Excel export for {0} records...",جارٍ إنشاء ملف Excel لعدد {0} من السجلات...
 Export All Requisitions to Excel,تصدير جميع طلبات الصرف إلى Excel
-"<b>Purpose</b><br>This policy aims to establish controls and procedures for issuing and liquidating cash custody and petty expenses within the company, with the objective of preserving the company's funds and ensuring their rational and effective use.<br><br><b>Responsibilities</b><br>Finance Manager: Responsible for creating and implementing this policy and monitoring compliance of all relevant parties.<br>Cash Disbursement Officer: Responsible for disbursing funds in accordance with this policy and ensuring the availability of all required documents.<br>The Applicant: Responsible for liquidating cash custody and returning any surplus to the company.<br><br><b>Definitions</b><br>Cash Custody: An amount of money granted to an employee or a group of employees to carry out specific tasks on behalf of the company.<br>Petty Expenses: Small and varied expenses related to the company's daily activities.<br>Invoices: Documents supporting the issuance of funds from cash custody.<br><br><b>Terms</b><br>Source: The invoice must be issued by a licensed company or commercial entity in Saudi Arabia.<br>Basic Contents:<br>Name of the company or commercial entity.<br>Tax Identification Number.<br>Address of the company or commercial entity.<br>Date of the invoice.<br>Invoice number.<br>Description of the goods or services purchased.<br>Total price of the goods or services.<br>Certification: The invoice must be stamped by the company or commercial entity.<br>Barcode: The invoice must contain a barcode that can be verified through the electronic invoice reader application accredited by the Zakat and Income Authority.<br>Electronic Verification: Barcode verification is possible using official applications available on Google Play and App Store.<br>For Google Play: https://play.google.com/store/apps/details?id=com.gazt.egazt<br>For App Store: https://apps.apple.com/sa/app/zatca/id1517289036<br>These terms aim to ensure transparency and compliance with the tax regulations in Saudi Arabia.<br><br><b>Tax Information of the Company</b><br>Company Name: Abdullah Fahad Al-Mutairi for Support Services.<br>Tax Number: 301173179500003.<br><br><b>Procedures</b><br>Issuing Funds:<br><br>The Cash Disbursement Officer submits a request for cash custody issuance to the Finance Manager, stating the purpose of the funds and the requested amount.<br>The Finance Manager reviews the cash custody issuance request, ensuring all required conditions are met.<br>If the cash custody request is approved, the Finance Manager approves the issuance request.<br>No cash custody request exceeding (10,000) Riyals per month will be accepted without written approval from the General Manager.<br>No new cash custody amount will be disbursed if the previous amount has not been liquidated.<br><br>Disbursing Funds:<br><br>The Cash Disbursement Officer submits a payment request using the same form, and the requested amount is transferred.<br>The Cash Disbursement Officer keeps a copy of the cash custody issuance order and supporting documents.<br><br>Liquidating Cash Custody:<br><br>The Cash Custody Liquidator submits supporting documents to the Finance Manager, proving the issuance of funds from cash custody.<br>The Finance Manager reviews the supporting documents, ensuring all required conditions are met.<br>If all required conditions are met, the Finance Manager proceeds with liquidating the cash custody.<br>Invoices must be in PDF format, and no invoice in the form of a photo or screensh.<br>It is required for the liquidation of cash custody to bring the original invoices to match them with the electronic copies (PDF).<br>If the cash custody applicant is outside the main office area of the company, the liquidation of electronically sent invoices is permitted. However, the applicant is required to send the original invoices via mail or other approved means. <br>It is essential to preserve the paper invoices and ensure their integrity to avoid any damage that might obscure the information recorded on them.<br><br><b>Obligations</b><br>Commitment to Disbursing Funds for the Specified Purpose:<br><br>The Cash Disbursement Officer must disburse the funds from cash custody for the specified purpose.<br>If funds from cash custody are disbursed for another purpose, the Cash Disbursement Officer is financially responsible for the disbursed funds.<br>Commitment to including the company's tax information in the invoice.<br>Commitment to Disbursing Funds at a Competitive Price:<br><br>The Cash Disbursement Officer must obtain a competitive price for the goods or services purchased from the cash custody.<br>If a competitive price is not obtained, the Cash Disbursement Officer is financially responsible for the price difference.<br>Penalties:<br><br>In the event of a violation of any provisions of this policy, appropriate disciplinary actions will be taken against the offending employee, in accordance with Saudi labor law.","<b>الغرض</b><br>تهدف هذه السياسة إلى وضع ضوابط وإجراءات لإصدار وتصفية العهد النقدية والمصاريف النثرية داخل الشركة، بهدف الحفاظ على أموال الشركة وضمان استخدامها بطريقة عقلانية وفعالة.<br><br><b>المسؤوليات</b><br>مدير المالية: مسؤول عن إنشاء وتنفيذ هذه السياسة، ومراقبة التزام جميع الأطراف ذات الصلة.<br>ضابط دفع النقد: مسؤول عن دفع الأموال وفقًا لهذه السياسة، وضمان توفر كافة الوثائق المطلوبة.<br>مصفي العهد النقدية: مسؤول عن تصفية العهد النقدية وإعادة أي فوائض إلى الشركة.<br><br><b>التعريفات</b><br>العهد النقدية: مبلغ من المال يُمنح لموظف أو مجموعة من الموظفين لتنفيذ مهام محددة نيابة عن الشركة.<br>المصاريف النثرية: مصاريف صغيرة ومتنوعة تتعلق بنشاطات الشركة اليومية.<br>الفواتير: وثائق تدعم إصدار الأموال من العهد النقدية.<br><br><b>الشروط</b><br>1.المصدر: الفاتورة يجب أن تكون صادرة من شركة أو كيان تجاري مرخص في المملكة العربية السعودية.<br>2.المحتويات الأساسية:<br>اسم الشركة أو الكيان التجاري.<br>رقم الهوية الضريبية.<br>عنوان الشركة أو الكيان التجاري.<br>تاريخ الفاتورة.<br>رقم الفاتورة.<br>وصف السلع أو الخدمات المشتراة.<br>السعر الإجمالي للسلع أو الخدمات.<br>3.التصديق: يجب أن تكون الفاتورة مختومة بختم الشركة أو الكيان التجاري.<br>4.الباركود: يجب أن تحتوي الفاتورة على باركود يمكن التحقق من صحته من خلال تطبيق قارئ الفاتورة الإلكترونية المعتمد من هيئة الزكاة والدخل.<br>5.التحقق الإلكتروني: يمكن التحقق من الباركود باستخدام التطبيقات الرسمية المتوفرة على Google Play وApp Store.<br>لتطبيق Google Play: https://play.google.com/store/apps/details?id=com.gazt.egazt<br>لتطبيق App Store: https://apps.apple.com/sa/app/zatca/id1517289036<br>تهدف هذه الشروط إلى ضمان الشفافية والتوافق مع اللوائح الضريبية في المملكة العربية السعودية.<br><br><b>المعلومات الضريبية للشركة</b><br>1.اسم الشركة: عبد الله فهد المطيري للخدمات المساندة.<br>2.الرقم الضريبي: 301173179500003.<br><br><b>الإجراءات</b><br>1.إصدار الأموال:<br><br>يقدم ضابط دفع النقد طلب إصدار عهد نقدية إلى مدير المالية، موضحًا الغرض من الأموال والمبلغ المطلوب.<br>يراجع مدير المالية طلب إصدار العهد النقدية، ويتأكد من استيفاء جميع الشروط المطلوبة.<br>في حال الموافقة على طلب العهد النقدية، يوافق مدير المالية على طلب الإصدار.<br>لا يتم قبول أي طلب عهدة يزيد مبلغها عن (10.000) ريال في الشهر إلا بموافقة خطية من المدير العام.<br>لن يتم دفع مبلغ عهدة جديدة إذا لم يتم تصفية المبلغ السابق.<br><br>2.دفع الأموال:<br><br>يقدم ضابط دفع النقد طلب صرف من نفس النموذج ويتم تحويل المبلغ المطلوب.<br>يحتفظ ضابط دفع النقد بنسخة من أمر إصدار العهد النقدية والوثائق الداعمة.<br><br>3.تصفية العهد النقدية:<br><br>يقدم مصفي العهد النقدية الوثائق الداعمة إلى مدير المالية، مما يثبت إصدار الأموال من العهد النقدية.<br>يراجع مدير المالية الوثائق الداعمة، ويتأكد من استيفاء جميع الشروط المطلوبة.<br><br>في حال استيفاء جميع الشروط المطلوبة، يقوم مدير المالية بتصفية العهد النقدية.<br><br>يجب أن تكون الفواتير بصيغة PDF، ولن يتم تصفية أي فاتورة عبارة عن صورة أو لقطة شاشة.<br><br>""يُشترط لتصفية العهد النقدية إحضار الفواتير الأصلية لمطابقتها مع النسخ الإلكترونية (PDF). في حالة تواجد طالب العهدة النقدية خارج منطقة مقر الشركة الرئيسي، يُسمح بتصفية الفواتير المُرسلة إلكترونيًا. <br>ومع ذلك، يُطلب من طالب العهدة إرسال الفواتير الأصلية عبر البريد أو وسائل أخرى مُعتمدة. <br><br>يجب المحافظة على الفواتير الورقية وضمان سلامتها لتجنب أي تلف قد يعيق وضوح المعلومات المُدونة بها.""<br><br><b>الالتزامات</b><br>1.الالتزام بدفع الأموال للغرض المحدد:<br>يجب على ضابط دفع النقد دفع الأموال من العهد النقدية للغرض المحدد.<br><br>في حال دفع الأموال من العهد النقدية لغرض آخر، يكون ضابط دفع النقد مسؤولاً مالياً عن الأموال المصروفة.<br>الالتزام بإضافة بيانات الشركة الضريبية في الفاتورة.<br><br>2.الالتزام بدفع الأموال بسعر تنافسي:<br><br>يجب على ضابط دفع النقد الحصول على سعر تنافسي للسلع أو الخدمات التي يتم شراؤها من العهد النقدية.<br>في حال عدم الحصول على سعر تنافسي، يكون ضابط دفع النقد مسؤولاً مالياً عن الفرق في السعر.<br><br>3.العقوبات:<br><br>في حالة مخالفة أي من أحكام هذه السياسة، سيتم اتخاذ الإجراءات التأديبية المناسبة ضد الموظف المخالف، وفقًا لقانون العمل السعودي."
 {0} m,{0} دقيقة
 {0} h,{0} ساعة
 {0} d,{0} يوم
@@ -3062,7 +2043,6 @@ Tax Invoice Number,رقم الفاتورة الضريبية
 Traffic Violations,مخالفات مرورية
 Two Year Plan,خطة السنتين
 No submitted salary slips with net pay in this payroll entry,لا توجد قسائم رواتب معتمدة بصافي راتب في مسير الرواتب هذا,WPS File
-Total Including VAT,الإجمالي شامل الضريبة
 Clearing End of Service,تصفية مستحقات نهاية الخدمة
 Duration of Service,مدة الخدمة
 Amounts Due,المبالغ المستحقة
@@ -3693,7 +2673,6 @@ Round Robin,التناوب الدوري
 Submit on Creation,اعتماد عند الإنشاء
 The following Assignment Days have been repeated: {0},أيام الإسناد التالية مكررة: {0}
 The {0} is already on auto repeat {1},{0} مُدرج بالفعل في التكرار التلقائي {1}
-"To add dynamic subject, use jinja tags like\n\n<div><pre><code>New {{ doc.doctype }} #{{ doc.name }}</code></pre></div>",لإضافة موضوع ديناميكي، استخدم وسوم Jinja مثل\n\n<div><pre><code>جديد {{ doc.doctype }} #{{ doc.name }}</code></pre></div>
 "To configure Auto Repeat, enable ""Allow Auto Repeat"" from {0}.","لتهيئة التكرار التلقائي، فعّل ""السماح بالتكرار التلقائي"" من {0}."
 Track Field,حقل التتبع
 Unassign Condition,شرط إلغاء الإسناد
@@ -3705,7 +2684,6 @@ Weekly,أسبوعي
 Yearly,سنوي
 {0} is an invalid email address in 'Recipients',{0} عنوان بريد إلكتروني غير صالح في 'المستلمون'
 "{0}: Failed to attach new recurring document. To enable attaching document in the auto repeat notification email, enable {1} in Print Settings",{0}: فشل إرفاق المستند المتكرر الجديد. لتمكين إرفاق المستند في بريد إشعار التكرار التلقائي، فعّل {1} في إعدادات الطباعة
-"<h4>Default Template</h4>\n<p>Uses <a href=""http://jinja.pocoo.org/docs/templates/"">Jinja Templating</a> and all the fields of Address (including Custom Fields if any) will be available</p>\n<pre><code>{{ address_line1 }}&lt;br&gt;\n{% if address_line2 %}{{ address_line2 }}&lt;br&gt;{% endif -%}\n{{ city }}&lt;br&gt;\n{% if state %}{{ state }}&lt;br&gt;{% endif -%}\n{% if pincode %} PIN:  {{ pincode }}&lt;br&gt;{% endif -%}\n{{ country }}&lt;br&gt;\n{% if phone %}Phone: {{ phone }}&lt;br&gt;{% endif -%}\n{% if fax %}Fax: {{ fax }}&lt;br&gt;{% endif -%}\n{% if email_id %}Email: {{ email_id }}&lt;br&gt;{% endif -%}\n</code></pre>","<h4>القالب الافتراضي</h4>\n<p>يستخدم <a href=""http://jinja.pocoo.org/docs/templates/"">قوالب Jinja</a> وستكون جميع حقول العنوان (بما في ذلك الحقول المخصصة إن وجدت) متاحة</p>\n<pre><code>{{ address_line1 }}&lt;br&gt;\n{% if address_line2 %}{{ address_line2 }}&lt;br&gt;{% endif -%}\n{{ city }}&lt;br&gt;\n{% if state %}{{ state }}&lt;br&gt;{% endif -%}\n{% if pincode %} الرمز البريدي:  {{ pincode }}&lt;br&gt;{% endif -%}\n{{ country }}&lt;br&gt;\n{% if phone %}هاتف: {{ phone }}&lt;br&gt;{% endif -%}\n{% if fax %}فاكس: {{ fax }}&lt;br&gt;{% endif -%}\n{% if email_id %}البريد الإلكتروني: {{ email_id }}&lt;br&gt;{% endif -%}\n</code></pre>"
 Address Template,قالب العنوان
 Address Title,مسمى العنوان
 Address Title is mandatory.,مسمى العنوان إلزامي.
@@ -3902,7 +2880,6 @@ Complete,مكتمل
 Complete Registration,إكمال التسجيل
 Condition,الشرط
 Conditions,الشروط
-Configure how amended documents will be named.<br>\n\nDefault behaviour is to follow an amend counter which adds a number to the end of the original name indicating the amended version. <br>\n\nDefault Naming will make the amended document to behave same as new documents.,حدّد كيفية ترقيم المستندات المعاد إصدارها.<br>\n\nالسلوك الافتراضي هو اتباع عداد إعادة الإصدار الذي يضيف رقمًا إلى نهاية الاسم الأصلي يشير إلى النسخة المعاد إصدارها. <br>\n\nيجعل الترقيم الافتراضي المستند المعاد إصداره يتصرف كالمستندات الجديدة.
 Configure Recorder,تهيئة أداة التسجيل
 "Configure various aspects of how document naming works like naming series, current counter.",اضبط جوانب مختلفة من آلية ترقيم المستندات، مثل سلسلة الترقيم والعداد الحالي.
 Confirm,تأكيد
@@ -5004,7 +3981,6 @@ Set,تعيين
 "Set Default Options for all charts on this Dashboard (Ex: ""colors"": [""#d1d8dd"", ""#ff5858""])","تعيين الخيارات الافتراضية لجميع المخططات في لوحة المعلومات هذه (على سبيل المثال: ""colors"": [""#d1d8dd"", ""#ff5858""])"
 Set Filters,تعيين عوامل التصفية
 Set Number of Backups,تعيين عدد النسخ الاحتياطية
-"Set the filters here. For example:\n<pre class=""small text-muted""><code>\n[{\n	fieldname: ""company"",\n	label: __(""Company""),\n	fieldtype: ""Link"",\n	options: ""Company"",\n	default: frappe.defaults.get_user_default(""Company""),\n	reqd: 1\n},\n{\n	fieldname: ""account"",\n	label: __(""Account""),\n	fieldtype: ""Link"",\n	options: ""Account"",\n	reqd: 1\n}]\n</code></pre>","قم بتعيين عوامل التصفية هنا. على سبيل المثال:\n<pre class=""small text-muted""><code>\n[{\n	fieldname: ""company"",\n	label: __(""Company""),\n	fieldtype: ""Link"",\n	options: ""Company"",\n	default: frappe.defaults.get_user_default(""Company""),\n	reqd: 1\n},\n{\n	fieldname: ""account"",\n	label: __(""Account""),\n	fieldtype: ""Link"",\n	options: ""Account"",\n	reqd: 1\n}]\n</code></pre>"
 set {0} to,عيّن {0} إلى
 set {0} to {1} in row #{2},عيّن {0} إلى {1} في الصف #{2}
 Setting up Global Search documents.,جارٍ إعداد مستندات البحث الشامل.
@@ -5088,8 +4064,6 @@ Your Country,دولتك
 {0} removed their assignment.,أزال {0} إسناده.
 {0} self assigned this task: {1},أسند {0} هذه المهمة إلى نفسه: {1}
 My Workspaces,مساحات عملي
-"<h4>Email Reply Example</h4>\n\n<pre>Order Overdue\n\nTransaction {{ name }} has exceeded Due Date. Please take necessary action.\n\nDetails\n\n- Customer: {{ customer }}\n- Amount: {{ grand_total }}\n</pre>\n\n<h4>How to get fieldnames</h4>\n\n<p>The fieldnames you can use in your email template are the fields in the document from which you are sending the email. You can find out the fields of any documents via Setup &gt; Customize Form View and selecting the document type (e.g. Sales Invoice)</p>\n\n<h4>Templating</h4>\n\n<p>Templates are compiled using the Jinja Templating Language. To learn more about Jinja, <a class=""strong"" href=""http://jinja.pocoo.org/docs/dev/templates/"">read this documentation.</a></p>\n","<h4>مثال على رد البريد الإلكتروني</h4>\n\n<pre>طلب متأخر\n\nالمعاملة {{ name }} تجاوزت تاريخ الاستحقاق. يرجى اتخاذ الإجراء اللازم.\n\nالتفاصيل\n\n- العميل: {{ customer }}\n- المبلغ: {{ grand_total }}\n</pre>\n\n<h4>كيفية الحصول على أسماء الحقول</h4>\n\n<p>أسماء الحقول التي يمكنك استخدامها في قالب البريد الإلكتروني هي الحقول الموجودة في المستند الذي ترسل منه البريد الإلكتروني. يمكنك معرفة حقول أي مستندات عبر الإعدادات &gt; عرض تخصيص النموذج واختيار نوع المستند (مثل فاتورة مبيعات)</p>\n\n<h4>القوالب</h4>\n\n<p>يتم تجميع القوالب باستخدام لغة قوالب Jinja. لمعرفة المزيد عن Jinja، <a class=""strong"" href=""http://jinja.pocoo.org/docs/dev/templates/"">اقرأ هذه الوثائق.</a></p>\n"
-"<p><strong>{{ __(""Condition Examples"") }}:</strong></p>\n<pre><code class=""language-python"">doc.status==""Open""<br>doc.due_date==nowdate()<br>doc.total &gt; 40000\n</code></pre>\n","<p><strong>{{ __(""Condition Examples"") }}:</strong></p>\n<pre><code class=""language-python"">doc.status==""Open""<br>doc.due_date==nowdate()<br>doc.total &gt; 40000\n</code></pre>\n"
 Add Reply-To header,إضافة ترويسة Reply-To
 Add X-Original-From header,إضافة ترويسة X-Original-From
 Addresses added here will be used as the Reply-To header for outgoing emails sent from this account.,ستُستخدم العناوين المضافة هنا في ترويسة Reply-To لرسائل البريد الإلكتروني الصادرة من هذا الحساب.
@@ -5220,7 +4194,6 @@ System Notification,إشعار النظام
 To allow more reports update limit in System Settings.,للسماح بمزيد من التقارير، حدّث الحد في إعدادات النظام.
 To Date Field,"حقل ""إلى تاريخ"""
 "To use Slack Channel, add a <a href=""#List/Slack%20Webhook%20URL/List"">Slack Webhook URL</a>.","لاستخدام قناة Slack، أضف <a href=""#List/Slack%20Webhook%20URL/List"">رابط Slack Webhook</a>."
-"Track if your email has been opened by the recipient.\n<br>\nNote: If you're sending to multiple recipients, even if 1 recipient reads the email, it'll be considered ""Opened""","تتبّع ما إذا فتح المستلم بريدك الإلكتروني.\n<br>\nملاحظة: إذا كنت ترسل إلى عدة مستلمين، حتى لو قرأ مستلم واحد البريد الإلكتروني، فسيُعتبر ""مفتوحًا"""
 Trigger Method,طريقة التشغيل
 "Trigger on valid methods like ""before_insert"", ""after_update"", etc (will depend on the DocType selected)","التشغيل عند الطرق الصالحة مثل ""before_insert"" و""after_update"" وغيرها (حسب نوع المستند المحدد)"
 UIDNEXT,UIDNEXT
@@ -5245,7 +4218,6 @@ Zero means send records updated at anytime,القيمة صفر تعني إرسا
 {0} has left the conversation in {1} {2},غادر {0} المحادثة في {1} {2}
 {0} is not a valid report format. Report format should one of the following {1},{0} ليس تنسيق تقرير صالحًا. يجب أن يكون تنسيق التقرير أحد التنسيقات التالية {1}
 {0} subscribers added,تمت إضافة {0} مشتركين
-1 Currency = [?] Fraction\nFor e.g. 1 USD = 100 Cent,1 عملة = [؟] جزء كسري\nعلى سبيل المثال، 1 دولار أمريكي = 100 سنت
 Fraction,الجزء الكسري
 Fraction Units,وحدات الجزء الكسري
 "How should this currency be formatted? If not set, will use system defaults",كيف تُنسَّق هذه العملة؟ إن لم يُحدَّد ذلك، فستُستخدم القيم الافتراضية للنظام
@@ -5255,7 +4227,6 @@ Smallest Currency Fraction Value,أصغر قيمة للجزء الكسري من 
 The country's ISO 3166 ALPHA-2 code.,رمز ISO 3166 ALPHA-2 للدولة.
 This Currency is disabled. Enable to use in transactions,هذه العملة معطلة. فعّلها لاستخدامها في المعاملات
 Time Zones,المناطق الزمنية
-"<p><strong>{{ __(""Condition Examples"") }}:</strong></p>\n<pre>doc.status==""Open""<br>doc.due_date==nowdate()<br>doc.total &gt; 40000\n</pre>","<p><strong>{{ __(""Condition Examples"") }}:</strong></p>\n<pre>doc.status==""Open""<br>doc.due_date==nowdate()<br>doc.total &gt; 40000\n</pre>"
 A list of resources which the Client App will have access to after the user allows it.<br> e.g. project,قائمة بالموارد التي سيتمكن تطبيق العميل من الوصول إليها بعد أن يسمح المستخدم بذلك.<br> مثال: مشروع
 Access Token URL,رابط رمز الوصول
 after_insert,after_insert
@@ -5420,7 +4391,6 @@ Task id is required.,معرّف المهمة مطلوب.
 Token,رمز مميز
 Token URI,URI الرمز المميز
 TOS URI,URI شروط الخدمة
-"URIs for receiving authorization code once the user allows access, as well as failure responses. Typically a REST endpoint exposed by the Client App.\n<br>e.g. http://hostname/api/method/frappe.integrations.oauth2_logins.login_via_facebook",عناوين URI لاستقبال رمز التفويض بمجرد سماح المستخدم بالوصول، وكذلك استجابات الفشل. عادةً ما تكون نقطة نهاية REST يوفرها تطبيق العميل.\n<br>مثال: http://hostname/api/method/frappe.integrations.oauth2_logins.login_via_facebook
 URL of a web page providing information about the client.,رابط صفحة ويب تقدم معلومات عن العميل.
 URL that points to a human-readable policy document for the client. Should be shown to end-user before authorizing.,رابط يشير إلى وثيقة سياسة سهلة القراءة للعميل. يجب عرضها للمستخدم النهائي قبل التفويض.
 URL that points to a human-readable terms of service document for the client. Should be shown to end-user before authorizing.,رابط يشير إلى وثيقة شروط خدمة سهلة القراءة للعميل. يجب عرضها للمستخدم النهائي قبل التفويض.
@@ -6290,8 +5260,6 @@ Your login attempt is invalid or has expired. Please try again.,محاولة ت�
 {} Invalid python code on line {},{} رمز Python غير صالح في السطر {}
 """Company History""","""تاريخ الشركة"""
 &lt;head&gt; HTML,HTML لقسم &lt;head&gt;
-<p>Multiple webforms can be created for a single doctype. Add filters specific to this webform to display correct record after submission.</p><p>For Example:</p>\n<p>If you create a separate webform every year to capture feedback from employees add a \n field named year in doctype and add a filter <b>year = 2023</b></p>\n,<p>يمكن إنشاء عدة نماذج ويب لنوع مستند واحد. أضف عوامل تصفية خاصة بنموذج الويب هذا لعرض السجل الصحيح بعد التقديم.</p><p>مثال:</p>\n<p>إذا أنشأت نموذج ويب منفصلًا كل عام لجمع ملاحظات الموظفين، فأضف\n حقلًا باسم year في نوع المستند وأضف عامل التصفية <b>year = 2023</b></p>\n
-"<p>Set context before rendering a template. Example:</p><p>\n</p><div><pre><code>\ncontext.project = frappe.get_doc(""Project"", frappe.form_dict.name)\n</code></pre></div>","<p>عيّن السياق قبل عرض القالب. مثال:</p><p>\n</p><div><pre><code>\ncontext.project = frappe.get_doc(""Project"", frappe.form_dict.name)\n</code></pre></div>"
 About Us Team Member,عضو فريق صفحة من نحن
 Access Control,التحكم في الوصول
 Add Container,إضافة حاوية
@@ -6589,11 +5557,7 @@ Your password has expired. Please set a new password.,انتهت صلاحية ك
 60-90,60-90
 90 - 120 Days,90 - 120 يومًا
 <b>Row #{0}:</b> Bundle {1} in warehouse {2} has insufficient packed items:<br><div style='margin-top: 15px;'><ul style='line-height: 0.8;'>{3}</ul></div>,<b>الصف #{0}:</b> الحزمة {1} في المستودع {2} لا تحتوي على أصناف معبأة كافية:<br><div style='margin-top: 15px;'><ul style='line-height: 0.8;'>{3}</ul></div>
-"<br>\n<h4>Note</h4>\n<ul>\n<li>\nYou can use <a href=""https://jinja.palletsprojects.com/en/2.11.x/"" target=""_blank"">Jinja tags</a> in <b>Subject</b> and <b>Body</b> fields for dynamic values.\n</li><li>\n    All fields in this doctype are available under the <b>doc</b> object and all fields for the customer to whom the mail will go to is available under the  <b>customer</b> object.\n</li></ul>\n<h4> Examples</h4>\n<!-- {% raw %} -->\n<ul>\n    <li><b>Subject</b>:<br><br><pre><code>Statement Of Accounts for {{ customer.customer_name }}</code></pre><br></li>\n    <li><b>Body</b>: <br><br>\n<pre><code>Hello {{ customer.customer_name }},<br>PFA your Statement Of Accounts from {{ doc.from_date }} to {{ doc.to_date }}.</code> </pre></li>\n</ul>\n<!-- {% endraw %} -->","<br>\n<h4>ملاحظة</h4>\n<ul>\n<li>\nيمكنك استخدام <a href=""https://jinja.palletsprojects.com/en/2.11.x/"" target=""_blank"">وسوم Jinja</a> في حقلي <b>الموضوع</b> و<b>النص الأساسي</b> لإدراج القيم الديناميكية.\n</li><li>\n    جميع حقول نوع المستند هذا متاحة ضمن الكائن <b>doc</b>، وجميع حقول العميل الذي ستُرسل إليه الرسالة متاحة ضمن الكائن  <b>customer</b>.\n</li></ul>\n<h4> أمثلة</h4>\n<!-- {% raw %} -->\n<ul>\n    <li><b>الموضوع</b>:<br><br><pre><code>كشف حساب {{ customer.customer_name }}</code></pre><br></li>\n    <li><b>النص الأساسي</b>: <br><br>\n<pre><code>مرحبًا {{ customer.customer_name }}،<br>نرفق لكم كشف حسابكم للفترة من {{ doc.from_date }} إلى {{ doc.to_date }}.</code> </pre></li>\n</ul>\n<!-- {% endraw %} -->"
 "<div class=""text-muted text-center"">No Matching Bank Transactions Found</div>","<div class=""text-muted text-center"">لم يُعثر على حركات بنكية مطابقة</div>"
-<div>\n<h3> All dimensions in centimeter only </h3>\n</div>,<div>\n<h3> جميع الأبعاد بالسنتيمتر فقط </h3>\n</div>
-"<h3>Currency Exchange Settings Help</h3>\n<p>There are 3 variables that could be used within the endpoint, result key and in values of the parameter.</p>\n<p>Exchange rate between {from_currency} and {to_currency} on {transaction_date} is fetched by the API.</p>\n<p>Example: If your endpoint is exchange.com/2021-08-01, then, you will have to input exchange.com/{transaction_date}</p>",<h3>تعليمات إعدادات صرف العملات</h3>\n<p>توجد 3 متغيرات يمكن استخدامها في نقطة النهاية ومفتاح النتيجة وقيم المعامل.</p>\n<p>تجلب واجهة برمجة التطبيقات سعر الصرف بين {from_currency} و{to_currency} بتاريخ {transaction_date}.</p>\n<p>مثال: إذا كانت نقطة النهاية لديك exchange.com/2021-08-01، فعليك إدخال exchange.com/{transaction_date}</p>
-"<h4>Body Text and Closing Text Example</h4>\n\n<div>We have noticed that you have not yet paid invoice {{sales_invoice}} for {{frappe.db.get_value(""Currency"", currency, ""symbol"")}} {{outstanding_amount}}. This is a friendly reminder that the invoice was due on {{due_date}}. Please pay the amount due immediately to avoid any further dunning cost.</div>\n\n<h4>How to get fieldnames</h4>\n\n<p>The fieldnames you can use in your template are the fields in the document. You can find out the fields of any documents via Setup &gt; Customize Form View and selecting the document type (e.g. Sales Invoice)</p>\n\n<h4>Templating</h4>\n\n<p>Templates are compiled using the Jinja Templating Language. To learn more about Jinja, <a class=""strong"" href=""http://jinja.pocoo.org/docs/dev/templates/"">read this documentation.</a></p>","<h4>مثال على النص الأساسي والنص الختامي</h4>\n\n<div>نود إفادتكم بأن الفاتورة {{sales_invoice}} بمبلغ {{frappe.db.get_value(""Currency"", currency, ""symbol"")}} {{outstanding_amount}} لم تُسدَّد حتى الآن، ونذكّركم بأن تاريخ استحقاقها كان {{due_date}}. نرجو سداد المبلغ المستحق فورًا تجنبًا لأي رسوم مطالبة إضافية.</div>\n\n<h4>كيفية الحصول على أسماء الحقول</h4>\n\n<p>أسماء الحقول التي يمكنك استخدامها في القالب هي حقول المستند. ويمكنك معرفة حقول أي مستند من الإعداد &gt; تخصيص النموذج ثم اختيار نوع المستند (مثل فاتورة المبيعات)</p>\n\n<h4>القوالب</h4>\n\n<p>تُعالَج القوالب بلغة القوالب Jinja. لمعرفة المزيد عن Jinja، <a class=""strong"" href=""http://jinja.pocoo.org/docs/dev/templates/"">اطلع على هذا التوثيق.</a></p>"
 "<label class=""control-label"" style=""margin-bottom: 0px;"">Account Number Settings</label>","<label class=""control-label"" style=""margin-bottom: 0px;"">إعدادات رقم الحساب</label>"
 "<label class=""control-label"" style=""margin-bottom: 0px;"">Amount In Words</label>","<label class=""control-label"" style=""margin-bottom: 0px;"">المبلغ كتابةً</label>"
 "<label class=""control-label"" style=""margin-bottom: 0px;"">Date Settings</label>","<label class=""control-label"" style=""margin-bottom: 0px;"">إعدادات التاريخ</label>"
@@ -6602,8 +5566,6 @@ Your password has expired. Please set a new password.,انتهت صلاحية ك
 <li>Payment document required for row(s): {0}</li>,<li>مستند الدفع مطلوب في الصفوف: {0}</li>
 <p>Following {0}s doesn't belong to Company {1} :</p>,<p>العناصر التالية من {0} لا تنتمي إلى الشركة {1} :</p>
 <p>Please correct the following row(s):</p><ul>,<p>يرجى تصحيح الصفوف التالية:</p><ul>
-"<pre><h5>Message Example</h5>\n\n&lt;p&gt; Thank You for being a part of {{ doc.company }}! We hope you are enjoying the service.&lt;/p&gt;\n\n&lt;p&gt; Please find enclosed the E Bill statement. The outstanding amount is {{ doc.grand_total }}.&lt;/p&gt;\n\n&lt;p&gt; We don't want you to be spending time running around in order to pay for your Bill.<br>After all, life is beautiful and the time you have in hand should be spent to enjoy it!<br>So here are our little ways to help you get more time for life! &lt;/p&gt;\n\n&lt;a href=""{{ payment_url }}""&gt; click here to pay &lt;/a&gt;\n\n</pre>\n","<pre><h5>مثال على الرسالة</h5>\n\n&lt;p&gt; شكرًا لكونك جزءًا من {{ doc.company }}! نأمل أن تكون الخدمة قد نالت رضاك.&lt;/p&gt;\n\n&lt;p&gt; مرفق كشف الفاتورة الإلكترونية. المبلغ المستحق هو {{ doc.grand_total }}.&lt;/p&gt;\n\n&lt;p&gt; لا نريد أن تقضي وقتك في التنقل لسداد فاتورتك.<br>فوقتك ثمين ويستحق أن تستمتع به!<br>لذا نقدّم لك هذه الطريقة البسيطة لتوفير وقتك! &lt;/p&gt;\n\n&lt;a href=""{{ payment_url }}""&gt; انقر هنا للدفع &lt;/a&gt;\n\n</pre>\n"
-"<pre><h5>Message Example</h5>\n\n&lt;p&gt;Dear {{ doc.contact_person }},&lt;/p&gt;\n\n&lt;p&gt;Requesting payment for {{ doc.doctype }}, {{ doc.name }} for {{ doc.grand_total }}.&lt;/p&gt;\n\n&lt;a href=""{{ payment_url }}""&gt; click here to pay &lt;/a&gt;\n\n</pre>\n","<pre><h5>مثال على الرسالة</h5>\n\n&lt;p&gt;عزيزي {{ doc.contact_person }}،&lt;/p&gt;\n\n&lt;p&gt;نطلب سداد {{ doc.doctype }} رقم {{ doc.name }} بمبلغ {{ doc.grand_total }}.&lt;/p&gt;\n\n&lt;a href=""{{ payment_url }}""&gt; انقر هنا للدفع &lt;/a&gt;\n\n</pre>\n"
 "<span class=""h4""><b>Reports &amp; Masters</b></span>","<span class=""h4""><b>التقارير والبيانات الرئيسية</b></span>"
 <strong>Grand Total:</strong> {0},<strong>الإجمالي الكلي:</strong> {0}
 <strong>Outstanding Amount:</strong> {0},<strong>المبلغ المستحق:</strong> {0}
@@ -7615,7 +6577,6 @@ Only Include Allocated Payments,تضمين المدفوعات المخصصة ف�
 Only Parent can be of type {0},لا يمكن أن يكون من النوع {0} إلا الحساب الرئيسي
 Only show Customer of these Customer Groups,إظهار عملاء مجموعات العملاء هذه فقط
 Only show Items from these Item Groups,إظهار الأصناف من مجموعات الأصناف هذه فقط
-"Only values between [0,1) are allowed. Like {0.00, 0.04, 0.09, ...}\nEx: If allowance is set at 0.07, accounts that have balance of 0.07 in either of the currencies will be considered as zero balance account","يُسمح فقط بالقيم ضمن [0,1). مثل {0.00, 0.04, 0.09, ...}\nمثال: إذا عُيِّن الحد المسموح به عند 0.07، فستُعتبر الحسابات التي رصيدها 0.07 بأي من العملتين حسابات ذات رصيد صفري"
 Opening & Closing,الافتتاح والإقفال
 Opening (Dr),افتتاحي (Dr)
 Opening Accumulated Depreciation,الإهلاك المتراكم الافتتاحي
@@ -8231,9 +7192,7 @@ Supplier Item,صنف المورد
 Supplier Ledger Summary,ملخص دفتر أستاذ المورد
 Supplier Warehouse,مستودع المورد
 Suspected Discount Amount,مبلغ الخصم المشتبه به
-"System will do an implicit conversion using the pegged currency. <br>\nEx: Instead of AED -&gt; INR, system will do AED -&gt; USD -&gt; INR using the pegged exchange rate of AED against USD.",سيجري النظام تحويلًا ضمنيًا باستخدام العملة المربوطة. <br>\nمثال: بدلًا من AED -&gt; INR، سيجري النظام AED -&gt; USD -&gt; INR باستخدام سعر الصرف المربوط لـ AED مقابل USD.
 System will notify to increase or decrease quantity or amount ,سيُشعر النظام بزيادة الكمية أو المبلغ أو تقليلهما 
-"System will use the latest saved Currency Exchange rate on or before the transaction date, however old it is. <br>\nUncheck to ignore rates older than Stale Days and fetch a fresh rate from the exchange rate provider instead.",سيستخدم النظام آخر سعر صرف عملة محفوظ في تاريخ المعاملة أو قبله، مهما كان قديمًا. <br>\nألغِ التحديد لتجاهل الأسعار الأقدم من أيام التقادم وجلب سعر جديد من مزود أسعار الصرف بدلًا من ذلك.
 Target Warehouse,المستودع المستهدف
 Tax Amount After Discount Amount,مبلغ الضريبة بعد مبلغ الخصم
 Tax Amount After Discount Amount (Company Currency),مبلغ الضريبة بعد مبلغ الخصم (عملة الشركة)
@@ -8279,7 +7238,6 @@ The fields From Shareholder and To Shareholder cannot be blank,لا يمكن ت�
 The fiscal year has been automatically created in a Disabled state to maintain consistency with the previous fiscal year's status.,تم إنشاء السنة المالية تلقائيًا بحالة معطلة للحفاظ على الاتساق مع حالة السنة المالية السابقة.
 The folio numbers are not matching,أرقام السجل غير متطابقة
 The following invalid Pricing Rules are deleted:,تم حذف قواعد التسعير غير الصالحة التالية:
-The following payment schedule(s) already exist:\n{0},جداول الدفعات التالية موجودة مسبقًا:\n{0}
 The following rows are not valid fields of {0} and have to be removed: {1},الصفوف التالية ليست حقولًا صالحة في {0} ويجب إزالتها: {1}
 The following vouchers are not submitted: {0},السندات التالية غير معتمدة: {0}
 "The GL Entries will be cancelled in the background, it can take a few minutes.",سيتم إلغاء قيود دفتر الأستاذ العام في الخلفية، وقد يستغرق ذلك بضع دقائق.
@@ -8634,7 +7592,6 @@ Enable Capital Work in Progress Accounting,تفعيل محاسبة الأعما�
 Enter date to scrap asset,أدخل تاريخ تخريد الأصل
 Enter depreciation details,أدخل تفاصيل الإهلاك
 Error Description,وصف الخطأ
-Error: This asset already has {0} depreciation periods booked.\n					The `depreciation start` date must be at least {1} periods after the `available for use` date.\n					Please correct the dates accordingly.,خطأ: هذا الأصل مسجل له بالفعل {0} فترات إهلاك.\n					يجب أن يكون تاريخ `بداية الإهلاك` بعد تاريخ `الإتاحة للاستخدام` بـ {1} فترات على الأقل.\n					يرجى تصحيح التواريخ وفقًا لذلك.
 Existing Asset,أصل قائم
 Expected Value After Useful Life,القيمة المتوقعة بعد العمر الإنتاجي
 Failed to post depreciation entries,تعذر ترحيل قيود الإهلاك
@@ -9147,7 +8104,6 @@ You have not performed any reconciliations in this session yet.,لم تُجرِ 
 Bulk Transaction Log,سجل المعاملات الجماعية
 Succeeded Entries,الإدخالات الناجحة
 To Doctype,إلى نوع المستند
-"<p>In your <b>Email Template</b>, you can use the following special variables:\n</p>\n<ul>\n        <li>\n            <code>{{ update_password_link }}</code>: A link where your supplier can set a new password to log into your portal.\n        </li>\n        <li>\n            <code>{{ portal_link }}</code>: A link to this RFQ in your supplier portal.\n        </li>\n        <li>\n            <code>{{ supplier_name }}</code>: The company name of your supplier.\n        </li>\n        <li>\n            <code>{{ contact.salutation }} {{ contact.last_name }}</code>: The contact person of your supplier.\n        </li><li>\n            <code>{{ user_fullname }}</code>: Your full name.\n        </li>\n    </ul>\n<p></p>\n<p>Apart from these, you can access all values in this RFQ, like <code>{{ message_for_supplier }}</code> or <code>{{ terms }}</code>.</p>",<p>في <b>قالب البريد الإلكتروني</b>، يمكنك استخدام المتغيرات الخاصة التالية:\n</p>\n<ul>\n        <li>\n            <code>{{ update_password_link }}</code>: رابط يمكن للمورد من خلاله تعيين كلمة مرور جديدة لتسجيل الدخول إلى بوابتك.\n        </li>\n        <li>\n            <code>{{ portal_link }}</code>: رابط لطلب عرض السعر هذا في بوابة الموردين.\n        </li>\n        <li>\n            <code>{{ supplier_name }}</code>: اسم شركة المورد.\n        </li>\n        <li>\n            <code>{{ contact.salutation }} {{ contact.last_name }}</code>: مسؤول التواصل لدى المورد.\n        </li><li>\n            <code>{{ user_fullname }}</code>: اسمك الكامل.\n        </li>\n    </ul>\n<p></p>\n<p>إضافة إلى ذلك، يمكنك الوصول إلى جميع القيم في طلب عرض السعر هذا، مثل <code>{{ message_for_supplier }}</code> أو <code>{{ terms }}</code>.</p>
 Account / customer numbers assigned to your companies by this supplier (for reconciliation on their statements),أرقام الحسابات/العملاء التي خصصها هذا المورد لشركاتك (للتسوية مع كشوف حسابه)
 Action if same rate is not maintained,الإجراء عند عدم الالتزام بالسعر نفسه
 Added Supplier Role to User {0}.,أُضيف دور المورد إلى المستخدم {0}.
@@ -9563,7 +8519,6 @@ Row #{0}: Quantity for Item {1} cannot be zero.,الصف #{0}: لا يمكن أ�
 Row #{0}: Quantity of Item {1} cannot be more than {2} {3} against Subcontracting Inward Order {4},الصف #{0}: لا يمكن أن تتجاوز كمية الصنف {1} {2} {3} مقابل أمر التعاقد من الباطن الوارد {4}
 Row #{0}: Rate must be same as {1}: {2} ({3} / {4}),الصف #{0}: يجب أن يكون السعر مساويًا لـ {1}: {2} ({3} / {4})
 Row #{0}: Rejected Warehouse is mandatory for the rejected Item {1},الصف #{0}: مستودع المرفوضات إلزامي للصنف المرفوض {1}
-"Row #{0}: Selling rate for item {1} is lower than its {2}.\n					Selling {3} should be atleast {4}.<br><br>Alternatively,\n					you can disable '{5}' in {6} to bypass\n					this validation.",الصف #{0}: سعر البيع للصنف {1} أقل من {2} الخاص به.\n					يجب أن يكون {3} البيع {4} على الأقل.<br><br>بدلًا من ذلك،\n					يمكنك تعطيل '{5}' في {6} لتجاوز\n					هذا التحقق.
 Row #{0}: Serial No {1} does not belong to Batch {2},الصف #{0}: الرقم التسلسلي {1} لا ينتمي إلى التشغيلة {2}
 Row #{0}: Serial No(s) {1} are not a part of the linked Subcontracting Inward Order. Please select valid Serial No(s).,الصف #{0}: الأرقام التسلسلية {1} ليست جزءًا من أمر التعاقد من الباطن الوارد المرتبط. يُرجى اختيار أرقام تسلسلية صالحة.
 Row #{0}: Service Start and End Date is required for deferred accounting,الصف # {0}: تاريخا بدء الخدمة وانتهائها مطلوبان للمحاسبة المؤجلة
@@ -9645,7 +8600,6 @@ You don't have permission to update this document. Please contact your System Ma
 11-50,11-50
 201-500,201-500
 <b>From Time</b> cannot be later than <b>To Time</b> for {0},<b>من الوقت</b> لا يمكن أن يكون بعد <b>إلى الوقت</b> لـ {0}
-"<h4>Contract Template Example</h4>\n\n<pre>Contract for Customer {{ party_name }}\n\n-Valid From : {{ start_date }} \n-Valid To : {{ end_date }}\n</pre>\n\n<h4>How to get fieldnames</h4>\n\n<p>The field names you can use in your Contract Template are the fields in the Contract for which you are creating the template. You can find out the fields of any documents via Setup &gt; Customize Form View and selecting the document type (e.g. Contract)</p>\n\n<h4>Templating</h4>\n\n<p>Templates are compiled using the Jinja Templating Language. To learn more about Jinja, <a class=""strong"" href=""http://jinja.pocoo.org/docs/dev/templates/"">read this documentation.</a></p>","<h4>مثال على قالب العقد</h4>\n\n<pre>عقد للعميل {{ party_name }}\n\n-صالح من : {{ start_date }} \n-صالح إلى : {{ end_date }}\n</pre>\n\n<h4>كيفية الحصول على أسماء الحقول</h4>\n\n<p>أسماء الحقول التي يمكنك استخدامها في قالب العقد هي حقول العقد الذي تنشئ القالب له. يمكنك معرفة حقول أي مستند عبر الإعداد &gt; تخصيص عرض النموذج واختيار نوع المستند (مثل العقد)</p>\n\n<h4>القوالب</h4>\n\n<p>تُعالَج القوالب باستخدام لغة قوالب Jinja. لمعرفة المزيد عن Jinja، <a class=""strong"" href=""http://jinja.pocoo.org/docs/dev/templates/"">اقرأ هذا التوثيق.</a></p>"
 A Lead requires either a person's name or an organization's name,يتطلب العميل المحتمل اسم شخص أو اسم مؤسسة
 A verified appointment cannot be moved back to 'Unverified' status.,لا يمكن إعادة موعد تم التحقق منه إلى حالة 'غير متحقق منه'.
 Action for Expired Unverified Appointments,الإجراء عند انتهاء المواعيد غير المتحقق منها
@@ -9906,7 +8860,6 @@ Additional Costs (as per BOM),التكاليف الإضافية (حسب قائم
 Additional Finished Good,منتج تام إضافي
 Additional Operating Cost,تكلفة التشغيل الإضافية
 Additional Transferred Qty,الكمية المنقولة الإضافية
-"Additional Transferred Qty {0}\n					cannot be greater than {1}.\n					To fix this, increase the percentage value\n					of the field 'Transfer Extra Raw Materials to WIP'\n					in Manufacturing Settings.","الكمية الإضافية المنقولة {0}\n					لا يمكن أن تكون أكبر من {1}.\n					لإصلاح هذه المشكلة، قم بزيادة قيمة النسبة المئوية\n					في الحقل ""نقل المواد الخام الإضافية إلى الإنتاج تحت التشغيل""\n					في إعدادات التصنيع."
 All BOMs,جميع قوائم المواد
 All items are already requested,تم طلب جميع الأصناف مسبقًا
 "All the required items (raw materials) will be fetched from BOM and populated in this table. Here you can also change the Source Warehouse for any item. And during the production, you can track transferred raw materials from this table.",سيتم جلب جميع الأصناف المطلوبة (المواد الخام) من قائمة المواد وإدراجها في هذا الجدول. ويمكنك هنا أيضًا تغيير المستودع المصدر لأي صنف. وأثناء الإنتاج، يمكنك تتبع المواد الخام المنقولة من هذا الجدول.
@@ -10098,8 +9051,6 @@ Has Batch No,يحتوي على رقم تشغيلة
 How many units of the final product this BOM makes.,عدد وحدات المنتج النهائي التي تنتجها قائمة المواد هذه.
 Id,المعرف
 Idle,خامل
-"If enabled, formula for <b>Qty to Order</b>: <br>\nRequired Qty (BOM) - <a href=""https://docs.frappe.io/erpnext/user/manual/en/projected-quantity"">Projected Qty</a>. <br> This helps avoid over-ordering.","عند التفعيل، تكون صيغة <b>الكمية المراد طلبها</b>: <br>\nالكمية اللازمة (قائمة المواد) - <a href=""https://docs.frappe.io/erpnext/user/manual/en/projected-quantity"">الكمية المتوقعة</a>. <br> يساعد ذلك على تجنب الإفراط في الطلب."
-"If enabled, formula for <b>Required Qty</b>: <br>\nRequired Qty (BOM) - <a href=""https://docs.frappe.io/erpnext/user/manual/en/projected-quantity"">Projected Qty</a>. <br> This helps avoid over-ordering.","عند التفعيل، تكون صيغة <b>الكمية اللازمة</b>: <br>\nالكمية اللازمة (قائمة المواد) - <a href=""https://docs.frappe.io/erpnext/user/manual/en/projected-quantity"">الكمية المتوقعة</a>. <br> يساعد ذلك على تجنب الإفراط في الطلب."
 "If items in stock, proceed with Material Transfer or Purchase.",إذا كانت الأصناف متوفرة في المخزون، فتابع نقل المواد أو الشراء.
 "If ticked, multiple materials can be used for a single Work Order. This is useful if one or more time consuming products are being manufactured.",إذا تم تحديده، يمكن استخدام مواد متعددة لأمر عمل واحد. يكون هذا مفيدًا إذا تم تصنيع منتج أو أكثر من المنتجات التي تستغرق وقتًا طويلاً.
 "If ticked, the BOM cost will be automatically updated based on Valuation Rate / Price List Rate / last purchase rate of raw materials.",إذا تم تحديدها، فسيتم تحديث تكلفة قائمة المواد تلقائيًا استنادًا إلى سعر التقييم / سعر قائمة الأسعار / سعر الشراء الأخير للمواد الخام.
@@ -10303,7 +9254,6 @@ Raw Material Item,صنف المادة الخام
 Raw Materials,المواد الخام
 Remove Parent Row No in Items Table,إزالة رقم الصف الرئيسي في جدول الأصناف
 Replace,استبدال
-"Replace a particular BOM in all other BOMs where it is used. It will replace the old BOM link, update cost and regenerate ""BOM Explosion Item"" table as per new BOM.\nIt also updates latest price in all the BOMs.","استبدل قائمة مواد معينة في جميع قوائم المواد الأخرى التي تُستخدم فيها. سيؤدي ذلك إلى استبدال رابط قائمة المواد القديمة، وتحديث التكلفة، وإعادة إنشاء جدول ""صنف قائمة المواد المفصلة"" وفقًا لقائمة المواد الجديدة.\nكما يقوم بتحديث أحدث سعر في جميع قوائم المواد."
 Replace BOM,استبدال قائمة المواد
 Reqired Qty,الكمية اللازمة
 Requested Qty,الكمية المطلوبة
@@ -10366,7 +9316,6 @@ Select the Item to be manufactured.,حدد الصنف المراد تصنيعه.
 "Select the Item to be manufactured. The Item name, UoM, Company, and Currency will be fetched automatically.",حدد الصنف المراد تصنيعه. سيتم جلب اسم الصنف ووحدة القياس والشركة والعملة تلقائيًا.
 Select the raw materials (Items) required to manufacture the Item,حدد المواد الخام (الأصناف) المطلوبة لتصنيع الصنف
 Select variant item code for the template item {0},حدد رمز الصنف المتغير لصنف القالب {0}
-Select whether to get items from a Sales Order or a Material Request. For now select <b>Sales Order</b>.\n A Production Plan can also be created manually where you can select the Items to manufacture.,حدد ما إذا كنت تريد جلب الأصناف من أمر بيع أو طلب مواد. حاليًا حدد <b>أمر البيع</b>.\n يمكن أيضًا إنشاء خطة الإنتاج يدويًا حيث يمكنك تحديد الأصناف المراد تصنيعها.
 Semi Finished Good / Finished Good,منتج نصف مصنع / منتج تام
 Serial / Batch,الرقم التسلسلي / التشغيلة
 Set Operating Cost / Secondary Items From Sub-assemblies,تعيين تكلفة التشغيل / الأصناف الثانوية من التجميعات الفرعية
@@ -10804,7 +9753,6 @@ Zero Rated,خاضع لنسبة الصفر
 % of materials delivered against this Sales Order,% من المواد المسلمة مقابل أمر البيع هذا
 % Picked,% تم انتقاؤه
 'Allow Multiple Sales Orders Against a Customer's Purchase Order','السماح بعدة أوامر بيع مقابل أمر شراء العميل'
-"<h3>About Product Bundle</h3>\n\n<p>Aggregate group of <b>Items</b> into another <b>Item</b>. This is useful if you are bundling a certain <b>Items</b> into a package and you maintain stock of the packed <b>Items</b> and not the aggregate <b>Item</b>.</p>\n<p>The package <b>Item</b> will have <code>Is Stock Item</code> as <b>No</b> and <code>Is Sales Item</code> as <b>Yes</b>.</p>\n<h4>Example:</h4>\n<p>If you are selling Laptops and Backpacks separately and have a special price if the customer buys both, then the Laptop + Backpack will be a new Product Bundle Item.</p>",<h3>حول حزمة المنتجات</h3>\n\n<p>تجميع مجموعة من <b>الأصناف</b> في <b>صنف</b> آخر. يفيد ذلك إذا كنت تجمع <b>أصنافًا</b> معينة في طرد وتحتفظ بمخزون <b>الأصناف</b> المعبأة لا <b>الصنف</b> المجمع.</p>\n<p>يكون لـ<b>صنف</b> الطرد الحقل <code>Is Stock Item</code> بقيمة <b>لا</b> والحقل <code>Is Sales Item</code> بقيمة <b>نعم</b>.</p>\n<h4>مثال:</h4>\n<p>إذا كنت تبيع أجهزة الحاسب المحمولة والحقائب الظهرية كلًا على حدة ولديك سعر خاص إذا اشترى العميل كليهما، فإن الحاسب المحمول + الحقيبة الظهرية سيكونان صنف حزمة منتجات جديدًا.</p>
 A Customer Group exists with same name please change the Customer name or rename the Customer Group,توجد مجموعة عملاء بالاسم نفسه، يُرجى تغيير اسم العميل أو إعادة تسمية مجموعة العملاء
 A disabled Product Bundle cannot be selected in transactions.,لا يمكن تحديد حزمة منتجات معطلة في المعاملات.
 Account Manager,مدير الحساب
@@ -10901,7 +9849,6 @@ Enable this to block transactions where the selling price is less than the purch
 Enable tracking sales commissions,تفعيل تتبع عمولات المبيعات
 "Enable Urchin Tracking Module parameters in Quotation, Sales Order, Sales Invoice, POS Invoice, Lead,  and Delivery Note.",تفعيل معلمات Urchin Tracking Module في عرض السعر، وأمر البيع، وفاتورة المبيعات، وفاتورة نقطة البيع، والعميل المحتمل، وسند التسليم.
 Enable UTM,تفعيل UTM
-"Enabling this will do the following:\n<ul style=""padding-left:16px"">\n<li>Make the rate column of all Packed/Bundle Items tables editable.</li>\n<li>Calculate the prices of all <a href=""/desk/product-bundle"" rel=""noopener noreferrer"">Product Bundles</a> in the Items table, based on the prices of its child Items, specified in the Packed/Bundle Items table. </li>\n</ul>\nNote: If this is enabled, updating the rate of the Product Bundle in the Items table will not change its price. It will get reset to the price based on its Child Items on saving the doc.","سيؤدي تفعيل هذا الخيار إلى ما يلي:\n<ul style=""padding-left:16px"">\n<li>جعل عمود السعر في جميع جداول الأصناف المعبأة/أصناف الحزمة قابلًا للتعديل.</li>\n<li>احتساب أسعار جميع <a href=""/desk/product-bundle"" rel=""noopener noreferrer"">حزم المنتجات</a> في جدول الأصناف بناءً على أسعار أصنافها الفرعية المحددة في جدول الأصناف المعبأة/أصناف الحزمة. </li>\n</ul>\nملاحظة: إذا كان هذا الخيار مفعلًا، فلن يؤدي تحديث سعر حزمة المنتجات في جدول الأصناف إلى تغيير سعرها، إذ سيُعاد تعيينه إلى السعر المبني على أصنافها الفرعية عند حفظ المستند."
 Ensure Delivery Based on Produced Serial No,ضمان التسليم بناءً على الرقم التسلسلي المنتج
 Enter amount to be redeemed.,أدخل المبلغ المراد استبداله.
 Expected Delivery Date should be after Sales Order Date,يجب أن يكون تاريخ التسليم المتوقع بعد تاريخ أمر البيع
@@ -11125,7 +10072,6 @@ You must select a customer before adding an item.,يجب تحديد عميل ق�
 "{0}, {1} or {2} are the only allowed options.",{0} أو {1} أو {2} هي الخيارات الوحيدة المسموح بها.
  Default Work In Progress Warehouse , مستودع الأعمال تحت التنفيذ الافتراضي 
 '{0}' should be in company currency {1}.,يجب أن يكون '{0}' بعملة الشركة {1}.
-"<h4>Standard Terms and Conditions Example</h4>\n\n<pre>Delivery Terms for Order number {{ name }}\n\n-Order Date : {{ transaction_date }} \n-Expected Delivery Date : {{ delivery_date }}\n</pre>\n\n<h4>How to get fieldnames</h4>\n\n<p>The fieldnames you can use in your email template are the fields in the document from which you are sending the email. You can find out the fields of any documents via Setup &gt; Customize Form View and selecting the document type (e.g. Sales Invoice)</p>\n\n<h4>Templating</h4>\n\n<p>Templates are compiled using the Jinja Templating Language. To learn more about Jinja, <a class=""strong"" href=""http://jinja.pocoo.org/docs/dev/templates/"">read this documentation.</a></p>","<h4>مثال على الشروط والأحكام القياسية</h4>\n\n<pre>شروط التسليم للأمر رقم {{ name }}\n\n-تاريخ الأمر : {{ transaction_date }} \n-تاريخ التسليم المتوقع : {{ delivery_date }}\n</pre>\n\n<h4>كيفية الحصول على أسماء الحقول</h4>\n\n<p>أسماء الحقول التي يمكنك استخدامها في قالب البريد الإلكتروني هي حقول المستند الذي ترسل منه البريد الإلكتروني. يمكنك معرفة حقول أي مستند عبر الإعداد &gt; تخصيص عرض النموذج واختيار نوع المستند (مثل فاتورة المبيعات)</p>\n\n<h4>القوالب</h4>\n\n<p>تُصرَّف القوالب باستخدام لغة القوالب Jinja. لمعرفة المزيد عن Jinja، <a class=""strong"" href=""http://jinja.pocoo.org/docs/dev/templates/"">اقرأ هذا التوثيق.</a></p>"
 "<span class=""h4""><b>Your Shortcuts\n			\n		\n			\n		\n			\n		</b></span>","<span class=""h4""><b>اختصاراتك\n			\n		\n			\n		\n			\n		</b></span>"
 A third party distributor / dealer / commission agent / affiliate / reseller who sells the companies products for a commission.,موزع / تاجر / وكيل بالعمولة / شريك تسويق / معيد بيع من طرف ثالث يبيع منتجات الشركة مقابل عمولة.
 Abampere,أبأمبير
@@ -11327,7 +10273,6 @@ Holidays,العطلات
 How frequently?,ما معدل التكرار؟
 Hundredweight (US),هندردويت (الولايات المتحدة)
 Iches Of Water,بوصة ماء
-If <b>Enabled</b> - Reconciliation happens on the <b>Advance Payment posting date</b><br>\nIf <b>Disabled</b> - Reconciliation happens on oldest of 2 Dates: <b>Invoice Date</b> or the <b>Advance Payment posting date</b><br>\n,عند <b>التفعيل</b> - تتم التسوية في <b>تاريخ ترحيل الدفعة المقدمة</b><br>\nعند <b>التعطيل</b> - تتم التسوية في أقدم التاريخين: <b>تاريخ الفاتورة</b> أو <b>تاريخ ترحيل الدفعة المقدمة</b><br>\n
 "If disable, 'Rounded Total' field will not be visible in any transaction",إذا تم تعطيله، فلن يكون الحقل 'الإجمالي المقرب' مرئيًا في أي معاملة
 Import Data,استيراد البيانات
 Import Employees,استيراد الموظفين
@@ -11563,7 +10508,6 @@ You cannot edit root node.,لا يمكنك تعديل العقدة الجذري�
 {0}: Protected DocType,{0}: نوع مستند محمي
 {0}: Virtual DocType (no database table),{0}: نوع مستند ظاهري (بلا جدول في قاعدة البيانات)
 {0}: {1} is a group account.,{0}: {1} حساب مجموعة.
-"\n			The Batch {0} of an item {1} has negative stock in the warehouse {2}{3}.\n			Please add a stock quantity of {4} to proceed with this entry.\n			If it is not possible to make an adjustment entry, please enable 'Allow Negative Stock for Batch' in the batch {0} or in the Stock Settings to proceed.\n			However, enabling this setting may lead to negative stock in the system.\n			So please ensure the stock levels are adjusted as soon as possible to maintain the correct valuation rate.","\n			تحتوي التشغيلة {0} من الصنف {1} على مخزون سالب في المستودع {2}{3}.\n			يرجى إضافة كمية مخزون قدرها {4} للمتابعة.\n			إذا تعذر إجراء تعديل، يرجى تفعيل خيار ""السماح بالمخزون السالب للتشغيلة"" في التشغيلة {0} أو في إعدادات المخزون للمتابعة.\n			مع ذلك، قد يؤدي تفعيل هذا الخيار إلى وجود مخزون سالب في النظام.\n			لذا يرجى التأكد من تعديل مستويات المخزون في أسرع وقت ممكن للحفاظ على سعر التقييم الصحيح."
  Is Child Table, جدول فرعي
 """Customer Provided Item"" cannot be Purchase Item also","""صنف مقدم من العميل"" لا يمكن أن يكون صنف شراء أيضًا"
 """Customer Provided Item"" cannot have Valuation Rate","""صنف مقدم من العميل"" لا يمكن أن يكون له سعر تقييم"
@@ -11595,7 +10539,6 @@ You cannot edit root node.,لا يمكنك تعديل العقدة الجذري�
 "<div style=""margin-bottom:10px; color: var(--gray-500) !important;"">Define alternate units for this item. Eg: 1 Box = 12 Nos, set conversion factor as 12. (Will also apply for variants) <a href=""https://docs.frappe.io/erpnext/uom"" target=""_blank"">Learn more &#8594;</a></div>","<div style=""margin-bottom:10px; color: var(--gray-500) !important;"">حدِّد وحدات قياس بديلة لهذا الصنف. مثال: 1 صندوق = 12 وحدة، فاضبط معامل التحويل على 12. (ينطبق أيضًا على المتغيرات) <a href=""https://docs.frappe.io/erpnext/uom"" target=""_blank"">اعرف المزيد &#8594;</a></div>"
 "<p>Price List Rate has not been set as editable in Selling Settings. In this scenario, setting <strong>Update Price List Based On</strong> to <strong>Price List Rate</strong> will prevent auto-updation of Item Price.</p>Are you sure you want to continue?",<p>لم يُضبط سعر قائمة الأسعار ليكون قابلًا للتعديل في إعدادات البيع. في هذه الحالة، سيؤدي ضبط <strong>تحديث قائمة الأسعار بناءً على</strong> على <strong>سعر قائمة الأسعار</strong> إلى منع التحديث التلقائي لسعر الصنف.</p>هل تريد المتابعة؟
 "<span class=""h4""><b>Masters &amp; Reports</b></span>","<span class=""h4""><b>البيانات الرئيسية &amp; التقارير</b></span>"
-"<table class=""table table-bordered table-condensed"">\n<thead>\n  <tr>\n         <th class=""table-sr"" style=""width: 50%;"">Child Document</th>\n         <th class=""table-sr"" style=""width: 50%;"">Non Child Document</th>\n   </tr>\n</thead>\n<tbody>\n<tr>\n         <td>\n                  <p> To access parent document field use parent.fieldname and to access child table document field use doc.fieldname </p>\n\n         </td>\n         <td>\n                    <p>To access document field use doc.fieldname </p>\n         </td>\n</tr>\n<tr>\n        <td>\n                   <p><b>Example: </b> parent.doctype == ""Stock Entry"" and doc.item_code == ""Test"" </p>\n\n        </td>\n         <td>\n                   <p><b>Example: </b> doc.doctype == ""Stock Entry"" and doc.purpose == ""Manufacture""</p>    \n          </td>\n</tr>\n\n</tbody>\n</table>\n\n\n\n\n\n\n","<table class=""table table-bordered table-condensed"">\n<thead>\n  <tr>\n         <th class=""table-sr"" style=""width: 50%;"">المستند الفرعي</th>\n         <th class=""table-sr"" style=""width: 50%;"">المستند غير الفرعي</th>\n   </tr>\n</thead>\n<tbody>\n<tr>\n         <td>\n                  <p> للوصول إلى حقل المستند الرئيسي استخدم parent.fieldname، وللوصول إلى حقل مستند الجدول الفرعي استخدم doc.fieldname </p>\n\n         </td>\n         <td>\n                    <p>للوصول إلى حقل المستند استخدم doc.fieldname </p>\n         </td>\n</tr>\n<tr>\n        <td>\n                   <p><b>مثال: </b> parent.doctype == ""Stock Entry"" and doc.item_code == ""Test"" </p>\n\n        </td>\n         <td>\n                   <p><b>مثال: </b> doc.doctype == ""Stock Entry"" and doc.purpose == ""Manufacture""</p>    \n          </td>\n</tr>\n\n</tbody>\n</table>\n\n\n\n\n\n\n"
 [Important] [ERPNext] Auto Reorder Errors,[هام] [ERPNext] أخطاء إعادة الطلب التلقائي
 A - B,أ - ب
 A - C,أ - ج
@@ -11896,7 +10839,6 @@ End Transit,إنهاء النقل
 Enter the Item Code that this customer uses at their end. This will be shown in Sales Orders for the customer's reference.,أدخل رمز الصنف الذي يستخدمه هذا العميل لديه. سيظهر هذا الرمز في أوامر البيع ليرجع إليه العميل.
 ERPNext will make a stock ledger entry for each transaction of this item. Keep unchecked for non-stock or service items.,سينشئ ERPNext قيد دفتر أستاذ المخزون لكل معاملة على هذا الصنف. اتركه غير محدد للأصناف غير المخزنية أو الخدمية.
 Error while reposting item valuation,حدث خطأ أثناء إعادة ترحيل تقييم الصنف
-"Example: ABCD.#####\nIf series is set and Serial No is not mentioned in transactions, then automatic serial number will be created based on this series. If you always want to explicitly mention Serial Nos for this item. leave this blank.",مثال: ABCD.#####\nإذا تم تحديد سلسلة ولم يُذكر الرقم التسلسلي في المعاملات، فسيتم إنشاء رقم تسلسلي تلقائيًا بناءً على هذه السلسلة. إذا كنت ترغب دائمًا في ذكر الأرقام التسلسلية لهذا الصنف بشكل صريح، فاترك هذا الحقل فارغًا.
 "Example: ABCD.#####. If series is set and Batch No is not mentioned in transactions, then automatic batch number will be created based on this series. If you always want to explicitly mention Batch No for this item, leave this blank. Note: this setting will take priority over the Naming Series Prefix in Stock Settings.",مثال: ABCD.#####. إذا ضُبطت السلسلة ولم يُذكر رقم التشغيلة في المعاملات، فسيُنشأ رقم التشغيلة تلقائيًا بناءً على هذه السلسلة. إذا كنت تريد دائمًا ذكر رقم التشغيلة لهذا الصنف صراحةً، فاترك هذا الحقل فارغًا. ملاحظة: لهذا الإعداد الأولوية على بادئة سلسلة الترقيم في إعدادات المخزون.
 Excess Disassembly,تفكيك زائد
 Excess Material Transfer,نقل مواد زائد
@@ -11963,7 +10905,6 @@ Identification of the package for the delivery (for print),تعريف الطرد
 If enabled then system won't apply the pricing rule on the delivery note which will be create from the pick list,في حال تفعيله، لن يطبق النظام قاعدة التسعير على سند التسليم الذي يُنشأ من قائمة الانتقاء
 If enabled then system won't override the picked qty / batches / serial numbers / warehouse.,في حال تفعيله، لن يستبدل النظام الكمية المنتقاة / التشغيلات / الأرقام التسلسلية / المستودع.
 "If enabled, a weekly scheduler scans the Stock Ledger Variance for item-warehouses with incorrect valuation in the current financial year and auto-creates Item & Warehouse based reposts to fix them.",في حال تفعيله، يفحص مُجدول أسبوعي تباين دفتر أستاذ المخزون بحثًا عن أزواج الصنف والمستودع ذات التقييم غير الصحيح في السنة المالية الحالية، وينشئ تلقائيًا عمليات إعادة ترحيل حسب الصنف والمستودع لتصحيحها.
-"If enabled, do not update serial / batch values in the stock transactions on creation of auto Serial \n / Batch Bundle. ",في حال تفعيله، لا تُحدَّث قيم الرقم التسلسلي / التشغيلة في معاملات المخزون عند إنشاء حزمة الرقم التسلسلي التلقائي \n / حزمة التشغيلة. 
 "If enabled, sales from this item will be included in Sales Person and Sales Partner commission calculations",في حال تفعيله، تُدرَج مبيعات هذا الصنف في احتساب عمولات مندوب المبيعات وشريك المبيعات
 "If enabled, the item rate won't adjust to the valuation rate during internal transfers, but accounting will still use the valuation rate. This will allow the user to specify a different rate for printing or taxation purposes.",في حال تفعيله، لن يُعدَّل سعر الصنف إلى سعر التقييم أثناء التحويلات الداخلية، لكن المحاسبة ستظل تستخدم سعر التقييم. يتيح ذلك للمستخدم تحديد سعر مختلف لأغراض الطباعة أو الضريبة.
 "If enabled, the source and target warehouse in the Material Transfer Stock Entry must be different else an error will be thrown. If inventory dimensions are present, same source and target warehouse can be allowed but atleast any one of the inventory dimension fields must be different.",في حال تفعيل هذه الخاصية، يجب أن يختلف المستودع المصدر عن المستودع المستهدف في حركة مخزون نقل المواد، وإلا سيظهر خطأ. أما إذا كانت أبعاد المخزون موجودة، فيمكن السماح بأن يكون المستودع المصدر هو المستودع المستهدف، ولكن يجب أن يختلف حقل واحد على الأقل من حقول أبعاد المخزون.
@@ -12122,7 +11063,6 @@ Maximum Samples - {0} have already been retained for Batch {1} and Item {2} in B
 Mention Valuation Rate in the Item master.,حدد سعر التقييم في البيانات الرئيسية للصنف.
 Minimum Net Rate,الحد الأدنى للسعر الصافي
 Minimum Order Qty,الحد الأدنى لكمية الطلب
-Minimum quantity should be as per Stock UOM\n\n,يجب أن تكون الكمية الدنيا وفق وحدة قياس المخزون\n\n
 Minimum stock level to maintain as a buffer. Used to calculate recommended reorder level: Reorder Level = Safety Stock + (Average Daily Consumption × Lead Time).,الحد الأدنى للمخزون الذي يُحتفظ به احتياطيًا. يُستخدم لحساب حد إعادة الطلب الموصى به: حد إعادة الطلب = مخزون الأمان + (متوسط الاستهلاك اليومي × مدة التوريد).
 Minimum Value,القيمة الدنيا
 Missing,مفقود
@@ -12477,7 +11417,6 @@ Show Stock Ageing Data,عرض بيانات أعمار المخزون
 Show Variant Attributes,عرض سمات المتغير
 Show Variants,إظهار المتغيرات
 Show Warehouse-wise Stock,عرض المخزون حسب المستودع
-"Simple Python formula applied on Reading fields.<br> Numeric eg. 1: <b>reading_1 &gt; 0.2 and reading_1 &lt; 0.5</b><br>\nNumeric eg. 2: <b>mean &gt; 3.5</b> (mean of populated fields)<br>\nValue based eg.:  <b>reading_value in (""A"", ""B"", ""C"")</b>","صيغة Python بسيطة تُطبَّق على حقول القراءة.<br> مثال رقمي 1: <b>reading_1 &gt; 0.2 and reading_1 &lt; 0.5</b><br>\nمثال رقمي 2: <b>mean &gt; 3.5</b> (متوسط الحقول المعبأة)<br>\nمثال قائم على القيمة:  <b>reading_value in (""A"", ""B"", ""C"")</b>"
 "Since there is a process loss of {0} units for the finished good {1}, you should reduce the quantity by {0} units for the finished good {1} in the Items Table.",بما أن هناك فاقد عملية قدره {0} وحدة للمنتج التام {1}، فيجب عليك تقليل الكمية بمقدار {0} وحدة للمنتج التام {1} في جدول الأصناف.
 "Since {0} are Serial No/Batch No items, you cannot enable 'Recreate Stock Ledgers' in Repost Item Valuation.",بما أن {0} أصناف ذات رقم تسلسلي/رقم تشغيلة، فلا يمكنك تفعيل 'إعادة إنشاء دفاتر أستاذ المخزون' في إعادة ترحيل تقييم الصنف.
 "Since {0} has 'Update Stock' disabled, you cannot create repost item valuation against it",بما أن خيار 'تحديث المخزون' معطل في {0}، فلا يمكنك إنشاء إعادة ترحيل تقييم الصنف مقابله
@@ -12920,8 +11859,6 @@ Create Purchase Orders,إنشاء أوامر الشراء
 Create Quotation,إنشاء عرض سعر
 Create Sales Orders to help you plan your work and deliver on-time,أنشئ أوامر البيع لمساعدتك في تخطيط عملك والتسليم في الموعد المحدد
 Creation of <b><a href='/app/{0}'>{1}(s)</a></b> successful,تم إنشاء <b><a href='/app/{0}'>{1}</a></b> بنجاح
-"Creation of {0} failed.\n				Check <b><a href=""/app/bulk-transaction-log"">Bulk Transaction Log</a></b>","فشل إنشاء {0}.\n				راجع <b><a href=""/app/bulk-transaction-log"">سجل المعاملات المجمعة</a></b>"
-"Creation of {0} partially successful.\n				Check <b><a href=""/app/bulk-transaction-log"">Bulk Transaction Log</a></b>","تم إنشاء {0} جزئيًا.\n				راجع <b><a href=""/app/bulk-transaction-log"">سجل المعاملات المجمعة</a></b>"
 Dislikes,عدم الإعجاب
 Enable YouTube Tracking,تفعيل تتبع يوتيوب
 Failed to Authenticate the API key.,فشلت مصادقة مفتاح API.
@@ -13284,7 +12221,6 @@ Changing '{0}' to {1}.,تغيير '{0}' إلى {1}.
 Check {0} for more details,راجع {0} لمزيد من التفاصيل
 Checkin Radius,نطاق البصمة
 Child nodes can only be created under 'Group' type nodes,لا يمكن إنشاء العناصر الفرعية إلا تحت العناصر من نوع 'مجموعة'
-"Choose how the hourly overtime amount is calculated:\n<ol style=""padding-left:15px;""><li>Fixed Hourly Rate: A fixed, manually entered hourly rate.</li>\n<li>Salary Component-Based:\n\n(Sum of selected component amounts) ÷ (Payment Days) ÷ (Standard Daily Hours)</li></ol>","اختر طريقة حساب مبلغ العمل الإضافي بالساعة:\n<ol style=""padding-left:15px;""><li>أجر ساعة ثابت: أجر ساعة ثابت يُدخل يدويًا.</li>\n<li>بناءً على مكون الراتب:\n\n(مجموع مبالغ المكونات المحددة) ÷ (أيام الاستحقاق) ÷ (ساعات العمل اليومية القياسية)</li></ol>"
 Closed On,تاريخ الإغلاق
 Closes On,يُغلق في
 Completing onboarding,جارٍ إكمال الإعداد الأولي
@@ -13584,7 +12520,6 @@ Missing Advance Account,حساب السلف مفقود
 Missing Relieving Date,تاريخ ترك العمل مفقود
 modify_half_day_status,تعديل حالة نصف اليوم
 Multiple Shift Assignments,إسنادات ورديات متعددة
-Multipliers that adjust the hourly overtime amount for specific scenarios\n\n,معاملات تعدّل مبلغ العمل الإضافي بالساعة لحالات معينة\n\n
 New Hires (This Month),الموظفون الجدد (هذا الشهر)
 New Leave(s) Allocated,الإجازات الجديدة المخصصة
 New shift assignments will be created after this date.,ستُنشأ إسنادات الورديات الجديدة بعد هذا التاريخ.
@@ -13956,8 +12891,6 @@ Employee Advance Account,حساب سلف الموظفين
 WARNING: Loan Management module has been separated from ERPNext.,تحذير: فُصلت وحدة إدارة القروض عن ERPNext.
  Salary slips starting on or after this date will be considered for arrear calculations, تُحتسب قسائم الرواتب التي تبدأ في هذا التاريخ أو بعده في احتساب الفروقات
 <b>Base</b> amount has not been set for the following employee(s): {0},لم يُحدَّد المبلغ <b>الأساسي</b> للموظفين التاليين: {0}
-"<h3>Help</h3>\n\n<p>Notes:</p>\n\n<ol>\n<li>Use field <code>base</code> for using base salary of the Employee</li>\n<li>Use Salary Component abbreviations in conditions and formulas. <code>BS = Basic Salary</code></li>\n<li>Use field name for employee details in conditions and formulas. <code>Employment Type = employment_type</code><code>Branch = branch</code></li>\n<li>Use field name from Salary Slip in conditions and formulas. <code>Payment Days = payment_days</code><code>Leave without pay = leave_without_pay</code></li>\n<li>Direct Amount can also be entered based on Condition. See example 3</li></ol>\n\n<h4>Examples</h4>\n<ol>\n<li>Calculating Basic Salary based on <code>base</code>\n<pre><code>Condition: base &lt; 10000</code></pre>\n<pre><code>Formula: base * .2</code></pre></li>\n<li>Calculating HRA based on Basic Salary<code>BS</code> \n<pre><code>Condition: BS &gt; 2000</code></pre>\n<pre><code>Formula: BS * .1</code></pre></li>\n<li>Calculating TDS based on Employment Type<code>employment_type</code> \n<pre><code>Condition: employment_type==""Intern""</code></pre>\n<pre><code>Amount: 1000</code></pre></li>\n</ol>","<h3>مساعدة</h3>\n\n<p>ملاحظات:</p>\n\n<ol>\n<li>استخدم الحقل <code>base</code> لاستخدام الراتب الأساسي للموظف</li>\n<li>استخدم اختصارات مكونات الراتب في الشروط والصيغ. <code>BS = Basic Salary</code></li>\n<li>استخدم اسم الحقل لتفاصيل الموظف في الشروط والصيغ. <code>Employment Type = employment_type</code><code>Branch = branch</code></li>\n<li>استخدم اسم الحقل من قسيمة الراتب في الشروط والصيغ. <code>Payment Days = payment_days</code><code>Leave without pay = leave_without_pay</code></li>\n<li>يمكن أيضًا إدخال مبلغ مباشر بناءً على الشرط. انظر المثال 3</li></ol>\n\n<h4>أمثلة</h4>\n<ol>\n<li>احتساب الراتب الأساسي بناءً على <code>base</code>\n<pre><code>Condition: base &lt; 10000</code></pre>\n<pre><code>Formula: base * .2</code></pre></li>\n<li>احتساب بدل السكن بناءً على الراتب الأساسي<code>BS</code> \n<pre><code>Condition: BS &gt; 2000</code></pre>\n<pre><code>Formula: BS * .1</code></pre></li>\n<li>احتساب الضريبة المستقطعة من المنبع بناءً على نوع التوظيف<code>employment_type</code> \n<pre><code>Condition: employment_type==""Intern""</code></pre>\n<pre><code>Amount: 1000</code></pre></li>\n</ol>"
-"<h4>Condition Examples</h4>\n<ol>\n<li>Applying tax if employee born between 31-12-1937 and 01-01-1958 (Employees aged 60 to 80)<br>\n<code>Condition: date_of_birth&gt;date(1937, 12, 31) and date_of_birth&lt;date(1958, 01, 01)</code></li><br><li>Applying tax by employee gender<br>\n<code>Condition: gender==""Male""</code></li><br>\n<li>Applying tax by Salary Component<br>\n<code>Condition: base &gt; 10000</code></li></ol>","<h4>أمثلة على الشروط</h4>\n<ol>\n<li>تطبيق الضريبة إذا كان الموظف مولودًا بين 31-12-1937 و01-01-1958 (الموظفون الذين تتراوح أعمارهم بين 60 و80 عامًا)<br>\n<code>Condition: date_of_birth&gt;date(1937, 12, 31) and date_of_birth&lt;date(1958, 01, 01)</code></li><br><li>تطبيق الضريبة حسب جنس الموظف<br>\n<code>Condition: gender==""Male""</code></li><br>\n<li>تطبيق الضريبة حسب مكون الراتب<br>\n<code>Condition: base &gt; 10000</code></li></ol>"
 "<span class=""h4""><b>Transactions &amp; Reports</b></span>","<span class=""h4""><b>المعاملات والتقارير</b></span>"
 "Account type should be set {0} for payroll payable account {1}, please set and try again",يجب تعيين نوع الحساب {0} لحساب رواتب مستحقة الدفع {1}، يُرجى تعيينه ثم المحاولة مرة أخرى
 Accounting & Payment,المحاسبة والدفع
