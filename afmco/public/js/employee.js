@@ -264,12 +264,6 @@ frappe.ui.form.on('Employee', {
             addOpeningLeaveAllocationButton(frm);
         }
 
-        if (frappe.user.has_role(['System Manager'])) {
-            addShowChangesButton(frm);
-        }
-
-        addCompactViewButton(frm);
-
         if (frappe.user.has_role('General Manager')) {
             addEmployeeDuesButton(frm);
         }
@@ -452,111 +446,83 @@ function buildMuqeemDashboardHTML(frm, visas, insurances, dependents) {
 
 
 function addOpeningLeaveAllocationButton(frm) {
-    frm.page.add_menu_item(__('Create Opening Leave Allocation'), async () => {
-        const canCreateAllocation = await validateLeaveAllocationCreation(frm);
-
-        if (!canCreateAllocation) return;
-
-        const leavePeriod = await getActiveLeavePeriod(frm.doc.company);
-        createAndRouteToLeaveAllocation(frm, leavePeriod);
-    });
-}
-
-async function validateLeaveAllocationCreation(frm) {
-    const { message: assignments } = await frappe.call({
-        method: 'frappe.client.get_list',
-        args: {
-            doctype: 'Leave Policy Assignment',
-            filters: { employee: frm.doc.name, docstatus: 1 },
-            limit: 1
-        }
-    });
-
-    if (assignments && assignments.length) {
-        frappe.msgprint(__('The employee is already linked to an approved leave policy', null, 'Employee'));
-        return false;
-    }
-
-    const { message: existing_allocations } = await frappe.call({
-        method: 'frappe.client.get_list',
-        args: {
-            doctype: 'Leave Allocation',
-            filters: {
-                employee: frm.doc.name,
-                leave_type: 'Paid Annual Leave - 21 days',
-                from_date: frm.doc.date_of_joining,
-                to_date: frappe.datetime.add_months(frm.doc.date_of_joining, 12)
-            },
-            limit: 1
-        }
-    });
-
-    if (existing_allocations && existing_allocations.length) {
-        frappe.msgprint(__('A leave allocation already exists for this period', null, 'Employee'));
-        return false;
-    }
-
-    return true;
-}
-
-async function getActiveLeavePeriod(company) {
-    const { message: periods } = await frappe.call({
-        method: 'frappe.client.get_list',
-        args: {
-            doctype: 'Leave Period',
-            filters: { company: company, is_active: 1 },
-            fields: ['name'],
-            limit: 1
-        }
-    });
-
-    return periods?.length ? periods[0].name : '';
-}
-
-function createAndRouteToLeaveAllocation(frm, leavePeriod) {
-    const to_date = frappe.datetime.add_months(frm.doc.date_of_joining, 12);
-
-    const allocation = frappe.model.get_new_doc('Leave Allocation');
-    allocation.naming_series = 'HR-LAL-.YYYY.-';
-    allocation.employee = frm.doc.name;
-    allocation.employee_name = frm.doc.employee_name;
-    allocation.department = frm.doc.department;
-    allocation.company = frm.doc.company;
-    allocation.leave_type = 'Paid Annual Leave - 21 days';
-    allocation.from_date = frm.doc.date_of_joining;
-    allocation.to_date = to_date;
-    allocation.new_leaves_allocated = 21;
-    allocation.carry_forward = 1;
-    allocation.leave_period = leavePeriod;
-    allocation.description = 'رصيد إجازة افتتاحي للموظف يغطي الفترة من تاريخ التعيين حتى نهاية السنة العقدية.\n\nOpening leave balance for the employee covering the period from the date of joining until the end of the contract year.';
-
-    frappe.set_route('Form', allocation.doctype, allocation.name);
-}
-
-function addShowChangesButton(frm) {
-    frm.add_custom_button('Show Changes', function() {
-        show_document_changes_dashboard(frm);
-    });
-}
-
-function addCompactViewButton(frm) {
-    const button_label = "Show Compact View";
-    frm.page.add_menu_item(__(button_label), function() {
-        const originalContent = document.body.innerHTML;
-        document.body.innerHTML = showCompactViewOnly(frm);
-
-        document.getElementById("restore-page").addEventListener("click", function() {
-            document.body.innerHTML = originalContent;
-            frappe.ui.form.trigger("Employee", "refresh");
+    frm.page.add_menu_item(__('Create Opening Leave Allocation'), function() {
+        const dialog = new frappe.ui.Dialog({
+            title: __('Create Opening Leave Allocation'),
+            size: 'extra-large',
+            fields: [{
+                fieldname: 'allocations',
+                fieldtype: 'Table',
+                label: __('Leave Allocations'),
+                reqd: 1,
+                in_place_edit: true,
+                data: [{
+                    from_date: frm.doc.date_of_joining,
+                    to_date: frappe.datetime.add_months(frm.doc.date_of_joining, 12)
+                }],
+                fields: [
+                    { fieldname: 'leave_type', fieldtype: 'Link', options: 'Leave Type', label: __('Leave Type'), in_list_view: 1, reqd: 1 },
+                    { fieldname: 'from_date', fieldtype: 'Date', label: __('From Date'), in_list_view: 1, reqd: 1 },
+                    { fieldname: 'to_date', fieldtype: 'Date', label: __('To Date'), in_list_view: 1, reqd: 1 },
+                    { fieldname: 'new_leaves_allocated', fieldtype: 'Float', label: __('New Leaves Allocated'), in_list_view: 1, reqd: 1 },
+                    { fieldname: 'carry_forward', fieldtype: 'Check', label: __('Carry Forward'), in_list_view: 1, default: 0 }
+                ]
+            }],
+            primary_action_label: __('Create'),
+            primary_action(values) {
+                frappe.call({
+                    method: 'afmco.people_and_payroll.api.opening_leave_allocation.create_opening_leave_allocations',
+                    args: { employee: frm.doc.name, allocations: values.allocations },
+                    freeze: true
+                }).then(({ message: created }) => {
+                    dialog.hide();
+                    frappe.show_alert({ message: __('Leave Allocations created: {0}', [created.join(', ')]), indicator: 'green' });
+                    frm.reload_doc();
+                });
+            }
         });
+        dialog.show();
     });
 }
+
 
 function addEmployeeDuesButton(frm) {
-    let button_label = __('View Employee Dues', null, 'Employee');
-    frm.page.add_menu_item(button_label, function() {
-        show_employee_financial_data(frm);
+    frm.page.add_menu_item(__('View Employee Dues', null, 'Employee'), async function() {
+        const { message: dues } = await frappe.call({
+            method: 'afmco.people_and_payroll.api.employee_dues.get_employee_dues',
+            args: { employee: frm.doc.name }
+        });
+        showEmployeeDuesDialog(frm.doc, Math.round(dues.advance_balance), Math.round(dues.monthly_salary));
     });
+}
+
+function showEmployeeDuesDialog(employee, balance, netPay) {
+    const escape = frappe.utils.escape_html;
+    const rows = [
+        [__('Employee Number', null, 'Employee'), employee.employee_number],
+        [__('Employee Name', null, 'Employee'), employee.employee_name],
+        [__('Nationality', null, 'Employee'), employee.nationality],
+        [__('Designation', null, 'Employee'), employee.designation],
+        [__('Monthly Salary', null, 'Employee'), __('{0} Saudi Riyals', [netPay], 'Employee')],
+        [__('Iqama Status', null, 'Employee'), employee.iqama_expiration_date]
+    ].map(([label, value]) => `<tr><th>${escape(label)}</th><td>${escape(value == null ? '' : String(value))}</td></tr>`);
+
+    const debt = balance > 0
+        ? `<div class="alert alert-warning"><strong>${escape(__('Important Notice', null, 'Employee'))}</strong>
+           <div>${escape(__('The employee has an outstanding debt of {0} Saudi Riyals.', [balance], 'Employee'))}</div></div>`
+        : '';
+
+    const dialog = new frappe.ui.Dialog({
+        title: __('Salary Certificate', null, 'Employee'),
+        fields: [{ fieldname: 'certificate', fieldtype: 'HTML' }]
+    });
+    dialog.fields_dict.certificate.$wrapper.html(`
+        <p>${escape(__('We, {0}, certify that the employee whose details are shown below works for us:', [employee.company], 'Employee'))}</p>
+        <table class="table table-bordered">${rows.join('')}</table>
+        <p class="text-muted">${escape(__("This certificate was issued at the employee's request without any liability on the company.", null, 'Employee'))}</p>
+        ${debt}
+    `);
+    dialog.show();
 }
 
 function handleIqamaExpiredStatus(frm) {
@@ -638,384 +604,4 @@ function addEditDocumentButton(frm) {
             frm.enable_save();
         }).addClass('btn-primary');
     }
-}
-
-async function show_employee_financial_data(frm) {
-    const employee_data = frm.doc;
-
-    try {
-        const balance = await getEmployeeBalance(employee_data.name);
-        const netPay = await getEmployeeNetPay(employee_data.name);
-
-        const pageContent = createFinancialDataPage(employee_data, balance, netPay);
-        const originalContent = document.body.innerHTML;
-
-        document.body.innerHTML = pageContent;
-
-        document.getElementById("restore-page").addEventListener("click", function() {
-            document.body.innerHTML = originalContent;
-            frappe.ui.form.trigger("Employee", "refresh");
-        });
-    } catch (error) {
-        frappe.msgprint(__('Error loading financial data'));
-    }
-}
-
-async function getEmployeeBalance(employeeName) {
-    const response = await frappe.db.get_list('GL Entry', {
-        filters: {
-            account: '124001 - سلف الموظفين - Employee advances - AF',
-            party_type: 'Employee',
-            party: employeeName
-        },
-        fields: [{ SUM: 'debit', as: 'total_debit' }, { SUM: 'credit', as: 'total_credit' }]
-    });
-
-    if (response && response.length > 0) {
-        const total_debit = response[0].total_debit || 0;
-        const total_credit = response[0].total_credit || 0;
-        return Math.round(total_debit - total_credit);
-    }
-    return 0;
-}
-
-async function getEmployeeNetPay(employeeName) {
-    const salary_response = await frappe.db.get_list('Salary Structure Assignment', {
-        filters: {
-            employee: employeeName,
-            docstatus: 1
-        },
-        fields: ['base', 'housing', 'custom_housing', 'variable', 'commission',
-                'transportation_allowance', 'food_allowance', 'supervisor_allowance',
-                'attendance_allowance'],
-        order_by: 'from_date desc',
-        limit: 1
-    });
-
-    if (salary_response.length > 0) {
-        const salary_data = salary_response[0];
-        const net_pay = salary_data.base +
-            salary_data.housing +
-            salary_data.custom_housing +
-            salary_data.variable +
-            salary_data.commission +
-            salary_data.transportation_allowance +
-            salary_data.food_allowance +
-            salary_data.supervisor_allowance +
-            salary_data.attendance_allowance;
-        return Math.round(net_pay);
-    }
-    return 0;
-}
-
-function createFinancialDataPage(employee_data, balance, netPay) {
-    return `
-        <div style="min-height: 100vh;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-                    padding: 20px;
-                    font-family: Arial, sans-serif;
-                    direction: rtl;">
-            <div style="background: white;
-                        border-radius: 16px;
-                        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                        padding: 40px;
-                        max-width: 800px;
-                        width: 100%;">
-                <div style="text-align: center;
-                           margin-bottom: 30px;">
-                    <div style="width: 80px;
-                               height: 80px;
-                               background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-                               border-radius: 50%;
-                               display: flex;
-                               align-items: center;
-                               justify-content: center;
-                               margin: 0 auto 20px;">
-                        <i class="fa fa-id-card" style="color: white; font-size: 36px;"></i>
-                    </div>
-                    <h2 style="color: var(--gray-900);
-                              font-size: 28px;
-                              margin: 0;">
-                        ${__('Salary Certificate', null, 'Employee')}
-                    </h2>
-                </div>
-
-                <p style="font-size: 16px;
-                         color: var(--gray-700);
-                         line-height: 1.8;
-                         margin-bottom: 30px;">
-                    ${__('We, {0}, certify that the employee whose details are shown below works for us:', [`<strong style="color: var(--primary);">${employee_data.company}</strong>`], 'Employee')}
-                </p>
-
-                <div style="background: var(--gray-50);
-                           border-radius: 12px;
-                           overflow: hidden;
-                           margin-bottom: 20px;">
-                    <table style="width: 100%; border-collapse: collapse;">
-                        ${createEmployeeInfoRow(__('Employee Number', null, 'Employee'), employee_data.employee_number, 'fa-hashtag')}
-                        ${createEmployeeInfoRow(__('Employee Name', null, 'Employee'), employee_data.employee_name, 'fa-user')}
-                        ${createEmployeeInfoRow(__('Nationality', null, 'Employee'), employee_data.nationality, 'fa-flag')}
-                        ${createEmployeeInfoRow(__('Designation', null, 'Employee'), employee_data.designation, 'fa-briefcase')}
-                        ${createEmployeeInfoRow(__('Monthly Salary', null, 'Employee'), __('{0} Saudi Riyals', [netPay], 'Employee'), 'fa-money-bill', true)}
-                        ${createEmployeeInfoRow(__('Iqama Status', null, 'Employee'), employee_data.iqama_expiration_date, 'fa-calendar')}
-                    </table>
-                </div>
-
-                <p style="margin: 20px 0;
-                         font-size: 14px;
-                         color: var(--gray-600);
-                         line-height: 1.6;
-                         text-align: center;">
-                    ${__("This certificate was issued at the employee's request without any liability on the company.", null, 'Employee')}
-                </p>
-
-                ${balance > 0 ? createDebtAlert(balance) : ''}
-
-                <div style="text-align: center; margin-top: 30px;">
-                    <button id="restore-page"
-                            style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-                                   color: white;
-                                   padding: 12px 32px;
-                                   border: none;
-                                   border-radius: 8px;
-                                   font-size: 16px;
-                                   cursor: pointer;
-                                   transition: all 0.3s ease;
-                                   box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
-                            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.2)'"
-                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.15)'">
-                        <i class="fa fa-arrow-right" style="margin-left: 8px;"></i>
-                        ${__('Back to Original Page', null, 'Employee')}
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function createEmployeeInfoRow(label, value, icon, isHighlight = false) {
-    return `
-        <tr style="${isHighlight ? 'background: var(--primary-50);' : ''}">
-            <td style="padding: 16px;
-                      border-bottom: 1px solid var(--gray-200);
-                      font-weight: 600;
-                      color: var(--gray-700);
-                      width: 40%;">
-                <i class="fa ${icon}" style="margin-left: 8px;
-                                           color: var(--primary);
-                                           opacity: 0.7;"></i>
-                ${label}
-            </td>
-            <td style="padding: 16px;
-                      border-bottom: 1px solid var(--gray-200);
-                      color: ${isHighlight ? 'var(--primary-dark)' : 'var(--gray-800)'};
-                      font-weight: ${isHighlight ? '600' : '400'};">
-                ${value}
-            </td>
-        </tr>
-    `;
-}
-
-function createDebtAlert(balance) {
-    return `
-        <div style="margin-top: 20px;
-                   background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
-                   padding: 20px;
-                   border: 1px solid #ffb3b3;
-                   border-radius: 12px;
-                   display: flex;
-                   align-items: center;
-                   gap: 16px;">
-            <div style="width: 48px;
-                       height: 48px;
-                       background: #ff4444;
-                       border-radius: 50%;
-                       display: flex;
-                       align-items: center;
-                       justify-content: center;
-                       flex-shrink: 0;">
-                <i class="fa fa-exclamation-triangle"
-                   style="color: white;
-                          font-size: 24px;"></i>
-            </div>
-            <div style="flex: 1;">
-                <h4 style="margin: 0 0 4px 0;
-                          color: #cc0000;
-                          font-size: 16px;">
-                    ${__('Important Notice', null, 'Employee')}
-                </h4>
-                <p style="margin: 0;
-                         color: #990000;
-                         font-size: 14px;">
-                    ${__('The employee has an outstanding debt of {0} Saudi Riyals.', [`<strong>${balance}</strong>`], 'Employee')}
-                </p>
-            </div>
-        </div>
-    `;
-}
-
-function showCompactViewOnly(frm) {
-    const data = {
-        "Employee": frm.doc.employee,
-        "Employee Number": frm.doc.employee_number,
-        "Status": frm.doc.status,
-        "Date of Joining": frm.doc.date_of_joining,
-        "First Name": frm.doc.first_name,
-        "Middle Name": frm.doc.middle_name,
-        "Last Name": frm.doc.last_name,
-        "Full Name": frm.doc.employee_name,
-        "Gender": frm.doc.gender,
-        "Date of Birth": frm.doc.date_of_birth,
-        "Religion": frm.doc.religion,
-        "Nationality": frm.doc.nationality,
-        "Designation": frm.doc.designation,
-        "City": frm.doc.city,
-        "Grade": frm.doc.grade,
-        "Employment Type": frm.doc.employment_type,
-        "Company": frm.doc.company,
-        "Department": frm.doc.department,
-        "Branch": frm.doc.branch,
-        "Reports To": frm.doc.reports_to,
-        "Type": frm.doc.type,
-        "Basic Wage": frm.doc.basic_wage,
-        "Mobile Number": frm.doc.cell_number,
-        "Personal Email": frm.doc.personal_email,
-        "Company Email": frm.doc.company_email,
-        "IBAN": frm.doc.iban,
-        "Marital Status": frm.doc.marital_status,
-        "Passport Number": frm.doc.passport_number,
-        "Passport Valid Upto": frm.doc.valid_upto,
-        "Iqama Issuance Date": frm.doc.iqama_issuance_date,
-        "Iqama Expiration Date": frm.doc.iqama_expiration_date
-    };
-
-    let htmlContent = `
-        <div style="min-height: 100vh;
-                   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-                   padding: 40px 20px;">
-            <div style="max-width: 1200px;
-                       margin: 0 auto;
-                       background: white;
-                       border-radius: 16px;
-                       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                       padding: 40px;">
-                <div style="text-align: center;
-                           margin-bottom: 40px;">
-                    <div style="width: 80px;
-                               height: 80px;
-                               background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-                               border-radius: 50%;
-                               display: flex;
-                               align-items: center;
-                               justify-content: center;
-                               margin: 0 auto 20px;">
-                        <i class="fa fa-user" style="color: white; font-size: 36px;"></i>
-                    </div>
-                    <h2 style="color: var(--gray-900);
-                              font-size: 32px;
-                              margin: 0;">
-                        ${__("Employee Summary")}
-                    </h2>
-                </div>
-
-                <div style="display: grid;
-                           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                           gap: 20px;
-                           margin-bottom: 40px;">
-    `;
-
-    Object.keys(data).forEach(key => {
-        if (data[key]) {
-            htmlContent += createCompactViewCard(key, data[key]);
-        }
-    });
-
-    htmlContent += `
-                </div>
-                <div style="text-align: center;">
-                    <button class="btn btn-primary btn-lg" id="restore-page"
-                            style="padding: 12px 32px;
-                                   font-size: 16px;
-                                   border-radius: 8px;
-                                   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-                                   border: none;
-                                   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                                   transition: all 0.3s ease;"
-                            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.2)'"
-                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.15)'">
-                        <i class="fa fa-arrow-left" style="margin-right: 8px;"></i>
-                        ${__("Back to Original Page")}
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-
-    return htmlContent;
-}
-
-function createCompactViewCard(label, value) {
-    const icon = getFieldIcon(label);
-
-    return `
-        <div style="background: var(--gray-50);
-                   border: 1px solid var(--gray-200);
-                   border-radius: 12px;
-                   padding: 20px;
-                   transition: all 0.3s ease;"
-             onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'"
-             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-            <div style="display: flex;
-                       align-items: center;
-                       gap: 12px;
-                       margin-bottom: 12px;">
-                <i class="fa ${icon}"
-                   style="color: var(--primary);
-                          font-size: 20px;
-                          opacity: 0.7;"></i>
-                <h4 style="margin: 0;
-                          font-size: 14px;
-                          font-weight: 600;
-                          color: var(--gray-600);
-                          text-transform: uppercase;
-                          letter-spacing: 0.5px;">
-                    ${label}
-                </h4>
-            </div>
-            <p style="margin: 0;
-                     font-size: 16px;
-                     color: var(--gray-800);
-                     font-weight: 500;">
-                ${value}
-            </p>
-        </div>
-    `;
-}
-
-function getFieldIcon(fieldName) {
-    const iconMap = {
-        'Employee': 'fa-id-badge',
-        'Employee Number': 'fa-hashtag',
-        'Status': 'fa-info-circle',
-        'Date of Joining': 'fa-calendar-check',
-        'Full Name': 'fa-user',
-        'Gender': 'fa-venus-mars',
-        'Date of Birth': 'fa-birthday-cake',
-        'Nationality': 'fa-flag',
-        'Designation': 'fa-briefcase',
-        'Department': 'fa-building',
-        'Company': 'fa-industry',
-        'Mobile Number': 'fa-mobile-alt',
-        'Email': 'fa-envelope',
-        'IBAN': 'fa-university',
-        'Passport': 'fa-passport'
-    };
-
-    for (const [key, icon] of Object.entries(iconMap)) {
-        if (fieldName.includes(key)) return icon;
-    }
-    return 'fa-circle';
 }
