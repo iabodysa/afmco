@@ -426,7 +426,6 @@ Legal Entity / Subsidiary with a separate Chart of Establishment belonging to th
 Legal user,مستخدم الشؤون القانونية
 License Plate,لوحة المركبة
 List of Iqamas with Renewal Issues,قائمة الإقامات التي بها مشكلات تجديد
-Loading Dashboard...,جارٍ تحميل لوحة المعلومات...
 Loading details...,جارٍ تحميل التفاصيل...
 Loading documents...,جارٍ تحميل المستندات...
 Loan,القرض
@@ -13286,3 +13285,44 @@ Opening leave balance for the employee covering the period from the date of join
 Leave,الإجازات
 Dues,المستحقات
 Residency & Family,الإقامة والعائلة
+Advance,السلفة,Employee Financial Summary
+Balance,الرصيد
+Contract end estimate as of {0},تقدير نهاية العقد حتى {0}
+Could not load the summary,تعذر تحميل الملخص
+Daily wage,الأجر اليومي
+Deductions this year,استقطاعات هذا العام
+End of service,نهاية الخدمة
+End of service days,أيام مكافأة نهاية الخدمة
+End of service estimate,تقدير مكافأة نهاية الخدمة
+End of service settlements,مخالصات نهاية الخدمة
+Estimate,التقدير
+Gross,الإجمالي قبل الاستقطاع
+Joined,تاريخ الالتحاق
+Last net pay,صافي آخر راتب
+Last salary slip,آخر قسيمة راتب
+Leave and vacation,الإجازات وبدل الإجازة
+Leave balance,رصيد الإجازات
+Ledger balances,أرصدة دفتر الأستاذ
+Loans,القروض
+Loans and advances,القروض والسلف
+Loans and advances due,المستحق من القروض والسلف
+Monthly wage,الأجر الشهري
+Net,الصافي
+No bank account on the employee,لا يوجد حساب بنكي للموظف
+No estimate,لا يوجد تقدير
+No records,لا توجد سجلات
+No salary slips,لا توجد قسائم رواتب
+No salary structure,لا يوجد هيكل راتب
+Paid total,إجمالي المدفوع
+Payment requisitions,طلبات الصرف
+Recent salary slips,أحدث قسائم الرواتب
+Relieved,تاريخ ترك العمل
+Salary structure,هيكل الراتب
+Select an employee to see the summary,اختر موظفًا لعرض الملخص
+Service years,سنوات الخدمة
+Since,منذ
+Unknown section {0},قسم غير معروف {0}
+Vacation allowances,بدلات الإجازة
+Wage basis,أساس الأجر
+records,سجلات
+slips,قسائم
