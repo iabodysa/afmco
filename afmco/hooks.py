@@ -188,7 +188,10 @@ doc_events = {
 }
 
 jinja = {
-	"methods": ["afmco.financial_operations.asset_label.asset_qr_data_uri"],
+	"methods": [
+		"afmco.financial_operations.asset_label.asset_qr_data_uri",
+		"afmco.financial_operations.saudi_riyal.saudi_riyal_font_face",
+	],
 }
 
 override_whitelisted_methods = {
