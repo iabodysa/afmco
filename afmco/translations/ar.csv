@@ -96,7 +96,7 @@ Amount that has been paid against this advance,المبلغ المدفوع مق�
 An error occurred in {0}. Please check the console for more details.,حدث خطأ في {0}. يرجى مراجعة وحدة التحكم لمزيد من التفاصيل.
 An error occurred while checking salary slips or adding buttons. Please check console for details.,حدث خطأ أثناء فحص قسائم الرواتب أو إضافة الأزرار. يرجى مراجعة وحدة التحكم للتفاصيل.
 An error occurred while creating the Journal Entry:,حدث خطأ أثناء إنشاء قيد اليومية:
-An error occurred while creating the Payment Request. Please try again.,حدث خطأ أثناء إنشاء طلب الدفع. يرجى المحاولة مرة أخرى.
+An error occurred while creating the Payment Request. Please try again.,حدث خطأ أثناء إنشاء طلب الصرف. يرجى المحاولة مرة أخرى.
 An error occurred while fetching Employee data. Please try again.,حدث خطأ أثناء جلب بيانات الموظف. أعد المحاولة.
 An error occurred while submitting Salary Slips:,حدث خطأ أثناء اعتماد قسائم الرواتب:
 An error occurred:,حدث خطأ:
@@ -215,7 +215,7 @@ Calculated transportation allowance,بدل النقل المحسوب
 Calculation,الحساب
 Cancel Exit Re-Entry Visa,إلغاء تأشيرة الخروج والعودة
 Cancel Final Exit Visa,إلغاء تأشيرة الخروج النهائي
-Cannot create Payment Request for document {0} because employee {1} is not Active.,لا يمكن إنشاء طلب دفع للمستند {0} لأن الموظف {1} غير نشط.
+Cannot create Payment Request for document {0} because employee {1} is not Active.,لا يمكن إنشاء طلب صرف للمستند {0} لأن الموظف {1} غير نشط.
 Car Problem,مشكلة في السيارة
 Car Status,حالة السيارة
 Car exhaust smoke,دخان عادم السيارة
@@ -998,14 +998,14 @@ Overtime Cost,تكلفة العمل الإضافي
 Overtime Value,قيمة العمل الإضافي
 Payment Requisition,طلب الصرف
 Pending Action Window (Days),مدة عرض الإجراءات قيد الانتظار (بالأيام)
-PR Creation Date (Residency Renewal),تاريخ إنشاء طلب الدفع (تجديد الإقامة)
-PR Creation Date (SADAD Invoice),تاريخ إنشاء طلب الدفع (فاتورة سداد)
-PR Document Link(Residency Renewal),رابط مستند طلب الدفع (تجديد الإقامة)
-PR Document Link(SADAD Invoice),رابط مستند طلب الدفع (فاتورة سداد)
+PR Creation Date (Residency Renewal),تاريخ إنشاء طلب الصرف (تجديد الإقامة)
+PR Creation Date (SADAD Invoice),تاريخ إنشاء طلب الصرف (فاتورة سداد)
+PR Document Link(Residency Renewal),رابط مستند طلب الصرف (تجديد الإقامة)
+PR Document Link(SADAD Invoice),رابط مستند طلب الصرف (فاتورة سداد)
 PR Reference,مرجع طلب الصرف
-PR Reference 2,مرجع طلب الدفع 2
-PR User (Residency Renewal),مستخدم طلب الدفع (تجديد الإقامة)
-PR User (SADAD Invoice),مستخدم طلب الدفع (فاتورة سداد)
+PR Reference 2,مرجع طلب الصرف 2
+PR User (Residency Renewal),مستخدم طلب الصرف (تجديد الإقامة)
+PR User (SADAD Invoice),مستخدم طلب الصرف (فاتورة سداد)
 Package ID,معرّف الحزمة
 Paid Loan,قرض مدفوع
 Palestine,فلسطين
@@ -1032,9 +1032,9 @@ Payment Management (Trial),إدارة المدفوعات (تجريبي)
 Payment Order created successfully:,أُنشئ أمر الدفع بنجاح:
 Payment Order is already created.,سبق إنشاء أمر الدفع.
 Payment Order is not required for Company Transport.,لا يلزم أمر دفع لنقل الشركة.
-Payment Request Details,تفاصيل طلب الدفع
-Payment Request Number,رقم طلب الدفع
-Payment Request already created for document {0} for employee {1}.,سبق إنشاء طلب دفع للمستند {0} للموظف {1}.
+Payment Request Details,تفاصيل طلب الصرف
+Payment Request Number,رقم طلب الصرف
+Payment Request already created for document {0} for employee {1}.,سبق إنشاء طلب صرف للمستند {0} للموظف {1}.
 Payment Required,يلزم الدفع
 Payment invoice number,رقم فاتورة الدفع
 Payment of MOI - Expatriates,مدفوعات وزارة الداخلية - المقيمون
@@ -1098,7 +1098,7 @@ Please process this urgent request within 24 hours,يرجى معالجة هذا 
 Please select Bank Fees Account and VAT Account if applying fees.,يرجى اختيار حساب الرسوم البنكية وحساب ضريبة القيمة المضافة عند تطبيق الرسوم.
 Please select Payroll Entry,يرجى اختيار مسير الرواتب
 "Please select Transport Type as ""Supplier"" or ""Ticket Purchase"" to create Payment Order.","يرجى اختيار نوع النقل ""Supplier"" أو ""Ticket Purchase"" لإنشاء أمر الدفع."
-Please select a Payment Request first,يرجى اختيار طلب دفع أولًا
+Please select a Payment Request first,يرجى اختيار طلب صرف أولًا
 Please select a driver.,يرجى اختيار سائق.
 Please select an Employee,يرجى اختيار موظف
 Please select an Employee to compare.,يرجى اختيار موظف للمقارنة.
@@ -1110,7 +1110,7 @@ Please select at least one Payroll Entry before running pre-check.,يرجى اخ
 Please select at least one document.,يرجى اختيار مستند واحد على الأقل.
 Please select documents to approve renewal.,يرجى اختيار المستندات للموافقة على التجديد.
 Please select documents to confirm payment.,يرجى اختيار المستندات لتأكيد الدفع.
-Please select documents to create payment request.,يرجى اختيار المستندات لإنشاء طلب دفع.
+Please select documents to create payment request.,يرجى اختيار المستندات لإنشاء طلب صرف.
 Please select documents to export.,يرجى اختيار المستندات للتصدير.
 Please select documents to reject renewal.,يرجى اختيار المستندات لرفض التجديد.
 Please select documents to update Renewal Preference.,يرجى اختيار المستندات لتحديث رغبة التجديد.
@@ -2001,12 +2001,12 @@ Vehicle,المركبة
 Invoice Details,بيانات الفاتورة
 Payment Details,تفاصيل الدفع
 Totals,الإجماليات
-Payment Request,طلب الدفع
+Payment Request,طلب الصرف
 Company,الشركة
 Depreciation,الإهلاك
 Organization,الجهة
 Renewal,التجديد
-Payment Requests,طلبات الدفع
+Payment Requests,طلبات الصرف
 Products,المنتجات
 Amounts,المبالغ
 Notes and Reference,الملاحظات والمرجع
@@ -2055,7 +2055,7 @@ Must be 24 characters and start with SA.,يجب أن يتكون من 24 خانة
 Do not edit; these values are updated from GOSI.,لا تعدّل هذه البيانات، يتم تحديثها من التأمينات الاجتماعية.
 "Update the Employee record first: joining date, bank, salary, allowances, leave.",حدّث ملف الموظف أولًا: تاريخ المباشرة والبنك والراتب والبدلات والإجازات.
 "Add all advances and fines; enter allowances as negative, reason Other, with proof.","أضف كل السلف والغرامات، وأدخل البدلات بقيمة سالبة مع اختيار السبب ""أخرى"" وإرفاق الإثبات."
-"After review, file the payment request on this form with supporting documents.",بعد المراجعة، ارفع طلب الدفع من هذا النموذج مع المستندات المؤيدة.
+"After review, file the payment request on this form with supporting documents.",بعد المراجعة، ارفع طلب الصرف من هذا النموذج مع المستندات المؤيدة.
 "Enter the new sponsor ID or exit visa number, and every step taken.",أدخل رقم صاحب العمل الجديد أو رقم تأشيرة الخروج، وكل الإجراءات المتخذة.
 "Select the replacement employee; if there is none, escalate to management at once.",اختر الموظف البديل، وإذا لم يتوفر بديل فارفع الموضوع للإدارة فورًا.
 "Two months' wage, owed if the employee ends the contract without a valid reason.",أجر شهرين يلتزم به الموظف إذا أنهى العقد من طرفه دون سبب مشروع.
@@ -2156,7 +2156,7 @@ Cash Receipt Voucher,سند قبض نقدي
 Samsa Tax Invoice,فاتورة ضريبية سمسا
 Tawasol Tax Invoice,فاتورة ضريبية تواصل
 Disbursement Order,أمر دفع
-Payment Request Form,نموذج طلب دفع
+Payment Request Form,نموذج طلب صرف
 Employee ID Card,بطاقة هوية الموظف
 Employee Profile,تعريف الموظف
 Amazon Project Salary Slip,مسير رواتب مشروع أمازون
@@ -2175,10 +2175,10 @@ Open Payment Requisitions by Status,طلبات الصرف المفتوحة حس�
 Amount Awaiting Bank Entry by Payment Type,المبالغ بانتظار القيد البنكي حسب نوع الدفع
 Monthly Expense Request Count,عدد طلبات المصروف الشهرية
 Monthly EOS Expense Requests Count,عدد طلبات دفع مكافأة نهاية الخدمة الشهرية
-Monthly Paid Employee Loan Requests Count,عدد طلبات قروض الموظفين المدفوعة شهريًا
+Monthly Paid Employee Loan Requests Count,عدد طلبات سلف الموظفين المدفوعة شهريًا
 Monthly Paid Vacation Allowance Requests Count,عدد طلبات بدل الإجازة المدفوعة شهريًا
 Monthly Paid Petty Cash Requests Count,عدد طلبات العهدة النقدية المدفوعة شهريًا
-Monthly Paid SADAD Payment Requests Count,عدد طلبات مدفوعات سداد المدفوعة شهريًا
+Monthly Paid SADAD Payment Requests Count,عدد طلبات صرف سداد المدفوعة شهريًا
 Monthly Paid Salary Requests Count,عدد طلبات الرواتب المدفوعة شهريًا
 Count of Paid Orders Without JV Created This Year,عدد الطلبات المدفوعة دون قيد يومية هذا العام
 Count of Orders Awaiting General Manager Approval,عدد الطلبات بانتظار موافقة المدير العام
@@ -2252,7 +2252,7 @@ Copy,نسخ,Iqama Control
 Select,تحديد,Iqama Control
 Skipped,تم التخطي,Iqama Control
 Updated records,السجلات المحدثة,Iqama Control
-Payment Request,طلب دفع,Iqama Control
+Payment Request,طلب صرف,Iqama Control
 No records match these filters.,لا سجلات تطابق عوامل التصفية هذه.,Iqama Control
 Pick a record.,اختر سجلاً.,Iqama Control
 Nothing at this step.,لا شيء في هذه الخطوة.,Iqama Control
@@ -2280,7 +2280,7 @@ Only {0} records can be moved at once.,يمكن نقل {0} سجل فقط في ا
 Deselect records to exclude,ألغِ تحديد السجلات التي تريد استثناءها,Iqama Control
 and {0} more,و{0} غيرها,Iqama Control
 {0}…,{0}…,Iqama Control
-Creating payment request…,جارٍ إنشاء طلب الدفع…,Iqama Control
+Creating payment request…,جارٍ إنشاء طلب الصرف…,Iqama Control
 Select at least one record.,اختر سجلاً واحداً على الأقل.,Iqama Control
 Nothing to copy.,لا شيء لنسخه.,Iqama Control
 Copy manually,انسخ يدوياً,Iqama Control
@@ -2290,16 +2290,16 @@ Could not load the board,تعذّر تحميل اللوحة,Iqama Control
 The board could not be loaded. The reason is shown below.,تعذّر تحميل اللوحة، والسبب موضح أدناه.,Iqama Control
 The records were not moved.,لم تُنقل السجلات.,Iqama Control
 {0} of {1} not updated.,لم يُحدَّث {0} من {1}.,Iqama Control
-A payment request already exists for this type.,يوجد طلب دفع لهذا النوع مسبقاً.,Iqama Control
-The payment request was not created.,لم يُنشأ طلب الدفع.,Iqama Control
+A payment request already exists for this type.,يوجد طلب صرف لهذا النوع مسبقاً.,Iqama Control
+The payment request was not created.,لم يُنشأ طلب الصرف.,Iqama Control
 No eligible record. Nothing was created.,لا سجل مؤهل. لم يُنشأ شيء.,Iqama Control
 Renewal is blocked on this record.,التجديد محظور على هذا السجل.,Iqama Control
-Both payment requests must exist first.,يجب إنشاء طلبي الدفع أولاً.,Iqama Control
+Both payment requests must exist first.,يجب إنشاء طلبي الصرف أولاً.,Iqama Control
 SADAD number is missing.,رقم السداد ناقص.,Iqama Control
 Amount is zero.,المبلغ صفر.,Iqama Control
 Status must be {0}.,يجب أن تكون الحالة {0}.,Iqama Control
-Create work permit payment request,إنشاء طلب دفع رخصة العمل,Iqama Control
-Create iqama renewal payment request,إنشاء طلب دفع تجديد الإقامة,Iqama Control
+Create work permit payment request,إنشاء طلب صرف رخصة العمل,Iqama Control
+Create iqama renewal payment request,إنشاء طلب صرف تجديد الإقامة,Iqama Control
 Copy row,نسخ الصف,Iqama Control
 Work permit,رخصة العمل,Iqama Control
 Iqama renewal,تجديد الإقامة,Iqama Control
@@ -2309,7 +2309,7 @@ Next record,السجل التالي,Iqama Control
 Select this record,تحديد هذا السجل,Iqama Control
 Keyboard shortcuts,اختصارات لوحة المفاتيح,Iqama Control
 SADAD number saved,حُفظ رقم السداد,Iqama Control
-Payment request {0} created,أُنشئ طلب الدفع {0},Iqama Control
+Payment request {0} created,أُنشئ طلب الصرف {0},Iqama Control
 Renewal rejected,رُفض التجديد,Iqama Control
 Row copied,نُسخ الصف,Iqama Control
 Copied {0} row(s). Paste into Excel.,نُسخ {0} صفًا. الصقها في إكسل.,Iqama Control
@@ -2349,14 +2349,14 @@ Restore filters,استعادة عوامل التصفية,Iqama Control
 Search widened {0} filters,وسّع البحث {0} من عوامل التصفية,Iqama Control
 Show all statuses,عرض كل الحالات,Iqama Control
 {0} record(s) saved but the status returned does not match what this action requested — treat as unresolved.,تم حفظ {0} سجل لكن الحالة المُعادة لا تطابق ما طلبه هذا الإجراء — تعامل معه على أنه غير محسوم.,Iqama Control
-A payment request can still be created for this record.,لا يزال بالإمكان إنشاء طلب دفع لهذا السجل.,Iqama Control
-No payment request exists to cancel.,لا يوجد طلب دفع لإلغائه.,Iqama Control
+A payment request can still be created for this record.,لا يزال بالإمكان إنشاء طلب صرف لهذا السجل.,Iqama Control
+No payment request exists to cancel.,لا يوجد طلب صرف لإلغائه.,Iqama Control
 Contract date,تاريخ العقد,Iqama Control
 Payee,الجهة المستفيدة,Iqama Control
 {0} eligible — {1},{0} مؤهل — {1},Iqama Control
 {0} record(s) may already have an open sibling request,قد يكون لدى {0} سجل طلب مماثل مفتوح مسبقًا,Iqama Control
 "{0} record(s) were not linked to {1} — link them there, do not re-request",{0} سجل لم يُربط بـ {1} — اربطه هناك، لا تُعِد الطلب,Iqama Control
-This request can be cancelled later from the record's Cancel Payment Request action.,يمكن إلغاء هذا الطلب لاحقًا من إجراء إلغاء طلب الدفع الخاص بالسجل.,Iqama Control
+This request can be cancelled later from the record's Cancel Payment Request action.,يمكن إلغاء هذا الطلب لاحقًا من إجراء إلغاء طلب الصرف الخاص بالسجل.,Iqama Control
 Close,إغلاق,Iqama Control
 Changes duration to {0} and recalculates every fee.,يغيّر المدة إلى {0} ويعيد احتساب كل الرسوم.,Iqama Control
 {0} Employee record(s) still show the old iqama expiry after this renewal,{0} سجل موظف ما زال يعرض تاريخ الإقامة القديم بعد هذا التجديد,Iqama Control
@@ -2371,9 +2371,9 @@ Issue Preventing Renewal,مشكلة تمنع التجديد,Iqama Control
 Renewed,مجدد,Iqama Control
 Rejected,مرفوض,Iqama Control
 Renewal Stopped,إيقاف التجديد,Iqama Control
-PR Created for Work Cards,أُنشئ طلب دفع رخص العمل,Iqama Control
-PR Created for Iqama Renewal,أُنشئ طلب دفع تجديد الإقامة,Iqama Control
-PR Created for Both Work Cards and Iqama Renewal,أُنشئ طلب دفع لرخص العمل وتجديد الإقامة معًا,Iqama Control
+PR Created for Work Cards,أُنشئ طلب صرف رخص العمل,Iqama Control
+PR Created for Iqama Renewal,أُنشئ طلب صرف تجديد الإقامة,Iqama Control
+PR Created for Both Work Cards and Iqama Renewal,أُنشئ طلب صرف لرخص العمل وتجديد الإقامة معًا,Iqama Control
 Triage,الفرز,Iqama Control
 Dashboard,لوحة المعلومات,Iqama Control
 Batch,الدفعة,Iqama Control
@@ -2404,9 +2404,9 @@ Employer file,ملف المنشأة,Iqama Control
 SADAD,سداد,Iqama Control
 Work card fee,رسوم رخصة العمل,Iqama Control
 Iqama fee,رسوم الإقامة,Iqama Control
-Payment requests,طلبات الدفع,Iqama Control
+Payment requests,طلبات الصرف,Iqama Control
 Reason not renewed,سبب عدم التجديد,Iqama Control
-Payment request status,حالة طلب الدفع,Iqama Control
+Payment request status,حالة طلب الصرف,Iqama Control
 Reschedule date,تاريخ الجدولة,Iqama Control
 Renewal preference,قرار التجديد,Iqama Control
 Traffic violations,المخالفات المرورية,Iqama Control
@@ -2434,7 +2434,7 @@ Resolve Issue,حل المشكلة,Iqama Control
 Reopen Request,إعادة فتح الطلب,Iqama Control
 Reject Renewal,رفض التجديد,Iqama Control
 Approve Renewal,الموافقة على التجديد,Iqama Control
-Cancel Payment Request,إلغاء طلب الدفع,Iqama Control
+Cancel Payment Request,إلغاء طلب الصرف,Iqama Control
 Confirm Legal Approval,تأكيد الموافقة القانونية,Iqama Control
 SAR,ر.س,Iqama Control
 Violations Cost,قيمة المخالفات,Employee
@@ -2497,7 +2497,7 @@ Settlement No.,رقم التسوية,Vacation Allowance
 to,إلى,Vacation Allowance
 Please note that contract period start dates are repeated. Please review the data and make sure the dates do not overlap so the procedure is correct.,يرجى ملاحظة تكرار تواريخ بداية مدد العقد. يرجى مراجعة البيانات والتأكد من عدم تداخل التواريخ لضمان صحة الإجراء.,Vacation Allowance
 SAR,ر.س,Vacation Allowance
-A new payment request was created,تم إنشاء طلب دفع جديد,Vacation Allowance
+A new payment request was created,تم إنشاء طلب صرف جديد,Vacation Allowance
 A new repayment request was created,تم إنشاء طلب سداد جديد,Vacation Allowance
 Warning,تحذير,Vacation Allowance
 Total salary ({0}) does not match the base salary in the system ({1}).,إجمالي الراتب ({0}) لا يطابق الراتب الأساسي في النظام ({1}).,Vacation Allowance
@@ -2551,15 +2551,15 @@ Select a new {0},اختر قيمة جديدة لـ {0},Employee Data Update 2024
 The current value ({0}) does not exist in the system. Please select another value.,القيمة الحالية ({0}) غير موجودة في النظام. الرجاء اختيار قيمة أخرى.,Employee Data Update 2024
 Update,تحديث,Employee Data Update 2024
 Show List of Qiwa Payment Number,عرض قائمة أرقام سداد قوى,iQama Renewal Payment Management
-Create Payment Request,إنشاء طلب دفع,iQama Renewal Payment Management
+Create Payment Request,إنشاء طلب صرف,iQama Renewal Payment Management
 Download Bank File,تنزيل ملف البنك,iQama Renewal Payment Management
 Show Residency Renewal Requests with Renewal Issues,عرض طلبات تجديد الإقامة التي تواجه مشكلات في التجديد,iQama Renewal Payment Management
 Show Muqeem Balance,عرض رصيد مقيم,iQama Renewal Payment Management
 Record Journal Entries,تسجيل قيود اليومية,iQama Renewal Payment Management
 Export CSV,تصدير ملف البنك,iQama Renewal Payment Management
 Record SADAD Number,تسجيل رقم سداد,iQama Renewal Payment Management
-Payment Request Created,تم إنشاء طلب الدفع,iQama Renewal Payment Management
-Error creating PR for item:,خطأ في إنشاء طلب الدفع للبند:,iQama Renewal Payment Management
+Payment Request Created,تم إنشاء طلب الصرف,iQama Renewal Payment Management
+Error creating PR for item:,خطأ في إنشاء طلب الصرف للبند:,iQama Renewal Payment Management
 No data matching the criteria to process,لا توجد بيانات تطابق المعايير للمعالجة,iQama Renewal Payment Management
 Errors occurred,حدثت أخطاء,iQama Renewal Payment Management
 Save Changes,حفظ التغييرات,iQama Renewal Payment Management
@@ -2567,8 +2567,8 @@ Item,البند,iQama Renewal Payment Management
 Please enter the SADAD number before updating.,يرجى إدخال رقم سداد قبل التحديث.,iQama Renewal Payment Management
 Please select at least one row.,يرجى تحديد صف واحد على الأقل.,iQama Renewal Payment Management
 No records found.,لم يُعثر على سجلات.,iQama Renewal Payment Management
-Payment Request Created,تم إنشاء طلب الدفع,Iqama Renewal Tracking
-Error creating Payment Request for:,خطأ في إنشاء طلب الدفع لـ:,Iqama Renewal Tracking
+Payment Request Created,تم إنشاء طلب الصرف,Iqama Renewal Tracking
+Error creating Payment Request for:,خطأ في إنشاء طلب الصرف لـ:,Iqama Renewal Tracking
 Employee is not Active.,الموظف ليس على رأس العمل.,Iqama Control
 Undertaking for Advance Payment of Annual Leave Pay,تعهد دفع أجر إجازة سنوية مقدماً,Vacation Allowance Undertaking
 Name:,الاسم:,Vacation Allowance Undertaking
@@ -2682,7 +2682,7 @@ Does not include equipment or tools.,لا يشمل العرض توفير الم�
 "Implementation avg. 10 days (subject to profession, nationality, & selection).",متوسط مدة التنفيذ 10 أيام، وتعتمد على المهنة والجنسية وآلية الاختيار.,Manpower Quotation
 "To approve, please sign below and return to proceed with contract preparation.",للاعتماد؛ يرجى التوقيع أدناه من قبل المفوض وإعادة الإرسال لإعداد العقد ومباشرة الإجراءات.,Manpower Quotation
 Abdullah Fahad Al-Mutairi Company,شركة عبدالله فهد المطيري,Manpower Quotation
-Payment Request,طلب دفع,Payment Request Form
+Payment Request,طلب صرف,Payment Request Form
 Beneficiary Information,معلومات المستفيد,Payment Request Form
 Beneficiary Name,اسم المستفيد,Payment Request Form
 Account Number,رقم الحساب,Payment Request Form
@@ -2829,7 +2829,7 @@ Overview,نظرة عامة,SADAD Bulk
 All,الكل,SADAD Bulk
 Draft,مسودة,SADAD Bulk
 Submitted,معتمدة,SADAD Bulk
-Payment request raised,تم رفع طلب الدفع,SADAD Bulk
+Payment request raised,تم رفع طلب الصرف,SADAD Bulk
 Journal entry raised,تم إنشاء القيد,SADAD Bulk
 Cancelled,ملغاة,SADAD Bulk
 "Search by batch, employee or invoice number",ابحث برقم الدفعة أو الموظف أو رقم الفاتورة,SADAD Bulk
@@ -2862,11 +2862,11 @@ Debit equals credit,المدين يساوي الدائن,SADAD Bulk
 Debit does not equal credit,المدين لا يساوي الدائن,SADAD Bulk
 Missing account,الحساب غير محدد,SADAD Bulk
 Legacy JV preview,معاينة القيد القديم,SADAD Bulk
-Payment requests,طلبات الدفع,SADAD Bulk
+Payment requests,طلبات الصرف,SADAD Bulk
 Journal entries,القيود,SADAD Bulk
 None,لا يوجد,SADAD Bulk
 Download bank CSV,تنزيل ملف البنك CSV,SADAD Bulk
-Create payment request,إنشاء طلب دفع,SADAD Bulk
+Create payment request,إنشاء طلب صرف,SADAD Bulk
 Submit,اعتماد,SADAD Bulk
 Create journal entry,إنشاء قيد يومية,SADAD Bulk
 Open form,فتح النموذج,SADAD Bulk
@@ -2876,20 +2876,20 @@ Preview lines,معاينة البنود,SADAD Bulk
 Add to batch,إضافة إلى الدفعة,SADAD Bulk
 Back,رجوع,SADAD Bulk
 No lines with credit.,لا توجد بنود دائنة.,SADAD Bulk
-"A payment request exists, or you cannot create one.",يوجد طلب دفع لهذه الدفعة، أو لا تملك صلاحية إنشائه.,SADAD Bulk
+"A payment request exists, or you cannot create one.",يوجد طلب صرف لهذه الدفعة، أو لا تملك صلاحية إنشائه.,SADAD Bulk
 "Only a draft with lines, by a user who may submit.",الاعتماد متاح لدفعة مسودة فيها بنود، ولمن يملك صلاحية الاعتماد.,SADAD Bulk
 Only a draft batch can change.,التعديل متاح للدفعة المسودة فقط.,SADAD Bulk
 Submit batch {0}? Its lines cannot change after this.,هل تعتمد الدفعة {0}؟ لن يمكن تعديل بنودها بعد الاعتماد.,SADAD Bulk
-Create a draft payment request for batch {0}?,هل تنشئ طلب دفع مسودة للدفعة {0}؟,SADAD Bulk
+Create a draft payment request for batch {0}?,هل تنشئ طلب صرف مسودة للدفعة {0}؟,SADAD Bulk
 Create a draft journal entry for batch {0}?,هل تنشئ قيد يومية مسودة للدفعة {0}؟,SADAD Bulk
 Remove the {1} lines of {0} from this batch?,هل تحذف بنود {0} وعددها {1} من هذه الدفعة؟,SADAD Bulk
 {0} already exists for this batch.,{0} موجود مسبقًا لهذه الدفعة.,SADAD Bulk
 {0} created as a draft.,تم إنشاء {0} كمسودة.,SADAD Bulk
 Batch {0} submitted.,تم اعتماد الدفعة {0}.,SADAD Bulk
-Only a submitted batch whose payment request is submitted and has no journal entry.,متاح لدفعة معتمدة طلب دفعها معتمد وليس لها قيد يومية.,SADAD Bulk
+Only a submitted batch whose payment request is submitted and has no journal entry.,متاح لدفعة معتمدة طلب صرفها معتمد وليس لها قيد يومية.,SADAD Bulk
 "Only a submitted batch or one with linked documents, by a user who may cancel it.",متاح لدفعة معتمدة أو لها مستندات مرتبطة، لمن يملك صلاحية إلغائها.,SADAD Bulk
 Cancel batch,إلغاء الدفعة,SADAD Bulk
-"Cancel batch {0}? Its journal entry is cancelled, its draft documents are deleted, and a submitted payment request stays for its own approval.",هل تلغي الدفعة {0}؟ سيُلغى قيد اليومية الخاص بها وتُحذف مستنداتها المسودة، ويبقى طلب الدفع المعتمد بانتظار الموافقة عليه.,SADAD Bulk
+"Cancel batch {0}? Its journal entry is cancelled, its draft documents are deleted, and a submitted payment request stays for its own approval.",هل تلغي الدفعة {0}؟ سيُلغى قيد اليومية الخاص بها وتُحذف مستنداتها المسودة، ويبقى طلب الصرف المعتمد بانتظار الموافقة عليه.,SADAD Bulk
 {0} cancelled,أُلغي {0},SADAD Bulk
 {0} deleted,حُذف {0},SADAD Bulk
 {0} kept for its own approval,بقي {0} بانتظار الموافقة عليه,SADAD Bulk
@@ -2912,7 +2912,7 @@ Select a period,اختر الفترة,SADAD Bulk
 Open drafts,الدفعات المسودة,SADAD Bulk
 Pending credit in drafts,المبالغ المعلقة في المسودات,SADAD Bulk
 Submitted without journal entry,دفعات معتمدة بلا قيد,SADAD Bulk
-Paid SADAD payment requests this month,طلبات دفع سداد المدفوعة هذا الشهر,SADAD Bulk
+Paid SADAD payment requests this month,طلبات صرف سداد المدفوعة هذا الشهر,SADAD Bulk
 Submitted batches without journal entry,الدفعات المعتمدة التي ليس لها قيد,SADAD Bulk
 Every submitted batch has a journal entry.,كل الدفعات المعتمدة لها قيود.,SADAD Bulk
 Blocking,مانع,SADAD Bulk
@@ -3025,7 +3025,7 @@ Restricts this user to the Payment Requisitions addressed to this approver,يق�
 Please check at least one row to export.,يرجى تحديد صف واحد على الأقل للتصدير.
 "Generating Excel export for {0} records...",جارٍ إنشاء ملف Excel لعدد {0} من السجلات...
 Export All Requisitions to Excel,تصدير جميع طلبات الصرف إلى Excel
-"<b>Purpose</b><br>This policy aims to establish controls and procedures for issuing and liquidating cash custody and petty expenses within the company, with the objective of preserving the company's funds and ensuring their rational and effective use.<br><br><b>Responsibilities</b><br>Finance Manager: Responsible for creating and implementing this policy and monitoring compliance of all relevant parties.<br>Cash Disbursement Officer: Responsible for disbursing funds in accordance with this policy and ensuring the availability of all required documents.<br>The Applicant: Responsible for liquidating cash custody and returning any surplus to the company.<br><br><b>Definitions</b><br>Cash Custody: An amount of money granted to an employee or a group of employees to carry out specific tasks on behalf of the company.<br>Petty Expenses: Small and varied expenses related to the company's daily activities.<br>Invoices: Documents supporting the issuance of funds from cash custody.<br><br><b>Terms</b><br>Source: The invoice must be issued by a licensed company or commercial entity in Saudi Arabia.<br>Basic Contents:<br>Name of the company or commercial entity.<br>Tax Identification Number.<br>Address of the company or commercial entity.<br>Date of the invoice.<br>Invoice number.<br>Description of the goods or services purchased.<br>Total price of the goods or services.<br>Certification: The invoice must be stamped by the company or commercial entity.<br>Barcode: The invoice must contain a barcode that can be verified through the electronic invoice reader application accredited by the Zakat and Income Authority.<br>Electronic Verification: Barcode verification is possible using official applications available on Google Play and App Store.<br>For Google Play: https://play.google.com/store/apps/details?id=com.gazt.egazt<br>For App Store: https://apps.apple.com/sa/app/zatca/id1517289036<br>These terms aim to ensure transparency and compliance with the tax regulations in Saudi Arabia.<br><br><b>Tax Information of the Company</b><br>Company Name: Abdullah Fahad Al-Mutairi for Support Services.<br>Tax Number: 301173179500003.<br><br><b>Procedures</b><br>Issuing Funds:<br><br>The Cash Disbursement Officer submits a request for cash custody issuance to the Finance Manager, stating the purpose of the funds and the requested amount.<br>The Finance Manager reviews the cash custody issuance request, ensuring all required conditions are met.<br>If the cash custody request is approved, the Finance Manager approves the issuance request.<br>No cash custody request exceeding (10,000) Riyals per month will be accepted without written approval from the General Manager.<br>No new cash custody amount will be disbursed if the previous amount has not been liquidated.<br><br>Disbursing Funds:<br><br>The Cash Disbursement Officer submits a payment request using the same form, and the requested amount is transferred.<br>The Cash Disbursement Officer keeps a copy of the cash custody issuance order and supporting documents.<br><br>Liquidating Cash Custody:<br><br>The Cash Custody Liquidator submits supporting documents to the Finance Manager, proving the issuance of funds from cash custody.<br>The Finance Manager reviews the supporting documents, ensuring all required conditions are met.<br>If all required conditions are met, the Finance Manager proceeds with liquidating the cash custody.<br>Invoices must be in PDF format, and no invoice in the form of a photo or screensh.<br>It is required for the liquidation of cash custody to bring the original invoices to match them with the electronic copies (PDF).<br>If the cash custody applicant is outside the main office area of the company, the liquidation of electronically sent invoices is permitted. However, the applicant is required to send the original invoices via mail or other approved means. <br>It is essential to preserve the paper invoices and ensure their integrity to avoid any damage that might obscure the information recorded on them.<br><br><b>Obligations</b><br>Commitment to Disbursing Funds for the Specified Purpose:<br><br>The Cash Disbursement Officer must disburse the funds from cash custody for the specified purpose.<br>If funds from cash custody are disbursed for another purpose, the Cash Disbursement Officer is financially responsible for the disbursed funds.<br>Commitment to including the company's tax information in the invoice.<br>Commitment to Disbursing Funds at a Competitive Price:<br><br>The Cash Disbursement Officer must obtain a competitive price for the goods or services purchased from the cash custody.<br>If a competitive price is not obtained, the Cash Disbursement Officer is financially responsible for the price difference.<br>Penalties:<br><br>In the event of a violation of any provisions of this policy, appropriate disciplinary actions will be taken against the offending employee, in accordance with Saudi labor law.","<b>الغرض</b><br>تهدف هذه السياسة إلى وضع ضوابط وإجراءات لإصدار وتصفية العهد النقدية والمصاريف النثرية داخل الشركة، بهدف الحفاظ على أموال الشركة وضمان استخدامها بطريقة عقلانية وفعالة.<br><br><b>المسؤوليات</b><br>مدير المالية: مسؤول عن إنشاء وتنفيذ هذه السياسة، ومراقبة التزام جميع الأطراف ذات الصلة.<br>ضابط دفع النقد: مسؤول عن دفع الأموال وفقًا لهذه السياسة، وضمان توفر كافة الوثائق المطلوبة.<br>مصفي العهد النقدية: مسؤول عن تصفية العهد النقدية وإعادة أي فوائض إلى الشركة.<br><br><b>التعريفات</b><br>العهد النقدية: مبلغ من المال يُمنح لموظف أو مجموعة من الموظفين لتنفيذ مهام محددة نيابة عن الشركة.<br>المصاريف النثرية: مصاريف صغيرة ومتنوعة تتعلق بنشاطات الشركة اليومية.<br>الفواتير: وثائق تدعم إصدار الأموال من العهد النقدية.<br><br><b>الشروط</b><br>1.المصدر: الفاتورة يجب أن تكون صادرة من شركة أو كيان تجاري مرخص في المملكة العربية السعودية.<br>2.المحتويات الأساسية:<br>اسم الشركة أو الكيان التجاري.<br>رقم الهوية الضريبية.<br>عنوان الشركة أو الكيان التجاري.<br>تاريخ الفاتورة.<br>رقم الفاتورة.<br>وصف السلع أو الخدمات المشتراة.<br>السعر الإجمالي للسلع أو الخدمات.<br>3.التصديق: يجب أن تكون الفاتورة مختومة بختم الشركة أو الكيان التجاري.<br>4.الباركود: يجب أن تحتوي الفاتورة على باركود يمكن التحقق من صحته من خلال تطبيق قارئ الفاتورة الإلكترونية المعتمد من هيئة الزكاة والدخل.<br>5.التحقق الإلكتروني: يمكن التحقق من الباركود باستخدام التطبيقات الرسمية المتوفرة على Google Play وApp Store.<br>لتطبيق Google Play: https://play.google.com/store/apps/details?id=com.gazt.egazt<br>لتطبيق App Store: https://apps.apple.com/sa/app/zatca/id1517289036<br>تهدف هذه الشروط إلى ضمان الشفافية والتوافق مع اللوائح الضريبية في المملكة العربية السعودية.<br><br><b>المعلومات الضريبية للشركة</b><br>1.اسم الشركة: عبد الله فهد المطيري للخدمات المساندة.<br>2.الرقم الضريبي: 301173179500003.<br><br><b>الإجراءات</b><br>1.إصدار الأموال:<br><br>يقدم ضابط دفع النقد طلب إصدار عهد نقدية إلى مدير المالية، موضحًا الغرض من الأموال والمبلغ المطلوب.<br>يراجع مدير المالية طلب إصدار العهد النقدية، ويتأكد من استيفاء جميع الشروط المطلوبة.<br>في حال الموافقة على طلب العهد النقدية، يوافق مدير المالية على طلب الإصدار.<br>لا يتم قبول أي طلب عهدة يزيد مبلغها عن (10.000) ريال في الشهر إلا بموافقة خطية من المدير العام.<br>لن يتم دفع مبلغ عهدة جديدة إذا لم يتم تصفية المبلغ السابق.<br><br>2.دفع الأموال:<br><br>يقدم ضابط دفع النقد طلب دفع من نفس النموذج ويتم تحويل المبلغ المطلوب.<br>يحتفظ ضابط دفع النقد بنسخة من أمر إصدار العهد النقدية والوثائق الداعمة.<br><br>3.تصفية العهد النقدية:<br><br>يقدم مصفي العهد النقدية الوثائق الداعمة إلى مدير المالية، مما يثبت إصدار الأموال من العهد النقدية.<br>يراجع مدير المالية الوثائق الداعمة، ويتأكد من استيفاء جميع الشروط المطلوبة.<br><br>في حال استيفاء جميع الشروط المطلوبة، يقوم مدير المالية بتصفية العهد النقدية.<br><br>يجب أن تكون الفواتير بصيغة PDF، ولن يتم تصفية أي فاتورة عبارة عن صورة أو لقطة شاشة.<br><br>""يُشترط لتصفية العهد النقدية إحضار الفواتير الأصلية لمطابقتها مع النسخ الإلكترونية (PDF). في حالة تواجد طالب العهدة النقدية خارج منطقة مقر الشركة الرئيسي، يُسمح بتصفية الفواتير المُرسلة إلكترونيًا. <br>ومع ذلك، يُطلب من طالب العهدة إرسال الفواتير الأصلية عبر البريد أو وسائل أخرى مُعتمدة. <br><br>يجب المحافظة على الفواتير الورقية وضمان سلامتها لتجنب أي تلف قد يعيق وضوح المعلومات المُدونة بها.""<br><br><b>الالتزامات</b><br>1.الالتزام بدفع الأموال للغرض المحدد:<br>يجب على ضابط دفع النقد دفع الأموال من العهد النقدية للغرض المحدد.<br><br>في حال دفع الأموال من العهد النقدية لغرض آخر، يكون ضابط دفع النقد مسؤولاً مالياً عن الأموال المصروفة.<br>الالتزام بإضافة بيانات الشركة الضريبية في الفاتورة.<br><br>2.الالتزام بدفع الأموال بسعر تنافسي:<br><br>يجب على ضابط دفع النقد الحصول على سعر تنافسي للسلع أو الخدمات التي يتم شراؤها من العهد النقدية.<br>في حال عدم الحصول على سعر تنافسي، يكون ضابط دفع النقد مسؤولاً مالياً عن الفرق في السعر.<br><br>3.العقوبات:<br><br>في حالة مخالفة أي من أحكام هذه السياسة، سيتم اتخاذ الإجراءات التأديبية المناسبة ضد الموظف المخالف، وفقًا لقانون العمل السعودي."
+"<b>Purpose</b><br>This policy aims to establish controls and procedures for issuing and liquidating cash custody and petty expenses within the company, with the objective of preserving the company's funds and ensuring their rational and effective use.<br><br><b>Responsibilities</b><br>Finance Manager: Responsible for creating and implementing this policy and monitoring compliance of all relevant parties.<br>Cash Disbursement Officer: Responsible for disbursing funds in accordance with this policy and ensuring the availability of all required documents.<br>The Applicant: Responsible for liquidating cash custody and returning any surplus to the company.<br><br><b>Definitions</b><br>Cash Custody: An amount of money granted to an employee or a group of employees to carry out specific tasks on behalf of the company.<br>Petty Expenses: Small and varied expenses related to the company's daily activities.<br>Invoices: Documents supporting the issuance of funds from cash custody.<br><br><b>Terms</b><br>Source: The invoice must be issued by a licensed company or commercial entity in Saudi Arabia.<br>Basic Contents:<br>Name of the company or commercial entity.<br>Tax Identification Number.<br>Address of the company or commercial entity.<br>Date of the invoice.<br>Invoice number.<br>Description of the goods or services purchased.<br>Total price of the goods or services.<br>Certification: The invoice must be stamped by the company or commercial entity.<br>Barcode: The invoice must contain a barcode that can be verified through the electronic invoice reader application accredited by the Zakat and Income Authority.<br>Electronic Verification: Barcode verification is possible using official applications available on Google Play and App Store.<br>For Google Play: https://play.google.com/store/apps/details?id=com.gazt.egazt<br>For App Store: https://apps.apple.com/sa/app/zatca/id1517289036<br>These terms aim to ensure transparency and compliance with the tax regulations in Saudi Arabia.<br><br><b>Tax Information of the Company</b><br>Company Name: Abdullah Fahad Al-Mutairi for Support Services.<br>Tax Number: 301173179500003.<br><br><b>Procedures</b><br>Issuing Funds:<br><br>The Cash Disbursement Officer submits a request for cash custody issuance to the Finance Manager, stating the purpose of the funds and the requested amount.<br>The Finance Manager reviews the cash custody issuance request, ensuring all required conditions are met.<br>If the cash custody request is approved, the Finance Manager approves the issuance request.<br>No cash custody request exceeding (10,000) Riyals per month will be accepted without written approval from the General Manager.<br>No new cash custody amount will be disbursed if the previous amount has not been liquidated.<br><br>Disbursing Funds:<br><br>The Cash Disbursement Officer submits a payment request using the same form, and the requested amount is transferred.<br>The Cash Disbursement Officer keeps a copy of the cash custody issuance order and supporting documents.<br><br>Liquidating Cash Custody:<br><br>The Cash Custody Liquidator submits supporting documents to the Finance Manager, proving the issuance of funds from cash custody.<br>The Finance Manager reviews the supporting documents, ensuring all required conditions are met.<br>If all required conditions are met, the Finance Manager proceeds with liquidating the cash custody.<br>Invoices must be in PDF format, and no invoice in the form of a photo or screensh.<br>It is required for the liquidation of cash custody to bring the original invoices to match them with the electronic copies (PDF).<br>If the cash custody applicant is outside the main office area of the company, the liquidation of electronically sent invoices is permitted. However, the applicant is required to send the original invoices via mail or other approved means. <br>It is essential to preserve the paper invoices and ensure their integrity to avoid any damage that might obscure the information recorded on them.<br><br><b>Obligations</b><br>Commitment to Disbursing Funds for the Specified Purpose:<br><br>The Cash Disbursement Officer must disburse the funds from cash custody for the specified purpose.<br>If funds from cash custody are disbursed for another purpose, the Cash Disbursement Officer is financially responsible for the disbursed funds.<br>Commitment to including the company's tax information in the invoice.<br>Commitment to Disbursing Funds at a Competitive Price:<br><br>The Cash Disbursement Officer must obtain a competitive price for the goods or services purchased from the cash custody.<br>If a competitive price is not obtained, the Cash Disbursement Officer is financially responsible for the price difference.<br>Penalties:<br><br>In the event of a violation of any provisions of this policy, appropriate disciplinary actions will be taken against the offending employee, in accordance with Saudi labor law.","<b>الغرض</b><br>تهدف هذه السياسة إلى وضع ضوابط وإجراءات لإصدار وتصفية العهد النقدية والمصاريف النثرية داخل الشركة، بهدف الحفاظ على أموال الشركة وضمان استخدامها بطريقة عقلانية وفعالة.<br><br><b>المسؤوليات</b><br>مدير المالية: مسؤول عن إنشاء وتنفيذ هذه السياسة، ومراقبة التزام جميع الأطراف ذات الصلة.<br>ضابط دفع النقد: مسؤول عن دفع الأموال وفقًا لهذه السياسة، وضمان توفر كافة الوثائق المطلوبة.<br>مصفي العهد النقدية: مسؤول عن تصفية العهد النقدية وإعادة أي فوائض إلى الشركة.<br><br><b>التعريفات</b><br>العهد النقدية: مبلغ من المال يُمنح لموظف أو مجموعة من الموظفين لتنفيذ مهام محددة نيابة عن الشركة.<br>المصاريف النثرية: مصاريف صغيرة ومتنوعة تتعلق بنشاطات الشركة اليومية.<br>الفواتير: وثائق تدعم إصدار الأموال من العهد النقدية.<br><br><b>الشروط</b><br>1.المصدر: الفاتورة يجب أن تكون صادرة من شركة أو كيان تجاري مرخص في المملكة العربية السعودية.<br>2.المحتويات الأساسية:<br>اسم الشركة أو الكيان التجاري.<br>رقم الهوية الضريبية.<br>عنوان الشركة أو الكيان التجاري.<br>تاريخ الفاتورة.<br>رقم الفاتورة.<br>وصف السلع أو الخدمات المشتراة.<br>السعر الإجمالي للسلع أو الخدمات.<br>3.التصديق: يجب أن تكون الفاتورة مختومة بختم الشركة أو الكيان التجاري.<br>4.الباركود: يجب أن تحتوي الفاتورة على باركود يمكن التحقق من صحته من خلال تطبيق قارئ الفاتورة الإلكترونية المعتمد من هيئة الزكاة والدخل.<br>5.التحقق الإلكتروني: يمكن التحقق من الباركود باستخدام التطبيقات الرسمية المتوفرة على Google Play وApp Store.<br>لتطبيق Google Play: https://play.google.com/store/apps/details?id=com.gazt.egazt<br>لتطبيق App Store: https://apps.apple.com/sa/app/zatca/id1517289036<br>تهدف هذه الشروط إلى ضمان الشفافية والتوافق مع اللوائح الضريبية في المملكة العربية السعودية.<br><br><b>المعلومات الضريبية للشركة</b><br>1.اسم الشركة: عبد الله فهد المطيري للخدمات المساندة.<br>2.الرقم الضريبي: 301173179500003.<br><br><b>الإجراءات</b><br>1.إصدار الأموال:<br><br>يقدم ضابط دفع النقد طلب إصدار عهد نقدية إلى مدير المالية، موضحًا الغرض من الأموال والمبلغ المطلوب.<br>يراجع مدير المالية طلب إصدار العهد النقدية، ويتأكد من استيفاء جميع الشروط المطلوبة.<br>في حال الموافقة على طلب العهد النقدية، يوافق مدير المالية على طلب الإصدار.<br>لا يتم قبول أي طلب عهدة يزيد مبلغها عن (10.000) ريال في الشهر إلا بموافقة خطية من المدير العام.<br>لن يتم دفع مبلغ عهدة جديدة إذا لم يتم تصفية المبلغ السابق.<br><br>2.دفع الأموال:<br><br>يقدم ضابط دفع النقد طلب صرف من نفس النموذج ويتم تحويل المبلغ المطلوب.<br>يحتفظ ضابط دفع النقد بنسخة من أمر إصدار العهد النقدية والوثائق الداعمة.<br><br>3.تصفية العهد النقدية:<br><br>يقدم مصفي العهد النقدية الوثائق الداعمة إلى مدير المالية، مما يثبت إصدار الأموال من العهد النقدية.<br>يراجع مدير المالية الوثائق الداعمة، ويتأكد من استيفاء جميع الشروط المطلوبة.<br><br>في حال استيفاء جميع الشروط المطلوبة، يقوم مدير المالية بتصفية العهد النقدية.<br><br>يجب أن تكون الفواتير بصيغة PDF، ولن يتم تصفية أي فاتورة عبارة عن صورة أو لقطة شاشة.<br><br>""يُشترط لتصفية العهد النقدية إحضار الفواتير الأصلية لمطابقتها مع النسخ الإلكترونية (PDF). في حالة تواجد طالب العهدة النقدية خارج منطقة مقر الشركة الرئيسي، يُسمح بتصفية الفواتير المُرسلة إلكترونيًا. <br>ومع ذلك، يُطلب من طالب العهدة إرسال الفواتير الأصلية عبر البريد أو وسائل أخرى مُعتمدة. <br><br>يجب المحافظة على الفواتير الورقية وضمان سلامتها لتجنب أي تلف قد يعيق وضوح المعلومات المُدونة بها.""<br><br><b>الالتزامات</b><br>1.الالتزام بدفع الأموال للغرض المحدد:<br>يجب على ضابط دفع النقد دفع الأموال من العهد النقدية للغرض المحدد.<br><br>في حال دفع الأموال من العهد النقدية لغرض آخر، يكون ضابط دفع النقد مسؤولاً مالياً عن الأموال المصروفة.<br>الالتزام بإضافة بيانات الشركة الضريبية في الفاتورة.<br><br>2.الالتزام بدفع الأموال بسعر تنافسي:<br><br>يجب على ضابط دفع النقد الحصول على سعر تنافسي للسلع أو الخدمات التي يتم شراؤها من العهد النقدية.<br>في حال عدم الحصول على سعر تنافسي، يكون ضابط دفع النقد مسؤولاً مالياً عن الفرق في السعر.<br><br>3.العقوبات:<br><br>في حالة مخالفة أي من أحكام هذه السياسة، سيتم اتخاذ الإجراءات التأديبية المناسبة ضد الموظف المخالف، وفقًا لقانون العمل السعودي."
 {0} m,{0} دقيقة
 {0} h,{0} ساعة
 {0} d,{0} يوم
@@ -3054,7 +3054,7 @@ Iqama Expiration Date,تاريخ انتهاء الإقامة
 Iqama Renewal Tracking Report,تقرير متابعة تجديد الإقامات
 Issue in Renewal,مشكلة في التجديد
 JV Status,حالة قيد اليومية
-PR Status,حالة طلب الدفع
+PR Status,حالة طلب الصرف
 Renewal Preference,الرغبة في التجديد
 SADAD Invoice,فاتورة سداد
 SADAD Invoice Number,رقم فاتورة سداد
@@ -3146,7 +3146,7 @@ Emergency Policy Awareness,الوعي بسياسة الطوارئ
 Evacuation Roles Assigned,تحديد أدوار الإخلاء
 Exit Leave Policy Awareness,الوعي بسياسة الخروج والإجازات
 First Aid AED Training Done,تم التدريب على الإسعافات الأولية وجهاز الصدمات
-Grievance Policy Awareness,الوعي بسياسة التظلمات
+Grievance Policy Awareness,الوعي بسياسة الشكاوى
 Hafr Al Batin (حفر الباطن),حفر الباطن
 Hail (حائل),حائل
 Has drill and communication briefing been done,هل تمت الإحاطة بشأن التمرين والتواصل
@@ -3155,7 +3155,7 @@ Health Issues Found,وجود مشكلات صحية
 Hofuf (الهفوف),الهفوف
 Is participant aware of emergency policy,هل المشارك على علم بسياسة الطوارئ
 Is participant aware of exit/leave policy,هل المشارك على علم بسياسة الخروج والإجازات
-Is participant aware of grievance policy,هل المشارك على علم بسياسة التظلمات
+Is participant aware of grievance policy,هل المشارك على علم بسياسة الشكاوى
 Is participant aware of medical insurance,هل المشارك على علم بالتأمين الصحي
 Issues Identification,تحديد المشكلات
 Jeddah (جدة),جدة
@@ -3338,7 +3338,7 @@ Contract Date,تاريخ العقد
 Cost-.YYYY.-,Cost-.YYYY.-
 Covering travel and work-related expenses.,تغطية مصاريف السفر والعمل.
 Create PR,إنشاء طلب صرف
-Create PR for Sadad,إنشاء طلب دفع لسداد
+Create PR for Sadad,إنشاء طلب صرف لسداد
 Current Request,الطلب الحالي
 Customer Name in Arabic,اسم العميل بالعربية
 DBAK,DBAK
@@ -3363,7 +3363,7 @@ Emergency expenses.,مصاريف طارئة.
 Emergency reserve.,احتياطي للطوارئ.
 Employee Classification,تصنيف الموظف
 Employee List,قائمة الموظفين
-Employee Loan,قرض موظف
+Employee Loan,سلفة موظف
 Employee Status,حالة الموظف
 Employee Update,تحديث بيانات الموظف
 Employee details,بيانات الموظف
@@ -3471,15 +3471,15 @@ Other Payment,دفعة أخرى
 Other.,أخرى.
 Overtime,العمل الإضافي
 PC-.YYYY.-,PC-.YYYY.-
-PR Created,تم إنشاء طلب الدفع
-PR Not Created,لم يُنشأ طلب الدفع
+PR Created,تم إنشاء طلب الصرف
+PR Not Created,لم يُنشأ طلب الصرف
 PR-.YYYY.-,PR-.YYYY.-
 PR2,PR2
 PUP,PUP
 Passport Fee Payment,سداد رسوم الجواز
 Payment Approver,مسؤول موافقة الدفع
 Payment Date,تاريخ الدفع
-Payment Request Iqama List,قائمة إقامات طلب الدفع
+Payment Request Iqama List,قائمة إقامات طلب الصرف
 Payment of SADAD By Group,دفع سداد حسب المجموعة
 Payroll (Salary),الرواتب
 Permission Role {0} is already held by Payment Approver {1},دور الصلاحية {0} مُسند مسبقًا إلى مسؤول موافقة الدفع {1}
@@ -6727,7 +6727,7 @@ All linked Sales Orders must be subcontracted.,يجب أن تكون جميع أ�
 Allocate Advances Automatically (FIFO),تخصيص الدفعات المقدمة تلقائيًا (الوارد أولًا يُصرف أولًا)
 Allocate Full Amount to Stock Items,تخصيص المبلغ بالكامل لأصناف المخزون
 Allocate Payment Amount,تخصيص مبلغ الدفعة
-Allocate Payment Request,تخصيص طلب الدفع
+Allocate Payment Request,تخصيص طلب الصرف
 Allocated Entries,القيود المخصصة
 Allocation,تخصيص
 Allow Account Creation Against Child Company,السماح بإنشاء الحساب في الشركة التابعة
@@ -6902,7 +6902,7 @@ Cannot change Service Stop Date for item in row {0},لا يمكن تغيير ت�
 Cannot convert Cost Center to ledger as it has child nodes,لا يمكن تحويل مركز التكلفة إلى دفتر أستاذ لأن له عناصر فرعية
 Cannot covert to Group because Account Type is selected.,لا يمكن التحويل إلى مجموعة لأن نوع الحساب محدد.
 Cannot create Intercompany {0}. All items in the source {1} have already been fully invoiced. Please check the existing linked {2}s.,لا يمكن إنشاء {0} بين الشركات. جميع الأصناف في المصدر {1} فُوترت بالكامل مسبقًا. يرجى مراجعة {2} المرتبطة الموجودة.
-Cannot fetch selected rows for submitted Payment Request,لا يمكن جلب الصفوف المحددة لطلب دفع معتمد
+Cannot fetch selected rows for submitted Payment Request,لا يمكن جلب الصفوف المحددة لطلب صرف معتمد
 Cannot receive from customer against negative outstanding,لا يمكن التحصيل من العميل مقابل رصيد مستحق سالب
 Cannot refer row number greater than or equal to current row number for this Charge type,لا يمكن الإشارة إلى رقم صف أكبر من رقم الصف الحالي أو يساويه لهذا النوع من الرسوم
 Cannot repost more than {0} vouchers at once. Split them into multiple documents.,لا يمكن إعادة ترحيل أكثر من {0} سند دفعة واحدة. قسّمها على عدة مستندات.
@@ -7012,7 +7012,7 @@ Create Journal Entries,إنشاء قيود يومية
 Create Journal Entry,إنشاء قيد يومية
 Create Payment Entry,إنشاء سند دفع
 Create Payment Entry for Consolidated POS Invoices.,إنشاء سند دفع لفواتير نقطة البيع الموحدة.
-Create payment requests in Draft status,إنشاء طلبات الدفع بحالة مسودة
+Create payment requests in Draft status,إنشاء طلبات الصرف بحالة مسودة
 Created By Migration,أُنشئ عبر ترحيل البيانات
 Creating Accounts...,جارٍ إنشاء الحسابات...
 Creating Dimensions...,جارٍ إنشاء الأبعاد...
@@ -7090,7 +7090,7 @@ Deducted From,مستقطع من
 Default account will be automatically updated in POS Invoice when this mode is selected.,سيتم تحديث الحساب الافتراضي تلقائيًا في فاتورة نقطة البيع عند تحديد هذه الطريقة.
 Default Advance Account,حساب الدفعات المقدمة الافتراضي
 Default Ageing Range,نطاق أعمار الذمم الافتراضي
-Default Payment Request Message,رسالة طلب الدفع الافتراضية
+Default Payment Request Message,رسالة طلب الصرف الافتراضية
 Deferred Expense Account,حساب المصروفات المؤجلة
 Delete Accounting and Stock Ledger entries on deletion of transaction,حذف قيود دفتر الأستاذ المحاسبي ودفتر أستاذ المخزون عند حذف المعاملة
 Delete Cancelled Ledger Entries,حذف قيود دفتر الأستاذ الملغاة
@@ -7215,7 +7215,7 @@ Expenses Included In Valuation,المصروفات المدرجة في التقي
 Failed to update subscription status for {0} {1},تعذّر تحديث حالة الاشتراك لـ {0} {1}
 Failure Description,وصف الفشل
 Fetch Overdue Payments,جلب المدفوعات المتأخرة
-Fetch Payment Schedule in Payment Request,جلب جدول الدفعات في طلب الدفع
+Fetch Payment Schedule in Payment Request,جلب جدول الدفعات في طلب الصرف
 Fetch Timesheet,جلب سجل ساعات العمل
 Fetch valuation rate for internal Transaction,جلب سعر التقييم للمعاملة الداخلية
 Field '{0}' is not a valid Account field,الحقل '{0}' ليس حقل حساب صالحًا
@@ -7708,12 +7708,12 @@ Payment Reconciliation Payment,دفعة تسوية الدفعات
 Payment Reconciliation Settings,إعدادات تسوية الدفعات
 Payment Reference,مرجع الدفع
 Payment References,مراجع الدفع
-Payment request failed,فشل طلب الدفع
-Payment Request for {0},طلب دفع لـ {0}
-Payment Request Outstanding,المستحق من طلب الدفع
-Payment Requests made from Sales / Purchase Invoice will be put in Draft explicitly,ستُوضع طلبات الدفع المنشأة من فاتورة المبيعات / المشتريات في حالة مسودة صراحةً
+Payment request failed,فشل طلب الصرف
+Payment Request for {0},طلب صرف لـ {0}
+Payment Request Outstanding,المستحق من طلب الصرف
+Payment Requests made from Sales / Purchase Invoice will be put in Draft explicitly,ستُوضع طلبات الصرف المنشأة من فاتورة المبيعات / المشتريات في حالة مسودة صراحةً
 Payment Schedule,جدول الدفعات
-Payment Schedule based Payment Requests cannot be created because a Payment Entry already exists for this document.,لا يمكن إنشاء طلبات دفع مبنية على جدول الدفعات لوجود سند دفع لهذا المستند.
+Payment Schedule based Payment Requests cannot be created because a Payment Entry already exists for this document.,لا يمكن إنشاء طلبات صرف مبنية على جدول الدفعات لوجود سند دفع لهذا المستند.
 Payment Term Name,اسم شرط الدفع
 Payment Term Outstanding,المستحق من شرط الدفع
 Payment term {0} not used in {1},لم يُستخدم شرط الدفع {0} في {1}
@@ -8266,7 +8266,7 @@ Territory,منطقة بيعية
 Territory Item,بند المنطقة البيعية
 "The account head under Liability or Equity, in which Profit/Loss will be booked",الحساب ضمن المطلوبات أو حقوق الملكية الذي سيُسجَّل فيه الربح/الخسارة
 The account type of {0} cannot be changed from {1} because stock ledger entries exist against it.,لا يمكن تغيير نوع حساب {0} من {1} لوجود قيود في دفتر أستاذ المخزون مقابله.
-The amount of {0} set in this payment request is different from the calculated amount of all payment plans: {1}. Make sure this is correct before submitting the document.,يختلف مبلغ {0} المحدد في طلب الدفع هذا عن المبلغ المحسوب لجميع خطط الدفع: {1}. تأكد من صحة ذلك قبل اعتماد المستند.
+The amount of {0} set in this payment request is different from the calculated amount of all payment plans: {1}. Make sure this is correct before submitting the document.,يختلف مبلغ {0} المحدد في طلب الصرف هذا عن المبلغ المحسوب لجميع خطط الدفع: {1}. تأكد من صحة ذلك قبل اعتماد المستند.
 The bank account is disabled. Please enable it,الحساب البنكي معطل. يرجى تفعيله
 The bank account is not a company account. Please select a company account,الحساب البنكي ليس حساب شركة. يرجى تحديد حساب شركة
 The closing balance {0} of the Stock Asset accounts does not match the closing value {1} of the Stock Balance report as on {2}. Resolve the difference using the Stock Ledger Variance report before closing the period.,الرصيد الختامي {0} لحسابات أصول المخزون لا يطابق القيمة الختامية {1} في تقرير رصيد المخزون بتاريخ {2}. عالج الفرق باستخدام تقرير فروقات دفتر أستاذ المخزون قبل إقفال الفترة.
@@ -8320,7 +8320,7 @@ Tip,تلميح
 Tip: Select report lines to view their accounts,تلميح: حدد بنود التقرير لعرض حساباتها
 To cancel a {} you need to cancel the POS Closing Entry {}.,لإلغاء {} يجب إلغاء قيد إقفال نقطة البيع {}.
 To cancel this Sales Invoice you need to cancel the POS Closing Entry {}.,لإلغاء فاتورة المبيعات هذه يجب إلغاء قيد إقفال نقطة البيع {}.
-To create a Payment Request reference document is required,لإنشاء طلب دفع، المستند المرجعي مطلوب
+To create a Payment Request reference document is required,لإنشاء طلب صرف، المستند المرجعي مطلوب
 To Date cannot be less than From Date,لا يمكن أن يكون (إلى تاريخ) قبل (من تاريخ)
 To Date should be within the Fiscal Year. Assuming To Date = {0},يجب أن يكون (إلى تاريخ) ضمن السنة المالية. بافتراض (إلى تاريخ) = {0}
 To Folio No,إلى رقم السجل
@@ -8354,7 +8354,7 @@ Total Income This Year,إجمالي الإيرادات هذا العام
 Total Invoiced Amount,إجمالي المبلغ المفوتر
 Total Liability,إجمالي المطلوبات
 Total Outstanding,إجمالي المستحق
-Total Payment Request amount cannot be greater than {0} amount,لا يمكن أن يكون إجمالي مبلغ طلب الدفع أكبر من مبلغ {0}
+Total Payment Request amount cannot be greater than {0} amount,لا يمكن أن يكون إجمالي مبلغ طلب الصرف أكبر من مبلغ {0}
 Total payments amount can't be greater than {},لا يمكن أن يكون إجمالي مبلغ المدفوعات أكبر من {}
 Total Taxable Amount,إجمالي المبلغ الخاضع للضريبة
 Transaction Currency,عملة المعاملة
@@ -8394,7 +8394,7 @@ Unlink Payment on cancellation of invoice,إلغاء ربط الدفعة عند 
 Unreconcile Payment Entries,إلغاء تسوية سندات الدفع
 Unreconcile Transaction,إلغاء تسوية المعاملة
 Unreconciled Entries,القيود غير المسواة
-Unset Matched Payment Request,إلغاء تعيين طلب الدفع المطابق
+Unset Matched Payment Request,إلغاء تعيين طلب الصرف المطابق
 Unsupported Feature,ميزة غير مدعومة
 UOM Conversion Factor,معامل تحويل وحدة القياس
 Update Auto Repeat Reference,تحديث مرجع التكرار التلقائي
@@ -10644,7 +10644,7 @@ Clear Last Scanned Warehouse,مسح آخر مستودع ممسوح ضوئيًا
 "Company is required to load address, taxes, and payment terms. Set Company, then select {0} again.",الشركة مطلوبة لتحميل العنوان والضرائب وشروط الدفع. حدّد الشركة، ثم اختر {0} مرة أخرى.
 Company Name cannot be Company,لا يمكن أن يكون اسم الشركة Company
 Create New Contact,إنشاء جهة اتصال جديدة
-Create Payment Request,إنشاء طلب دفع
+Create Payment Request,إنشاء طلب صرف
 Declare Lost,تعيين كضائعة
 Delete Demo Data,حذف البيانات التجريبية
 Demo data cleared,تم مسح البيانات التجريبية
@@ -13277,7 +13277,7 @@ Cannot mark attendance for an Inactive employee {0},لا يمكن تسجيل ا�
 Cannot Modify Time,لا يمكن تعديل الوقت
 Cannot update allocation for {0} after submission,لا يمكن تحديث التخصيص لـ {0} بعد الاعتماد
 Cannot update status of Goal groups,لا يمكن تحديث حالة مجموعات الأهداف
-Cause of Grievance,سبب التظلم
+Cause of Grievance,سبب الشكوى
 Changed the status from {0} to {1} and Status for Other Half to {2} via Attendance Request,تم تغيير الحالة من {0} إلى {1} وحالة النصف الآخر إلى {2} عبر طلب الحضور
 Changing '{0}' to {1}.,تغيير '{0}' إلى {1}.
 "Changing KRA in this parent goal will align all the child goals to the same KRA, if any.",سيؤدي تغيير مجال النتائج الرئيسي في هذا الهدف الرئيسي إلى مواءمة جميع الأهداف الفرعية مع المجال نفسه، إن وجدت.
@@ -13339,7 +13339,7 @@ Employee advance account {0} should be of type {1}.,يجب أن يكون حسا�
 Employee Exit Settings,إعدادات خروج الموظف
 Employee Feedback Criteria,معايير ملاحظات الموظف
 Employee Feedback Rating,تقييم ملاحظات الموظف
-Employee Grievance,تظلم موظف
+Employee Grievance,شكوى موظف
 Employee Hours Utilization Based On Timesheet,استخدام ساعات الموظفين بناءً على سجل ساعات العمل
 Employee Journey,المسيرة الوظيفية للموظف
 Employee name,اسم الموظف
@@ -13457,11 +13457,11 @@ Goal should be owned by the same employee as its parent goal.,يجب أن يكو
 Goal should belong to the same Appraisal Cycle as its parent goal.,يجب أن ينتمي الهدف إلى دورة تقييم الأداء نفسها التي ينتمي إليها هدفه الرئيسي.
 Goal updated successfully,تم تحديث الهدف بنجاح
 Goals updated successfully,تم تحديث الأهداف بنجاح
-Grievance,تظلم
-Grievance Against,المتظلم منه
-Grievance Against Party,الطرف المتظلم منه
-Grievance Details,تفاصيل التظلم
-Grievance Type,نوع التظلم
+Grievance,شكوى
+Grievance Against,المشكو منه
+Grievance Against Party,الطرف المشكو منه
+Grievance Details,تفاصيل الشكوى
+Grievance Type,نوع الشكوى
 Group goal's progress is auto-calculated based on the child goals.,يُحتسب تقدم الهدف التجميعي تلقائيًا بناءً على الأهداف الفرعية.
 Half Day Marked Employee Header,عنوان الموظفين المسجلين بنصف يوم
 Half Day Records,سجلات نصف اليوم
@@ -13621,7 +13621,7 @@ Onboarding,الإعداد الأولي
 Onboarding Activities,أنشطة الإعداد الأولي
 Onboarding Begins On,يبدأ الإعداد الأولي في
 Only Completed documents can be submitted,لا يمكن اعتماد إلا المستندات المكتملة
-Only Employee Grievance with status {0} or {1} can be submitted,لا يمكن اعتماد تظلم الموظف إلا إذا كانت حالته {0} أو {1}
+Only Employee Grievance with status {0} or {1} can be submitted,لا يمكن اعتماد شكوى الموظف إلا إذا كانت حالتها {0} أو {1}
 Only Interviewer Are allowed to submit Interview Feedback,لا يُسمح إلا لمجري المقابلة باعتماد تقييم المقابلة
 Only interviewers can submit feedback,يقتصر اعتماد التقييم على مجري المقابلة
 Only Interviews with Cleared or Rejected status can be submitted.,لا يمكن اعتماد إلا المقابلات ذات الحالة ناجحة أو مرفوضة.
