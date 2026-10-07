@@ -518,9 +518,9 @@ Errors encountered for documents:,أخطاء في المستندات التال�
 Escalation rule already exists for this criteria,توجد قاعدة تصعيد لهذه المعايير مسبقًا
 Escape,التغيب عن العمل
 Establishment,منشأة
-Estimated Budget,الميزانية التقديرية
+Estimated Budget,الموازنة التقديرية
 Estimated financial impact range,نطاق الأثر المالي التقديري
-Estimated project budget range,نطاق ميزانية المشروع التقديري
+Estimated project budget range,نطاق موازنة المشروع التقديري
 Evacuation Plan Displayed,خطة الإخلاء معروضة
 Evacuation and Emergency,الإخلاء والطوارئ
 Exit Reentry Visa Service,خدمة تأشيرة الخروج والعودة
@@ -3146,7 +3146,7 @@ Emergency Policy Awareness,الوعي بسياسة الطوارئ
 Evacuation Roles Assigned,تحديد أدوار الإخلاء
 Exit Leave Policy Awareness,الوعي بسياسة الخروج والإجازات
 First Aid AED Training Done,تم التدريب على الإسعافات الأولية وجهاز الصدمات
-Grievance Policy Awareness,الوعي بسياسة الشكاوى
+Grievance Policy Awareness,الوعي بسياسة التظلمات
 Hafr Al Batin (حفر الباطن),حفر الباطن
 Hail (حائل),حائل
 Has drill and communication briefing been done,هل تمت الإحاطة بشأن التمرين والتواصل
@@ -3155,7 +3155,7 @@ Health Issues Found,وجود مشكلات صحية
 Hofuf (الهفوف),الهفوف
 Is participant aware of emergency policy,هل المشارك على علم بسياسة الطوارئ
 Is participant aware of exit/leave policy,هل المشارك على علم بسياسة الخروج والإجازات
-Is participant aware of grievance policy,هل المشارك على علم بسياسة الشكاوى
+Is participant aware of grievance policy,هل المشارك على علم بسياسة التظلمات
 Is participant aware of medical insurance,هل المشارك على علم بالتأمين الصحي
 Issues Identification,تحديد المشكلات
 Jeddah (جدة),جدة
@@ -6680,14 +6680,14 @@ Accumulated Depreciation Amount,مبلغ الإهلاك المتراكم
 Accumulated Depreciation as on,الإهلاك المتراكم كما في
 Accumulated Monthly,تراكمي شهريًا
 Accumulated Values in Group Company,القيم المتراكمة في شركة المجموعة
-Action if Accumulated Monthly Budget Exceeded on Actual,الإجراء عند تجاوز الميزانية الشهرية المتراكمة للمصروفات الفعلية
-Action if Accumulated Monthly Budget Exceeded on MR,الإجراء عند تجاوز الميزانية الشهرية المتراكمة لطلبات المواد
-Action if Accumulated Monthly Budget Exceeded on PO,الإجراء عند تجاوز الميزانية الشهرية المتراكمة لأوامر الشراء
-Action if Accumulative Monthly Budget Exceeded on Cumulative Expense,الإجراء عند تجاوز الميزانية الشهرية المتراكمة للمصروفات التراكمية
-Action if Annual Budget Exceeded on Actual,الإجراء عند تجاوز الميزانية السنوية للمصروفات الفعلية
-Action if Annual Budget Exceeded on MR,الإجراء عند تجاوز الميزانية السنوية لطلبات المواد
-Action if Annual Budget Exceeded on PO,الإجراء عند تجاوز الميزانية السنوية لأوامر الشراء
-Action if Anual Budget Exceeded on Cumulative Expense,الإجراء عند تجاوز الميزانية السنوية للمصروفات التراكمية
+Action if Accumulated Monthly Budget Exceeded on Actual,الإجراء عند تجاوز الموازنة الشهرية المتراكمة للمصروفات الفعلية
+Action if Accumulated Monthly Budget Exceeded on MR,الإجراء عند تجاوز الموازنة الشهرية المتراكمة لطلبات المواد
+Action if Accumulated Monthly Budget Exceeded on PO,الإجراء عند تجاوز الموازنة الشهرية المتراكمة لأوامر الشراء
+Action if Accumulative Monthly Budget Exceeded on Cumulative Expense,الإجراء عند تجاوز الموازنة الشهرية المتراكمة للمصروفات التراكمية
+Action if Annual Budget Exceeded on Actual,الإجراء عند تجاوز الموازنة السنوية للمصروفات الفعلية
+Action if Annual Budget Exceeded on MR,الإجراء عند تجاوز الموازنة السنوية لطلبات المواد
+Action if Annual Budget Exceeded on PO,الإجراء عند تجاوز الموازنة السنوية لأوامر الشراء
+Action if Anual Budget Exceeded on Cumulative Expense,الإجراء عند تجاوز الموازنة السنوية للمصروفات التراكمية
 Action if same rate is not maintained throughout internal transaction,الإجراء عند عدم الحفاظ على السعر نفسه طوال المعاملة الداخلية
 Actual Expenses,المصروفات الفعلية
 Actual Posting,الترحيل الفعلي
@@ -6877,10 +6877,10 @@ Book tax loss on early payment discount,تسجيل خسارة الضريبة ع�
 Books have been closed till the period ending on {0},أُقفلت الدفاتر حتى الفترة المنتهية في {0}
 "Books Purchase Expense and Expenses Added To Stock account pairs against stock value. On enabling this, the accounts become mandatory in Company or Item Defaults for Purchase Receipt, Purchase Invoice, Stock Entry, Stock Reconciliation and Landed Cost Voucher",يسجّل قيودًا على زوج الحسابين (مصروفات الشراء، والمصروفات المضافة إلى المخزون) مقابل قيمة المخزون. عند تفعيل هذا الخيار تصبح الحسابات إلزامية في الشركة أو في افتراضيات الصنف لكلٍّ من سند استلام المشتريات وفاتورة المشتريات وحركة المخزون وتسوية المخزون وسند تكلفة الوصول
 Brand Name,اسم العلامة التجارية
-Budget Amount,مبلغ الميزانية
-Budget cannot be assigned against Group Account {0},لا يمكن تخصيص ميزانية لحساب المجموعة {0}
-"Budget cannot be assigned against {0}, as its Root Type is not of Income or Expense",لا يمكن تخصيص ميزانية لـ {0} لأن نوعه الرئيسي ليس إيرادات أو مصروفات
-Budget Variance Report,تقرير انحراف الميزانية
+Budget Amount,مبلغ الموازنة
+Budget cannot be assigned against Group Account {0},لا يمكن تخصيص موازنة لحساب المجموعة {0}
+"Budget cannot be assigned against {0}, as its Root Type is not of Income or Expense",لا يمكن تخصيص موازنة لـ {0} لأن نوعه الرئيسي ليس إيرادات أو مصروفات
+Budget Variance Report,تقرير انحراف الموازنة
 Buying Amount,مبلغ الشراء
 "Buying must be checked, if Applicable For is selected as {0}",يجب تحديد 'الشراء' إذا كان 'ينطبق على' هو {0}
 Calculate Based On,الاحتساب بناءً على
@@ -7181,7 +7181,7 @@ Enable Loyalty Point Program,تفعيل برنامج نقاط الولاء
 Enable Subscription,تفعيل الاشتراك
 Enable Subscription tracking in invoice,تفعيل تتبع الاشتراك في الفاتورة
 Enable this checkbox even if you want to set the zero priority,فعّل خانة الاختيار هذه حتى إن أردت تعيين الأولوية صفرًا
-Enable this if you are experiencing issues with the new budget controller. Uses the older budget validation logic,فعّل هذا الخيار إذا واجهت مشكلات في وحدة التحكم الجديدة بالميزانية. يستخدم منطق التحقق القديم من الميزانية
+Enable this if you are experiencing issues with the new budget controller. Uses the older budget validation logic,فعّل هذا الخيار إذا واجهت مشكلات في وحدة التحكم الجديدة بالموازنة. يستخدم منطق التحقق القديم من الموازنة
 "Enable this option to calculate daily depreciation by considering the total number of days in the entire depreciation period, (including leap years) while using daily pro-rata based depreciation",فعّل هذا الخيار لحساب الإهلاك اليومي بمراعاة إجمالي عدد الأيام في فترة الإهلاك كاملة (بما في ذلك السنوات الكبيسة) عند استخدام الإهلاك اليومي التناسبي
 Enabling this ensures each Purchase Invoice has a unique value in Supplier Invoice No. field within a particular fiscal year,"يضمن تفعيل هذا الخيار أن يكون لكل فاتورة مشتريات قيمة فريدة في حقل ""رقم فاتورة المورد"" ضمن سنة مالية محددة"
 Enabling this option prevents the creation of a new Sales Invoice when the customer has an overdue limit set and their outstanding overdue amount exceeds that limit.,يمنع تفعيل هذا الخيار إنشاء فاتورة مبيعات جديدة عندما يكون للعميل حد للمتأخرات ويتجاوز مبلغه المتأخر المستحق ذلك الحد.
@@ -8019,7 +8019,7 @@ Reverse {0} already available in draft status: {1},يوجد عكس {0} مسبق�
 Reversing Journals...,جارٍ عكس قيود اليومية...
 Review Accounts Settings,مراجعة إعدادات الحسابات
 Review Chart of Accounts,مراجعة دليل الحسابات
-Revise Budget,تعديل الميزانية
+Revise Budget,تعديل الموازنة
 Revision cancelled,تم إلغاء التعديل
 Revision Of,تعديل لـ
 Rgt,Rgt
@@ -8405,7 +8405,7 @@ Update Clearance Date,تحديث تاريخ المقاصة
 Update Outstanding for Self,تحديث المبلغ المستحق للمستند نفسه
 Upload Bank Statement,رفع كشف الحساب البنكي
 Use 'Repost in background' button to trigger background job. Job can only be triggered when document is in Queued or Failed status.,"استخدم زر ""إعادة الترحيل في الخلفية"" لتشغيل مهمة في الخلفية. لا يمكن تشغيل المهمة إلا عندما يكون المستند في حالة ""في قائمة الانتظار"" أو ""فشل""."
-Use legacy Budget Controller,استخدام آلية التحكم القديمة في الميزانية
+Use legacy Budget Controller,استخدام آلية التحكم القديمة في الموازنة
 Use legacy controller for Period Closing Voucher,استخدام الآلية القديمة لقيد إقفال الفترة
 Use Serial No / Batch Fields,استخدام حقول الرقم التسلسلي / التشغيلة
 Used with Financial Report Template,يُستخدم مع قالب التقرير المالي
@@ -8479,8 +8479,8 @@ You don't have enough Loyalty Points to redeem,ليس لديك نقاط ولاء
 You had {} errors while creating opening invoices. Check {} for more details,حدثت {} أخطاء أثناء إنشاء الفواتير الافتتاحية. راجع {} لمزيد من التفاصيل
 You need to cancel POS Closing Entry {} to be able to cancel this document.,يجب إلغاء قيد إقفال نقطة البيع {} لتتمكن من إلغاء هذا المستند.
 {0} against Sales Order {1},{0} مقابل أمر البيع {1}
-{0} Budget for Account {1} against {2} {3} is {4}. It is already exceeded by {5}.,ميزانية {0} للحساب {1} مقابل {2} {3} هي {4}. وقد تم تجاوزها بالفعل بمقدار {5}.
-{0} Budget for Account {1} against {2} {3} is {4}. It will be exceeded by {5}.,ميزانية {0} للحساب {1} مقابل {2} {3} هي {4}. وسيتم تجاوزها بمقدار {5}.
+{0} Budget for Account {1} against {2} {3} is {4}. It is already exceeded by {5}.,موازنة {0} للحساب {1} مقابل {2} {3} هي {4}. وقد تم تجاوزها بالفعل بمقدار {5}.
+{0} Budget for Account {1} against {2} {3} is {4}. It will be exceeded by {5}.,موازنة {0} للحساب {1} مقابل {2} {3} هي {4}. وسيتم تجاوزها بمقدار {5}.
 {0} cannot be changed with opened Opening Entries.,لا يمكن تغيير {0} مع وجود قيود افتتاحية مفتوحة.
 {0} cannot be used as a Main Cost Center because it has been used as child in Cost Center Allocation {1},لا يمكن استخدام {0} كمركز تكلفة رئيسي لأنه استُخدم كمركز تكلفة فرعي في توزيع مركز التكلفة {1}
 {0} cannot be used as an accounting dimension as it is not a standalone document type.,لا يمكن استخدام {0} بعدًا محاسبيًا لأنه ليس نوع مستند مستقلًا.
@@ -9450,7 +9450,7 @@ Account: {0} with currency: {1} can not be selected,لا يمكن اختيار �
 Accounting Entry for {0}: {1} can only be made in currency: {2},لا يمكن إنشاء القيد المحاسبي لـ {0}: {1} إلا بالعملة: {2}
 Additional Discount Amount ({discount_amount}) cannot exceed the total before such discount ({total_before_discount}),لا يمكن أن يتجاوز مبلغ الخصم الإضافي ({discount_amount}) الإجمالي قبل هذا الخصم ({total_before_discount})
 Allow Item to Be Added Multiple Times in a Transaction,السماح بإضافة الصنف عدة مرات في المعاملة
-Annual Budget for Account {0} against {1} {2} is {3}. It will be collectively ({4}) exceeded by {5},الميزانية السنوية للحساب {0} مقابل {1} {2} هي {3}. وسيتم تجاوزها مجتمعةً ({4}) بمقدار {5}
+Annual Budget for Account {0} against {1} {2} is {3}. It will be collectively ({4}) exceeded by {5},الموازنة السنوية للحساب {0} مقابل {1} {2} هي {3}. وسيتم تجاوزها مجتمعةً ({4}) بمقدار {5}
 Assets {assets_link} created for {item_code},تم إنشاء الأصول {assets_link} لـ {item_code}
 At least one item should be entered with negative quantity in return document,يجب إدخال صنف واحد على الأقل بكمية سالبة في مستند الإرجاع
 At row {0}: Serial and Batch Bundle {1} has already created. Please remove the values from the serial no or batch no fields.,في الصف {0}: تم إنشاء حزمة الرقم التسلسلي والتشغيلة {1} مسبقًا. يُرجى حذف القيم من حقلي الرقم التسلسلي أو رقم التشغيلة.
@@ -11279,7 +11279,7 @@ Enable Provisional Accounting For Non Stock Items,تفعيل المحاسبة ا
 Enabling this option will allow you to record - <br><br> 1. Advances Received in a <b>Liability Account</b> instead of the <b>Asset Account</b><br><br>2. Advances Paid in an <b>Asset Account</b> instead of the <b> Liability Account</b>,سيتيح لك تفعيل هذا الخيار تسجيل - <br><br> 1. الدفعات المقدمة المستلمة في <b>حساب التزامات</b> بدلًا من <b>حساب الأصول</b><br><br>2. الدفعات المقدمة المدفوعة في <b>حساب أصول</b> بدلًا من <b> حساب الالتزامات</b>
 Encashment Date,تاريخ التعويض النقدي
 Error getting details for {0}: {1},خطأ في جلب تفاصيل {0}: {1}
-Exception Budget Approver Role,دور مسؤول موافقة استثناءات الميزانية
+Exception Budget Approver Role,دور مسؤول موافقة استثناءات الموازنة
 Exchange Gain / Loss Account,حساب الربح / الخسارة الناتج عن الصرف
 Existing Company,الشركة الحالية
 Existing Company ,الشركة الحالية 
@@ -11481,7 +11481,7 @@ Select company name first.,حدد اسم الشركة أولًا.
 "Select Date of joining. It will have impact on the first salary calculation, Leave allocation on pro-rata bases.",حدد تاريخ المباشرة. سيؤثر ذلك على حساب الراتب الأول وتخصيص الإجازات على أساس تناسبي.
 Series for Asset Depreciation Entry (Journal Entry),سلسلة قيد إهلاك الأصول (قيد يومية)
 Set default {0} account for non stock items,قم بتعيين الحساب الافتراضي {0} للأصناف غير المخزنية
-Set Item Group-wise budgets on this Territory. You can also include seasonality by setting the Distribution.,حدد الميزانيات حسب مجموعة الأصناف لهذه المنطقة البيعية. يمكنك أيضًا مراعاة الموسمية بتعيين التوزيع.
+Set Item Group-wise budgets on this Territory. You can also include seasonality by setting the Distribution.,حدد الموازنات حسب مجموعة الأصناف لهذه المنطقة البيعية. يمكنك أيضًا مراعاة الموسمية بتعيين التوزيع.
 Set targets Item Group-wise for this Sales Person.,حدد المستهدفات حسب مجموعة الأصناف لمندوب المبيعات هذا.
 Setting up company,جارٍ إعداد الشركة
 Setup Company,إعداد الشركة
@@ -12947,7 +12947,7 @@ YouTube,يوتيوب
 AP Summary,ملخص الذمم الدائنة
 AR Summary,ملخص الذمم المدينة
 Bank Reconciliation,التسوية البنكية
-Budget Variance,فرق الميزانية
+Budget Variance,فرق الموازنة
 COA Importer,استيراد دليل الحسابات
 Consolidated Report,تقرير موحد
 Customer Ledger,دفتر أستاذ العميل
@@ -13277,7 +13277,7 @@ Cannot mark attendance for an Inactive employee {0},لا يمكن تسجيل ا�
 Cannot Modify Time,لا يمكن تعديل الوقت
 Cannot update allocation for {0} after submission,لا يمكن تحديث التخصيص لـ {0} بعد الاعتماد
 Cannot update status of Goal groups,لا يمكن تحديث حالة مجموعات الأهداف
-Cause of Grievance,سبب الشكوى
+Cause of Grievance,سبب التظلم
 Changed the status from {0} to {1} and Status for Other Half to {2} via Attendance Request,تم تغيير الحالة من {0} إلى {1} وحالة النصف الآخر إلى {2} عبر طلب الحضور
 Changing '{0}' to {1}.,تغيير '{0}' إلى {1}.
 "Changing KRA in this parent goal will align all the child goals to the same KRA, if any.",سيؤدي تغيير مجال النتائج الرئيسي في هذا الهدف الرئيسي إلى مواءمة جميع الأهداف الفرعية مع المجال نفسه، إن وجدت.
@@ -13339,7 +13339,7 @@ Employee advance account {0} should be of type {1}.,يجب أن يكون حسا�
 Employee Exit Settings,إعدادات خروج الموظف
 Employee Feedback Criteria,معايير ملاحظات الموظف
 Employee Feedback Rating,تقييم ملاحظات الموظف
-Employee Grievance,شكوى موظف
+Employee Grievance,تظلم موظف
 Employee Hours Utilization Based On Timesheet,استخدام ساعات الموظفين بناءً على سجل ساعات العمل
 Employee Journey,المسيرة الوظيفية للموظف
 Employee name,اسم الموظف
@@ -13457,11 +13457,11 @@ Goal should be owned by the same employee as its parent goal.,يجب أن يكو
 Goal should belong to the same Appraisal Cycle as its parent goal.,يجب أن ينتمي الهدف إلى دورة تقييم الأداء نفسها التي ينتمي إليها هدفه الرئيسي.
 Goal updated successfully,تم تحديث الهدف بنجاح
 Goals updated successfully,تم تحديث الأهداف بنجاح
-Grievance,شكوى
-Grievance Against,المشكو منه
-Grievance Against Party,الطرف المشكو منه
-Grievance Details,تفاصيل الشكوى
-Grievance Type,نوع الشكوى
+Grievance,تظلم
+Grievance Against,المتظلم منه
+Grievance Against Party,الطرف المتظلم منه
+Grievance Details,تفاصيل التظلم
+Grievance Type,نوع التظلم
 Group goal's progress is auto-calculated based on the child goals.,يُحتسب تقدم الهدف التجميعي تلقائيًا بناءً على الأهداف الفرعية.
 Half Day Marked Employee Header,عنوان الموظفين المسجلين بنصف يوم
 Half Day Records,سجلات نصف اليوم
@@ -13621,7 +13621,7 @@ Onboarding,الإعداد الأولي
 Onboarding Activities,أنشطة الإعداد الأولي
 Onboarding Begins On,يبدأ الإعداد الأولي في
 Only Completed documents can be submitted,لا يمكن اعتماد إلا المستندات المكتملة
-Only Employee Grievance with status {0} or {1} can be submitted,لا يمكن اعتماد شكوى الموظف إلا إذا كانت حالتها {0} أو {1}
+Only Employee Grievance with status {0} or {1} can be submitted,لا يمكن اعتماد تظلم الموظف إلا إذا كانت حالته {0} أو {1}
 Only Interviewer Are allowed to submit Interview Feedback,لا يُسمح إلا لمجري المقابلة باعتماد تقييم المقابلة
 Only interviewers can submit feedback,يقتصر اعتماد التقييم على مجري المقابلة
 Only Interviews with Cleared or Rejected status can be submitted.,لا يمكن اعتماد إلا المقابلات ذات الحالة ناجحة أو مرفوضة.
@@ -13844,7 +13844,7 @@ Submit Feedback,اعتماد التقييم
 Submit Now,تقديم الآن
 Submit this Leave Application to confirm.,اعتمد طلب الإجازة هذا للتأكيد.
 Submitted via Payroll Entry,معتمد عبر مسير الرواتب
-Subsidiary companies have already planned for {1} vacancies at a budget of {2}. Staffing Plan for {0} should allocate more vacancies and budget for {3} than planned for its subsidiary companies,خططت الشركات التابعة مسبقًا لـ {1} شاغر بميزانية {2}. يجب أن تخصص خطة التوظيف لـ {0} شواغر وميزانية لـ {3} أكثر مما خُطط له لشركاتها التابعة
+Subsidiary companies have already planned for {1} vacancies at a budget of {2}. Staffing Plan for {0} should allocate more vacancies and budget for {3} than planned for its subsidiary companies,خططت الشركات التابعة مسبقًا لـ {1} شاغر بموازنة {2}. يجب أن تخصص خطة التوظيف لـ {0} شواغر وموازنة لـ {3} أكثر مما خُطط له لشركاتها التابعة
 Successfully created {0} for employees:,تم إنشاء {0} بنجاح للموظفين:
 Thank you for applying.,شكرًا لتقديم طلبك.
 The day of the month when leaves should be allocated,يوم الشهر الذي يجب أن تُخصص فيه الإجازات
@@ -13919,7 +13919,7 @@ Why is this Candidate Qualified for this Position?,لماذا هذا المرش�
 Work Anniversaries ,الذكرى السنوية للعمل 
 Work References,المراجع المهنية
 "Yes, Proceed",نعم، تابع
-You can only plan for upto {0} vacancies and budget {1} for {2} as per staffing plan {3} for parent company {4}.,يمكنك التخطيط فقط لما يصل إلى {0} شاغر وميزانية {1} لـ {2} وفقًا لخطة التوظيف {3} للشركة الأم {4}.
+You can only plan for upto {0} vacancies and budget {1} for {2} as per staffing plan {3} for parent company {4}.,يمكنك التخطيط فقط لما يصل إلى {0} شاغر وموازنة {1} لـ {2} وفقًا لخطة التوظيف {3} للشركة الأم {4}.
 You do not have permission to complete this action,ليست لديك صلاحية لإكمال هذا الإجراء
 You must be within {0} meters of your shift location to check in.,يجب أن تكون ضمن {0} متر من موقع ورديتك لتسجيل البصمة.
 You were only present for Half Day on {}. Cannot apply for a full day compensatory leave,كنت حاضرًا لنصف يوم فقط في {}. لا يمكن التقدم بطلب إجازة تعويضية ليوم كامل
@@ -13936,7 +13936,7 @@ Your Interview session is rescheduled from {0} {1} - {2} to {3} {4} - {5},أُع
 {0} Missing,{0} مفقود
 {0} of {1} Completed,اكتمل {0} من {1}
 {0} to {1} employee(s)?,{0} إلى {1} موظف؟
-{0} vacancies and {1} budget for {2} already planned for subsidiary companies of {3}. You can only plan for upto {4} vacancies and and budget {5} as per staffing plan {6} for parent company {3}.,تم التخطيط مسبقًا لـ {0} شاغر وميزانية {1} لـ {2} للشركات التابعة لـ {3}. يمكنك التخطيط فقط لما يصل إلى {4} شاغر وميزانية {5} وفقًا لخطة التوظيف {6} للشركة الأم {3}.
+{0} vacancies and {1} budget for {2} already planned for subsidiary companies of {3}. You can only plan for upto {4} vacancies and and budget {5} as per staffing plan {6} for parent company {3}.,تم التخطيط مسبقًا لـ {0} شاغر وموازنة {1} لـ {2} للشركات التابعة لـ {3}. يمكنك التخطيط فقط لما يصل إلى {4} شاغر وموازنة {5} وفقًا لخطة التوظيف {6} للشركة الأم {3}.
 {0} {1} {2}?,{0} {1} {2}؟
 {0}. Check error log for more details.,{0}. راجع سجل الأخطاء لمزيد من التفاصيل.
 {} ,{} 
