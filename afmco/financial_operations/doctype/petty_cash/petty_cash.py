@@ -9,9 +9,14 @@ from frappe.utils import add_days
 
 class PettyCash(Document):
 	def validate(self):
-		if self.issue_date and self.has_value_changed("issue_date"):
-			self.due_date = add_days(self.issue_date, 30)
+		if not self.due_date:
+			self.set_due_date()
 		self.validate_declaration_attached()
+
+	@frappe.whitelist()
+	def set_due_date(self):
+		if self.issue_date:
+			self.due_date = add_days(self.issue_date, 30)
 
 	def validate_declaration_attached(self):
 		previous = self.get_doc_before_save()

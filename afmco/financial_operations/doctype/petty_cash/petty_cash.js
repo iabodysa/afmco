@@ -26,6 +26,10 @@ frappe.ui.form.on('Petty Cash', {
         }
     },
 
+    issue_date: function(frm) {
+        frm.call('set_due_date');
+    },
+
     createpr: function(frm) {
         try {
             const { name, bank_ac_no, employee_name, petty_cash_amount, bank_payment_date, date, jv_status, naming_series, cost_center, project, petty_cash_description,} = frm.doc;
