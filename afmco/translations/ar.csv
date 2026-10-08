@@ -586,7 +586,7 @@ Please set both Payroll Payable Account and Payment Account.,يرجى تحديد
 Please set the Payroll Payable Account.,يرجى تحديد حساب رواتب مستحقة الدفع.
 Policy Info,معلومات الوثيقة
 Policy Number,رقم الوثيقة
-Posting Date,تاريخ الادخال
+Posting Date,تاريخ الترحيل
 Pre-Check Failed,فشل التحقق المسبق
 Pre-Check Validation,التحقق المسبق
 Pre-Check: Issues Found,التحقق المسبق: توجد مشكلات
@@ -1534,14 +1534,14 @@ I acknowledge that I am still in service with,أقر بأنني لا أزال ع
 Abdullah Fahad Al-Mutairi Support Services Company,عبدالله فهد المطيري للخدمات المساندة,Vacation Allowance Undertaking
 ", and that I enjoy all the employment rights set out in the Saudi Labor Law and the approved Work Regulations of the company.",، وأني أتمتع بجميع الحقوق الوظيفية المنصوص عليها في نظام العمل السعودي ولائحة تنظيم العمل المعتمدة بالشركة.,Vacation Allowance Undertaking
 "At my personal request and wish, my annual leave pay for the current year",بناءً على طلبي الشخصي ورغبتي، تم دفع أجر إجازتي السنوية عن السنة الحالية,Vacation Allowance Undertaking
-2025 AD,٢٠٢٥م,Vacation Allowance Undertaking
+2025 AD,2025م,Vacation Allowance Undertaking
 "has been paid in advance to ease my personal financial circumstances, without affecting my full right to take my statutory annual leave.",مقدماً، وذلك لتخفيف ظروفي المالية الخاصة، دون أن يمس ذلك حقي الكامل في التمتع بإجازتي السنوية النظامية.,Vacation Allowance Undertaking
-"I acknowledge that my annual leave starts on ___ / ___ / 2025 AD for ____________ days, and I commit to actually taking the leave according to the schedule approved by the company management.",أقر بأن تاريخ بداية إجازتي السنوية سيكون اعتباراً من ___ / ___ / ٢٠٢٥م، ولمدة ____________ يوماً، وسألتزم بأخذ الإجازة فعلياً حسب الجدولة المعتمدة من إدارة الشركة.,Vacation Allowance Undertaking
-"I state that the amount paid to me is my annual leave pay in advance, under Article (109) of the Labor Law, and is in no case a compensation in lieu of the leave or a waiver of it.",أوضح أن ما تم دفعه لي هو أجر الإجازة السنوية مقدماً، وفق أحكام المادة (١٠٩) من نظام العمل، ولا يُعد بأي حال من الأحوال تعويضاً بديلاً عن الإجازة أو تنازلاً عنها.,Vacation Allowance Undertaking
+"I acknowledge that my annual leave starts on ___ / ___ / 2025 AD for ____________ days, and I commit to actually taking the leave according to the schedule approved by the company management.",أقر بأن تاريخ بداية إجازتي السنوية سيكون اعتباراً من ___ / ___ / 2025م، ولمدة ____________ يوماً، وسألتزم بأخذ الإجازة فعلياً حسب الجدولة المعتمدة من إدارة الشركة.,Vacation Allowance Undertaking
+"I state that the amount paid to me is my annual leave pay in advance, under Article (109) of the Labor Law, and is in no case a compensation in lieu of the leave or a waiver of it.",أوضح أن ما تم دفعه لي هو أجر الإجازة السنوية مقدماً، وفق أحكام المادة (109) من نظام العمل، ولا يُعد بأي حال من الأحوال تعويضاً بديلاً عن الإجازة أو تنازلاً عنها.,Vacation Allowance Undertaking
 "I undertake not to work in any form during the leave (full time, part time or additional assignments), and I understand that any work during the leave requires prior written approval of the company management only, without any additional financial obligation unless agreed in writing.",أتعهد بعدم العمل خلال فترة الإجازة بأي شكل كان (دوام كلي أو جزئي أو تكليفات إضافية)، وأفهم أن أي مزاولة لعمل خلال الإجازة تتم بموافقة مسبقة ومكتوبة من إدارة الشركة فقط، وبدون أي التزامات مالية إضافية ما لم يتم الاتفاق عليها خطياً.,Vacation Allowance Undertaking
 "I acknowledge that the advance payment of leave pay gives me no additional right to claim other amounts for the leave, and I undertake not to submit additional financial claims as work allowance or leave compensation as long as I take my leave on its set date.",أقر بأن دفع أجر الإجازة مقدماً لا يترتب عليه أي حق إضافي لي بالمطالبة بمبالغ أخرى نظير الإجازة، كما أتعهد بعدم تقديم مطالبات مالية إضافية تحت مسمى بدل عمل أو تعويض إجازة طالما التزمت بالاستفادة من إجازتي في موعدها المحدد.,Vacation Allowance Undertaking
 "I bear full legal and administrative responsibility for the accuracy of this undertaking, and I agree to its keeping in my employment file at the company for reliance when needed.",أتحمل كامل المسؤولية النظامية والإدارية عن صحة هذا التعهد، وأوافق على حفظه في ملفي الوظيفي لدى الشركة للاعتماد عليه عند الحاجة.,Vacation Allowance Undertaking
-This undertaking was issued on: ___ / ___ / 2025 AD,حرر هذا التعهد بتاريخ: ___ / ___ / ٢٠٢٥م,Vacation Allowance Undertaking
+This undertaking was issued on: ___ / ___ / 2025 AD,حرر هذا التعهد بتاريخ: ___ / ___ / 2025م,Vacation Allowance Undertaking
 Full Name:,الاسم الكامل:,Vacation Allowance Undertaking
 Signature:,التوقيع:,Vacation Allowance Undertaking
 Mobile Number:,رقم الجوال:,Vacation Allowance Undertaking
@@ -1598,17 +1598,17 @@ This action is irreversible once confirmed.,هذا الإجراء لا رجعة 
 Reason of Urgency,سبب الاستعجال,Payment Requisition
 Cash Payment Voucher,سند صرف نقدي,Cash Payment Voucher
 No.,رقم السند,Cash Payment Voucher
-Name:,يصرف إلى,Cash Payment Voucher
-Amount:,المبلغ,Cash Payment Voucher
+Name:,يصرف إلى:,Cash Payment Voucher
+Amount:,المبلغ:,Cash Payment Voucher
 Cash Receipt Voucher,سند قبض,Cash Receipt Voucher
-Date:,التاريخ,Cash Payment Voucher
+Date:,التاريخ:,Cash Payment Voucher
 General Manager,المدير العام,Cash Payment Voucher
 Finance Manager,المدير المالي,Cash Payment Voucher
 Received By,المستلم,Cash Payment Voucher
 No.,رقم السند,Cash Receipt Voucher
-Name:,استلمنا من,Cash Receipt Voucher
-Amount:,المبلغ,Cash Receipt Voucher
-Date:,التاريخ,Cash Receipt Voucher
+Name:,استلمنا من:,Cash Receipt Voucher
+Amount:,المبلغ:,Cash Receipt Voucher
+Date:,التاريخ:,Cash Receipt Voucher
 General Manager,المدير العام,Cash Receipt Voucher
 Finance Manager,المدير المالي,Cash Receipt Voucher
 Received By,المستلم,Cash Receipt Voucher
@@ -2824,7 +2824,7 @@ Clear User Permissions,مسح صلاحيات المستخدم
 Clicked,تم النقر
 Client Code,الشيفرة البرمجية للعميل
 Client Script,برنامج نصي للعميل
-Close,اغلاق
+Close,إغلاق
 Collapsible,قابل للطي
 Comment By,تعليق بواسطة
 Comment Email,البريد الإلكتروني للمعلق
@@ -3421,7 +3421,7 @@ Submission Queue,قائمة انتظار الاعتماد
 Submit,اعتماد
 submit,اعتماد
 Submit After Import,اعتماد بعد الاستيراد
-Submitted,معتمدة
+Submitted,معتمد
 Success Action,إجراء النجاح
 Successful Job Count,عدد المهام الناجحة
 Successfully imported {0},تم استيراد {0} بنجاح
@@ -4279,7 +4279,7 @@ No new Google Contacts synced.,لم تتم مزامنة أي جهات اتصال
 Nomatim,Nomatim
 nonce,nonce
 None,لا يوجد
-NOTE: This box is due for depreciation. Please re-setup LDAP to work with the newer settings,ملاحظة: هذا القسم سيُلغى مستقبلًا. يُرجى إعادة إعداد LDAP ليعمل مع الإعدادات الأحدث.
+NOTE: This box is due for depreciation. Please re-setup LDAP to work with the newer settings,ملاحظة: هذا القسم سيُلغى مستقبلًا. يُرجى إعادة إعداد LDAP ليعمل مع الإعدادات الأحدث
 OAuth Authorization Code,رمز تفويض OAuth
 OAuth Bearer Token,رمز الحامل المميز لـ OAuth
 OAuth Provider Settings,إعدادات مزود خدمة OAuth
@@ -4476,7 +4476,7 @@ Helvetica Neue,Helvetica Neue
 In points. Default is 9.,بالنقاط. القيمة الافتراضية 9.
 Inter,Inter
 Jinja,Jinja
-Ledger,Ledger
+Ledger,دفتر الأستاذ
 Left,يسار,alignment
 Legal,الشؤون القانونية
 Letter,Letter
@@ -4584,7 +4584,7 @@ BCC,نسخة مخفية,Email Recipients
 Beginning with,يبدأ بـ
 Billing Contact,جهة اتصال الفوترة
 Blank Template,قالب فارغ
-Bulk Edit,تعديل جماعي
+Bulk Edit,التعديل الجماعي
 Bulk Edit {0},تعديل جماعي لـ {0}
 Bulk PDF Export,تصدير PDF جماعي
 Camera,كاميرا
@@ -6124,7 +6124,7 @@ Exchange Rate,سعر الصرف
 Exchange rate {0} does not match the exchange rate of Purchase Receipt {1}. Use the same exchange rate as the Purchase Receipt or enable {2} in {3} to adjust the landed cost based on this invoice.,سعر الصرف {0} لا يطابق سعر الصرف في سند استلام المشتريات {1}. استخدم سعر الصرف نفسه المستخدم في سند استلام المشتريات أو فعّل {2} في {3} لتعديل تكلفة الوصول بناءً على هذه الفاتورة.
 Excise Entry,قيد ضريبة
 Exclude Zero Balance Parties,استبعاد الأطراف ذات الرصيد الصفري
-Expense,مصاريف
+Expense,المصروفات
 Expense Account,حساب المصروفات
 Expense account is mandatory for item {0},حساب المصروفات إلزامي للصنف {0}
 Expense Claim,مطالبة مصروفات
@@ -6394,7 +6394,7 @@ Job Started,بدأت المهمة
 Journal Entries,قيود اليومية
 Journal entries have been created,تم إنشاء قيود اليومية
 Journal Entries {0} are un-linked,قيود اليومية {0} غير مرتبطة
-Journal Entry,قيد يومية
+Journal Entry,قيد اليومية
 Journal Entry Account,حساب قيد اليومية
 Journal Entry Template,قالب قيد اليومية
 Journal Entry Template Account,حساب قالب قيد اليومية
@@ -6641,7 +6641,7 @@ Payment Terms from orders will be fetched into the invoices as is,ستُجلب �
 Payment Terms Template,قالب شروط الدفع
 Payment Terms Template Detail,تفاصيل قالب شروط الدفع
 "Payment Type must be one of Receive, Pay and Internal Transfer",يجب أن يكون نوع الدفع أحد الأنواع: استلام، أو دفع، أو تحويل داخلي
-Payroll Entry,مسير رواتب
+Payroll Entry,مسير الرواتب
 Payroll Payable,رواتب مستحقة الدفع
 PCV,قيد إقفال الفترة
 PCV Job Timeout (seconds),مهلة مهمة قيد إقفال الفترة (بالثواني)
@@ -6847,7 +6847,7 @@ Rates,الأسعار
 Raw Materials Supplied Cost,تكلفة المواد الخام الموردة
 Read the docs,اطلع على التوثيق
 Reason For Putting On Hold,سبب حظر الفاتورة
-Receivable,ذمم مدينة
+Receivable,الذمم المدينة
 Receivable / Payable Account,حساب الذمم المدينة / الدائنة
 Receivable Account,حساب الذمم المدينة
 Receivable/Payable Account,حساب الذمم المدينة/الدائنة
@@ -6957,7 +6957,7 @@ Root Type is mandatory,النوع الرئيسي إلزامي
 Round Free Qty,تقريب الكمية المجانية
 Round Off for Opening,التقريب للقيد الافتتاحي
 Round tax amount row-wise,تقريب مبلغ الضريبة لكل صف
-Rounded Total,الاجمالي المقرب
+Rounded Total,الإجمالي المقرب
 Rounded Total (Company Currency),الإجمالي المقرب (عملة الشركة)
 Rounding Adjustment (Company Currency),تعديل التقريب (عملة الشركة)
 Rounding Loss Allowance,حد السماح لخسارة التقريب
@@ -7056,7 +7056,7 @@ Set Loyalty Program,تعيين برنامج الولاء
 Set New Release Date,تعيين تاريخ جديد لفك الحجز
 Set Posting Date,تعيين تاريخ الترحيل
 Set Target Warehouse,تعيين المستودع المستهدف
-Setting the account as a Company Account is necessary for Bank Reconciliation,يُعدّ تحديد الحساب كحساب شركة أمرًا ضروريًا لإجراء التسوية البنكية.
+Setting the account as a Company Account is necessary for Bank Reconciliation,يُعدّ تحديد الحساب كحساب شركة أمرًا ضروريًا لإجراء التسوية البنكية
 Settled,تمت التسوية
 Setup Sales Taxes,إعداد ضرائب المبيعات
 Setup Sales taxes,إعداد ضرائب المبيعات
@@ -7405,7 +7405,7 @@ You need to cancel POS Closing Entry {} to be able to cancel this document.,يج
 {0} doesn't belong to Company {1}. Please select an Income Account that belongs to Company {1}.,{0} لا ينتمي إلى الشركة {1}. يرجى تحديد حساب إيرادات يتبع الشركة {1}.
 {0} entered twice in Item Tax,{0} أُدخل مرتين في ضريبة الصنف
 {0} for {1},{0} لـ {1}
-{0} has Payment Term based allocation enabled. Select a Payment Term for Row #{1} in Payment References section,{0} مفعّل فيه التخصيص حسب شروط الدفع. حدد شرط دفع للصف #{1} في قسم مراجع الدفع.
+{0} has Payment Term based allocation enabled. Select a Payment Term for Row #{1} in Payment References section,{0} مفعّل فيه التخصيص حسب شروط الدفع. حدد شرط دفع للصف #{1} في قسم مراجع الدفع
 {0} is a group account. Please select a non-group Income Account.,{0} حساب مجموعة. يرجى تحديد حساب إيرادات ليس مجموعة.
 {0} is a group Cost Center. Please select a non-group Cost Center.,{0} مركز تكلفة مجموعة. يرجى تحديد مركز تكلفة ليس مجموعة.
 {0} is added multiple times on rows: {1},{0} مضاف عدة مرات في الصفوف: {1}
@@ -7439,7 +7439,7 @@ You need to cancel POS Closing Entry {} to be able to cancel this document.,يج
 {0} {1} Partially Reconciled,{0} {1} تمت تسويته جزئيًا
 {0} {1}: Account {2} is inactive,{0} {1}: الحساب {2} غير نشط
 {0} {1}: Accounting Entry for {2} can only be made in currency: {3},{0} {1}: القيد المحاسبي لـ {2} لا يمكن إجراؤه إلا بالعملة: {3}
-{0} {1}: Cost Center {2} is a group cost center and group cost centers cannot be used in transactions,{0} {1}: مركز التكلفة {2} هو مركز تكلفة مجموعة، ولا يمكن استخدام مراكز التكلفة من نوع مجموعة في المعاملات.
+{0} {1}: Cost Center {2} is a group cost center and group cost centers cannot be used in transactions,{0} {1}: مركز التكلفة {2} هو مركز تكلفة مجموعة، ولا يمكن استخدام مراكز التكلفة من نوع مجموعة في المعاملات
 {0} {1}: Customer is required against Receivable account {2},{0} {1}: العميل مطلوب مقابل حساب الذمم المدينة {2}
 {0} {1}: Supplier is required against Payable account {2},{0} {1}: المورد مطلوب مقابل حساب الذمم الدائنة {2}
 {0}% of total invoice value will be given as discount.,سيُمنح {0}% من إجمالي قيمة الفاتورة خصمًا.
@@ -7521,7 +7521,7 @@ Connection,اتصال
 Consumed Items Cost,تكلفة الأصناف المستهلكة
 Consumed Stock Items,أصناف المخزون المستهلكة
 "Consumed Stock Items, Consumed Asset Items or Consumed Service Items is mandatory for Capitalization",أصناف المخزون المستهلكة أو الأصول المستهلكة أو الأصناف الخدمية المستهلكة إلزامية للرسملة
-Cost Center {} is a group cost center and group cost centers cannot be used in transactions,مركز التكلفة {} هو مركز تكلفة مجموعة، ولا يمكن استخدام مراكز التكلفة من نوع مجموعة في المعاملات.
+Cost Center {} is a group cost center and group cost centers cannot be used in transactions,مركز التكلفة {} هو مركز تكلفة مجموعة، ولا يمكن استخدام مراكز التكلفة من نوع مجموعة في المعاملات
 Could not find a suitable shift to match the difference: {0},تعذر العثور على وردية مناسبة لمطابقة الفرق: {0}
 Create Asset Category,إنشاء فئة أصول
 Create Asset Item,إنشاء صنف أصل
@@ -7867,7 +7867,7 @@ Partial Match,مطابقة جزئية
 Partially Reconciled,مسوى جزئيًا
 Party,الطرف
 Party is required,الطرف مطلوب
-Payment,السداد
+Payment,الدفع
 Payment Document,مستند الدفع
 Payment Entry,سند القبض والدفع
 Payment Entry Created,أُنشئ سند الدفع
@@ -9236,7 +9236,7 @@ Row #{0}: Item {1} is already added with the same Type in the Secondary Items ta
 Row #{0}: Please select Item Code in Assembly Items,الصف #{0}: الرجاء تحديد رمز الصنف في أصناف التجميع
 Row #{0}: Please select the BOM No in Assembly Items,الصف #{0}: الرجاء تحديد رقم قائمة المواد في أصناف التجميع
 Row #{0}: Process Loss Percentage should be less than 100% for {1} Item {2},الصف #{0}: يجب أن تكون نسبة فاقد العملية أقل من 100% لـ {1} الصنف {2}
-"Row #{0}: Since 'Track Semi Finished Goods' is enabled, the BOM {1} cannot be used for Sub Assembly Items","الصف #{0}: بما أن خيار ""تتبع المنتجات نصف المصنعة"" مُفعّل، فلا يمكن استخدام قائمة المواد {1} لأصناف التجميع الفرعي."
+"Row #{0}: Since 'Track Semi Finished Goods' is enabled, the BOM {1} cannot be used for Sub Assembly Items","الصف #{0}: بما أن خيار ""تتبع المنتجات نصف المصنعة"" مُفعّل، فلا يمكن استخدام قائمة المواد {1} لأصناف التجميع الفرعي"
 Row #{0}: Source Warehouse {1} for item {2} cannot be a customer warehouse.,الصف #{0}: لا يمكن أن يكون المستودع المصدر {1} للصنف {2} مستودع عميل.
 Row #{0}: Source Warehouse {1} for item {2} must be same as Source Warehouse {3} in the Work Order.,الصف #{0}: يجب أن يكون المستودع المصدر {1} للصنف {2} هو نفسه المستودع المصدر {3} في أمر العمل.
 "Row #{0}: The operation {1} has 'Is Final Finished Good' checked, so its FG / Semi FG Item must be {2}.",الصف #{0}: تم تحديد 'منتج تام نهائي' للعملية {1}، لذا يجب أن يكون صنف المنتج التام / نصف المصنع لها {2}.
@@ -10197,7 +10197,7 @@ File does not belong to this Transaction Deletion Record,الملف لا ينت�
 File not found,الملف غير موجود
 File not found on server,الملف غير موجود على الخادم
 Finance Manager,المدير المالي
-Fixed Asset Defaults,اعدادات الاصول الثابتة
+Fixed Asset Defaults,إعدادات الأصول الثابتة
 Fleet Manager,مدير الأسطول
 Foot Of Water,قدم ماء
 For service item,لصنف الخدمة
@@ -10823,7 +10823,7 @@ Fixed Asset Item must be a non-stock item.,يجب أن يكون صنف الأص�
 "For legacy serial nos, do not fetch incoming rate from serial no and calculate it based on the inward transaction",للأرقام التسلسلية القديمة، لا تجلب سعر الوارد من الرقم التسلسلي واحسبه بناءً على معاملة الوارد
 For Quantity (Manufactured Qty) is mandatory,حقل 'للكمية' (الكمية المصنّعة) إلزامي
 For quantity {0} should not be greater than allowed quantity {1},يجب ألا تتجاوز الكمية {0} الكمية المسموح بها {1}
-"For the convenience of customers, these codes can be used in print formats like Invoices and Delivery Notes",لتسهيل الأمر على العملاء، يمكن استخدام هذه الرموز في نماذج الطباعة مثل الفواتير وسندات التسليم.
+"For the convenience of customers, these codes can be used in print formats like Invoices and Delivery Notes",لتسهيل الأمر على العملاء، يمكن استخدام هذه الرموز في نماذج الطباعة مثل الفواتير وسندات التسليم
 "For the item {0}, the consumed quantity should be {1} according to the BOM {2}.",بالنسبة للصنف {0}، يجب أن تكون الكمية المستهلكة {1} وفقًا لقائمة المواد {2}.
 Freeze stocks older than (days),تجميد المخزون الأقدم من (أيام)
 From Package No.,من رقم الطرد
@@ -11153,7 +11153,7 @@ Priority cannot be lesser than 1.,لا يمكن أن تكون الأولوية �
 Process Loss,فاقد العملية
 Product Bundle Balance,رصيد حزمة المنتجات
 Product Bundle Component,مكون حزمة المنتجات
-product bundle item row's name in sales order. Also indicates that picked item is to be used for a product bundle,اسم صف صنف حزمة المنتجات في أمر البيع. ويشير أيضًا إلى أن الصنف المنتقى سيُستخدم في حزمة منتجات.
+product bundle item row's name in sales order. Also indicates that picked item is to be used for a product bundle,اسم صف صنف حزمة المنتجات في أمر البيع. ويشير أيضًا إلى أن الصنف المنتقى سيُستخدم في حزمة منتجات
 Product Bundle Parent,الصنف الرئيسي لحزمة المنتجات
 Projected On Hand,الكمية المتوقعة المتوفرة
 Prompt Qty,طلب إدخال الكمية
@@ -13242,7 +13242,7 @@ Leave Allocations created: {0},تم إنشاء تخصيصات الإجازات: 
 Opening leave allocation is only for active employees,التخصيص الافتتاحي للإجازات متاح للموظفين النشطين فقط
 Opening leave allocations created: {0},تم إنشاء التخصيصات الافتتاحية للإجازات: {0}
 Opening leave balance for the employee covering the period from the date of joining until the end of the contract year.,رصيد إجازة افتتاحي للموظف يغطي الفترة من تاريخ التعيين حتى نهاية السنة العقدية.
-Leave,الإجازات
+Leave,الإجازة
 Dues,المستحقات
 Residency & Family,الإقامة والعائلة
 Advance,السلفة,Employee Financial Summary
@@ -13342,7 +13342,7 @@ Item-wise Purchase Register,تقرير المشتريات حسب الصنف
 Selling,المبيعات
 Supplier Addresses And Contacts,الموردين وجهات الاتصال
 Remarks,التعليقات
-Shift Type,الورديات
+Shift Type,نوع الوردية
 Attendance Request,طلب حضور وانصراف
 Subcontracting,تعاقد بالباطن
 Human Resources,الموارد البشرية
