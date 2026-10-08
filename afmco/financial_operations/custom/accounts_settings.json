@@ -13,7 +13,7 @@
    "non_negative": 1
   },
   {
-   "default": "3",
+   "default": "0",
    "description": "Longest date range, in months, a General Ledger may cover without an Account, Party or Voucher filter. 0 removes the limit.",
    "dt": "Accounts Settings",
    "fieldname": "afmco_general_ledger_month_limit",
@@ -22,6 +22,18 @@
    "label": "General Ledger Month Limit without Filter",
    "module": "Financial Operations",
    "name": "Accounts Settings-afmco_general_ledger_month_limit",
+   "non_negative": 1
+  },
+  {
+   "default": "2048",
+   "description": "Most memory, in megabytes, one General Ledger prepared run may use before it stops with an error. 0 removes the limit.",
+   "dt": "Accounts Settings",
+   "fieldname": "afmco_general_ledger_memory_limit_mb",
+   "fieldtype": "Int",
+   "insert_after": "afmco_general_ledger_month_limit",
+   "label": "General Ledger Memory Limit (MB)",
+   "module": "Financial Operations",
+   "name": "Accounts Settings-afmco_general_ledger_memory_limit_mb",
    "non_negative": 1
   }
  ],
