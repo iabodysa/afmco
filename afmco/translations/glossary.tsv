@@ -50,8 +50,9 @@ end time		وقت النهاية	dominant usage 4/6	dominant 4/6
 expense		المصروفات	R08	accounting category plural, matches compounds
 expense request		طلب المصروف	R09	company doctype label; طلب الدفع collides with Payment Request
 exploded		المفصلة	dominant usage 5/6	dominant 5/6; BOM exploded items
-exploded items		المفصلة	R09	duplicate of exploded
-finished goods		المنتج التام / المنتجات التامة	dominant usage 40/80	dominant 40/80 and pairs with منتج نصف مصنع
+exploded items		الأصناف المفصلة	R08	compound reuses Items=الأصناف and exploded=المفصلة
+finished good		المنتج التام	dominant usage 40/80	singular source (R12); dominant 40/80 and pairs with منتج نصف مصنع
+finished goods		المنتجات التامة	R12	plural source keeps the plural; singular in the finished good row
 finished item		منتج تام	R09	finished goods decision
 gosi		التأمينات الاجتماعية	R21	portal name
 grand total		الإجمالي الكلي	dominant usage 12/13	dominant 12/13
@@ -59,7 +60,7 @@ gratuity		مكافأة نهاية الخدمة	R20	Labour Law term
 grievance		تظلم	R20	Labour Law term
 health monitor		مراقبة الحالة	R09	Ledger Health Monitor=مراقبة حالة دفتر الأستاذ
 human resources		الموارد البشرية	owner O9	workspace label without the management prefix
-important		إشعار مهم	dominant usage 2/3	dominant 2/3 on same key
+important		مهم	R14	English carries no noun; إشعار adds a qualifier
 info		معلومات	R09	same as Information
 information		معلومات	owner O2	descriptive section headers
 installation note		مذكرة التركيب	dominant usage 2/3	dominant 2/3
@@ -129,14 +130,14 @@ switch theme		تبديل السمة	R09	same as theme
 target variance		فرق	R09	duplicate of variance
 target warehouse		المستودع المستهدف	dominant usage 176/182	Warehouse=مستودع in 176/182 rows; Set=تعيين dominant
 tax invoice		فاتورة ضريبية	R21	authority term
-tax withholding		احتساب الاستقطاع الضريبي	R09	Tax Withholding=الاستقطاع الضريبي in 13 rows; both keys aligned
-theme		تبديل السمة	dominant usage 15/18	Theme=سمة dominant 15/18
+tax withholding		الاستقطاع الضريبي	R09	Tax Withholding=الاستقطاع الضريبي in 13 rows; both keys aligned
+theme		السمة	dominant usage 15/18	Theme=سمة dominant 15/18
 type nodes		عقد	R09	same as created under
 unlink		إلغاء ربط	dominant usage 9/12	dominant 9/12
 user id		معرف المستخدم	R09	User ID rows use معرف المستخدم
 validity		صلاحية	dominant usage 6/10	dominant 6/10 for validity period of quotation, coupon, passport, tax template
 valuation rate		سعر التقييم	owner order B	house wording
-variance		فرق / فروقات	dominant usage 10/13	dominant lemma 10/13; تباين removed
+variance		الفرق	dominant usage 10/13	dominant lemma فرق 10/13; singular source (R12); تباين removed
 variance based		فرق	R09	duplicate of variance
 vat		ضريبة القيمة المضافة	R21	authority term
 warehouse		المستودع	dominant usage 176/182	never مخزن

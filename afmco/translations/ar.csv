@@ -7162,7 +7162,7 @@ Tax Rate,نسبة الضريبة
 Tax Rate %,نسبة الضريبة %
 Tax Rates,نسب الضريبة
 Tax withheld only for amount exceeding cumulative threshold,تُستقطع الضريبة فقط على المبلغ الذي يتجاوز الحد التراكمي
-Tax Withholding,استقطاع ضريبي
+Tax Withholding,الاستقطاع الضريبي
 Tax Withholding Account,حساب الاستقطاع الضريبي
 Tax Withholding Details,تفاصيل الاستقطاع الضريبي
 Tax Withholding Entries,قيود الاستقطاع الضريبي
@@ -8134,7 +8134,7 @@ Each Transaction,كل معاملة
 Employee ,موظف 
 Enable to make this supplier selectable as a transporter on Delivery Notes and Stock Entries,فعّل هذا الخيار لجعل هذا المورد قابلًا للاختيار ناقلًا في سندات التسليم وحركات المخزون
 Expires in a week or less,تنتهي صلاحيته خلال أسبوع أو أقل
-Finished Good,منتج تام
+Finished Good,المنتج التام
 Finished Good Item Code,رمز صنف المنتج التام
 Finished Good Qty,كمية المنتج التام
 For individual supplier,لكل مورد على حدة
