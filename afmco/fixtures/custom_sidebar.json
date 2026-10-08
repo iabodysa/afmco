@@ -1,0 +1,31 @@
+[
+ {
+  "doctype": "Custom Sidebar",
+  "header_icon": null,
+  "label": null,
+  "modified": "2026-10-09 00:00:00.000000",
+  "module": "Accounts",
+  "name": "9474nsa7gp",
+  "sidebar_items": [
+   {
+    "added": 0,
+    "child": 0,
+    "doctype": "Sidebar Item",
+    "hidden": 1,
+    "link_to": "Payments",
+    "link_type": "Dashboard",
+    "type": "Link"
+   },
+   {
+    "added": 0,
+    "child": 0,
+    "doctype": "Sidebar Item",
+    "hidden": 1,
+    "link_to": "Accounts",
+    "link_type": "Dashboard",
+    "type": "Link"
+   }
+  ],
+  "user": ""
+ }
+]
