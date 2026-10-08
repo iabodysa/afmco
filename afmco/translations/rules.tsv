@@ -1,0 +1,35 @@
+id	area	rule	test
+R01	register	every value MUST be Modern Standard Arabic as a Saudi accountant or HR officer writes it in an official letter; spoken-leaning forms are replaced	review
+R02	register	a completion or failure message MUST use تم / لم يتم + verbal noun	review
+R03	register	a value MUST NOT carry a short vowel or sukun (U+064C-U+0650, U+0652); shadda (U+0651) MAY stay; tanween fath (U+064B) MAY stay only on an adverbial accusative ending ـاً (يدوياً)	script
+R04	glossary	the glossary file MUST hold exactly one Arabic value per English term per meaning, and every bare ar.csv row for that term MUST equal it, with the article R11 sets (script compares after stripping a leading ال)	script
+R05	glossary	the glossary MUST live in the app repo at afmco/translations/glossary.tsv and be versioned with ar.csv	script
+R06	glossary	every glossary row MUST record reason and decider (owner, a rule id, or dominant-usage count)	script
+R07	glossary	a term with two meanings MUST get one glossary row per meaning with the doctype context that selects it	script
+R08	glossary	a compound label MUST reuse the glossary value of each term it contains, adjusting only the article	script
+R09	framework	afmco MUST use the Frappe/ERPNext/HRMS ar.po value unless that value has wrong meaning, collides with another glossary term, contradicts a SOCPA/ZATCA/Labour Law official term, is misspelled, or an owner ruling recorded in the glossary (decider:owner) selects another value; the glossary reason MUST name which test failed	script
+R10	labels	a field or doctype label MUST be a noun phrase, never a verb, a sentence or a phrase opening with a preposition, except a range label whose English opens with From/To (من تاريخ، إلى تاريخ)	script
+R11	labels	a single-noun field or doctype label MUST be definite (ال); an idafa phrase takes the article on its last noun only; a noun-adjective phrase takes it on the noun and the adjective; status values (R16), button labels (R15) and proper names (R21: قوى، مدد، مقيم) are exempt	script
+R12	labels	a label MUST keep the grammatical number of the English source, except an accounting category the glossary sets in the plural (المصروفات، المطلوبات، الإيرادات)	review
+R13	labels	a label MUST NOT drop a qualifier the English carries	review
+R14	labels	a label MUST NOT add a qualifier the English lacks, except a Labour Law term R20 requires or the تاريخ head R27 requires	review
+R15	buttons	a button, menu item or action label MUST use the verbal noun (masdar), never the imperative	review
+R16	statuses	the docstatus lifecycle action and status MUST use one fixed set; context rows where Submit means send in a dialog or web form (L4962-L4964 إرسال, L5370 تقديم) keep their sense: Draft مسودة, Submit اعتماد, Submitted معتمد, Cancel إلغاء, Cancelled ملغى, Amend إعادة إصدار	script
+R17	statuses	a status inside one doctype MAY take feminine agreement through a context row only when the doctype noun is feminine; the global row MUST stay masculine	script+GAP
+R18	accounting	an accounting term MUST use the SOCPA Arabic term for IFRS as adopted in KSA	review
+R19	accounting	generic payment MUST be دفع / الدفع; سداد MUST be reserved for the SADAD channel and for repayment of a loan or advance (Loan Repayment L2365 سداد القرض is the Saudi banking term)	script
+R20	HR-gov	a Labour Law term MUST use the Saudi Labour Law wording, including the article reference where the English cites one	review
+R21	HR-gov	a Saudi government body, platform or document MUST use the Arabic name its own portal uses	script
+R22	spelling	hamzat al-qat MUST be written (أ/إ) and hamzat al-wasl MUST NOT be	script(denylist)
+R23	spelling	a word ending in alef maqsura MUST be written with ى, and a word ending in a real ya MUST be written with ي (في، الذي، التي, never فى، الذى)	script(denylist)
+R24	spelling	a feminine ending MUST be written ة, never ه	script(denylist)
+R25	punctuation	a value MUST mirror the terminal punctuation of the English source (. ? ! :) using Arabic glyphs where one exists (؟ ، ؛), with no leading, trailing or double space; internal punctuation MAY change where R26 restructures a count	script
+R26	numbers-dates	a value MUST keep every placeholder ({0}, %s) and HTML tag of the source exactly, and MUST phrase a counted placeholder as a count field so Arabic dual/plural agreement never applies	script
+R27	numbers-dates	a date label MUST be تاريخ + noun, except a From/To range label under R10, and Hijri MUST appear only where the English says Hijri	script
+R28	abbreviations	an English abbreviation MUST be expanded to the full Arabic term unless it is on the R29 allow-list, and no Arabic abbreviation MAY be invented	script
+R29	transliteration	a value MUST NOT transliterate an English word into Arabic letters and MUST NOT leave English untranslated, except the allow-list: brand names without an Arabic name, and IBAN, SWIFT, FIFO, LIFO, PDF, CSV, ZIP, QR, SMS, OTP, URL, API	script
+R30	transliteration	a translation row MUST NOT change data (email, code, document name, number), and digits MUST stay 0-9 as the source writes them	script
+R31	prod-override	every Arabic wording MUST ship as a row in afmco/translations/ar.csv; a Translation doctype record MUST NOT be created or edited on prod to change wording	server-readback
+R32	prod-override	the release operator MUST list every prod Translation record that overrides an app key before release and MUST remove them only after the owner gives the go for the release, and MUST write the per-row list it removed	server-readback
+R33	review-gate	a change to ar.csv or glossary.tsv MUST pass the wording check script with exit 0 before merge to version-16	script
+R34	review-gate	the check script MUST print rows consumed and run a positive control (one seeded bad row per check) beside its hit count	script

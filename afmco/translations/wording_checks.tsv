@@ -1,0 +1,62 @@
+rule	kind	value	source	context
+R22	deny	(?<![ء-ي])(?:ال)?إسم(?![ء-ي])
+R22	deny	(?<![ء-ي])(?:ال)?أدارة
+R22	deny	(?<![ء-ي])(?:ال)?إ(?:ست(?!راتيج)|عتم|جتم|نته|ختي|تصا|رتب|نتق)
+R22	deny	(?<![ء-ي])(?:ال)?ا(?:غلاق|رسال|ضافة|لغاء|جمالي|عداد|دارة|نشاء|صدار|يقاف|رفاق|دخال|عادة|نهاء)
+R23	deny	(?<![ء-ي])(?:علي|الي|فى|الذى|التى)(?![ء-ي])
+R24	deny	(?<![ء-ي])ال[ء-ي]*[^\sاوه]ه(?![ء-ي])
+R24	allow	التنبيه
+R24	allow	التوجيه
+R24	allow	الترفيه
+R24	allow	التشبيه
+R24	allow	التنويه
+R24	allow	التمويه
+R24	allow	التشويه
+R24	allow	الوجه
+R24	allow	الشبه
+R24	allow	الفقه
+R24	allow	الله
+R24	allow	الإله
+R29	deny	بونص
+R11	article	ال
+R27	date_head	تاريخ
+R27	hijri	هجري
+R10	preposition	من
+R10	preposition	إلى
+R10	preposition	في
+R10	preposition	على
+R10	preposition	عن
+R29	allow	IBAN
+R29	allow	SWIFT
+R29	allow	FIFO
+R29	allow	LIFO
+R29	allow	PDF
+R29	allow	CSV
+R29	allow	ZIP
+R29	allow	QR
+R29	allow	SMS
+R29	allow	OTP
+R29	allow	URL
+R29	allow	API
+R29	brand	ERPNext
+R29	brand	Frappe
+R29	brand	DuckDB
+R29	brand	Google
+R29	brand	Microsoft
+R29	brand	WhatsApp
+R29	brand	Excel
+R03	control	لم يُحدَّث	Not updated
+R04	control	زبون	Customer
+R10	control	في مبلغ الضريبة	Tax Amount
+R11	control	بنك	Bank
+R22	control	الإسم	Full Name
+R23	control	مدين الي	Debit To
+R24	control	الديانه	Religion Type
+R25	control	مشتريات  عاجلة	Urgent purchases.
+R26	control	عدد الملفات	{0} file(s)
+R27	control	الاستحقاق	Expiry Date
+R28	control	إجمالي EOS	Total EOS
+R29	control	Ledger	Ledger
+R29	control	العمولة بونص	Commission Bonus
+R30	control	المرحلة ٢	ZATCA phase 2
+R30	control	adil@example.com	jane@example.com

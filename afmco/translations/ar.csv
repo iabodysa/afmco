@@ -11,7 +11,7 @@ Account (Other),الحساب (أخرى)
 Account Holder Name,اسم صاحب الحساب
 Accounting Details,التفاصيل المحاسبية
 Accounting Entries,القيود المحاسبية
-Accounts,إدارة الحسابات
+Accounts,الحسابات
 Accrued Expenses,المصروفات المستحقة
 Actual Hours,الساعات الفعلية
 Actual/360,فعلي/360
@@ -1161,7 +1161,7 @@ Employee Profile,تعريف الموظف
 Detailed Salary Slip,قسيمة راتب تفصيلية
 Vacation Allowance Statement,بيان بدل الإجازة
 Vacation Allowance Undertaking,تعهد
-Payment Requisition Dashboard,لوحة معلومات طلبات الصرف
+Payment Requisition Dashboard,تقارير ذكاء الأعمال لطلبات الصرف
 Pending Bank Payments by Payment Date,المدفوعات البنكية قيد الانتظار حسب تاريخ الدفع
 Last Quarter Paid Payment Requisition Amount by Project,مبالغ طلبات الصرف المدفوعة في الربع الماضي حسب المشروع
 Monthly Paid Payment Requisition Amount,مبالغ طلبات الصرف المدفوعة شهريًا
@@ -1366,7 +1366,7 @@ Renewal Stopped,إيقاف التجديد,Iqama Control
 PR Created for Work Cards,أُنشئ طلب صرف رخص العمل,Iqama Control
 PR Created for Iqama Renewal,أُنشئ طلب صرف تجديد الإقامة,Iqama Control
 PR Created for Both Work Cards and Iqama Renewal,أُنشئ طلب صرف لرخص العمل وتجديد الإقامة معًا,Iqama Control
-Dashboard,لوحة المعلومات,Iqama Control
+Dashboard,تقارير ذكاء الأعمال,Iqama Control
 Batch,الدفعة,Iqama Control
 Legal,الشؤون القانونية,Iqama Control
 Payment,السداد,Iqama Control
@@ -2164,10 +2164,10 @@ Policy Acknowledged,تم الإقرار
 --- Select ---,--- اختر ---
 1-End of term or mutual agreement,1- انتهاء مدة العقد أو باتفاق الطرفين
 2-Termination by the employer,2- إنهاء العقد من قبل صاحب العمل
-3-Termination by the employer under Article 80,3- إنهاء العقد من قبل صاحب العمل وفق المادة 80
-4-Termination due to force majeure,4- إنهاء العقد بسبب القوة القاهرة
-5-Termination of the contract by the female employee during the first six months of marriage or during the first three months of childbirth,5- إنهاء العاملة للعقد خلال الأشهر الستة الأولى من الزواج أو خلال الأشهر الثلاثة الأولى من الولادة
-6-Termination by the employee under Article 81,6- إنهاء العقد من قبل العامل وفق المادة 81
+3-Termination by the employer under Article 80,3- فسخ العقد من قبل صاحب العمل وفق المادة 80
+4-Termination due to force majeure,4- ترك العامل العمل نتيجة لقوة قاهرة خارجة عن إرادته وفق المادة 87
+5-Termination of the contract by the female employee during the first six months of marriage or during the first three months of childbirth,5- إنهاء العاملة العقد خلال ستة أشهر من تاريخ عقد زواجها أو ثلاثة أشهر من تاريخ وضعها وفق المادة 87
+6-Termination by the employee under Article 81,6- ترك العامل العمل وفق المادة 81
 7-Termination by the employee or termination of employment by the employee for reasons other than those specified in Article 81,7- إنهاء العقد من قبل العامل أو ترك العامل العمل لأسباب غير الواردة في المادة 81
 8-Resignation,8- الاستقالة
 </div>,</div>
@@ -2861,9 +2861,9 @@ Custom?,مخصص؟
 "Customize properties, naming, fields and more for standard doctypes",خصص الخصائص والترقيم والحقول وغيرها لأنواع المستندات القياسية
 Daily Long,يومي طويل
 Dark,داكن
-Dashboard,تقارير ذكاء الاعمال
-dashboard,لوحة المعلومات
-Dashboard Chart,مخطط لوحة المعلومات
+Dashboard,تقارير ذكاء الأعمال
+dashboard,تقارير ذكاء الأعمال
+Dashboard Chart,مخطط تقارير ذكاء الأعمال
 Data Import Template,قالب استيراد البيانات
 Date and Number Format,تنسيق التاريخ والأرقام
 Date Range,نطاق التواريخ
@@ -3375,7 +3375,7 @@ Setup,الإعداد
 Setup > User Permissions,الإعداد > صلاحيات المستخدم
 Setup Complete,اكتمل الإعداد
 Setup Series for transactions,إعداد السلاسل للمعاملات
-Show Dashboard,عرض لوحة المعلومات
+Show Dashboard,عرض تقارير ذكاء الأعمال
 Show Full Error and Allow Reporting of Issues to the Developer,إظهار الخطأ كاملًا والسماح بالإبلاغ عن المشكلات إلى المطور
 Show in Module Section,إظهار في قسم الوحدة
 Show on Timeline,عرض في المخطط الزمني
@@ -3561,14 +3561,14 @@ You've been invited to join {0},تمت دعوتك للانضمام إلى {0}
 Your organization name and address for the email footer.,اسم جهتك وعنوانها لتذييل البريد الإلكتروني.
 Your password has been changed and you might have been logged out of all systems.<br>Please contact the Administrator for further assistance.,تم تغيير كلمة المرور الخاصة بك وربما تم تسجيل خروجك من جميع الأنظمة.<br>يرجى التواصل مع مسؤول النظام للحصول على مزيد من المساعدة.
 Zip file extracts to more than the maximum allowed size of {0} MB,يتجاوز حجم الملف المضغوط بعد فك ضغطه الحد الأقصى المسموح به وهو {0} ميغابايت
-{0} Dashboard,لوحة معلومات {0}
+{0} Dashboard,تقارير ذكاء الأعمال لـ {0}
 {0} logged in,سجّل {0} الدخول
 {0} logged out: {1},سجّل {0} الخروج: {1}
 {0} record deleted,تم حذف {0} سجل
 {0} records deleted,تم حذف {0} سجلات
 {0} shared this document with everyone,{0} شارك هذا المستند مع الجميع
 {0} shared this document with {1},{0} شارك هذا المستند مع {1}
-{0} should be indexed because it's referred in dashboard connections,يجب فهرسة {0} لأنه يُشار إليه في اتصالات لوحة المعلومات
+{0} should be indexed because it's referred in dashboard connections,يجب فهرسة {0} لأنه يُشار إليه في اتصالات تقارير ذكاء الأعمال
 {0} un-shared this document with {1},{0} ألغى مشاركة هذا المستند مع {1}
 {0}: Cannot set Amend without Cancel,{0}: لا يمكن تعيين إعادة الإصدار بدون الإلغاء
 {0}: Cannot set Assign Amend if not Submittable,{0}: لا يمكن تعيين إسناد إعادة الإصدار إذا لم يكن المستند قابلًا للاعتماد
@@ -3686,15 +3686,15 @@ Unsupported {0}: {1},{0} غير مدعوم: {1}
 You do not have permission to access child table field: {0},ليس لديك صلاحية الوصول إلى حقل الجدول الفرعي: {0}
 You do not have permission to access field: {0},ليس لديك صلاحية الوصول إلى الحقل: {0}
 "{0} field cannot be set as unique in {1}, as there are non-unique existing values",لا يمكن تعيين الحقل {0} كفريد في {1}، لوجود قيم حالية غير فريدة
-Add Card to Dashboard,إضافة البطاقة إلى لوحة المعلومات
-Add Chart to Dashboard,إضافة مخطط إلى لوحة المعلومات
+Add Card to Dashboard,إضافة البطاقة إلى تقارير ذكاء الأعمال
+Add Chart to Dashboard,إضافة مخطط إلى تقارير ذكاء الأعمال
 Add Contacts,إضافة جهات اتصال
 Add Participants,إضافة مشاركين
 added {0} row(s) to {1},أضاف {0} من الصفوف إلى {1}
 Administrator can't follow,لا يمكن لمسؤول النظام التتبع
 Aggregate Field is required to create a number card,حقل التجميع مطلوب لإنشاء بطاقة رقم
 Aggregate Function Based On,دالة التجميع بناءً على
-Aggregate Function field is required to create a dashboard chart,حقل دالة التجميع مطلوب لإنشاء مخطط لوحة المعلومات
+Aggregate Function field is required to create a dashboard chart,حقل دالة التجميع مطلوب لإنشاء مخطط تقارير ذكاء الأعمال
 All Day,طوال اليوم
 Allocated To,مُسنَد إلى
 Allow Bulk Editing,السماح بالتعديل الجماعي
@@ -3750,13 +3750,13 @@ Count Filter,عامل تصفية العدد
 Create Entry,إنشاء سجل
 Custom Configuration,التهيئة المخصصة
 Daily Events should finish on the Same Day.,يجب أن تنتهي الأحداث اليومية في اليوم نفسه.
-Dashboard Chart Field,حقل مخطط لوحة المعلومات
-Dashboard Chart Link,رابط مخطط لوحة المعلومات
-Dashboard Chart Source,مصدر مخطط لوحة المعلومات
-Dashboard Manager,مدير لوحة المعلومات
-Dashboard Name,اسم لوحة المعلومات
-Dashboard Settings,إعدادات لوحة المعلومات
-Dashboards,لوحات المعلومات
+Dashboard Chart Field,حقل مخطط تقارير ذكاء الأعمال
+Dashboard Chart Link,رابط مخطط تقارير ذكاء الأعمال
+Dashboard Chart Source,مصدر مخطط تقارير ذكاء الأعمال
+Dashboard Manager,مدير تقارير ذكاء الأعمال
+Dashboard Name,اسم تقارير ذكاء الأعمال
+Dashboard Settings,إعدادات تقارير ذكاء الأعمال
+Dashboards,تقارير ذكاء الأعمال
 Deleting {0},جارٍ حذف {0}
 Disable Automatic Recency Filters,تعطيل عوامل تصفية الحداثة التلقائية
 Discarded,تم تجاهله
@@ -3817,7 +3817,7 @@ Google Calendar,تقويم Google
 Google Meet Link,رابط Google Meet
 Group By,تجميع حسب
 Group By Based On,التجميع بناءً على
-Group By field is required to create a dashboard chart,حقل تجميع حسب مطلوب لإنشاء مخطط لوحة المعلومات
+Group By field is required to create a dashboard chart,حقل تجميع حسب مطلوب لإنشاء مخطط تقارير ذكاء الأعمال
 Group By Type,نوع التجميع
 Handled Emails,رسائل البريد الإلكتروني المعالجة
 Has Next Condition,يوجد شرط تالٍ
@@ -3900,7 +3900,7 @@ pink,وردي
 Please click Edit on the Workspace for best results,"للحصول على أفضل النتائج، يرجى النقر على ""تعديل"" في مساحة العمل"
 Please create chart first,يرجى إنشاء المخطط أولًا
 Please select Document Type first.,يرجى تحديد نوع المستند أولًا.
-Please set the following documents in this Dashboard as standard first.,يرجى تعيين المستندات التالية في لوحة المعلومات هذه كمستندات قياسية أولًا.
+Please set the following documents in this Dashboard as standard first.,يرجى تعيين المستندات التالية في تقارير ذكاء الأعمال هذه كمستندات قياسية أولًا.
 Polling,الاستطلاع الدوري
 Popover Element,عنصر الإطار المنبثق
 Popover or Modal Description,وصف الإطار المنبثق أو النافذة المنبثقة
@@ -3914,7 +3914,7 @@ Quick List Filter,عامل تصفية القائمة السريعة
 Re-Run in Console,إعادة التشغيل في وحدة التحكم
 Receive an email for notifications of these types. Remove a type to stop its emails (in-app notifications are unaffected).,استلم بريدًا إلكترونيًا لإشعارات هذه الأنواع. احذف نوعًا لإيقاف رسائله (لا تتأثر الإشعارات داخل التطبيق).
 Recipient & Status,المستلم والحالة
-Referance Doctype and Dashboard Name both can't be used at the same time.,لا يمكن استخدام نوع المستند المرجعي واسم لوحة المعلومات في الوقت نفسه.
+Referance Doctype and Dashboard Name both can't be used at the same time.,لا يمكن استخدام نوع المستند المرجعي واسم تقارير ذكاء الأعمال في الوقت نفسه.
 removed {0} row(s) from {1},أزال {0} من الصفوف من {1}
 Repeat On,التكرار في
 Repeat this Event,تكرار هذا الحدث
@@ -3932,13 +3932,13 @@ Saving this will export this document as well as the steps linked here as json.,
 Search fields updated.,تم تحديث حقول البحث.
 Seen By,المشاهدون
 Seen By Table,جدول المشاهدين
-Select Dashboard,اختر لوحة المعلومات
+Select Dashboard,اختر تقارير ذكاء الأعمال
 Select Google Calendar to which event should be synced.,حدد تقويم Google الذي يجب مزامنة الحدث معه.
 Select Language,اختر اللغة
 Select List View,اختر عرض القائمة
 Send an email reminder in the morning,إرسال رسالة تذكير بالبريد الإلكتروني في الصباح
 Set,تعيين
-"Set Default Options for all charts on this Dashboard (Ex: ""colors"": [""#d1d8dd"", ""#ff5858""])","تعيين الخيارات الافتراضية لجميع المخططات في لوحة المعلومات هذه (على سبيل المثال: ""colors"": [""#d1d8dd"", ""#ff5858""])"
+"Set Default Options for all charts on this Dashboard (Ex: ""colors"": [""#d1d8dd"", ""#ff5858""])","تعيين الخيارات الافتراضية لجميع المخططات في تقارير ذكاء الأعمال هذه (على سبيل المثال: ""colors"": [""#d1d8dd"", ""#ff5858""])"
 Set Filters,تعيين عوامل التصفية
 Set Number of Backups,تعيين عدد النسخ الاحتياطية
 set {0} to,عيّن {0} إلى
@@ -3971,7 +3971,7 @@ The Bulk Update could not happen due to <b>{0}</b>,تعذر إجراء التح�
 "The document type selected is a child table, so the parent document type is required.",نوع المستند المحدد جدول فرعي، لذا يلزم تحديد نوع المستند الرئيسي.
 The field {0} in {1} does not allow ignoring user permissions,لا يسمح الحقل {0} في {1} بتجاهل صلاحيات المستخدم
 This will be shown in a modal after routing,سيظهر هذا في نافذة منبثقة بعد التوجيه
-Time series based on is required to create a dashboard chart,"حقل ""السلسلة الزمنية بناءً على"" مطلوب لإنشاء مخطط لوحة المعلومات"
+Time series based on is required to create a dashboard chart,"حقل ""السلسلة الزمنية بناءً على"" مطلوب لإنشاء مخطط تقارير ذكاء الأعمال"
 Total,الإجمالي
 Total Background Workers,إجمالي عمال الخلفية
 Transgender,متحول جنسيًا
@@ -4001,7 +4001,7 @@ X Field,حقل X
 Y Field,حقل Y
 Year,السنة
 You are not allowed to update attendance for another user.,غير مسموح لك بتحديث الحضور لمستخدم آخر.
-You cannot create a dashboard chart from single DocTypes,لا يمكنك إنشاء مخطط لوحة معلومات من أنواع المستندات المفردة
+You cannot create a dashboard chart from single DocTypes,لا يمكنك إنشاء مخطط لتقارير ذكاء الأعمال من أنواع المستندات المفردة
 You do not have permission to access {0}: {1}.,ليس لديك صلاحية الوصول إلى {0}: {1}.
 You don't have permission to create report for {0},ليس لديك صلاحية إنشاء تقرير لـ {0}
 You don't have permission to create Report records.,ليس لديك صلاحية إنشاء سجلات التقارير.
@@ -4546,7 +4546,7 @@ Add new tab,إضافة علامة تبويب جديدة
 Add section above,إضافة قسم أعلاه
 Add section below,إضافة قسم أدناه
 Add Series Prefix,إضافة بادئة السلسلة
-Add to Dashboard,إضافة إلى لوحة المعلومات
+Add to Dashboard,إضافة إلى تقارير ذكاء الأعمال
 Add to ToDo,إضافة إلى المهام
 Add {0},إضافة {0}
 Add {0},إضافة {0},Primary action in list view
@@ -4637,11 +4637,11 @@ Creating {0},جارٍ إنشاء {0}
 Ctrl + Up,Ctrl + السهم لأعلى
 Current Series,السلسلة الحالية
 Currently Viewing,يطّلع عليه حاليًا
-Customize Dashboard,تخصيص لوحة المعلومات
+Customize Dashboard,تخصيص تقارير ذكاء الأعمال
 Customize Quick Filters,تخصيص عوامل التصفية السريعة,Customize qucik filters of List View
 Cut,قص
 d,ي,Days (Field: Duration)
-Dashboard View,عرض لوحة المعلومات
+Dashboard View,عرض تقارير ذكاء الأعمال
 Day of month,يوم من الشهر
 Deadlock Occurred,حدث قفل متبادل
 Decimal Separator must be '.' when Quoting is set to Non-numeric,يجب أن يكون الفاصل العشري '.' عند ضبط علامات التنصيص على غير رقمي
@@ -4808,7 +4808,7 @@ New Folder,مجلد جديد
 New Kanban Board,لوحة كانبان جديدة
 New Onboarding,إعداد أولي جديد
 New {0} Created,تم إنشاء {0} جديد
-New {0} {1} added to Dashboard {2},تمت إضافة {0} {1} جديد إلى لوحة المعلومات {2}
+New {0} {1} added to Dashboard {2},تمت إضافة {0} {1} جديد إلى تقارير ذكاء الأعمال {2}
 Next 14 Days,الـ 14 يومًا القادمة
 Next 30 Days,الـ 30 يومًا القادمة
 Next 6 Months,الـ 6 أشهر القادمة
@@ -4911,7 +4911,7 @@ Report with more than 10 columns looks better in Landscape mode.,التقرير 
 Report:,التقرير:
 Request Timed Out,انتهت مهلة الطلب
 Reset Changes,إعادة تعيين التغييرات
-Reset Dashboard Customizations,إعادة تعيين تخصيصات لوحة المعلومات
+Reset Dashboard Customizations,إعادة تعيين تخصيصات تقارير ذكاء الأعمال
 Reset Fields,إعادة تعيين الحقول
 Reset sorting,إعادة تعيين الترتيب
 Reset To Default,إعادة التعيين إلى الافتراضي
@@ -5087,7 +5087,7 @@ You've logged in as another user from another tab. Refresh this page to continue
 {0} Tree,شجرة {0}
 {0} values selected,تم تحديد {0} قيم
 {0} weeks ago,قبل {0} أسابيع
-{0} {1} added to Dashboard {2},تمت إضافة {0} {1} إلى لوحة المعلومات {2}
+{0} {1} added to Dashboard {2},تمت إضافة {0} {1} إلى تقارير ذكاء الأعمال {2}
 {0} {1} is linked with the following submitted documents: {2},{0} {1} مرتبط بالمستندات المعتمدة التالية: {2}
 "{0}, list item {1} of {2}",{0}، عنصر القائمة {1} من {2}
 {0}: Other permission rules may also apply,{0}: قد تُطبق قواعد صلاحيات أخرى أيضًا
@@ -5188,7 +5188,7 @@ Not a valid Comma Separated Value (CSV File),ملف قيم مفصولة بفوا
 Operator must be one of {0},يجب أن يكون عامل التشغيل أحد {0}
 PDF generation failed,فشل إنشاء ملف PDF
 PDF generation failed because of broken image links,فشل إنشاء ملف PDF بسبب روابط صور معطلة
-Please check the filter values set for Dashboard Chart: {},يرجى التحقق من قيم التصفية المحددة لمخطط لوحة المعلومات: {}
+Please check the filter values set for Dashboard Chart: {},يرجى التحقق من قيم التصفية المحددة لمخطط تقارير ذكاء الأعمال: {}
 Please ensure that your profile has an email address,يرجى التأكد من وجود عنوان بريد إلكتروني في ملف التعريف الخاص بك
 Please select a valid date filter,يرجى تحديد عامل تصفية تاريخ صالح
 Predictable substitutions like '@' instead of 'a' don't help very much.,البدائل المتوقعة مثل '@' بدلًا من 'a' لا تفيد كثيرًا.
@@ -5575,7 +5575,7 @@ Account {0}: You can not assign itself as parent account,الحساب {0}: لا 
 Account: <b>{0}</b> is capital Work in progress and can not be updated by Journal Entry,الحساب: <b>{0}</b> هو حساب أعمال رأسمالية تحت التنفيذ ولا يمكن تحديثه بقيد يومية
 Account: {0} is not permitted under Payment Entry,الحساب: {0} غير مسموح به في سند الدفع
 Accounting Dimension <b>{0}</b> is required for 'Balance Sheet' account {1}.,البعد المحاسبي <b>{0}</b> مطلوب لحساب 'قائمة المركز المالي' {1}.
-Accounting Dimension <b>{0}</b> is required for 'Profit and Loss' account {1}.,البعد المحاسبي <b>{0}</b> مطلوب لحساب 'الأرباح والخسائر' {1}.
+Accounting Dimension <b>{0}</b> is required for 'Profit and Loss' account {1}.,البعد المحاسبي <b>{0}</b> مطلوب لحساب 'الربح أو الخسارة' {1}.
 Accounting Dimension Detail,تفاصيل البعد المحاسبي
 Accounting Dimension Filter,تصفية البعد المحاسبي
 Accounting Dimensions,الأبعاد المحاسبية
@@ -6437,7 +6437,7 @@ Make Payment via Journal Entry,الدفع عبر قيد يومية
 Make Sales Invoice,إنشاء فاتورة مبيعات
 Making Journal Entries against advance accounts: {0} is not recommended. These Journals won't be available for Reconciliation.,لا يُنصح بإنشاء قيود يومية على حسابات الدفعات المقدمة: {0}. لن تكون هذه القيود متاحة للتسوية.
 Mandatory For Balance Sheet,إلزامي لقائمة المركز المالي
-Mandatory For Profit and Loss Account,إلزامي لحساب الأرباح والخسائر
+Mandatory For Profit and Loss Account,إلزامي لحساب الربح أو الخسارة
 Mandatory Purchase Receipt,سند استلام مشتريات إلزامي
 Manual entry cannot be created! Disable automatic entry for deferred accounting in accounts settings and try again,لا يمكن إنشاء قيد يدوي! عطّل الإنشاء التلقائي لقيود المحاسبة المؤجلة في إعدادات الحسابات ثم أعد المحاولة
 Manufacture,التصنيع
@@ -6604,7 +6604,7 @@ Payable Account,حساب الذمم الدائنة
 Payment Account,حساب الدفع
 Payment against {0} {1} cannot be greater than Outstanding Amount {2},لا يمكن أن تكون الدفعة مقابل {0} {1} أكبر من المبلغ المستحق {2}
 Payment Amount,مبلغ الدفعة
-Payment Entries,سندات الدفع
+Payment Entries,سندات القبض والدفع
 Payment Entries {0} are un-linked,سندات الدفع {0} غير مرتبطة
 Payment Entry already exists,سند الدفع موجود مسبقًا
 Payment Entry Deduction,حسم سند الدفع
@@ -6804,9 +6804,9 @@ Product Bundle,حزمة المنتجات
 Product Bundle Help,مساعدة حزمة المنتجات
 Product Discount Scheme,خطة خصم المنتج
 Product Discount Slabs,شرائح خصم المنتج
-Profit and Loss,الأرباح والخسائر
-Profit and Loss Statement,قائمة الأرباح والخسائر
-Profit and Loss Statement requires {0} to be synced to DuckDB,تتطلب قائمة الأرباح والخسائر مزامنة {0} مع DuckDB
+Profit and Loss,الربح أو الخسارة
+Profit and Loss Statement,قائمة الربح أو الخسارة
+Profit and Loss Statement requires {0} to be synced to DuckDB,تتطلب قائمة الربح أو الخسارة مزامنة {0} مع DuckDB
 Promotional Scheme,خطة ترويجية
 Promotional Scheme Id,معرّف الخطة الترويجية
 Promotional Scheme Price Discount,خصم السعر للخطة الترويجية
@@ -7115,7 +7115,7 @@ STATEMENT OF ACCOUNTS,كشف حساب
 Statement Of Accounts,كشف حساب
 Statement PDF Password,كلمة مرور ملف PDF للكشف
 Statement Period,فترة الكشف
-Stock,إدارة المستودعات
+Stock,المستودعات
 Stock Asset Account,حساب أصول المخزون
 Stock Assets,أصول المخزون
 Stock cannot be updated against the following Delivery Notes: {0},لا يمكن تحديث المخزون مقابل سندات التسليم التالية: {0}
@@ -7870,7 +7870,7 @@ Party,الطرف
 Party is required,الطرف مطلوب
 Payment,السداد
 Payment Document,مستند الدفع
-Payment Entry,سندات القبض والدفع
+Payment Entry,سند القبض والدفع
 Payment Entry Created,أُنشئ سند الدفع
 Payment Recorded,سُجّلت الدفعة
 PDF Password,كلمة مرور ملف PDF
@@ -9142,7 +9142,7 @@ Planned Operating Cost,تكلفة التشغيل المخططة
 Planned Qty,الكمية المخططة
 Planned Start Date,تاريخ البدء المخطط
 Planned Start Time,وقت البداية المخطط
-Plant Dashboard,لوحة معلومات المصنع
+Plant Dashboard,تقارير ذكاء الأعمال للمصنع
 Plant Floor,طابق المصنع
 Please check either with operations or FG Based Operating Cost.,يرجى تحديد خيار العمليات أو خيار تكلفة التشغيل بناءً على البضاعة تامة الصنع.
 Please complete the job first before entering Pending Quantity,يرجى إكمال العمل أولًا قبل إدخال الكمية المعلقة
@@ -9396,7 +9396,7 @@ Work Orders,أوامر العمل
 Work Orders in Progress,أوامر العمل قيد التنفيذ
 Work-in-Progress Warehouse,مستودع الإنتاج تحت التشغيل
 Work-in-Progress Warehouse is required before Submit,مستودع الإنتاج تحت التشغيل مطلوب قبل الاعتماد
-Workstation Dashboard,لوحة معلومات محطة العمل
+Workstation Dashboard,تقارير ذكاء الأعمال لمحطة العمل
 Workstation is closed on the following dates as per Holiday List: {0},محطة العمل مغلقة في التواريخ التالية وفقًا لقائمة العطلات: {0}
 Workstation Working Hour,ساعات عمل محطة العمل
 You cannot change the rate if BOM is mentioned against any Item.,لا يمكنك تغيير السعر إذا ذُكرت قائمة المواد مقابل أي صنف.
@@ -10627,13 +10627,13 @@ Barcode {0} already used in Item {1},الرمز الشريطي {0} مستخدم 
 Barcode {0} is not a valid {1} code,الرمز الشريطي {0} ليس رمز {1} صالحًا
 Barcodes,الرموز الشريطية
 Basic Rate (as per Stock UOM),السعر الأساسي (حسب وحدة قياس المخزون)
-Batch,الدفعة
+Batch,التشغيلة
 Batch Description,وصف التشغيلة
 Batch Details,تفاصيل التشغيلة
 Batch Expiry Date,تاريخ انتهاء صلاحية التشغيلة
 Batch ID,معرف التشغيلة
 Batch ID is mandatory,معرف التشغيلة إلزامي
-Batch Item Expiry Status,حالة تاريخ صلاحية الصنف على مستوى الدفعة
+Batch Item Expiry Status,حالة تاريخ صلاحية الصنف على مستوى التشغيلة
 Batch Item settings,إعدادات صنف التشغيلة
 Batch No is mandatory,رقم التشغيلة إلزامي
 Batch No {0} does not exists,رقم التشغيلة {0} غير موجود
@@ -12360,7 +12360,7 @@ Half Day Marked Employee Header,عنوان الموظفين المسجلين ب�
 Half Day Records,سجلات نصف اليوم
 Hiring Count,عدد حالات التوظيف
 Horizontal Break,فاصل أفقي
-HR Dashboard,لوحة معلومات الموارد البشرية
+HR Dashboard,تقارير ذكاء الأعمال للموارد البشرية
 "If enabled, auto attendance will be marked on holidays if Employee Checkins exist",عند التفعيل، يُسجَّل الحضور التلقائي في العطلات إذا وُجدت بصمات للموظف
 "If enabled, the total no. of applications received for this opening will be displayed on the website",عند التفعيل، يُعرض على الموقع الإلكتروني إجمالي عدد الطلبات المستلمة لهذه الوظيفة الشاغرة
 "If set, the job opening will be closed automatically after this date",عند التحديد، تُغلق الوظيفة الشاغرة تلقائيًا بعد هذا التاريخ
@@ -12549,7 +12549,7 @@ Parent Goal,الهدف الرئيسي
 Pay Rate Multipliers,معاملات معدل الأجر
 Pay Via Payment Entry,الدفع عبر سند دفع
 Payable Account is mandatory to submit an Expense Claim,حساب الذمم الدائنة إلزامي لاعتماد مطالبة المصروفات
-Payroll Dashboard,لوحة معلومات الرواتب
+Payroll Dashboard,تقارير ذكاء الأعمال للرواتب
 Pending (unpaid) amount from previous advances,المبلغ المعلق (غير المدفوع) من السلف السابقة
 Pending Asset Returns,أصول بانتظار الإرجاع
 Pending FnF,مخالصات نهائية معلقة
@@ -13306,7 +13306,7 @@ In,الدخول
 Equity,حقوق ملكية
 Operation,العمليات الإنتاجية
 POS,نقاط البيع
-Projects,إدارة المشاريع
+Projects,المشاريع
 All Supplier Groups,جميع مجموعات الموردين
 Customer Name,اسم العميل
 Sales Register,تقرير المبيعات والمرتجعات
@@ -13334,23 +13334,23 @@ Exit,تفاصيل الاستقالة
 Sales Taxes and Charges Template,قالب الضرائب على المبيعات
 Reports,التقارير
 Set Advances and Allocate (FIFO),FIFO ربط الدفعات المقدمة بناء على
-Manufacturing,إدارة التصنيع
+Manufacturing,التصنيع
 Email Id,البريد الإلكتروني
 Purchase Taxes and Charges Template,قالب الضرائب على المشتريات
 Party Type,نوع الطرف
 Timeless Night,النمط الداكن
 Item-wise Purchase Register,تقرير المشتريات حسب الصنف
-Selling,إدارة المبيعات
+Selling,المبيعات
 Supplier Addresses And Contacts,الموردين وجهات الاتصال
 Remarks,التعليقات
 Shift Type,الورديات
 Attendance Request,طلب حضور وانصراف
 Subcontracting,تعاقد بالباطن
-Human Resources,إدارة الموارد البشرية
+Human Resources,الموارد البشرية
 Salutation,البادئة
 Management,الإدارة
 Salary Register,تقرير الرواتب الشهرية
-Buying,إدارة المشتريات
+Buying,المشتريات
 Payroll,الرواتب
 Loyalty Points,نقاط الولاء
 Employee Checkin,بصمة الموظف

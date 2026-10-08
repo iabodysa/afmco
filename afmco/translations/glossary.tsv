@@ -1,0 +1,148 @@
+english	context	arabic	decider	reason
+absher		أبشر	R21	portal name
+accepted warehouse		مستودع الكميات المقبولة	dominant usage 3/4	dominant 3/4
+access token		رمز الوصول	dominant usage 3/4	dominant 3/4
+accounts		الحسابات	owner O9	workspace label without the management prefix
+accounts receivable		الذمم المدينة	R18	SOCPA term
+administrator		مسؤول النظام	dominant usage 15/17	dominant 15/17; site administrator stays مسؤول الموقع
+advance		السلفة	R09	framework value fails meaning
+after submission		بعد الاعتماد	R09	Submit=اعتماد across the file
+all supplier groups		جميع مجموعات الموردين	owner order B	house wording
+amend		إعادة إصدار	R16	docstatus set
+awaiting payment		بانتظار الدفع	dominant usage 3/5	dominant 3/5 workflow state
+bank payment date		تاريخ الدفع البنكي	dominant usage 5/6	dominant 5/6
+batch		التشغيلة	owner O6	stock batch
+batch	Iqama Control	الدفعة	owner O6	renewal payment batch
+batch	SADAD Bulk	الدفعة	owner O6	SADAD payment batch
+batch wise		التشغيلة	R09	stock Batch=تشغيلة 248 rows; دفعة kept for SADAD payment batch
+billing currency		عملة الفوترة	R09	Billing Currency is not default currency
+blanket order		الأمر الإطاري	dominant usage 7/10	dominant 7/10
+branch		الفرع	R09	framework meaning
+bulk		جماعي	dominant usage 24/30	dominant 24/30; مجمع kept only for grouped asset (bulk purchase sense)
+bulk edit		التعديل الجماعي	dominant usage	Edit=تعديل dominant
+buying		المشتريات	owner O9	workspace label without the management prefix
+cancel		إلغاء	R16	docstatus set
+cancelled		ملغى	R16	docstatus set; global row masculine (R17)
+cancelled	SADAD Bulk	ملغاة	R17	feminine doctype noun
+cash payment		سند صرف نقدي	R09	Saudi voucher term; both keys aligned
+chargeable		قابل للتحميل	owner order B	account type, matches Item Tax row
+close		إغلاق	R22	hamzat al-qat
+commission		العمولة	R29	no transliteration
+country		دولة	dominant usage 11/13	dominant 11/13
+create finished		المنتجات التامة	R09	finished goods decision
+created under		عقد	R09	tree node=عقدة; two sibling rows already use العقد
+credit balance		الرصيد الدائن	R09	credit balance is an accounting side, not credit facility
+credit note		إشعار دائن	R09	owner order B; status = تم إصدار إشعار دائن
+customer		العميل	R11	definite single-noun label
+customer name		اسم العميل	owner order B	house wording
+dashboard		تقارير ذكاء الأعمال	owner O1	house wording kept; names the BI report pages
+depreciation entry		قيد إهلاك	R09	hamza spelling; 6/7
+designation		المسمى الوظيفي	R09	framework value fails meaning
+dispatch		الإرسال	dominant usage 6/7	dominant 6/7
+draft		مسودة	R16	docstatus set
+drop ship		الشحن المباشر	R09	old wording meant delivery details
+due date		تاريخ الاستحقاق	R09	framework value fails meaning
+email id		البريد الإلكتروني	R09	hamza spelling
+employee checkin		بصمة الموظف	owner O4	biometric punch records
+employee number		الرقم الوظيفي	dominant usage 4/5	dominant 4/5
+encoded		مُرمَّز	R09	encoded is not encrypted; plus الإلكترونية hamza and الاستجابة السريعة
+end time		وقت النهاية	dominant usage 4/6	dominant 4/6
+expense		المصروفات	R08	accounting category plural, matches compounds
+expense request		طلب المصروف	R09	company doctype label; طلب الدفع collides with Payment Request
+exploded		المفصلة	dominant usage 5/6	dominant 5/6; BOM exploded items
+exploded items		المفصلة	R09	duplicate of exploded
+finished goods		المنتج التام / المنتجات التامة	dominant usage 40/80	dominant 40/80 and pairs with منتج نصف مصنع
+finished item		منتج تام	R09	finished goods decision
+gosi		التأمينات الاجتماعية	R21	portal name
+grand total		الإجمالي الكلي	dominant usage 12/13	dominant 12/13
+gratuity		مكافأة نهاية الخدمة	R20	Labour Law term
+grievance		تظلم	R20	Labour Law term
+health monitor		مراقبة الحالة	R09	Ledger Health Monitor=مراقبة حالة دفتر الأستاذ
+human resources		الموارد البشرية	owner O9	workspace label without the management prefix
+important		إشعار مهم	dominant usage 2/3	dominant 2/3 on same key
+info		معلومات	R09	same as Information
+information		معلومات	owner O2	descriptive section headers
+installation note		مذكرة التركيب	dominant usage 2/3	dominant 2/3
+invoice portion		نصيب الفاتورة	R09	same as portion
+issue date		تاريخ الإصدار	R09	no-context key overrode Iqama/passport Issue Date with تاريخ المشكلة
+item attribute		سمة الصنف	R09	Item Attribute Value/Values already سمة
+item wise		حسب الصنف	dominant usage 6/8	dominant 6/8
+jane@example.com		jane@example.com	owner order B	placeholder is not a staff email
+jawazat		الجوازات	R21	authority name
+job title		المسمى الوظيفي	R09	Designation and Job Title rows
+journal entries		قيود اليومية	R09	Journal Entry=قيد اليومية
+journal entry		قيد اليومية	R08	matches compounds
+landed cost		سند تكلفة الوصول	dominant usage 20/21	dominant 20/21
+leave		الإجازة	R09	framework value fails meaning
+ledger		دفتر الأستاذ	R29	no identity row
+liability		المطلوبات	R09	IFRS/SOCPA balance-sheet class; 10 rows already; responsibility sense (مسؤولية) left
+liability account		المطلوبات	R09	same as liability
+loyalty points		نقاط الولاء	owner O3	ERPNext meaning
+loyalty program		برنامج الولاء	owner O3	ERPNext meaning
+manufacturing		التصنيع	owner O9	workspace label without the management prefix
+medical insurance		التأمين الطبي	dominant usage 5/8	dominant 5/8 and Saudi HR usage
+medium		الوسيلة	dominant usage 3/4	dominant 3/4 (UTM medium)
+millimeter		مليمتر	dominant usage 3/4	dominant 3/4
+mudad		مدد	R21	portal name
+muqeem		مقيم	R21	portal name
+name		الاسم	R22	hamzat al-wasl
+nationality		الجنسية	R24	feminine ending
+notice		إشعار مهم	R09	duplicate of important
+outstanding amount		المبلغ المستحق	dominant usage	dominant 20; المعلق kept only for uncleared bank items and unposted entries (different sense)
+overview		نظرة عامة	dominant usage 4/5	dominant 4/5; Summary=الملخص
+packing		قائمة التعبئة	dominant usage 5/7	dominant 5/7
+packing slip		قائمة التعبئة	R09	duplicate of packing
+parent task		المهمة الرئيسية	owner order B	house wording
+party type		نوع الطرف	dominant usage 8/9	dominant 8/9; نوع الحساب is Account Type
+payment		الدفع	R19	generic payment; SADAD reserved for the channel
+payment amount		مبلغ الدفعة	R09	Allocate Payment Amount uses مبلغ الدفعة
+payment entries		سندات القبض والدفع	R12	plural of Payment Entry
+payment entry		سند القبض والدفع	R12	one document covers receive and pay
+payment request		طلب الصرف	owner O5	same label as Payment Requisition
+payment requisition		طلب الصرف	owner O5	house payment requisition
+payroll entry		مسير الرواتب	R11	house payroll run
+perpetual inventory		الجرد المستمر	dominant usage 2/3	dominant 2/3, accounting term
+petty cash		العهدة النقدية	R09	custody float
+picked quantity		المنتقاة	dominant usage 7/9	dominant 7/9, Pick List
+portion		نصيب الفاتورة	R09	house wording kept and the (%) key aligned to it
+posting date		تاريخ الترحيل	R08	matches compounds
+posting time		وقت الترحيل	R09	Posting=ترحيل in 27 Posting Date rows
+profit and loss		الربح أو الخسارة	R18	IFRS wording as adopted in KSA
+profit and loss statement		قائمة الربح أو الخسارة	R18	IFRS wording as adopted in KSA
+projects		المشاريع	owner O9	workspace label without the management prefix
+qiwa		قوى	R21	portal name
+qr code		رمز الاستجابة السريعة	R09	السريعة qualifies الاستجابة
+receivable		الذمم المدينة	R09	Saudi accounting standard; 17 rows already use it
+rejected warehouse		مستودع المرفوضات	R09	old wording started with imperative حدد and used مخزن
+religion		الديانة	R24	feminine ending
+remove		إزالة	R09	Remove=إزالة, Delete=حذف; two English verbs keep two Arabic verbs
+reposting entry		قيد إعادة الترحيل	R09	Entry=قيد
+round off		التقريب	owner order B	Round Off Account=حساب التقريب
+sanctioned amount		المبلغ الموافق عليه	dominant usage 3/5	dominant 3/5
+selling		المبيعات	owner O9	workspace label without the management prefix
+shift type		نوع الوردية	R09	framework value fails meaning
+stock		المستودعات	owner O9	workspace label without the management prefix
+stock uom		وحدة قياس المخزون	dominant usage 22/24	dominant 22/24
+submit		اعتماد	R16	docstatus set
+submitted		معتمد	R16	docstatus set; global row masculine (R17)
+switch theme		تبديل السمة	R09	same as theme
+target variance		فرق	R09	duplicate of variance
+target warehouse		المستودع المستهدف	dominant usage 176/182	Warehouse=مستودع in 176/182 rows; Set=تعيين dominant
+tax invoice		فاتورة ضريبية	R21	authority term
+tax withholding		احتساب الاستقطاع الضريبي	R09	Tax Withholding=الاستقطاع الضريبي in 13 rows; both keys aligned
+theme		تبديل السمة	dominant usage 15/18	Theme=سمة dominant 15/18
+type nodes		عقد	R09	same as created under
+unlink		إلغاء ربط	dominant usage 9/12	dominant 9/12
+user id		معرف المستخدم	R09	User ID rows use معرف المستخدم
+validity		صلاحية	dominant usage 6/10	dominant 6/10 for validity period of quotation, coupon, passport, tax template
+valuation rate		سعر التقييم	owner order B	house wording
+variance		فرق / فروقات	dominant usage 10/13	dominant lemma 10/13; تباين removed
+variance based		فرق	R09	duplicate of variance
+vat		ضريبة القيمة المضافة	R21	authority term
+warehouse		المستودع	dominant usage 176/182	never مخزن
+whatsapp		واتساب	dominant usage 7/8	dominant 7/8
+wise stock		تتبع المخزون حسب المشروع	R09	old wording inverted the meaning
+wps		حماية الأجور	R21	portal name
+write off		شطب	owner order B	framework value fails meaning
+zatca		هيئة الزكاة والضريبة والجمارك	R21	authority name
+zero valuation		سعر تقييم صفري	R09	Valuation Rate=سعر التقييم (owner order B)
