@@ -1,6 +1,7 @@
 {%- from "afmco/templates/print/tax_invoice.html" import styles, invoice, money -%}
 {%- set ctx = "Tax Invoice" -%}
-{{ styles(orientation) }}
+{%- set compact = compact is defined and compact -%}
+{{ styles(orientation, compact=compact) }}
 {%- macro q(v) -%}{%- set x = frappe.utils.flt(v or 0) -%}{{ '%g' | format(frappe.utils.flt(x, 2)) }}{%- endmacro -%}
 {%- set columns = [
   {'en': 'Sr', 'ar': _("Sr", "ar", ctx), 'kind': 'n'},
@@ -23,7 +24,7 @@
   'IBAN No: SA8610000024700000054804',
   'Account No: 24700000054804'
 ] -%}
-{%- call invoice(doc, columns, title=title, extra_meta=extra_meta, buyer_name=doc.customer, buyer_address=doc.customer_name_in_arabic, notes=notes, qr_note=True, stamp='/files/afmco_stamp.jpg') %}
+{%- call invoice(doc, columns, title=title, extra_meta=extra_meta, buyer_name=doc.customer, buyer_address=doc.customer_name_in_arabic, notes=notes, qr_note=True, stamp='/files/afmco_stamp.jpg', compact=compact) %}
 {%- for row in doc.items %}
 <tr>
   <td class="num">{{ row.idx or '' }}</td>

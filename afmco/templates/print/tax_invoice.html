@@ -4,7 +4,7 @@
 
 {% macro pct(v) -%}{{ '%g' | format(frappe.utils.flt(v or 0, 2)) }}%{%- endmacro %}
 
-{% macro styles(orientation='Portrait') -%}
+{% macro styles(orientation='Portrait', compact=False) -%}
 {%- set sp = '2.5mm' if orientation == 'Landscape' else '4mm' -%}
 {% include "afmco/templates/print/fonts.html" %}
 {{ saudi_riyal_font_face() }}
@@ -72,7 +72,11 @@ body:last-child .print-format .afm-hdr td.logo img, .print-format .afm-hdr td.lo
 .afm.inv .inv-top { margin: 0 0 {{ sp }} 0; }
 .print-format .afm.inv .inv-top > tbody > tr > td { padding: 0 !important; vertical-align: top !important; }
 .print-format .afm.inv .inv-top td.qr { text-align: left; }
+{%- if compact %}
+body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.inv .inv-top td.qr img { width: 30mm !important; height: 30mm !important; padding: 1mm 2mm !important; box-sizing: content-box !important; background: white !important; max-width: none !important; display: block; margin: 0 0 0 8mm; }
+{%- else %}
 body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.inv .inv-top td.qr img { width: 26mm !important; height: 26mm !important; max-width: none !important; display: block; margin: 0 auto 0 0; }
+{%- endif %}
 .print-format .afm.inv .inv-kv td { border-bottom: 0.5pt solid #dcdcdc; }
 .print-format .afm.inv .inv-kv tr:first-child td { border-top: 0.5pt solid #dcdcdc; }
 .afm.inv .inv-kv .v { text-align: right; }
@@ -130,10 +134,19 @@ body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.in
 .print-format .afm.inv .inv-stamp img { height: {{ '18mm' if orientation == 'Landscape' else '22mm' }}; width: auto; max-width: none; object-fit: contain; display: block; margin: 2mm 0 0 0; }
 
 .print-format .page-break:last-child, .print-format .page-break:last-of-type { page-break-after: auto !important; }
+{%- if compact %}
+.print-format .afm.inv .pair { table-layout: fixed; }
+.print-format .afm.inv .pair .en { letter-spacing: 0; }
+.print-format .afm.inv .inv-party .lb .pair .en, .print-format .afm.inv .inv-party .lb .pair .ar { white-space: normal; }
+.print-format .afm.inv .inv-party .v.wrap { line-height: 14px; }
+.print-format .afm.inv .inv-title, .print-format .afm.inv .inv-top { margin-bottom: 0 !important; }
+.print-format .afm.inv .inv-parties { margin-top: 0 !important; margin-bottom: 3mm; }
+.print-format .afm.inv .inv-top td.qr { line-height: 0 !important; }
+{%- endif %}
 </style>
 {%- endmacro %}
 
-{% macro invoice(doc, columns, title=None, extra_meta=[], buyer_name=None, buyer_address=None, notes=[], qr_note=False, stamp=None) -%}
+{% macro invoice(doc, columns, title=None, extra_meta=[], buyer_name=None, buyer_address=None, notes=[], qr_note=False, stamp=None, compact=False) -%}
 {%- set ctx = "Samsa Tax Invoice" -%}
 {%- set _co = frappe.db.get_value('Company', doc.company, ['company_name', 'company_name_in_arabic', 'tax_id', 'company_logo'], as_dict=1) or {} -%}
 {%- set _zbs = frappe.db.get_value('ZATCA Business Settings', {'company': doc.company}, 'name') if doc.company else none -%}
@@ -202,9 +215,9 @@ body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.in
 ] + extra_meta -%}
 {%- set seller = [
   ('Name', _("Name", "ar", ctx), afm.name_ar, 'b wrap'),
-  ('Address', _("Address", "ar", ctx), doc.company_address_display or '', 'wrap'),
-  ('VAT No.', _("Tax Id", "ar"), doc.company_tax_id or '', 'num'),
-  ('CR No.', _("Commercial Registration", "ar", ctx), afm.cr, 'num')
+  ('Address', _("Address", "ar", ctx), ((doc.company_address_display or '') | replace('<br>', '&#x060C; ') | replace('<br/>', '&#x060C; ') | replace('<br />', '&#x060C; ') | striptags) if compact else (doc.company_address_display or ''), 'wrap'),
+  ('VAT No.', _("Tax Id", "ar"), (doc.company_tax_id if doc.company_tax_id != afm.vat else '') if compact else (doc.company_tax_id or ''), 'num'),
+  ('CR No.', _("Commercial Registration", "ar", ctx), '' if compact else afm.cr, 'num')
 ] -%}
 {%- set buyer = [
   ('Name', _("Name", "ar", ctx), buyer_name if buyer_name is not none else doc.customer_name, 'b wrap'),
@@ -218,7 +231,7 @@ body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.in
     <tr><td class="t-ar">{{ t[1] }}</td><td class="t-en"><span class="ltr">{{ t[0] }}</span></td></tr>
   </table>
 
-  <table class="inv-top"><colgroup><col style="width:118mm"><col><col style="width:26mm"></colgroup>
+  <table class="inv-top"><colgroup>{% if compact %}<col><col style="width:4mm"><col style="width:42mm">{% else %}<col style="width:118mm"><col><col style="width:26mm">{% endif %}</colgroup>
     <tr>
       <td class="meta">
         <table class="inv-kv"><colgroup><col style="width:42mm"><col></colgroup>
