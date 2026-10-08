@@ -80,7 +80,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-05 12:00:00.000000",
+ "modified": "2026-10-09 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Financial Operations",
  "owner": "Administrator",
@@ -111,7 +111,7 @@
    "icon": "book-open",
    "label": "Journal Entry",
    "link_to": "Journal Entry",
-   "stats_filter": "[[\"Journal Entry\",\"docstatus\",\"=\",\"0\",false]]",
+   "stats_filter": "[[\"Journal Entry\",\"docstatus\",\"=\",\"0\"]]",
    "type": "DocType"
   },
   {
@@ -121,7 +121,7 @@
    "icon": "banknote-arrow-down",
    "label": "PR",
    "link_to": "Payment Requisition",
-   "stats_filter": "[[\"Payment Requisition\",\"jv_status\",\"=\",\"JV Not Created\",false],[\"Payment Requisition\",\"workflow_state\",\"=\",\"Paid\",false],[\"Payment Requisition\",\"creation\",\"Timespan\",\"this year\",false]]",
+   "stats_filter": "[[\"Payment Requisition\",\"jv_status\",\"=\",\"JV Not Created\"],[\"Payment Requisition\",\"workflow_state\",\"=\",\"Paid\"],[\"Payment Requisition\",\"creation\",\"Timespan\",\"this year\"]]",
    "type": "DocType"
   },
   {
@@ -131,7 +131,7 @@
    "icon": "receipt",
    "label": "Sales Invoice",
    "link_to": "Sales Invoice",
-   "stats_filter": "[[\"Sales Invoice\",\"custom_zatca_status\",\"=\",\"Not Submitted\",false],[\"Sales Invoice\",\"creation\",\"Timespan\",\"this year\",false]]",
+   "stats_filter": "[[\"Sales Invoice\",\"custom_zatca_status\",\"=\",\"Not Submitted\"],[\"Sales Invoice\",\"creation\",\"Timespan\",\"this year\"]]",
    "type": "DocType"
   }
  ],
