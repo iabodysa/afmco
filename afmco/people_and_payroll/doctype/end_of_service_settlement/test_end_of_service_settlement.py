@@ -11,6 +11,7 @@ from frappe.tests import IntegrationTestCase
 
 from afmco.people_and_payroll.api.test_employee_form_api import make_employee
 from afmco.people_and_payroll.doctype.end_of_service_settlement.end_of_service_settlement import (
+	CANCELLED_STATE,
 	EndofServiceSettlement,
 	employee_values,
 	feedback_for,
@@ -140,3 +141,9 @@ class TestEndOfServiceSettlementActiveEmployee(IntegrationTestCase):
 
 		with self.assertRaises(frappe.UniqueValidationError):
 			make_settlement(employee)
+
+	def test_draft_in_cancelled_workflow_state_does_not_block_new_settlement(self):
+		employee = make_employee("_T-EOS-Draft-Cancelled")
+		make_settlement(employee).db_set("workflow_state", CANCELLED_STATE)
+
+		self.assertEqual(make_settlement(employee).employee, employee)

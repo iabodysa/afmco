@@ -9,8 +9,15 @@ from frappe.model.document import Document
 
 class EndofServiceSettlement(Document):
     def validate(self):
-        if self.employee and frappe.db.exists(
-            self.doctype, {"employee": self.employee, "docstatus": ["<", 2], "name": ["!=", self.name]}
+        if self.employee and frappe.get_all(
+            self.doctype,
+            filters={
+                "employee": self.employee,
+                "docstatus": ["<", 2],
+                "workflow_state": ["!=", CANCELLED_STATE],
+                "name": ["!=", self.name],
+            },
+            limit=1,
         ):
             frappe.throw(
                 _("{0} must be unique").format(_(self.meta.get_label("employee"))), frappe.UniqueValidationError
