@@ -85,9 +85,13 @@ class TestEndOfServiceRelievingOnPayment(TestCase):
 		document, relieve = self.submit_paid_on("2026-02-01")
 		relieve.assert_called_once_with(document)
 
-	def test_submitting_paid_on_last_working_day_leaves_employee_to_daily_job(self):
-		_document, relieve = self.submit_paid_on("2026-01-31")
-		relieve.assert_not_called()
+	def test_submitting_paid_on_last_working_day_relieves_employee(self):
+		document, relieve = self.submit_paid_on("2026-01-31")
+		relieve.assert_called_once_with(document)
+
+	def test_submitting_paid_before_last_working_day_relieves_employee(self):
+		document, relieve = self.submit_paid_on("2026-01-10")
+		relieve.assert_called_once_with(document)
 
 	def test_entering_approved_leaves_employee_untouched(self):
 		with patch("frappe.utils.nowdate", return_value="2026-03-01"), patch(RELIEVE) as relieve:

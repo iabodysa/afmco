@@ -12,8 +12,7 @@ class EndofServiceSettlement(Document):
             restore_employee(self)
 
     def on_submit(self):
-        today = frappe.utils.getdate(frappe.utils.nowdate())
-        if self.employee_status != DONE_MARKER and is_due(relieving_date_for(self), today):
+        if self.employee_status != DONE_MARKER:
             relieve_employee(self)
 
     def on_cancel(self):
