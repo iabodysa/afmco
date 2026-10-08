@@ -13399,6 +13399,3 @@ General Ledger Month Limit without Filter,حد أشهر دفتر الأستاذ 
 "Categorize by Account or by Party reads every entry since the company began. Select an Account or a Party, or tick Disable Opening Balance Calculation.",التصنيف حسب الحساب أو حسب الطرف يقرأ كل القيود منذ بداية الشركة. اختر حسابًا أو طرفًا، أو فعّل تعطيل حساب الرصيد الافتتاحي.
 "A General Ledger without an Account, Party or Voucher filter covers at most {0} months. Shorten the dates or add a filter.",دفتر الأستاذ العام دون تصفية بالحساب أو الطرف أو القيد يغطي {0} أشهر كحد أقصى. قصّر الفترة أو أضف تصفية.
 You already have {0} being prepared. Wait for it to finish or delete it before starting another.,لديك {0} قيد التجهيز. انتظر حتى يكتمل أو احذفه قبل بدء تقرير آخر.
-General Ledger Memory Limit (MB),حد ذاكرة دفتر الأستاذ العام (ميجابايت)
-"Most memory, in megabytes, one General Ledger prepared run may use before it stops with an error. 0 removes the limit.",أقصى ذاكرة بالميجابايت يستهلكها تجهيز واحد لدفتر الأستاذ العام قبل أن يتوقف بخطأ. القيمة 0 تلغي الحد.
-"General Ledger stopped because it needed more than {0} MB of memory. Add an Account, Party or Voucher filter or shorten the dates.",توقف دفتر الأستاذ العام لأنه احتاج إلى أكثر من {0} ميجابايت من الذاكرة. أضف تصفية بالحساب أو الطرف أو القيد أو اختصر الفترة.

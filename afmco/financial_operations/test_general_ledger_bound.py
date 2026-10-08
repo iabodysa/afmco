@@ -41,9 +41,6 @@ class TestGeneralLedgerBound(IntegrationTestCase):
 		enqueue = patch("frappe.core.doctype.prepared_report.prepared_report.enqueue")
 		enqueue.start()
 		self.addCleanup(enqueue.stop)
-		ledger_enqueue = patch("afmco.financial_operations.prepared_report.enqueue")
-		ledger_enqueue.start()
-		self.addCleanup(ledger_enqueue.stop)
 
 	def run_report(self, report_name: str, filters: dict):
 		report = frappe.get_doc("Report", report_name)

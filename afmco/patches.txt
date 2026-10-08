@@ -18,4 +18,3 @@ afmco.patches.v16_0.retire_fuel_doctypes
 afmco.patches.v16_0.grant_employee_permlevel_one
 afmco.patches.v16_0.grant_accountant_bot_permissions
 afmco.patches.v16_0.set_general_ledger_month_limit
-afmco.patches.v16_0.set_general_ledger_queue_defaults

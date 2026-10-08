@@ -3,15 +3,8 @@
 
 import frappe
 from frappe import _
-from frappe.core.doctype.prepared_report.prepared_report import REPORT_TIMEOUT
-from frappe.utils.background_jobs import enqueue
 
-from afmco.financial_operations.general_ledger_bound import validate_general_ledger_filters
-from afmco.financial_operations.general_ledger_queue import (
-	general_ledger_queue,
-	generate_general_ledger,
-	is_general_ledger,
-)
+from afmco.financial_operations.general_ledger_bound import GENERAL_LEDGER, validate_general_ledger_filters
 
 ACTIVE_STATUSES = ("Queued", "Started")
 
@@ -19,7 +12,7 @@ ACTIVE_STATUSES = ("Queued", "Started")
 class AfmcoPreparedReport:
 	def before_insert(self):
 		super().before_insert()
-		if is_general_ledger(self.report_name):
+		if self.report_name == GENERAL_LEDGER:
 			validate_general_ledger_filters(self.filters)
 		if frappe.db.exists(
 			"Prepared Report",
@@ -34,15 +27,3 @@ class AfmcoPreparedReport:
 					_(self.report_name)
 				)
 			)
-
-	def after_insert(self):
-		if not is_general_ledger(self.report_name):
-			return super().after_insert()
-		enqueue(
-			generate_general_ledger,
-			queue=general_ledger_queue(),
-			prepared_report=self.name,
-			timeout=frappe.get_value("Report", self.report_name, "timeout") or REPORT_TIMEOUT,
-			enqueue_after_commit=True,
-			at_front_when_starved=True,
-		)
