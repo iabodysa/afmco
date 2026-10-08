@@ -8,14 +8,13 @@ from frappe.model.document import Document
 
 class EndofServiceSettlement(Document):
     def on_update(self):
-        if not self.has_value_changed("workflow_state"):
-            return
-        if self.workflow_state == PENDING_STATE and self.employee_status != DONE_MARKER:
-            today = frappe.utils.getdate(frappe.utils.nowdate())
-            if is_due(frappe.utils.getdate(self.date_2) if self.date_2 else None, today):
-                relieve_employee(self)
-        elif self.workflow_state == CANCELLED_STATE:
+        if self.has_value_changed("workflow_state") and self.workflow_state == CANCELLED_STATE:
             restore_employee(self)
+
+    def on_submit(self):
+        today = frappe.utils.getdate(frappe.utils.nowdate())
+        if self.employee_status != DONE_MARKER and is_due(frappe.utils.getdate(self.date_2) if self.date_2 else None, today):
+            relieve_employee(self)
 
     def on_cancel(self):
         restore_employee(self)
@@ -23,7 +22,6 @@ class EndofServiceSettlement(Document):
 
 EOS_DOCTYPE = "End of Service Settlement"
 EMPLOYEE_DOCTYPE = "Employee"
-PENDING_STATE = "Approved"
 DONE_MARKER = "Updated"
 NOT_DONE_MARKER = "Not updated"
 CANCELLED_STATE = "Cancelled"
@@ -52,7 +50,7 @@ def _value(record, field: str):
 
 
 def pending_filters() -> dict[str, object]:
-    return {"workflow_state": PENDING_STATE, "employee_status": ["!=", DONE_MARKER]}
+    return {"docstatus": 1, "employee_status": ["!=", DONE_MARKER]}
 
 
 def is_due(end_date, today) -> bool:
