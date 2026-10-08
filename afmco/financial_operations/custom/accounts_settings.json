@@ -11,6 +11,18 @@
    "module": "Financial Operations",
    "name": "Accounts Settings-afmco_journal_entry_draft_limit",
    "non_negative": 1
+  },
+  {
+   "default": "3",
+   "description": "Longest date range, in months, a General Ledger may cover without an Account, Party or Voucher filter. 0 removes the limit.",
+   "dt": "Accounts Settings",
+   "fieldname": "afmco_general_ledger_month_limit",
+   "fieldtype": "Int",
+   "insert_after": "general_ledger_remarks_length",
+   "label": "General Ledger Month Limit without Filter",
+   "module": "Financial Operations",
+   "name": "Accounts Settings-afmco_general_ledger_month_limit",
+   "non_negative": 1
   }
  ],
  "custom_perms": [],
