@@ -272,11 +272,6 @@ frappe.ui.form.on('Employee', {
         displayIqamaExpiredAlert(frm);
 
         renderMuqeemDashboard(frm);
-    },
-
-    onload: function(frm) {
-        setFormReadOnly(frm);
-        addEditDocumentButton(frm);
     }
 });
 
@@ -584,24 +579,4 @@ function createIqamaExpiredAlert(title, message) {
             </div>
         </li>
     `);
-}
-
-function setFormReadOnly(frm) {
-    frm.toggle_enable('*', false);
-    frm.disable_save();
-}
-
-function addEditDocumentButton(frm) {
-    if (
-        frappe.user.has_role('HR Manager') ||
-        frappe.user.has_role('Payroll User') ||
-        frappe.user.has_role('Support Team')
-    ) {
-        let button_label = __('Edit Document', null, 'Employee');
-        frm.page.add_menu_item(button_label, function() {
-            frm.toggle_enable('*', true);
-            frm.toggle_enable('custom_iqama_expired', false);
-            frm.enable_save();
-        }).addClass('btn-primary');
-    }
 }

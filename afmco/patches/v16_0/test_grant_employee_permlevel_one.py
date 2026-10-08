@@ -8,6 +8,7 @@ from afmco.patches.v16_0.grant_employee_permlevel_one import DOCTYPE, ROLES, exe
 
 PAYROLL_USER = "permlevel-one-payroll@afmco.test"
 HR_MANAGER = "permlevel-one-hr-manager@afmco.test"
+HR_USER = "permlevel-one-hr-user@afmco.test"
 
 
 def make_user(email, role):
@@ -42,6 +43,7 @@ class TestGrantEmployeePermlevelOne(IntegrationTestCase):
 	def setUp(self):
 		make_user(PAYROLL_USER, "Payroll User")
 		make_user(HR_MANAGER, "HR Manager")
+		make_user(HR_USER, "HR User")
 
 	def test_payroll_user_reads_and_writes_employee_permlevel_one(self):
 		execute()
@@ -52,6 +54,11 @@ class TestGrantEmployeePermlevelOne(IntegrationTestCase):
 		execute()
 		self.assertIn(1, permlevel_access(HR_MANAGER, "read"))
 		self.assertIn(1, permlevel_access(HR_MANAGER, "write"))
+
+	def test_hr_user_writes_employee_level_zero_but_not_permlevel_one(self):
+		execute()
+		self.assertIn(0, permlevel_access(HR_USER, "write"))
+		self.assertNotIn(1, permlevel_access(HR_USER, "write"))
 
 	def test_employee_role_alone_gets_no_employee_permlevel_one(self):
 		execute()
