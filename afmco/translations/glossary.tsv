@@ -24,7 +24,8 @@ buying		المشتريات	owner O9	workspace label without the management prefi
 cancel		إلغاء	R16	docstatus set
 cancelled		ملغى	R16	docstatus set; global row masculine (R17)
 cancelled	SADAD Bulk	ملغاة	R17	feminine doctype noun
-cash payment		سند صرف نقدي	R09	Saudi voucher term; both keys aligned
+cash payment		الدفع النقدي	R14	label names the payment, no voucher qualifier
+cash payment voucher		سند صرف نقدي	R14	label names the voucher print format
 chargeable		قابل للتحميل	owner order B	account type, matches Item Tax row
 close		إغلاق	R22	hamzat al-qat
 commission		العمولة	R29	no transliteration
@@ -73,7 +74,8 @@ jawazat		الجوازات	R21	authority name
 job title		المسمى الوظيفي	R09	Designation and Job Title rows
 journal entries		قيود اليومية	R09	Journal Entry=قيد اليومية
 journal entry		قيد اليومية	R08	matches compounds
-landed cost		سند تكلفة الوصول	dominant usage 20/21	dominant 20/21
+landed cost		تكلفة الوصول	R14	label names the cost, no voucher qualifier
+landed cost voucher		سند تكلفة الوصول	R14	label names the voucher doctype
 leave		الإجازة	R09	framework value fails meaning
 ledger		دفتر الأستاذ	R29	no identity row
 liability		المطلوبات	R09	IFRS/SOCPA balance-sheet class; 10 rows already; responsibility sense (مسؤولية) left
