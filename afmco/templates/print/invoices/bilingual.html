@@ -29,8 +29,8 @@
   <td class="num">{{ row.idx or '' }}</td>
   <td class="txt">{{ row.item_name or '' }}</td>
   <td class="txt">{{ (row.description or '') | striptags }}</td>
-  <td class="num">{{ row.day_hour or '' }}</td>
   <td class="num">{{ q(row.stock_qty) if row.stock_qty else '' }}</td>
+  <td class="num">{{ row.day_hour or '' }}</td>
   <td class="num">{{ money(row.rate) }}</td>
   <td class="num">{{ money(row.tax_amount) }}<span class="sub">{{ q(row.tax_rate) }}%</span></td>
   <td class="num">{{ money(row.amount) }}</td>
