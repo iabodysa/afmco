@@ -45,7 +45,7 @@ due date		تاريخ الاستحقاق	R09	framework value fails meaning
 email id		البريد الإلكتروني	R09	hamza spelling
 employee checkin		بصمة الموظف	owner O4	biometric punch records
 employee number		الرقم الوظيفي	dominant usage 4/5	dominant 4/5
-encoded		مُرمَّز	R09	encoded is not encrypted; plus الإلكترونية hamza and الاستجابة السريعة
+encoded		مرمّز	R09	encoded is not encrypted; plus الإلكترونية hamza and الاستجابة السريعة
 end time		وقت النهاية	dominant usage 4/6	dominant 4/6
 expense		المصروفات	R08	accounting category plural, matches compounds
 expense request		طلب المصروف	R09	company doctype label; طلب الدفع collides with Payment Request
