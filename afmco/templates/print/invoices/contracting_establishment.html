@@ -29,8 +29,8 @@
   <td class="num">{{ row.idx or '' }}</td>
   <td class="txt">{{ row.item_name or '' }}</td>
   <td class="txt">{{ row.description or '' }}</td>
-  <td class="num">{{ row.day_hour or '' }}</td>
   <td class="num">{{ row.stock_qty|round(2) or '' }}</td>
+  <td class="num">{{ row.day_hour or '' }}</td>
   <td class="num">{{ row.extra_hours or '' }}</td>
   <td class="num">{{ row.rate|round(2) }}</td>
   <td class="num">{{ ((row.net_amount|round(2)) * 0.15)|round(2) }}<span class="sub">15%</span></td>
