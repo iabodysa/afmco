@@ -13,7 +13,7 @@ class EndofServiceSettlement(Document):
 
     def on_submit(self):
         today = frappe.utils.getdate(frappe.utils.nowdate())
-        if self.employee_status != DONE_MARKER and is_due(frappe.utils.getdate(self.date_2) if self.date_2 else None, today):
+        if self.employee_status != DONE_MARKER and is_due(relieving_date_for(self), today):
             relieve_employee(self)
 
     def on_cancel(self):
@@ -53,10 +53,17 @@ def pending_filters() -> dict[str, object]:
     return {"docstatus": 1, "employee_status": ["!=", DONE_MARKER]}
 
 
-def is_due(end_date, today) -> bool:
-    if not end_date:
+def relieving_date_for(record):
+    last_working_day = _value(record, "date_2")
+    if not last_working_day:
+        return None
+    return frappe.utils.add_days(frappe.utils.getdate(last_working_day), 1)
+
+
+def is_due(relieving_date, today) -> bool:
+    if not relieving_date:
         return False
-    return today > end_date
+    return today >= relieving_date
 
 
 def service_duration(record) -> str:
@@ -77,7 +84,7 @@ def feedback_for(record) -> str:
 def employee_values(record) -> dict[str, object]:
     return {
         "status": LEFT_STATUS,
-        "relieving_date": _value(record, "date_2"),
+        "relieving_date": relieving_date_for(record),
         "feedback": feedback_for(record),
         "reason_for_leaving": f"{_value(record, 'name')} | {_value(record, 'end_of_service_reason')}",
         "resignation_letter_date": frappe.utils.getdate(_value(record, "creation")),
@@ -132,7 +139,7 @@ def update_employee_status_for_settlements() -> dict[str, object]:
 
     def apply(record: dict) -> None:
         document = frappe.get_doc(EOS_DOCTYPE, record["name"])
-        if not is_due(frappe.utils.getdate(document.date_2) if document.date_2 else None, today):
+        if not is_due(relieving_date_for(document), today):
             return
         frappe.db.savepoint(RELIEVING_SAVEPOINT)
         try:
