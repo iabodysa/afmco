@@ -13394,8 +13394,3 @@ Job Portal,بوابة الوظائف
 Leave Balance Summary,ملخص رصيد الإجازات
 Supplier Ledger Summary,دفتر الأستاذ المختصر للموردين
 Declare Lost,تسجيل كخسارة
-General Ledger Month Limit without Filter,حد أشهر دفتر الأستاذ العام دون تصفية
-"Longest date range, in months, a General Ledger may cover without an Account, Party or Voucher filter. 0 removes the limit.",أطول مدة بالأشهر يغطيها دفتر الأستاذ العام دون تصفية بالحساب أو الطرف أو القيد. القيمة 0 تلغي الحد.
-"Categorize by Account or by Party reads every entry since the company began. Select an Account or a Party, or tick Disable Opening Balance Calculation.",التصنيف حسب الحساب أو حسب الطرف يقرأ كل القيود منذ بداية الشركة. اختر حسابًا أو طرفًا، أو فعّل تعطيل حساب الرصيد الافتتاحي.
-"A General Ledger without an Account, Party or Voucher filter covers at most {0} months. Shorten the dates or add a filter.",دفتر الأستاذ العام دون تصفية بالحساب أو الطرف أو القيد يغطي {0} أشهر كحد أقصى. قصّر الفترة أو أضف تصفية.
-You already have {0} being prepared. Wait for it to finish or delete it before starting another.,لديك {0} قيد التجهيز. انتظر حتى يكتمل أو احذفه قبل بدء تقرير آخر.

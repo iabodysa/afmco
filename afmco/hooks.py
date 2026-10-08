@@ -134,8 +134,6 @@ extend_doctype_class = {
 	"Leave Application": "afmco.people_and_payroll.leave_application.AfmcoLeaveApplication",
 	"Loan": "afmco.people_and_payroll.loan.AfmcoLoan",
 	"Loan Repayment": "afmco.people_and_payroll.loan_repayment.AfmcoLoanRepayment",
-	"Prepared Report": "afmco.financial_operations.prepared_report.AfmcoPreparedReport",
-	"Report": "afmco.financial_operations.general_ledger_bound.AfmcoReport",
 	"Salary Slip": "afmco.people_and_payroll.salary_slip.AfmcoSalarySlip",
 	"Salary Structure Assignment": "afmco.people_and_payroll.salary_structure_assignment.AfmcoSalaryStructureAssignment",
 	"Sales Invoice": "afmco.financial_operations.sales_invoice.AfmcoSalesInvoice",
