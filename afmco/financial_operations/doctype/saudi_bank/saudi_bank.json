@@ -8,8 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "name1",
-  "bank_code",
-  "amended_from"
+  "bank_code"
  ],
  "fields": [
   {
@@ -36,21 +35,12 @@
    "in_standard_filter": 1,
    "label": "Bank code",
    "unique": 1
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Saudi Bank",
-   "print_hide": 1,
-   "read_only": 1
   }
  ],
  "in_create": 1,
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
- "modified": "2024-02-08 01:20:33.630062",
+ "is_submittable": 0,
+ "modified": "2026-10-09 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Saudi Bank",
  "name_case": "Title Case",
@@ -66,7 +56,6 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
-   "submit": 1,
    "write": 1
   },
   {

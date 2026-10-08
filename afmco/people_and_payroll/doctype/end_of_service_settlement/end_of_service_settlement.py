@@ -3,10 +3,19 @@ from __future__ import annotations
 from collections.abc import Callable, Iterable
 
 import frappe
+from frappe import _
 from frappe.model.document import Document
 
 
 class EndofServiceSettlement(Document):
+    def validate(self):
+        if self.employee and frappe.db.exists(
+            self.doctype, {"employee": self.employee, "docstatus": ["<", 2], "name": ["!=", self.name]}
+        ):
+            frappe.throw(
+                _("{0} must be unique").format(_(self.meta.get_label("employee"))), frappe.UniqueValidationError
+            )
+
     def on_update(self):
         if self.has_value_changed("workflow_state") and self.workflow_state == CANCELLED_STATE:
             restore_employee(self)

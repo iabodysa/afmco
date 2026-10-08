@@ -6,12 +6,18 @@ from types import SimpleNamespace
 from unittest import TestCase
 from unittest.mock import patch
 
+import frappe
+from frappe.tests import IntegrationTestCase
+
+from afmco.people_and_payroll.api.test_employee_form_api import make_employee
 from afmco.people_and_payroll.doctype.end_of_service_settlement.end_of_service_settlement import (
 	EndofServiceSettlement,
 	employee_values,
 	feedback_for,
 	pending_filters,
 )
+
+IGNORE_TEST_RECORD_DEPENDENCIES = ["Department", "Employee"]
 
 SETTLEMENT = {
 	"name": "Exit-2026-00001",
@@ -97,3 +103,40 @@ class TestEndOfServiceRelievingOnPayment(TestCase):
 		with patch("frappe.utils.nowdate", return_value="2026-03-01"), patch(RELIEVE) as relieve:
 			EndofServiceSettlement.on_update(settlement_in("Approved"))
 		relieve.assert_not_called()
+
+
+def make_settlement(employee):
+	return frappe.get_doc({"doctype": "End of Service Settlement", "employee": employee, "date_2": "2026-01-31"}).insert()
+
+
+class TestEndOfServiceSettlementActiveEmployee(IntegrationTestCase):
+	@classmethod
+	def setUpClass(cls):
+		for doctype, name, values in (
+			("Gender", "Male", {"gender": "Male"}),
+			("Warehouse Type", "Transit", {"name": "Transit"}),
+			("Holiday List", "Friday", {"holiday_list_name": "Friday", "from_date": "2013-01-01", "to_date": "2030-12-31"}),
+		):
+			if not frappe.db.exists(doctype, name):
+				frappe.get_doc({"doctype": doctype, **values}).insert()
+		super().setUpClass()
+
+	def test_amended_settlement_keeps_employee(self):
+		employee = make_employee("_T-EOS-Amend")
+		original = make_settlement(employee)
+		original.submit()
+		original.cancel()
+		amended = frappe.copy_doc(original)
+		amended.docstatus = 0
+		amended.amended_from = original.name
+
+		amended.insert()
+
+		self.assertEqual(frappe.db.get_value("End of Service Settlement", amended.name, "employee"), employee)
+
+	def test_second_active_settlement_for_employee_is_refused(self):
+		employee = make_employee("_T-EOS-Active")
+		make_settlement(employee)
+
+		with self.assertRaises(frappe.UniqueValidationError):
+			make_settlement(employee)

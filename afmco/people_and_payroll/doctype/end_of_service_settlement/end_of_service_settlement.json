@@ -98,8 +98,7 @@
    "in_standard_filter": 1,
    "label": "iQama No.",
    "options": "Employee",
-   "reqd": 1,
-   "unique": 1
+   "reqd": 1
   },
   {
    "fetch_from": "employee.employee_name",
@@ -488,7 +487,7 @@
    "link_fieldname": "tax_invoice_number"
   }
  ],
- "modified": "2026-10-07 12:00:00.000000",
+ "modified": "2026-10-09 12:00:00.000000",
  "module": "People and Payroll",
  "name": "End of Service Settlement",
  "naming_rule": "By \"Naming Series\" field",
