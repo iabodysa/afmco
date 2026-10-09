@@ -214,7 +214,7 @@
    "link_fieldname": "tax_invoice_number"
   }
  ],
- "modified": "2026-10-09 20:00:00.000000",
+ "modified": "2026-10-09 21:00:00.000000",
  "module": "Financial Operations",
  "name": "Petty Cash",
  "naming_rule": "By \"Naming Series\" field",
@@ -244,7 +244,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "All",
+   "role": "Desk User",
    "set_user_permissions": "0",
    "share": 1,
    "write": 1

@@ -192,7 +192,7 @@
  "icon": "fa fa-building",
  "is_tree": 1,
  "migration_hash": "ac271515db97557e95fcfb0d852d0cde",
- "modified": "2026-10-09 20:00:00.000000",
+ "modified": "2026-10-09 21:00:00.000000",
  "module": "People and Payroll",
  "name": "Corporation",
  "name_case": "Title Case",
@@ -251,7 +251,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "All",
+   "role": "Desk User",
    "set_user_permissions": "0",
    "share": 1
   },
