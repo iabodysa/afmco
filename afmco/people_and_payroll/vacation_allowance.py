@@ -28,7 +28,6 @@ YEAR_SPANS = {END_OF_SERVICE: (365, 364), ADVANCE_LEAVE_SALARY: (364, 365)}
 
 NO_EOS_REASONS = {
     "3-Termination by the employer under Article 80",
-    "7-Termination by the employee or termination of employment by the employee for reasons other than those specified in Article 81",
 }
 FULL_EOS_REASONS = {
     "1-End of term or mutual agreement",
@@ -37,7 +36,10 @@ FULL_EOS_REASONS = {
     "5-Termination of the contract by the female employee during the first six months of marriage or during the first three months of childbirth",
     "6-Termination by the employee under Article 81",
 }
-RESIGNATION = "8-Resignation"
+RESIGNATION_REASONS = {
+    "7-Termination by the employee or termination of employment by the employee for reasons other than those specified in Article 81",
+    "8-Resignation",
+}
 
 
 def js_round(value):
@@ -69,15 +71,14 @@ def settlement_days(reason, days, years, stored):
             if days <= 1826
             else js_round(75 + (days - 1825) * (30 / 365))
         )
-    if reason == RESIGNATION:
+    if reason in RESIGNATION_REASONS:
         if years < 2:
             return 0
         if years < 5:
             return days / 365 * 15 * 0.3334
         if years < 10:
             return (75 + (days - 1825) / 365 * 30) * (2 / 3)
-        if years > 10:
-            return days / 365 * 15
+        return 75 + (days - 1825) / 365 * 30
     return stored
 
 

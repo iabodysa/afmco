@@ -318,3 +318,29 @@ class TestRecomputeAndSubmit(LedgerCase):
             AdvanceLeaveSalary.before_submit,
             make(va.ADVANCE_LEAVE_SALARY, {}, rows),
         )
+
+
+SEVEN = "7-Termination by the employee or termination of employment by the employee for reasons other than those specified in Article 81"
+EIGHT = "8-Resignation"
+
+
+def award(reason, days):
+    return va.settlement_days(reason, days, days / 365, None)
+
+
+class TestSettlementAward(TestCase):
+    def test_resignation_outside_article_81_follows_article_85_tiers(self):
+        self.assertAlmostEqual(award(SEVEN, 1095), 15.003)
+        self.assertAlmostEqual(award(SEVEN, 730), 10.002)
+
+    def test_resignation_after_ten_years_uses_escalating_article_84_base(self):
+        self.assertAlmostEqual(award(EIGHT, 4380), 285)
+
+    def test_resignation_of_exactly_ten_years_is_full_escalating_award(self):
+        self.assertAlmostEqual(award(EIGHT, 3650), 225)
+        self.assertAlmostEqual(award(SEVEN, 3650), 225)
+
+    def test_resignation_boundaries_at_two_and_five_years(self):
+        self.assertEqual(award(EIGHT, 729), 0)
+        self.assertAlmostEqual(award(EIGHT, 730), 10.002)
+        self.assertAlmostEqual(award(EIGHT, 1825), 50)
