@@ -6215,7 +6215,6 @@ Invalid File Type,نوع ملف غير صالح
 Invalid Item,صنف غير صالح
 Invalid JSON format: {0},تنسيق JSON غير صالح: {0}
 Invalid Ledger Entries,قيود دفتر الأستاذ غير الصالحة
-"Invalid line reference format: '{0}'. Must start with letter and contain only letters, numbers, underscores, and hyphens",تنسيق مرجع السطر غير صالح: '{0}'. يجب أن يبدأ بحرف وأن يحتوي فقط على حروف وأرقام وشرطات سفلية وشرطات
 Invalid Opening Entry,قيد افتتاح غير صالح
 Invalid operator '{0}',معامل غير صالح '{0}'
 Invalid Parent Account,حساب رئيسي غير صالح
@@ -6309,7 +6308,6 @@ Letter or Email Body Text,نص الخطاب أو البريد الإلكترون
 Letter or Email Closing Text,النص الختامي للخطاب أو البريد الإلكتروني
 Liability,المطلوبات
 Line Reference,مرجع البند
-Line references undefined in {0}: {1},مراجع البنود غير معرّفة في {0}: {1}
 Line spacing for amount in words,تباعد الأسطر للمبلغ كتابة
 Loan Start Date and Loan Period are mandatory to save the Invoice Discounting,تاريخ بدء القرض ومدة القرض إلزاميان لحفظ خصم الفاتورة
 Loans (Liabilities),القروض (المطلوبات)
@@ -9038,7 +9036,6 @@ Plant Floor,طابق المصنع
 Please check either with operations or FG Based Operating Cost.,يرجى تحديد خيار العمليات أو خيار تكلفة التشغيل بناء على البضاعة تامة الصنع.
 Please complete the job first before entering Pending Quantity,يرجى إكمال العمل أولًا قبل إدخال الكمية المعلقة
 Please enter Item first,الرجاء إدخال الصنف أولًا
-Please enter Planned Qty for Item {0} at row {1},الرجاء إدخال الكمية المخططة للصنف {0} في الصف {1}
 Please enter Production Item first,الرجاء إدخال صنف الإنتاج أولًا
 Please fill the Sales Orders table,يرجى ملء جدول أوامر البيع
 Please select a BOM,يرجى تحديد قائمة مواد
@@ -9421,8 +9418,6 @@ Allocated To:,مخصص إلى:
 Annual Billing: {0},الفوترة السنوية: {0}
 Are you sure you want to delete this Item?,هل أنت متأكد أنك تريد حذف هذا الصنف؟
 Auto repeat document updated,تم تحديث مستند التكرار التلقائي
-Bank Transaction {0} added as Journal Entry,تمت إضافة الحركة البنكية {0} كقيد يومية
-Bank Transaction {0} added as Payment Entry,تمت إضافة الحركة البنكية {0} كسند دفع
 Bank Transaction {0} Matched,تمت مطابقة الحركة البنكية {0}
 Bank Transaction {0} updated,تم تحديث الحركة البنكية {0}
 Batch Nos,أرقام التشغيلات
@@ -10420,7 +10415,6 @@ Add items in the Item Locations table,"أضف أصنافًا في جدول ""م�
 Add Serial / Batch No (Rejected Qty),إضافة رقم تسلسلي / رقم تشغيلة (الكمية المرفوضة)
 Add to Transit,إضافة إلى المخزون بالطريق
 Adjustment based on Purchase Invoice rate,تعديل بناء على سعر فاتورة المشتريات
-"After save, please refresh the page to apply the changes.",بعد الحفظ، يرجى تحديث الصفحة لتطبيق التغييرات.
 Against Delivery Note Item,مقابل صنف سند التسليم
 Against Finished Good,مقابل المنتج التام
 Against Sales Invoice Item,مقابل صنف فاتورة المبيعات
@@ -10592,7 +10586,6 @@ Cost center used for tracking sales revenue for this item,مركز التكلف�
 "Could not create Credit Note automatically, please uncheck 'Issue Credit Note' and submit again",تعذر إنشاء إشعار دائن تلقائيًا، يرجى إلغاء تحديد 'إصدار إشعار دائن' والاعتماد مرة أخرى
 Create a variant with the template image.,أنشئ متغيرًا باستخدام صورة القالب.
 Create Delivery Trip,إنشاء رحلة تسليم
-Create GL Reposting Entries,إنشاء قيود إعادة ترحيل دفتر الأستاذ العام
 Create Purchase Receipt,إنشاء سند استلام مشتريات
 Create Reposting Entries,إنشاء قيود إعادة الترحيل
 Create Reposting Entry,إنشاء قيد إعادة ترحيل
@@ -10951,7 +10944,6 @@ Not permitted to update Serial No,غير مسموح بتحديث الرقم ال
 Notify by email on creation of automatic Material Request,الإشعار بالبريد الإلكتروني عند الإنشاء التلقائي لطلب المواد
 Notify Reposting Error to Role,إشعار الدور بخطأ إعادة الترحيل
 "On submission of the stock transaction, system will auto create the Serial and Batch Bundle based on the Serial No / Batch fields.",عند اعتماد معاملة المخزون، سينشئ النظام تلقائيًا حزمة الرقم التسلسلي والتشغيلة بناء على حقلي الرقم التسلسلي / التشغيلة.
-"Only the accounting ledgers (General Ledger and Payment Ledger) will be reposted, and only for the selected rows posted on or after the From Date. Selected rows posted before it are ignored. Stock Ledger Entries and item valuation rates are left untouched.",سيعاد ترحيل دفاتر الأستاذ المحاسبية فقط (دفتر الأستاذ العام ودفتر المدفوعات)، وللصفوف المحددة المرحّلة في تاريخ البداية أو بعده فقط. وتتجاهل الصفوف المحددة المرحّلة قبله. ولا تتأثر قيود دفتر أستاذ المخزون ولا أسعار تقييم الأصناف.
 Only to be used for Subcontracting Inward.,مخصص للاستخدام في التعاقد من الباطن الوارد فقط.
 "Only works for Purchase Receipt, Purchase Invoice and Stock Entry",يعمل فقط مع سند استلام المشتريات وفاتورة المشتريات وحركة المخزون
 Opening Stock entry created with zero valuation rate: {0},أنشئت حركة مخزون أول المدة بسعر تقييم صفري: {0}
@@ -10992,7 +10984,6 @@ Pickup to,الاستلام حتى
 PIN,الرمز البريدي
 Please check the 'Activate Serial and Batch No for Item' checkbox in the {0} to make Serial and Batch Bundle for the item.,يرجى تحديد خانة 'تفعيل الرقم التسلسلي ورقم التشغيلة للصنف' في {0} لإنشاء حزمة الرقم التسلسلي والتشغيلة للصنف.
 Please check the error message and take necessary actions to fix the error and then restart the reposting again.,يرجى مراجعة رسالة الخطأ واتخاذ الإجراءات اللازمة لإصلاحه، ثم إعادة تشغيل عملية إعادة الترحيل.
-Please contact any of the following users to {} this transaction.,يرجى التواصل مع أحد المستخدمين التاليين لـ {} هذه المعاملة.
 Please create Landed Cost Vouchers against Invoices that have 'Update Stock' enabled.,"يرجى إنشاء سندات تكلفة الوصول مقابل الفواتير المفعّل فيها خيار ""تحديث المخزون""."
 "Please delete Product Bundle {0}, before merging {1} into {2}",يرجى حذف حزمة المنتجات {0} قبل دمج {1} في {2}
 Please enable Use Old Serial / Batch Fields to make_bundle,"يرجى تفعيل خيار ""استخدام حقول الرقم التسلسلي / التشغيلة القديمة"" لإنشاء الحزمة"
@@ -11017,7 +11008,6 @@ Please select rows to create Reposting Entries,يرجى تحديد الصفوف 
 Please select rows to create {0},يرجى تحديد الصفوف لإنشاء {0}
 Please select Sample Retention Warehouse in Stock Settings first,يرجى تحديد مستودع الاحتفاظ بالعينات في إعدادات المخزون أولًا
 Please select Serial/Batch Nos to reserve or change Reservation Based On to Qty.,"يرجى تحديد الأرقام التسلسلية/أرقام التشغيلات للحجز أو تغيير ""الحجز بناء على"" إلى الكمية."
-Please select the date to repost the accounting ledgers from,يرجى تحديد التاريخ الذي يعاد ترحيل دفاتر الأستاذ المحاسبية ابتداء منه
 Please select the required filters,يرجى تحديد عوامل التصفية المطلوبة
 Please set Account in Warehouse {0} or Default Inventory Account in Company {1},يرجى ضبط الحساب في المستودع {0} أو حساب المخزون الافتراضي في الشركة {1}
 Please set Email/Phone for the contact,يرجى ضبط البريد الإلكتروني/الهاتف لجهة الاتصال
