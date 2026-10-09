@@ -2,7 +2,6 @@
 9 months,9 أشهر
 AFMCO Settings,إعدادات أفمكو
 AL Mutairy Co,شركة المطيري
-API Response,استجابة API
 Apply for a job,التقديم على وظيفة
 Absent Day,يوم غياب
 Abu Dhabi,أبوظبي
@@ -23,7 +22,6 @@ Adjust for Previous Salary Difference,تسوية فرق الراتب الساب�
 Advance Account,حساب السلف
 Advance paid against {0} {1} cannot be greater than Grand Total {2},السلفة المدفوعة مقابل {0} {1} لا يمكن أن تتجاوز الإجمالي الكلي {2}
 Advanced expenses,المصروفات المقدمة
-Afmco Ltd.,شركة أفمكو المحدودة
 Agency Fees (24 months),رسوم الوكالة (24 شهرًا)
 Agent,موظف الدعم
 Agent Configuration,تهيئة موظف الدعم
@@ -41,7 +39,6 @@ An error occurred in {0}. Please check the console for more details.,حدث خط
 An error occurred while checking salary slips or adding buttons. Please check console for details.,حدث خطأ أثناء فحص قسائم الرواتب أو إضافة الأزرار. يرجى مراجعة وحدة التحكم للتفاصيل.
 An error occurred while creating the Journal Entry:,حدث خطأ أثناء إنشاء قيد اليومية:
 An error occurred while creating the Payment Request. Please try again.,حدث خطأ أثناء إنشاء طلب الصرف. يرجى المحاولة مرة أخرى.
-An error occurred while fetching Employee data. Please try again.,حدث خطأ أثناء جلب بيانات الموظف. أعد المحاولة.
 An error occurred:,حدث خطأ:
 Analyzing Employees...,جار تحليل الموظفين...
 Annual Air Ticket (Annual),تذكرة الطيران السنوية (سنوية)
@@ -89,19 +86,13 @@ Building virtual WPS metadata...,جار إعداد بيانات ملف حماي�
 COMMENTS,التعليقات
 COMMISSION 2,العمولة 2
 Contact us,تواصل معنا
-CRC NO,رقم السجل التجاري
 Calculate,احسب
 Calculated Increase,الزيادة المحسوبة
-Cancel Exit Re-Entry Visa,إلغاء تأشيرة الخروج والعودة
-Cancel Final Exit Visa,إلغاء تأشيرة الخروج النهائي
 Cannot create Payment Request for document {0} because employee {1} is not Active.,لا يمكن إنشاء طلب صرف للمستند {0} لأن الموظف {1} غير نشط.
 Case Details,تفاصيل الحالة
 Cash Custody and Petty Expenses Policy,سياسة العهد النقدية والمصروفات النثرية
-Certificates,الشهادات
 Chamber of Commerce Subscription,اشتراك الغرفة التجارية
-Change Occupation,تغيير المهنة
 Channels,القنوات
-Check MOL Approval for Changing Occupation,التحقق من موافقة وزارة الموارد البشرية على تغيير المهنة
 Child table for tracking government payment for iqama renewal.,جدول فرعي لمتابعة المدفوعات الحكومية لتجديد الإقامة.
 Christianity,المسيحية
 City Name,اسم المدينة
@@ -117,7 +108,6 @@ Collection Offset Sequence for Written Off Asset,تسلسل مقاصة التح�
 Commissions (Months),العمولات (أشهر)
 Company Details,بيانات الشركة
 Company Name In Arabic,اسم الشركة بالعربية
-Company Registration Certificate,شهادة تسجيل الشركة
 Configure Payroll Entries,إعداد مسيرات الرواتب
 Confirm Payment,تأكيد الدفع
 Contact Message,رسالة تواصل
@@ -141,10 +131,8 @@ Created By (SADAD Invoice),أنشئ بواسطة (فاتورة سداد)
 Creating Journal Entry...,جار إنشاء قيد اليومية...
 Creating payment order...,جار إنشاء أمر الدفع...
 Creation Date,تاريخ الإنشاء
-Current Address Description,وصف العنوان الحالي
 Current Roles and Permission,الأدوار والصلاحيات الحالية
 Customer Signature,توقيع العميل
-Cv,السيرة الذاتية
 Data copied to clipboard.,نسخت البيانات إلى الحافظة.
 Data successfully converted and added to the field.,حوّلت البيانات وأضيفت إلى الحقل بنجاح.
 Date Of Rejoining,تاريخ العودة للعمل
@@ -166,7 +154,6 @@ Default Payroll Payable Account,حساب الرواتب المستحقة الد�
 Default Shift,الوردية الافتراضية
 Delegation,التفويض
 Delivery Representative,مندوب التوصيل
-Department or Project,القسم أو المشروع
 Departments,الأقسام
 Depreciation Schedule,جدول الإهلاك
 Details loaded successfully,حمّلت التفاصيل بنجاح
@@ -182,7 +169,6 @@ Dropoff,التنزيل
 Dropoff Location,موقع التنزيل
 Dubai,دبي
 Duration must be 1 year for exempted cases.,يجب أن تكون المدة سنة واحدة للحالات المعفاة.
-E mail,البريد الإلكتروني
 E-Invoicing QR,رمز QR للفوترة الإلكترونية
 EMP Name,اسم الموظف
 EMP No,الرقم الوظيفي
@@ -191,10 +177,8 @@ EOS document has been marked as Paid,تم تعليم مستند نهاية ال�
 Email body copied to clipboard!,نسخ نص البريد الإلكتروني إلى الحافظة!
 Employee (Sponsor),الموظف (الكفيل)
 Employee Analysis Report,تقرير تحليل الموظفين
-Employee Data Update 2024,تحديث بيانات الموظفين 2024
 Employee Dependent,تابع الموظف
 Employee Financial Summary,الملخص المالي للموظف
-Employee Gosi,التأمينات الاجتماعية للموظف
 Employee ID Checker,مدقق الرقم الوظيفي
 Employee IDs,الأرقام الوظيفية
 Employee Insurance,تأمين الموظف
@@ -202,7 +186,6 @@ Employee Salary Adjustment,تعديل راتب الموظف
 Employee Update Table,جدول تحديث الموظف
 Employee Visa,تأشيرة الموظف
 Employee card saved to attachments successfully,حفظت بطاقة الموظف في المرفقات بنجاح
-Employee data could not be fetched. Please try again.,تعذر جلب بيانات الموظف. أعد المحاولة.
 Employee has served more than 5 years. Project Manager review required.,خدمة الموظف تتجاوز 5 سنوات. تلزم مراجعة مدير المشروع.
 Employee in probation period until {0}.,الموظف في فترة التجربة حتى {0}.
 Employee status is {0}. Contract handling not required.,حالة الموظف {0}. لا يلزم إجراء على العقد.
@@ -237,22 +220,15 @@ Error updating SADAD number or exemption status for:,خطأ في تحديث رق
 Error updating status for:,خطأ في تحديث الحالة لـ:
 Errors encountered for documents:,أخطاء في المستندات التالية:
 Establishment,منشأة
-Exit Reentry Visa Service,خدمة تأشيرة الخروج والعودة
 Exit and Re-Entry Visa Fees (Annual),رسوم تأشيرة الخروج والعودة (سنوية)
 Exit and return visa,تأشيرة خروج وعودة
-Expected salary,الراتب المتوقع
 Expense Approver,مسؤول الموافقة على المصروفات
 Expense Request Report,تقرير طلبات المصروفات
 Expense Request created successfully,أنشئ طلب المصروف بنجاح
-Experiences,الخبرات
-Expired Date,تاريخ الانتهاء
 Expired Iqama,إقامة منتهية
 Expired?,منتهية؟
 Export CSV,تصدير CSV
 Export Excel,تصدير Excel
-Extend Exit Re-Entry Visa,تمديد تأشيرة الخروج والعودة
-Extend Passport Validity,تمديد صلاحية جواز السفر
-Extend Visit Visa,تمديد تأشيرة الزيارة
 Extend exit and re-entry visa (1) month,تمديد تأشيرة الخروج والعودة شهرًا واحدًا
 Failed documents:,المستندات التي فشلت:
 Failed to copy data to clipboard.,تعذر نسخ البيانات إلى الحافظة.
@@ -302,8 +278,6 @@ Get Update and Sync and Calculate,جلب التحديث والمزامنة وا�
 Get Vacation allowance,جلب بدل الإجازة
 GitHub Sync ID,معرّف مزامنة GitHub
 Google Console,وحدة تحكم Google
-Gosi,التأمينات الاجتماعية
-Gosi Details,تفاصيل التأمينات الاجتماعية
 Gov Card,البطاقة الحكومية
 Grade,الدرجة
 Grade must be between 1 and 10.,يجب أن تكون الدرجة بين 1 و10.
@@ -345,7 +319,6 @@ IBAN Verified,تم التحقق من الآيبان
 ID,المعرّف
 ID Number,رقم الهوية
 ID Number CF,رقم الهوية
-ID or iQama,الهوية أو الإقامة
 IRAC Provisioning Configuration,إعدادات مخصصات IRAC
 IT Asset,أصل تقنية المعلومات
 Image attached: {0},أرفقت الصورة: {0}
@@ -366,7 +339,6 @@ Invalid Mobile,رقم جوال غير صالح
 Invalid action,إجراء غير صالح
 Iqama Copy,نسخة الإقامة
 Iqama Cost (Annual),تكلفة الإقامة (سنوية)
-Iqama Duration in Months,مدة الإقامة بالأشهر
 Iqama Expiry,انتهاء الإقامة
 Iqama Expiry Date,تاريخ انتهاء الإقامة
 Iqama Number,رقم الإقامة
@@ -376,14 +348,11 @@ Iqama Renewal Payment Management Item,بند إدارة مدفوعات تجدي�
 Iqama Renewal Payment Tracking Item,بند متابعة مدفوعات تجديد الإقامة
 Iqama Renewal Tracking Item,بند متابعة تجديد الإقامة
 Iqama Status,حالة الإقامة
-Iqama Transfer,نقل الإقامة
 Is Exempt,معفى
 Is IT Asset,أصل تقنية معلومات
 Is NPA,أصل غير عامل
 Is Zero Rated,خاضع لنسبة صفرية
 Islam,الإسلام
-Issue Final Exit during the Probationary Period,إصدار خروج نهائي خلال فترة التجربة
-Issue Iqama,إصدار الإقامة
 Item,الصنف
 Items,الأصناف
 Journal Entry Draft Limit per User,حد مسودات القيود لكل مستخدم
@@ -423,7 +392,6 @@ Loan Settings,إعدادات القروض
 Localization Costs (Months),تكاليف التوطين (أشهر)
 Location Title,اسم الموقع
 Maximum draft Journal Entries one user can hold. 0 removes the limit.,أقصى عدد من مسودات القيود لكل مستخدم. القيمة 0 تلغي الحد.
-MOL EUN,الرقم الموحد للمنشأة
 Make Accrual Entry,إنشاء قيد استحقاق
 Make Bank Entry,إنشاء قيد بنكي
 Man,رجل
@@ -441,18 +409,14 @@ Mobile Cost (Annual),تكلفة الجوال (سنوية)
 Model,الطراز
 Modified By,عدّل بواسطة
 Month Name,اسم الشهر
-Multiple,متعدد
 Municipal License,رخصة البلدية
 Muqeem,مقيم
 New AFMCO employees arriving at King Khalid International Airport,موظفو أفمكو الجدد عند وصولهم إلى مطار الملك خالد الدولي
 No account needed.,لا يحتاج حسابًا.
 No attachments,لا توجد مرفقات
 NPA Flag,مؤشر الأصل غير العامل
-National Unified No,الرقم الوطني الموحد
 Nationality,الجنسية
-Net Salary,صافي الراتب
 New Expiration Date,تاريخ الانتهاء الجديد
-New Information,المعلومات الجديدة
 No Payroll Entries match your criteria.,لا توجد مسيرات رواتب تطابق المعايير.
 No Recruitment Fee,لا توجد رسوم استقدام
 No Salary Slips found for payment.,لم يعثر على قسائم رواتب للدفع.
@@ -464,15 +428,12 @@ No data found.,لم يعثر على بيانات.
 No data matching the criteria to export,لا توجد بيانات تطابق المعايير للتصدير
 No data matching the criteria to process,لا توجد بيانات تطابق المعايير للمعالجة
 No data with credit to export,لا توجد بيانات دائنة للتصدير
-No differences found between the document and employee data.,لا توجد فروقات بين المستند وبيانات الموظف.
 No draft Salary Slips found for this Payroll Entry.,لم يعثر على قسائم رواتب مسودة لمسير الرواتب هذا.
 No outstanding cheques or deposits in this period,لا توجد شيكات أو إيداعات معلقة في هذه الفترة
 No submitted Salary Slips found,لم يعثر على قسائم رواتب معتمدة
 No valid Employee IDs found after parsing.,لم يعثر على أرقام وظيفية صالحة بعد التحليل.
 No workflow history available,لا يوجد سجل لسير العمل
-No. of children,عدد الأبناء
 November,نوفمبر
-Number of Dependents,عدد التابعين
 Number of Documents,عدد المستندات
 Number of Employees,عدد الموظفين
 Number of vacation days per year,عدد أيام الإجازة السنوية
@@ -540,7 +501,6 @@ Payroll Entry(ies) {0} already linked to report {1},مسيرات الرواتب 
 Payroll User,مستخدم الرواتب
 Performance,الأداء
 Period Unit,وحدة الفترة
-Permanent Address Description,وصف العنوان الدائم
 Permission Role,دور الصلاحية
 Permit Number,رقم التصريح
 Personal Information,المعلومات الشخصية
@@ -565,7 +525,6 @@ Please select Bank Fees Account and VAT Account if applying fees.,يرجى اخ�
 Please select Payroll Entry,يرجى اختيار مسير الرواتب
 "Please select Transport Type as ""Supplier"" or ""Ticket Purchase"" to create Payment Order.","يرجى اختيار نوع النقل ""Supplier"" أو ""Ticket Purchase"" لإنشاء أمر الدفع."
 Please select a Payment Request first,يرجى اختيار طلب صرف أولًا
-Please select an Employee to compare.,يرجى اختيار موظف للمقارنة.
 Please select an Employee.,يرجى اختيار موظف.
 Please select an employee first.,يرجى اختيار موظف أولًا.
 Please select at least one Payroll Entry,يرجى اختيار مسير رواتب واحد على الأقل
@@ -592,7 +551,6 @@ Pre-Check Validation,التحقق المسبق
 Pre-Check: Issues Found,التحقق المسبق: توجد مشكلات
 Pre-Check: Validation Passed,التحقق المسبق: نجح التحقق
 Pre-check passed! You can now submit the report.,نجح التحقق المسبق! يمكنك الآن اعتماد التقرير.
-Prefered Contact Email,البريد الإلكتروني المفضل للتواصل
 Proceed to Submit,المتابعة إلى الاعتماد
 Processing Accrual Entry...,جار معالجة قيد الاستحقاق...
 Profit Margin (%),هامش الربح (%)
@@ -616,9 +574,6 @@ Registration Info,معلومات التسجيل
 Reject,رفض
 Reject Renewal,رفض التجديد
 Relationship,صلة القرابة
-Renew Iqama,تجديد الإقامة
-Renew Iqama Service,خدمة تجديد الإقامة
-Renew Passport,تجديد جواز السفر
 Renewal Duration (months),مدة التجديد (أشهر)
 Renewal Duration is required when Renewal Preference is Yes.,"مدة التجديد مطلوبة عندما تكون رغبة التجديد ""نعم""."
 Renewal Expiration Violation on Employee,مخالفة انتهاء التجديد على الموظف
@@ -632,7 +587,6 @@ Renewal Tracking Report (Trial),تقرير متابعة التجديد (تجري
 Repay Unclaimed Amount from Salary,استرداد المبلغ غير المطالب به من الراتب
 Replacement,الاستبدال
 Report Generated At,وقت إنشاء التقرير
-Reprint Exit Re-Entry Visa,إعادة طباعة تأشيرة الخروج والعودة
 Request Date,تاريخ الطلب
 Request Scenario,سيناريو الطلب
 Request User,مستخدم الطلبات
@@ -643,7 +597,6 @@ Resident Balance,رصيد المقيم
 Resolving commercial registration numbers...,جار التحقق من أرقام السجلات التجارية...
 Restructure Limit % (Overall),حد إعادة الهيكلة % (الإجمالي)
 Return Before,العودة قبل
-Return Before a Specific Date,العودة قبل تاريخ محدد
 Return back to work,العودة إلى العمل
 Returned,مرتجع
 Reverse Charge Applicable,ينطبق الاحتساب العكسي
@@ -689,13 +642,10 @@ Send WhatsApp to Supplier,إرسال واتساب إلى المورد
 Senior Tenure,خدمة طويلة
 September,سبتمبر
 Service Codes,رموز الخدمات
-Service Duration,مدة الخدمة
 Service Provider,مزود الخدمة
-Service Type,نوع الخدمة
 Sharjah,الشارقة
 Shift Request Approver,مسؤول الموافقة على طلبات الورديات
 Show Changes,عرض التغييرات
-Simple,بسيط
 Special requests,طلبات خاصة
 Sponsor,صاحب العمل
 Sponsor Name,اسم صاحب العمل
@@ -775,7 +725,6 @@ Trip Details,تفاصيل الرحلة
 Trip Locations,مواقع الرحلة
 Trip Notes,ملاحظات الرحلة
 Type IQama,نوع الإقامة
-Type of Visa,نوع التأشيرة
 Types (Arabic),الأنواع (عربي)
 Types (English),الأنواع (إنجليزي)
 UNKNOWN,غير معروف
@@ -786,7 +735,6 @@ Unexpected Increase,زيادة غير متوقعة
 Uniform Cost (Annual),تكلفة الزي الموحد (سنوية)
 Unregistered Employee,موظف غير مسجل
 Update All,تحديث الكل
-Update Information Service,خدمة تحديث البيانات
 Update Renewal Preference,تحديث رغبة التجديد
 Update SADAD Number,تحديث رقم السداد
 Updating documents...,جار تحديث المستندات...
@@ -807,7 +755,6 @@ Vehicle Team,فريق المركبات
 Visa Cost ( 24 Months),تكلفة التأشيرة (24 شهرًا)
 Visa Details,تفاصيل التأشيرة
 Visa Duration (Days),مدة التأشيرة (أيام)
-Visa Duration in Days,مدة التأشيرة بالأيام
 Visa Holder Name,اسم حامل التأشيرة
 Visa Issue Date,تاريخ إصدار التأشيرة
 Visa Number,رقم التأشيرة
@@ -840,21 +787,11 @@ You are updating {0} document(s),أنت تحدّث {0} مستند
 "You cannot uncheck ""Accrual Entry Created"" once it has been set.","لا يمكنك إلغاء تحديد ""Accrual Entry Created"" بعد تعيينه."
 "You cannot uncheck ""Bank Entry Created"" once it has been set.","لا يمكنك إلغاء تحديد ""Bank Entry Created"" بعد تعيينه."
 account,الحساب
-address,العنوان
-age,العمر
-application For Employment,طلب توظيف
-application for employment,طلب توظيف
 approved,موافق عليه
 arabic,العربية
 bengali,البنغالية
 currency,العملة
-date,التاريخ
-date of birth,تاريخ الميلاد
-date of expiry,تاريخ الانتهاء
-date of issue,تاريخ الإصدار
 delivery,التوصيل
-do they live with you now in ksa,هل يعيشون معك حاليًا في المملكة
-do you have any healh problems,هل تعاني من أي مشكلات صحية
 employees,الموظفون
 english,الإنجليزية
 facility closed,المنشأة مغلقة
@@ -863,24 +800,15 @@ hindi,الهندية
 iQama Expired,إقامة منتهية
 iQama expiration date,تاريخ انتهاء الإقامة
 iQama issuance date,تاريخ إصدار الإقامة
-id,المعرّف
-id place of issue,مكان إصدار الهوية
-image,الصورة
-job,الوظيفة
-marital status,الحالة الاجتماعية
-mobile,الجوال
 months remaining,الأشهر المتبقية
-nationality,الجنسية
 other,أخرى
 party,الطرف
 period,الفترة
-place of birth,مكان الميلاد
 print builder,منشئ الطباعة
 promo 1,عرض ترويجي 1
 promo 2,عرض ترويجي 2
 regenerated,أعيد إنشاؤه
 rejected,مرفوض
-sex,الجنس
 supervisor,المشرف
 update,تحديث
 updated the status,حدّث الحالة
@@ -1059,7 +987,6 @@ Location,الموقع
 Timesheet Details,تفاصيل سجل ساعات العمل
 Request Details,بيانات الطلب
 Basic Information,المعلومات الأساسية
-Age and Service,العمر ومدة الخدمة
 Dependents,التابعون
 Update Log,سجل التحديثات
 Note,ملاحظة
@@ -1107,10 +1034,6 @@ Monthly share of half a month's salary for each year of service.,الحصة ال
 "Cost of all workers per month, including profit and before discount.",تكلفة جميع العمال شهريًا شاملة الربح وقبل الخصم.
 15% of the total after discount.,15% من الإجمالي بعد الخصم.
 "Monthly total for all workers after discount, including profit and VAT.",الإجمالي الشهري لجميع العمال بعد الخصم، شاملًا الربح وضريبة القيمة المضافة.
-"Name and occupation of parents, spouse and children.",اسم ومهنة الوالدين والزوج أو الزوجة والأبناء.
-"Height, weight, allergies and medical concerns.",الطول والوزن والحساسية والمشكلات الصحية.
-A short biography for the website and other publications.,نبذة مختصرة للموقع والمنشورات الأخرى.
-Attach all certificates in one file.,أرفق كل الشهادات في ملف واحد.
 Must be 24 characters and start with SA.,يجب أن يتكون من 24 خانة وأن يبدأ بـ SA.
 "If the account is not in your name, explain why.",إذا لم يكن الحساب باسمك، فاذكر السبب.
 "I confirm the data above is correct and accept full responsibility for any error in it, or if the amount is returned, not received, or paid to an account whose beneficiary name does not match the name given.",أقر بصحة البيانات أعلاه وأتحمل المسؤولية كاملة عن أي خطأ فيها، أو في حال إرجاع المبلغ أو عدم استلامه أو تحويله لحساب لا يطابق اسم المستفيد فيه الاسم المذكور.
@@ -1492,18 +1415,6 @@ Checking Employee Holidays,التحقق من عطلات الموظف,Payroll Ent
 Verifying Employee Information,التحقق من معلومات الموظف,Payroll Entry
 Checking Existing Salary Slips,التحقق من قسائم الرواتب الموجودة,Payroll Entry
 Checking Salary Structure and Conflicts,التحقق من هيكل الراتب والتعارضات,Payroll Entry
-Verify Department,التحقق من القسم,Employee Data Update 2024
-Verify Designation,التحقق من المسمى الوظيفي,Employee Data Update 2024
-Department Verified,تم التحقق من القسم,Employee Data Update 2024
-Department Not Verified,لم يتم التحقق من القسم,Employee Data Update 2024
-Designation Verified,تم التحقق من المسمى الوظيفي,Employee Data Update 2024
-Designation Not Verified,لم يتم التحقق من المسمى الوظيفي,Employee Data Update 2024
-Department,القسم,Employee Data Update 2024
-Designation,المسمى الوظيفي,Employee Data Update 2024
-{0} is invalid,قيمة {0} غير صحيحة,Employee Data Update 2024
-Select a new {0},اختر قيمة جديدة لـ {0},Employee Data Update 2024
-The current value ({0}) does not exist in the system. Please select another value.,القيمة الحالية ({0}) غير موجودة في النظام. الرجاء اختيار قيمة أخرى.,Employee Data Update 2024
-Update,تحديث,Employee Data Update 2024
 Show List of Qiwa Payment Number,عرض قائمة أرقام سداد قوى,iQama Renewal Payment Management
 Create Payment Request,إنشاء طلب صرف,iQama Renewal Payment Management
 Download Bank File,تنزيل ملف البنك,iQama Renewal Payment Management
@@ -2200,7 +2111,6 @@ Policy Acknowledged,تم الإقرار
 "<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">Transport Type</td>","<td style=""padding:10px 14px; color:#6b7280; font-size:12px;"">نوع النقل</td>"
 "<td style=""padding:10px 14px; text-align:right;"">","<td style=""padding:10px 14px; text-align:right;"">"
 "<tr style=""border-top:1px dashed #d1d5db;"">","<tr style=""border-top:1px dashed #d1d5db;"">"
-A,A
 AAAL,AAAL
 AFMCO,أفمكو
 ALBI,ALBI
@@ -2324,7 +2234,6 @@ GOSI Subscription Number,رقم الاشتراك في التأمينات الا�
 GULF,GULF
 HR Procedures,إجراءات الموارد البشرية
 HR note,ملاحظة الموارد البشرية
-HR-UP-,HR-UP-
 Has a final exit visa been issued or the sponsorship transferred?,هل صدرت تأشيرة خروج نهائي أو نقلت الكفالة؟
 Hide Archive,إخفاء الأرشيف
 House of Donuts - بيت الدونات,بيت الدونات
