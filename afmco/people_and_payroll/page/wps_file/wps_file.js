@@ -1,6 +1,7 @@
 // Copyright (c) 2026, AFMCO and contributors
 
 const WPS_API = "afmco.people_and_payroll.api.wps_file";
+const WPS_REGISTER_FORMAT = "Salary Register WPS";
 const WPS_AMOUNTS = ["net_pay", "basic33", "housing33", "other_allowance33", "deduction33"];
 const WPS_COLUMNS = [
 	["name", __("Salary Slip", null, "WPS File")],
@@ -30,18 +31,20 @@ class WpsFile {
 	constructor(page) {
 		this.page = page;
 		this.result = null;
+		this.issued = null;
 		this.$root = $('<div class="wps-file"></div>').appendTo(page.main);
 		this.make_filters();
 		this.file_format = this.page.add_field({
 			fieldname: "file_format",
 			label: __("File Format", null, "WPS File"),
 			fieldtype: "Select",
-			options: ["Salary Register WPS", "NCBK", "SIBC"].join("\n"),
-			default: "Salary Register WPS",
+			options: [WPS_REGISTER_FORMAT, "NCBK", "SIBC"].join("\n"),
+			default: WPS_REGISTER_FORMAT,
 			reqd: 1,
 		});
 		this.page.set_primary_action(__("Issue WPS file", null, "WPS File"), () => this.issue(), "download");
 		this.page.set_secondary_action(__("Refresh", null, "WPS File"), () => this.load());
+		this.page.add_inner_button(__("Copy Email Body", null, "WPS File"), () => this.show_email());
 		this.load();
 	}
 
@@ -110,6 +113,7 @@ class WpsFile {
 	load() {
 		const args = this.args();
 		this.result = null;
+		this.issued = null;
 		if (!this.ready(args)) {
 			this.render_message(__("Select a company and a date range", null, "WPS File"));
 			return;
@@ -208,6 +212,7 @@ class WpsFile {
 			return;
 		}
 		frappe.call({ method: `${WPS_API}.download`, type: "GET", args, freeze: true }).then((r) => {
+			this.issued = { filename: r.message.filename, file_format: args.file_format };
 			const blob = new Blob([r.message.content], { type: "text/csv;charset=utf-8;" });
 			const link = document.createElement("a");
 			link.href = URL.createObjectURL(blob);
@@ -217,5 +222,78 @@ class WpsFile {
 			document.body.removeChild(link);
 			URL.revokeObjectURL(link.href);
 		});
+	}
+
+	show_email() {
+		if (!this.issued || !this.result) {
+			frappe.msgprint(__("Issue the WPS file first", null, "WPS File"));
+			return;
+		}
+		const body = this.email_body();
+		const copy = () =>
+			frappe.utils.copy_to_clipboard(body, __("Email body copied to clipboard", null, "WPS File"));
+		const dialog = new frappe.ui.Dialog({
+			title: __("Email Body", null, "WPS File"),
+			size: "large",
+			fields: [{ fieldtype: "HTML", fieldname: "body" }],
+			primary_action_label: __("Copy", null, "WPS File"),
+			primary_action: copy,
+		});
+		dialog.fields_dict.body.$wrapper.html(
+			`<pre class="wps-file-email">${frappe.utils.escape_html(body)}</pre>`
+		);
+		dialog.show();
+		copy();
+	}
+
+	email_body() {
+		const { files, hold, employees_count, total_net_pay } = this.result.groups;
+		const args = this.args();
+		const sar = new Intl.NumberFormat("en-SA", {
+			style: "currency",
+			currency: "SAR",
+			minimumFractionDigits: 2,
+		});
+		const bank =
+			args.bank_name ||
+			(this.issued.file_format === WPS_REGISTER_FORMAT ? "Bank" : this.issued.file_format);
+		const reference = args.payroll_entry || `${args.from_date} - ${args.to_date}`;
+		const rows = files.map((file) =>
+			[
+				file.labor_office_file_number ? `1 - ${file.labor_office_file_number}` : "N/A",
+				file.corporation_cr || "-",
+				file.employees_count,
+				sar.format(file.total_net_pay),
+			].join(" | ")
+		);
+		const lines = [
+			`Dear ${bank} Representative,`,
+			"",
+			`Please find attached the WPS file for payroll processing (${reference}). Below is a summary of the file:`,
+			"",
+			"MOL No. | CR | Count | Total Amount",
+			...rows,
+			`Grand Total | ${files.length} | ${employees_count} | ${sar.format(total_net_pay)}`,
+			"",
+		];
+		if (hold.employees_count) {
+			lines.push(
+				`Hold Information: ${hold.employees_count} employees (${sar.format(
+					hold.total_net_pay
+				)}) are on hold and are not included in the totals above.`,
+				""
+			);
+		}
+		lines.push(
+			`File: ${this.issued.filename}`,
+			"",
+			"Important: Please double-check the totals before uploading to the bank system.",
+			"",
+			`For any bank account updates, please use: ${frappe.urllib.get_full_url("/desk/iban-update")}`,
+			"",
+			"Best regards,",
+			"WPS Payroll Unit"
+		);
+		return lines.join("\n");
 	}
 }

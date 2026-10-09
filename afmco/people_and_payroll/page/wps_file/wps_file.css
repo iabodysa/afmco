@@ -90,3 +90,9 @@
 .wps-file .wps-file-grid tr.wps-file-flagged td {
 	background: var(--red-50, #fff5f5);
 }
+
+.wps-file-email {
+	white-space: pre-wrap;
+	max-height: 60vh;
+	overflow: auto;
+}

@@ -63,7 +63,7 @@ def get_slips(company, from_date, to_date, payroll_entry=None, bank_name=None):
 	slips = frappe.get_list(
 		"Salary Slip",
 		filters=filters,
-		fields=["name", "payroll_entry", "iban_holder_name", *FILE_FIELDS],
+		fields=["name", "payroll_entry", "iban_holder_name", "labor_office_file_number", "custom_hold", *FILE_FIELDS],
 		order_by="name asc",
 	)
 	for slip in slips:
@@ -105,6 +105,36 @@ def get_problems(slips):
 				),
 			)
 	return problems
+
+
+def get_file_groups(slips):
+	grouped = frappe.new_doc("WPS Consolidated Report")._group_by_labor_office(slips)
+	hold = grouped.pop("WPS_HOLD_FILE", [])
+	offices = [office for office in grouped if office != "NO_LABOR_OFFICE"]
+	crs = {}
+	if offices:
+		for office, cr in frappe.get_all(
+			"Corporation",
+			filters={"establishment_number": ["in", offices]},
+			fields=["establishment_number", "cr"],
+			as_list=True,
+		):
+			crs.setdefault(office, cr)
+	files = [
+		{
+			"labor_office_file_number": "" if office == "NO_LABOR_OFFICE" else office,
+			"corporation_cr": crs.get(office) or "",
+			"employees_count": len(rows),
+			"total_net_pay": flt(sum(row.net_pay for row in rows), 2),
+		}
+		for office, rows in grouped.items()
+	]
+	return {
+		"files": files,
+		"employees_count": sum(file["employees_count"] for file in files),
+		"total_net_pay": flt(sum(file["total_net_pay"] for file in files), 2),
+		"hold": {"employees_count": len(hold), "total_net_pay": flt(sum(row.net_pay for row in hold), 2)},
+	}
 
 
 def js_number(value):

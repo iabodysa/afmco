@@ -8,6 +8,7 @@ from afmco.people_and_payroll.wps_file import (
 	REGISTER_FORMAT,
 	build_file,
 	check_access,
+	get_file_groups,
 	get_problems,
 	get_slips,
 )
@@ -17,7 +18,7 @@ from afmco.people_and_payroll.wps_file import (
 def preview(company, from_date, to_date, payroll_entry=None, bank_name=None):
 	check_access()
 	slips = get_slips(company, from_date, to_date, payroll_entry, bank_name)
-	return {"rows": slips, "problems": get_problems(slips)}
+	return {"rows": slips, "problems": get_problems(slips), "groups": get_file_groups(slips)}
 
 
 @frappe.whitelist(methods=["GET"])
