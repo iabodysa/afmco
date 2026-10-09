@@ -4,5 +4,5 @@
 from frappe.model.document import Document
 
 
-class VacationAllowance(Document):
+class AdvanceLeaveSalary(Document):
 	pass

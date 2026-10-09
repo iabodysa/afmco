@@ -522,7 +522,7 @@
    "fieldtype": "Section Break",
    "idx": "72",
    "insert_after": "other_allowance_2",
-   "label": "Vacation Allowance",
+   "label": "Advance Leave Salary",
    "module": "People and Payroll",
    "name": "Employee-vacation_allowance1"
   },
@@ -558,7 +558,7 @@
    "hidden": 0,
    "idx": 2,
    "is_child_table": 0,
-   "link_doctype": "Vacation Allowance",
+   "link_doctype": "Advance Leave Salary",
    "link_fieldname": "employee",
    "parent": "Employee",
    "parentfield": "links",

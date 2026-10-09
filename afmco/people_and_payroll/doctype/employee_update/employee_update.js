@@ -3,7 +3,7 @@
 
 function addCustomButtons(frm) {
     frm.add_custom_button(__('EOS'), () => createEOSDialog(frm));
-    frm.add_custom_button(__('Vacation Allowance'), () => createVacationAllowanceDialog(frm));
+    frm.add_custom_button(__('Advance Leave Salary'), () => createAdvanceLeaveSalaryDialog(frm));
 }
 
 function createEOSDialog(frm) {
@@ -49,9 +49,9 @@ function submitEOSForm(values, frm) {
     });
 }
 
-function createVacationAllowanceDialog(frm) {
+function createAdvanceLeaveSalaryDialog(frm) {
     let dialog = new frappe.ui.Dialog({
-        title: 'Enter Vacation Allowance Details',
+        title: 'Enter Advance Leave Salary Details',
         fields: [
             {
                 label: 'Vacation Start Date',
@@ -65,13 +65,13 @@ function createVacationAllowanceDialog(frm) {
             }
         ],
         primary_action_label: 'Submit',
-        primary_action: (values) => submitVacationAllowanceForm(values, frm)
+        primary_action: (values) => submitAdvanceLeaveSalaryForm(values, frm)
     });
     dialog.show();
 }
 
-function submitVacationAllowanceForm(values, frm) {
-    const newRecord = frappe.model.get_new_doc('Vacation Allowance');
+function submitAdvanceLeaveSalaryForm(values, frm) {
+    const newRecord = frappe.model.get_new_doc('Advance Leave Salary');
     newRecord.date_2 = values.vacation_start_date;
     newRecord.check1 = values.check1;
     newRecord.employee = frm.doc.employee;

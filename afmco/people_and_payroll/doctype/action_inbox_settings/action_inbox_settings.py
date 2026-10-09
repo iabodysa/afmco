@@ -34,7 +34,7 @@ DOCUMENT_TYPES = (
 		("Rejected", "Paid"),
 	),
 	(
-		"Vacation Allowance",
+		"Advance Leave Salary",
 		("Pending", "Waiting Accountant Approval", "Waiting Manager Approval", "Approved"),
 		("Rejected", "Cancelled", "Paid"),
 	),

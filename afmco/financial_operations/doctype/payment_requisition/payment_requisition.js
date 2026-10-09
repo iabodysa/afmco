@@ -34,7 +34,7 @@ frappe.ui.form.on('Payment Requisition', {
                             options: [__("Projects Employee"), __("Administration Employee")],
                             default: __("Projects Employee"),
                             reqd: 1,
-                            hidden: !["EOS", "Vacation Allowance", "SADAD Payment"].includes(frm.doc.payment_type)
+                            hidden: !["EOS", "Advance Leave Salary", "SADAD Payment"].includes(frm.doc.payment_type)
                         }
                     ],
                     primary_action_label: __("Create the Entry"),
@@ -116,7 +116,7 @@ frappe.ui.form.on('Payment Requisition', {
 
 									add_row(values.bank_account, 0, frm.doc.amount || 0, null, null, false);
 
-								} else if (frm.doc.payment_type === "Vacation Allowance") {
+								} else if (frm.doc.payment_type === "Advance Leave Salary") {
 									let total_ticket = parseFloat((remark.match(/Total Ticket\|\s*([\d\.]+)/i) || remark.match(/Ticket Allowance:\s*([\d\.]+)/i) || [0,0])[1]);
 									let total_amount = frm.doc.amount || 0;
 									let ticket = Math.min(total_ticket, total_amount);
@@ -253,7 +253,7 @@ frappe.ui.form.on('Payment Requisition', {
 // Shared helpers ---------------------------------------------------------------
 const user_language = frappe.boot.user.language || 'en';
 const isRTL = user_language === 'ar';
-const JOURNAL_ENTRY_PAYMENT_TYPES = Object.freeze(['EOS', 'Vacation Allowance', 'SADAD Payment']);
+const JOURNAL_ENTRY_PAYMENT_TYPES = Object.freeze(['EOS', 'Advance Leave Salary', 'SADAD Payment']);
 
 function escapeHtml(value) {
     return frappe.utils.escape_html(value === null || value === undefined ? '' : String(value));
@@ -981,7 +981,7 @@ function processJournalEntryCreation(frm, values) {
                 addRow(accountsMap[accountNumbers[1]], vacation, 0, isAdmin, accountNumbers[1]);
                 addRow(accountsMap[accountNumbers[0]], eos, 0, isAdmin, accountNumbers[0]);
                 addRow(values.bank_account, 0, frm.doc.amount, false, __('Credit Bank Account'));
-            } else if (frm.doc.payment_type === 'Vacation Allowance') {
+            } else if (frm.doc.payment_type === 'Advance Leave Salary') {
                 const totalTicket = extractRemarkAmount(remark, [
                     /Total Ticket\|\s*([\d,]+(?:\.\d+)?)/i,
                     /Ticket Allowance:\s*([\d,]+(?:\.\d+)?)/i

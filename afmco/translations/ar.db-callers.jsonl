@@ -238,8 +238,8 @@ fmt:jsonl|keys:key,caller|key:ar.csv source string whose live caller sits only i
 {"key": "Uploading image...", "caller": "Client Script:script"}
 {"key": "VAT Emirate", "caller": "unnamed"}
 {"key": "VAT Registration Number", "caller": "unnamed"}
-{"key": "Vacation Allowance Statement", "caller": "Print Format:html"}
-{"key": "Vacation Allowance Undertaking", "caller": "Print Format:html"}
+{"key": "Advance Leave Salary Statement", "caller": "Print Format:html"}
+{"key": "Advance Leave Salary Undertaking", "caller": "Print Format:html"}
 {"key": "Vacation Day", "caller": "Custom Field:label"}
 {"key": "Vacation Days", "caller": "unnamed"}
 {"key": "Validate IBAN format", "caller": "Client Script:script"}

@@ -63,7 +63,7 @@ frappe.ui.form.on("Employee Financial Summary", {
 			},
 			vacation_records: {
 				heads: [[__("Document")], [__("Period")], [__("State")], [__("Amount"), 1]],
-				cells: (r) => [link("Vacation Allowance", r.name), `${day(r.date_1)} - ${day(r.date_2)}`, esc(__(r.workflow_state)), money(r.amount)],
+				cells: (r) => [link("Advance Leave Salary", r.name), `${day(r.date_1)} - ${day(r.date_2)}`, esc(__(r.workflow_state)), money(r.amount)],
 			},
 			ledger: {
 				heads: [[__("Account")], [__("Balance"), 1]],
@@ -182,7 +182,7 @@ frappe.ui.form.on("Employee Financial Summary", {
 					panel(
 						__("Leave and vacation"),
 						(shown(d.leave_balance) ? `<div class="efs-sub">${__("Leave balance")}</div>${paged("leave_balance", d.leave_balance)}` : "") +
-							(shown(d.vacation_records) ? `<div class="efs-sub">${__("Vacation allowances")}</div>${paged("vacation_records", d.vacation_records)}` : "")
+							(shown(d.vacation_records) ? `<div class="efs-sub">${__("Advance Leave Salaries")}</div>${paged("vacation_records", d.vacation_records)}` : "")
 					)
 				);
 			}

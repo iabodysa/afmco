@@ -2,7 +2,7 @@
  "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2024-04-18 21:08:17.548556",
- "default_print_format": "Vacation Allowance Statement",
+ "default_print_format": "Advance Leave Salary Statement",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -142,7 +142,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Vacation Allowance",
+   "options": "Advance Leave Salary",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -178,7 +178,7 @@
   {
    "fieldname": "cva",
    "fieldtype": "Table",
-   "label": "Clearing vacation allowance",
+   "label": "Advance Leave Salary Details",
    "options": "Contract Vacation Allowance"
   },
   {
@@ -248,7 +248,7 @@
   {
    "fieldname": "cva_total",
    "fieldtype": "Currency",
-   "label": "vacation allowance amount"
+   "label": "Advance Leave Salary Amount"
   },
   {
    "fieldname": "column_break_deductions",
@@ -339,7 +339,7 @@
  "is_submittable": 1,
  "modified": "2026-10-04 12:00:00.000000",
  "module": "People and Payroll",
- "name": "Vacation Allowance",
+ "name": "Advance Leave Salary",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [

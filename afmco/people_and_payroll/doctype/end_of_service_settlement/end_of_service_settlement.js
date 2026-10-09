@@ -111,7 +111,7 @@ updateFieldValueAndRefreshForm: function(frm, fieldName, value) {
       }).addClass('btn-danger');
     }
     if (frm.doc.workflow_state === 'Waiting Accountant Approval') {
-      frm.add_custom_button(frappe._('Get Vacation allowance'),
+      frm.add_custom_button(frappe._('Get Advance Leave Salary'),
         () => {
           frm.events.calculateVacationAllowance(frm);
         }).addClass('btn-primary');
@@ -261,7 +261,7 @@ updateFieldValueAndRefreshForm: function(frm, fieldName, value) {
   });
 
 function checkPreviousVacations(frm) {
-  frappe.db.get_list('Vacation Allowance', {
+  frappe.db.get_list('Advance Leave Salary', {
     filters: {
       'employee': frm.doc.employee,
       'name': ['!=', frm.doc.name],
@@ -274,7 +274,7 @@ function checkPreviousVacations(frm) {
       let message = `<h4>${__('Found', null, 'End of Service Settlement')} ${records.length} ${__('previous leave settlements for this employee:', null, 'End of Service Settlement')}</h4><ul>`;
 
       Promise.all(records.map(record => {
-        return frappe.db.get_doc('Vacation Allowance', record.name).then(doc => {
+        return frappe.db.get_doc('Advance Leave Salary', record.name).then(doc => {
           doc.cva.forEach((childRow, index) => {
             let childStartDate = new Date(childRow.contract_start_date).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
             let childEndDate = new Date(childRow.contract_end_date).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });

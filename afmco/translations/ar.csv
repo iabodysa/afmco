@@ -267,7 +267,7 @@ Generated on,أنشئ في
 Generating WPS ZIP,جار إنشاء الملف المضغوط لحماية الأجور
 Generating summary...,جار إعداد الملخص...
 Generation Failed,فشل الإنشاء
-Get Vacation allowance,جلب بدل الإجازة
+Get Advance Leave Salary,جلب راتب الإجازة المقدم
 GitHub Sync ID,معرّف مزامنة GitHub
 Google Console,وحدة تحكم Google
 Gov Card,البطاقة الحكومية
@@ -1066,8 +1066,8 @@ Samsa Tax Invoice,فاتورة ضريبية سمسا
 Payment Request Form,نموذج طلب صرف
 Employee Profile,تعريف الموظف
 Detailed Salary Slip,قسيمة راتب تفصيلية
-Vacation Allowance Statement,بيان بدل الإجازة
-Vacation Allowance Undertaking,تعهد
+Advance Leave Salary Statement,بيان راتب الإجازة المقدم
+Advance Leave Salary Undertaking,تعهد راتب الإجازة المقدم
 Payment Requisition Dashboard,تقارير ذكاء الأعمال لطلبات الصرف
 Pending Bank Payments by Payment Date,المدفوعات البنكية قيد الانتظار حسب تاريخ الدفع
 Last Quarter Paid Payment Requisition Amount by Project,مبالغ طلبات الصرف المدفوعة في الربع الماضي حسب المشروع
@@ -1077,7 +1077,7 @@ Open Payment Requisitions by Status,طلبات الصرف المفتوحة حس�
 Amount Awaiting Bank Entry by Payment Type,المبالغ بانتظار القيد البنكي حسب نوع الدفع
 Monthly Expense Request Count,عدد طلبات المصروف الشهرية
 Monthly Paid Employee Loan Requests Count,عدد طلبات سلف الموظفين المدفوعة شهريًا
-Monthly Paid Vacation Allowance Requests Count,عدد طلبات بدل الإجازة المدفوعة شهريًا
+Monthly Paid Advance Leave Salary Requests Count,عدد طلبات راتب الإجازة المقدم المدفوعة شهريًا
 Monthly Paid Petty Cash Requests Count,عدد طلبات العهدة النقدية المدفوعة شهريًا
 Monthly Paid SADAD Payment Requests Count,عدد طلبات صرف سداد المدفوعة شهريًا
 Monthly Paid Salary Requests Count,عدد طلبات الرواتب المدفوعة شهريًا
@@ -1354,23 +1354,23 @@ The employee is entitled to full end-of-service benefits due to resignation with
 The employee is entitled to two-thirds of the end-of-service benefits due to resignation with service between 5 and 10 years.,يستحق الموظف ثلثي مكافأة نهاية الخدمة بسبب الاستقالة ومدة الخدمة بين 5 و10 سنوات.,End of Service Settlement
 The employee is entitled to one-third of the end-of-service benefits due to resignation with service between 2 and 5 years.,يستحق الموظف ثلث مكافأة نهاية الخدمة بسبب الاستقالة ومدة الخدمة بين سنتين وأقل من 5 سنوات.,End of Service Settlement
 The employee is not entitled to end-of-service benefits due to resignation with less than 2 years of service.,لا يحق للموظف الحصول على مكافأة نهاية الخدمة بسبب الاستقالة ومدة الخدمة أقل من سنتين.,End of Service Settlement
-Found,عثر على,Vacation Allowance
-previous leave settlements for this employee:,تصفية إجازات سابقة لهذا الموظف:,Vacation Allowance
-Settlement No.,رقم التسوية,Vacation Allowance
-to,إلى,Vacation Allowance
-Please note that contract period start dates are repeated. Please review the data and make sure the dates do not overlap so the procedure is correct.,يرجى ملاحظة تكرار تواريخ بداية مدد العقد. يرجى مراجعة البيانات والتأكد من عدم تداخل التواريخ لضمان صحة الإجراء.,Vacation Allowance
-SAR,ر.س,Vacation Allowance
-A new payment request was created,تم إنشاء طلب صرف جديد,Vacation Allowance
-A new repayment request was created,تم إنشاء طلب سداد جديد,Vacation Allowance
-Warning,تحذير,Vacation Allowance
-Total salary ({0}) does not match the base salary in the system ({1}).,إجمالي الراتب ({0}) لا يطابق الراتب الأساسي في النظام ({1}).,Vacation Allowance
-Found {0} previous leave settlements for this employee:,عثر على {0} من تصفيات الإجازات السابقة لهذا الموظف:,Vacation Allowance
-Settlement No. {0}: from {1} to {2},رقم التسوية {0}: من {1} إلى {2},Vacation Allowance
-Previous Leave Update,تحديث الإجازات السابقة,Vacation Allowance
-No previous leaves exist for this employee.,لا توجد إجازات سابقة لهذا الموظف.,Vacation Allowance
-An error occurred while retrieving previous leave data.,حدث خطأ أثناء استرجاع بيانات الإجازات السابقة.,Vacation Allowance
-Error,خطأ,Vacation Allowance
-Unknown,غير معروف,Vacation Allowance
+Found,عثر على,Advance Leave Salary
+previous leave settlements for this employee:,تصفية إجازات سابقة لهذا الموظف:,Advance Leave Salary
+Settlement No.,رقم التسوية,Advance Leave Salary
+to,إلى,Advance Leave Salary
+Please note that contract period start dates are repeated. Please review the data and make sure the dates do not overlap so the procedure is correct.,يرجى ملاحظة تكرار تواريخ بداية مدد العقد. يرجى مراجعة البيانات والتأكد من عدم تداخل التواريخ لضمان صحة الإجراء.,Advance Leave Salary
+SAR,ر.س,Advance Leave Salary
+A new payment request was created,تم إنشاء طلب صرف جديد,Advance Leave Salary
+A new repayment request was created,تم إنشاء طلب سداد جديد,Advance Leave Salary
+Warning,تحذير,Advance Leave Salary
+Total salary ({0}) does not match the base salary in the system ({1}).,إجمالي الراتب ({0}) لا يطابق الراتب الأساسي في النظام ({1}).,Advance Leave Salary
+Found {0} previous leave settlements for this employee:,عثر على {0} من تصفيات الإجازات السابقة لهذا الموظف:,Advance Leave Salary
+Settlement No. {0}: from {1} to {2},رقم التسوية {0}: من {1} إلى {2},Advance Leave Salary
+Previous Leave Update,تحديث الإجازات السابقة,Advance Leave Salary
+No previous leaves exist for this employee.,لا توجد إجازات سابقة لهذا الموظف.,Advance Leave Salary
+An error occurred while retrieving previous leave data.,حدث خطأ أثناء استرجاع بيانات الإجازات السابقة.,Advance Leave Salary
+Error,خطأ,Advance Leave Salary
+Unknown,غير معروف,Advance Leave Salary
 Employee Name,اسم الموظف,Leave Application
 Employee ID,الرقم الوظيفي,Leave Application
 E-Invoicing Integration Requirement Violation,مخالفة متطلبات الربط والتكامل للفوترة الإلكترونية,Sales Invoice
@@ -1419,31 +1419,31 @@ No records found.,لم يعثر على سجلات.,iQama Renewal Payment Managem
 Payment Request Created,تم إنشاء طلب الصرف,Iqama Renewal Tracking
 Error creating Payment Request for:,خطأ في إنشاء طلب الصرف لـ:,Iqama Renewal Tracking
 Employee is not Active.,الموظف ليس على رأس العمل.,Iqama Control
-Undertaking for Advance Payment of Annual Leave Pay,تعهد دفع أجر إجازة سنوية مقدماً,Vacation Allowance Undertaking
-Name:,الاسم:,Vacation Allowance Undertaking
-ID/Iqama Number:,رقم الهوية/الإقامة:,Vacation Allowance Undertaking
-Job Title:,المسمى الوظيفي:,Vacation Allowance Undertaking
-Employee Number:,الرقم الوظيفي:,Vacation Allowance Undertaking
-"I, being of full legal capacity, acknowledge the following:",أقر وأنا بكامل أهليتي النظامية بما يلي:,Vacation Allowance Undertaking
-I acknowledge that I am still in service with,أقر بأنني لا أزال على رأس العمل لدى شركة,Vacation Allowance Undertaking
-Abdullah Fahad Al-Mutairi Support Services Company,عبدالله فهد المطيري للخدمات المساندة,Vacation Allowance Undertaking
-", and that I enjoy all the employment rights set out in the Saudi Labor Law and the approved Work Regulations of the company.",، وأني أتمتع بجميع الحقوق الوظيفية المنصوص عليها في نظام العمل السعودي ولائحة تنظيم العمل المعتمدة بالشركة.,Vacation Allowance Undertaking
-"At my personal request and wish, my annual leave pay for the current year",بناء على طلبي الشخصي ورغبتي، تم دفع أجر إجازتي السنوية عن السنة الحالية,Vacation Allowance Undertaking
-2025 AD,2025م,Vacation Allowance Undertaking
-"has been paid in advance to ease my personal financial circumstances, without affecting my full right to take my statutory annual leave.",مقدماً، وذلك لتخفيف ظروفي المالية الخاصة، دون أن يمس ذلك حقي الكامل في التمتع بإجازتي السنوية النظامية.,Vacation Allowance Undertaking
-"I acknowledge that my annual leave starts on ___ / ___ / 2025 AD for ____________ days, and I commit to actually taking the leave according to the schedule approved by the company management.",أقر بأن تاريخ بداية إجازتي السنوية سيكون اعتباراً من ___ / ___ / 2025م، ولمدة ____________ يوماً، وسألتزم بأخذ الإجازة فعلياً حسب الجدولة المعتمدة من إدارة الشركة.,Vacation Allowance Undertaking
-"I state that the amount paid to me is my annual leave pay in advance, under Article (109) of the Labor Law, and is in no case a compensation in lieu of the leave or a waiver of it.",أوضح أن ما تم دفعه لي هو أجر الإجازة السنوية مقدماً، وفق أحكام المادة (109) من نظام العمل، ولا يعد بأي حال من الأحوال تعويضاً بديلاً عن الإجازة أو تنازلاً عنها.,Vacation Allowance Undertaking
-"I undertake not to work in any form during the leave (full time, part time or additional assignments), and I understand that any work during the leave requires prior written approval of the company management only, without any additional financial obligation unless agreed in writing.",أتعهد بعدم العمل خلال فترة الإجازة بأي شكل كان (دوام كلي أو جزئي أو تكليفات إضافية)، وأفهم أن أي مزاولة لعمل خلال الإجازة تتم بموافقة مسبقة ومكتوبة من إدارة الشركة فقط، وبدون أي التزامات مالية إضافية ما لم يتم الاتفاق عليها خطياً.,Vacation Allowance Undertaking
-"I acknowledge that the advance payment of leave pay gives me no additional right to claim other amounts for the leave, and I undertake not to submit additional financial claims as work allowance or leave compensation as long as I take my leave on its set date.",أقر بأن دفع أجر الإجازة مقدماً لا يترتب عليه أي حق إضافي لي بالمطالبة بمبالغ أخرى نظير الإجازة، كما أتعهد بعدم تقديم مطالبات مالية إضافية تحت مسمى بدل عمل أو تعويض إجازة طالما التزمت بالاستفادة من إجازتي في موعدها المحدد.,Vacation Allowance Undertaking
-"I bear full legal and administrative responsibility for the accuracy of this undertaking, and I agree to its keeping in my employment file at the company for reliance when needed.",أتحمل كامل المسؤولية النظامية والإدارية عن صحة هذا التعهد، وأوافق على حفظه في ملفي الوظيفي لدى الشركة للاعتماد عليه عند الحاجة.,Vacation Allowance Undertaking
-This undertaking was issued on: ___ / ___ / 2025 AD,حرر هذا التعهد بتاريخ: ___ / ___ / 2025م,Vacation Allowance Undertaking
-Full Name:,الاسم الكامل:,Vacation Allowance Undertaking
-Signature:,التوقيع:,Vacation Allowance Undertaking
-Mobile Number:,رقم الجوال:,Vacation Allowance Undertaking
-Procedure Follow-up Record,توثيق متابعة الإجراء,Vacation Allowance Undertaking
-The direct manager has reviewed and approved the leave.,تم الاطلاع والموافقة على الإجازة من قبل المدير المباشر.,Vacation Allowance Undertaking
-The leave has been recorded in the Human Resources records.,تم تسجيل الإجازة ضمن سجلات إدارة الموارد البشرية.,Vacation Allowance Undertaking
-A copy has been sent to Payroll to prepare the payroll based on the advance leave pay.,تم توجيه نسخة لإدارة الرواتب لإعداد مسير الراتب بناء على دفع أجر الإجازة مقدماً.,Vacation Allowance Undertaking
+Undertaking for Advance Payment of Annual Leave Pay,تعهد دفع أجر إجازة سنوية مقدماً,Advance Leave Salary Undertaking
+Name:,الاسم:,Advance Leave Salary Undertaking
+ID/Iqama Number:,رقم الهوية/الإقامة:,Advance Leave Salary Undertaking
+Job Title:,المسمى الوظيفي:,Advance Leave Salary Undertaking
+Employee Number:,الرقم الوظيفي:,Advance Leave Salary Undertaking
+"I, being of full legal capacity, acknowledge the following:",أقر وأنا بكامل أهليتي النظامية بما يلي:,Advance Leave Salary Undertaking
+I acknowledge that I am still in service with,أقر بأنني لا أزال على رأس العمل لدى شركة,Advance Leave Salary Undertaking
+Abdullah Fahad Al-Mutairi Support Services Company,عبدالله فهد المطيري للخدمات المساندة,Advance Leave Salary Undertaking
+", and that I enjoy all the employment rights set out in the Saudi Labor Law and the approved Work Regulations of the company.",، وأني أتمتع بجميع الحقوق الوظيفية المنصوص عليها في نظام العمل السعودي ولائحة تنظيم العمل المعتمدة بالشركة.,Advance Leave Salary Undertaking
+"At my personal request and wish, my annual leave pay for the current year",بناء على طلبي الشخصي ورغبتي، تم دفع أجر إجازتي السنوية عن السنة الحالية,Advance Leave Salary Undertaking
+2025 AD,2025م,Advance Leave Salary Undertaking
+"has been paid in advance to ease my personal financial circumstances, without affecting my full right to take my statutory annual leave.",مقدماً، وذلك لتخفيف ظروفي المالية الخاصة، دون أن يمس ذلك حقي الكامل في التمتع بإجازتي السنوية النظامية.,Advance Leave Salary Undertaking
+"I acknowledge that my annual leave starts on ___ / ___ / 2025 AD for ____________ days, and I commit to actually taking the leave according to the schedule approved by the company management.",أقر بأن تاريخ بداية إجازتي السنوية سيكون اعتباراً من ___ / ___ / 2025م، ولمدة ____________ يوماً، وسألتزم بأخذ الإجازة فعلياً حسب الجدولة المعتمدة من إدارة الشركة.,Advance Leave Salary Undertaking
+"I state that the amount paid to me is my annual leave pay in advance, under Article (109) of the Labor Law, and is in no case a compensation in lieu of the leave or a waiver of it.",أوضح أن ما تم دفعه لي هو أجر الإجازة السنوية مقدماً، وفق أحكام المادة (109) من نظام العمل، ولا يعد بأي حال من الأحوال تعويضاً بديلاً عن الإجازة أو تنازلاً عنها.,Advance Leave Salary Undertaking
+"I undertake not to work in any form during the leave (full time, part time or additional assignments), and I understand that any work during the leave requires prior written approval of the company management only, without any additional financial obligation unless agreed in writing.",أتعهد بعدم العمل خلال فترة الإجازة بأي شكل كان (دوام كلي أو جزئي أو تكليفات إضافية)، وأفهم أن أي مزاولة لعمل خلال الإجازة تتم بموافقة مسبقة ومكتوبة من إدارة الشركة فقط، وبدون أي التزامات مالية إضافية ما لم يتم الاتفاق عليها خطياً.,Advance Leave Salary Undertaking
+"I acknowledge that the advance payment of leave pay gives me no additional right to claim other amounts for the leave, and I undertake not to submit additional financial claims as work allowance or leave compensation as long as I take my leave on its set date.",أقر بأن دفع أجر الإجازة مقدماً لا يترتب عليه أي حق إضافي لي بالمطالبة بمبالغ أخرى نظير الإجازة، كما أتعهد بعدم تقديم مطالبات مالية إضافية تحت مسمى بدل عمل أو تعويض إجازة طالما التزمت بالاستفادة من إجازتي في موعدها المحدد.,Advance Leave Salary Undertaking
+"I bear full legal and administrative responsibility for the accuracy of this undertaking, and I agree to its keeping in my employment file at the company for reliance when needed.",أتحمل كامل المسؤولية النظامية والإدارية عن صحة هذا التعهد، وأوافق على حفظه في ملفي الوظيفي لدى الشركة للاعتماد عليه عند الحاجة.,Advance Leave Salary Undertaking
+This undertaking was issued on: ___ / ___ / 2025 AD,حرر هذا التعهد بتاريخ: ___ / ___ / 2025م,Advance Leave Salary Undertaking
+Full Name:,الاسم الكامل:,Advance Leave Salary Undertaking
+Signature:,التوقيع:,Advance Leave Salary Undertaking
+Mobile Number:,رقم الجوال:,Advance Leave Salary Undertaking
+Procedure Follow-up Record,توثيق متابعة الإجراء,Advance Leave Salary Undertaking
+The direct manager has reviewed and approved the leave.,تم الاطلاع والموافقة على الإجازة من قبل المدير المباشر.,Advance Leave Salary Undertaking
+The leave has been recorded in the Human Resources records.,تم تسجيل الإجازة ضمن سجلات إدارة الموارد البشرية.,Advance Leave Salary Undertaking
+A copy has been sent to Payroll to prepare the payroll based on the advance leave pay.,تم توجيه نسخة لإدارة الرواتب لإعداد مسير الراتب بناء على دفع أجر الإجازة مقدماً.,Advance Leave Salary Undertaking
 Labor Operating Costs Quotation,عرض سعر تكاليف التشغيل العمالية,Labor Operating Costs Quotation
 Messrs.,السادة شركة,Labor Operating Costs Quotation
 Date:,التاريخ:,Labor Operating Costs Quotation
@@ -1480,10 +1480,10 @@ This quotation is valid for 30 days from the issue date. The general contract te
 "Thank you for your interest in our services. If you have any questions or additional needs, please do not hesitate to contact us.",نشكركم على اهتمامكم بخدماتنا. إذا كان لديكم أي استفسارات أو احتياجات إضافية، يرجى عدم التردد في الاتصال بنا.,Labor Operating Costs Quotation
 Name:,الاسم:,Labor Operating Costs Quotation
 Signature:,التوقيع:,Labor Operating Costs Quotation
-End of Service Settlement Notice,إشعار بوجود تصفية نهاية خدمة,Vacation Allowance
-"Dear user,",عزيزي المستخدم،,Vacation Allowance
-Thank you for your understanding. Please verify the data and the work procedures in place before submitting any new request.,نشكرك على تفهمك ونطلب منك التحقق من صحة البيانات وإجراءات العمل المتبعة قبل محاولة تقديم أي طلبات جديدة.,Vacation Allowance
-Important Notice,إشعار مهم,Vacation Allowance
+End of Service Settlement Notice,إشعار بوجود تصفية نهاية خدمة,Advance Leave Salary
+"Dear user,",عزيزي المستخدم،,Advance Leave Salary
+Thank you for your understanding. Please verify the data and the work procedures in place before submitting any new request.,نشكرك على تفهمك ونطلب منك التحقق من صحة البيانات وإجراءات العمل المتبعة قبل محاولة تقديم أي طلبات جديدة.,Advance Leave Salary
+Important Notice,إشعار مهم,Advance Leave Salary
 Attention,تنبيه,End of Service Settlement
 "The duration of the employee's service is less than two years, which may affect certain calculations and entitlements.",مدة خدمة الموظف تقل عن عامين، مما قد يؤثر في بعض الحسابات والاستحقاقات.,End of Service Settlement
 Do you wish to continue?,هل ترغب في المتابعة؟,End of Service Settlement
@@ -1870,7 +1870,9 @@ Export All Requisitions to Excel,تصدير جميع طلبات الصرف إل�
 {0} y,{0} سنة
 EOS,مكافأة نهاية الخدمة
 PR,طلب صرف
-Vacation Allowance,بدل إجازة
+Advance Leave Salary,راتب الإجازة المقدم
+Advance Leave Salary Details,تفاصيل راتب الإجازة المقدم
+Advance Leave Salary Amount,مبلغ راتب الإجازة المقدم
 Employees on leave today,الموظفون في إجازة اليوم
 Accounting Team,فريق المحاسبة
 Monthly Petty Cash Issued Amount,مبالغ العهد النقدية المصروفة شهريًا
@@ -13150,7 +13152,7 @@ Gross,الإجمالي قبل الاستقطاع
 Joined,تاريخ الالتحاق
 Last net pay,صافي آخر راتب
 Last salary slip,آخر قسيمة راتب
-Leave and vacation,الإجازات وبدل الإجازة
+Leave and vacation,الإجازات وراتب الإجازة المقدم
 Leave balance,رصيد الإجازات
 Ledger balances,أرصدة دفتر الأستاذ
 Loans,القروض
@@ -13172,7 +13174,7 @@ Select an employee to see the summary,اختر موظفًا لعرض الملخ�
 Service years,سنوات الخدمة
 Since,منذ
 Unknown section {0},قسم غير معروف {0}
-Vacation allowances,بدلات الإجازة
+Advance Leave Salaries,رواتب الإجازة المقدمة
 Wage basis,أساس الأجر
 records,سجلات
 slips,قسائم

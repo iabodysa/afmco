@@ -12,7 +12,7 @@ AR_CSV = APP / "translations" / "ar.csv"
 
 GROUPS = {
 	"End of Service Settlement": "Dues",
-	"Vacation Allowance": "Dues",
+	"Advance Leave Salary": "Dues",
 	"Employee Visa": "Residency & Family",
 	"Employee Dependent": "Residency & Family",
 	"Employee Insurance": "Residency & Family",

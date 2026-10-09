@@ -23,7 +23,7 @@ async function renderVacationDashboard_old(employee, excludeDocname) {
 
     if (!employee) return;
 
-    const vaList = await fetchVacationAllowanceList(employee, excludeDocname);
+    const vaList = await fetchAdvanceLeaveSalaryList(employee, excludeDocname);
     if (!vaList || vaList.length === 0) return;
 
     const vacationDetails = await fetchVacationDetails(vaList);
@@ -37,11 +37,11 @@ async function renderVacationDashboard_old(employee, excludeDocname) {
     setTimeout(enableVacationSorting, 100);
 }
 
-async function fetchVacationAllowanceList(employee, excludeDocname) {
+async function fetchAdvanceLeaveSalaryList(employee, excludeDocname) {
     const { message } = await frappe.call({
         method: "frappe.client.get_list",
         args: {
-            doctype: "Vacation Allowance",
+            doctype: "Advance Leave Salary",
             filters: [
                 ["employee", "=", employee],
                 ["name", "!=", excludeDocname],
@@ -59,7 +59,7 @@ async function fetchVacationDetails(vaList) {
     return await Promise.allSettled(
         vaList.map(d => frappe.call({
             method: "frappe.client.get",
-            args: { doctype: "Vacation Allowance", name: d.name }
+            args: { doctype: "Advance Leave Salary", name: d.name }
         }))
     );
 }
@@ -219,7 +219,7 @@ function createVacationDashboard_old(rows) {
                                         </div>
                                     </td>
                                     <td style="text-align:right;">
-                                        <button class="vd-open-btn" onclick="frappe.set_route('Form','Vacation Allowance','${docName}')">
+                                        <button class="vd-open-btn" onclick="frappe.set_route('Form','Advance Leave Salary','${docName}')">
                                             <span class="icon">${dashboard_icons.externalLink}</span> Open
                                         </button>
                                     </td>
@@ -342,8 +342,8 @@ function enableVacationSorting_old() {
 /* --- Main Form Event Handler ---    */
 /* ---------------------------------- */
 function fmt(value) {
-    if (!value) return __('SAR', null, 'Vacation Allowance') + ' 0.00';
-    return `${__('SAR', null, 'Vacation Allowance')} ${parseFloat(value).toLocaleString('en-US', {
+    if (!value) return __('SAR', null, 'Advance Leave Salary') + ' 0.00';
+    return `${__('SAR', null, 'Advance Leave Salary')} ${parseFloat(value).toLocaleString('en-US', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
     })}`;
@@ -363,7 +363,7 @@ async function updateDashboards(frm) {
         const { message: vaList } = await frappe.call({
             method: "frappe.client.get_list",
             args: {
-                doctype: "Vacation Allowance",
+                doctype: "Advance Leave Salary",
                 filters: [
                     ["employee", "=", frm.doc.employee],
                     ["name", "!=", frm.doc.name],
@@ -379,7 +379,7 @@ async function updateDashboards(frm) {
             const settled = await Promise.allSettled(
                 vaList.map(d => frappe.call({
                     method: "frappe.client.get",
-                    args: { doctype: "Vacation Allowance", name: d.name }
+                    args: { doctype: "Advance Leave Salary", name: d.name }
                 }))
             );
             
@@ -468,7 +468,7 @@ async function updateDashboards(frm) {
                                                     <td>${row.start}</td>
                                                     <td>${row.end}</td>
                                                     <td class="text-right">
-                                                        <a class="btn-link" onclick="frappe.set_route('Form','Vacation Allowance','${docName}')">
+                                                        <a class="btn-link" onclick="frappe.set_route('Form','Advance Leave Salary','${docName}')">
                                                             Open →
                                                         </a>
                                                     </td>
@@ -729,7 +729,7 @@ async function updateDashboards(frm) {
         frm.dashboard.show();
     }
 }
-frappe.ui.form.on('Vacation Allowance', {
+frappe.ui.form.on('Advance Leave Salary', {
 
   updateFieldValueAndRefreshForm: function(frm, fieldName, value) {
     let currentValue = frm.doc[fieldName];
@@ -769,12 +769,12 @@ frappe.ui.form.on('Vacation Allowance', {
 
       frappe.msgprint(`
         <div style="font-family: Arial, sans-serif; font-size: 14px;">
-          <h4>${__("End of Service Settlement Notice", null, "Vacation Allowance")}</h4>
-          <p>${__("Dear user,", null, "Vacation Allowance")}</p>
-          <p>${__("All dues of this employee have already been settled, and our records hold a completed End of Service Settlement. Therefore, <strong>a vacation allowance payment cannot be made</strong> for this employee at this time.", null, "Vacation Allowance")}</p>
-          <p>${__("Thank you for your understanding. Please verify the data and the work procedures in place before submitting any new request.", null, "Vacation Allowance")}</p>
+          <h4>${__("End of Service Settlement Notice", null, "Advance Leave Salary")}</h4>
+          <p>${__("Dear user,", null, "Advance Leave Salary")}</p>
+          <p>${__("All dues of this employee have already been settled, and our records hold a completed End of Service Settlement. Therefore, <strong>an advance leave salary payment cannot be made</strong> for this employee at this time.", null, "Advance Leave Salary")}</p>
+          <p>${__("Thank you for your understanding. Please verify the data and the work procedures in place before submitting any new request.", null, "Advance Leave Salary")}</p>
         </div>
-      `, __("Important Notice", null, "Vacation Allowance"));
+      `, __("Important Notice", null, "Advance Leave Salary"));
       frappe.validated = false; 
     }
   });
@@ -813,7 +813,7 @@ frappe.ui.form.on('Vacation Allowance', {
         expenseRequest.naming_series = 'PR-.YYYY.-';
         expenseRequest.date = frappe.datetime.nowdate();
         expenseRequest.bank_payment_date = frappe.datetime.nowdate();
-        expenseRequest.payment_type = 'Vacation Allowance';
+        expenseRequest.payment_type = 'Advance Leave Salary';
         expenseRequest.mode_of_payment = 'Bank Transfer';
         expenseRequest.payment_approver ='Human Resources - الموارد البشرية';
         expenseRequest.remark = `
@@ -834,12 +834,12 @@ frappe.ui.form.on('Vacation Allowance', {
             `;
 
         frappe.set_route('Form', expenseRequest.doctype, expenseRequest.name);
-        frappe.msgprint(__('A new payment request was created', null, 'Vacation Allowance'));
+        frappe.msgprint(__('A new payment request was created', null, 'Advance Leave Salary'));
       }).addClass('btn-danger');
     }
     if (frm.doc.workflow_state === 'Waiting Accountant Approval') {
-            frm.add_custom_button(__('Get Vacation allowance'), () => {
-                frm.events.calculateVacationAllowance(frm);
+            frm.add_custom_button(__('Get Advance Leave Salary'), () => {
+                frm.events.calculateAdvanceLeaveSalary(frm);
             }).addClass('btn-primary');
 
             frm.add_custom_button(__('Open General Ledger'), function() {
@@ -879,7 +879,7 @@ frappe.ui.form.on('Vacation Allowance', {
 - From Date: ${frm.doc.start}
 - Days: ${frm.doc.days1}`;
         frappe.set_route('Form', expenseRequest.doctype, expenseRequest.name);
-        frappe.msgprint(__('A new repayment request was created', null, 'Vacation Allowance'));
+        frappe.msgprint(__('A new repayment request was created', null, 'Advance Leave Salary'));
     },
   before_save: async function(frm) {
     if (!frm.doc.ticket_allowance) {
@@ -921,15 +921,15 @@ frappe.ui.form.on('Vacation Allowance', {
 
       if (frm.doc.total_salary != base_salary) {
         frappe.msgprint({
-          title: __('Warning', null, 'Vacation Allowance'),
-          message: __('Total salary ({0}) does not match the base salary in the system ({1}).', [frm.doc.total_salary, base_salary], 'Vacation Allowance'),
+          title: __('Warning', null, 'Advance Leave Salary'),
+          message: __('Total salary ({0}) does not match the base salary in the system ({1}).', [frm.doc.total_salary, base_salary], 'Advance Leave Salary'),
           indicator: "orange"
         });
       }
     }
   },
   
-  calculateVacationAllowance:  function(frm) {
+  calculateAdvanceLeaveSalary:  function(frm) {
     let Las_Day = new Date(frm.doc.date_2);
     let contractStartDate = new Date(frm.doc.date_1);
     const contractEndDate = new Date(contractStartDate);
@@ -994,11 +994,11 @@ frappe.ui.form.on('Vacation Allowance', {
   calculateServiceDuration: function(frm) {
     const dailySalary = frm.doc.total_salary / 30;
     frm.events.updateFieldValueAndRefreshForm(frm, 'salary_per_day', dailySalary);
-    let totalVacationAllowance = 0;
+    let totalAdvanceLeaveSalary = 0;
     $.each(frm.doc.cva || [], (i, d) => {
       if (d.status && d.status === 'Paid') {
       } else {
-        totalVacationAllowance += d.amount3;
+        totalAdvanceLeaveSalary += d.amount3;
       }
     });
     
@@ -1017,10 +1017,10 @@ frappe.ui.form.on('Vacation Allowance', {
         
     }
     let totalTickets = frm.doc.number_of_tickets * ticketAllowance;
-    const totalAmount = totalVacationAllowance + alternative_reward + totalTickets - totalDeductions;
+    const totalAmount = totalAdvanceLeaveSalary + alternative_reward + totalTickets - totalDeductions;
     frm.events.updateFieldValueAndRefreshForm(frm, 'dos_years', yearsOfService);
     frm.events.updateFieldValueAndRefreshForm(frm, 'duration_of_service', diffInDates);
-    frm.events.updateFieldValueAndRefreshForm(frm, 'cva_total', totalVacationAllowance);
+    frm.events.updateFieldValueAndRefreshForm(frm, 'cva_total', totalAdvanceLeaveSalary);
     frm.events.updateFieldValueAndRefreshForm(frm, 'deductions', totalDeductions);
     frm.events.updateFieldValueAndRefreshForm(frm, 'amount', totalAmount);
     frm.refresh_field();
@@ -1028,7 +1028,7 @@ frappe.ui.form.on('Vacation Allowance', {
   },
 });
 function checkPreviousVacations(frm) {
-  frappe.db.get_list('Vacation Allowance', {
+  frappe.db.get_list('Advance Leave Salary', {
     filters: {
       'employee': frm.doc.employee,
       'name': ['!=', frm.doc.name],
@@ -1038,15 +1038,15 @@ function checkPreviousVacations(frm) {
     fields: ['name']
   }).then(records => {
     if (records.length > 0) {
-      let message = `<h4>${__('Found', null, 'Vacation Allowance')} ${records.length} ${__('previous leave settlements for this employee:', null, 'Vacation Allowance')}</h4><ul>`;
+      let message = `<h4>${__('Found', null, 'Advance Leave Salary')} ${records.length} ${__('previous leave settlements for this employee:', null, 'Advance Leave Salary')}</h4><ul>`;
 
       Promise.all(records.map(record => {
-        return frappe.db.get_doc('Vacation Allowance', record.name).then(doc => {
+        return frappe.db.get_doc('Advance Leave Salary', record.name).then(doc => {
           doc.cva.forEach((childRow, index) => {
             let childStartDate = new Date(childRow.contract_start_date).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
             let childEndDate = new Date(childRow.contract_end_date).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
 
-            message += `<li>${index + 1}. ${__('Settlement No.', null, 'Vacation Allowance')} ${record.name}: ${childStartDate} ${__('to', null, 'Vacation Allowance')} ${childEndDate}</li>`;
+            message += `<li>${index + 1}. ${__('Settlement No.', null, 'Advance Leave Salary')} ${record.name}: ${childStartDate} ${__('to', null, 'Advance Leave Salary')} ${childEndDate}</li>`;
             
             frm.doc.cva.forEach(newRow => {
               let newStartDate = new Date(newRow.contract_start_date);
@@ -1095,7 +1095,7 @@ function updateVacationStatus(frm) {
   });
 }
 function checkPreviousVacations_old(frm) {
-  frappe.db.get_list('Vacation Allowance', {
+  frappe.db.get_list('Advance Leave Salary', {
     filters: {
       'employee': frm.doc.employee,
       'name': ['!=', frm.doc.name],
@@ -1104,24 +1104,24 @@ function checkPreviousVacations_old(frm) {
     fields: ['name', 'date_1', 'date_2']
   }).then(records => {
     if (records.length > 0) {
-      let message = `<h4>${__('Found {0} previous leave settlements for this employee:', [records.length], 'Vacation Allowance')}</h4><ul>`;
+      let message = `<h4>${__('Found {0} previous leave settlements for this employee:', [records.length], 'Advance Leave Salary')}</h4><ul>`;
       records.forEach(record => {
         let startDate = formatDate(record.date_1);
         let endDate = formatDate(record.date_2);
-        message += `<li>${__('Settlement No. {0}: from {1} to {2}', [record.name, startDate, endDate], 'Vacation Allowance')}</li>`;
+        message += `<li>${__('Settlement No. {0}: from {1} to {2}', [record.name, startDate, endDate], 'Advance Leave Salary')}</li>`;
       });
       message += "</ul>";
-      frappe.msgprint(message, __('Previous Leave Update', null, 'Vacation Allowance'));
+      frappe.msgprint(message, __('Previous Leave Update', null, 'Advance Leave Salary'));
     } else {
-      frappe.msgprint(__('No previous leaves exist for this employee.', null, 'Vacation Allowance'), __('Previous Leave Update', null, 'Vacation Allowance'));
+      frappe.msgprint(__('No previous leaves exist for this employee.', null, 'Advance Leave Salary'), __('Previous Leave Update', null, 'Advance Leave Salary'));
     }
   }).catch(err => {
     console.error("Error fetching previous vacations", err);
-    frappe.msgprint(__('An error occurred while retrieving previous leave data.', null, 'Vacation Allowance'), __('Error', null, 'Vacation Allowance'));
+    frappe.msgprint(__('An error occurred while retrieving previous leave data.', null, 'Advance Leave Salary'), __('Error', null, 'Advance Leave Salary'));
   });
 }
 function formatDate(dateString) {
-  if (!dateString) return __('Unknown', null, 'Vacation Allowance');
+  if (!dateString) return __('Unknown', null, 'Advance Leave Salary');
   let date = new Date(dateString);
   return date.toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
 }
@@ -1138,7 +1138,7 @@ function checkDuplicateContractStartDate(frm) {
     });
 
     if (duplicates_found) {
-        frappe.msgprint(__('Please note that contract period start dates are repeated. Please review the data and make sure the dates do not overlap so the procedure is correct.', null, 'Vacation Allowance'))
+        frappe.msgprint(__('Please note that contract period start dates are repeated. Please review the data and make sure the dates do not overlap so the procedure is correct.', null, 'Advance Leave Salary'))
         frappe.validated = false;
     }
 }

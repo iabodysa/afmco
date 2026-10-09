@@ -308,7 +308,7 @@ def eos_records_section(source, offset):
 
 def vacation_records_section(source, offset):
 	rows = frappe.get_list(
-		"Vacation Allowance",
+		"Advance Leave Salary",
 		filters={"employee": source.name, "docstatus": ["<", 2]},
 		fields=VACATION_FIELDS,
 		order_by="creation desc",
@@ -422,7 +422,7 @@ SECTIONS = {
 		True,
 	),
 	"vacation_records": (
-		[("Vacation Allowance", VACATION_FIELDS)],
+		[("Advance Leave Salary", VACATION_FIELDS)],
 		vacation_records_section,
 		True,
 	),

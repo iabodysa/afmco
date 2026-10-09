@@ -259,7 +259,7 @@
    "fieldname": "payment_type",
    "fieldtype": "Select",
    "label": "Payment Type",
-   "options": "--- Choose from List ---\n-- Choose Bills --\nPurchases\nPassport Fee Payment\nWork Permit Fee Payment\nMedical Insurance Bill Payment\n-- Choose Employee Benefits --\nPayroll (Salary)\nPetty Cash\nEmployee Loan\nEOS\nVacation Allowance\n-- Others --\nOther Payment\nDue Amount\nExpenses\nSADAD Payment"
+   "options": "--- Choose from List ---\n-- Choose Bills --\nPurchases\nPassport Fee Payment\nWork Permit Fee Payment\nMedical Insurance Bill Payment\n-- Choose Employee Benefits --\nPayroll (Salary)\nPetty Cash\nEmployee Loan\nEOS\nAdvance Leave Salary\n-- Others --\nOther Payment\nDue Amount\nExpenses\nSADAD Payment"
   },
   {
    "fieldname": "column_break_bank_account",
