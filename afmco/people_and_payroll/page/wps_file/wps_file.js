@@ -280,7 +280,10 @@ class WpsFile {
 			lines.push(
 				`Hold Information: ${hold.employees_count} employees (${sar.format(
 					hold.total_net_pay
-				)}) are on hold and are not included in the totals above.`,
+				)}) are on hold. Their salary slips are included in the attached file and excluded from the Grand Total above.`,
+				`Attached File Total | ${employees_count + hold.employees_count} | ${sar.format(
+					total_net_pay + hold.total_net_pay
+				)}`,
 				""
 			);
 		}
