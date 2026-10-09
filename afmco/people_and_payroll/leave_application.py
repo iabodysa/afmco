@@ -25,6 +25,7 @@ class AfmcoLeaveApplication:
 	def rejoin_after_leave(self, date_of_rejoining):
 		if not REJOIN_ROLES & set(frappe.get_roles()) or self.docstatus != 1 or self.status != "Approved":
 			frappe.throw(_("Not permitted"), frappe.PermissionError)
+		date_of_rejoining = self.date_of_rejoing or date_of_rejoining
 		employee = frappe.get_doc("Employee", self.employee)
 		if employee.status != "On Leave":
 			frappe.throw(

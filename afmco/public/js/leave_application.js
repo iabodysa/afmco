@@ -4,6 +4,10 @@ frappe.ui.form.on('Leave Application', {
             if (frappe.user.has_role(['HR User', 'HR Manager'])) {
                 const button_label = __('Rejoin After Leave', null, 'Leave Application');
                 frm.add_custom_button(button_label, function () {
+                    if (frm.doc.date_of_rejoing) {
+                        frm.call('rejoin_after_leave', { date_of_rejoining: frm.doc.date_of_rejoing });
+                        return;
+                    }
                     frappe.prompt([
                         {
                             label: __('Date of Rejoining', null, 'Leave Application'),
