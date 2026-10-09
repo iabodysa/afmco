@@ -129,7 +129,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-10-09 20:00:00.000000",
+ "modified": "2026-10-10 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Financial Operations",
  "name": "SADAD Batch",
@@ -174,6 +174,19 @@
    "role": "Support Team",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 0,
+   "read": 0,
+   "report": 0,
+   "role": "Desk User",
+   "select": 1,
+   "share": 0,
+   "write": 0
   }
  ],
  "row_format": "Dynamic",
