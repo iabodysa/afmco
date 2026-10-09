@@ -13287,15 +13287,15 @@ Bank Approval User,مستخدم موافقات البنك
 Bank User,مستخدم البنك
 Employee Self Service,الخدمة الذاتية للموظف
 Fleet User,مستخدم الأسطول
-Gameplan Admin,مسؤول خطة العمل
-Gameplan Guest,ضيف خطة العمل
-Gameplan Member,عضو خطة العمل
+Gameplan Admin,مسؤول Gameplan
+Gameplan Guest,ضيف Gameplan
+Gameplan Member,عضو Gameplan
 General Manager,المدير العام
-Helpdesk Contact,جهة اتصال الدعم الفني
+Helpdesk Contact,عميل الدعم الفني
 Internal Auditor,المدقق الداخلي
 IT,تقنية المعلومات
 Journal Entry Approver,مسؤول الموافقة على قيود اليومية
-Loan Appraiser,مُقيّم القروض
+Loan Appraiser,مقيّم القروض
 Loan LOS User,مستخدم نظام القروض
 Loan Officer,موظف القروض
 Loan Processor,معالج القروض
