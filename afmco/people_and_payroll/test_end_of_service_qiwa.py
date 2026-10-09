@@ -7,6 +7,11 @@ import frappe
 from frappe.utils import date_diff
 
 from afmco.people_and_payroll import vacation_allowance as va
+from afmco.people_and_payroll.api.employee_financial_summary import (
+    EOS_REASON,
+    eos_section,
+)
+from afmco.people_and_payroll.api.vacation_allowance import end_of_service_years
 
 EXPIRATION = "1-End of term or mutual agreement"
 RESIGNATION = "8-Resignation"
@@ -86,3 +91,41 @@ class TestQiwaUnobservedCases(TestCase):
         for case, start, end, reason, reward in UNOBSERVED_CASES:
             with self.subTest(case):
                 self.assertEqual(settle(start, end, reason).total_eos, reward)
+
+
+def summary_estimate(start, end):
+    source = frappe._dict(basic_wage=WAGE, date_of_joining=start, relieving_date=end)
+    return eos_section(source, 0)["estimate"]
+
+
+class TestFinancialSummaryMatchesSettlement(TestCase):
+    def test_summary_estimate_equals_settlement_award_for_every_observed_case(self):
+        for case, start, end, _reason, _span, _reward in QIWA_CASES:
+            with self.subTest(case):
+                doc = settle(start, end, EOS_REASON)
+                estimate = summary_estimate(start, end)
+                self.assertEqual(estimate["amount"], doc.total_eos)
+                self.assertEqual(estimate["eos_days"], round(doc.days_of_eos, 2))
+                self.assertEqual(estimate["per_day"], doc.salary_per_day)
+
+    def test_summary_estimate_equals_qiwa_reward_for_contract_end_cases(self):
+        for case, start, end, reason, _span, reward in QIWA_CASES:
+            if reason != EXPIRATION:
+                continue
+            with self.subTest(case):
+                self.assertEqual(summary_estimate(start, end)["amount"], reward)
+
+    def test_summary_years_is_calendar_service_years(self):
+        for case, start, end, _reason, span, _reward in QIWA_CASES:
+            with self.subTest(case):
+                self.assertEqual(
+                    summary_estimate(start, end)["years"],
+                    round(va.service_years(*span), 2),
+                )
+
+    def test_form_service_years_endpoint_counts_calendar_span(self):
+        for case, start, end, _reason, span, _reward in QIWA_CASES:
+            with self.subTest(case):
+                self.assertEqual(end_of_service_years(start, end), va.service_years(*span))
+        self.assertEqual(end_of_service_years("2018-01-01", "2019-12-31"), 2.0)
+        self.assertEqual(end_of_service_years("2015-04-10", "2020-04-09"), 5.0)

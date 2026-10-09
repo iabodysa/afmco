@@ -4,7 +4,12 @@
 import frappe
 from frappe import _
 
-from afmco.people_and_payroll.vacation_allowance import RECOMPUTE, fill_periods
+from afmco.people_and_payroll.vacation_allowance import (
+    RECOMPUTE,
+    fill_periods,
+    service_span,
+    service_years,
+)
 
 
 @frappe.whitelist(methods=["POST"])
@@ -15,3 +20,8 @@ def fill_leave_allowance(doctype: str, name: str) -> None:
     doc.check_permission("write")
     fill_periods(doc)
     doc.save()
+
+
+@frappe.whitelist(methods=["GET"])
+def end_of_service_years(start: str, end: str) -> float:
+    return service_years(*service_span(start, end))

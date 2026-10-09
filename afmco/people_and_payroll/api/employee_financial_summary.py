@@ -6,6 +6,8 @@ from frappe import _
 from frappe.query_builder.functions import Replace, Upper
 from frappe.utils import cint, date_diff, flt, getdate
 
+from afmco.people_and_payroll.vacation_allowance import daily_wage, service_years, settlement_award
+
 PAGE_SIZE = 5
 EOS_REASON = "1-End of term or mutual agreement"
 EMPLOYEE_FIELDS = [
@@ -275,20 +277,16 @@ def eos_section(source, offset):
 	if not source.date_of_joining or not wage:
 		return {"estimate": None}
 	as_of = getdate(source.relieving_date) if source.relieving_date else getdate()
-	service_days = date_diff(as_of, source.date_of_joining)
-	if service_days <= 1826:
-		eos_days = (service_days / 365) * 15
-	else:
-		eos_days = int(75 + ((service_days - 1825) * (30 / 365)) + 0.5)
-	per_day = round(wage / 30, 2)
+	per_day = daily_wage(wage)
+	span, eos_days, amount = settlement_award(EOS_REASON, source.date_of_joining, as_of, per_day)
 	return {
 		"estimate": {
-			"years": round(service_days / 365, 2),
-			"service_days": service_days,
+			"years": round(service_years(*span), 2),
+			"service_days": date_diff(as_of, source.date_of_joining),
 			"eos_days": round(eos_days, 2),
 			"wage": wage,
 			"per_day": per_day,
-			"amount": round(eos_days * per_day),
+			"amount": amount,
 			"as_of": as_of,
 			"reason": EOS_REASON,
 		}

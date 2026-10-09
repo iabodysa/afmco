@@ -26,7 +26,7 @@ frappe.ui.form.on('End of Service Settlement', {
         frappe.msgprint(__('Please fill the field: {0}', [frappe.meta.get_label(frm.doc.doctype, field, frm.doc.name)]));
       }
     });
-    check_service_period(frm);
+    return check_service_period(frm);
   },
     refresh: function(frm) {
         add_qiwa_calculator_button(frm);
@@ -110,13 +110,20 @@ frappe.ui.form.on('End of Service Settlement', {
   },
   });
 
-function check_service_period(frm) {
-  if (frm.user_confirmed) {
+function end_of_service_years(frm) {
+  return frappe.xcall(
+    'afmco.people_and_payroll.api.vacation_allowance.end_of_service_years',
+    { start: frm.doc.date_1, end: frm.doc.date_2 },
+    'GET'
+  );
+}
+
+async function check_service_period(frm) {
+  if (frm.user_confirmed || !frm.doc.date_1 || !frm.doc.date_2) {
     return;
   }
 
-  let diff = frappe.datetime.get_diff(frm.doc.date_2, frm.doc.date_1);
-  let years = diff / 365;
+  const years = await end_of_service_years(frm);
 
   if (years < 2) {
     frappe.validated = false;
@@ -236,8 +243,7 @@ function add_qiwa_calculator_button(frm) {
     const reasonCode = get_qiwa_reason_code(frm.doc.end_of_service_reason);
     let contractType = frm.doc.contract_type || 1;
 
-    const diffInDates = frappe.datetime.get_diff(frm.doc.date_2, frm.doc.date_1);
-    if (contractType == 1 && diffInDates / 365 > 5) {
+    if (contractType == 1 && (await end_of_service_years(frm)) > 5) {
       contractType = 2;
     }
 

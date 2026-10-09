@@ -50,19 +50,20 @@ class TestEmployeeFinancialSummary(IntegrationTestCase):
 	def tearDown(self):
 		frappe.set_user("Administrator")
 
-	def test_eos_estimate_over_five_years_matches_eos_form_formula(self):
+	def test_eos_estimate_over_five_years_counts_calendar_span_like_settlement(self):
 		self.assertEqual(frappe.utils.date_diff("2026-01-01", "2013-01-01"), 4748)
 		result = estimate(self.employee)
-		self.assertEqual(result["eos_days"], 315)
+		self.assertEqual(result["years"], 13.0)
+		self.assertEqual(result["eos_days"], 315.08)
 		self.assertEqual(result["per_day"], 100)
-		self.assertEqual(result["amount"], 31500)
+		self.assertEqual(result["amount"], 31508.33)
 
-	def test_eos_estimate_up_to_five_years_matches_eos_form_formula(self):
+	def test_eos_estimate_up_to_five_years_counts_calendar_span_like_settlement(self):
 		frappe.db.set_value("Employee", self.employee, "date_of_joining", "2023-01-01")
 		result = estimate(self.employee)
 		self.assertEqual(result["service_days"], 1096)
 		self.assertEqual(result["eos_days"], 45.04)
-		self.assertEqual(result["amount"], 4504)
+		self.assertEqual(result["amount"], 4504.17)
 
 	def test_section_without_doctype_read_is_hidden_and_shown_with_it(self):
 		make_user(HR_VIEWER, "HR User")
@@ -79,7 +80,7 @@ class TestEmployeeFinancialSummary(IntegrationTestCase):
 		frappe.set_user(HR_VIEWER)
 		self.assertEqual(
 			get_employee_financial_summary(self.employee)["eos"]["estimate"]["amount"],
-			31500,
+			31508.33,
 		)
 
 	def test_user_without_summary_read_is_refused(self):

@@ -72,6 +72,16 @@ def service_years(years, months, days):
     return years + months / 12 + days / 360
 
 
+def daily_wage(wage):
+    return money(flt(wage) / 30)
+
+
+def settlement_award(reason, start, end, per_day, stored=None):
+    span = service_span(start, end)
+    eos_days = settlement_days(reason, service_years(*span), stored)
+    return span, eos_days, money(flt(eos_days) * flt(per_day))
+
+
 def settlement_days(reason, service, stored):
     if reason in NO_EOS_REASONS:
         return 0
@@ -90,13 +100,16 @@ def settlement_days(reason, service, stored):
 
 
 def recompute_settlement(doc):
-    doc.salary_per_day = money(flt(doc.total_salary) / 30)
+    doc.salary_per_day = daily_wage(doc.total_salary)
     if not (doc.date_1 and doc.date_2):
         return
     days = date_diff(doc.date_2, doc.date_1)
-    span = service_span(doc.date_1, doc.date_2)
-    eos_days = settlement_days(
-        doc.end_of_service_reason, service_years(*span), doc.days_of_eos
+    span, eos_days, total_eos = settlement_award(
+        doc.end_of_service_reason,
+        doc.date_1,
+        doc.date_2,
+        doc.salary_per_day,
+        doc.days_of_eos,
     )
     deducted = total_deductions(doc)
     doc.years, doc.months, doc.days = (fixed(part) for part in span)
@@ -105,7 +118,6 @@ def recompute_settlement(doc):
         if doc.term == "Transfer of sponsorship" and doc.check1 == 0
         else flt(doc.ticket_allowance)
     )
-    total_eos = money(flt(eos_days) * flt(doc.salary_per_day))
     allowance = js_round(unpaid_allowance(doc))
     doc.total_eos = total_eos
     doc.dos_years = fixed(days / 365)
@@ -127,7 +139,7 @@ def recompute_settlement(doc):
 
 
 def recompute_advance(doc):
-    doc.salary_per_day = money(flt(doc.total_salary) / 30)
+    doc.salary_per_day = daily_wage(doc.total_salary)
     if not (doc.date_1 and doc.date_2):
         return
     days = date_diff(doc.date_2, doc.date_1)
