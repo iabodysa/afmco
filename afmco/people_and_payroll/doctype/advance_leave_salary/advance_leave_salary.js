@@ -1049,15 +1049,9 @@ function checkPreviousVacations(frm) {
             message += `<li>${index + 1}. ${__('Settlement No.', null, 'Advance Leave Salary')} ${record.name}: ${childStartDate} ${__('to', null, 'Advance Leave Salary')} ${childEndDate}</li>`;
             
             frm.doc.cva.forEach(newRow => {
-              let newStartDate = new Date(newRow.contract_start_date);
-              let newEndDate = new Date(newRow.contract_end_date);
-              let childStartDate = new Date(childRow.contract_start_date);
-              let childEndDate = new Date(childRow.contract_end_date);
-
               if (
-                  (newStartDate >= childStartDate && newStartDate <= childEndDate) ||
-                  (newEndDate >= childStartDate && newEndDate <= childEndDate) ||
-                  (newStartDate <= childStartDate && newEndDate >= childEndDate)
+                  frappe.datetime.get_diff(childRow.contract_end_date, newRow.contract_start_date) > 0 &&
+                  frappe.datetime.get_diff(newRow.contract_end_date, childRow.contract_start_date) > 0
                   ) {
                 newRow.status = 'Paid';
               }
