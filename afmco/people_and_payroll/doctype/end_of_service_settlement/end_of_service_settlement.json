@@ -487,7 +487,7 @@
    "link_fieldname": "tax_invoice_number"
   }
  ],
- "modified": "2026-10-09 12:00:00.000000",
+ "modified": "2026-10-09 21:00:00.000000",
  "module": "People and Payroll",
  "name": "End of Service Settlement",
  "naming_rule": "By \"Naming Series\" field",
@@ -511,9 +511,10 @@
   {
    "create": 1,
    "email": 1,
+   "if_owner": 1,
    "print": 1,
    "read": 1,
-   "role": "Request User",
+   "role": "Desk User",
    "set_user_permissions": "0",
    "share": 1,
    "write": 1
