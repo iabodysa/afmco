@@ -8,7 +8,7 @@
  "function": "Count",
  "is_standard": 1,
  "label": "Monthly Paid Advance Leave Salary Requests Count",
- "modified": "2026-10-02 12:00:00.000000",
+ "modified": "2026-10-10 20:00:00.000000",
  "module": "Financial Operations",
  "name": "Monthly Paid Advance Leave Salary Requests Count",
  "report_function": "Sum",
