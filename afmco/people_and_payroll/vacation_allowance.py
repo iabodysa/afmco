@@ -5,6 +5,7 @@ import math
 from datetime import date, timedelta
 
 import frappe
+from dateutil.relativedelta import relativedelta
 from frappe import _
 from frappe.utils import (
     add_months,
@@ -62,23 +63,29 @@ def total_deductions(doc):
     return sum(flt(row.amount2) for row in doc.get("table_14") or [] if row.amount2)
 
 
-def settlement_days(reason, days, years, stored):
+def service_span(start, end):
+    span = relativedelta(getdate(end) + timedelta(days=1), getdate(start))
+    return span.years, span.months, span.days
+
+
+def service_years(years, months, days):
+    return years + months / 12 + days / 360
+
+
+def settlement_days(reason, service, stored):
     if reason in NO_EOS_REASONS:
         return 0
+    full = service * 15 if service <= 5 else 75 + (service - 5) * 30
     if reason in FULL_EOS_REASONS:
-        return (
-            days / 365 * 15
-            if days <= 1826
-            else js_round(75 + (days - 1825) * (30 / 365))
-        )
+        return full
     if reason in RESIGNATION_REASONS:
-        if years < 2:
+        if service < 2:
             return 0
-        if years < 5:
-            return days / 365 * 15 * 0.3334
-        if years < 10:
-            return (75 + (days - 1825) / 365 * 30) * (2 / 3)
-        return 75 + (days - 1825) / 365 * 30
+        if service < 5:
+            return full * 0.3334
+        if service < 10:
+            return full * 2 / 3
+        return full
     return stored
 
 
@@ -87,12 +94,12 @@ def recompute_settlement(doc):
     if not (doc.date_1 and doc.date_2):
         return
     days = date_diff(doc.date_2, doc.date_1)
-    years = days / 365
-    eos_days = settlement_days(doc.end_of_service_reason, days, years, doc.days_of_eos)
+    span = service_span(doc.date_1, doc.date_2)
+    eos_days = settlement_days(
+        doc.end_of_service_reason, service_years(*span), doc.days_of_eos
+    )
     deducted = total_deductions(doc)
-    doc.years = fixed(math.floor(days / 365))
-    doc.months = fixed(math.floor(math.fmod(days, 365) / 30))
-    doc.days = fixed(math.fmod(math.fmod(days, 365), 30))
+    doc.years, doc.months, doc.days = (fixed(part) for part in span)
     ticket = (
         0
         if doc.term == "Transfer of sponsorship" and doc.check1 == 0
@@ -101,7 +108,7 @@ def recompute_settlement(doc):
     total_eos = money(flt(eos_days) * flt(doc.salary_per_day))
     allowance = js_round(unpaid_allowance(doc))
     doc.total_eos = total_eos
-    doc.dos_years = fixed(years)
+    doc.dos_years = fixed(days / 365)
     doc.duration_of_service = fixed(days)
     if eos_days is not None:
         doc.days_of_eos = money(eos_days)
