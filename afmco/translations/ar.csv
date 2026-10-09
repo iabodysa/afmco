@@ -13286,16 +13286,23 @@ Amazon,أمازون
 Bank Approval User,مستخدم موافقات البنك
 Bank User,مستخدم البنك
 Employee Self Service,الخدمة الذاتية للموظف
+Fleet User,مستخدم الأسطول
+Gameplan Admin,مسؤول خطة العمل
+Gameplan Guest,ضيف خطة العمل
+Gameplan Member,عضو خطة العمل
 General Manager,المدير العام
+Helpdesk Contact,جهة اتصال الدعم الفني
 Internal Auditor,المدقق الداخلي
 IT,تقنية المعلومات
 Journal Entry Approver,مسؤول الموافقة على قيود اليومية
+Loan Appraiser,مُقيّم القروض
 Loan LOS User,مستخدم نظام القروض
 Loan Officer,موظف القروض
 Loan Processor,معالج القروض
 Loan Reporter,معد تقارير القروض
 Loan Underwriter,محلل اعتماد القروض
 Sales Cordinator,منسق المبيعات
+Vehicle User,مستخدم المركبات
 Copy Email Body,نسخ نص البريد الإلكتروني,WPS File
 Issue the WPS file first,أصدر ملف حماية الأجور أولاً,WPS File
 Email body copied to clipboard,تم نسخ نص البريد الإلكتروني إلى الحافظة,WPS File
