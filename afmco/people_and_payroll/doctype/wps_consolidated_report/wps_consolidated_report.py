@@ -128,7 +128,6 @@ class WPSConsolidatedReport(Document):
             # Bundle ZIP or save single file directly
             result = self._bundle_files(files, self.cmd_script)
             self._store_file(result)
-            self._update_child_table(files)
             self._link_payroll_entries()
 
             # allow save after submit
@@ -442,32 +441,6 @@ class WPSConsolidatedReport(Document):
         ).insert(ignore_permissions=True)
         
         self.generated_zip_file = file_doc.file_url
-
-    # ---------------------------------------------------------- Child table -
-    def _update_child_table(self, files: List[dict]) -> None:
-        self.set("attached_reports", [])  # clear existing
-        for f in files:
-            # Create child table row with all available metadata
-            row_data = {
-                "file_name": f["filename"],
-                "labor_office_file_number": f["labor_office_file_number"],
-                "employees_count": f["employees_count"],
-                "total_net_pay": f["total_net_pay"],
-            }
-            
-            # Add corporation info if available
-            if f.get("corporation"):
-                row_data["corporation"] = f["corporation"]
-            
-            # Add corporation CR if available
-            if f.get("corporation_cr"):
-                row_data["corporation_cr"] = f["corporation_cr"]
-            
-            # Add is_hold_file flag
-            row_data["is_hold_file"] = f.get("is_hold_file", False)
-            
-            # Append the row to the child table
-            self.append("attached_reports", row_data)
 
     # ------------------------------------------------ Payroll Entry linking -
     def _link_payroll_entries(self) -> None:

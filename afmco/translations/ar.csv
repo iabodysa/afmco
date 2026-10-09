@@ -58,7 +58,6 @@ Assignment,الإسناد
 Assignment Details,تفاصيل التكليف
 Assignment Type,نوع التكليف
 Attach the signed declaration before moving the request out of Pending.,أرفق الإقرار الموقّع قبل نقل الطلب من حالة قيد الانتظار.
-Attached Reports,التقارير المرفقة
 Attachments View,عرض المرفقات
 Attachments,المرفقات
 Attendance Allowance,بدل الحضور
@@ -116,8 +115,6 @@ Contract Start Date,تاريخ بدء العقد
 Contract status is active and in good standing.,حالة العقد نشطة وسليمة.
 Convert,تحويل
 Copy BAT Script,نسخ برنامج BAT النصي
-Copy Email Body,نسخ نص البريد الإلكتروني
-Corporation CR,السجل التجاري للمؤسسة
 Cost Calculation Details,تفاصيل احتساب التكلفة
 Create Bank Entry,إنشاء قيد بنكي
 Create Bank File,إنشاء ملف البنك
@@ -174,7 +171,6 @@ EMP Name,اسم الموظف
 EMP No,الرقم الوظيفي
 EOS Calculations,حسابات نهاية الخدمة
 EOS document has been marked as Paid,تم تعليم مستند نهاية الخدمة كمدفوع
-Email body copied to clipboard!,نسخ نص البريد الإلكتروني إلى الحافظة!
 Employee (Sponsor),الموظف (الكفيل)
 Employee Analysis Report,تقرير تحليل الموظفين
 Employee Dependent,تابع الموظف
@@ -195,7 +191,6 @@ Employee {0} excluded due to renewal issue.,استبعد الموظف {0} بسب
 Employee-wise Journal Entry created for Payroll Entry:,أنشئ قيد يومية لكل موظف لمسير الرواتب:
 Employees,الموظفون
 Employees Complaints,شكاوى الموظفين
-Employees Count,عدد الموظفين
 Employees Details,تفاصيل الموظفين
 Employment Active,على رأس العمل
 Employment Contract Overview,نظرة عامة على عقد العمل
@@ -231,7 +226,6 @@ Export CSV,تصدير CSV
 Export Excel,تصدير Excel
 Failed documents:,المستندات التي فشلت:
 Failed to copy data to clipboard.,تعذر نسخ البيانات إلى الحافظة.
-Failed to copy to clipboard,تعذر النسخ إلى الحافظة
 Failed to copy {0},تعذر نسخ {0}
 Failed to create Expense Request: {0},تعذر إنشاء طلب المصروف: {0}
 Failed to create Journal Entry for Payroll Entry:,تعذر إنشاء قيد اليومية لمسير الرواتب:
@@ -420,7 +414,6 @@ No Recruitment Fee,لا توجد رسوم استقدام
 No Salary Slips found for payment.,لم يعثر على قسائم رواتب للدفع.
 No Salary Slips found.,لم يعثر على قسائم رواتب.
 No Valid Documents,لا توجد مستندات صالحة
-No WPS files found. Please generate WPS ZIP first.,لم يعثر على ملفات حماية الأجور. يرجى إنشاء الملف المضغوط أولًا.
 No comments yet,لا توجد تعليقات بعد
 No data found.,لم يعثر على بيانات.
 No data matching the criteria to export,لا توجد بيانات تطابق المعايير للتصدير
@@ -758,7 +751,7 @@ Visa issuance date,تاريخ إصدار التأشيرة
 Welcome to our new colleagues,مرحبًا بزملائنا الجدد
 WORKFLOW HISTORY,سجل سير العمل
 WPS Consolidated Report,تقرير حماية الأجور الموحد
-WPS File Metadata,بيانات ملف حماية الأجور
+WPS Report Reference,مرجع تقرير حماية الأجور
 WPS ZIP generated successfully with {0} file(s),أنشئ ملف ZIP لحماية الأجور بنجاح ويضم {0} ملف
 Waiting Sadad,بانتظار السداد
 Waiting To join The Work,بانتظار مباشرة العمل

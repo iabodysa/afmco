@@ -15,8 +15,6 @@
   "report_generated_at",
   "column_break_zip_file",
   "generated_zip_file",
-  "attached_reports_section",
-  "attached_reports",
   "section_bat_script",
   "cmd_script",
   "amended_from"
@@ -77,19 +75,6 @@
    "fieldname": "generated_zip_file",
    "fieldtype": "Attach",
    "label": "Generated ZIP File",
-   "read_only": 1
-  },
-  {
-   "fieldname": "attached_reports_section",
-   "fieldtype": "Section Break",
-   "label": "Attached Reports"
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "attached_reports",
-   "fieldtype": "Table",
-   "label": "Attached Reports",
-   "options": "WPS File Metadata",
    "read_only": 1
   },
   {
