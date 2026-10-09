@@ -229,7 +229,6 @@ Expired Iqama,إقامة منتهية
 Expired?,منتهية؟
 Export CSV,تصدير CSV
 Export Excel,تصدير Excel
-Extend exit and re-entry visa (1) month,تمديد تأشيرة الخروج والعودة شهرًا واحدًا
 Failed documents:,المستندات التي فشلت:
 Failed to copy data to clipboard.,تعذر نسخ البيانات إلى الحافظة.
 Failed to copy to clipboard,تعذر النسخ إلى الحافظة
@@ -274,7 +273,6 @@ Generated on,أنشئ في
 Generating WPS ZIP,جار إنشاء الملف المضغوط لحماية الأجور
 Generating summary...,جار إعداد الملخص...
 Generation Failed,فشل الإنشاء
-Get Update and Sync and Calculate,جلب التحديث والمزامنة والحساب
 Get Vacation allowance,جلب بدل الإجازة
 GitHub Sync ID,معرّف مزامنة GitHub
 Google Console,وحدة تحكم Google
@@ -490,8 +488,6 @@ Payment Order is not required for Company Transport.,لا يلزم أمر دفع
 Payment Request Details,تفاصيل طلب الصرف
 Payment Request Number,رقم طلب الصرف
 Payment Request already created for document {0} for employee {1}.,سبق إنشاء طلب صرف للمستند {0} للموظف {1}.
-Payment of MOI - Expatriates,مدفوعات وزارة الداخلية - المقيمون
-Payment of MOI - Expatriates List,قائمة مدفوعات وزارة الداخلية - المقيمون
 Payroll Clearing Account,حساب تسوية الرواتب
 Payroll Cost Center,مركز تكلفة الرواتب
 Payroll Entries,مسيرات الرواتب
@@ -600,12 +596,10 @@ Return Before,العودة قبل
 Return back to work,العودة إلى العمل
 Returned,مرتجع
 Reverse Charge Applicable,ينطبق الاحتساب العكسي
-SADAD Calculation,حساب سداد
 SADAD Setup Account,حساب إعدادات سداد
 SADAD Batch Item,بند دفعة سداد
 SADAD Batch,دفعة سداد
 SADAD Bulk Payments,مدفوعات سداد الجماعية
-SADAD Group Item,بند مجموعة سداد
 SADAD Invoice Creation Date,تاريخ إنشاء فاتورة سداد
 SADAD Number,رقم سداد
 SADAD Type,نوع سداد
@@ -765,7 +759,6 @@ Welcome to our new colleagues,مرحبًا بزملائنا الجدد
 WORKFLOW HISTORY,سجل سير العمل
 WPS Consolidated Report,تقرير حماية الأجور الموحد
 WPS File Metadata,بيانات ملف حماية الأجور
-WPS Report Reference,مرجع تقرير حماية الأجور
 WPS ZIP generated successfully with {0} file(s),أنشئ ملف ZIP لحماية الأجور بنجاح ويضم {0} ملف
 Waiting Sadad,بانتظار السداد
 Waiting To join The Work,بانتظار مباشرة العمل
@@ -786,7 +779,6 @@ Years of Service,سنوات الخدمة
 You are updating {0} document(s),أنت تحدّث {0} مستند
 "You cannot uncheck ""Accrual Entry Created"" once it has been set.","لا يمكنك إلغاء تحديد ""Accrual Entry Created"" بعد تعيينه."
 "You cannot uncheck ""Bank Entry Created"" once it has been set.","لا يمكنك إلغاء تحديد ""Bank Entry Created"" بعد تعيينه."
-account,الحساب
 approved,موافق عليه
 arabic,العربية
 bengali,البنغالية
@@ -1012,7 +1004,6 @@ Completion and Approval,الإنجاز والموافقة
 Deductions and Clearing,الاستقطاعات والتصفية
 Exit and Return Visa,تأشيرة الخروج والعودة
 Generated Files,الملفات المنشأة
-Payment Summary,ملخص الدفع
 Performance Details,بيانات الأداء
 Report Settings,إعدادات التقرير
 Reward and Tickets,المكافأة والتذاكر
@@ -2160,7 +2151,6 @@ CARD,CARD
 CHAS,CHAS
 CO-.YYYY.-,CO-.YYYY.-
 COMMISSION,العمولة
-Calculation-.YYYY.-,Calculation-.YYYY.-
 Car Wash - كارلو,كارلو
 Car damage,أضرار السيارة
 Carrefour Bikers - كارفور توصيل,كارفور توصيل
@@ -2376,12 +2366,10 @@ Required account is missing: {0},حساب مطلوب غير موجود: {0}
 Restructure Limit %,حد إعادة الهيكلة %
 Reward,المكافأة
 SABB,SABB
-SADAD Group,مجموعة سداد
 SADAD Payment,دفعة سداد
 SADAD Setup,إعداد سداد
 SADAD amount must be a valid positive number.,يجب أن يكون مبلغ سداد رقماً موجباً صحيحاً.
 SADAD service type is not configured: {0},نوع خدمة سداد غير معدّ: {0}
-SADAD-.YYYY.-,SADAD-.YYYY.-
 SADAD-B-.YYYY.-,SADAD-B-.YYYY.-
 SAIB Bank,البنك السعودي للاستثمار
 SAMA,SAMA
