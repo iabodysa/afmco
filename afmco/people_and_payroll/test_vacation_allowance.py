@@ -330,8 +330,8 @@ def award(reason, service):
 
 class TestSettlementAward(TestCase):
     def test_resignation_outside_article_81_follows_article_85_tiers(self):
-        self.assertAlmostEqual(award(SEVEN, 3), 15.003)
-        self.assertAlmostEqual(award(SEVEN, 2), 10.002)
+        self.assertAlmostEqual(award(SEVEN, 3), 15)
+        self.assertAlmostEqual(award(SEVEN, 2), 10)
 
     def test_resignation_after_ten_years_uses_escalating_article_84_base(self):
         self.assertAlmostEqual(award(EIGHT, 12), 285)
@@ -342,7 +342,7 @@ class TestSettlementAward(TestCase):
 
     def test_resignation_boundaries_at_two_and_five_years(self):
         self.assertEqual(award(EIGHT, 1.99), 0)
-        self.assertAlmostEqual(award(EIGHT, 2), 10.002)
+        self.assertAlmostEqual(award(EIGHT, 2), 10)
         self.assertAlmostEqual(award(EIGHT, 5), 50)
 
 

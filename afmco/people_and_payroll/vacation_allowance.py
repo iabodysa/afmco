@@ -92,7 +92,7 @@ def settlement_days(reason, service, stored):
         if service < 2:
             return 0
         if service < 5:
-            return full * 0.3334
+            return full / 3
         if service < 10:
             return full * 2 / 3
         return full

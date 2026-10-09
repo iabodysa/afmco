@@ -1,7 +1,7 @@
 # Copyright (c) 2026, AFMCO and contributors
 # For license information, please see license.txt
 
-from unittest import TestCase, skip
+from unittest import TestCase
 
 import frappe
 from frappe.utils import date_diff
@@ -26,12 +26,14 @@ QIWA_CASES = (
     ("C6", "2010-05-01", "2020-04-30", RESIGNATION, (10, 0, 0), 45000.00),
 )
 
-UNOBSERVED_CASES = (
+CONTRACT_END_EDGE_CASES = (
     ("C7", "2022-01-15", "2022-02-15", EXPIRATION, 258.33),
     ("C8", "2022-01-01", "2022-01-16", EXPIRATION, 133.33),
     ("C9", "2000-01-01", "2020-01-01", EXPIRATION, 105016.67),
     ("C10", "2019-08-31", "2023-02-28", EXPIRATION, 10508.33),
 )
+
+RESIGNATION_THIRD_CASE = ("C11", "2020-01-01", "2023-01-01", RESIGNATION, (3, 0, 1), 3002.78)
 
 
 def settle(start, end, reason):
@@ -85,12 +87,19 @@ class TestQiwaCalendarMethod(TestCase):
         self.assertEqual(misses, ["C1", "C2", "C3", "C4", "C5", "C6"])
 
 
-@skip("awaiting Qiwa calculator observation for C7-C10")
-class TestQiwaUnobservedCases(TestCase):
-    def test_settlement_total_equals_qiwa_reward_for_unobserved_case(self):
-        for case, start, end, reason, reward in UNOBSERVED_CASES:
+class TestQiwaContractEndEdgeCases(TestCase):
+    def test_settlement_total_equals_qiwa_reward_for_contract_end_edge_case(self):
+        for case, start, end, reason, reward in CONTRACT_END_EDGE_CASES:
             with self.subTest(case):
                 self.assertEqual(settle(start, end, reason).total_eos, reward)
+
+
+class TestQiwaResignationTiers(TestCase):
+    def test_resignation_between_two_and_five_years_pays_exact_third_of_full_award(self):
+        _case, start, end, reason, span, reward = RESIGNATION_THIRD_CASE
+        doc = settle(start, end, reason)
+        self.assertEqual((doc.years, doc.months, doc.days), tuple(f"{part:.2f}" for part in span))
+        self.assertEqual(doc.total_eos, reward)
 
 
 def summary_estimate(start, end):
