@@ -3,6 +3,9 @@
 
 from frappe.model.document import Document
 
+from afmco.people_and_payroll.vacation_allowance import apply_settled_periods
+
 
 class AdvanceLeaveSalary(Document):
-	pass
+	def validate(self):
+		apply_settled_periods(self, precision=2)

@@ -10,6 +10,16 @@ import frappe
 from frappe.tests import IntegrationTestCase
 
 from afmco.people_and_payroll.api.test_employee_form_api import make_employee
+from afmco.people_and_payroll.doctype.advance_leave_salary.test_advance_leave_salary import (
+	EARLIER_PERIOD,
+	OVERLAPPING_PERIOD,
+	TOUCHING_PERIOD,
+	SettledPeriodCase,
+	SettledPeriodValidation,
+	period,
+	settled_advance,
+	with_periods,
+)
 from afmco.people_and_payroll.doctype.end_of_service_settlement.end_of_service_settlement import (
 	CANCELLED_STATE,
 	EndofServiceSettlement,
@@ -147,3 +157,35 @@ class TestEndOfServiceSettlementActiveEmployee(IntegrationTestCase):
 		make_settlement(employee).db_set("workflow_state", CANCELLED_STATE)
 
 		self.assertEqual(make_settlement(employee).employee, employee)
+
+
+class TestEndOfServiceSettlementSettledPeriods(SettledPeriodCase):
+	doctype = "End of Service Settlement"
+
+	def test_period_overlapping_approved_advance_is_saved_paid_and_leaves_totals(self):
+		employee = make_employee("_T-EOS-Overlap")
+		settled_advance(employee)
+
+		doc = with_periods(self.doctype, employee, [period(EARLIER_PERIOD, 1000), period(OVERLAPPING_PERIOD, 1190)], 1711)
+
+		self.assert_periods(doc, ["unpaid", "Paid"], 1000, 2711)
+
+	def test_period_touching_approved_advance_on_boundary_day_stays_unpaid(self):
+		employee = make_employee("_T-EOS-Touch")
+		settled_advance(employee)
+
+		doc = with_periods(self.doctype, employee, [period(TOUCHING_PERIOD, 1190)], 1711)
+
+		self.assert_periods(doc, ["unpaid"], 1190, 2901)
+
+
+class TestEndOfServiceSettlementSettledPeriodValidation(SettledPeriodValidation):
+	doctype = "End of Service Settlement"
+
+	def test_validate_marks_period_overlapping_settled_advance_paid_and_leaves_totals(self):
+		result = self.validated(EndofServiceSettlement, [period(EARLIER_PERIOD, 1000.4), period(OVERLAPPING_PERIOD, 1190)], 1711)
+		self.assertEqual(result, (["unpaid", "Paid"], 1000, 2711))
+
+	def test_validate_leaves_period_touching_settled_advance_on_boundary_day_unpaid(self):
+		result = self.validated(EndofServiceSettlement, [period(TOUCHING_PERIOD, 1190)], 1711)
+		self.assertEqual(result, (["unpaid"], 1190, 2901))

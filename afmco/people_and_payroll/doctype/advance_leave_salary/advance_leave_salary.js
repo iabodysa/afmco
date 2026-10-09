@@ -929,7 +929,7 @@ frappe.ui.form.on('Advance Leave Salary', {
     }
   },
   
-  calculateAdvanceLeaveSalary:  function(frm) {
+  calculateAdvanceLeaveSalary:  async function(frm) {
     let Las_Day = new Date(frm.doc.date_2);
     let contractStartDate = new Date(frm.doc.date_1);
     const contractEndDate = new Date(contractStartDate);
@@ -986,7 +986,7 @@ frappe.ui.form.on('Advance Leave Salary', {
         frappe.model.set_value(row.doctype, row.name, key, rowData[key]);
       });
     });
-    checkPreviousVacations(frm);
+    await checkPreviousVacations(frm);
     frm.refresh();
     frm.events.calculateServiceDuration(frm);
 
@@ -1028,7 +1028,7 @@ frappe.ui.form.on('Advance Leave Salary', {
   },
 });
 function checkPreviousVacations(frm) {
-  frappe.db.get_list('Advance Leave Salary', {
+  return frappe.db.get_list('Advance Leave Salary', {
     filters: {
       'employee': frm.doc.employee,
       'name': ['!=', frm.doc.name],
@@ -1040,8 +1040,9 @@ function checkPreviousVacations(frm) {
     if (records.length > 0) {
       let message = `<h4>${__('Found', null, 'Advance Leave Salary')} ${records.length} ${__('previous leave settlements for this employee:', null, 'Advance Leave Salary')}</h4><ul>`;
 
-      Promise.all(records.map(record => {
+      return Promise.all(records.map(record => {
         return frappe.db.get_doc('Advance Leave Salary', record.name).then(doc => {
+          const marks = [];
           doc.cva.forEach((childRow, index) => {
             let childStartDate = new Date(childRow.contract_start_date).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
             let childEndDate = new Date(childRow.contract_end_date).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -1053,10 +1054,11 @@ function checkPreviousVacations(frm) {
                   frappe.datetime.get_diff(childRow.contract_end_date, newRow.contract_start_date) > 0 &&
                   frappe.datetime.get_diff(newRow.contract_end_date, childRow.contract_start_date) > 0
                   ) {
-                newRow.status = 'Paid';
+                marks.push(frappe.model.set_value(newRow.doctype, newRow.name, 'status', 'Paid'));
               }
             });
           });
+          return Promise.all(marks);
         });
       })).then(() => {
         message += "</ul>";
@@ -1064,28 +1066,27 @@ function checkPreviousVacations(frm) {
         frm.refresh_field('cva');
       });
     }
-  });
-  updateVacationStatus(frm);
+  }).then(() => updateVacationStatus(frm));
 }
 function updateVacationStatus(frm) {
-  frappe.db.get_value('Employee', frm.doc.employee, 'date_of_last_vacation_clearance', (r) => {
+  return frappe.db.get_value('Employee', frm.doc.employee, 'date_of_last_vacation_clearance').then(({ message: r }) => {
     if (!r.date_of_last_vacation_clearance) {
       return;
     }
     
     const lastClearanceDate = new Date(r.date_of_last_vacation_clearance);
     
+    const marks = [];
     frm.doc.cva.forEach(newRow => {
       const newStartDate = new Date(newRow.contract_start_date);
       const newEndDate = new Date(newRow.contract_end_date);
       
       if (lastClearanceDate > newStartDate) {
-        newRow.status = 'Paid';
-        newRow.amount3 = 0;
+        marks.push(frappe.model.set_value(newRow.doctype, newRow.name, { status: 'Paid', amount3: 0 }));
       }
     });
     
-    frm.refresh_field('cva');
+    return Promise.all(marks).then(() => frm.refresh_field('cva'));
   });
 }
 function checkPreviousVacations_old(frm) {

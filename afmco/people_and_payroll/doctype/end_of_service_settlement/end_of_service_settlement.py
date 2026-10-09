@@ -6,6 +6,8 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 
+from afmco.people_and_payroll.vacation_allowance import apply_settled_periods
+
 
 class EndofServiceSettlement(Document):
     def validate(self):
@@ -22,6 +24,7 @@ class EndofServiceSettlement(Document):
             frappe.throw(
                 _("{0} must be unique").format(_(self.meta.get_label("employee"))), frappe.UniqueValidationError
             )
+        apply_settled_periods(self, precision=0)
 
     def on_update(self):
         if self.has_value_changed("workflow_state") and self.workflow_state == CANCELLED_STATE:
