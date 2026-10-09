@@ -11,14 +11,11 @@ from frappe.tests import IntegrationTestCase
 
 from afmco.people_and_payroll.api.test_employee_form_api import make_employee
 from afmco.people_and_payroll.doctype.advance_leave_salary.test_advance_leave_salary import (
-	EARLIER_PERIOD,
-	OVERLAPPING_PERIOD,
-	TOUCHING_PERIOD,
-	SettledPeriodCase,
-	SettledPeriodValidation,
+	SETTLED_YEAR,
+	TOUCHING_YEAR,
+	LeaveAllowanceCase,
+	leave_document,
 	period,
-	settled_advance,
-	with_periods,
 )
 from afmco.people_and_payroll.doctype.end_of_service_settlement.end_of_service_settlement import (
 	CANCELLED_STATE,
@@ -159,33 +156,24 @@ class TestEndOfServiceSettlementActiveEmployee(IntegrationTestCase):
 		self.assertEqual(make_settlement(employee).employee, employee)
 
 
-class TestEndOfServiceSettlementSettledPeriods(SettledPeriodCase):
+class TestEndOfServiceSettlementLeaveAllowance(LeaveAllowanceCase):
 	doctype = "End of Service Settlement"
 
-	def test_period_overlapping_approved_advance_is_saved_paid_and_leaves_totals(self):
-		employee = make_employee("_T-EOS-Overlap")
-		settled_advance(employee)
+	def test_saved_totals_are_recomputed_from_rows(self):
+		doc = leave_document(
+			self.doctype,
+			make_employee("_T-EOS-Totals"),
+			[period(SETTLED_YEAR, 1190), period(TOUCHING_YEAR, 500, "Paid")],
+			end_of_service_reason="3-Termination by the employer under Article 80",
+			cva_total=1,
+			amount=1,
+		)
+		doc.reload()
+		self.assertEqual((doc.cva_total, doc.amount), (1190, 1190))
 
-		doc = with_periods(self.doctype, employee, [period(EARLIER_PERIOD, 1000), period(OVERLAPPING_PERIOD, 1190)], 1711)
-
-		self.assert_periods(doc, ["unpaid", "Paid"], 1000, 2711)
-
-	def test_period_touching_approved_advance_on_boundary_day_stays_unpaid(self):
-		employee = make_employee("_T-EOS-Touch")
-		settled_advance(employee)
-
-		doc = with_periods(self.doctype, employee, [period(TOUCHING_PERIOD, 1190)], 1711)
-
-		self.assert_periods(doc, ["unpaid"], 1190, 2901)
-
-
-class TestEndOfServiceSettlementSettledPeriodValidation(SettledPeriodValidation):
-	doctype = "End of Service Settlement"
-
-	def test_validate_marks_period_overlapping_settled_advance_paid_and_leaves_totals(self):
-		result = self.validated(EndofServiceSettlement, [period(EARLIER_PERIOD, 1000.4), period(OVERLAPPING_PERIOD, 1190)], 1711)
-		self.assertEqual(result, (["unpaid", "Paid"], 1000, 2711))
-
-	def test_validate_leaves_period_touching_settled_advance_on_boundary_day_unpaid(self):
-		result = self.validated(EndofServiceSettlement, [period(TOUCHING_PERIOD, 1190)], 1711)
-		self.assertEqual(result, (["unpaid"], 1190, 2901))
+	def test_submit_with_unpaid_row_repeating_paid_period_is_refused(self):
+		employee = make_employee("_T-EOS-Submit")
+		self.settled(employee)
+		doc = leave_document(self.doctype, employee, [period(SETTLED_YEAR, 1190)])
+		with self.assertRaises(frappe.ValidationError):
+			doc.submit()

@@ -1340,10 +1340,7 @@ Please take the necessary steps to renew the Iqama to ensure compliance with res
 Iqama Expired,الإقامة منتهية,Employee
 View Employee Dues,عرض مديونيات الموظف,Employee
 Found,عثر على,End of Service Settlement
-previous leave settlements for this employee:,تصفية إجازات سابقة لهذا الموظف:,End of Service Settlement
-Settlement No.,رقم التسوية,End of Service Settlement
 to,إلى,End of Service Settlement
-No previous settlement exists for this employee.,لا توجد تصفية سابقة لهذا الموظف.,End of Service Settlement
 Please note that contract period start dates are repeated. Please review the data and make sure the dates do not overlap so the procedure is correct.,يرجى ملاحظة تكرار تواريخ بداية مدد العقد. يرجى مراجعة البيانات والتأكد من عدم تداخل التواريخ لضمان صحة الإجراء.,End of Service Settlement
 The employee is entitled to end-of-service benefits based on service duration due to other resignation reasons.,يستحق الموظف مكافأة نهاية الخدمة بناء على مدة الخدمة بسبب الاستقالة لأسباب أخرى.,End of Service Settlement
 The employee is entitled to full end-of-service benefits due to resignation under Article 81 of the Labor Law.,يستحق الموظف مكافأة نهاية الخدمة كاملة بسبب الاستقالة بموجب المادة 81 من نظام العمل.,End of Service Settlement
@@ -1355,8 +1352,6 @@ The employee is entitled to two-thirds of the end-of-service benefits due to res
 The employee is entitled to one-third of the end-of-service benefits due to resignation with service between 2 and 5 years.,يستحق الموظف ثلث مكافأة نهاية الخدمة بسبب الاستقالة ومدة الخدمة بين سنتين وأقل من 5 سنوات.,End of Service Settlement
 The employee is not entitled to end-of-service benefits due to resignation with less than 2 years of service.,لا يحق للموظف الحصول على مكافأة نهاية الخدمة بسبب الاستقالة ومدة الخدمة أقل من سنتين.,End of Service Settlement
 Found,عثر على,Advance Leave Salary
-previous leave settlements for this employee:,تصفية إجازات سابقة لهذا الموظف:,Advance Leave Salary
-Settlement No.,رقم التسوية,Advance Leave Salary
 to,إلى,Advance Leave Salary
 Please note that contract period start dates are repeated. Please review the data and make sure the dates do not overlap so the procedure is correct.,يرجى ملاحظة تكرار تواريخ بداية مدد العقد. يرجى مراجعة البيانات والتأكد من عدم تداخل التواريخ لضمان صحة الإجراء.,Advance Leave Salary
 SAR,ر.س,Advance Leave Salary
@@ -3041,7 +3036,7 @@ Meeting,اجتماع
 Minimum Password Score,الحد الأدنى لدرجة كلمة المرور
 Minor,بسيط
 Mobile Number,رقم الجوال
-"Module changed to {0}. Files in the previous module were not moved and remain at {1}, remove or relocate them manually.",تم تغيير الوحدة إلى {0}. لم تنقل الملفات في الوحدة السابقة وما زالت في {1}، احذفها أو انقلها يدويًا.
+"Module changed to {0}. Files in the previous module were not moved and remain at {1}, remove or relocate them manually.",تم تغيير الوحدة إلى {0}. لم تنقل الملفات في الوحدة السابقة وما زالت في {1}، احذفها أو انقلها يدوياً.
 Module Def,تعريف الوحدة
 Module Name,اسم الوحدة
 Module Onboarding,الإعداد الأولي للوحدة
@@ -5332,7 +5327,7 @@ Is Optional State,حالة اختيارية
 Next Action Email Template,قالب البريد الإلكتروني للإجراء التالي
 Next State,الحالة التالية
 Not active,غير نشط
-"NOTE: If you add states or transitions in the table, it will be reflected in the Workflow Builder but you will have to position them manually. Also Workflow Builder is currently in <b>BETA</b>.",ملاحظة: إذا أضفت حالات أو انتقالات في الجدول، فسيتم عكسها في منشئ سير العمل ولكن سيتعين عليك تحديد موضعها يدويًا. كما أن منشئ سير العمل حاليًا في مرحلة <b>تجريبية</b>.
+"NOTE: If you add states or transitions in the table, it will be reflected in the Workflow Builder but you will have to position them manually. Also Workflow Builder is currently in <b>BETA</b>.",ملاحظة: إذا أضفت حالات أو انتقالات في الجدول، فسيتم عكسها في منشئ سير العمل ولكن سيتعين عليك تحديد موضعها يدوياً. كما أن منشئ سير العمل حاليًا في مرحلة <b>تجريبية</b>.
 Represents the states allowed in one document and role assigned to change the state.,يمثل الحالات المسموح بها في المستند الواحد والدور المكلّف بتغيير الحالة.
 Rules defining transition of state in the workflow.,القواعد التي تحدد انتقال الحالة في سير العمل.
 "Rules for how states are transitions, like next state and which role is allowed to change state etc.",قواعد انتقال الحالات، مثل الحالة التالية والدور المسموح له بتغيير الحالة وغيرها.
@@ -6503,7 +6498,7 @@ Payment Entry has been modified after you pulled it. Please pull it again.,عد�
 Payment Entry is already created,سند الدفع منشأ مسبقًا
 Payment Entry Reference,مرجع سند الدفع
 Payment Gateway Account,حساب بوابة الدفع
-"Payment Gateway Account not created, please create one manually.",لم ينشأ حساب بوابة الدفع، يرجى إنشاء حساب يدويًا.
+"Payment Gateway Account not created, please create one manually.",لم ينشأ حساب بوابة الدفع، يرجى إنشاء حساب يدوياً.
 Payment Gateway Details,تفاصيل بوابة الدفع
 Payment Ledger Entry,قيد دفتر المدفوعات
 Payment Link couldn't be sent.,تعذر إرسال رابط الدفع.
@@ -6899,7 +6894,7 @@ Row {0}: Update Stock must be checked for item {1} because it is against Pick Li
 Row {0}: {1},الصف {0}: {1},Financial Report Template
 Row {0}: {1} account already applied for Accounting Dimension {2},الصف {0}: الحساب {1} مطبق مسبقًا على البعد المحاسبي {2}
 Rows with Same Account heads will be merged on Ledger,سيتم دمج الصفوف ذات الحساب نفسه في دفتر الأستاذ
-Rows: {0} have 'Payment Entry' as reference_type. This should not be set manually.,الصفوف: {0} تحتوي على 'سند دفع' في reference_type. لا ينبغي تعيين ذلك يدويًا.
+Rows: {0} have 'Payment Entry' as reference_type. This should not be set manually.,الصفوف: {0} تحتوي على 'سند دفع' في reference_type. لا ينبغي تعيين ذلك يدوياً.
 Rule Applied,القاعدة المطبقة
 Sales Expenses,مصروفات البيع
 Sales Incoming Rate,سعر الوارد للمبيعات
@@ -7188,7 +7183,7 @@ Truncates 'Remarks' column to set character length,"يقتطع عمود ""الم
 Try the {0} for a better experience.,جرّب {0} للحصول على تجربة أفضل.
 Turnover Ratios,نسب الدوران
 Type of financial statement this template generates,نوع القائمة المالية التي ينشئها هذا القالب
-Unable to find exchange rate for {0} to {1} for key date {2}. Please create a Currency Exchange record manually.,تعذر العثور على سعر الصرف من {0} إلى {1} للتاريخ المرجعي {2}. يرجى إنشاء سجل صرف العملات يدويًا.
+Unable to find exchange rate for {0} to {1} for key date {2}. Please create a Currency Exchange record manually.,تعذر العثور على سعر الصرف من {0} إلى {1} للتاريخ المرجعي {2}. يرجى إنشاء سجل صرف العملات يدوياً.
 Unable to Repost Accounting Ledger,تعذر إعادة ترحيل دفتر الأستاذ المحاسبي
 Unallocated Amount,المبلغ غير المخصص
 Unbilled Orders,الأوامر غير المفوترة
@@ -10174,7 +10169,7 @@ Millimeter Of Water,مليمتر ماء
 Missing Parameter,معامل مفقود
 Monthly Sales Target,هدف المبيعات الشهري
 Moving Average,المتوسط المرجح
-Multiple company fields available: {0}. Please select manually.,تتوفر عدة حقول للشركة: {0}. يرجى الاختيار يدويًا.
+Multiple company fields available: {0}. Please select manually.,تتوفر عدة حقول للشركة: {0}. يرجى الاختيار يدوياً.
 Naming series '{0}' for DocType '{1}' does not contain standard '.' or '{{' separator. Using fallback extraction.,سلسلة الترقيم '{0}' لنوع المستند '{1}' لا تحتوي على الفاصل القياسي '.' أو '{{'. سيستخدم الاستخراج البديل.
 Negotiation/Review,التفاوض/المراجعة
 New Department,قسم جديد
@@ -11477,7 +11472,7 @@ Warning: Material Requested Qty is less than Minimum Order Qty,تحذير: ال�
 Warranty / AMC Details,تفاصيل الضمان / عقد الصيانة السنوي
 Warranty Expiry Date,تاريخ انتهاء الضمان
 "When creating an Item, entering a value for this field will automatically create an Item Price at the backend.",عند إنشاء صنف، يؤدي إدخال قيمة في هذا الحقل إلى إنشاء سعر الصنف تلقائيًا في الخلفية.
-"When there are multiple finished goods ({0}) in a Repack stock entry, the basic rate for all finished goods must be set manually. To set rate manually, enable the checkbox 'Set Basic Rate Manually' in the respective finished good row.",عند وجود عدة منتجات تامة ({0}) في حركة مخزون إعادة تعبئة، يجب ضبط السعر الأساسي لجميع المنتجات التامة يدويًا. لضبط السعر يدويًا، فعّل خانة 'ضبط السعر الأساسي يدويًا' في صف المنتج التام المعني.
+"When there are multiple finished goods ({0}) in a Repack stock entry, the basic rate for all finished goods must be set manually. To set rate manually, enable the checkbox 'Set Basic Rate Manually' in the respective finished good row.",عند وجود عدة منتجات تامة ({0}) في حركة مخزون إعادة تعبئة، يجب ضبط السعر الأساسي لجميع المنتجات التامة يدوياً. لضبط السعر يدويًا، فعّل خانة 'ضبط السعر الأساسي يدويًا' في صف المنتج التام المعني.
 "When you pay for something upfront (like annual insurance), the cost is held here and recognized gradually over time",عند الدفع المسبق مقابل شيء ما (مثل التأمين السنوي)، تحفظ التكلفة هنا وتثبت تدريجيًا بمرور الوقت
 Will also apply for variants,ينطبق أيضًا على المتغيرات
 Will also apply for variants unless overridden,ينطبق أيضًا على المتغيرات ما لم يتجاوز
@@ -13317,3 +13312,7 @@ Issue the WPS file first,أصدر ملف حماية الأجور أولاً,WPS 
 Email body copied to clipboard,تم نسخ نص البريد الإلكتروني إلى الحافظة,WPS File
 Email Body,نص البريد الإلكتروني,WPS File
 Copy,نسخ,WPS File
+Add your notes here,اضف ملاحظاتك هنا
+Leave allowance table not filled: no submitted Salary Slip for {0}. Fill the table by hand.,لم يعبأ جدول بدل الإجازة: لا توجد قسيمة راتب معتمدة لـ {0}. عبّئ الجدول يدوياً.
+"Leave allowance table not filled: the employee has no earlier Paid Advance Leave Salary and joined on {0}, before {1}. Fill the table by hand.",لم يعبأ جدول بدل الإجازة: لا يوجد للموظف راتب إجازة مقدم سابق مدفوع، وتاريخ التحاق الموظف {0} قبل {1}. عبّئ الجدول يدوياً.
+Row {0} of the leave allowance table overlaps a paid leave period and must be Paid before submitting.,الصف {0} في جدول بدل الإجازة يتداخل مع فترة إجازة مدفوعة، ويجب جعله مدفوعاً قبل الاعتماد.

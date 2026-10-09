@@ -731,13 +731,6 @@ async function updateDashboards(frm) {
 }
 frappe.ui.form.on('Advance Leave Salary', {
 
-  updateFieldValueAndRefreshForm: function(frm, fieldName, value) {
-    let currentValue = frm.doc[fieldName];
-    if (currentValue !== value && !isNaN(value)) {
-      frm.set_value(fieldName, value.toFixed(2));
-      frm.refresh_field(fieldName);
-    }
-  },
   validate: function(frm) {
 
     checkDuplicateContractStartDate(frm);
@@ -838,9 +831,15 @@ frappe.ui.form.on('Advance Leave Salary', {
       }).addClass('btn-danger');
     }
     if (frm.doc.workflow_state === 'Waiting Accountant Approval') {
-            frm.add_custom_button(__('Get Advance Leave Salary'), () => {
-                frm.events.calculateAdvanceLeaveSalary(frm);
-            }).addClass('btn-primary');
+            frm.add_custom_button(__('Get Advance Leave Salary'), async () => {
+          if (frm.is_dirty()) await frm.save();
+          await frappe.call({
+            method: 'afmco.people_and_payroll.api.vacation_allowance.fill_leave_allowance',
+            args: { doctype: frm.doctype, name: frm.docname },
+            freeze: true,
+          });
+          frm.reload_doc();
+        }).addClass('btn-primary');
 
             frm.add_custom_button(__('Open General Ledger'), function() {
                 var parameters = {
@@ -896,8 +895,6 @@ frappe.ui.form.on('Advance Leave Salary', {
     ['salary_per_day', 'duration_of_service', 'dos_years', 'cva_total', 'deductions', 'amount'].forEach(field => {
       frm.set_df_property(field, 'read_only', 0);
     });
-    frm.events.calculateServiceDuration(frm); 
-    
   },
   after_save: async function (frm) {
     if (!frm.doc.employee || !frm.doc.total_salary) return;
@@ -929,166 +926,7 @@ frappe.ui.form.on('Advance Leave Salary', {
     }
   },
   
-  calculateAdvanceLeaveSalary:  async function(frm) {
-    let Las_Day = new Date(frm.doc.date_2);
-    let contractStartDate = new Date(frm.doc.date_1);
-    const contractEndDate = new Date(contractStartDate);
-    contractEndDate.setDate(contractEndDate.getDate() + 364);
-
-    const rows = [];
-
-    let j = 0;
-
-    while (j < frm.doc.dos_years) {
-      let contractEndDateCopy = new Date(contractEndDate);
-      if (contractEndDateCopy > Las_Day) {
-            contractEndDateCopy = Las_Day;
-            
-        }
-
-      if (j === frm.doc.dos_years - 1) {
-        contractEndDateCopy = new Date(frm.doc.date_2);
-      }
-
-      const mysqlFormatEnd = contractEndDateCopy.toISOString().slice(0, 19).replace('T', ' ');
-      const mysqlFormatStart = contractStartDate.toISOString().slice(0, 19).replace('T', ' ');
-      let daysBetween = (contractEndDateCopy - contractStartDate) / (1000 * 60 * 60 * 24);
-        if (daysBetween === 365) {
-            daysBetween = 364;
-            
-        }
-     // const amount = Math.round(frm.doc.salary_per_day * (daysBetween / 364 * frm.doc.vacation_days_per_year));
-    let vacation_days_per_year = frm.doc.vacation_days_per_year || 21;
-
-    if (j + 1 >= 6 && vacation_days_per_year < 30) {
-        vacation_days_per_year = 30;
-    }
-
-    const amount = Math.round(frm.doc.salary_per_day * (daysBetween / 364 * vacation_days_per_year));
-
-      rows.push({
-        contract_start_date: mysqlFormatStart,
-        contract_end_date: mysqlFormatEnd,
-        status: 'unpaid',
-        note: 'اضف ملاحظاتك',
-        vad: vacation_days_per_year,
-        amount3: amount,
-      });
-      contractStartDate = new Date(contractEndDate.setDate(contractEndDate.getDate() + 1));
-      contractEndDate.setDate(contractEndDate.getDate() + 365);
-
-      j += 1;
-    }
-
-    rows.forEach((rowData) => {
-      const row = frm.add_child('cva');
-      Object.keys(rowData).forEach((key) => {
-        frappe.model.set_value(row.doctype, row.name, key, rowData[key]);
-      });
-    });
-    await checkPreviousVacations(frm);
-    frm.refresh();
-    frm.events.calculateServiceDuration(frm);
-
-  },
-  calculateServiceDuration: function(frm) {
-    const dailySalary = frm.doc.total_salary / 30;
-    frm.events.updateFieldValueAndRefreshForm(frm, 'salary_per_day', dailySalary);
-    let totalAdvanceLeaveSalary = 0;
-    $.each(frm.doc.cva || [], (i, d) => {
-      if (d.status && d.status === 'Paid') {
-      } else {
-        totalAdvanceLeaveSalary += d.amount3;
-      }
-    });
-    
-    const alternative_reward = frm.doc.alternative_reward;
-    const diffInDates = frappe.datetime.get_diff(frm.doc.date_2, frm.doc.date_1);
-    const yearsOfService = Math.round(diffInDates / 365);
-    let totalDeductions = 0;
-    $.each(frm.doc.table_14 || [], (i, d) => {
-      if (d.amount2) {
-        totalDeductions += d.amount2;
-      }
-    });
-    let ticketAllowance = frm.doc.ticket_allowance;
-    if (frm.doc.not === 1 || frm.doc.check1 === 0) {
-    ticketAllowance = 0;
-        
-    }
-    let totalTickets = frm.doc.number_of_tickets * ticketAllowance;
-    const totalAmount = totalAdvanceLeaveSalary + alternative_reward + totalTickets - totalDeductions;
-    frm.events.updateFieldValueAndRefreshForm(frm, 'dos_years', yearsOfService);
-    frm.events.updateFieldValueAndRefreshForm(frm, 'duration_of_service', diffInDates);
-    frm.events.updateFieldValueAndRefreshForm(frm, 'cva_total', totalAdvanceLeaveSalary);
-    frm.events.updateFieldValueAndRefreshForm(frm, 'deductions', totalDeductions);
-    frm.events.updateFieldValueAndRefreshForm(frm, 'amount', totalAmount);
-    frm.refresh_field();
-
-  },
 });
-function checkPreviousVacations(frm) {
-  return frappe.db.get_list('Advance Leave Salary', {
-    filters: {
-      'employee': frm.doc.employee,
-      'name': ['!=', frm.doc.name],
-      'workflow_state': ['in', ['Approved', 'Paid']]
-
-    },
-    fields: ['name']
-  }).then(records => {
-    if (records.length > 0) {
-      let message = `<h4>${__('Found', null, 'Advance Leave Salary')} ${records.length} ${__('previous leave settlements for this employee:', null, 'Advance Leave Salary')}</h4><ul>`;
-
-      return Promise.all(records.map(record => {
-        return frappe.db.get_doc('Advance Leave Salary', record.name).then(doc => {
-          const marks = [];
-          doc.cva.forEach((childRow, index) => {
-            let childStartDate = new Date(childRow.contract_start_date).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
-            let childEndDate = new Date(childRow.contract_end_date).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
-
-            message += `<li>${index + 1}. ${__('Settlement No.', null, 'Advance Leave Salary')} ${record.name}: ${childStartDate} ${__('to', null, 'Advance Leave Salary')} ${childEndDate}</li>`;
-            
-            frm.doc.cva.forEach(newRow => {
-              if (
-                  frappe.datetime.get_diff(childRow.contract_end_date, newRow.contract_start_date) > 0 &&
-                  frappe.datetime.get_diff(newRow.contract_end_date, childRow.contract_start_date) > 0
-                  ) {
-                marks.push(frappe.model.set_value(newRow.doctype, newRow.name, 'status', 'Paid'));
-              }
-            });
-          });
-          return Promise.all(marks);
-        });
-      })).then(() => {
-        message += "</ul>";
-        frappe.msgprint(message);
-        frm.refresh_field('cva');
-      });
-    }
-  }).then(() => updateVacationStatus(frm));
-}
-function updateVacationStatus(frm) {
-  return frappe.db.get_value('Employee', frm.doc.employee, 'date_of_last_vacation_clearance').then(({ message: r }) => {
-    if (!r.date_of_last_vacation_clearance) {
-      return;
-    }
-    
-    const lastClearanceDate = new Date(r.date_of_last_vacation_clearance);
-    
-    const marks = [];
-    frm.doc.cva.forEach(newRow => {
-      const newStartDate = new Date(newRow.contract_start_date);
-      const newEndDate = new Date(newRow.contract_end_date);
-      
-      if (lastClearanceDate > newStartDate) {
-        marks.push(frappe.model.set_value(newRow.doctype, newRow.name, { status: 'Paid', amount3: 0 }));
-      }
-    });
-    
-    return Promise.all(marks).then(() => frm.refresh_field('cva'));
-  });
-}
 function checkPreviousVacations_old(frm) {
   frappe.db.get_list('Advance Leave Salary', {
     filters: {

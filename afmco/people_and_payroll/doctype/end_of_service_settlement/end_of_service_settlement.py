@@ -6,7 +6,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 
-from afmco.people_and_payroll.vacation_allowance import apply_settled_periods
+from afmco.people_and_payroll.vacation_allowance import recompute_settlement, refuse_unpaid_settled_period
 
 
 class EndofServiceSettlement(Document):
@@ -24,7 +24,10 @@ class EndofServiceSettlement(Document):
             frappe.throw(
                 _("{0} must be unique").format(_(self.meta.get_label("employee"))), frappe.UniqueValidationError
             )
-        apply_settled_periods(self, precision=0)
+        recompute_settlement(self)
+
+    def before_submit(self):
+        refuse_unpaid_settled_period(self)
 
     def on_update(self):
         if self.has_value_changed("workflow_state") and self.workflow_state == CANCELLED_STATE:
