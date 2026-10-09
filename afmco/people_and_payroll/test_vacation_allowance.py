@@ -155,7 +155,7 @@ class TestFillPeriods(LedgerCase):
             ],
         )
         self.assertEqual(
-            (doc.cva_total, doc.amount, doc.total_eos), (3570, 6622, 2552.48)
+            (doc.cva_total, doc.amount, doc.total_eos), (3570, 6623, 2552.51)
         )
 
     def test_rows_from_sixth_year_use_30_vacation_days(self):
@@ -185,7 +185,7 @@ class TestFillPeriods(LedgerCase):
         )
         doc = self.filled(va.END_OF_SERVICE, SETTLEMENT, ledger)
         self.assertEqual([row.status for row in doc.cva], ["unpaid", "unpaid", "Paid"])
-        self.assertEqual((doc.cva_total, doc.amount), (2380, 5432))
+        self.assertEqual((doc.cva_total, doc.amount), (2380, 5433))
 
     def test_period_touching_settled_period_on_boundary_day_stays_unpaid(self):
         ledger = Ledger(
@@ -260,7 +260,7 @@ class TestRecomputeAndSubmit(LedgerCase):
         ]
         doc = make(va.END_OF_SERVICE, {**SETTLEMENT, "cva_total": 1, "amount": 1}, rows)
         va.recompute_settlement(doc)
-        self.assertEqual((doc.cva_total, doc.amount), (2380, 5432))
+        self.assertEqual((doc.cva_total, doc.amount), (2380, 5433))
 
     def test_advance_validate_recomputes_totals_from_rows(self):
         rows = [
@@ -324,26 +324,26 @@ SEVEN = "7-Termination by the employee or termination of employment by the emplo
 EIGHT = "8-Resignation"
 
 
-def award(reason, days):
-    return va.settlement_days(reason, days, days / 365, None)
+def award(reason, service):
+    return va.settlement_days(reason, service, None)
 
 
 class TestSettlementAward(TestCase):
     def test_resignation_outside_article_81_follows_article_85_tiers(self):
-        self.assertAlmostEqual(award(SEVEN, 1095), 15.003)
-        self.assertAlmostEqual(award(SEVEN, 730), 10.002)
+        self.assertAlmostEqual(award(SEVEN, 3), 15.003)
+        self.assertAlmostEqual(award(SEVEN, 2), 10.002)
 
     def test_resignation_after_ten_years_uses_escalating_article_84_base(self):
-        self.assertAlmostEqual(award(EIGHT, 4380), 285)
+        self.assertAlmostEqual(award(EIGHT, 12), 285)
 
     def test_resignation_of_exactly_ten_years_is_full_escalating_award(self):
-        self.assertAlmostEqual(award(EIGHT, 3650), 225)
-        self.assertAlmostEqual(award(SEVEN, 3650), 225)
+        self.assertAlmostEqual(award(EIGHT, 10), 225)
+        self.assertAlmostEqual(award(SEVEN, 10), 225)
 
     def test_resignation_boundaries_at_two_and_five_years(self):
-        self.assertEqual(award(EIGHT, 729), 0)
-        self.assertAlmostEqual(award(EIGHT, 730), 10.002)
-        self.assertAlmostEqual(award(EIGHT, 1825), 50)
+        self.assertEqual(award(EIGHT, 1.99), 0)
+        self.assertAlmostEqual(award(EIGHT, 2), 10.002)
+        self.assertAlmostEqual(award(EIGHT, 5), 50)
 
 
 class TestSalarySlipMonths(LedgerCase):

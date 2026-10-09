@@ -175,15 +175,12 @@ function checkDuplicateContractStartDate(frm) {
 }
 function showEosCalculationDetails(frm) {
     const endOfServiceReason = frm.doc.end_of_service_reason || "";
-    const startDate = frm.doc.date_1 || "";
-    const endDate = frm.doc.date_2 || "";
 
     let message = "";
     let color = "blue";
 
     const reasonCode = endOfServiceReason.split("-")[0];
-    const diffInDates = frappe.datetime.get_diff(endDate, startDate);
-    const yearsOfService = diffInDates / 365;
+    const yearsOfService = flt(frm.doc.years);
 
     if (reasonCode === "8") {
         if (yearsOfService < 2) {
