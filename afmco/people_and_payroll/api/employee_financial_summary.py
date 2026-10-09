@@ -65,6 +65,14 @@ VACATION_FIELDS = ["name", "date_1", "date_2", "amount", "workflow_state"]
 LEAVE_FIELDS = ["leave_type", "leaves", "to_date", "is_expired"]
 LEDGER_FIELDS = ["account", "debit", "credit", "party_type", "party", "is_cancelled"]
 REQUISITION_FIELDS = ["name", "date", "amount", "workflow_state", "account_no"]
+SOURCE_FIELDS = [
+	"name",
+	"date_of_joining",
+	"relieving_date",
+	"basic_wage",
+	"iban",
+	"bank_ac_no",
+]
 
 
 @frappe.whitelist()
@@ -72,19 +80,8 @@ def get_employee_financial_summary(employee, section=None, offset=0):
 	frappe.has_permission("Employee Financial Summary", "read", throw=True)
 	if not frappe.db.exists("Employee", employee):
 		frappe.throw(_("Employee {0} not found").format(employee), frappe.DoesNotExistError)
-	source = frappe.db.get_value(
-		"Employee",
-		employee,
-		[
-			"name",
-			"date_of_joining",
-			"relieving_date",
-			"basic_wage",
-			"iban",
-			"bank_ac_no",
-		],
-		as_dict=True,
-	)
+	frappe.has_permission("Employee", "read", employee, throw=True)
+	source = read_source(employee)
 	if section:
 		if section not in SECTIONS or not SECTIONS[section][2]:
 			frappe.throw(_("Unknown section {0}").format(section))
@@ -93,6 +90,18 @@ def get_employee_financial_summary(employee, section=None, offset=0):
 	for key in SECTIONS:
 		summary[key] = build_section(key, source, 0)
 	return summary
+
+
+def read_source(employee):
+	meta = frappe.get_meta("Employee")
+	levels = meta.get_permlevel_access("read")
+	readable = [
+		field
+		for field in SOURCE_FIELDS
+		if not meta.get_field(field) or meta.get_field(field).permlevel in levels
+	]
+	source = frappe.db.get_value("Employee", employee, readable, as_dict=True)
+	return frappe._dict({field: source.get(field) for field in SOURCE_FIELDS})
 
 
 def build_section(key, source, offset):

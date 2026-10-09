@@ -1,6 +1,8 @@
 # Copyright (c) 2026, AFMCO and contributors
 # For license information, please see license.txt
 
+from unittest import mock
+
 import frappe
 from frappe.tests import IntegrationTestCase
 
@@ -12,6 +14,8 @@ from afmco.people_and_payroll.api.test_employee_form_api import make_employee
 
 HR_VIEWER = "efs-hr-viewer@afmco.test"
 OUTSIDER = "efs-outsider@afmco.test"
+ACCOUNTANT = "efs-accountant@afmco.test"
+UNGRANTED_PERMLEVEL = 9
 IBAN = "SA0380000000608010167519"
 
 
@@ -87,6 +91,33 @@ class TestEmployeeFinancialSummary(IntegrationTestCase):
 		make_user(OUTSIDER, "Employee")
 		frappe.set_user(OUTSIDER)
 		self.assertRaises(frappe.PermissionError, get_employee_financial_summary, self.employee)
+
+	def test_user_without_employee_read_is_refused(self):
+		make_user(ACCOUNTANT, "Accountant")
+		frappe.set_user(ACCOUNTANT)
+		self.assertTrue(frappe.has_permission("Employee Financial Summary", "read"))
+		self.assertFalse(frappe.has_permission("Employee", "read", self.employee))
+		self.assertRaises(frappe.PermissionError, get_employee_financial_summary, self.employee)
+
+	def test_employee_fields_above_caller_permlevel_are_not_used(self):
+		frappe.db.set_value("Employee", self.employee, "iban", IBAN)
+		make_user(HR_VIEWER, "HR User", "HR Manager", "Accountant Bot")
+		frappe.set_user(HR_VIEWER)
+		meta = frappe.get_meta("Employee")
+		self.assertIs(frappe.get_meta("Employee"), meta)
+		self.assertNotIn(UNGRANTED_PERMLEVEL, meta.get_permlevel_access("read"))
+		with (
+			mock.patch.object(meta.get_field("basic_wage"), "permlevel", UNGRANTED_PERMLEVEL),
+			mock.patch.object(meta.get_field("iban"), "permlevel", UNGRANTED_PERMLEVEL),
+			mock.patch.object(meta.get_field("bank_ac_no"), "permlevel", UNGRANTED_PERMLEVEL),
+		):
+			summary = get_employee_financial_summary(self.employee)
+		self.assertEqual(summary["eos"], {"estimate": None})
+		self.assertEqual(summary["requisitions"]["account_no"], "")
+		self.assertEqual(summary["employee"]["name"], self.employee)
+		unrestricted = get_employee_financial_summary(self.employee)
+		self.assertEqual(unrestricted["eos"]["estimate"]["wage"], 3000)
+		self.assertEqual(unrestricted["requisitions"]["account_no"], IBAN)
 
 	def test_requisitions_page_by_page_size_with_show_more_offset(self):
 		frappe.db.set_value("Employee", self.employee, "iban", IBAN)
