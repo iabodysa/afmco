@@ -344,3 +344,14 @@ class TestSettlementAward(TestCase):
         self.assertEqual(award(EIGHT, 729), 0)
         self.assertAlmostEqual(award(EIGHT, 730), 10.002)
         self.assertAlmostEqual(award(EIGHT, 1825), 50)
+
+
+class TestSalarySlipMonths(LedgerCase):
+    def test_last_working_day_month_needs_no_salary_slip(self):
+        slips = monthly_slips("2024-01-01", "2025-09-01")
+        doc = self.filled(
+            va.ADVANCE_LEAVE_SALARY,
+            {**ADVANCE, "date_1": "2024-01-01"},
+            Ledger(slips=slips),
+        )
+        self.assertEqual(len(doc.cva), 2)

@@ -233,7 +233,7 @@ def months_without_salary_slip(employee, anchor, last_day):
     )
     missing = []
     month = first_month
-    while month <= last_day:
+    while month < get_first_day(last_day):
         month_end = get_last_day(month)
         if not any(
             getdate(slip.start_date) <= month_end and getdate(slip.end_date) >= month
