@@ -529,7 +529,6 @@ frappe.ui.form.on('Payment Requisition', {
 
         if (frm.is_new()) {
             frm.set_value('created_by', frappe.session.user);
-            frm.set_df_property('created_by', 'read_only', 1);
         }
 
         if (frm.doc.workflow_state === 'Financial Controller' && frappe.user_roles.includes('Auditor')) {
