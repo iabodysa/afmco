@@ -3,7 +3,7 @@
 
 from frappe.model.document import Document
 
-from afmco.people_and_payroll.vacation_allowance import (
+from afmco.people_and_payroll.advance_leave_salary import (
     recompute_advance,
     refuse_unpaid_settled_period,
 )

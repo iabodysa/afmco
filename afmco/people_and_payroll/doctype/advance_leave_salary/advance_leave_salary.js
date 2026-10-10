@@ -834,7 +834,7 @@ frappe.ui.form.on('Advance Leave Salary', {
             frm.add_custom_button(__('Get Advance Leave Salary'), async () => {
           if (frm.is_dirty()) await frm.save();
           await frappe.call({
-            method: 'afmco.people_and_payroll.api.vacation_allowance.fill_leave_allowance',
+            method: 'afmco.people_and_payroll.api.advance_leave_salary.fill_leave_allowance',
             args: { doctype: frm.doctype, name: frm.docname },
             freeze: true,
           });

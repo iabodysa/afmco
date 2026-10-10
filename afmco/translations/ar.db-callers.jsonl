@@ -105,7 +105,7 @@ fmt:jsonl|keys:key,caller|key:ar.csv source string whose live caller sits only i
 {"key": "Implementation avg. 10 days (subject to profession, nationality, & selection).", "caller": "Print Format:html"}
 {"key": "Important", "caller": "unnamed"}
 {"key": "In my capacity as (..................................................), hereby acknowledge that I have received all my rights and entitlements from the company until the date of / / , in accordance with the Saudi Arabian labor laws, the company’s regulations, and the employment contract signed between myself and the company, on the occasion of the termination of our employment relationship.", "caller": "Print Format:html"}
-{"key": "Includes all employee expenses: (Iqama, GOSI, Work Permit, Bank Account, Medical Insurance, Monthly Salary, End of Service, & Vacation Allowance).", "caller": "Print Format:html"}
+{"key": "Includes all employee expenses: (Iqama, GOSI, Work Permit, Bank Account, Medical Insurance, Monthly Salary, End of Service, & Advance Leave Salary).", "caller": "Print Format:html"}
 {"key": "Includes provision of housing and transportation.", "caller": "Print Format:html"}
 {"key": "Interest Day-Count Convention", "caller": "unnamed"}
 {"key": "International Recruitment Fees Included", "caller": "Print Format:html"}

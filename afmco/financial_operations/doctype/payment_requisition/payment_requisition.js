@@ -107,7 +107,7 @@ frappe.ui.form.on('Payment Requisition', {
                             try {
 								if (frm.doc.payment_type === "EOS") {
 									let ticket = parseFloat((remark.match(/Ticket Allowance:\s*([\d\.]+)/i) || [0,0])[1]);
-									let vacation = parseFloat((remark.match(/Total Vacation Allowance:\s*([\d\.]+)/i) || remark.match(/Vacation Allowance:\s*([\d\.]+)/i) || [0,0])[1]);
+									let vacation = parseFloat((remark.match(/Total Advance Leave Salary:\s*([\d\.]+)/i) || remark.match(/Total Vacation Allowance:\s*([\d\.]+)/i) || remark.match(/Vacation Allowance:\s*([\d\.]+)/i) || [0,0])[1]);
 									let eos = parseFloat((remark.match(/EOS:\s*([\d\.]+)/i) || [0,0])[1]);
 
 									if(ticket > 0) add_row(ticket_acc, ticket, 0, null, null, is_admin);
@@ -972,6 +972,7 @@ function processJournalEntryCreation(frm, values) {
             if (frm.doc.payment_type === 'EOS') {
                 const ticket = extractRemarkAmount(remark, [/Ticket Allowance:\s*([\d,]+(?:\.\d+)?)/i]);
                 const vacation = extractRemarkAmount(remark, [
+                    /Total Advance Leave Salary:\s*([\d,]+(?:\.\d+)?)/i,
                     /Total Vacation Allowance:\s*([\d,]+(?:\.\d+)?)/i,
                     /Vacation Allowance:\s*([\d,]+(?:\.\d+)?)/i
                 ]);

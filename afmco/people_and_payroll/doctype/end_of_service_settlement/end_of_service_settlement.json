@@ -221,7 +221,7 @@
    "default": "0",
    "fieldname": "cva_total",
    "fieldtype": "Currency",
-   "label": "vacation allowance amount"
+   "label": "Advance Leave Salary Amount"
   },
   {
    "fieldname": "total_eos",
@@ -269,7 +269,7 @@
   {
    "fieldname": "cva",
    "fieldtype": "Table",
-   "label": "Clearing vacation allowance",
+   "label": "Advance Leave Salary Details",
    "options": "Contract Vacation Allowance"
   },
   {

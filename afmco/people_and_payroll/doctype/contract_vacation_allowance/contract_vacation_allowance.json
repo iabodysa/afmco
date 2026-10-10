@@ -41,7 +41,7 @@
   {
    "fieldname": "vad",
    "fieldtype": "Data",
-   "label": "vacation allowance (day)"
+   "label": "Vacation Days"
   },
   {
    "fieldname": "amount3",

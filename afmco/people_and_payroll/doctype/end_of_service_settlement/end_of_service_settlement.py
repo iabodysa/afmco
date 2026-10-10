@@ -6,7 +6,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 
-from afmco.people_and_payroll.vacation_allowance import recompute_settlement, refuse_unpaid_settled_period
+from afmco.people_and_payroll.advance_leave_salary import recompute_settlement, refuse_unpaid_settled_period
 
 
 class EndofServiceSettlement(Document):
@@ -58,7 +58,7 @@ FEEDBACK_LINES = (
     ("Ticket Allowance", "ticket_allowance"),
     ("EOS", "total_eos"),
     ("Deductions", "deductions"),
-    ("Total Vacation Allowance", "cva_total"),
+    ("Total Advance Leave Salary", "cva_total"),
     ("Total Amount", "amount"),
     ("Service Duration", "duration_of_service"),
     ("End of Service Reason", "end_of_service_reason"),

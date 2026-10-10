@@ -6,7 +6,7 @@ from frappe import _
 from frappe.query_builder.functions import Replace, Upper
 from frappe.utils import cint, date_diff, flt, getdate
 
-from afmco.people_and_payroll.vacation_allowance import daily_wage, service_years, settlement_award
+from afmco.people_and_payroll.advance_leave_salary import daily_wage, service_years, settlement_award
 
 PAGE_SIZE = 5
 EOS_REASON = "1-End of term or mutual agreement"

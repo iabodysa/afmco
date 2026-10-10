@@ -5,7 +5,7 @@ import frappe
 from frappe.tests import IntegrationTestCase
 
 from afmco.people_and_payroll.api.test_employee_form_api import make_employee
-from afmco.people_and_payroll.api.vacation_allowance import fill_leave_allowance
+from afmco.people_and_payroll.api.advance_leave_salary import fill_leave_allowance
 
 IGNORE_TEST_RECORD_DEPENDENCIES = ["Department", "Employee"]
 

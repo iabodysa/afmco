@@ -1514,7 +1514,7 @@ VAT,الضريبة,Manpower Quotation
 Grand Total,الإجمالي الكلي,Manpower Quotation
 General Terms & Conditions,الشروط والأحكام العامة,Manpower Quotation
 Offer valid for one week from date of issue.,صلاحية هذا العرض أسبوع واحد من تاريخ إصداره.,Manpower Quotation
-"Includes all employee expenses: (Iqama, GOSI, Work Permit, Bank Account, Medical Insurance, Monthly Salary, End of Service, & Vacation Allowance).",يشمل العرض كافة مصاريف الموظف: (إصدار الإقامة، التأمينات الاجتماعية، رخصة العمل، فتح الحساب البنكي، التأمين الطبي، الراتب الشهري، مكافأة نهاية الخدمة، وبدل الإجازة).,Manpower Quotation
+"Includes all employee expenses: (Iqama, GOSI, Work Permit, Bank Account, Medical Insurance, Monthly Salary, End of Service, & Advance Leave Salary).",يشمل العرض كافة مصاريف الموظف: (إصدار الإقامة، التأمينات الاجتماعية، رخصة العمل، فتح الحساب البنكي، التأمين الطبي، الراتب الشهري، مكافأة نهاية الخدمة، وراتب الإجازة المقدم).,Manpower Quotation
 Contract duration: Two Gregorian years.,مدة العقد سنتان ميلاديتان.,Manpower Quotation
 Includes provision of housing and transportation.,يشمل العرض توفير السكن والمواصلات.,Manpower Quotation
 Does not include equipment or tools.,لا يشمل العرض توفير المعدات أو الأدوات.,Manpower Quotation
@@ -2158,7 +2158,6 @@ Check Account Transactions,مراجعة حركات الحساب
 Cinna Bon Sasco -  -سينا بون ساسكو,سينا بون ساسكو
 Claim type,نوع المطالبة
 Clearing end of service,تصفية نهاية الخدمة
-Clearing vacation allowance,تصفية بدل الإجازة
 Commercial Registration Number,رقم السجل التجاري
 Company name,اسم الشركة
 Company:company:default_currency,Company:company:default_currency
@@ -2427,8 +2426,6 @@ payroll_cost_center,مركز تكلفة الرواتب
 ticket_allowance_confirmed,تأكيد بدل التذاكر
 unique_log_id,معرّف السجل الفريد
 unpaid,غير مدفوع
-vacation allowance (day),بدل الإجازة (يوم)
-vacation allowance amount,مبلغ بدل الإجازة
 vacation days per year,أيام الإجازة في السنة
 سينا بون ساسكو - Cinna Bon Sasco,سينا بون ساسكو
 "<p>Your OTP secret on {0} has been reset. If you did not perform this reset and did not request it, please contact your System Administrator immediately.</p>",<p>تمت إعادة تعيين المفتاح السري لرمز التحقق لمرة واحدة الخاص بك على {0}. إذا لم تجر إعادة التعيين هذه ولم تطلبها، فيرجى التواصل مع مسؤول النظام فورًا.</p>

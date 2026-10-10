@@ -6,12 +6,12 @@ from unittest import TestCase
 import frappe
 from frappe.utils import date_diff
 
-from afmco.people_and_payroll import vacation_allowance as va
+from afmco.people_and_payroll import advance_leave_salary
 from afmco.people_and_payroll.api.employee_financial_summary import (
     EOS_REASON,
     eos_section,
 )
-from afmco.people_and_payroll.api.vacation_allowance import end_of_service_years
+from afmco.people_and_payroll.api.advance_leave_salary import end_of_service_years
 
 EXPIRATION = "1-End of term or mutual agreement"
 RESIGNATION = "8-Resignation"
@@ -45,7 +45,7 @@ def settle(start, end, reason):
         cva=[],
         days_of_eos=None,
     )
-    va.recompute_settlement(doc)
+    advance_leave_salary.recompute_settlement(doc)
     return doc
 
 
@@ -56,8 +56,8 @@ def continuous_days_award(start, end, reason):
     elif days <= 1826:
         eos_days = days / 365 * 15
     else:
-        eos_days = va.js_round(75 + (days - 1825) * (30 / 365))
-    return va.money(eos_days * WAGE / 30)
+        eos_days = advance_leave_salary.js_round(75 + (days - 1825) * (30 / 365))
+    return advance_leave_salary.money(eos_days * WAGE / 30)
 
 
 class TestQiwaCalendarMethod(TestCase):
@@ -129,12 +129,12 @@ class TestFinancialSummaryMatchesSettlement(TestCase):
             with self.subTest(case):
                 self.assertEqual(
                     summary_estimate(start, end)["years"],
-                    round(va.service_years(*span), 2),
+                    round(advance_leave_salary.service_years(*span), 2),
                 )
 
     def test_form_service_years_endpoint_counts_calendar_span(self):
         for case, start, end, _reason, span, _reward in QIWA_CASES:
             with self.subTest(case):
-                self.assertEqual(end_of_service_years(start, end), va.service_years(*span))
+                self.assertEqual(end_of_service_years(start, end), advance_leave_salary.service_years(*span))
         self.assertEqual(end_of_service_years("2018-01-01", "2019-12-31"), 2.0)
         self.assertEqual(end_of_service_years("2015-04-10", "2020-04-09"), 5.0)

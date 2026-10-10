@@ -83,7 +83,7 @@ frappe.ui.form.on('End of Service Settlement', {
 - Ticket Allowance: ${frm.doc.ticket_allowance}
 - EOS: ${frm.doc.total_eos}
 - Deductions: ${frm.doc.deductions}
-- Total Vacation Allowance: ${frm.doc.cva_total}
+- Total Advance Leave Salary: ${frm.doc.cva_total}
 - Total Amount: ${frm.doc.amount}`;
         if (frm.doc.check3 == 1) {
             expenseRequest.mode_of_payment = 'Cash Payment';
@@ -100,7 +100,7 @@ frappe.ui.form.on('End of Service Settlement', {
         async () => {
           if (frm.is_dirty()) await frm.save();
           await frappe.call({
-            method: 'afmco.people_and_payroll.api.vacation_allowance.fill_leave_allowance',
+            method: 'afmco.people_and_payroll.api.advance_leave_salary.fill_leave_allowance',
             args: { doctype: frm.doctype, name: frm.docname },
             freeze: true,
           });
@@ -112,7 +112,7 @@ frappe.ui.form.on('End of Service Settlement', {
 
 function end_of_service_years(frm) {
   return frappe.xcall(
-    'afmco.people_and_payroll.api.vacation_allowance.end_of_service_years',
+    'afmco.people_and_payroll.api.advance_leave_salary.end_of_service_years',
     { start: frm.doc.date_1, end: frm.doc.date_2 },
     'GET'
   );
