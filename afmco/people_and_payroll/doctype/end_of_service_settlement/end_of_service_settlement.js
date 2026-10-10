@@ -237,8 +237,8 @@ function add_qiwa_calculator_button(frm) {
       return;
     }
 
-    const startDate = frappe.datetime.str_to_obj(frm.doc.date_1).toISOString().split('T')[0];
-    const endDate = frappe.datetime.str_to_obj(frm.doc.date_2).toISOString().split('T')[0];
+    const startDate = frm.doc.date_1;
+    const endDate = frm.doc.date_2;
     const salary = frm.doc.total_salary;
     const reasonCode = get_qiwa_reason_code(frm.doc.end_of_service_reason);
     let contractType = frm.doc.contract_type || 1;
