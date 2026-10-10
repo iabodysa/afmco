@@ -30,17 +30,6 @@ frappe.ui.form.on('Payroll Entry', {
             checkSalarySlipsAndAddButtons(frm);
         }
 
-        if (frm.doc.accrual_entry_created) {
-            frm.set_df_property('accrual_entry_created', 'read_only', 1);
-        } else {
-            frm.set_df_property('accrual_entry_created', 'read_only', 0);
-        }
-
-        if (frm.doc.bank_entry_created) {
-            frm.set_df_property('bank_entry_created', 'read_only', 1);
-        } else {
-            frm.set_df_property('bank_entry_created', 'read_only', 0);
-        } // new 2025
         
     },
 // new 2025
