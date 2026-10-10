@@ -124,6 +124,9 @@ class TestFinancialSummaryMatchesSettlement(TestCase):
             with self.subTest(case):
                 self.assertEqual(summary_estimate(start, end)["amount"], reward)
 
+    def test_summary_service_days_count_the_last_working_day(self):
+        self.assertEqual(summary_estimate("2025-01-01", "2025-12-31")["service_days"], 365)
+
     def test_summary_years_is_calendar_service_years(self):
         for case, start, end, _reason, span, _reward in QIWA_CASES:
             with self.subTest(case):
