@@ -1,0 +1,303 @@
+{%- macro money(v) -%}{{ frappe.utils.fmt_money(v or 0, 2) }}{%- endmacro -%}
+{%- macro amount(in_account, in_company, currency) -%}{% if in_company %}{% if currency %}{{ money(in_account) }} <span class="ltr">{{ currency }}</span><span class="sub">{{ money(in_company) }}</span>{% else %}{{ money(in_company) }}{% endif %}{% endif %}{%- endmacro -%}
+{%- macro pair(ar, en) -%}<span class="pair">{% if ar != en %}<span class="ar">{{ ar }}</span>{% endif %}<span class="en">{{ en }}</span></span>{%- endmacro -%}
+{%- macro stack(ar, en) -%}{% if ar != en %}<span class="ar">{{ ar }}</span>{% endif %}<span class="en">{{ en }}</span>{%- endmacro -%}
+{%- macro stamp(at) -%}{% if at %}<span class="num">{{ frappe.utils.format_datetime(at, "yyyy-MM-dd HH:mm") }}</span>{% endif %}{%- endmacro -%}
+
+{%- set co = frappe.db.get_value("Company", doc.company, ["company_name", "company_name_in_arabic", "tax_id", "company_logo", "phone_no", "website", "default_currency"], as_dict=1) or {} -%}
+{%- set zbs = frappe.db.get_value("ZATCA Business Settings", {"company": doc.company}, "name") if doc.company else none -%}
+{%- set ns = namespace(cr="", street="", postal="") -%}
+{%- if zbs -%}
+  {%- set z = frappe.get_doc("ZATCA Business Settings", zbs) -%}
+  {%- for r in z.other_ids -%}{%- if r.type_code == "CRN" and r.value and not ns.cr -%}{%- set ns.cr = r.value -%}{%- endif -%}{%- endfor -%}
+  {%- set ns.street = z.street or "" -%}{%- set ns.postal = z.postal_code or "" -%}
+{%- endif -%}
+{%- set name_ar = co.company_name_in_arabic or co.company_name or doc.company -%}
+{%- set name_en = co.company_name or doc.company -%}
+{%- set addr = [ns.street, ns.postal] | select | join(" - ") -%}
+{%- set cur = co.default_currency or "SAR" -%}
+{%- set cur_mark = '<span class="riyal">&#x20C1;</span>' if cur == "SAR" else cur -%}
+{%- set trail = journal_entry_trail(doc) -%}
+{%- set words = money_words(doc.total_debit, cur) -%}
+
+{% include "afmco/templates/print/fonts.html" %}
+{{ saudi_riyal_font_face() }}
+<style>
+.print-format {
+  margin-top: 30mm;
+  margin-bottom: 16mm;
+  header-spacing: 4;
+  margin-left: 12mm;
+  margin-right: 12mm;
+  padding: 0 !important;
+  min-height: 0 !important;
+  font-size: 8pt;
+}
+html body .print-format, body .print-format { margin: 0 !important; padding: 0 !important; min-height: 0 !important; }
+html body, body[onload] { padding: 0 !important; margin: 0 !important; }
+.print-format .letter-head, .print-format .letter-head-footer { display: none !important; }
+
+.print-format .afm, .print-format .afm td, .print-format .afm th, .print-format .afm div, .print-format .afm span, .print-format .afm p, .print-format .afm b {
+  font-family: "Saudi Riyal", "Tajawal", "Montserrat", sans-serif !important;
+}
+.print-format .afm { color: #1a1a1a; font-size: 8pt; line-height: 13px; direction: rtl; text-align: right; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.afm * { box-sizing: border-box; }
+.print-format .afm p { margin: 0 !important; }
+.afm .num { white-space: nowrap; direction: ltr; unicode-bidi: embed; font-variant-numeric: tabular-nums; }
+.afm .ltr { direction: ltr; unicode-bidi: embed; }
+.afm table { width: 100%; border-collapse: collapse; table-layout: fixed; border-spacing: 0; }
+.print-format .afm td, .print-format .afm th { padding: 2px 4px !important; vertical-align: middle !important; word-wrap: break-word; border: 0; }
+
+.print-format .afm-hdr td { padding: 0 !important; vertical-align: top !important; border: 0 !important; }
+.print-format .afm-hdr td.logo { text-align: right; }
+body:last-child .print-format .afm-hdr td.logo img, .print-format .afm-hdr td.logo img { height: 15mm !important; width: auto !important; max-width: none !important; max-height: none !important; object-fit: contain; display: inline-block; }
+.afm-hdr .ids td { font-size: 8pt; line-height: 13px; white-space: nowrap; vertical-align: baseline !important; color: #1a1a1a; }
+.print-format .afm-hdr .ids td { padding: 0 0 2px 4px !important; }
+.afm-hdr .ids .k { font-size: 6.5pt; color: #6b6b6b; }
+.afm-hdr .ids .k.ltr { font-size: 6pt; letter-spacing: 0.4px; text-align: left; }
+
+.print-format .afm-ftr td { border-top: 0.75pt solid #00824e !important; padding: 3px 0 0 0 !important; font-size: 6.5pt; line-height: 11px; color: #00824e; vertical-align: top !important; }
+.afm-ftr .co { white-space: nowrap; color: #1a1a1a; }
+.afm-ftr .ltr2 { direction: ltr; text-align: right; white-space: nowrap; letter-spacing: 0.8px; }
+.afm-ftr .pg { white-space: nowrap; color: #1a1a1a; text-align: left; }
+
+.afm.jv .en { font-size: 6pt; line-height: 10px; color: #6b6b6b; direction: ltr; unicode-bidi: embed; letter-spacing: 0.2px; }
+.afm.jv .ar { font-size: 6.5pt; line-height: 10px; color: #6b6b6b; }
+.afm.jv .pair { display: table; width: 100%; }
+.afm.jv .pair .ar { display: table-cell; text-align: right; white-space: nowrap; }
+.afm.jv .pair .en { display: table-cell; text-align: left; white-space: nowrap; padding: 0 0 0 3px; }
+.afm.jv .v { font-size: 8pt; line-height: 13px; color: #1a1a1a; }
+.afm.jv .v.b { font-weight: bold; }
+.afm.jv .v .en { padding: 0 4px 0 0; }
+.afm.jv .muted { color: #6b6b6b; font-size: 6.5pt; line-height: 10px; }
+
+.afm.jv .jv-title { margin: 0 0 4mm 0; }
+.print-format .afm.jv .jv-title td { padding: 0 0 1.5mm 0 !important; border-bottom: 1pt solid #00824e; vertical-align: bottom !important; }
+.afm.jv .jv-title .t-ar { text-align: right; font-size: 15pt; line-height: 22px; font-weight: bold; color: #00824e; white-space: nowrap; }
+.afm.jv .jv-title .t-en { text-align: left; font-size: 10pt; line-height: 16px; font-weight: bold; color: #072b1a; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap; }
+.afm.jv .void { display: inline-block; margin: 0 3mm; padding: 0 2mm; border: 0.75pt solid #c62828; color: #c62828; font-size: 7pt; line-height: 12px; font-weight: bold; letter-spacing: 1px; vertical-align: middle; }
+
+.afm.jv .jv-meta { margin: 0 0 4mm 0; }
+.print-format .afm.jv .jv-meta td { border-bottom: 0.5pt solid #dcdcdc; vertical-align: top !important; }
+.print-format .afm.jv .jv-meta tr:first-child td { border-top: 0.5pt solid #dcdcdc; }
+.print-format .afm.jv .jv-meta td.lb { border-left: 0.5pt solid #ececec; }
+.print-format .afm.jv .jv-meta td.gap { border: 0 !important; }
+.afm.jv .jv-meta td.lb .ar, .afm.jv .jv-meta td.lb .en { display: block; white-space: nowrap; }
+
+.print-format .afm.jv table.jv-rows { margin: 0; }
+.afm.jv .jv-rows thead { display: table-header-group; }
+.afm.jv .jv-rows tr { page-break-inside: avoid; }
+.print-format .afm.jv .jv-rows th { background: #f2f7f4; border-top: 1pt solid #00824e; border-bottom: 0.5pt solid #00824e; text-align: right !important; vertical-align: bottom !important; font-weight: normal; padding: 2px 3px !important; }
+.afm.jv .jv-rows th .ar, .afm.jv .jv-rows th .en { display: block; white-space: nowrap; }
+.afm.jv .jv-rows th .ar { font-size: 6.5pt; line-height: 11px; font-weight: bold; color: #1a1a1a; }
+.afm.jv .jv-rows th .en { font-size: 5pt; line-height: 8px; }
+.print-format .afm.jv .jv-rows th.m { text-align: left !important; }
+.print-format .afm.jv .jv-rows td { font-size: 7pt; line-height: 10px; padding: 2px 3px !important; border-bottom: 0.5pt solid #e3e3e3; vertical-align: top !important; }
+.print-format .afm.jv .jv-rows td.m { text-align: left !important; }
+.afm.jv .jv-rows td .sub { display: block; color: #6b6b6b; font-size: 6pt; line-height: 9px; }
+.print-format .afm.jv .jv-rows tr.sum td { background: #f2f7f4; font-weight: bold; font-size: 7.5pt; line-height: 12px; border-top: 0.5pt solid #00824e; border-bottom: 1pt solid #00824e; vertical-align: middle !important; }
+.print-format .afm.jv .jv-rows tr.off td { color: #c62828; }
+
+.afm.jv .jv-close { margin: 4mm 0 0 0; page-break-inside: avoid; }
+.print-format .afm.jv .jv-close > tbody > tr > td { padding: 0 !important; vertical-align: top !important; }
+.print-format .afm.jv .jv-close td.gap { width: 6mm; }
+.afm.jv .blk { border-top: 1pt solid #00824e; padding: 2px 0 0 0; }
+.afm.jv .blk .hd { margin: 0 0 2px 0; }
+.afm.jv .blk .hd .ar, .afm.jv .blk .hd .en { color: #00824e; font-weight: bold; font-size: 7.5pt; line-height: 12px; }
+.afm.jv .blk .w-ar { font-size: 8pt; line-height: 13px; font-weight: bold; color: #1a1a1a; }
+.afm.jv .blk .w-en { font-size: 7pt; line-height: 11px; color: #1a1a1a; direction: ltr; text-align: left; }
+.afm.jv .blk .txt { font-size: 7.5pt; line-height: 12px; white-space: pre-line; }
+
+.afm.jv .jv-sign { margin: 5mm 0 0 0; page-break-inside: avoid; }
+.print-format .afm.jv .jv-sign td.box { border: 0.75pt solid #00824e; padding: 0 !important; vertical-align: top !important; }
+.print-format .afm.jv .jv-sign td.gap { border: 0; }
+.afm.jv .jv-sign .cap { background: #f2f7f4; border-bottom: 0.75pt solid #00824e; padding: 2px 4px; }
+.afm.jv .jv-sign .cap .ar { font-size: 7pt; line-height: 11px; font-weight: bold; color: #072b1a; }
+.afm.jv .jv-sign .who { padding: 3px 4px 0 4px; min-height: 22px; }
+.afm.jv .jv-sign .who .nm { font-size: 7.5pt; line-height: 12px; font-weight: bold; color: #1a1a1a; }
+.afm.jv .jv-sign .who .tm { font-size: 6.5pt; line-height: 10px; color: #6b6b6b; }
+.afm.jv .jv-sign .ink { height: 14mm; margin: 0 4px 3px 4px; border-bottom: 0.5pt dotted #6b6b6b; }
+
+.afm.jv .jv-docs { margin: 5mm 0 0 0; }
+.afm.jv .jv-docs .hd { border-top: 1pt solid #00824e; padding: 2px 0; }
+.afm.jv .jv-docs .hd .ar, .afm.jv .jv-docs .hd .en { color: #00824e; font-weight: bold; font-size: 7.5pt; line-height: 12px; }
+.afm.jv .jv-docs tr { page-break-inside: avoid; }
+.print-format .afm.jv .jv-docs td { font-size: 7pt; line-height: 10px; border-bottom: 0.5pt solid #e3e3e3; padding: 2px 3px !important; }
+.afm.jv .jv-docs .file { direction: ltr; unicode-bidi: embed; }
+.afm.jv .jv-docs .out { color: #6b6b6b; }
+.afm.jv .jv-docs td .ar, .afm.jv .jv-docs td .en { display: block; }
+.afm.jv .jv-docs td .ar { font-size: 7pt; color: #1a1a1a; }
+</style>
+
+<div id="header-html">
+<div class="afm afm-hdr" dir="rtl" lang="ar">
+  <table>
+    <colgroup><col><col style="width:62mm"></colgroup>
+    <tr>
+      <td class="logo"><img src="{{ co.company_logo or '/assets/afmco/images/afmco-logo.png' }}" alt="{{ name_en }}"></td>
+      <td>
+        <table class="ids">
+          <colgroup><col style="width:24mm"><col><col style="width:13mm"></colgroup>
+          {%- if co.tax_id %}
+          <tr><td class="k">{{ _("Tax Id", "ar") }}</td><td class="num"><b>{{ co.tax_id }}</b></td><td class="k ltr">VAT No.</td></tr>
+          {%- endif %}
+          {%- if ns.cr %}
+          <tr><td class="k">{{ _("Commercial Registration Number", "ar") }}</td><td class="num"><b>{{ ns.cr }}</b></td><td class="k ltr">CR No.</td></tr>
+          {%- endif %}
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+<div id="footer-html">
+<div class="afm afm-ftr" dir="rtl" lang="ar">
+  <table>
+    <colgroup><col><col style="width:36mm"><col style="width:30mm"></colgroup>
+    <tr>
+      <td><span class="co">{{ name_ar }}</span>{% if addr %} &nbsp;|&nbsp; {{ addr }}{% endif %}<div class="ltr2">{{ name_en }}{% if co.phone_no %} &nbsp;&nbsp; T {{ co.phone_no }}{% endif %}{% if co.website %} &nbsp;&nbsp; {{ co.website }}{% endif %}</div></td>
+      <td class="num" style="text-align:center;">{{ doc.name }}</td>
+      <td class="pg">{{ _("Page", "ar") }}&nbsp; <span class="ltr">Page <span class="page"></span> / <span class="topage"></span></span></td>
+    </tr>
+  </table>
+</div>
+</div>
+
+<div class="afm jv" dir="rtl" lang="ar">
+  <table class="jv-title"><colgroup><col style="width:55%"><col style="width:45%"></colgroup>
+    <tr>
+      <td class="t-ar">{{ _("Journal Entry Voucher", "ar") }}{% if doc.docstatus == 2 %}<span class="void">{{ _("CANCELLED", "ar") }} &middot; <span class="ltr">CANCELLED</span></span>{% endif %}</td>
+      <td class="t-en"><span class="ltr">Journal Entry Voucher</span></td>
+    </tr>
+  </table>
+
+  {%- set meta = [
+    (_("Voucher No.", "ar"), "Voucher No.", '<span class="num">' ~ doc.name ~ '</span>', "b"),
+    (_("Posting Date", "ar"), "Posting Date", '<span class="num">' ~ frappe.utils.formatdate(doc.posting_date, "yyyy-mm-dd") ~ '</span>', ""),
+    (_("Entry Type", "ar"), "Entry Type", (_(doc.voucher_type, "ar") ~ ' <span class="en">' ~ doc.voucher_type ~ '</span>') if doc.voucher_type else "", ""),
+    (_("Cheque No.", "ar"), "Cheque No.", ('<span class="num">' ~ doc.cheque_no ~ '</span>') if doc.cheque_no else "", ""),
+    (_("Cheque Date", "ar"), "Cheque Date", ('<span class="num">' ~ frappe.utils.formatdate(doc.cheque_date, "yyyy-mm-dd") ~ '</span>') if doc.cheque_date else "", ""),
+    (_("Mode of Payment", "ar"), "Mode of Payment", doc.mode_of_payment or "", ""),
+    (_("Pay To / Recd From", "ar"), "Pay To / Recd From", ('<span dir="auto">' ~ doc.pay_to_recd_from ~ '</span>') if doc.pay_to_recd_from else "", ""),
+    (_("Payment Requisition", "ar"), "Payment Requisition", ('<span class="num">' ~ doc.get("expense_request_cf") ~ '</span>' ~ ((' <span class="muted">' ~ _(doc.get("pr_status"), "ar") ~ '</span>') if doc.get("pr_status") else "")) if doc.get("expense_request_cf") else "", "")
+  ] | selectattr("2") | list -%}
+  <table class="jv-meta">
+    <colgroup><col style="width:28mm"><col><col style="width:6mm"><col style="width:28mm"><col></colgroup>
+    {%- for line in meta | batch(2) %}
+    <tr>
+      {%- for ar, en, value, cls in line %}
+      {%- if not loop.first %}<td class="gap"></td>{% endif %}
+      <td class="lb">{{ stack(ar, en) }}</td><td class="v {{ cls }}">{{ value }}</td>
+      {%- endfor %}
+      {%- if line | length == 1 %}<td class="gap"></td><td class="gap"></td><td class="gap"></td>{% endif %}
+    </tr>
+    {%- endfor %}
+  </table>
+
+  <table class="jv-rows">
+    <colgroup><col style="width:6mm"><col style="width:40mm"><col style="width:30mm"><col style="width:26mm"><col><col style="width:23mm"><col style="width:23mm"></colgroup>
+    <thead>
+      <tr>
+        <th><span class="en">#</span></th>
+        <th>{{ stack(_("Account", "ar"), "Account") }}</th>
+        <th>{{ stack(_("Party", "ar"), "Party") }}</th>
+        <th>{{ stack(_("Cost Center", "ar"), "Cost Center") }}</th>
+        <th>{{ stack(_("Remark", "ar"), "Remark") }}</th>
+        <th class="m">{{ stack(_("Debit", "ar"), "Debit") }}<span class="en">{{ cur_mark }}</span></th>
+        <th class="m">{{ stack(_("Credit", "ar"), "Credit") }}<span class="en">{{ cur_mark }}</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for a in doc.accounts %}
+      {%- set title_field = frappe.get_meta(a.party_type).title_field if a.party_type and a.party else none -%}
+      {%- set party_title = frappe.db.get_value(a.party_type, a.party, title_field) if title_field else none -%}
+      {%- set employee_name = frappe.db.get_value("Employee", a.employee, "employee_name") if a.get("employee") and not a.party else none -%}
+      {%- set foreign = a.account_currency if a.account_currency and a.account_currency != cur else none -%}
+      <tr>
+        <td class="num">{{ a.idx }}</td>
+        <td><span class="ltr">{{ a.account }}</span></td>
+        <td>
+          {%- if a.party %}<span class="sub">{{ _(a.party_type, "ar") }} &middot; <span class="ltr">{{ a.party_type }}</span></span><span dir="auto">{{ party_title or a.party }}</span>{% if party_title and party_title != a.party %}<span class="sub num">{{ a.party }}</span>{% endif %}
+          {%- elif employee_name %}<span class="sub">{{ _("Employee", "ar") }} &middot; <span class="ltr">Employee</span></span>{{ employee_name }}<span class="sub num">{{ a.employee }}</span>
+          {%- endif %}
+        </td>
+        <td>{% if a.cost_center %}<span class="ltr">{{ a.cost_center }}</span>{% endif %}{% if a.project %}<span class="sub ltr">{{ a.project }}</span>{% endif %}</td>
+        <td dir="auto">{{ a.user_remark or "" }}</td>
+        <td class="num m">{{ amount(a.debit_in_account_currency, a.debit, foreign) }}</td>
+        <td class="num m">{{ amount(a.credit_in_account_currency, a.credit, foreign) }}</td>
+      </tr>
+      {%- endfor %}
+      <tr class="sum">
+        <td colspan="5">{{ pair(_("Total", "ar"), "Total") }}</td>
+        <td class="num m">{{ money(doc.total_debit) }}</td>
+        <td class="num m">{{ money(doc.total_credit) }}</td>
+      </tr>
+      {%- if doc.difference %}
+      <tr class="sum off">
+        <td colspan="5">{{ pair(_("Difference", "ar"), "Difference") }}</td>
+        <td class="num m" colspan="2">{{ money(doc.difference) }}</td>
+      </tr>
+      {%- endif %}
+    </tbody>
+  </table>
+
+  <table class="jv-close">
+    <colgroup><col style="width:{{ '58%' if doc.user_remark else '100%' }}">{% if doc.user_remark %}<col style="width:6mm"><col>{% endif %}</colgroup>
+    <tr>
+      <td>
+        <div class="blk">
+          <div class="hd">{{ pair(_("Amount in Words", "ar"), "Amount in Words") }}</div>
+          <div class="w-ar">{{ words.ar }}</div>
+          <div class="w-en">{{ words.en }}</div>
+        </div>
+      </td>
+      {%- if doc.user_remark %}
+      <td class="gap"></td>
+      <td>
+        <div class="blk">
+          <div class="hd">{{ pair(_("User Remark", "ar"), "User Remark") }}</div>
+          <div class="txt" dir="auto">{{ doc.user_remark }}</div>
+        </div>
+      </td>
+      {%- endif %}
+    </tr>
+  </table>
+
+  {%- set sigs = [
+    (_("Prepared By", "ar"), "Prepared By", trail.prepared),
+    (_("Approved By", "ar"), "Approved By", trail.approved),
+    (_("Finance Manager", "ar"), "Finance Manager", none),
+    (_("General Manager", "ar"), "General Manager", none)
+  ] -%}
+  <table class="jv-sign">
+    <colgroup>{% for s in sigs %}{% if not loop.first %}<col style="width:3mm">{% endif %}<col>{% endfor %}</colgroup>
+    <tr>
+      {%- for ar, en, who in sigs %}
+      {%- if not loop.first %}<td class="gap"></td>{% endif %}
+      <td class="box">
+        <div class="cap">{{ pair(ar, en) }}</div>
+        <div class="who">{% if who %}<div class="nm">{{ who.user }}</div><div class="tm">{{ stamp(who.at) }}</div>{% endif %}</div>
+        <div class="ink"></div>
+        <div class="who"><span class="muted">{{ _("Signature", "ar") }} &middot; <span class="ltr">Signature</span></span></div>
+      </td>
+      {%- endfor %}
+    </tr>
+  </table>
+
+  {%- if trail.attachments %}
+  <div class="jv-docs">
+    <div class="hd">{{ pair(_("Supporting Documents", "ar"), "Supporting Documents") }}</div>
+    <table>
+      <colgroup><col style="width:6mm"><col><col style="width:34mm"><col style="width:34mm"></colgroup>
+      {%- for f in trail.attachments %}
+      <tr>
+        <td class="num">{{ loop.index }}</td>
+        <td><span class="file">{{ f.file_name }}</span></td>
+        <td>{{ stack(_(f.source, "ar"), f.source) }}</td>
+        <td class="{{ '' if f.included else 'out' }}">{% if f.included %}{{ stack(_("Included", "ar"), "Included") }}{% else %}{{ stack(_("Attached separately", "ar"), "Attached separately") }}{% endif %}</td>
+      </tr>
+      {%- endfor %}
+    </table>
+  </div>
+  {%- endif %}
+</div>

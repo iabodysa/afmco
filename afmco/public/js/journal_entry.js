@@ -7,6 +7,7 @@ frappe.ui.form.on('Journal Entry', {
         er_remove_section(frm); 
         er_status(frm);
         je_attachments(frm);
+        je_dossier_button(frm);
         // Don't load details automatically to improve performance
     }
 });
@@ -491,4 +492,37 @@ function je_split_style() {
         .je-split-files { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
         .je-split-body { flex: 1; overflow: auto; }
     </style>`).appendTo('head');
+}
+
+const JE_DOSSIER_ROLES = ['Accountant', 'Accounts User', 'Accounts Manager'];
+
+function je_dossier_button(frm) {
+    const label = __('Print with attachments');
+    frm.remove_custom_button(label);
+    if (frm.doc.docstatus > 0 && frappe.user_roles.some(role => JE_DOSSIER_ROLES.includes(role))) {
+        frm.add_custom_button(label, () => je_dossier_build(frm));
+    }
+}
+
+function je_dossier_build(frm) {
+    frappe.call({
+        method: 'afmco.financial_operations.api.journal_entry_dossier.build_dossier',
+        args: { journal_entry: frm.doc.name },
+        freeze: true,
+        freeze_message: __('Preparing the print with attachments...'),
+    }).then(({ message }) => {
+        if (message.queued) {
+            frappe.msgprint(__('The print with attachments is being prepared and will be attached to {0}.', [frm.doc.name]));
+            return;
+        }
+        const link = $('<a target="_blank" rel="noopener"></a>').attr('href', message.file_url).text(__('Open the print with attachments'));
+        let text = link.prop('outerHTML');
+        if (message.listed.length) {
+            text += '<br>' + __('Listed by name, not merged: {0}', [message.listed.map(frappe.utils.escape_html).join(', ')]);
+        }
+        if (message.skipped.length) {
+            text += '<br>' + __('Not included, unreadable or protected: {0}', [message.skipped.map(frappe.utils.escape_html).join(', ')]);
+        }
+        frappe.msgprint(text);
+    });
 }

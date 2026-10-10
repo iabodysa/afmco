@@ -7,7 +7,7 @@ description = "Customization for AFMCO"
 requires-python = ">=3.14,<3.15"
 readme = "README.md"
 dynamic = ["version"]
-dependencies = []
+dependencies = ["pikepdf>=9.0.0,<11.0.0"]
 
 [build-system]
 requires = ["flit_core >=3.4,<4"]

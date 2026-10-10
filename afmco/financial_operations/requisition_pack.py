@@ -6,7 +6,10 @@ from pathlib import Path
 
 import frappe
 import pikepdf
+from frappe.utils import get_datetime
 from PIL import Image, ImageOps, UnidentifiedImageError
+
+from afmco.financial_operations import excel_lock
 
 PAYMENT_REQUISITION = "Payment Requisition"
 JOURNAL_ENTRY = "Journal Entry"
@@ -29,7 +32,7 @@ def requisition_files(requisition: str) -> list[dict]:
 	return frappe.get_all(
 		"File",
 		filters={"attached_to_doctype": PAYMENT_REQUISITION, "attached_to_name": requisition, "is_folder": 0},
-		fields=["name", "file_name", "file_url", "file_size"],
+		fields=["name", "file_name", "file_url", "file_size", "modified"],
 		order_by="creation asc",
 	)
 
@@ -72,7 +75,7 @@ def attachment_pdf(file: dict, downsample: bool) -> pikepdf.Pdf | None:
 		if extension == "pdf":
 			return pikepdf.Pdf.open(io.BytesIO(content))
 		return image_pdf(content, downsample)
-	except pikepdf.PdfError, pikepdf.PasswordError, UnidentifiedImageError, OSError:
+	except (pikepdf.PdfError, pikepdf.PasswordError, UnidentifiedImageError, OSError):
 		return None
 
 
@@ -121,26 +124,59 @@ def attach(requisition: str, journal_entry: str) -> dict:
 	separate = attach_excel(files, journal_entry)
 	return {
 		"file_url": file.file_url,
-		"skipped": [name for name in skipped if name not in separate],
-		"attached": separate,
+		"skipped": [name for name in skipped if name not in separate["originals"]],
+		"attached": separate["locked"],
+		"not_locked": separate["not_locked"],
 	}
 
 
-def attach_excel(files: list[dict], journal_entry: str) -> list[str]:
+def locked_file_name(file_name: str) -> str:
+	return f"{Path(file_name).stem}-locked.xlsx"
+
+
+def attach_excel(files: list[dict], journal_entry: str) -> dict:
 	excel = [f for f in files if file_extension(f) in EXCEL_EXTENSIONS]
-	present = set(
-		frappe.get_all(
-			"File",
-			filters={
-				"attached_to_doctype": JOURNAL_ENTRY,
-				"attached_to_name": journal_entry,
-				"file_url": ["in", [f.file_url for f in excel] or [""]],
-			},
-			pluck="file_url",
-		)
+	attached = frappe.get_all(
+		"File",
+		filters={"attached_to_doctype": JOURNAL_ENTRY, "attached_to_name": journal_entry},
+		fields=["name", "file_name", "file_url", "creation"],
 	)
+	password = excel_lock.lock_password()
+	locked, not_locked = [], []
 	for f in excel:
-		if f.file_url not in present:
-			frappe.get_doc("File", f.name).create_attachment_copy(JOURNAL_ENTRY, journal_entry)
-			present.add(f.file_url)
-	return [f.file_name for f in excel]
+		name = locked_file_name(f.file_name)
+		previous = [a for a in attached if a.file_name == name]
+		if file_extension(f) == "xlsx" and any(get_datetime(a.creation) >= f.modified for a in previous):
+			locked.append(name)
+			continue
+		if any(a.file_url == f.file_url for a in attached):
+			not_locked.append(f.file_name)
+			continue
+		source = frappe.get_doc("File", f.name)
+		content = None
+		if file_extension(f) == "xlsx":
+			content = excel_lock.lock(Path(source.get_full_path()).read_bytes(), password)
+		if content is None:
+			attached.append(source.create_attachment_copy(JOURNAL_ENTRY, journal_entry))
+			not_locked.append(f.file_name)
+			continue
+		for stale in previous:
+			frappe.delete_doc("File", stale.name)
+		attached.append(
+			frappe.get_doc(
+				{
+					"doctype": "File",
+					"file_name": name,
+					"attached_to_doctype": JOURNAL_ENTRY,
+					"attached_to_name": journal_entry,
+					"is_private": 1,
+					"content": content,
+				}
+			).insert()
+		)
+		locked.append(name)
+	return {
+		"originals": [f.file_name for f in excel],
+		"locked": locked,
+		"not_locked": not_locked,
+	}
