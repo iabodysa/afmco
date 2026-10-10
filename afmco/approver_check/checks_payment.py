@@ -159,7 +159,7 @@ def reference_siblings(ctx: Context) -> tuple[list[dict], int]:
 			},
 			fields=["name", "amount", "workflow_state"],
 		)
-		if ctx.doc.name not in {row.name for row in rows}:
+		if ctx.doc.name not in {row.name for row in rows} and live(ctx.doc):
 			rows.append(frappe._dict(name=ctx.doc.name, amount=ctx.doc.amount, workflow_state=ctx.doc.workflow_state))
 		readable = ctx.readable_names(PAYMENT_REQUISITION, [row.name for row in rows]) | {ctx.doc.name}
 		return [row for row in rows if row.name in readable], len(rows) - len(readable & {row.name for row in rows})
@@ -528,11 +528,11 @@ CHECKS = (
 	Check("PR-ACC-08", "urgent_has_reason", ACCOUNTING, _lt("Urgent request has a reason"), WARNING, urgent_has_reason),
 	Check("PR-ACC-09", "already_paid_flag", ACCOUNTING, _lt("Already paid flag"), INFO, already_paid_flag),
 	Check("PR-ATT-01", "has_attachment", ATTACHMENTS, _lt("Supporting file attached"), BLOCK, attachment_present),
-	Check("PR-ATT-02", "attachment_readable", ATTACHMENTS, _lt("Attached files can be opened"), INFO, attachment_readable),
+	Check("PR-ATT-02", "attachment_readable", ATTACHMENTS, _lt("Attached files can be opened"), INFO, attachment_readable, background=True),
 	Check("PR-ATT-03", "attachment_reused_elsewhere", ATTACHMENTS, _lt("Attachment not reused for another account"), INFO, attachment_reused_elsewhere),
 	Check("PR-ATT-04", "files_added_after_approval", ATTACHMENTS, _lt("Files added after the last workflow step"), INFO, files_added_after_approval),
-	Check("PR-ATT-05", "pdf_metadata_edited", ATTACHMENTS, _lt("PDF shows no sign of editing"), INFO, pdf_metadata_edited),
-	Check("PR-ATT-06", "zatca_qr_matches", ATTACHMENTS, _lt("Invoice QR code matches"), WARNING, zatca_qr_matches),
+	Check("PR-ATT-05", "pdf_metadata_edited", ATTACHMENTS, _lt("PDF shows no sign of editing"), INFO, pdf_metadata_edited, background=True),
+	Check("PR-ATT-06", "zatca_qr_matches", ATTACHMENTS, _lt("Invoice QR code matches"), WARNING, zatca_qr_matches, background=True),
 	Check("PR-BEN-01", "iban_valid", BENEFICIARY, _lt("IBAN is valid"), BLOCK, iban_valid),
 	Check("PR-BEN-02", "account_matches_employee", BENEFICIARY, _lt("Account matches the employee record"), WARNING, pr_account_matches_employee),
 	Check("PR-BEN-03", "account_changed_recently", BENEFICIARY, _lt("Employee bank account not changed recently"), WARNING, pr_account_changed_recently),
@@ -545,7 +545,7 @@ CHECKS = (
 	Check("PR-POL-01", "approver_not_requester", POLICY, _lt("Approver is not the requester"), WARNING, approver_not_requester),
 	Check("PR-POL-02", "same_user_two_steps", POLICY, _lt("Approver did not approve an earlier step"), INFO, same_user_two_steps),
 	Check("PR-FRD-01", "duplicate_amount_account_14d", FRAUD, _lt("No duplicate payment within 14 days"), WARNING, duplicate_amount_account_14d),
-	Check("PR-FRD-02", "ai_document_suspicion", FRAUD, _lt("AI reading of attachments"), WARNING, ai_document_suspicion, mode=AI),
+	Check("PR-FRD-02", "ai_document_suspicion", FRAUD, _lt("AI reading of attachments"), WARNING, ai_document_suspicion, mode=AI, background=True),
 )
 
 ROLE_RESTRICTED = {"PR-BEN-06": AUDIT_ROLES}

@@ -3,13 +3,20 @@
 frappe.provide("afmco.approver_check");
 
 afmco.approver_check.METHOD = "afmco.financial_operations.api.approver_check.run";
+afmco.approver_check.RESULT_METHOD = "afmco.financial_operations.api.approver_check.get_result";
+afmco.approver_check.RESULT_EVENT = "afmco_approver_check_result";
 afmco.approver_check.STORAGE_PREFIX = "afmco-approver-check";
+afmco.approver_check.POLL_MS = 3000;
+afmco.approver_check.WAIT_MS = 60000;
+afmco.approver_check.results = {};
 
 afmco.approver_check.status_meta = function (status) {
 	return {
 		fail: { icon: "✕", word: __("Fail", null, "Approver Check") },
 		warn: { icon: "!", word: __("Warning", null, "Approver Check") },
 		unknown: { icon: "?", word: __("Could not verify", null, "Approver Check") },
+		timeout: { icon: "↻", word: __("Not finished", null, "Approver Check") },
+		pending: { icon: "…", word: __("Pending", null, "Approver Check") },
 		pass: { icon: "✓", word: __("Pass", null, "Approver Check") },
 		na: { icon: "–", word: __("Not applicable", null, "Approver Check") },
 	}[status];
@@ -38,11 +45,15 @@ afmco.approver_check.attach = function (frm) {
 		return;
 	}
 	frm.add_custom_button(label, () => afmco.approver_check.open(frm));
-	const key = [afmco.approver_check.STORAGE_PREFIX, frm.doctype, frm.docname, frm.doc.modified].join(":");
+	const key = afmco.approver_check.key(frm);
 	if (!afmco.approver_check.seen(key)) {
 		afmco.approver_check.remember(key);
 		afmco.approver_check.open(frm);
 	}
+};
+
+afmco.approver_check.key = function (frm) {
+	return [afmco.approver_check.STORAGE_PREFIX, frm.doctype, frm.docname, frm.doc.modified].join(":");
 };
 
 afmco.approver_check.open = function (frm) {
@@ -51,22 +62,87 @@ afmco.approver_check.open = function (frm) {
 		size: "extra-large",
 		fields: [{ fieldtype: "HTML", fieldname: "body" }],
 		primary_action_label: __("Re-run"),
-		primary_action: () => afmco.approver_check.load(dialog, frm),
+		primary_action: () => afmco.approver_check.load(dialog, frm, true),
 		secondary_action_label: __("Close"),
 		secondary_action: () => dialog.hide(),
 	});
 	dialog.$wrapper.addClass("afmco-approver-check");
 	dialog.show();
-	afmco.approver_check.load(dialog, frm);
+	const stored = afmco.approver_check.results[afmco.approver_check.key(frm)];
+	if (stored && !afmco.approver_check.waiting(stored)) {
+		afmco.approver_check.show(dialog, frm, stored);
+		return;
+	}
+	afmco.approver_check.load(dialog, frm, false);
 };
 
-afmco.approver_check.load = function (dialog, frm) {
+afmco.approver_check.load = function (dialog, frm, retry) {
 	const body = dialog.fields_dict.body.$wrapper;
 	body.html(afmco.approver_check.skeleton());
 	frappe
-		.call({ method: afmco.approver_check.METHOD, args: { doctype: frm.doctype, name: frm.docname } })
-		.then((r) => body.html(afmco.approver_check.render(r.message)))
+		.call({ method: afmco.approver_check.METHOD, args: { doctype: frm.doctype, name: frm.docname, retry: retry ? 1 : 0 } })
+		.then((r) => afmco.approver_check.show(dialog, frm, r.message))
 		.catch(() => body.html(`<p class="ac-error">${__("The approver check could not run.")}</p>`));
+};
+
+afmco.approver_check.waiting = function (run) {
+	return run.items.some((item) => item.status === "pending");
+};
+
+afmco.approver_check.show = function (dialog, frm, run) {
+	afmco.approver_check.results[afmco.approver_check.key(frm)] = run;
+	const body = dialog.fields_dict.body.$wrapper;
+	body.html(afmco.approver_check.render(run));
+	body.find(".ac-retry").on("click", () => afmco.approver_check.load(dialog, frm, true));
+	if (afmco.approver_check.waiting(run)) {
+		afmco.approver_check.wait(dialog, frm, run);
+	}
+};
+
+afmco.approver_check.wait = function (dialog, frm, run) {
+	const started = Date.now();
+	let done = false;
+	let timer = null;
+	const finish = (fresh) => {
+		if (done) {
+			return;
+		}
+		done = true;
+		window.clearInterval(timer);
+		frappe.realtime.off(afmco.approver_check.RESULT_EVENT, heard);
+		if (dialog.is_visible) {
+			afmco.approver_check.show(dialog, frm, fresh || afmco.approver_check.unfinished(run));
+		}
+	};
+	const ask = () =>
+		frappe
+			.call({ method: afmco.approver_check.RESULT_METHOD, args: { doctype: frm.doctype, name: frm.docname } })
+			.then((r) => {
+				if (r.message && !r.message.pending) {
+					finish(r.message);
+				}
+			});
+	const heard = (message) => {
+		if (message && message.doctype === frm.doctype && message.name === frm.docname) {
+			ask();
+		}
+	};
+	frappe.realtime.on(afmco.approver_check.RESULT_EVENT, heard);
+	timer = window.setInterval(() => {
+		if (!dialog.is_visible || Date.now() - started >= afmco.approver_check.WAIT_MS) {
+			finish(null);
+			return;
+		}
+		ask();
+	}, afmco.approver_check.POLL_MS);
+};
+
+afmco.approver_check.unfinished = function (run) {
+	const items = run.items.map((item) =>
+		item.status === "pending" ? { ...item, status: "timeout", detail: __("The check did not finish in time.") } : item
+	);
+	const counts = { ...run.counts, pending: 0, timeout: items.filter((item) => item.status === "timeout").length };
+	return { ...run, items, counts };
 };
 
 afmco.approver_check.skeleton = function () {
@@ -79,7 +155,8 @@ afmco.approver_check.render = function (run) {
 	const headline = run.blocking
 		? `<div class="ac-headline ac-blocking">${__("Do not approve until the red items are resolved")}</div>`
 		: `<div class="ac-headline ac-clear">${__("No blocking issue found")}</div>`;
-	const counters = ["fail", "warn", "unknown"]
+	const counters = ["fail", "warn", "unknown", "timeout", "pending"]
+		.filter((status) => status !== "timeout" && status !== "pending" ? true : counts[status])
 		.map((status) => {
 			const meta = afmco.approver_check.status_meta(status);
 			return `<span class="ac-counter ac-${status}"><span class="ac-icon">${meta.icon}</span> ${meta.word}: ${counts[status]}</span>`;
@@ -129,7 +206,8 @@ afmco.approver_check.row = function (item) {
 		item.status === "fail" && item.severity === "block" ? `<span class="ac-badge ac-badge-block">${__("Blocking")}</span>` : "";
 	const ai = item.mode === "ai" ? `<span class="ac-badge">${__("AI")}</span>` : "";
 	const evidence = (item.evidence || []).map(afmco.approver_check.evidence).join("");
-	const detail = `<div class="ac-detail">${frappe.utils.escape_html(item.detail || "")}</div>`;
+	const retry = item.status === "timeout" ? ` <button type="button" class="btn btn-xs btn-default ac-retry">${__("Retry")}</button>` : "";
+	const detail = `<div class="ac-detail">${frappe.utils.escape_html(item.detail || "")}${retry}</div>`;
 	const head = `<span class="ac-icon ac-${tone}">${meta.icon}</span><span class="ac-word ac-${tone}">${meta.word}</span><span class="ac-label">${frappe.utils.escape_html(item.label)}</span>${blocking}${ai}`;
 	if (!evidence) {
 		return `<div class="ac-row ac-row-${tone}"><div class="ac-row-head">${head}</div>${detail}</div>`;

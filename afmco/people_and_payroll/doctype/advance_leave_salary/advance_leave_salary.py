@@ -15,8 +15,8 @@ class AdvanceLeaveSalary(Document):
     def onload(self):
         self.set_onload("approver_check_allowed", engine.approver_allowed(self))
 
-    def approver_checklist(self) -> dict:
-        return engine.run(self)
+    def approver_checklist(self, deferred: bool = False) -> dict:
+        return engine.run(self, deferred=deferred)
 
     def validate(self):
         recompute_advance(self)

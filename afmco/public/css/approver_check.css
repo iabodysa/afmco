@@ -102,6 +102,8 @@
 }
 
 .afmco-approver-check .ac-unknown,
+.afmco-approver-check .ac-timeout,
+.afmco-approver-check .ac-pending,
 .afmco-approver-check .ac-info,
 .afmco-approver-check .ac-na {
 	color: var(--gray-600, #718096);

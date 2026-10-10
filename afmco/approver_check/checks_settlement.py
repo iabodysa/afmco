@@ -81,7 +81,20 @@ def documented_reason(ctx: Context, codes: tuple[str, ...], needed: str) -> Resu
 
 
 def article80_zero_award_documented(ctx: Context) -> Result:
-	return documented_reason(ctx, ARTICLE_80_CODES, _("Termination under Article 80 pays no award and needs the investigation record."))
+	result = documented_reason(
+		ctx,
+		ARTICLE_80_CODES,
+		_("Article 80 lets the employer end the contract without the end of service award of Articles 84 and 85 only in the cases it lists; attach the investigation record that proves the case."),
+	)
+	if result.status != NA:
+		result.evidence.append(evidence(_("Articles 84 and 85"), award_articles()))
+	return result
+
+
+def award_articles() -> str:
+	return _(
+		"Article 84: half a month's wage for each of the first five years of service and a full month's wage for each later year. Article 85: a worker who resigns receives one third of that award after two to five years, two thirds after five to ten years, and the full award after ten years."
+	)
 
 
 def full_award_exception_documented(ctx: Context) -> Result:
@@ -113,8 +126,8 @@ def settlement_overdue(ctx: Context) -> Result:
 	waited = (ctx.today - getdate(doc.date_2)).days
 	shown = [evidence(_("Last working day"), doc.date_2), evidence(_("Days since"), waited)]
 	if waited > deadline:
-		return Result(WARN, _("Unpaid {0} days after the last working day; Article 88 allows {1} days for this reason.").format(waited, deadline), shown)
-	return Result(PASS, _("Within the {0} days Article 88 allows for this reason.").format(deadline), shown)
+		return Result(WARN, _("Unpaid {0} days after the last working day, beyond the {1} days of Article 88, which gives one week when the employer ends the contract and two weeks when the worker ends it.").format(waited, deadline), shown)
+	return Result(PASS, _("Within the {0} days of Article 88, which gives one week when the employer ends the contract and two weeks when the worker ends it.").format(deadline), shown)
 
 
 def eos_attachment(ctx: Context) -> Result:

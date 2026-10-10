@@ -167,6 +167,21 @@ class TestLeaveAndSettlementPolicy(IntegrationTestCase):
 		self.assertEqual(status(record(EOS, staff, end_of_service_reason=RESIGNATION, date_2=add_days(nowdate(), -20)), "EOS-POL-06"), "warn")
 		self.assertEqual(status(record(EOS, staff, end_of_service_reason=END_OF_TERM, date_2=add_days(nowdate(), -10)), "EOS-POL-06"), "warn")
 
+	def test_article_80_row_states_the_article_84_and_85_award(self):
+		item = verdict(make_settlement(staff_member(), end_of_service_reason=ARTICLE_80), "EOS-POL-02")
+		self.assertIn("Articles 84 and 85", item["detail"])
+		self.assertNotIn("pays no award", item["detail"])
+		law = " ".join(entry["value"] for entry in item["evidence"])
+		self.assertIn("Article 84: half a month's wage for each of the first five years", law)
+		self.assertIn("Article 85: a worker who resigns receives one third", law)
+
+	def test_article_88_row_states_one_week_for_employer_and_two_weeks_for_worker(self):
+		staff = staff_member()
+		for reason, days, state in ((END_OF_TERM, 10, "warn"), (RESIGNATION, 10, "pass")):
+			item = verdict(record(EOS, staff, end_of_service_reason=reason, date_2=add_days(nowdate(), -days)), "EOS-POL-06")
+			self.assertEqual(item["status"], state)
+			self.assertIn("one week when the employer ends the contract and two weeks when the worker ends it", item["detail"])
+
 	def test_approver_who_created_the_record_is_warned(self):
 		staff = staff_member()
 		for doctype, check_id in ((ALS, "ALS-POL-07"), (EOS, "EOS-POL-07")):

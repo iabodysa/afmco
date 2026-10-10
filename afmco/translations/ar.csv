@@ -13293,7 +13293,6 @@ Fraud red flags,مؤشرات الاحتيال
 The end of service reason is {0}.,سبب انتهاء الخدمة {0}.
 No coded end of service reason is selected; the award cannot be calculated.,لم يختر سبب مرمز لانتهاء الخدمة؛ ولا يمكن حساب المكافأة.
 The reason does not need this document.,هذا السبب لا يحتاج هذا المستند.
-Termination under Article 80 pays no award and needs the investigation record.,الفصل وفق المادة 80 لا يستحق مكافأة ويحتاج محضر التحقيق.
 This reason pays the full award and needs a supporting document.,هذا السبب يستحق المكافأة كاملة ويحتاج مستندا داعما.
 Deductions and penalty,الاستقطاعات والشرط الجزائي
 Final dues before deductions,المستحقات النهائية قبل الاستقطاع
@@ -13302,8 +13301,6 @@ No deduction is taken from the final dues.,لا يوجد استقطاع من ا�
 Deductions are {0} of final dues.,الاستقطاعات {0} من المستحقات النهائية.
 The settlement is paid or has no last working day.,التصفية مدفوعة أو بلا آخر يوم عمل.
 Days since,الأيام المنقضية
-Unpaid {0} days after the last working day; Article 88 allows {1} days for this reason.,لم تدفع بعد {0} يوما من آخر يوم عمل؛ والمادة 88 تمهل {1} يوما لهذا السبب.
-Within the {0} days Article 88 allows for this reason.,ضمن مهلة المادة 88 لهذا السبب وهي {0} يوما.
 The settlement is paid in cash.,التصفية تدفع نقدا.
 The settlement is paid to a bank account.,التصفية تدفع إلى حساب بنكي.
 Cash payment set by,حدد الدفع النقدي
@@ -13460,3 +13457,14 @@ Not applicable ({0}),لا ينطبق ({0})
 This check advises; it does not stop approval.,هذا الفحص استشاري؛ ولا يمنع الاعتماد.
 Blocking,يمنع الاعتماد
 AI,الذكاء الاصطناعي
+Article 80 lets the employer end the contract without the end of service award of Articles 84 and 85 only in the cases it lists; attach the investigation record that proves the case.,المادة 80 تجيز لصاحب العمل إنهاء العقد دون مكافأة نهاية الخدمة الواردة في المادتين 84 و85 في الحالات التي تذكرها فقط؛ أرفق محضر التحقيق الذي يثبت الحالة.
+Articles 84 and 85,المادتان 84 و85
+"Article 84: half a month's wage for each of the first five years of service and a full month's wage for each later year. Article 85: a worker who resigns receives one third of that award after two to five years, two thirds after five to ten years, and the full award after ten years.",المادة 84: أجر نصف شهر عن كل سنة من السنوات الخمس الأولى من الخدمة، وأجر شهر كامل عن كل سنة بعدها. المادة 85: العامل المستقيل يستحق ثلث المكافأة بعد خدمة من سنتين إلى خمس سنوات، وثلثيها بعد خمس إلى عشر سنوات، والمكافأة كاملة بعد عشر سنوات.
+"Unpaid {0} days after the last working day, beyond the {1} days of Article 88, which gives one week when the employer ends the contract and two weeks when the worker ends it.",لم تدفع بعد {0} يوما من آخر يوم عمل، وهذا يتجاوز مهلة المادة 88 وهي {1} يوما؛ المادة 88 تمهل أسبوعا إذا أنهى صاحب العمل العقد، وأسبوعين إذا أنهاه العامل.
+"Within the {0} days of Article 88, which gives one week when the employer ends the contract and two weeks when the worker ends it.",ضمن مهلة المادة 88 وهي {0} يوما؛ المادة 88 تمهل أسبوعا إذا أنهى صاحب العمل العقد، وأسبوعين إذا أنهاه العامل.
+The check did not finish within {0} seconds.,لم ينته الفحص خلال {0} ثانية.
+Reading the attachments; the result appears here when it is ready.,جار قراءة المرفقات؛ تظهر النتيجة هنا عند اكتمالها.
+Not finished,لم يكتمل,Approver Check
+Pending,قيد الانتظار,Approver Check
+The check did not finish in time.,لم ينته الفحص في الوقت المحدد.
+Retry,إعادة المحاولة,Approver Check

@@ -2,25 +2,30 @@
 # For license information, please see license.txt
 
 import json
+import time
+from unittest import mock
 
 import frappe
 from frappe.model.workflow import get_workflow_name, is_transition_condition_satisfied
 from frappe.tests import IntegrationTestCase
 
 from afmco.approver_check import engine
-from afmco.approver_check.registry import APPROVER_STATES
+from afmco.approver_check.model import PASS, Check, Result, evidence
+from afmco.approver_check.registry import APPROVER_STATES, REGISTRY
 from afmco.approver_check.test_checks_payment import (
 	ALS,
 	EOS,
 	PR,
 	attach,
 	employee,
+	iban_update,
 	make_leave,
 	make_pr,
 	make_settlement,
 	pdf_bytes,
 )
-from afmco.financial_operations.api.approver_check import run
+from afmco.approver_check.test_iban import iban
+from afmco.financial_operations.api.approver_check import get_result, run
 from afmco.people_and_payroll.api.test_employee_financial_summary import make_user
 
 APPROVER = "approver-check-approver@afmco.test"
@@ -31,6 +36,9 @@ EMPLOYEE_ROWS = ("PR-BEN-02", "PR-BEN-03", "PR-BEN-05")
 LEAVE_EMPLOYEE_ROWS = ("ALS-ACC-02", "ALS-ACC-03", "ALS-POL-05", "ALS-BEN-02", "ALS-BEN-03")
 DISTINCT_WAGE = 3217
 DISTINCT_HOUSING = 911
+DISTINCT_SETTLEMENT_WAGE = 5333
+OWN_WAGE = 4111
+SELECT_ONLY_ROLE = "Approver Check Select Only"
 
 
 def record_in(doctype: str, state: str):
@@ -181,3 +189,123 @@ class TestApproverPermissionScope(IntegrationTestCase):
 		self.assertFalse(frappe.has_permission("Employee", "read", doc=frappe.get_doc("Employee", staff)))
 		item = next(row for row in engine.run(leave)["items"] if row["id"] == "ALS-ACC-03")
 		self.assertEqual(item["status"], "unknown")
+
+	def test_no_approver_at_any_step_receives_employee_or_source_values_it_cannot_read(self):
+		def hidden_worker():
+			staff = employee(basic_wage=DISTINCT_WAGE, housing_2=DISTINCT_HOUSING, employee_name="Zzqx Hidden Worker")
+			iban_update(staff, iban(), "Administrator")
+			return staff
+
+		staff = hidden_worker()
+		settlement = make_settlement(staff, total_salary=DISTINCT_SETTLEMENT_WAGE)
+		records = [make_pr(state=state, payment_type="EOS", tax_invoice_number=settlement.name, account_no=iban(), beneficiary_name="Zzqx Worker", verify_payment=0) for state in APPROVER_STATES[PR]]
+		records += [make_leave(staff, state=state, total_salary=OWN_WAGE) for state in APPROVER_STATES[ALS]]
+		records += [make_settlement(hidden_worker(), state=state, total_salary=OWN_WAGE) for state in APPROVER_STATES[EOS]]
+		checked = 0
+		for doc in records:
+			role = transition_role(doc)
+			if not role:
+				continue
+			worker = doc.get("employee") or staff
+			secrets = (
+				("Employee", worker, (frappe.db.get_value("Employee", worker, "bank_ac_no"), str(DISTINCT_WAGE), str(DISTINCT_HOUSING), "Zzqx Hidden Worker")),
+				(EOS, settlement.name, (str(DISTINCT_SETTLEMENT_WAGE),)),
+			)
+			with self.subTest(doctype=doc.doctype, state=doc.workflow_state, role=role):
+				frappe.set_user("Administrator")
+				make_user(APPROVER, role)
+				frappe.set_user(APPROVER)
+				if not engine.approver_allowed(doc):
+					continue
+				text = json.dumps(run(doc.doctype, doc.name), default=str)
+				own = json.dumps(doc.as_dict(), default=str)
+				checked += 1
+				for doctype, target, values in secrets:
+					if frappe.has_permission(doctype, "read", doc=target):
+						continue
+					for value in values:
+						if value not in own:
+							self.assertNotIn(value, text, f"{doctype} value {value} reached {role}")
+		self.assertGreater(checked, 5)
+
+	def test_select_only_permission_on_iban_update_does_not_reveal_it(self):
+		frappe.get_doc({"doctype": "Role", "role_name": SELECT_ONLY_ROLE, "desk_access": 1}).insert(ignore_if_duplicate=True)
+		frappe.get_doc({"doctype": "Custom DocPerm", "parent": "IBAN Update", "role": SELECT_ONLY_ROLE, "permlevel": 0, "select": 1, "read": 0}).insert()
+		frappe.clear_cache(doctype="IBAN Update")
+		self.addCleanup(frappe.clear_cache, doctype="IBAN Update")
+		staff = employee()
+		account = iban()
+		update = iban_update(staff, account, "Administrator")
+		leave = make_leave(staff, state="Waiting Manager Approval")
+		frappe.db.set_value(ALS, leave.name, "account_no", account, update_modified=False)
+		make_user(BYSTANDER, "HR User", SELECT_ONLY_ROLE)
+		frappe.set_user(BYSTANDER)
+		self.assertTrue(frappe.only_has_select_perm("IBAN Update"))
+		item = next(row for row in engine.run(frappe.get_doc(ALS, leave.name))["items"] if row["id"] == "ALS-BEN-02")
+		self.assertNotIn(update, json.dumps(item))
+		self.assertEqual(item["status"], "warn")
+
+	def test_endpoint_withholds_a_row_linking_a_record_the_approver_cannot_read(self):
+		staff = employee(basic_wage=DISTINCT_WAGE)
+
+		def careless(ctx):
+			wage = frappe.db.get_value("Employee", staff, "basic_wage")
+			return Result(PASS, f"wage {wage}", [evidence("Basic wage", wage, "Employee", staff)])
+
+		doc = record_in(PR, "Waiting P.M Approval")
+		make_user(APPROVER, transition_role(doc))
+		frappe.set_user(APPROVER)
+		self.assertFalse(frappe.has_permission("Employee", "read", doc=staff))
+		with mock.patch.dict(REGISTRY, {PR: (Check("PR-T-01", "careless", "accounting", "Careless", "warn", careless),)}):
+			payload = run(PR, doc.name)
+		self.assertEqual(payload["items"][0]["status"], "unknown")
+		self.assertNotIn(str(DISTINCT_WAGE), json.dumps(payload, default=str))
+
+
+class TestApproverCheckDelivery(IntegrationTestCase):
+	def tearDown(self):
+		frappe.set_user("Administrator")
+
+	def approver_on(self, doc):
+		make_user(APPROVER, transition_role(doc))
+		frappe.set_user(APPROVER)
+
+	def test_check_running_past_its_limit_reports_not_finished(self):
+		doc = record_in(PR, "Waiting P.M Approval")
+		slow = Check("PR-T-02", "slow", "accounting", "Slow", "warn", lambda ctx: time.sleep(3) or Result(PASS))
+		started = time.monotonic()
+		with mock.patch.object(engine, "CHECK_SECONDS", 1):
+			item = engine.run(doc, [slow])["items"][0]
+		self.assertEqual(item["status"], "timeout")
+		self.assertLess(time.monotonic() - started, 2.5)
+
+	def test_attachment_reading_is_pending_then_served_from_the_stored_result(self):
+		doc = record_in(PR, "Waiting P.M Approval")
+		attach(PR, doc.name, "invoice.pdf", pdf_bytes())
+		doc.reload()
+		self.approver_on(doc)
+		background = {check.id for check in REGISTRY[PR] if check.background}
+		first = {item["id"]: item["status"] for item in run(PR, doc.name)["items"]}
+		self.assertTrue(background)
+		self.assertEqual({first[check_id] for check_id in background}, {"pending"})
+		self.assertTrue(get_result(PR, doc.name)["pending"])
+		with mock.patch("frappe.publish_realtime") as pushed:
+			engine.run_background(PR, doc.name, str(doc.modified))
+		self.assertEqual(pushed.call_args.kwargs["user"], APPROVER)
+		ready = {item["id"]: item["status"] for item in get_result(PR, doc.name)["items"]}
+		self.assertNotIn("pending", {ready[check_id] for check_id in background})
+		again = {item["id"]: item["status"] for item in run(PR, doc.name)["items"]}
+		self.assertEqual({again[check_id] for check_id in background}, {ready[check_id] for check_id in background})
+		self.assertEqual({item["status"] for item in run(PR, doc.name, retry=1)["items"] if item["id"] in background}, {"pending"})
+
+	def test_stored_result_belongs_to_one_version_and_one_user(self):
+		doc = record_in(PR, "Waiting P.M Approval")
+		self.approver_on(doc)
+		with mock.patch("frappe.publish_realtime"):
+			engine.run_background(PR, doc.name, "2000-01-01 00:00:00")
+		self.assertTrue(get_result(PR, doc.name)["pending"])
+		with mock.patch("frappe.publish_realtime"):
+			engine.run_background(PR, doc.name, str(doc.modified))
+		self.assertNotIn("pending", get_result(PR, doc.name))
+		frappe.set_user("Administrator")
+		self.assertTrue(get_result(PR, doc.name)["pending"])

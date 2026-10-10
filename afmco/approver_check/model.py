@@ -13,7 +13,9 @@ FAIL = "fail"
 WARN = "warn"
 UNKNOWN = "unknown"
 NA = "na"
-STATUSES = (FAIL, WARN, UNKNOWN, PASS, NA)
+PENDING = "pending"
+TIMEOUT = "timeout"
+STATUSES = (FAIL, WARN, UNKNOWN, TIMEOUT, PENDING, PASS, NA)
 
 BLOCK = "block"
 WARNING = "warn"
@@ -59,6 +61,7 @@ class Check:
 	severity: str
 	run: Callable[[Context], Result]
 	mode: str = DETERMINISTIC
+	background: bool = False
 
 
 def evidence(label, value, doctype: str | None = None, name: str | None = None) -> dict:
@@ -86,7 +89,7 @@ class Context:
 
 	def readable_names(self, doctype: str, names) -> set[str]:
 		names = list(set(names))
-		if not names:
+		if not names or not frappe.has_permission(doctype, "read", user=self.user):
 			return set()
 		return set(frappe.get_list(doctype, filters={"name": ["in", names]}, pluck="name", limit_page_length=0))
 

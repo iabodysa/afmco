@@ -184,6 +184,16 @@ class TestPaymentAccountingChecks(IntegrationTestCase):
 		make_pr(state="Pending", payment_type="EOS", tax_invoice_number=source.name, amount=700)
 		self.assertEqual(status(pr(payment_type="EOS", tax_invoice_number=source.name, amount=500), "PR-ACC-05"), "warn")
 
+	def test_closed_request_is_not_added_to_its_own_reference_total(self):
+		source = make_leave(employee(), state="Approved")
+		frappe.db.set_value(ALS, source.name, "amount", 1000, update_modified=False)
+		make_pr(payment_type="Advance Leave Salary", tax_invoice_number=source.name, amount=1000)
+		for state in ("Rejected", "Cancelled"):
+			closed = make_pr(state=state, payment_type="Advance Leave Salary", tax_invoice_number=source.name, amount=600)
+			with self.subTest(state=state):
+				self.assertEqual(status(closed, "PR-ACC-05"), "pass")
+				self.assertEqual(status(closed, "PR-ACC-04"), "pass")
+
 	def test_cost_center_must_be_set(self):
 		self.assertEqual(status(pr(project=None), "PR-ACC-06"), "warn")
 		self.assertEqual(status(pr(project="Main - AF"), "PR-ACC-06"), "pass")
