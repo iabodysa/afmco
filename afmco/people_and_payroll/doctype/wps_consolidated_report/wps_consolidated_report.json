@@ -36,7 +36,8 @@
    "fieldname": "bank_format",
    "fieldtype": "Select",
    "label": "Bank Format",
-   "options": "NCBK\nSIBC"
+   "options": "NCBK\nSIBC",
+   "read_only_depends_on": "eval:doc.docstatus==1"
   },
   {
    "fieldname": "column_break_payroll_entries",
@@ -46,13 +47,15 @@
    "fieldname": "file_type",
    "fieldtype": "Select",
    "label": "File Type",
-   "options": "CSV\nExcel"
+   "options": "CSV\nExcel",
+   "read_only_depends_on": "eval:doc.docstatus==1"
   },
   {
    "fieldname": "payroll_entries",
    "fieldtype": "Table MultiSelect",
    "label": "Payroll Entries",
-   "options": "Payroll Entry Reference"
+   "options": "Payroll Entry Reference",
+   "read_only_depends_on": "eval:doc.docstatus==1"
   },
   {
    "fieldname": "section_generated_files",
@@ -109,7 +112,7 @@
    "link_fieldname": "wps_report_reference"
   }
  ],
- "modified": "2026-10-10 16:03:00.000000",
+ "modified": "2026-10-10 23:59:00.000000",
  "module": "People and Payroll",
  "name": "WPS Consolidated Report",
  "naming_rule": "Expression",

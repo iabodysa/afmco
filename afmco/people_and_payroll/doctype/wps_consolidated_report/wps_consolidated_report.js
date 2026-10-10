@@ -25,13 +25,6 @@ frappe.ui.form.on('WPS Consolidated Report', {
                 );
             });
         }
-
-
-        // Lock key fields after submission
-        if (frm.doc.docstatus === 1) {
-            ['payroll_entries', 'bank_format', 'file_type']
-                .forEach(f => frm.set_df_property(f, 'read_only', 1));
-        }
     },
     
     onload: function(frm) {
