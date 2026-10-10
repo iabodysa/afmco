@@ -8,7 +8,7 @@ from erpnext import get_default_company
 from frappe.utils import escape_html, flt, getdate, money_in_words, now, today
 from frappe.utils.html_utils import sanitize_html
 
-from afmco.approver_check import engine
+from afmco.approver_check import ai_reading, engine
 
 ACCOUNTS_ROLES = ("Accounts User", "Accounts Manager")
 ACCOUNTS_BOT_VIEWER_ROLES = (*ACCOUNTS_ROLES, "System Manager")
@@ -40,6 +40,20 @@ class PaymentRequisition(Document):
 
 	def approver_checklist(self, deferred: bool = False) -> dict:
 		return engine.run(self, deferred=deferred)
+
+	def request_attachment_reading(self) -> None:
+		self.db_set("accounts_bot_read_cf", 1, update_modified=False)
+
+	def save_reading(self, reading) -> None:
+		reading = ai_reading.parse(reading)
+		values = {
+			"ai_reading_cf": frappe.as_json(reading),
+			"ai_reading_at": now(),
+			"ai_reading_files_hash": ai_reading.read_hash(self, reading),
+			"accounts_bot_read_cf": 0,
+		}
+		self.db_set(values, update_modified=False)
+		engine.forget(self)
 
 	def accounts_bot_refusal(self) -> str | None:
 		if self.docstatus != 1 or self.workflow_state != "Paid":

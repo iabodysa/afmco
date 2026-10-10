@@ -13422,7 +13422,6 @@ No PDF is attached.,لا يوجد ملف PDF مرفق.
 No sign of editing found in the attached PDFs.,لم يعثر على علامات تعديل في ملفات PDF المرفقة.
 This payment type carries no tax invoice.,نوع الدفع هذا لا يحمل فاتورة ضريبية.
 QR reading is not enabled.,قراءة رمز QR غير مفعلة.
-AI reading is not enabled.,القراءة بالذكاء الاصطناعي غير مفعلة.
 This payment mode or type does not pay a Saudi IBAN.,طريقة الدفع أو نوعه لا يدفع إلى IBAN سعودي.
 "Local SNB account, not an IBAN.",حساب محلي في البنك الأهلي السعودي، وليس IBAN.
 This payment type does not pay an employee.,نوع الدفع هذا لا يدفع لموظف.
@@ -13517,3 +13516,18 @@ Could not be put on Hold: {0},تعذّر تحويلهم إلى معلّق: {0}
 Employees on Hold for no salary slip in the last 3 months,موظفون معلّقون لعدم صرف رواتبهم خلال آخر 3 أشهر
 Transactions cannot be created for an Employee on Hold {0}.,لا يمكن إنشاء معاملات لموظف معلّق {0}.
 Auditor,مدقق الحسابات
+Additional checks,فحوص إضافية
+Read Attachments,قراءة المرفقات
+Waiting for the Accountant Bot to read the attachments.,بانتظار قراءة بوت المحاسبة للمرفقات.
+The attachments have not been read yet.,لم تُقرأ المرفقات بعد.
+The attachments changed after the reading on {0}; read them again.,تغيرت المرفقات بعد القراءة في {0}؛ اقرأها مرة أخرى.
+Read by the Accountant Bot on {0}.,قرأها بوت المحاسبة في {0}.
+Accounts Bot Read Attachments,قراءة بوت المحاسبة للمرفقات
+AI Reading,قراءة الذكاء الاصطناعي
+AI Reading At,وقت قراءة الذكاء الاصطناعي
+AI Reading Files Hash,بصمة ملفات قراءة الذكاء الاصطناعي
+The Accountant Bot could not read the attachments.,تعذر على بوت المحاسبة قراءة المرفقات.
+The Accountant Bot read only part of the attachments on {0}.,قرأ بوت المحاسبة جزءًا من المرفقات فقط في {0}.
+The attachments show another beneficiary name or IBAN.,تُظهر المرفقات اسم مستفيد أو آيبان مختلفًا.
+The reading does not match reading shape version 1 at {0}.,القراءة لا تطابق صيغة القراءة الإصدار 1 عند {0}.
+{0} is not attached to {1}.,{0} غير مرفق بـ {1}.

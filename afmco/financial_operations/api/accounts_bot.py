@@ -36,6 +36,12 @@ def set_accounts_bot_status(name: str, status: str, note: str | None = None) -> 
 
 
 @frappe.whitelist(methods=["POST"])
+def save_reading(name: str, reading: dict | str) -> None:
+	frappe.only_for(ACCOUNTS_BOT_ROLE)
+	locked_requisition(name).save_reading(reading)
+
+
+@frappe.whitelist(methods=["POST"])
 def request_receipt_read(name: str) -> str:
 	frappe.only_for(RECEIPT_READ_ROLES)
 	return locked_requisition(name).queue_receipt_read()

@@ -2,6 +2,8 @@
 
 frappe.provide("afmco.approver_check");
 
+afmco.approver_check.AI_METHOD = "afmco.financial_operations.api.approver_check.ai_check";
+afmco.approver_check.READ_METHOD = "afmco.financial_operations.api.approver_check.request_reading";
 afmco.approver_check.METHOD = "afmco.financial_operations.api.approver_check.run";
 afmco.approver_check.RESULT_METHOD = "afmco.financial_operations.api.approver_check.get_result";
 afmco.approver_check.RESULT_EVENT = "afmco_approver_check_result";
@@ -58,24 +60,44 @@ afmco.approver_check.key = function (frm) {
 
 afmco.approver_check.open = function (frm) {
 	const recheck = frappe.user.has_role("System Manager")
-		? { primary_action_label: __("Re-run"), primary_action: () => afmco.approver_check.load(dialog, frm, true) }
+		? { primary_action_label: __("Re-run"), primary_action: () => afmco.approver_check.more(dialog, frm, true) }
 		: {};
 	const dialog = new frappe.ui.Dialog({
 		title: __("Approver Check — {0}", [frm.docname]),
 		size: "extra-large",
-		fields: [{ fieldtype: "HTML", fieldname: "body" }],
+		fields: [
+			{ fieldtype: "HTML", fieldname: "ai" },
+			{ fieldtype: "Button", fieldname: "read", label: __("Read Attachments"), click: () => afmco.approver_check.first(dialog, frm, afmco.approver_check.READ_METHOD) },
+			{ fieldtype: "Button", fieldname: "more", label: __("Additional checks"), click: () => afmco.approver_check.more(dialog, frm, false) },
+			{ fieldtype: "HTML", fieldname: "body" },
+		],
 		...recheck,
 		secondary_action_label: __("Close"),
 		secondary_action: () => dialog.hide(),
 	});
 	dialog.$wrapper.addClass("afmco-approver-check");
 	dialog.show();
+	afmco.approver_check.first(dialog, frm, afmco.approver_check.AI_METHOD);
+};
+
+afmco.approver_check.first = function (dialog, frm, method) {
+	const body = dialog.fields_dict.ai.$wrapper;
+	body.html(afmco.approver_check.skeleton());
+	const args = method === afmco.approver_check.READ_METHOD ? { name: frm.docname } : { doctype: frm.doctype, name: frm.docname };
+	frappe
+		.call({ method, args })
+		.then((r) => body.html(r.message.items.map(afmco.approver_check.row).join("")))
+		.catch(() => body.html(`<p class="ac-error">${__("The approver check could not run.")}</p>`));
+};
+
+afmco.approver_check.more = function (dialog, frm, retry) {
+	dialog.set_df_property("more", "hidden", 1);
 	const stored = afmco.approver_check.results[afmco.approver_check.key(frm)];
-	if (stored && !afmco.approver_check.waiting(stored)) {
+	if (!retry && stored && !afmco.approver_check.waiting(stored)) {
 		afmco.approver_check.show(dialog, frm, stored);
 		return;
 	}
-	afmco.approver_check.load(dialog, frm, false);
+	afmco.approver_check.load(dialog, frm, retry);
 };
 
 afmco.approver_check.load = function (dialog, frm, retry) {
