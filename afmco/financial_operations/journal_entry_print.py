@@ -6,10 +6,11 @@ from frappe import _
 from frappe.translate import print_language
 from frappe.utils import flt, get_fullname, in_words, money_in_words
 
-from afmco.financial_operations.journal_entry_dossier import split
+from afmco.financial_operations.journal_entry_dossier import dossier_file_name, print_format, split
 from afmco.financial_operations.requisition_pack import (
 	IMAGE_EXTENSIONS,
 	JOURNAL_ENTRY,
+	PAYMENT_REQUISITION,
 	file_extension,
 )
 
@@ -83,3 +84,31 @@ def arabic_words(amount, currency):
 		joint = f"{words} {_('and')} " if words else ""
 		words = f"{joint}{in_words(fraction)} {_(units.fraction or '')}"
 	return _("Only {0} and nothing more").format(words)
+
+
+def attach_to_requisition(journal_entry: str) -> None:
+	requisition = frappe.db.get_value(JOURNAL_ENTRY, journal_entry, "expense_request_cf")
+	if not requisition:
+		return
+	file_name = dossier_file_name(journal_entry)
+	content = frappe.get_print(JOURNAL_ENTRY, journal_entry, print_format(), as_pdf=True)
+	for previous in frappe.get_all(
+		"File",
+		filters={
+			"attached_to_doctype": PAYMENT_REQUISITION,
+			"attached_to_name": requisition,
+			"file_name": file_name,
+		},
+		pluck="name",
+	):
+		frappe.delete_doc("File", previous)
+	frappe.get_doc(
+		{
+			"doctype": "File",
+			"file_name": file_name,
+			"attached_to_doctype": PAYMENT_REQUISITION,
+			"attached_to_name": requisition,
+			"is_private": 1,
+			"content": content,
+		}
+	).insert()
