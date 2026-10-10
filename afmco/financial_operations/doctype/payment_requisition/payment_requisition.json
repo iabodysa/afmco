@@ -45,6 +45,10 @@
   "accounts_bot_status",
   "accounts_bot_note",
   "accounts_bot_updated",
+  "accounts_bot_read_cf",
+  "ai_reading_cf",
+  "ai_reading_at",
+  "ai_reading_files_hash",
   "tax_invoice_number",
   "open_reference_document",
   "purchase_details_section",
@@ -200,6 +204,43 @@
    "fieldtype": "Datetime",
    "hidden": 1,
    "label": "Accounts Bot Updated",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "accounts_bot_read_cf",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Accounts Bot Read Attachments",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "ai_reading_cf",
+   "fieldtype": "JSON",
+   "hidden": 1,
+   "label": "AI Reading",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "ai_reading_at",
+   "fieldtype": "Datetime",
+   "hidden": 1,
+   "label": "AI Reading At",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "ai_reading_files_hash",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "AI Reading Files Hash",
    "no_copy": 1,
    "read_only": 1
   },
@@ -431,7 +472,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-10 16:40:00.000000",
+ "modified": "2026-10-10 18:00:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",

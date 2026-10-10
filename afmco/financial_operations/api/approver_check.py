@@ -6,6 +6,7 @@ from frappe import _
 from frappe.utils import cint
 
 from afmco.approver_check import engine
+from afmco.approver_check.model import PAYMENT_REQUISITION
 from afmco.approver_check.registry import REGISTRY
 
 
@@ -17,6 +18,19 @@ def approver_doc(doctype: str, name: str):
 	if not engine.approver_allowed(doc):
 		frappe.throw(_("Only an approver at the current workflow step can run the approver check."), frappe.PermissionError)
 	return doc
+
+
+@frappe.whitelist(methods=["POST"])
+def ai_check(doctype: str, name: str) -> dict:
+	doc = approver_doc(doctype, name)
+	return engine.run(doc, engine.ai_first(doc.doctype))
+
+
+@frappe.whitelist(methods=["POST"])
+def request_reading(name: str) -> dict:
+	doc = approver_doc(PAYMENT_REQUISITION, name)
+	doc.request_attachment_reading()
+	return engine.run(doc, engine.ai_first(doc.doctype))
 
 
 @frappe.whitelist(methods=["POST"])

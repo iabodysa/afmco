@@ -13,6 +13,7 @@ from frappe.model.workflow import get_transitions, get_workflow_name
 from frappe.utils import get_datetime, now
 
 from afmco.approver_check.model import (
+	AI,
 	BLOCK,
 	CATEGORIES,
 	EMPLOYEE,
@@ -32,7 +33,6 @@ from afmco.approver_check.registry import APPROVER_ROLES, APPROVER_STATES, REGIS
 from afmco.people_and_payroll.advance_leave_salary import ADVANCE_LEAVE_SALARY, END_OF_SERVICE
 
 ENGINE_VERSION = "2"
-AI_KEY = "afmco_approver_ai_key"
 CHECK_SECONDS = 10
 BACKGROUND_SECONDS = 120
 LOCK_SECONDS = 600
@@ -129,7 +129,7 @@ def run(doc, checks=None, deferred: bool = False) -> dict:
 	if deferred:
 		return checklist(doc)
 	ctx = Context(doc)
-	return payload(doc, withhold_unreadable([item(check, evaluate(check, ctx)) for check in checks or REGISTRY[doc.doctype]]))
+	return payload(doc, withhold_unreadable([item(check, evaluate(check, ctx)) for check in (REGISTRY[doc.doctype] if checks is None else checks)]))
 
 
 def checklist(doc) -> dict:
@@ -137,13 +137,21 @@ def checklist(doc) -> dict:
 	if any(check.id not in stored for check in shared(doc.doctype) if not check.background):
 		if not claim(doc):
 			running = Result(PENDING, _("The check is running; the result appears here when it is ready."))
-			return payload(doc, [item(check, running) for check in REGISTRY[doc.doctype]])
+			return payload(doc, [item(check, running) for check in additional(doc.doctype)])
 		stored = compute(doc, stored)
 	return serve(doc, stored)
 
 
+def ai_first(doctype: str) -> list[Check]:
+	return [check for check in REGISTRY[doctype] if check.mode == AI]
+
+
+def additional(doctype: str) -> list[Check]:
+	return [check for check in REGISTRY[doctype] if check.mode != AI]
+
+
 def shared(doctype: str) -> list[Check]:
-	return [check for check in REGISTRY[doctype] if not check.viewer]
+	return [check for check in additional(doctype) if not check.viewer]
 
 
 def measured(check: Check, ctx: Context) -> dict:
@@ -187,7 +195,7 @@ def complete(doc, stored: dict | None) -> bool:
 def serve(doc, stored: dict) -> dict:
 	viewer = Context(doc)
 	rows = []
-	for check in REGISTRY[doc.doctype]:
+	for check in additional(doc.doctype):
 		if check.viewer:
 			rows.append(item(check, evaluate(check, viewer)))
 		elif check.id not in stored:
@@ -208,7 +216,6 @@ def payload(doc, items: list[dict]) -> dict:
 		"name": doc.name,
 		"ran_at": now(),
 		"engine_version": ENGINE_VERSION,
-		"ai_enabled": bool(frappe.conf.get(AI_KEY)),
 		"counts": {status: counts.get(status, 0) for status in STATUSES},
 		"blocking": any(row["status"] == FAIL and row["severity"] == BLOCK for row in items),
 		"categories": [{"id": category, "label": category_label(category)} for category in CATEGORIES],

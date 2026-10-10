@@ -7,6 +7,7 @@ import frappe
 from frappe import _, _lt
 from frappe.utils import cint, cstr, flt, getdate, strip_html
 
+from afmco.approver_check import ai_reading
 from afmco.approver_check.attachments import (
 	MISSING,
 	READABLE,
@@ -44,6 +45,7 @@ from afmco.approver_check.model import (
 	NA,
 	PASS,
 	PAYMENT_REQUISITION,
+	PENDING,
 	POLICY,
 	UNKNOWN,
 	WARN,
@@ -384,7 +386,22 @@ def zatca_qr_matches(ctx: Context) -> Result:
 
 
 def ai_document_suspicion(ctx: Context) -> Result:
-	return Result(UNKNOWN, _("AI reading is not enabled."))
+	doc = ctx.doc
+	if doc.accounts_bot_read_cf:
+		return Result(PENDING, _("Waiting for the Accountant Bot to read the attachments."))
+	reading = ai_reading.stored(doc)
+	if not reading:
+		return Result(UNKNOWN, _("The attachments have not been read yet."))
+	if reading["status"] == ai_reading.FAILED or not (reading["files"] or reading["findings"]):
+		return Result(UNKNOWN, _("The Accountant Bot could not read the attachments."))
+	if ai_reading.stale(doc):
+		return Result(UNKNOWN, _("The attachments changed after the reading on {0}; read them again.").format(doc.ai_reading_at))
+	read_on = _("Read by the Accountant Bot on {0}.").format(doc.ai_reading_at)
+	if reading["findings"]:
+		return Result(WARN, read_on, [evidence(finding["label"], finding["detail"]) for finding in reading["findings"]])
+	if reading["status"] == ai_reading.READ:
+		return Result(PASS, read_on)
+	return Result(UNKNOWN, _("The Accountant Bot read only part of the attachments on {0}.").format(doc.ai_reading_at))
 
 
 def iban_valid(ctx: Context) -> Result:
@@ -428,9 +445,14 @@ def beneficiary_name_matches_employee(ctx: Context) -> Result:
 		evidence(_("Beneficiary name"), ctx.doc.beneficiary_name),
 		evidence(_("Employee name"), record.employee_name, EMPLOYEE, record.name),
 	]
-	if name_matches(ctx.doc.beneficiary_name, record.employee_name):
-		return Result(PASS, _("Name matches; account ownership not verified."), shown)
-	return Result(WARN, _("The beneficiary name shares fewer than two names with the employee."), shown)
+	reading = ai_reading.fresh(ctx.doc)
+	mismatches = [finding for finding in (reading["findings"] if reading else []) if finding["code"] in ai_reading.BENEFICIARY_CODES]
+	shown.extend(evidence(finding["label"], finding["detail"]) for finding in mismatches)
+	if not name_matches(ctx.doc.beneficiary_name, record.employee_name):
+		return Result(WARN, _("The beneficiary name shares fewer than two names with the employee."), shown)
+	if mismatches:
+		return Result(WARN, _("The attachments show another beneficiary name or IBAN."), shown, WARNING)
+	return Result(PASS, _("Name matches; account ownership not verified."), shown)
 
 
 def account_history_check(ctx: Context) -> Result:
@@ -545,7 +567,7 @@ CHECKS = (
 	Check("PR-POL-01", "approver_not_requester", POLICY, _lt("Approver is not the requester"), WARNING, approver_not_requester, viewer=True),
 	Check("PR-POL-02", "same_user_two_steps", POLICY, _lt("Approver did not approve an earlier step"), INFO, same_user_two_steps, viewer=True),
 	Check("PR-FRD-01", "duplicate_amount_account_14d", FRAUD, _lt("No duplicate payment within 14 days"), WARNING, duplicate_amount_account_14d),
-	Check("PR-FRD-02", "ai_document_suspicion", FRAUD, _lt("AI reading of attachments"), WARNING, ai_document_suspicion, mode=AI, background=True),
+	Check("PR-FRD-02", "ai_document_suspicion", FRAUD, _lt("AI reading of attachments"), WARNING, ai_document_suspicion, mode=AI),
 )
 
 ROLE_RESTRICTED = {"PR-BEN-06": AUDIT_ROLES}

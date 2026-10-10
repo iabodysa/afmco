@@ -1,6 +1,7 @@
 # Copyright (c) 2026, AFMCO and contributors
 # For license information, please see license.txt
 
+import hashlib
 import re
 from datetime import timedelta
 from pathlib import Path
@@ -39,6 +40,19 @@ def attached_files(ctx: Context, doctype: str | None = None, name: str | None = 
 			order_by="creation asc",
 		),
 	)
+
+
+def current_files(doctype: str, name: str) -> list[dict]:
+	return frappe.get_all(
+		"File",
+		filters={"attached_to_doctype": doctype, "attached_to_name": name, "is_folder": 0},
+		fields=["name", "content_hash"],
+	)
+
+
+def files_hash(files: list[dict]) -> str:
+	listed = sorted(f"{file.name}:{cstr(file.content_hash)}" for file in files)
+	return hashlib.sha256("\n".join(listed).encode()).hexdigest()
 
 
 def file_evidence(files: list[dict]) -> list[dict]:
