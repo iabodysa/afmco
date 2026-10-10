@@ -142,20 +142,47 @@ ALL_SLIPS = monthly_slips("2022-10-01", "2025-10-01")
 
 
 class TestFillPeriods(LedgerCase):
-    def test_settlement_rows_run_yearly_from_first_to_last_day_with_364_day_amounts(
-        self,
-    ):
+    def test_settlement_rows_run_from_each_anniversary_to_the_day_before_the_next(self):
         doc = self.filled(advance_leave_salary.END_OF_SERVICE, SETTLEMENT, Ledger(slips=ALL_SLIPS))
         self.assertEqual(
             rows_of(doc),
             [
-                ("2022-10-16", "2023-10-16", "unpaid", "21", 1190),
-                ("2023-10-17", "2024-10-15", "unpaid", "21", 1190),
-                ("2024-10-16", "2025-10-16", "unpaid", "21", 1190),
+                ("2022-10-16", "2023-10-15", "unpaid", "21", 1190),
+                ("2023-10-16", "2024-10-15", "unpaid", "21", 1190),
+                ("2024-10-16", "2025-10-15", "unpaid", "21", 1190),
             ],
         )
         self.assertEqual(
             (doc.cva_total, doc.amount, doc.total_eos), (3570, 6623, 2552.51)
+        )
+
+    def test_feb_29_joiner_rows_start_on_each_anniversary_and_first_year_ends_feb_27(self):
+        doc = self.filled(
+            advance_leave_salary.ADVANCE_LEAVE_SALARY,
+            {**ADVANCE, "date_1": "2024-02-29", "date_2": "2027-02-27"},
+            Ledger(slips=monthly_slips("2024-01-01", "2027-02-01")),
+        )
+        self.assertEqual(
+            rows_of(doc),
+            [
+                ("2024-02-29", "2025-02-27", "unpaid", "21", 1190),
+                ("2025-02-28", "2026-02-27", "unpaid", "21", 1190),
+                ("2026-02-28", "2027-02-27", "unpaid", "21", 1190),
+            ],
+        )
+
+    def test_partial_last_row_is_prorated_over_its_contract_year_days(self):
+        doc = self.filled(
+            advance_leave_salary.END_OF_SERVICE,
+            {**SETTLEMENT, "date_1": "2023-03-01", "date_2": "2024-08-31"},
+            Ledger(slips=monthly_slips("2023-03-01", "2024-08-01")),
+        )
+        self.assertEqual(
+            rows_of(doc),
+            [
+                ("2023-03-01", "2024-02-29", "unpaid", "21", 1190),
+                ("2024-03-01", "2024-08-31", "unpaid", "21", 600),
+            ],
         )
 
     def test_rows_from_sixth_year_use_30_vacation_days(self):
@@ -197,7 +224,7 @@ class TestFillPeriods(LedgerCase):
             [row.status for row in doc.cva], ["unpaid", "unpaid", "unpaid"]
         )
 
-    def test_advance_periods_starting_on_or_before_last_clearance_are_paid_at_zero(
+    def test_advance_periods_starting_on_or_before_last_clearance_are_paid_at_zero_and_last_row_runs_to_date_2(
         self,
     ):
         doc = self.filled(
@@ -207,7 +234,7 @@ class TestFillPeriods(LedgerCase):
         )
         self.assertEqual(
             [(row.status, row.amount3) for row in doc.cva],
-            [("Paid", 0), ("Paid", 0), ("unpaid", 1190)],
+            [("Paid", 0), ("Paid", 0), ("unpaid", 1193)],
         )
 
     def test_employee_joined_before_cutoff_without_paid_advance_is_refused(self):

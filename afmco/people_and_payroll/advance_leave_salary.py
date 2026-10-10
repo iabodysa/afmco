@@ -27,7 +27,6 @@ PAID = "Paid"
 APPROVAL_LEAD_DAYS = 90
 UNPAID = "unpaid"
 NEW_JOINER_FROM = date(2023, 11, 15)
-YEAR_SPANS = {END_OF_SERVICE: (365, 364), ADVANCE_LEAVE_SALARY: (364, 365)}
 
 NO_EOS_REASONS = {
     "3-Termination by the employer under Article 80",
@@ -167,20 +166,19 @@ RECOMPUTE = {
 
 
 def build_periods(doc):
-    first, step = YEAR_SPANS[doc.doctype]
+    first = getdate(doc.date_1)
     last_day = getdate(doc.date_2)
-    start = getdate(doc.date_1)
-    end = start + timedelta(days=first)
     years = flt(doc.dos_years)
     rows = []
     j = 0
     while j < years:
-        period_end = min(end, last_day)
-        if j == years - 1:
+        start = first + relativedelta(years=j)
+        year_end = first + relativedelta(years=j + 1) - timedelta(days=1)
+        period_end = min(year_end, last_day)
+        if j == years - 1 and doc.doctype == ADVANCE_LEAVE_SALARY:
             period_end = last_day
-        days = (period_end - start).days
-        if days == 365:
-            days = 364
+        days = (period_end - start).days + 1
+        year_days = (year_end - start).days + 1
         vad = doc.vacation_days_per_year or 21
         if j + 1 >= 6 and flt(vad) < 30:
             vad = 30
@@ -191,12 +189,9 @@ def build_periods(doc):
                 "status": UNPAID,
                 "note": _("Add your notes here"),
                 "vad": cstr(vad),
-                "amount3": js_round(flt(doc.salary_per_day) * (days / 364 * flt(vad))),
+                "amount3": js_round(flt(doc.salary_per_day) * (days / year_days * flt(vad))),
             }
         )
-        end = end + timedelta(days=1)
-        start = end
-        end = end + timedelta(days=step)
         j += 1
     return rows
 
