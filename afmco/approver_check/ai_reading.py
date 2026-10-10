@@ -164,21 +164,6 @@ def request(doc) -> None:
 	doc.db_set(READ_FLAG, 1, update_modified=False, notify=True)
 
 
-def entered_approver_state(doc) -> None:
-	if doc.get(READ_FLAG) or doc.get("workflow_state") not in APPROVER_STATES[doc.doctype]:
-		return
-	if doc.has_value_changed("workflow_state"):
-		request(doc)
-
-
-def attachment_changed(file) -> None:
-	doctype, name = file.attached_to_doctype, file.attached_to_name
-	if file.is_folder or not name or doctype not in APPROVER_STATES:
-		return
-	if frappe.db.get_value(doctype, name, "workflow_state") in APPROVER_STATES[doctype]:
-		request(frappe.get_doc(doctype, name))
-
-
 def approver_allowed(doc) -> bool:
 	if doc.doctype not in APPROVER_STATES or doc.is_new():
 		return False
@@ -211,13 +196,3 @@ def state(doc) -> dict | None:
 def set_onload(doc) -> None:
 	allowed = approver_allowed(doc)
 	doc.set_onload("attachment_check", {"state": state(doc)} if allowed else None)
-
-
-class AfmcoFile:
-	def after_insert(self):
-		super().after_insert()
-		attachment_changed(self)
-
-	def on_trash(self):
-		super().on_trash()
-		attachment_changed(self)

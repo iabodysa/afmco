@@ -14,9 +14,6 @@ class EndofServiceSettlement(Document):
     def onload(self):
         ai_reading.set_onload(self)
 
-    def on_change(self):
-        ai_reading.entered_approver_state(self)
-
     def validate(self):
         if self.employee and frappe.get_all(
             self.doctype,

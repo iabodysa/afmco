@@ -40,9 +40,6 @@ class PaymentRequisition(Document):
 		)
 		ai_reading.set_onload(self)
 
-	def on_change(self):
-		ai_reading.entered_approver_state(self)
-
 	def accounts_bot_refusal(self) -> str | None:
 		if self.docstatus != 1 or self.workflow_state != "Paid":
 			return _("Only a submitted Payment Requisition in Paid state can be sent to the Accounts Bot.")
