@@ -24,6 +24,48 @@ def render_hold_mail(args):
 	return environment.get_template(f"emails/{payroll.HOLD_EMAIL_TEMPLATE}.html").render(args)
 
 
+class FakeEmployee:
+	saves: list = []
+	mismatches = 0
+
+	def __init__(self):
+		self.flags = frappe._dict()
+		self.values = {}
+
+	def update(self, values):
+		self.values.update(values)
+
+	def save(self):
+		FakeEmployee.saves.append({"status": self.values.get("status"), "ignore_mandatory": self.flags.ignore_mandatory})
+		if FakeEmployee.mismatches:
+			FakeEmployee.mismatches -= 1
+			raise frappe.TimestampMismatchError("User has been modified after you have opened it")
+		if not self.flags.ignore_mandatory:
+			raise frappe.MandatoryError("[Employee, EMP-1]: nationality")
+
+	def add_comment(self, *args):
+		pass
+
+
+def run_job_with(employee_class, mismatches=0):
+	employee_class.saves = []
+	employee_class.mismatches = mismatches
+
+	def get_all(doctype, **kwargs):
+		return ["EMP-1"] if doctype == payroll.EMPLOYEE_DOCTYPE else []
+
+	with (
+		patch("frappe.utils.nowdate", return_value="2026-10-01"),
+		patch("frappe.get_all", side_effect=get_all),
+		patch("frappe.db", MagicMock()),
+		patch("frappe.get_doc", side_effect=lambda *args: employee_class()),
+		patch("frappe.log_error"),
+		patch(f"{MODULE}.notify_hr_managers"),
+	):
+		outcome = payroll.deactivate_employees_without_salary_slip()
+	return outcome, employee_class.saves
+
+
 class TestHoldRules(TestCase):
 	def test_moved_employee_gets_hold_status(self):
 		self.assertEqual(payroll.employee_values()["status"], "Hold")
@@ -80,6 +122,22 @@ class TestHoldRules(TestCase):
 		failed = [{"employee": "EMP-2", "reason": "Status invalid"}]
 		self.assertEqual(outcome["failed"], failed)
 		notify.assert_called_once_with([], failed)
+
+	def test_job_holds_employee_missing_an_unrelated_mandatory_field(self):
+		outcome, saves = run_job_with(FakeEmployee)
+		self.assertEqual(outcome["moved"], ["EMP-1"])
+		self.assertEqual(outcome["failed"], [])
+		self.assertEqual(saves, [{"status": "Hold", "ignore_mandatory": True}])
+
+	def test_job_retries_once_after_a_timestamp_mismatch(self):
+		outcome, saves = run_job_with(FakeEmployee, mismatches=1)
+		self.assertEqual(outcome["moved"], ["EMP-1"])
+		self.assertEqual(len(saves), 2)
+
+		outcome, saves = run_job_with(FakeEmployee, mismatches=2)
+		self.assertEqual(outcome["moved"], [])
+		self.assertEqual([row["employee"] for row in outcome["failed"]], ["EMP-1"])
+		self.assertEqual(len(saves), 2)
 
 	def test_mail_lists_failed_employees_with_reason_apart_from_moved(self):
 		args = {

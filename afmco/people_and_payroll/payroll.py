@@ -205,16 +205,24 @@ def deactivate_employees_without_salary_slip() -> dict[str, object]:
     window_start = frappe.utils.add_months(today, WINDOW_MONTHS)
     candidates = frappe.get_all(EMPLOYEE_DOCTYPE, filters=candidate_filters(window_start), pluck="name")
 
+    def hold(name: str) -> None:
+        employee = frappe.get_doc(EMPLOYEE_DOCTYPE, name)
+        employee.update(employee_values())
+        employee.flags.ignore_mandatory = True
+        employee.save()
+        employee.add_comment("Comment", comment_for(today))
+
     def apply(name: str) -> bool:
         slips = frappe.get_all(SALARY_SLIP_DOCTYPE, filters=slip_filters(name, window_start), pluck="name")
         if not should_deactivate(slips):
             return False
         frappe.db.savepoint(DEACTIVATION_SAVEPOINT)
         try:
-            employee = frappe.get_doc(EMPLOYEE_DOCTYPE, name)
-            employee.update(employee_values())
-            employee.save()
-            employee.add_comment("Comment", comment_for(today))
+            try:
+                hold(name)
+            except frappe.TimestampMismatchError:
+                frappe.db.rollback(save_point=DEACTIVATION_SAVEPOINT)
+                hold(name)
         except Exception:
             frappe.db.rollback(save_point=DEACTIVATION_SAVEPOINT)
             raise
