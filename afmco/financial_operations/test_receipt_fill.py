@@ -4,18 +4,55 @@
 import json
 
 import frappe
+from frappe.permissions import add_permission
 from frappe.tests import IntegrationTestCase
 from frappe.utils import add_days, getdate, today
 
 from afmco.financial_operations.api.accounts_bot import fill_payment_fields, request_receipt_read
 from afmco.financial_operations.test_accounts_bot import make_user
 from afmco.financial_operations.test_requisition_pack import attach_file, make_pdf, make_requisition
+from afmco.people_and_payroll.api.test_employee_financial_summary import make_employee
 
 BOT_USER = "accounts-bot@example.com"
 AUDITOR_USER = "receipt-auditor@example.com"
 OUTSIDER_USER = "receipt-outsider@example.com"
 RECEIPT_FIELDS = {"bank_payment_date", "bank_account", "paid_amount_cf", "beneficiary_employee_cf", "bank_reference_cf"}
 APPROVED_FIELDS = ("amount", "account_no", "beneficiary_name", "payment_type", "remark", "workflow_state", "docstatus")
+OWN_COMPANY = ("_Test Receipt Fill Company", "_TRF")
+FOREIGN_COMPANY = ("_Test Receipt Fill Foreign Company", "_TRFF")
+
+
+def make_company_bank(company: str, abbr: str) -> str:
+	if not frappe.db.exists("Warehouse Type", "Transit"):
+		frappe.get_doc({"doctype": "Warehouse Type", "name": "Transit"}).insert()
+	if not frappe.db.exists("Company", company):
+		frappe.get_doc(
+			{
+				"doctype": "Company",
+				"company_name": company,
+				"abbr": abbr,
+				"default_currency": "SAR",
+				"country": "Saudi Arabia",
+			}
+		).insert()
+	bank = frappe.db.get_value("Account", {"company": company, "account_type": "Bank", "is_group": 0})
+	if bank:
+		return bank
+	return (
+		frappe.get_doc(
+			{
+				"doctype": "Account",
+				"account_name": "_Test Receipt Fill Bank",
+				"company": company,
+				"parent_account": frappe.db.get_value(
+					"Account", {"company": company, "account_type": "Bank", "is_group": 1}
+				),
+				"account_type": "Bank",
+			}
+		)
+		.insert()
+		.name
+	)
 
 
 def make_upload_requisition() -> str:
@@ -65,6 +102,30 @@ def changed_fields(requisition: str) -> set[str]:
 
 
 class TestReceiptFill(IntegrationTestCase):
+	@classmethod
+	def setUpClass(cls):
+		super().setUpClass()
+		make_company_bank(*OWN_COMPANY)
+		make_company_bank(*FOREIGN_COMPANY)
+		frappe.db.set_single_value("Global Defaults", "default_company", OWN_COMPANY[0])
+		if not frappe.db.exists("Employee", {"status": "Active"}):
+			if not frappe.db.exists("Gender", "Male"):
+				frappe.get_doc({"doctype": "Gender", "gender": "Male"}).insert()
+			if not frappe.db.exists("Holiday List", "Friday"):
+				start = getdate(today()).replace(month=1, day=1)
+				frappe.get_doc(
+					{
+						"doctype": "Holiday List",
+						"holiday_list_name": "Friday",
+						"from_date": start,
+						"to_date": start.replace(month=12, day=31),
+					}
+				).insert()
+			make_employee("_T-RF-Employee")
+		if not frappe.db.exists("Custom DocPerm", {"parent": "Payment Requisition", "role": "Auditor"}):
+			add_permission("Payment Requisition", "Auditor")
+			frappe.clear_cache(doctype="Payment Requisition")
+
 	def setUp(self):
 		make_user(BOT_USER, ("Accountant Bot",))
 		make_user(AUDITOR_USER, ("Auditor",))
