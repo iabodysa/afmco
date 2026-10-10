@@ -2,20 +2,20 @@
  "content": null,
  "creation": "2026-09-27 09:00:00.000000",
  "doctype": "Page",
- "modified": "2026-09-27 09:00:00.000000",
+ "modified": "2026-10-10 18:00:00.000000",
  "module": "People and Payroll",
  "name": "wps-file",
  "owner": "Administrator",
  "page_name": "wps-file",
  "roles": [
   {
-   "role": "HR User"
-  },
-  {
    "role": "HR Manager"
   },
   {
    "role": "Payroll User"
+  },
+  {
+   "role": "Accounts Manager"
   }
  ],
  "standard": "Yes",

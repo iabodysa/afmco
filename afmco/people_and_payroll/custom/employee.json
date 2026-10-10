@@ -65,7 +65,8 @@
    "label": "BASIC WAGE",
    "module": "People and Payroll",
    "name": "Employee-basic_wage",
-   "options": "currency"
+   "options": "currency",
+   "permlevel": "1"
   },
   {
    "dt": "Employee",
@@ -325,6 +326,7 @@
    "label": "ID Number CF",
    "module": "People and Payroll",
    "name": "Employee-id_number_cf",
+   "permlevel": "1",
    "translatable": "1",
    "unique": "1"
   },
@@ -502,7 +504,8 @@
    "insert_after": "number_of_vacation_days_per_year",
    "label": "Ticket allowance",
    "module": "People and Payroll",
-   "name": "Employee-ticket_allowance"
+   "name": "Employee-ticket_allowance",
+   "permlevel": "1"
   },
   {
    "dt": "Employee",
@@ -1525,6 +1528,106 @@
    "property": "hidden",
    "property_type": "Check",
    "value": "1"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
+   "field_name": "ctc",
+   "module": "People and Payroll",
+   "name": "Employee-ctc-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
+   "field_name": "salary_mode",
+   "module": "People and Payroll",
+   "name": "Employee-salary_mode-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
+   "field_name": "health_details",
+   "module": "People and Payroll",
+   "name": "Employee-health_details-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
+   "field_name": "passport_number",
+   "module": "People and Payroll",
+   "name": "Employee-passport_number-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
+   "field_name": "employee_advance_account",
+   "module": "People and Payroll",
+   "name": "Employee-employee_advance_account-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
+   "field_name": "health_insurance_no",
+   "module": "People and Payroll",
+   "name": "Employee-health_insurance_no-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
+   "field_name": "health_insurance_provider",
+   "module": "People and Payroll",
+   "name": "Employee-health_insurance_provider-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "1"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
+   "field_name": "bank_name",
+   "module": "People and Payroll",
+   "name": "Employee-bank_name-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "2"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
+   "field_name": "bank_ac_no",
+   "module": "People and Payroll",
+   "name": "Employee-bank_ac_no-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "2"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
+   "field_name": "iban",
+   "module": "People and Payroll",
+   "name": "Employee-iban-permlevel",
+   "property": "permlevel",
+   "property_type": "Int",
+   "value": "2"
   }
  ],
  "sync_on_migrate": 1

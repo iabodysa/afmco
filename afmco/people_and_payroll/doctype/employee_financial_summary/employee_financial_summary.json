@@ -8,7 +8,7 @@
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "issingle": 1,
- "modified": "2026-10-10 02:30:00.000000",
+ "modified": "2026-10-10 18:00:00.000000",
  "module": "People and Payroll",
  "name": "Employee Financial Summary",
  "owner": "Administrator",
@@ -16,6 +16,14 @@
   {
    "read": 1,
    "role": "HR Manager"
+  },
+  {
+   "read": 1,
+   "role": "Payroll User"
+  },
+  {
+   "read": 1,
+   "role": "Accounts Manager"
   }
  ],
  "sort_field": "modified",
