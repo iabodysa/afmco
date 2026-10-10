@@ -22,9 +22,13 @@
   "reason_of_urgency",
   "beneficiary_information_section",
   "account_no",
+  "column_break_beneficiary_name",
   "beneficiary_name",
+  "column_break_amount",
   "amount",
+  "column_break_amount_in_words",
   "amount_in_words",
+  "remark_section",
   "remark",
   "payment_details_section",
   "cost_center",
@@ -106,12 +110,21 @@
    "reqd": 1
   },
   {
+   "fieldname": "remark_section",
+   "fieldtype": "Section Break",
+   "label": "Remark"
+  },
+  {
    "allow_in_quick_entry": 1,
    "fieldname": "remark",
    "fieldtype": "Text",
    "in_list_view": 1,
    "label": "Remark",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_amount_in_words",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "amount_in_words",
@@ -130,6 +143,10 @@
   },
   {
    "fieldname": "column_break_payment_approver",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_amount",
    "fieldtype": "Column Break"
   },
   {
@@ -343,6 +360,10 @@
    "read_only_depends_on": "eval:doc.workflow_state != 'Pending' && doc.workflow_state != 'Financial Controller'"
   },
   {
+   "fieldname": "column_break_beneficiary_name",
+   "fieldtype": "Column Break"
+  },
+  {
    "allow_in_quick_entry": 1,
    "fieldname": "beneficiary_name",
    "fieldtype": "Data",
@@ -472,7 +493,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-10 18:05:00.000000",
+ "modified": "2026-10-10 18:30:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",
