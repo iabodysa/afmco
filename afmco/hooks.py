@@ -210,11 +210,6 @@ scheduler_events = {
 	],
 }
 
-# Testing
-# -------
-
-# before_tests = "afmco.install.before_tests"
-
 # Overriding Methods
 # ------------------------------
 #
