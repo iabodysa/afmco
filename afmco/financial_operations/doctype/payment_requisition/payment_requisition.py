@@ -36,7 +36,7 @@ class PaymentRequisition(Document):
 		self.set_onload(
 			"receipt_read_allowed", receipt_role and not self.receipt_read_pending() and self.has_attachment()
 		)
-		self.set_onload("approver_check_allowed", engine.approver_allowed(self))
+		engine.set_onload(self)
 
 	def approver_checklist(self, deferred: bool = False) -> dict:
 		return engine.run(self, deferred=deferred)

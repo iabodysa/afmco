@@ -59,6 +59,7 @@ afmco.approver_check.key = function (frm) {
 };
 
 afmco.approver_check.open = function (frm) {
+	const ai = !!(frm.doc.__onload || {}).approver_check_ai;
 	const recheck = frappe.user.has_role("System Manager")
 		? { primary_action_label: __("Re-run"), primary_action: () => afmco.approver_check.more(dialog, frm, true) }
 		: {};
@@ -66,9 +67,9 @@ afmco.approver_check.open = function (frm) {
 		title: __("Approver Check — {0}", [frm.docname]),
 		size: "extra-large",
 		fields: [
-			{ fieldtype: "HTML", fieldname: "ai" },
-			{ fieldtype: "Button", fieldname: "read", label: __("Read Attachments"), click: () => afmco.approver_check.first(dialog, frm, afmco.approver_check.READ_METHOD) },
-			{ fieldtype: "Button", fieldname: "more", label: __("Additional checks"), click: () => afmco.approver_check.more(dialog, frm, false) },
+			{ fieldtype: "HTML", fieldname: "ai", hidden: !ai },
+			{ fieldtype: "Button", fieldname: "read", label: __("Read Attachments"), hidden: !ai, click: () => afmco.approver_check.first(dialog, frm, afmco.approver_check.READ_METHOD) },
+			{ fieldtype: "Button", fieldname: "more", label: __("Additional checks"), hidden: !ai, click: () => afmco.approver_check.more(dialog, frm, false) },
 			{ fieldtype: "HTML", fieldname: "body" },
 		],
 		...recheck,
@@ -77,7 +78,11 @@ afmco.approver_check.open = function (frm) {
 	});
 	dialog.$wrapper.addClass("afmco-approver-check");
 	dialog.show();
-	afmco.approver_check.first(dialog, frm, afmco.approver_check.AI_METHOD);
+	if (ai) {
+		afmco.approver_check.first(dialog, frm, afmco.approver_check.AI_METHOD);
+	} else {
+		afmco.approver_check.more(dialog, frm, false);
+	}
 };
 
 afmco.approver_check.first = function (dialog, frm, method) {
