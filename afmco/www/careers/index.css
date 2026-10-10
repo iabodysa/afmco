@@ -1,0 +1,155 @@
+.afm-hero--careers {
+	min-height: 72vh;
+	min-height: 72svh;
+}
+
+.afm-job__facts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 0 16px;
+	padding: 0;
+	list-style: none;
+}
+
+.afm-job__facts li {
+	padding: 4px 12px;
+	border: 1px solid var(--afm-line);
+	border-radius: 999px;
+	color: var(--afm-tag);
+	font-size: 14px;
+}
+
+.afm-job__details {
+	margin-bottom: 18px;
+	color: var(--afm-muted);
+	font-size: 16px;
+	line-height: 1.7;
+}
+
+.afm-job__details summary {
+	min-height: 44px;
+	display: flex;
+	align-items: center;
+	color: var(--afm-green);
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.afm-job__description {
+	overflow-wrap: anywhere;
+}
+
+.afm-careers__empty {
+	max-width: 760px;
+	color: var(--afm-muted);
+	font-size: 18px;
+	line-height: 1.7;
+}
+
+.afm-form {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+	gap: 22px 28px;
+	max-width: 980px;
+}
+
+.afm-field {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.afm-field--wide {
+	grid-column: 1 / -1;
+}
+
+.afm-field label,
+.afm-range legend {
+	color: var(--afm-ink);
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.afm-field input,
+.afm-field select,
+.afm-field textarea {
+	width: 100%;
+	min-height: 48px;
+	padding: 10px 14px;
+	border: 1px solid var(--afm-line);
+	border-radius: 12px;
+	background: #fff;
+	color: var(--afm-ink);
+	font: inherit;
+	font-size: 16px;
+}
+
+.afm-field textarea {
+	resize: vertical;
+}
+
+.afm-field input:focus-visible,
+.afm-field select:focus-visible,
+.afm-field textarea:focus-visible {
+	outline: 2px solid var(--afm-green);
+	outline-offset: 1px;
+	border-color: var(--afm-green);
+}
+
+.afm-field [aria-invalid="true"] {
+	border-color: #b42318;
+}
+
+.afm-field__hint {
+	margin: 0;
+	color: var(--afm-muted);
+	font-size: 14px;
+}
+
+.afm-range legend {
+	margin-bottom: 8px;
+	padding: 0;
+}
+
+.afm-range__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+	gap: 16px;
+}
+
+.afm-form__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 16px;
+}
+
+.afm-form__actions button {
+	border: 0;
+	cursor: pointer;
+	font: inherit;
+}
+
+.afm-form__actions button[disabled] {
+	opacity: 0.6;
+	cursor: progress;
+}
+
+.afm-form__status {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.afm-form__status.is-error {
+	color: #b42318;
+}
+
+.afm-form__status.is-done {
+	color: var(--afm-green);
+}

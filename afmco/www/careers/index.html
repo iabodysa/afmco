@@ -1,0 +1,215 @@
+{% extends "templates/web.html" %}
+
+{%- macro arrow() -%}
+<svg class="afm-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+{%- endmacro -%}
+
+{%- block head_include %}
+{{ super() }}
+<meta name="theme-color" content="#00824E">
+<link rel="preload" href="/assets/afmco/images/portal/afmco-logo.webp" as="image" type="image/webp">
+<link rel="stylesheet" href="/assets/afmco/css/portal-fonts.css">
+{% endblock -%}
+
+{%- block style %}
+<style>{{ portal_css }}</style>
+{{ super() }}
+{%- endblock -%}
+
+{%- block banner -%}{%- endblock -%}
+{%- block navbar -%}{%- endblock -%}
+{%- block footer -%}{%- endblock -%}
+
+{% block content %}
+<div class="afm afm-careers" dir="{{ text_dir }}" lang="{{ page_lang }}">
+	<a class="afm-skip" href="#afm-main">{{ _("Skip to main content") }}</a>
+	<div class="afm-progress" aria-hidden="true"></div>
+
+	<header class="afm-header">
+		<a class="afm-header__brand" href="/portal" aria-label="{{ _('AFMCO Employee Portal') }}">
+			<img class="afm-logo" src="/assets/afmco/images/portal/afmco-logo.webp" alt="AFMCO" width="1600" height="609">
+		</a>
+		<nav id="afm-nav" class="afm-header__nav" aria-label="{{ _('Main menu') }}">
+			<a href="#jobs">{{ _("Open jobs") }}</a>
+			<a href="#apply">{{ _("Apply now") }}</a>
+			<a href="/portal">{{ _("AFMCO Employee Portal") }}</a>
+			<a class="afm-header__menu-cta" href="#apply">{{ _("Apply now") }}</a>
+		</nav>
+		<div class="afm-header__tools">
+			{% if show_language_switch %}
+			<div class="afm-lang" role="group" aria-label="{{ _('Language') }}">
+				<a href="?_lang=en" hreflang="en" lang="en"{% if page_lang == "en" %} aria-current="true"{% endif %}>EN</a>
+				<a href="?_lang=ar" hreflang="ar" lang="ar"{% if page_lang == "ar" %} aria-current="true"{% endif %}>العربية</a>
+			</div>
+			{% endif %}
+			<a class="afm-pill afm-pill--small afm-pill--primary afm-header__cta" href="#apply">{{ _("Apply now") }}</a>
+			<button type="button" class="afm-burger" aria-controls="afm-nav" aria-expanded="false"
+				aria-label="{{ _('Open menu') }}" data-label-open="{{ _('Open menu') }}" data-label-close="{{ _('Close menu') }}">
+				<span></span><span></span>
+			</button>
+		</div>
+	</header>
+
+	<main id="afm-main" tabindex="-1">
+		<section id="top" class="afm-hero afm-hero--careers" aria-labelledby="afm-hero-title">
+			<img class="afm-hero__bg" src="/assets/afmco/images/portal/new-staff-1600.webp"
+				srcset="/assets/afmco/images/portal/new-staff-800.webp 800w, /assets/afmco/images/portal/new-staff-1600.webp 1600w"
+				sizes="100vw" alt="" width="1600" height="800" fetchpriority="high">
+			<div class="afm-hero__shade" aria-hidden="true"></div>
+			<div class="afm-hero__grid">
+				<div class="afm-hero__copy">
+					<p class="afm-eyebrow afm-in afm-in--1"><span class="afm-eyebrow__rule"></span>{{ _("Careers at AFMCO") }}</p>
+					<h1 id="afm-hero-title" class="afm-hero__title">
+						<span class="afm-line"><span class="afm-line__text">{{ _("Join") }}</span></span>
+						<span class="afm-line"><span class="afm-line__text afm-line__text--accent">{{ _("the AFMCO family") }}</span></span>
+					</h1>
+					<p class="afm-hero__lead afm-in afm-in--3">{{ description }}</p>
+					<div class="afm-hero__actions afm-in afm-in--4">
+						<a class="afm-pill afm-pill--primary" href="#jobs">{{ _("View open jobs") }}{{ arrow() }}</a>
+						<a class="afm-pill" href="#apply">{{ _("Apply now") }}</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="jobs" class="afm-section" aria-labelledby="afm-jobs-title">
+			<div class="afm-head">
+				<p class="afm-kicker"><span class="afm-kicker__num">01 /</span>{{ _("Open jobs") }}</p>
+				<div>
+					<h2 id="afm-jobs-title" class="afm-title">{{ _("Jobs open now") }}</h2>
+					<p class="afm-lead">{{ _("Choose a job to read its details, then apply with your CV.") }}</p>
+				</div>
+			</div>
+			{% if jobs %}
+			<ul class="afm-services afm-jobs">
+				{% for job in jobs %}
+				<li class="afm-service afm-job" data-reveal>
+					<span class="afm-service__num">{{ "%02d" % loop.index }}</span>
+					<h3 class="afm-service__title">{{ job.job_title | e }}</h3>
+					<ul class="afm-job__facts">
+						{% if job.location %}<li>{{ job.location | e }}</li>{% endif %}
+						{% if job.employment_type %}<li>{{ job.employment_type | e }}</li>{% endif %}
+						{% if job.department %}<li>{{ job.department | e }}</li>{% endif %}
+						{% if job.closes_on %}<li>{{ _("Closes on {0}").format(frappe.format(job.closes_on, {"fieldtype": "Date"})) }}</li>{% endif %}
+						{% if job.salary_range %}<li dir="ltr">{{ job.salary_range }}</li>{% endif %}
+					</ul>
+					{% if job.description %}
+					<details class="afm-job__details">
+						<summary>{{ _("Job details") }}</summary>
+						<div class="afm-job__description">{{ job.description }}</div>
+					</details>
+					{% endif %}
+					<a class="afm-link" href="?job_title={{ job.name | urlencode }}#apply" data-job="{{ job.name | e }}">{{ _("Apply for this job") }}{{ arrow() }}</a>
+				</li>
+				{% endfor %}
+			</ul>
+			{% else %}
+			<p class="afm-careers__empty" data-reveal>{{ _("There are no open jobs right now. You can still send a general application and we will contact you when a suitable job opens.") }}</p>
+			{% endif %}
+		</section>
+
+		<section id="apply" class="afm-section afm-section--ruled" aria-labelledby="afm-apply-title">
+			<div class="afm-head">
+				<p class="afm-kicker"><span class="afm-kicker__num">02 /</span>{{ _("Apply now") }}</p>
+				<div>
+					<h2 id="afm-apply-title" class="afm-title">{{ _("Send your application") }}</h2>
+					<p class="afm-lead">{{ _("Fields marked * are required. Only the AFMCO recruitment team can see your application.") }}</p>
+				</div>
+			</div>
+
+			<form class="afm-form" method="post" action="/api/method/afmco.people_and_payroll.api.careers.apply"
+				enctype="multipart/form-data" novalidate data-max-bytes="{{ max_resume_bytes }}"
+				data-msg-sent="{{ _('Thank you for applying.') }}"
+				data-msg-failed="{{ _('Your application could not be sent. Please try again.') }}"
+				data-msg-file="{{ _('Please upload your CV as a PDF or Word file.') }}"
+				data-msg-size="{{ _('Your CV file is larger than {0} MB.').format(max_resume_mb) }}"
+				data-msg-required="{{ _('Please fill in all required fields.') }}">
+				<div class="afm-field afm-field--wide">
+					<label for="afm-job">{{ _("Job opening") }}</label>
+					<select id="afm-job" name="job_title">
+						<option value="">{{ _("General application") }}</option>
+						{% for job in jobs %}
+						<option value="{{ job.name | e }}"{% if job.name == selected_job %} selected{% endif %}>{{ job.job_title | e }}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="afm-field">
+					<label for="afm-name">{{ _("Full name") }} *</label>
+					<input id="afm-name" name="applicant_name" type="text" maxlength="140" autocomplete="name" required>
+				</div>
+				<div class="afm-field">
+					<label for="afm-email">{{ _("Email address") }} *</label>
+					<input id="afm-email" name="email_id" type="email" maxlength="140" autocomplete="email" dir="ltr" required>
+				</div>
+				<div class="afm-field">
+					<label for="afm-phone">{{ _("Phone number") }} *</label>
+					<input id="afm-phone" name="phone_number" type="tel" maxlength="40" autocomplete="tel" dir="ltr" required>
+				</div>
+				<div class="afm-field">
+					<label for="afm-country">{{ _("Country of residence") }}</label>
+					<select id="afm-country" name="country">
+						<option value=""></option>
+						{% for country in countries %}
+						<option value="{{ country }}">{{ _(country) }}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="afm-field afm-field--wide">
+					<label for="afm-resume">{{ _("CV file") }}</label>
+					<input id="afm-resume" name="resume" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+					<p class="afm-field__hint">{{ _("PDF or Word, up to {0} MB.").format(max_resume_mb) }}</p>
+				</div>
+				<div class="afm-field afm-field--wide">
+					<label for="afm-resume-link">{{ _("CV link") }}</label>
+					<input id="afm-resume-link" name="resume_link" type="url" maxlength="500" dir="ltr" placeholder="https://">
+				</div>
+				<fieldset class="afm-field afm-field--wide afm-range">
+					<legend>{{ _("Expected monthly salary") }}</legend>
+					<div class="afm-range__grid">
+						<div class="afm-field">
+							<label for="afm-currency">{{ _("Currency") }}</label>
+							<select id="afm-currency" name="currency">
+								<option value=""></option>
+								{% for currency in currencies %}
+								<option value="{{ currency }}"{% if currency == default_currency %} selected{% endif %}>{{ currency }}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<div class="afm-field">
+							<label for="afm-lower">{{ _("From") }}</label>
+							<input id="afm-lower" name="lower_range" type="number" min="0" step="1" inputmode="numeric" dir="ltr">
+						</div>
+						<div class="afm-field">
+							<label for="afm-upper">{{ _("To") }}</label>
+							<input id="afm-upper" name="upper_range" type="number" min="0" step="1" inputmode="numeric" dir="ltr">
+						</div>
+					</div>
+				</fieldset>
+				<div class="afm-field afm-field--wide">
+					<label for="afm-cover">{{ _("Cover letter") }}</label>
+					<textarea id="afm-cover" name="cover_letter" rows="5" maxlength="5000"></textarea>
+				</div>
+				<div class="afm-form__actions afm-field--wide">
+					<button type="submit" class="afm-pill afm-pill--primary">{{ _("Send application") }}{{ arrow() }}</button>
+					<p class="afm-form__status" role="status" aria-live="polite"></p>
+				</div>
+			</form>
+		</section>
+	</main>
+
+	<footer class="afm-footer">
+		<div class="afm-footer__bar">
+			<div class="afm-footer__brand">
+				<img class="afm-logo afm-logo--footer" src="/assets/afmco/images/portal/afmco-logo.webp" alt="AFMCO" width="1600" height="609" loading="lazy">
+				<p>&copy; {{ _("Abdullah Fahad Al-Mutairi Co. Ltd.") }}</p>
+			</div>
+			<a class="afm-link" href="{{ support_url }}">{{ _("Open a support ticket") }}{{ arrow() }}</a>
+		</div>
+	</footer>
+</div>
+{% endblock %}
+
+{%- block script %}
+<script>{{ portal_js }}</script>
+{{ super() }}
+{%- endblock %}

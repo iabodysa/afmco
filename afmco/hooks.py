@@ -37,6 +37,15 @@ app_include_css = "afmco_form_grid.bundle.css"
 
 # include js, css files in header of web template
 web_include_css = "/assets/afmco/css/login.css"
+
+website_redirects = [
+	{
+		"source": r"/job_application(/.*)?",
+		"target": "/careers",
+		"redirect_http_status": 302,
+		"forward_query_parameters": True,
+	},
+]
 # web_include_js = "/assets/afmco/js/afmco.js"
 
 # include custom scss in every website theme (without file extension ".scss")

@@ -18,10 +18,7 @@ LANGUAGE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365
 def get_context(context):
 	is_guest = frappe.session.user == "Guest"
 	is_website_user = not is_guest and frappe.session.data.user_type == "Website User"
-	if is_guest and frappe.form_dict._lang in PAGE_LANGUAGES:
-		frappe.local.cookie_manager.set_cookie(
-			"preferred_language", frappe.form_dict._lang, max_age=LANGUAGE_COOKIE_MAX_AGE
-		)
+	remember_guest_language(is_guest)
 
 	context.page_lang = frappe.local.lang
 	context.text_dir = "rtl" if is_rtl() else "ltr"
@@ -36,6 +33,13 @@ def get_context(context):
 	context.activities = get_activities()
 	context.company_values = get_company_values()
 	context.hr_contacts = get_hr_contacts()
+
+
+def remember_guest_language(is_guest):
+	if is_guest and frappe.form_dict._lang in PAGE_LANGUAGES:
+		frappe.local.cookie_manager.set_cookie(
+			"preferred_language", frappe.form_dict._lang, max_age=LANGUAGE_COOKIE_MAX_AGE
+		)
 
 
 def get_portal_entry(is_guest, is_website_user):
@@ -89,8 +93,8 @@ def get_services():
 			"title": _("Apply for a job"),
 			"text": _("Submit your job application and CV to AFMCO."),
 			"note": _("For applicants from outside the company."),
-			"href": f"{APP_URL}/job_application/new",
-			"link_label": _("Open the form"),
+			"href": "/careers",
+			"link_label": _("View open jobs"),
 		},
 	]
 
