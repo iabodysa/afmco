@@ -49,7 +49,7 @@
  "in_create": 1,
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-10-10 12:00:00.000000",
+ "modified": "2026-10-10 13:00:00.000000",
  "modified_by": "Administrator",
  "module": "Financial Operations",
  "name": "Approver Check Result",
@@ -62,7 +62,6 @@
    "role": "System Manager"
   }
  ],
- "read_only": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
