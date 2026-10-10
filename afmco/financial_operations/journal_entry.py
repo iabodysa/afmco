@@ -71,6 +71,19 @@ class AfmcoJournalEntry:
 					_("{0} must be unique").format(_(self.meta.get_label(fieldname))), frappe.UniqueValidationError
 				)
 
+	def on_submit(self):
+		super().on_submit()
+		if frappe.flags.in_install or frappe.flags.in_migrate:
+			return
+		frappe.enqueue(
+			"afmco.financial_operations.journal_entry_dossier.build",
+			queue="long",
+			job_id=f"je-dossier::{self.name}",
+			deduplicate=True,
+			enqueue_after_commit=True,
+			journal_entry=self.name,
+		)
+
 	def on_cancel(self):
 		super().on_cancel()
 		self.mark_expense_request_jv_not_created()
