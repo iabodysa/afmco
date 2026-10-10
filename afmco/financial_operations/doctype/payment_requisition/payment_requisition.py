@@ -21,7 +21,6 @@ RECEIPT_READ = "Receipt Read"
 DOCUMENT_UPLOAD = "Document Upload"
 RECEIPT_READ_ROLES = ("Auditor", *ACCOUNTS_ROLES)
 RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "beneficiary_employee_cf", "bank_reference_cf")
-SALARY_PAYMENT_TYPE = "Payroll (Salary)"
 BENEFICIARY_SHEET_EXTENSIONS = (".xlsx", ".xls", ".csv")
 
 
@@ -188,8 +187,6 @@ class PaymentRequisition(Document):
 		self.sync_paid_eos_settlement()
 
 	def apply_multiple_beneficiaries(self):
-		if self.payment_type == SALARY_PAYMENT_TYPE:
-			self.multiple_beneficiaries = 1
 		if not self.multiple_beneficiaries:
 			return
 		self.account_no = None

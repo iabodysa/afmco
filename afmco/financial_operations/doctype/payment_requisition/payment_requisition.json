@@ -108,8 +108,7 @@
    "default": "0",
    "fieldname": "multiple_beneficiaries",
    "fieldtype": "Check",
-   "label": "Multiple Beneficiaries (per attachment)",
-   "read_only_depends_on": "eval:doc.payment_type == 'Payroll (Salary)'"
+   "label": "Multiple Beneficiaries (per attachment)"
   },
   {
    "allow_in_quick_entry": 1,
