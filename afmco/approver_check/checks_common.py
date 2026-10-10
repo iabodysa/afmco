@@ -66,7 +66,7 @@ def iban_result(value) -> Result:
 	if reason == MISSING:
 		return Result(FAIL, _("No account number is entered."), shown)
 	if reason == SHAPE:
-		return Result(WARN, _("The account is not a Saudi IBAN (SA followed by 22 digits)."), shown, severity=WARNING)
+		return Result(WARN, _("The account is not in the Saudi IBAN format."), shown, severity=WARNING)
 	if reason == CHECKSUM:
 		return Result(FAIL, _("The IBAN check digits are wrong; the number is mistyped or invented."), shown)
 	if reason == BANK_CODE:

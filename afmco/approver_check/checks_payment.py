@@ -167,7 +167,7 @@ def sibling_evidence(rows) -> list[dict]:
 
 
 def skipped_note(hidden: int) -> str:
-	return _(" {0} related record(s) you cannot read were not counted.").format(hidden) if hidden else ""
+	return " " + _("{0} related record(s) you cannot read were not counted.").format(hidden) if hidden else ""
 
 
 def account_history(ctx: Context) -> tuple[list[dict], int]:
@@ -218,7 +218,7 @@ def source_document_state(ctx: Context) -> Result:
 		shown.append(evidence(_("Amended from"), found.original, found.doctype, found.original))
 	if found.doc.workflow_state in SOURCE_DONE_STATES:
 		return Result(PASS, _("The source record is {0}.").format(_(found.doc.workflow_state)), shown)
-	return Result(WARN, _("The source record is {0}, not Approved or Paid.").format(_(found.doc.workflow_state or "-")), shown)
+	return Result(WARN, _("The source record is {0}, not Approved or Paid.").format(_(found.doc.workflow_state) if found.doc.workflow_state else "-"), shown)
 
 
 def amount_matches_source(ctx: Context) -> Result:

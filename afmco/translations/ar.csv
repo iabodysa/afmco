@@ -13225,3 +13225,238 @@ Add your notes here,اضف ملاحظاتك هنا
 Leave allowance table not filled: no submitted Salary Slip for {0}. Fill the table by hand.,لم يعبأ جدول بدل الإجازة: لا توجد قسيمة راتب معتمدة لـ {0}. عبّئ الجدول يدوياً.
 "Leave allowance table not filled: the employee has no earlier Paid Advance Leave Salary and joined on {0}, before {1}. Fill the table by hand.",لم يعبأ جدول بدل الإجازة: لا يوجد للموظف راتب إجازة مقدم سابق مدفوع، وتاريخ التحاق الموظف {0} قبل {1}. عبّئ الجدول يدوياً.
 Row {0} of the leave allowance table overlaps a paid leave period and must be Paid before submitting.,الصف {0} في جدول بدل الإجازة يتداخل مع فترة إجازة مدفوعة، ويجب جعله مدفوعاً قبل الاعتماد.
+"Valid Saudi IBAN, bank {0}.",IBAN سعودي صحيح، البنك {0}.
+No account number is entered.,لم يدخل رقم الحساب.
+The account is not in the Saudi IBAN format.,الحساب ليس بصيغة IBAN السعودي.
+The IBAN check digits are wrong; the number is mistyped or invented.,رقما التحقق في IBAN غير صحيحين؛ الرقم مكتوب خطأ أو مختلق.
+Bank code {0} is not a known Saudi bank.,رمز البنك {0} لا يطابق بنكا سعوديا معروفا.
+The account could not be read.,تعذرت قراءة الحساب.
+Requested by,مقدم الطلب
+You created this request and are now approving it.,أنت من أنشأ هذا الطلب وأنت الآن تعتمده.
+You did not create this request.,لست من أنشأ هذا الطلب.
+No file is attached.,لا يوجد ملف مرفق.
+{0} file(s) attached; content not verified.,عدد الملفات المرفقة: {0}؛ لم يتحقق من محتواها.
+Account on this record,الحساب في هذا السجل
+Account on the employee record,الحساب في سجل الموظف
+The account matches the employee record; account ownership not verified.,الحساب يطابق سجل الموظف؛ لم يتحقق من ملكية الحساب.
+IBAN Update {0} submitted by {1} on {2},تحديث الآيبان {0} اعتمده {1} بتاريخ {2}
+The account matches a submitted IBAN Update by another user; account ownership not verified.,الحساب يطابق تحديث آيبان معتمدا من مستخدم آخر؛ لم يتحقق من ملكية الحساب.
+The account matches only an IBAN Update submitted by the requester or by you.,الحساب يطابق فقط تحديث آيبان اعتمده مقدم الطلب أو اعتمدته أنت.
+"The account differs from the employee record, and some IBAN Updates could not be read.",الحساب يختلف عن سجل الموظف، وتعذرت قراءة بعض تحديثات الآيبان.
+The account differs from the employee record.,الحساب يختلف عن سجل الموظف.
+Last bank account change,آخر تغيير للحساب البنكي
+{0} by {1},{0} بواسطة {1}
+Last IBAN Update,آخر تحديث للآيبان
+No change to the employee bank account is recorded.,لا يوجد تغيير مسجل على الحساب البنكي للموظف.
+The employee bank account was changed by the requester or by you.,غير الحساب البنكي للموظف مقدم الطلب أو أنت.
+"The employee bank account changed on {0}, within 30 days of {1}.",تغير الحساب البنكي للموظف بتاريخ {0}، خلال 30 يوما من {1}.
+The last bank account change is older than 30 days.,آخر تغيير للحساب البنكي أقدم من 30 يوما.
+Total salary on this record,إجمالي الراتب في هذا السجل
+Basic wage on the employee record,الأجر الأساسي في سجل الموظف
+"Actual wage (basic, housing, other allowance)",الأجر الفعلي (الأساسي والسكن والبدلات الأخرى)
+The law may base pay on the actual wage (Article 2); the current calculation uses the basic wage.,قد يحتسب النظام المستحقات على الأجر الفعلي (المادة 2)؛ والحساب الحالي يستخدم الأجر الأساسي.
+Total salary matches the basic wage on the employee record.,إجمالي الراتب يطابق الأجر الأساسي في سجل الموظف.
+Total salary {0} differs from the basic wage {1} on the employee record.,إجمالي الراتب {0} يختلف عن الأجر الأساسي {1} في سجل الموظف.
+Joining date on this record,تاريخ المباشرة في هذا السجل
+Joining date on the employee record,تاريخ المباشرة في سجل الموظف
+The joining date matches the employee record.,تاريخ المباشرة يطابق سجل الموظف.
+The joining date differs from the employee record.,تاريخ المباشرة يختلف عن سجل الموظف.
+"stored {0}, recalculated {1}",المحفوظ {0}، وبعد إعادة الحساب {1}
+Stored amounts differ from a fresh calculation; the record was edited or the calculation changed since it was saved.,المبالغ المحفوظة تختلف عن حساب جديد؛ إما أن السجل عدل أو أن طريقة الحساب تغيرت بعد حفظه.
+Stored amounts match a fresh calculation.,المبالغ المحفوظة تطابق حسابا جديدا.
+No unpaid leave period is counted.,لا توجد فترة إجازة غير مدفوعة محتسبة.
+"stored {0}, formula {1}",المحفوظ {0}، وحسب المعادلة {1}
+{0} leave period row(s) differ from the period formula.,عدد صفوف فترات الإجازة المخالفة لمعادلة الفترة: {0}.
+Every counted leave period row matches the period formula.,كل صفوف فترات الإجازة المحتسبة تطابق معادلة الفترة.
+No employee is linked to this record.,لا يوجد موظف مرتبط بهذا السجل.
+Row {0} overlaps {1} by {2} days,الصف {0} يتداخل مع {1}، عدد أيام التداخل: {2}
+{0} counted leave period(s) are already counted in another approved or paid record; the longest overlap is {1} days.,عدد فترات الإجازة المحتسبة سابقا في سجل آخر موافق عليه أو مدفوع: {0}؛ وأطول تداخل بالأيام: {1}.
+No counted leave period is counted in another approved or paid record.,لا توجد فترة إجازة محتسبة في سجل آخر موافق عليه أو مدفوع.
+{0} row(s) count fewer than 21 leave days a year.,عدد الصفوف التي تحتسب أقل من 21 يوم إجازة في السنة: {0}.
+Every counted row has at least 21 leave days a year.,كل صف محتسب فيه 21 يوم إجازة في السنة على الأقل.
+The employee record has no joining date.,سجل الموظف بلا تاريخ مباشرة.
+{0} counted row(s) start before the employee joined.,عدد الصفوف المحتسبة التي تبدأ قبل مباشرة الموظف: {0}.
+No counted row starts before the employee joined.,لا يوجد صف محتسب يبدأ قبل مباشرة الموظف.
+Employee status,حالة الموظف
+The employee is active.,الموظف على رأس العمل.
+"The employee status is {0}, not Active.",حالة الموظف {0}، وليست على رأس العمل.
+No permission to verify.,لا تملك صلاحية التحقق.
+Employee {0} was not found.,لم يعثر على الموظف {0}.
+{0} incremental update(s),عدد التحديثات التراكمية: {0}
+"modified on {0}, created on {1}",عدل بتاريخ {0}، وأنشئ بتاريخ {1}
+produced by an editor: {0},أنتجه برنامج تحرير: {0}
+Restricted to audit roles.,مقصور على أدوار التدقيق.
+Could not verify: {0},تعذر التحقق: {0}
+Beneficiary account,حساب المستفيد
+Policy and labour law,السياسة ونظام العمل
+Fraud red flags,مؤشرات الاحتيال
+The end of service reason is {0}.,سبب انتهاء الخدمة {0}.
+No coded end of service reason is selected; the award cannot be calculated.,لم يختر سبب مرمز لانتهاء الخدمة؛ ولا يمكن حساب المكافأة.
+The reason does not need this document.,هذا السبب لا يحتاج هذا المستند.
+Termination under Article 80 pays no award and needs the investigation record.,الفصل وفق المادة 80 لا يستحق مكافأة ويحتاج محضر التحقيق.
+This reason pays the full award and needs a supporting document.,هذا السبب يستحق المكافأة كاملة ويحتاج مستندا داعما.
+Deductions and penalty,الاستقطاعات والشرط الجزائي
+Final dues before deductions,المستحقات النهائية قبل الاستقطاع
+No deduction is taken from the final dues.,لا يوجد استقطاع من المستحقات النهائية.
+"Deductions are {0} of final dues, above 50%. Practitioners apply the Article 91-93 wage-deduction cap to final settlements by analogy; the legal reading is unresolved.",الاستقطاعات {0} من المستحقات النهائية، أي أكثر من 50%. يطبق الممارسون حد الحسم من الأجر في المواد 91-93 على التصفية النهائية قياسا؛ والتفسير النظامي غير محسوم.
+Deductions are {0} of final dues.,الاستقطاعات {0} من المستحقات النهائية.
+The settlement is paid or has no last working day.,التصفية مدفوعة أو بلا آخر يوم عمل.
+Days since,الأيام المنقضية
+Unpaid {0} days after the last working day; Article 88 allows {1} days for this reason.,لم تدفع بعد {0} يوما من آخر يوم عمل؛ والمادة 88 تمهل {1} يوما لهذا السبب.
+Within the {0} days Article 88 allows for this reason.,ضمن مهلة المادة 88 لهذا السبب وهي {0} يوما.
+The settlement is paid in cash.,التصفية تدفع نقدا.
+The settlement is paid to a bank account.,التصفية تدفع إلى حساب بنكي.
+Cash payment set by,حدد الدفع النقدي
+{0} on {1},{0} بتاريخ {1}
+You set the cash payment yourself; another approver must review it.,أنت من حدد الدفع النقدي؛ ويجب أن يراجعه معتمد آخر.
+Cash payment is set and no file proves the account is suspended.,الدفع النقدي محدد ولا يوجد ملف يثبت إيقاف الحساب.
+Cash payment is set; read the attached proof that the account is suspended.,الدفع النقدي محدد؛ اقرأ الإثبات المرفق على إيقاف الحساب.
+Stored amounts match a fresh calculation,المبالغ المحفوظة تطابق حسابا جديدا
+Salary matches the employee record,الراتب يطابق سجل الموظف
+Joining date matches the employee record,تاريخ المباشرة يطابق سجل الموظف
+Leave period amounts match the formula,مبالغ فترات الإجازة تطابق المعادلة
+End of service reason is selected,سبب انتهاء الخدمة محدد
+Article 80 termination is documented,الفصل وفق المادة 80 موثق
+Full award exception is documented,استثناء المكافأة الكاملة موثق
+Deductions within half of final dues,الاستقطاعات في حدود نصف المستحقات النهائية
+Leave period not already settled,فترة الإجازة غير مصروفة سابقا
+Settlement paid on time,التصفية مدفوعة في موعدها
+Supporting file attached,مستند داعم مرفق
+IBAN is valid,IBAN صحيح
+Account matches the employee record,الحساب يطابق سجل الموظف
+Employee bank account not changed recently,الحساب البنكي للموظف لم يتغير مؤخرا
+Cash payment exception is documented,استثناء الدفع النقدي موثق
+Approver is not the requester,المعتمد ليس مقدم الطلب
+{0} counted period(s) end more than 90 days from today.,عدد الفترات المحتسبة التي تنتهي بعد أكثر من 90 يوما من اليوم: {0}.
+Every counted period ends within 90 days of today.,كل فترة محتسبة تنتهي خلال 90 يوما من اليوم.
+This record pays tickets only.,هذا السجل يصرف التذاكر فقط.
+Open record,سجل مفتوح
+The employee has {0} other leave salary record(s) awaiting approval.,عدد سجلات راتب الإجازة الأخرى للموظف بانتظار الموافقة: {0}.
+The employee has {0} other leave salary record(s) awaiting approval that you cannot read.,عدد سجلات راتب الإجازة الأخرى للموظف بانتظار الموافقة ولا تملك صلاحية قراءتها: {0}.
+The employee has no other leave salary record awaiting approval.,لا يوجد للموظف سجل راتب إجازة آخر بانتظار الموافقة.
+At least 21 leave days a year,21 يوم إجازة في السنة على الأقل
+No period before the joining date,لا توجد فترة قبل تاريخ المباشرة
+Advance requested within 90 days of the leave,طلب السلفة خلال 90 يوما من الإجازة
+Employee is active,الموظف على رأس العمل
+No other leave salary record awaiting approval,لا يوجد سجل راتب إجازة آخر بانتظار الموافقة
+The reference does not point to an EOS or leave salary record.,المرجع لا يشير إلى سجل تصفية نهاية خدمة أو راتب إجازة.
+Source record,السجل المصدر
+An Employee Loan payment carries no employee link to compare against.,دفعة سلفة الموظف لا تحمل ربطا بموظف للمقارنة.
+Payment request,طلب الصرف
+{0} related record(s) you cannot read were not counted.,لم تحتسب السجلات المرتبطة التي لا تملك صلاحية قراءتها، وعددها: {0}.
+Amount is {0}.,المبلغ {0}.
+Amount is {0}; a payment must be greater than zero.,المبلغ {0}؛ ويجب أن يكون الدفع أكبر من صفر.
+This payment type has no source record.,نوع الدفع هذا بلا سجل مصدر.
+The reference {0} does not point to an existing {1}.,المرجع {0} لا يشير إلى {1} موجود.
+"The reference points to a {0}, not to the payment type's record.",المرجع يشير إلى {0}، وليس إلى سجل نوع الدفع.
+The reference points to {0}.,المرجع يشير إلى {0}.
+No source record is linked.,لا يوجد سجل مصدر مرتبط.
+Amended from,معدل من
+The source record is {0}.,حالة السجل المصدر {0}.
+"The source record is {0}, not Approved or Paid.",حالة السجل المصدر {0}، وليست موافقا عليه أو مدفوعا.
+Source amount,مبلغ السجل المصدر
+The amount matches the source record.,المبلغ يطابق السجل المصدر.
+Together with {0} other payment request(s) the amount matches the source record.,المبلغ يطابق السجل المصدر مع طلبات الصرف الأخرى وعددها: {0}.
+The amount {0} differs from the source amount {1}; all open requests on this reference total {2}.,المبلغ {0} يختلف عن مبلغ السجل المصدر {1}؛ وإجمالي الطلبات المفتوحة على هذا المرجع {2}.
+"Payment requests on this reference total {0}, more than the source amount {1}.",إجمالي طلبات الصرف على هذا المرجع {0}، وهو أكبر من مبلغ السجل المصدر {1}.
+"Payment requests on this reference total {0}, within the source amount.",إجمالي طلبات الصرف على هذا المرجع {0}، في حدود مبلغ السجل المصدر.
+This payment type needs no cost center.,نوع الدفع هذا لا يحتاج مركز تكلفة.
+Cost center is {0}.,مركز التكلفة {0}.
+No cost center is set.,لم يحدد مركز التكلفة.
+The remark describes the purpose.,الملاحظة تصف الغرض.
+The remark is shorter than {0} characters.,الملاحظة أقصر من الحد الأدنى بالأحرف: {0}.
+The request is not urgent.,الطلب ليس عاجلا.
+Reason given; truth not verified.,السبب مذكور؛ ولم يتحقق من صحته.
+Reason of urgency,سبب الاستعجال
+The request is urgent and gives no reason.,الطلب عاجل بلا سبب.
+The request is marked Already paid.,الطلب محدد بأنه مدفوع مسبقا.
+The request is not marked Already paid.,الطلب غير محدد بأنه مدفوع مسبقا.
+Some attached files are missing on the server or cannot be opened.,بعض الملفات المرفقة غير موجودة على الخادم أو لا يمكن فتحها.
+Some attachments are web links and were not opened.,بعض المرفقات روابط ويب ولم تفتح.
+Every attached file is on the server; PDFs and images open.,كل الملفات المرفقة موجودة على الخادم؛ وملفات PDF والصور تفتح.
+missing on the server,غير موجود على الخادم
+"web link, not opened",رابط ويب، لم يفتح
+cannot be opened,لا يمكن فتحه
+"on the server, not a PDF or image",موجود على الخادم، وليس ملف PDF أو صورة
+opens,يفتح
+No attached file carries a content fingerprint.,لا يحمل أي ملف مرفق بصمة محتوى.
+Same file on,الملف نفسه في
+An attached file is also attached to {0} request(s) paying another account.,ملف مرفق موجود أيضا في طلبات تدفع لحساب آخر، وعددها: {0}.
+No exact duplicate found.,لم يعثر على نسخة مطابقة تماما.
+The request has not moved through a workflow step yet.,الطلب لم ينتقل في أي مرحلة من سير العمل بعد.
+{0} file(s) were added by someone other than the requester after the last workflow step.,عدد الملفات التي أضافها غير مقدم الطلب بعد آخر مرحلة في سير العمل: {0}.
+No file was added by another user after the last workflow step.,لم يضف مستخدم آخر أي ملف بعد آخر مرحلة في سير العمل.
+No PDF is attached.,لا يوجد ملف PDF مرفق.
+{0} PDF(s) show signs of editing after creation.,عدد ملفات PDF التي تظهر عليها علامات تعديل بعد إنشائها: {0}.
+{0} PDF(s) could not be opened.,عدد ملفات PDF التي تعذر فتحها: {0}.
+No sign of editing found in the attached PDFs.,لم يعثر على علامات تعديل في ملفات PDF المرفقة.
+This payment type carries no tax invoice.,نوع الدفع هذا لا يحمل فاتورة ضريبية.
+QR reading is not enabled.,قراءة رمز QR غير مفعلة.
+AI reading is not enabled.,القراءة بالذكاء الاصطناعي غير مفعلة.
+This payment mode or type does not pay a Saudi IBAN.,طريقة الدفع أو نوعه لا يدفع إلى IBAN سعودي.
+"Local SNB account, not an IBAN.",حساب محلي في البنك الأهلي السعودي، وليس IBAN.
+This payment type does not pay an employee.,نوع الدفع هذا لا يدفع لموظف.
+The settlement is paid in cash; see the settlement's own cash check.,التصفية تدفع نقدا؛ راجع فحص الدفع النقدي في التصفية نفسها.
+SADAD bills carry no beneficiary name.,فواتير سداد لا تحمل اسم مستفيد.
+Beneficiary name is {0}.,اسم المستفيد {0}.
+No beneficiary name is entered.,لم يدخل اسم المستفيد.
+Name matches; account ownership not verified.,الاسم مطابق؛ ولم يتحقق من ملكية الحساب.
+The beneficiary name shares fewer than two names with the employee.,اسم المستفيد يشترك مع اسم الموظف في أقل من اسمين.
+First payment to this account.,أول دفعة إلى هذا الحساب.
+{0} earlier payment(s) to this account since {1}; {2} beneficiary name(s).,عدد الدفعات السابقة إلى هذا الحساب: {0} منذ {1}؛ وعدد أسماء المستفيدين: {2}.
+Not a supplier payment.,ليست دفعة لمورد.
+This supplier payment goes to an employee's own account.,دفعة المورد هذه تذهب إلى حساب موظف.
+The account is not an employee's account.,الحساب ليس حساب موظف.
+{0} active employees share this account.,عدد الموظفين على رأس العمل الذين يشتركون في هذا الحساب: {0}.
+No two active employees share this account.,لا يشترك موظفان على رأس العمل في هذا الحساب.
+Final dues go to a departed employee by design.,المستحقات النهائية تدفع لموظف منتهية خدمته بطبيعتها.
+The account belongs to an employee who left.,الحساب لموظف انتهت خدمته.
+The account does not belong to an employee who left.,الحساب ليس لموظف انتهت خدمته.
+Step you approved,مرحلة وافقت عليها
+You already moved this request through an earlier approval step.,سبق أن نقلت هذا الطلب في مرحلة موافقة سابقة.
+You have not approved an earlier step of this request.,لم توافق على مرحلة سابقة من هذا الطلب.
+This payment type is not checked for duplicates.,نوع الدفع هذا لا يفحص للتكرار.
+No other request pays the same amount to this account within 14 days.,لا يوجد طلب آخر يدفع المبلغ نفسه إلى هذا الحساب خلال 14 يوما.
+Same amount to the same account recurs monthly; recurring pattern.,المبلغ نفسه إلى الحساب نفسه يتكرر شهريا؛ نمط متكرر.
+{0} other request(s) pay the same amount to this account within 14 days.,عدد الطلبات الأخرى التي تدفع المبلغ نفسه إلى هذا الحساب خلال 14 يوما: {0}.
+Amount is greater than zero,المبلغ أكبر من صفر
+Reference points to an existing source record,المرجع يشير إلى سجل مصدر موجود
+Source record is approved,السجل المصدر موافق عليه
+Amount matches the source record,المبلغ يطابق السجل المصدر
+Reference is not overpaid,المرجع غير مدفوع بأكثر من مبلغه
+Cost center is set,مركز التكلفة محدد
+Remark describes the purpose,الملاحظة تصف الغرض
+Urgent request has a reason,الطلب العاجل له سبب
+Already paid flag,علامة مدفوع مسبقا
+Attached files can be opened,الملفات المرفقة قابلة للفتح
+Attachment not reused for another account,المرفق غير مكرر لحساب آخر
+Files added after the last workflow step,ملفات أضيفت بعد آخر مرحلة في سير العمل
+PDF shows no sign of editing,ملف PDF بلا علامات تعديل
+Invoice QR code matches,رمز QR للفاتورة مطابق
+Beneficiary name is filled,اسم المستفيد مدخل
+Beneficiary name matches the employee,اسم المستفيد يطابق الموظف
+Account payment history,سجل الدفعات إلى الحساب
+Supplier payment does not go to an employee,دفعة المورد لا تذهب إلى موظف
+Account not shared by several employees,الحساب غير مشترك بين عدة موظفين
+Account not of an employee who left,الحساب ليس لموظف انتهت خدمته
+Approver did not approve an earlier step,المعتمد لم يوافق على مرحلة سابقة
+No duplicate payment within 14 days,لا توجد دفعة مكررة خلال 14 يوما
+AI reading of attachments,قراءة المرفقات بالذكاء الاصطناعي
+The approver check does not cover {0}.,فحص المعتمد لا يشمل {0}.
+Only an approver at the current workflow step can run the approver check.,لا يشغل فحص المعتمد إلا معتمد في مرحلة سير العمل الحالية.
+Fail,غير مطابق,Approver Check
+Warning,يحتاج مراجعة,Approver Check
+Could not verify,تعذر التحقق,Approver Check
+Pass,تم التحقق,Approver Check
+Not applicable,لا ينطبق,Approver Check
+Approver Check,فحص المعتمد
+Approver Check — {0},فحص المعتمد — {0}
+Re-run,إعادة التشغيل
+The approver check could not run.,تعذر تشغيل فحص المعتمد.
+Checking...,جار الفحص...
+Do not approve until the red items are resolved,لا تعتمد قبل معالجة البنود الحمراء
+No blocking issue found,لا توجد مشكلة مانعة
+Not applicable ({0}),لا ينطبق ({0})
+This check advises; it does not stop approval.,هذا الفحص استشاري؛ ولا يمنع الاعتماد.
+Blocking,يمنع الاعتماد
+AI,الذكاء الاصطناعي
