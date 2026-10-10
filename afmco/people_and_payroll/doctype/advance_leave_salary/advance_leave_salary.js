@@ -774,6 +774,7 @@ frappe.ui.form.on('Advance Leave Salary', {
 },
   refresh: function(frm) {
         updateDashboards(frm);
+        frappe.require(["/assets/afmco/js/approver_check.js", "/assets/afmco/css/approver_check.css"], () => afmco.approver_check.attach(frm));
 
         if (["Paid", "Approved"].includes(frm.doc.workflow_state)) {
             frm.add_custom_button('Cancel Request', () => Cancel_Request(frm)).addClass('btn-danger');

@@ -30,6 +30,7 @@ frappe.ui.form.on('End of Service Settlement', {
   },
     refresh: function(frm) {
         add_qiwa_calculator_button(frm);
+        frappe.require(["/assets/afmco/js/approver_check.js", "/assets/afmco/css/approver_check.css"], () => afmco.approver_check.attach(frm));
         renderEOSCalculations(frm);
         showEosCalculationDetails(frm);
         frm.user_confirmed = false;

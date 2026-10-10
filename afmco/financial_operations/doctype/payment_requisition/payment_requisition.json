@@ -342,7 +342,8 @@
   {
    "fieldname": "tax_invoice_number",
    "fieldtype": "Data",
-   "label": "Reference"
+   "label": "Reference",
+   "search_index": 1
   },
   {
    "fieldname": "open_reference_document",
@@ -392,7 +393,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-08 11:00:00.000000",
+ "modified": "2026-10-10 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",
