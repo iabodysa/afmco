@@ -8,18 +8,21 @@ from frappe.utils import get_link_to_form
 
 HOLD_STATUS = "Hold"
 ON_LEAVE_STATUS = "On Leave"
-CORE_STAND_IN_STATUS = "Inactive"
-AFMCO_STATUSES = frozenset({HOLD_STATUS, ON_LEAVE_STATUS})
+CORE_STAND_IN_STATUS = {HOLD_STATUS: "Inactive", ON_LEAVE_STATUS: "Active"}
 
 
 class AfmcoEmployee:
 	def validate(self):
-		if self.status not in AFMCO_STATUSES:
-			return super().validate()
+		self.run_with_core_status(super().validate)
+
+	def update_user_status(self):
+		self.run_with_core_status(super().update_user_status)
+
+	def run_with_core_status(self, method):
 		status = self.status
-		self.status = CORE_STAND_IN_STATUS
+		self.status = CORE_STAND_IN_STATUS.get(status, status)
 		try:
-			super().validate()
+			method()
 		finally:
 			self.status = status
 

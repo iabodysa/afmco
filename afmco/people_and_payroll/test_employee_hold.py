@@ -10,9 +10,10 @@ from hrms.hr.doctype.shift_type.shift_type import ShiftType
 from hrms.overrides.employee_timesheet import EmployeeTimesheet
 from hrms.payroll.doctype.salary_slip.salary_slip import SalarySlip
 
-from afmco.people_and_payroll.test_payroll import make_employee
+from afmco.people_and_payroll.test_payroll import make_employee, make_hr_manager
 
 PAYROLL_ENTRY_MODULE = "hrms.payroll.doctype.payroll_entry.payroll_entry"
+LINKED_USER = "_t-hold-linked@example.com"
 
 
 def set_status(employee, status):
@@ -35,6 +36,20 @@ class TestEmployeeStatusSave(IntegrationTestCase):
 	def test_employee_saves_with_on_leave_status(self):
 		set_status(self.employee, "On Leave")
 		self.assertEqual(frappe.db.get_value("Employee", self.employee, "status"), "On Leave")
+
+	def link_user(self):
+		make_hr_manager(LINKED_USER, 1)
+		frappe.db.set_value("Employee", self.employee, "user_id", LINKED_USER)
+
+	def test_on_leave_save_keeps_linked_user_enabled(self):
+		self.link_user()
+		set_status(self.employee, "On Leave")
+		self.assertEqual(frappe.db.get_value("User", LINKED_USER, "enabled"), 1)
+
+	def test_hold_save_disables_linked_user(self):
+		self.link_user()
+		set_status(self.employee, "Hold")
+		self.assertEqual(frappe.db.get_value("User", LINKED_USER, "enabled"), 0)
 
 	def test_status_outside_the_options_is_still_rejected(self):
 		with self.assertRaises(frappe.ValidationError):
