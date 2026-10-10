@@ -15,8 +15,6 @@ ROLE_RESTRICTED = dict(checks_payment.ROLE_RESTRICTED)
 
 APPROVER_STATES = {
 	PAYMENT_REQUISITION: ("Waiting P.M Approval", "Waiting Manager Approval"),
-	ADVANCE_LEAVE_SALARY: (),
-	END_OF_SERVICE: (),
+	ADVANCE_LEAVE_SALARY: ("Waiting Manager Approval",),
+	END_OF_SERVICE: ("Waiting Manager Approval",),
 }
-
-APPROVER_ROLES = ("General Manager", "Projects Manager")

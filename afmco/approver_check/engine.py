@@ -29,7 +29,7 @@ from afmco.approver_check.model import (
 	Result,
 	Unverifiable,
 )
-from afmco.approver_check.registry import APPROVER_ROLES, APPROVER_STATES, REGISTRY, ROLE_RESTRICTED
+from afmco.approver_check.registry import APPROVER_STATES, REGISTRY, ROLE_RESTRICTED
 from afmco.people_and_payroll.advance_leave_salary import ADVANCE_LEAVE_SALARY, END_OF_SERVICE
 
 ENGINE_VERSION = "2"
@@ -79,7 +79,12 @@ def approver_allowed(doc) -> bool:
 		return False
 	if not get_workflow_name(doc.doctype) or not doc.has_permission("read"):
 		return False
-	return any(transition.allowed in APPROVER_ROLES for transition in get_transitions(doc))
+	return bool(get_transitions(doc))
+
+
+def set_onload(doc) -> None:
+	doc.set_onload("approver_check_allowed", approver_allowed(doc))
+	doc.set_onload("approver_check_ai", bool(ai_first(doc.doctype)))
 
 
 def restricted(check: Check, ctx: Context) -> bool:

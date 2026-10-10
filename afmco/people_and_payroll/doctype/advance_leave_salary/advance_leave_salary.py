@@ -16,7 +16,7 @@ from afmco.people_and_payroll.advance_leave_salary import (
 
 class AdvanceLeaveSalary(Document):
     def onload(self):
-        self.set_onload("approver_check_allowed", engine.approver_allowed(self))
+        engine.set_onload(self)
 
     def approver_checklist(self, deferred: bool = False) -> dict:
         return engine.run(self, deferred=deferred)
