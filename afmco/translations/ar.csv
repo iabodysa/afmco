@@ -13518,3 +13518,4 @@ Could not be put on Hold: {0},تعذّر تحويلهم إلى معلّق: {0}
 Employees on Hold for no salary slip in the last 3 months,موظفون معلّقون لعدم صرف رواتبهم خلال آخر 3 أشهر
 Transactions cannot be created for an Employee on Hold {0}.,لا يمكن إنشاء معاملات لموظف معلّق {0}.
 Auditor,مدقق الحسابات
+Apex operations system,نظام التشغيل Apex

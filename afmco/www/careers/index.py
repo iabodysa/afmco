@@ -6,7 +6,7 @@ from frappe import _
 from frappe.utils.jinja_globals import is_rtl
 
 from afmco.people_and_payroll.careers import MAX_RESUME_BYTES, get_application_options, get_open_jobs
-from afmco.www.portal.index import SUPPORT_URL, get_portal_entry, remember_guest_language
+from afmco.www.portal.index import APEX_URL, SUPPORT_URL, get_portal_entry, remember_guest_language
 
 no_cache = 1
 
@@ -26,6 +26,7 @@ def get_context(context):
 		"Browse the jobs open at AFMCO and send your application and CV in a few minutes."
 	)
 	context.support_url = SUPPORT_URL
+	context.apex_url = APEX_URL
 	context.portal_link, context.portal_label = get_portal_entry(is_guest, is_website_user)
 	context.portal_css = frappe.read_file(frappe.get_app_path("afmco", "www", "portal", "index.css"))
 	context.portal_js = frappe.read_file(frappe.get_app_path("afmco", "www", "portal", "index.js"))
