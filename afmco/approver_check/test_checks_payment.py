@@ -178,6 +178,9 @@ class TestPaymentAccountingChecks(IntegrationTestCase):
 		source = make_settlement(employee(), state="Approved")
 		frappe.db.set_value(EOS, source.name, "amount", 1000, update_modified=False)
 		self.assertEqual(status(pr(payment_type="EOS", tax_invoice_number=source.name, amount=1000), "PR-ACC-05"), "pass")
+		make_pr(state="Paid", payment_type="SADAD Payment", tax_invoice_number=source.name, amount=200)
+		self.assertEqual(status(pr(payment_type="SADAD Payment", tax_invoice_number=source.name, amount=200), "PR-ACC-04"), "na")
+		self.assertEqual(status(pr(payment_type="EOS", tax_invoice_number=source.name, amount=1000), "PR-ACC-05"), "pass")
 		make_pr(state="Pending", payment_type="EOS", tax_invoice_number=source.name, amount=700)
 		self.assertEqual(status(pr(payment_type="EOS", tax_invoice_number=source.name, amount=500), "PR-ACC-05"), "warn")
 
@@ -365,7 +368,8 @@ class TestPaymentPolicyAndFraudChecks(IntegrationTestCase):
 		version(PR, doc.name, [["workflow_state", "Pending", "Waiting P.M Approval"]])
 		self.assertEqual(status(doc, "PR-POL-02"), "pass")
 		version(PR, doc.name, [["workflow_state", "Waiting P.M Approval", "Financial Controller"]])
-		self.assertEqual(status(doc, "PR-POL-02"), "warn")
+		item = verdict(doc, "PR-POL-02")
+		self.assertEqual((item["status"], item["severity"]), ("warn", "info"))
 
 	def test_same_amount_to_same_account_within_fourteen_days_warns_unless_monthly(self):
 		account = iban()

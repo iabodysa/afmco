@@ -151,7 +151,12 @@ def reference_siblings(ctx: Context) -> tuple[list[dict], int]:
 		ref = reference(ctx)
 		rows = frappe.get_all(
 			PAYMENT_REQUISITION,
-			filters={"tax_invoice_number": ref, "docstatus": ["<", 2], "workflow_state": ["not in", CLOSED_STATES]},
+			filters={
+				"tax_invoice_number": ref,
+				"payment_type": ctx.doc.payment_type,
+				"docstatus": ["<", 2],
+				"workflow_state": ["not in", CLOSED_STATES],
+			},
 			fields=["name", "amount", "workflow_state"],
 		)
 		if ctx.doc.name not in {row.name for row in rows}:
@@ -222,7 +227,7 @@ def source_document_state(ctx: Context) -> Result:
 
 
 def amount_matches_source(ctx: Context) -> Result:
-	if not reference(ctx) or source(ctx) is None:
+	if ctx.doc.payment_type not in SOURCE_TYPES or not reference(ctx) or source(ctx) is None:
 		return Result(NA, _("No source record is linked."))
 	found = readable_source(ctx)
 	expected = flt(found.doc.amount)
@@ -237,7 +242,7 @@ def amount_matches_source(ctx: Context) -> Result:
 
 
 def reference_overpaid(ctx: Context) -> Result:
-	if not reference(ctx) or source(ctx) is None:
+	if ctx.doc.payment_type not in SOURCE_TYPES or not reference(ctx) or source(ctx) is None:
 		return Result(NA, _("No source record is linked."))
 	found = readable_source(ctx)
 	expected = flt(found.doc.amount)
@@ -538,7 +543,7 @@ CHECKS = (
 	Check("PR-BEN-08", "account_shared_by_employees", BENEFICIARY, _lt("Account not shared by several employees"), WARNING, account_shared_by_employees),
 	Check("PR-BEN-09", "account_of_departed_employee", BENEFICIARY, _lt("Account not of an employee who left"), INFO, account_of_departed_employee),
 	Check("PR-POL-01", "approver_not_requester", POLICY, _lt("Approver is not the requester"), WARNING, approver_not_requester),
-	Check("PR-POL-02", "same_user_two_steps", POLICY, _lt("Approver did not approve an earlier step"), WARNING, same_user_two_steps),
+	Check("PR-POL-02", "same_user_two_steps", POLICY, _lt("Approver did not approve an earlier step"), INFO, same_user_two_steps),
 	Check("PR-FRD-01", "duplicate_amount_account_14d", FRAUD, _lt("No duplicate payment within 14 days"), WARNING, duplicate_amount_account_14d),
 	Check("PR-FRD-02", "ai_document_suspicion", FRAUD, _lt("AI reading of attachments"), WARNING, ai_document_suspicion, mode=AI),
 )
