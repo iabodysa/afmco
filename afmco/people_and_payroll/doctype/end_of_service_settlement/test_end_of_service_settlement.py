@@ -22,7 +22,9 @@ from afmco.people_and_payroll.doctype.end_of_service_settlement.end_of_service_s
 	EndofServiceSettlement,
 	employee_values,
 	feedback_for,
+	is_due,
 	pending_filters,
+	relieving_date_for,
 )
 
 IGNORE_TEST_RECORD_DEPENDENCIES = ["Department", "Employee"]
@@ -62,8 +64,13 @@ class TestEndOfServiceFeedback(TestCase):
 			"Exit-2026-00001 | 1-End of term or mutual agreement",
 		)
 
-	def test_relieving_date_is_day_after_last_working_day(self):
-		self.assertEqual(employee_values(SETTLEMENT)["relieving_date"], date(2026, 2, 1))
+	def test_relieving_date_is_last_working_day(self):
+		self.assertEqual(employee_values(SETTLEMENT)["relieving_date"], date(2026, 1, 31))
+
+	def test_scheduled_relieving_is_due_only_after_last_working_day(self):
+		last_working_day = relieving_date_for(SETTLEMENT)
+		self.assertFalse(is_due(last_working_day, date(2026, 1, 31)))
+		self.assertTrue(is_due(last_working_day, date(2026, 2, 1)))
 
 	def test_resignation_letter_date_is_settlement_creation_date(self):
 		self.assertEqual(employee_values(SETTLEMENT)["resignation_letter_date"], date(2026, 1, 1))

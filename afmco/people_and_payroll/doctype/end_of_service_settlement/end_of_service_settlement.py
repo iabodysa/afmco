@@ -78,13 +78,13 @@ def relieving_date_for(record):
     last_working_day = _value(record, "date_2")
     if not last_working_day:
         return None
-    return frappe.utils.add_days(frappe.utils.getdate(last_working_day), 1)
+    return frappe.utils.getdate(last_working_day)
 
 
 def is_due(relieving_date, today) -> bool:
     if not relieving_date:
         return False
-    return today >= relieving_date
+    return today > relieving_date
 
 
 def service_duration(record) -> str:
