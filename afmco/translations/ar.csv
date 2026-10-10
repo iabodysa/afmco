@@ -13226,7 +13226,7 @@ Leave allowance table not filled: no submitted Salary Slip for {0}. Fill the tab
 "Leave allowance table not filled: the employee has no earlier Paid Advance Leave Salary and joined on {0}, before {1}. Fill the table by hand.",لم يعبأ جدول بدل الإجازة: لا يوجد للموظف راتب إجازة مقدم سابق مدفوع، وتاريخ التحاق الموظف {0} قبل {1}. عبّئ الجدول يدوياً.
 Row {0} of the leave allowance table overlaps a paid leave period and must be Paid before submitting.,الصف {0} في جدول بدل الإجازة يتداخل مع فترة إجازة مدفوعة، ويجب جعله مدفوعاً قبل الاعتماد.
 View open jobs,عرض الوظائف المتاحة
-Careers at AFMCO,الوظائف في أفمكو
+Careers at AFMCO,وظائف أفمكو
 Browse the jobs open at AFMCO and send your application and CV in a few minutes.,تصفح الوظائف المتاحة في أفمكو وأرسل طلبك وسيرتك الذاتية خلال دقائق.
 Open jobs,الوظائف المتاحة
 Apply now,قدّم الآن
@@ -13236,32 +13236,32 @@ Jobs open now,الوظائف المتاحة حاليًا
 "Choose a job to read its details, then apply with your CV.",اختر وظيفة للاطلاع على تفاصيلها، ثم قدّم عليها مع سيرتك الذاتية.
 Closes on {0},آخر موعد للتقديم {0}
 Job details,تفاصيل الوظيفة
-Apply for this job,التقديم على هذه الوظيفة
+Apply for this job,قدّم على هذه الوظيفة
 There are no open jobs right now. You can still send a general application and we will contact you when a suitable job opens.,لا توجد وظائف متاحة حاليًا. يمكنك إرسال طلب عام، وسنتواصل معك عند توفر وظيفة مناسبة.
 Send your application,أرسل طلبك
 Fields marked * are required. Only the AFMCO recruitment team can see your application.,الحقول المميزة بعلامة * إلزامية. لا يطلع على طلبك إلا فريق التوظيف في أفمكو.
-Your application could not be sent. Please try again.,لم يتم إرسال طلبك. يرجى المحاولة مرة أخرى.
+Your application could not be sent. Please try again.,تعذر إرسال طلبك. يرجى المحاولة مرة أخرى.
 Please upload your CV as a PDF or Word file.,يرجى رفع السيرة الذاتية بصيغة PDF أو Word.
-Your CV file is larger than {0} MB.,حجم ملف السيرة الذاتية يتجاوز {0} ميجابايت.
+Your CV file is larger than {0} MB.,حجم ملف السيرة الذاتية يتجاوز {0} ميغابايت.
 Please fill in all required fields.,يرجى تعبئة جميع الحقول الإلزامية.
-Job opening,الوظيفة المطلوبة
+Job opening,الوظيفة الشاغرة
 General application,طلب عام
 Full name,الاسم الكامل
 Email address,البريد الإلكتروني
 Phone number,رقم الجوال
-Country of residence,بلد الإقامة
+Country of residence,دولة الإقامة
 Currency,العملة
 From,من
 To,إلى
 Cover letter,خطاب التقديم
 CV file,ملف السيرة الذاتية
-"PDF or Word, up to {0} MB.",PDF أو Word، بحد أقصى {0} ميجابايت.
+"PDF or Word, up to {0} MB.",PDF أو Word، بحد أقصى {0} ميغابايت.
 CV link,رابط السيرة الذاتية
 Expected monthly salary,الراتب الشهري المتوقع
 Send application,إرسال الطلب
 One of the fields is too long.,أحد الحقول يتجاوز الطول المسموح.
-Please enter a valid email address.,يرجى إدخال بريد إلكتروني صحيح.
-Please enter a valid CV link starting with https://,يرجى إدخال رابط صحيح للسيرة الذاتية يبدأ بـ https://
-This job is no longer open for applications.,التقديم على هذه الوظيفة مغلق.
+Please enter a valid email address.,يرجى إدخال بريد إلكتروني صالح.
+Please enter a valid CV link starting with https://,يرجى إدخال رابط صالح للسيرة الذاتية يبدأ بـ https://
+This job is no longer open for applications.,هذه الوظيفة لم تعد متاحة للتقديم.
 Please choose a value from the list.,يرجى اختيار قيمة من القائمة.
-Please enter a valid expected salary range.,يرجى إدخال نطاق صحيح للراتب المتوقع.
+Please enter a valid expected salary range.,يرجى إدخال نطاق صالح للراتب المتوقع.
