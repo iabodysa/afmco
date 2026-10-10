@@ -205,7 +205,7 @@ class PaymentRequisition(Document):
 		try:
 			eos = frappe.get_doc("End of Service Settlement", self.tax_invoice_number)
 			eos.update({"workflow_state": "Paid", "docstatus": 1})
-			eos.save()
+			eos.save(ignore_permissions=True)
 		except Exception:
 			frappe.db.rollback(save_point="afmco_eos_paid_sync")
 			frappe.log_error(title="EOS Update Failed")
