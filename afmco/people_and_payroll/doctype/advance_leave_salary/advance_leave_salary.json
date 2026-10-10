@@ -179,7 +179,8 @@
    "fieldname": "cva",
    "fieldtype": "Table",
    "label": "Advance Leave Salary Details",
-   "options": "Contract Vacation Allowance"
+   "options": "Contract Vacation Allowance",
+   "read_only_depends_on": "eval:doc.workflow_state!=\"Waiting Accountant Approval\""
   },
   {
    "fieldname": "section_reward_and_tickets",
@@ -337,7 +338,7 @@
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "modified": "2026-10-10 16:03:00.000000",
+ "modified": "2026-10-10 23:59:00.000000",
  "module": "People and Payroll",
  "name": "Advance Leave Salary",
  "naming_rule": "By \"Naming Series\" field",

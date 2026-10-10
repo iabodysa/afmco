@@ -37,13 +37,6 @@ frappe.ui.form.on('End of Service Settlement', {
       ['salary_per_day', 'duration_of_service', 'dos_years', 'cva_total','total_eos', 'deductions', 'amount'].forEach(field => {
       frm.set_df_property(field, 'read_only', 1);
     });
-    if (frm.doc.workflow_state === 'Waiting Accountant Approval') {
-        frm.set_df_property('cva', 'read_only', 0); 
-        
-    } else {
-        frm.set_df_property('cva', 'read_only', 1);
-        
-    }
     frm.add_custom_button('watsapp', function() {
             if (frm.doc.cell_number && frm.doc.cell_number.length >= 9) {
                 var modified_number = frm.doc.cell_number.slice(-9);

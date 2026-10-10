@@ -759,13 +759,6 @@ frappe.ui.form.on('Advance Leave Salary', {
     ['salary_per_day', 'duration_of_service', 'dos_years', 'cva_total', 'deductions', 'amount'].forEach(field => {
       frm.set_df_property(field, 'read_only', 1);
     });
-    if (frm.doc.workflow_state === 'Waiting Accountant Approval') {
-        frm.set_df_property('cva', 'read_only', 0); 
-        
-    } else {
-        frm.set_df_property('cva', 'read_only', 1);
-        
-    }
     if (frm.doc.workflow_state === 'Approved' && frm.doc.pr_status == 'PR Not Created') {
       frm.add_custom_button(__('Create PR'), async () => {
         await frm.set_value('pr_status', 'PR Created');
