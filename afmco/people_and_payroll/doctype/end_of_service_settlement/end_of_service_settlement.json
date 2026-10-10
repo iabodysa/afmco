@@ -601,11 +601,6 @@
    "write": 1
   },
   {
-   "print": 1,
-   "read": 1,
-   "role": "Amazon"
-  },
-  {
    "read": 1,
    "role": "Accountant Bot"
   }
