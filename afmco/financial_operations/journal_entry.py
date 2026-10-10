@@ -83,6 +83,15 @@ class AfmcoJournalEntry:
 			enqueue_after_commit=True,
 			journal_entry=self.name,
 		)
+		if self.expense_request_cf:
+			frappe.enqueue(
+				"afmco.financial_operations.journal_entry_print.attach_to_requisition",
+				queue="long",
+				job_id=f"je-print-requisition::{self.name}",
+				deduplicate=True,
+				enqueue_after_commit=True,
+				journal_entry=self.name,
+			)
 
 	def on_cancel(self):
 		super().on_cancel()

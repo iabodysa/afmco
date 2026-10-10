@@ -1,4 +1,7 @@
 frappe.ui.form.on('Journal Entry', {
+    setup(frm) {
+        frm.set_query('expense_request_cf', () => ({ filters: { workflow_state: 'Paid' } }));
+    },
     expense_request_cf(frm) {
         er_status(frm);
         er_remove_section(frm);
