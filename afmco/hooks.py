@@ -67,6 +67,7 @@ website_redirects = [
 
 # include js in doctype views
 doctype_js = {
+	"Additional Salary": "public/js/additional_salary.js",
 	"Data Import": "public/js/data_import.js",
 	"Employee": "public/js/employee.js",
 	"Employee Checkin": "public/js/employee_checkin.js",
@@ -146,18 +147,41 @@ permission_query_conditions = {
 # }
 
 extend_doctype_class = {
+	"Additional Salary": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Appraisal": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Attendance": "afmco.people_and_payroll.attendance.AfmcoAttendance",
+	"Attendance Request": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Compensatory Leave Request": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Employee": "afmco.people_and_payroll.employee.AfmcoEmployee",
+	"Employee Advance": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Employee Benefit Application": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Employee Checkin": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Employee Incentive": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Employee Performance Feedback": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Employee Promotion": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Employee Referral": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Employee Tax Exemption Declaration": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Employee Tax Exemption Proof Submission": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Expense Claim": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Goal": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Journal Entry": "afmco.financial_operations.journal_entry.AfmcoJournalEntry",
-	"Leave Application": "afmco.people_and_payroll.leave_application.AfmcoLeaveApplication",
+	"Leave Application": [
+		"afmco.people_and_payroll.leave_application.AfmcoLeaveApplication",
+		"afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	],
+	"Leave Encashment": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Loan": "afmco.people_and_payroll.loan.AfmcoLoan",
 	"Loan Repayment": "afmco.people_and_payroll.loan_repayment.AfmcoLoanRepayment",
 	"Payroll Entry": "afmco.people_and_payroll.payroll_entry.AfmcoPayrollEntry",
+	"Retention Bonus": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Salary Slip": "afmco.people_and_payroll.salary_slip.AfmcoSalarySlip",
 	"Salary Structure Assignment": "afmco.people_and_payroll.salary_structure_assignment.AfmcoSalaryStructureAssignment",
 	"Sales Invoice": "afmco.financial_operations.sales_invoice.AfmcoSalesInvoice",
+	"Shift Assignment": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Shift Request": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Shift Type": "afmco.people_and_payroll.shift_type.AfmcoShiftType",
-	"Timesheet": "afmco.people_and_payroll.timesheet.AfmcoTimesheet",
+	"Timesheet": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Travel Request": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 }
 
 # Scheduled Tasks

@@ -10,10 +10,36 @@ from hrms.hr.doctype.shift_type.shift_type import ShiftType
 from hrms.overrides.employee_timesheet import EmployeeTimesheet
 from hrms.payroll.doctype.salary_slip.salary_slip import SalarySlip
 
+from afmco.people_and_payroll.api.payroll_entry import employee_query
+from afmco.people_and_payroll.employee import HOLD_GUARD_FIELDS
 from afmco.people_and_payroll.test_payroll import make_employee, make_hr_manager
 
 PAYROLL_ENTRY_MODULE = "hrms.payroll.doctype.payroll_entry.payroll_entry"
 LINKED_USER = "_t-hold-linked@example.com"
+CORE_ACTIVE_EMPLOYEE_CHECK_DOCTYPES = (
+	"Additional Salary",
+	"Appraisal",
+	"Attendance Request",
+	"Compensatory Leave Request",
+	"Employee Advance",
+	"Employee Benefit Application",
+	"Employee Checkin",
+	"Employee Incentive",
+	"Employee Performance Feedback",
+	"Employee Promotion",
+	"Employee Referral",
+	"Employee Tax Exemption Declaration",
+	"Employee Tax Exemption Proof Submission",
+	"Expense Claim",
+	"Goal",
+	"Leave Application",
+	"Leave Encashment",
+	"Retention Bonus",
+	"Shift Assignment",
+	"Shift Request",
+	"Timesheet",
+	"Travel Request",
+)
 
 
 def set_status(employee, status):
@@ -103,3 +129,23 @@ class TestHoldExcludedLikeInactive(IntegrationTestCase):
 	def test_salary_slip_rejects_employee_on_hold(self):
 		with patch.object(SalarySlip, "validate"), self.assertRaises(InactiveEmployeeStatusError):
 			frappe.new_doc("Salary Slip", employee=self.held).validate()
+
+	def test_every_core_active_employee_check_rejects_employee_on_hold(self):
+		for doctype in CORE_ACTIVE_EMPLOYEE_CHECK_DOCTYPES:
+			fields = HOLD_GUARD_FIELDS.get(doctype, ("employee",))
+			doc = frappe.new_doc(doctype)
+			core = next(cls for cls in type(doc).__mro__ if "validate" in vars(cls) and not cls.__module__.startswith("afmco."))
+			with self.subTest(doctype=doctype), patch.object(core, "validate"):
+				frappe.new_doc(doctype, **dict.fromkeys(fields, self.active)).validate()
+				for fieldname in fields:
+					with self.assertRaises(InactiveEmployeeStatusError):
+						frappe.new_doc(doctype, **{**dict.fromkeys(fields, self.active), fieldname: self.held}).validate()
+
+	def test_payroll_entry_employee_picker_skips_employee_on_hold(self):
+		def core_list(filters, **kwargs):
+			return [[name] for name in (self.held, self.active) if name not in filters.employees]
+
+		with patch(f"{PAYROLL_ENTRY_MODULE}.get_employee_list", side_effect=core_list):
+			picked = employee_query("Employee", "", "name", 0, 20, {"payroll_frequency": "Monthly"})
+
+		self.assertEqual(picked, [[self.active]])

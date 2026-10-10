@@ -9,6 +9,10 @@ from frappe.utils import get_link_to_form
 HOLD_STATUS = "Hold"
 ON_LEAVE_STATUS = "On Leave"
 CORE_STAND_IN_STATUS = {HOLD_STATUS: "Inactive", ON_LEAVE_STATUS: "Active"}
+HOLD_GUARD_FIELDS = {
+	"Employee Performance Feedback": ("employee", "reviewer"),
+	"Employee Referral": ("referrer",),
+}
 
 
 class AfmcoEmployee:
@@ -42,3 +46,10 @@ def validate_not_on_hold(employee: str | None) -> None:
 			),
 			InactiveEmployeeStatusError,
 		)
+
+
+class AfmcoHoldGuard:
+	def validate(self):
+		super().validate()
+		for fieldname in HOLD_GUARD_FIELDS.get(self.doctype, ("employee",)):
+			validate_not_on_hold(self.get(fieldname))

@@ -1,4 +1,11 @@
 frappe.ui.form.on('Payroll Entry', {
+    setup: function(frm) {
+        const core_query = frm.fields_dict.employees.grid.get_field('employee').get_query;
+        frm.set_query('employee', 'employees', () => ({
+            ...core_query(),
+            query: 'afmco.people_and_payroll.api.payroll_entry.employee_query',
+        }));
+    },
     add_context_buttons: function(frm) {},
     onload: function(frm) {
         if (!frm.doc.previous_results) {
