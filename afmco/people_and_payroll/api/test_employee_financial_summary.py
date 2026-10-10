@@ -12,9 +12,11 @@ from afmco.people_and_payroll.api.employee_financial_summary import (
 )
 from afmco.people_and_payroll.api.test_employee_form_api import make_employee
 
-HR_VIEWER = "efs-hr-viewer@afmco.test"
+HR_MANAGER = "efs-hr-manager@afmco.test"
+DENIED = "efs-denied@afmco.test"
+RESTRICTED_HR_MANAGER = "efs-restricted-hr-manager@afmco.test"
 OUTSIDER = "efs-outsider@afmco.test"
-ACCOUNTANT = "efs-accountant@afmco.test"
+DENIED_ROLES = [("HR User",), ("System Manager",), ("Accounts User",), ("Accounts Manager",)]
 UNGRANTED_PERMLEVEL = 9
 IBAN = "SA0380000000608010167519"
 
@@ -70,39 +72,53 @@ class TestEmployeeFinancialSummary(IntegrationTestCase):
 		self.assertEqual(result["amount"], 4504.17)
 
 	def test_section_without_doctype_read_is_hidden_and_shown_with_it(self):
-		make_user(HR_VIEWER, "HR User")
-		frappe.set_user(HR_VIEWER)
+		make_user(HR_MANAGER, "HR Manager")
+		frappe.set_user(HR_MANAGER)
 		frappe.clear_messages()
-		self.assertFalse(frappe.has_permission("End of Service Settlement", "read"))
+		self.assertFalse(frappe.has_permission("Payment Requisition", "read"))
 		summary = get_employee_financial_summary(self.employee)
-		self.assertEqual(summary["eos"], {"hidden": True})
-		self.assertEqual(summary["eos_records"], {"hidden": True})
+		self.assertEqual(summary["requisitions"], {"hidden": True})
 		self.assertEqual(summary["employee"]["name"], self.employee)
 		self.assertFalse(frappe.message_log)
 		frappe.set_user("Administrator")
-		make_user(HR_VIEWER, "HR User", "HR Manager")
-		frappe.set_user(HR_VIEWER)
-		self.assertEqual(
-			get_employee_financial_summary(self.employee)["eos"]["estimate"]["amount"],
-			31508.33,
-		)
+		make_user(HR_MANAGER, "HR Manager", "Accountant Bot")
+		frappe.set_user(HR_MANAGER)
+		self.assertIn("account_no", get_employee_financial_summary(self.employee)["requisitions"])
 
 	def test_user_without_summary_read_is_refused(self):
 		make_user(OUTSIDER, "Employee")
 		frappe.set_user(OUTSIDER)
 		self.assertRaises(frappe.PermissionError, get_employee_financial_summary, self.employee)
 
-	def test_user_without_employee_read_is_refused(self):
-		make_user(ACCOUNTANT, "Accountant")
-		frappe.set_user(ACCOUNTANT)
-		self.assertTrue(frappe.has_permission("Employee Financial Summary", "read"))
+	def test_roles_without_hr_manager_are_refused(self):
+		for roles in DENIED_ROLES:
+			with self.subTest(roles=roles):
+				frappe.set_user("Administrator")
+				make_user(DENIED, *roles)
+				frappe.set_user(DENIED)
+				self.assertRaises(frappe.PermissionError, get_employee_financial_summary, self.employee)
+
+	def test_hr_manager_receives_summary(self):
+		make_user(HR_MANAGER, "HR Manager")
+		frappe.set_user(HR_MANAGER)
+		summary = get_employee_financial_summary(self.employee)
+		self.assertEqual(summary["employee"]["name"], self.employee)
+		self.assertEqual(summary["eos"]["estimate"]["amount"], 31508.33)
+
+	def test_hr_manager_without_employee_read_on_target_is_refused(self):
+		other = make_employee("_T-EFS-Other")
+		make_user(RESTRICTED_HR_MANAGER, "HR Manager")
+		frappe.get_doc(
+			{"doctype": "User Permission", "user": RESTRICTED_HR_MANAGER, "allow": "Employee", "for_value": other}
+		).insert()
+		frappe.set_user(RESTRICTED_HR_MANAGER)
 		self.assertFalse(frappe.has_permission("Employee", "read", self.employee))
 		self.assertRaises(frappe.PermissionError, get_employee_financial_summary, self.employee)
 
 	def test_employee_fields_above_caller_permlevel_are_not_used(self):
 		frappe.db.set_value("Employee", self.employee, "iban", IBAN)
-		make_user(HR_VIEWER, "HR User", "HR Manager", "Accountant Bot")
-		frappe.set_user(HR_VIEWER)
+		make_user(HR_MANAGER, "HR Manager", "Accountant Bot")
+		frappe.set_user(HR_MANAGER)
 		meta = frappe.get_meta("Employee")
 		self.assertIs(frappe.get_meta("Employee"), meta)
 		self.assertNotIn(UNGRANTED_PERMLEVEL, meta.get_permlevel_access("read"))

@@ -8,37 +8,14 @@
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "issingle": 1,
- "modified": "2026-10-07 12:00:00.000000",
+ "modified": "2026-10-10 02:30:00.000000",
  "module": "People and Payroll",
  "name": "Employee Financial Summary",
  "owner": "Administrator",
  "permissions": [
   {
-   "email": 1,
-   "print": 1,
-   "read": 1,
-   "role": "System Manager",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "email": 1,
-   "print": 1,
-   "read": 1,
-   "role": "Accountant"
-  },
-  {
-   "export": 1,
-   "read": 1,
-   "role": "Accounts Manager"
-  },
-  {
    "read": 1,
    "role": "HR Manager"
-  },
-  {
-   "read": 1,
-   "role": "HR User"
   }
  ],
  "sort_field": "modified",

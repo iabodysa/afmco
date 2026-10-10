@@ -4,6 +4,7 @@
 frappe.ui.form.on("Employee Financial Summary", {
 	refresh(frm) {
 		frm.disable_save();
+		if (!frappe.user.has_role("HR Manager")) return;
 		frappe.require("employee_financial_summary.bundle.css");
 
 		let root = frm.layout.wrapper.find(".efs-root");

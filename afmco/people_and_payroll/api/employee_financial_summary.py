@@ -77,6 +77,7 @@ SOURCE_FIELDS = [
 
 @frappe.whitelist()
 def get_employee_financial_summary(employee, section=None, offset=0):
+	frappe.only_for("HR Manager")
 	frappe.has_permission("Employee Financial Summary", "read", throw=True)
 	if not frappe.db.exists("Employee", employee):
 		frappe.throw(_("Employee {0} not found").format(employee), frappe.DoesNotExistError)
