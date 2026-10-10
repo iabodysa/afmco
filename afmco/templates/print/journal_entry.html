@@ -1,4 +1,5 @@
 {%- macro money(v) -%}{{ frappe.utils.fmt_money(v or 0, 2) }}{%- endmacro -%}
+{%- macro amount(in_account, in_company, currency) -%}{% if in_company %}{% if currency %}{{ money(in_account) }} <span class="ltr">{{ currency }}</span><span class="sub">{{ money(in_company) }}</span>{% else %}{{ money(in_company) }}{% endif %}{% endif %}{%- endmacro -%}
 {%- macro pair(ar, en) -%}<span class="pair">{% if ar != en %}<span class="ar">{{ ar }}</span>{% endif %}<span class="en">{{ en }}</span></span>{%- endmacro -%}
 {%- macro stack(ar, en) -%}{% if ar != en %}<span class="ar">{{ ar }}</span>{% endif %}<span class="en">{{ en }}</span>{%- endmacro -%}
 {%- macro stamp(at) -%}{% if at %}<span class="num">{{ frappe.utils.format_datetime(at, "yyyy-MM-dd HH:mm") }}</span>{% endif %}{%- endmacro -%}
@@ -211,6 +212,7 @@ body:last-child .print-format .afm-hdr td.logo img, .print-format .afm-hdr td.lo
       {%- set title_field = frappe.get_meta(a.party_type).title_field if a.party_type and a.party else none -%}
       {%- set party_title = frappe.db.get_value(a.party_type, a.party, title_field) if title_field else none -%}
       {%- set employee_name = frappe.db.get_value("Employee", a.employee, "employee_name") if a.get("employee") and not a.party else none -%}
+      {%- set foreign = a.account_currency if a.account_currency and a.account_currency != cur else none -%}
       <tr>
         <td class="num">{{ a.idx }}</td>
         <td><span class="ltr">{{ a.account }}</span></td>
@@ -221,8 +223,8 @@ body:last-child .print-format .afm-hdr td.logo img, .print-format .afm-hdr td.lo
         </td>
         <td>{% if a.cost_center %}<span class="ltr">{{ a.cost_center }}</span>{% endif %}{% if a.project %}<span class="sub ltr">{{ a.project }}</span>{% endif %}</td>
         <td dir="auto">{{ a.user_remark or "" }}</td>
-        <td class="num m">{{ money(a.debit) if a.debit else "" }}</td>
-        <td class="num m">{{ money(a.credit) if a.credit else "" }}</td>
+        <td class="num m">{{ amount(a.debit_in_account_currency, a.debit, foreign) }}</td>
+        <td class="num m">{{ amount(a.credit_in_account_currency, a.credit, foreign) }}</td>
       </tr>
       {%- endfor %}
       <tr class="sum">

@@ -758,7 +758,7 @@ function attachSupportingPack(frm, journalEntry) {
             text += '<br>' + __('Attached separately: {0}', [message.attached.map(frappe.utils.escape_html).join(', ')]);
         }
         if (message.not_locked.length) {
-            text += '<br>' + __('Attached without a lock, legacy .xls format: {0}', [message.not_locked.map(frappe.utils.escape_html).join(', ')]);
+            text += '<br>' + __('Attached without a lock: {0}', [message.not_locked.map(frappe.utils.escape_html).join(', ')]);
         }
         if (message.skipped.length) {
             text += '<br>' + __('Not included: {0}', [message.skipped.map(frappe.utils.escape_html).join(', ')]);

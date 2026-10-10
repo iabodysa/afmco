@@ -2,9 +2,11 @@
 # For license information, please see license.txt
 
 import io
+import zipfile
 
 import frappe
 from openpyxl import load_workbook
+from openpyxl.utils.exceptions import InvalidFileException
 from openpyxl.chartsheet.protection import ChartsheetProtection
 
 SITE_CONFIG_KEY = "afmco_excel_lock_password"
@@ -14,8 +16,14 @@ def lock_password() -> str | None:
 	return frappe.conf.get(SITE_CONFIG_KEY) or None
 
 
-def lock(content: bytes, password: str | None) -> bytes:
-	workbook = load_workbook(io.BytesIO(content))
+UNREADABLE = (zipfile.BadZipFile, InvalidFileException, KeyError, ValueError, TypeError, SyntaxError, OSError)
+
+
+def lock(content: bytes, password: str | None) -> bytes | None:
+	try:
+		workbook = load_workbook(io.BytesIO(content))
+	except UNREADABLE:
+		return None
 	for sheet in workbook.worksheets:
 		if password:
 			sheet.protection.set_password(password)

@@ -2,10 +2,13 @@
 # For license information, please see license.txt
 
 import hashlib
+import io
 import json
 import re
+from pathlib import Path
 
 import frappe
+import pikepdf
 from frappe import _
 
 from afmco.financial_operations import requisition_pack
@@ -14,6 +17,7 @@ from afmco.financial_operations.requisition_pack import IMAGE_EXTENSIONS, JOURNA
 PRINT_FORMAT = "Journal Entry Voucher"
 DOSSIER_PATTERN = re.compile(r"-dossier-[0-9a-f]{8}\.pdf$")
 ROLES = ("Accountant", "Accounts User", "Accounts Manager")
+SKIPPED_KEY = "/AfmcoSkipped"
 
 
 def is_dossier(file: dict) -> bool:
@@ -50,18 +54,38 @@ def print_format() -> str | None:
 	return PRINT_FORMAT if frappe.db.exists("Print Format", PRINT_FORMAT) else None
 
 
+def with_skipped(content: bytes, skipped: list[str]) -> bytes:
+	if not skipped:
+		return content
+	pdf = pikepdf.Pdf.open(io.BytesIO(content))
+	pdf.docinfo[SKIPPED_KEY] = json.dumps(skipped)
+	output = io.BytesIO()
+	pdf.save(output, compress_streams=True, object_stream_mode=pikepdf.ObjectStreamMode.generate)
+	return output.getvalue()
+
+
+def recorded_skipped(file) -> list[str]:
+	try:
+		with pikepdf.Pdf.open(Path(file.get_full_path())) as pdf:
+			value = pdf.docinfo.get(SKIPPED_KEY)
+			return json.loads(str(value)) if value is not None else []
+	except (pikepdf.PdfError, OSError):
+		return []
+
+
 def build(journal_entry: str) -> dict:
 	entry = frappe.get_doc(JOURNAL_ENTRY, journal_entry)
 	files = inputs(entry)
 	file_name = dossier_file_name(entry, files)
 	listed = [f.file_name for f in files if not is_mergeable(f)]
-	url = frappe.db.get_value(
+	cached = frappe.db.get_value(
 		"File",
 		{"attached_to_doctype": JOURNAL_ENTRY, "attached_to_name": journal_entry, "file_name": file_name},
-		"file_url",
+		"name",
 	)
-	if url:
-		return {"file_url": url, "listed": listed, "skipped": []}
+	if cached:
+		file = frappe.get_doc("File", cached)
+		return {"file_url": file.file_url, "listed": listed, "skipped": recorded_skipped(file)}
 
 	cover = frappe.get_print(JOURNAL_ENTRY, journal_entry, print_format(), as_pdf=True)
 	content, excluded = requisition_pack.merge(
@@ -78,6 +102,7 @@ def build(journal_entry: str) -> dict:
 	):
 		if is_dossier(previous):
 			frappe.delete_doc("File", previous.name)
+	skipped = [name for name in excluded if name not in listed]
 	file = frappe.get_doc(
 		{
 			"doctype": "File",
@@ -85,10 +110,9 @@ def build(journal_entry: str) -> dict:
 			"attached_to_doctype": JOURNAL_ENTRY,
 			"attached_to_name": journal_entry,
 			"is_private": 1,
-			"content": content,
+			"content": with_skipped(content, skipped),
 		}
 	).insert()
-	skipped = [name for name in excluded if name not in listed]
 	if listed or skipped:
 		entry.add_comment(
 			"Info",

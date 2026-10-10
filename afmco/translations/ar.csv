@@ -13338,7 +13338,7 @@ Read {0},قُرئت {0}
 Attachments of {0} are not verified.,لا يتم التحقق من مرفقات {0}.
 Only an approver at the current workflow step can verify the attachments.,التحقق من المرفقات متاح فقط للمعتمد في مرحلة سير العمل الحالية.
 Attachment readings are not kept for {0}.,لا تُحفظ قراءات المرفقات لـ {0}.
-"Attached without a lock, legacy .xls format: {0}",أرفق بدون قفل، صيغة .xls قديمة: {0},
+Attached without a lock: {0},أرفق بدون قفل: {0},
 Attached separately,مرفق بشكل منفصل,
 Cheque No.,رقم الشيك,
 Included,مضمّن,
