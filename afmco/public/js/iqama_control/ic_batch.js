@@ -423,14 +423,14 @@ Object.assign(IqamaControl.prototype, {
 				.appendTo($detail);
 		}
 
-		// K-22: custom_reschedule_date was written (ic_utils.js schedule_for_later
+		// K-22: reschedule_date was written (ic_utils.js schedule_for_later
 		// patch) but never printed anywhere on this page. "Rescheduled" is
 		// authorised at TRANSITIONS-FROM-CLIENT-SCRIPT.md:10. Batch half only —
 		// the triage grid half of K-22's acc belongs to ic_triage.js, out of
 		// scope this phase.
-		if (row.status === "Rescheduled" && row.custom_reschedule_date) {
+		if (row.status === "Rescheduled" && row.reschedule_date) {
 			$('<span class="ic-b-flag"></span>')
-				.text(`${ic_label(IC_FIELD_LABELS.custom_reschedule_date)}: ${ic_date(row.custom_reschedule_date)}`)
+				.text(`${ic_label(IC_FIELD_LABELS.reschedule_date)}: ${ic_date(row.reschedule_date)}`)
 				.appendTo($detail);
 		}
 

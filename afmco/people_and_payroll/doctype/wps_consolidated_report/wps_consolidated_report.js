@@ -50,7 +50,7 @@ frappe.ui.form.on('WPS Consolidated Report', {
                     const query = {
                         filters: {
                             docstatus: 1,
-                            custom_wps_report_reference: ["is", "not set"],
+                            wps_report_reference: ["is", "not set"],
                             creation: [">=", frappe.datetime.add_months(frappe.datetime.nowdate(), -3)]
                         }
                     };
@@ -195,7 +195,7 @@ async function fetchSalarySlipsForPreCheck(payrollEntries) {
                 ],
                 fields: [
                     'name', 'employee', 'employee_name', 'company', 'payroll_entry',
-                    'net_pay', 'custom_hold', 'labor_office_file_number',
+                    'net_pay', 'hold', 'labor_office_file_number',
                     'bank_name', 'bank_account_no', 'start_date', 'end_date',
                     'basic33', 'housing33', 'other_allowance33', 'deduction33'
                 ],
@@ -225,7 +225,7 @@ async function buildVirtualWPSMetadata(salarySlips) {
     
     salarySlips.forEach(slip => {
         const molNo = slip.labor_office_file_number;
-        const isHold = slip.custom_hold === 1;
+        const isHold = slip.hold === 1;
         
         if (isHold) {
             holdEmployees.push({
@@ -581,7 +581,7 @@ function show_filter_dialog(frm) {
 function fetch_approved_payroll_entries(frm, values) {
     let filters = {
         docstatus: 1,
-        custom_wps_report_reference: ['is', 'not set']
+        wps_report_reference: ['is', 'not set']
     };
 
     if (values.department) {

@@ -5,25 +5,25 @@
    "default": "214001 - الرواتب المستحقة - Salaries owed - AF",
    "depends_on": "company",
    "dt": "Payroll Entry",
-   "fieldname": "custom_payroll_clearing_account",
+   "fieldname": "payroll_clearing_account",
    "fieldtype": "Link",
    "idx": "9",
    "insert_after": "payroll_payable_account",
    "label": "Payroll Clearing Account",
    "module": "People and Payroll",
-   "name": "Payroll Entry-custom_payroll_clearing_account",
+   "name": "Payroll Entry-payroll_clearing_account",
    "options": "Account"
   },
   {
    "allow_on_submit": "1",
    "dt": "Payroll Entry",
-   "fieldname": "custom_wps_report_reference",
+   "fieldname": "wps_report_reference",
    "fieldtype": "Link",
    "idx": "4",
    "insert_after": "company",
    "label": "WPS Report Reference",
    "module": "People and Payroll",
-   "name": "Payroll Entry-custom_wps_report_reference",
+   "name": "Payroll Entry-wps_report_reference",
    "options": "WPS Consolidated Report",
    "read_only": "1"
   },
@@ -86,7 +86,7 @@
    "name": "Payroll Entry-main-field_order",
    "property": "field_order",
    "property_type": "Data",
-   "value": "[\"select_payroll_period\", \"posting_date\", \"company\", \"custom_wps_report_reference\", \"column_break_5\", \"currency\", \"exchange_rate\", \"payroll_payable_account\", \"custom_payroll_clearing_account\", \"status\", \"section_break_cypo\", \"salary_slip_based_on_timesheet\", \"payroll_frequency\", \"start_date\", \"end_date\", \"month_name\", \"column_break_13\", \"deduct_tax_for_unclaimed_employee_benefits\", \"deduct_tax_for_unsubmitted_tax_exemption_proof\", \"employees_tab\", \"section_break_17\", \"branch\", \"department\", \"column_break_21\", \"designation\", \"grade\", \"number_of_employees\", \"section_break_24\", \"employees\", \"section_break_26\", \"validate_attendance\", \"attendance_detail_html\", \"accounting_dimensions_tab\", \"accounting_dimensions_section\", \"cost_center\", \"dimension_col_break\", \"employee\", \"project\", \"account\", \"payment_account\", \"column_break_35\", \"bank_account\", \"salary_slips_created\", \"salary_slips_submitted\", \"bank_entry_created\", \"failure_details_section\", \"error_message\", \"section_break_41\", \"amended_from\", \"connections_tab\"]"
+   "value": "[\"select_payroll_period\", \"posting_date\", \"company\", \"wps_report_reference\", \"column_break_5\", \"currency\", \"exchange_rate\", \"payroll_payable_account\", \"payroll_clearing_account\", \"status\", \"section_break_cypo\", \"salary_slip_based_on_timesheet\", \"payroll_frequency\", \"start_date\", \"end_date\", \"month_name\", \"column_break_13\", \"deduct_tax_for_unclaimed_employee_benefits\", \"deduct_tax_for_unsubmitted_tax_exemption_proof\", \"employees_tab\", \"section_break_17\", \"branch\", \"department\", \"column_break_21\", \"designation\", \"grade\", \"number_of_employees\", \"section_break_24\", \"employees\", \"section_break_26\", \"validate_attendance\", \"attendance_detail_html\", \"accounting_dimensions_tab\", \"accounting_dimensions_section\", \"cost_center\", \"dimension_col_break\", \"employee\", \"project\", \"account\", \"payment_account\", \"column_break_35\", \"bank_account\", \"salary_slips_created\", \"salary_slips_submitted\", \"bank_entry_created\", \"failure_details_section\", \"error_message\", \"section_break_41\", \"amended_from\", \"connections_tab\"]"
   },
   {
    "doc_type": "Payroll Entry",

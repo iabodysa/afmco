@@ -7,7 +7,7 @@ def check_iqama_expiration():
     try:
         employees = frappe.get_all(
             "Employee",
-            fields=["name", "iqama_expiration_date", "custom_iqama_expired", "status", "corporation"]
+            fields=["name", "iqama_expiration_date", "iqama_expired", "status", "corporation"]
         )
 
         errors = []
@@ -22,8 +22,8 @@ def check_iqama_expiration():
                     if expiration_date < today:
                         expired = 1
 
-                if employee.custom_iqama_expired != expired:
-                    frappe.db.set_value("Employee", employee.name, "custom_iqama_expired", expired, update_modified=False)
+                if employee.iqama_expired != expired:
+                    frappe.db.set_value("Employee", employee.name, "iqama_expired", expired, update_modified=False)
 
             except Exception as emp_error:
                 errors.append(f"Error processing Employee {employee.name}: {str(emp_error)}")

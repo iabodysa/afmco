@@ -406,7 +406,7 @@ Object.assign(IqamaControl.prototype, {
 			eligible.map((row) =>
 				this._sibling_records(row).then((siblings) => ({
 					row: row,
-					siblings: siblings.filter((sib) => sib.custom_pr_reference || sib.custom_pr_reference_2),
+					siblings: siblings.filter((sib) => sib.pr_reference || sib.pr_reference_2),
 				}))
 			)
 		).then((entries) => {
@@ -467,7 +467,7 @@ Object.assign(IqamaControl.prototype, {
 						(entry) =>
 							`<li>${ic_escape(ic_row_name(entry.row))} — ${entry.siblings
 								.map((sib) =>
-									ic_escape(sib.custom_pr_reference || sib.custom_pr_reference_2 || sib.name)
+									ic_escape(sib.pr_reference || sib.pr_reference_2 || sib.name)
 								)
 								.join(", ")}</li>`
 					)
@@ -723,8 +723,8 @@ Object.assign(IqamaControl.prototype, {
 			IC_DATE_COLUMN_FIELD ? ic_sheet_date(row[IC_DATE_COLUMN_FIELD]) : "",
 			row.sadad_invoice,
 			ic_sheet_amount(row.work_permit_fee),
-			row.custom_pr_reference,
-			row.custom_pr_reference_2,
+			row.pr_reference,
+			row.pr_reference_2,
 			row.reason_of_preventing_renewal || row.reason_of_not_renew,
 		].map(ic_cell);
 	},

@@ -8,7 +8,7 @@ EMPLOYEE_ADVANCES_ACCOUNT_NUMBER = "124001"
 SALARY_FIELDS = [
 	"base",
 	"housing",
-	"custom_housing",
+	"housing_allowance",
 	"variable",
 	"commission",
 	"transportation_allowance",

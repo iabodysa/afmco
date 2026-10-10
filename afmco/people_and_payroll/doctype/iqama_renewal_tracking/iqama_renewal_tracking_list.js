@@ -371,8 +371,8 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                                 return false;
                             }
                         
-                           // if (doc.custom_employee_status !== 'Active') {
-                            if (doc.custom_employee_status !== 'Active') {
+                           // if (doc.employee_status !== 'Active') {
+                            if (doc.employee_status !== 'Active') {
                                 frappe.msgprint(__('Cannot create Payment Request for document {0} because employee {1} is not Active.', [doc.name, doc.employee_name]));
                                 return false;
                             }
@@ -471,9 +471,9 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                                     }
                                     await frappe.db.set_value('Iqama Renewal Tracking', name, 'pr_status', new_pr_status);
                                     if (payment_type === 'PR Created for Work Cards') {
-                                        await frappe.db.set_value('Iqama Renewal Tracking', name, 'custom_pr_reference', paymentRequest.name);
+                                        await frappe.db.set_value('Iqama Renewal Tracking', name, 'pr_reference', paymentRequest.name);
                                     } else if (payment_type === 'PR Created for Iqama Renewal') {
-                                        await frappe.db.set_value('Iqama Renewal Tracking', name, 'custom_pr_reference_2', paymentRequest.name);
+                                        await frappe.db.set_value('Iqama Renewal Tracking', name, 'pr_reference_2', paymentRequest.name);
                                     }
                                     await frappe.db.set_value('Iqama Renewal Tracking', name, 'status', 'Awaiting Payment');
                                 }
@@ -894,7 +894,7 @@ function get_full_stat_config() {
             label: 'Expired Iqamas',
             doctype: 'Employee',
             filters: [
-                ['custom_iqama_expired', '=', 1],
+                ['iqama_expired', '=', 1],
                 ['status', '=', 'Active'],
             ],
             icon: 'fa-exclamation-circle',

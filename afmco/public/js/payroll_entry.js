@@ -561,7 +561,7 @@ async function makeAccrualEntry(frm) {
            const netPay = slip.net_pay || 0;
            if (netPay > 0) {
                accountsData.push({
-                   account: frm.doc.custom_payroll_clearing_account,
+                   account: frm.doc.payroll_clearing_account,
                    party_type: 'Employee',
                    party: slip.employee,
                    credit_in_account_currency: netPay,
@@ -822,7 +822,7 @@ async function createBankJournalEntry(frm, salarySlips, settings) {
                        }
 
                        accountsData.push({
-                           account: frm.doc.custom_payroll_clearing_account,
+                           account: frm.doc.payroll_clearing_account,
                            party_type: 'Employee',
                            party: slip.employee,
                            debit_in_account_currency: slip.net_pay,

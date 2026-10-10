@@ -189,7 +189,7 @@ class PaymentRequisition(Document):
 
 			if linked_jv:
 				self.jv_status = "JV Created"
-				frappe.db.set_value("Journal Entry", linked_jv, "custom_pr_status", self.workflow_state)
+				frappe.db.set_value("Journal Entry", linked_jv, "pr_status", self.workflow_state)
 		except Exception:
 			pass
 

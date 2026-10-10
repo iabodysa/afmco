@@ -7,9 +7,9 @@
  "engine": "InnoDB",
  "field_order": [
   "workflow_state",
-  "custom_details",
+  "details",
   "section_break_mviu",
-  "custom_allow_cancel",
+  "allow_cancel",
   "employee",
   "employee_name",
   "column_break_branch",
@@ -21,7 +21,7 @@
   "column_break_dates",
   "date_1",
   "date_2",
-  "custom_accounting_procedures",
+  "accounting_procedures",
   "accounting_procedures_section",
   "table_14",
   "cva",
@@ -42,7 +42,7 @@
   "column_break_deductions",
   "deductions",
   "amount",
-  "custom_hr_procedures",
+  "hr_procedures",
   "hr_procedures_section",
   "not",
   "check1",
@@ -67,7 +67,7 @@
    "options": "Workflow State"
   },
   {
-   "fieldname": "custom_details",
+   "fieldname": "details",
    "fieldtype": "Tab Break",
    "label": "Details"
   },
@@ -78,8 +78,8 @@
   },
   {
    "allow_on_submit": 1,
-   "depends_on": "eval:doc.custom_allow_cancel",
-   "fieldname": "custom_allow_cancel",
+   "depends_on": "eval:doc.allow_cancel",
+   "fieldname": "allow_cancel",
    "fieldtype": "Check",
    "label": "Allow Cancel",
    "read_only": 1
@@ -160,7 +160,7 @@
    "label": "Due Date"
   },
   {
-   "fieldname": "custom_accounting_procedures",
+   "fieldname": "accounting_procedures",
    "fieldtype": "Tab Break",
    "label": "Accounting Procedures"
   },
@@ -265,7 +265,7 @@
    "label": "Amount"
   },
   {
-   "fieldname": "custom_hr_procedures",
+   "fieldname": "hr_procedures",
    "fieldtype": "Tab Break",
    "label": "HR Procedures"
   },
@@ -337,7 +337,7 @@
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "modified": "2026-10-04 12:00:00.000000",
+ "modified": "2026-10-10 16:03:00.000000",
  "module": "People and Payroll",
  "name": "Advance Leave Salary",
  "naming_rule": "By \"Naming Series\" field",

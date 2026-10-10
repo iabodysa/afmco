@@ -10,7 +10,7 @@ function load_employee_dashboard(frm) {
         args: {
             doctype: 'Employee',
             filters: {
-                'custom_ajeer_from': frm.doc.sponsor_name
+                'ajeer_from': frm.doc.sponsor_name
             },
             fields: ['name', 'employee_name', 'status', 'department', 'project_branch', 'designation', 'date_of_joining', 'basic_wage', 'company'],
             limit_page_length: 1000

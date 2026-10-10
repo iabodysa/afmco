@@ -26,7 +26,7 @@ STRUCTURE_FIELDS = [
 	"from_date",
 	"base",
 	"housing",
-	"custom_housing",
+	"housing_allowance",
 	"transportation_allowance",
 	"food_allowance",
 	"supervisor_allowance",
@@ -158,7 +158,7 @@ def structure_section(source, offset):
 	assignment = assignments[0]
 	parts = [
 		["Basic", flt(assignment.base)],
-		["Housing", flt(assignment.custom_housing) or flt(assignment.housing)],
+		["Housing", flt(assignment.housing_allowance) or flt(assignment.housing)],
 		["Transportation", flt(assignment.transportation_allowance)],
 		["Food", flt(assignment.food_allowance)],
 		["Supervisor", flt(assignment.supervisor_allowance)],

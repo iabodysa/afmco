@@ -44,7 +44,7 @@ class AfmcoLeaveApplication:
 				title=_("Error"),
 			)
 		employee.status = "Active"
-		employee.custom_date_of_rejoining = date_of_rejoining
+		employee.date_of_rejoining = date_of_rejoining
 		employee.save()
 		frappe.msgprint(_("Employee status has been updated to Active.", context="Leave Application"))
 		try:

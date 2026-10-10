@@ -106,10 +106,10 @@
  "links": [
   {
    "link_doctype": "Payroll Entry",
-   "link_fieldname": "custom_wps_report_reference"
+   "link_fieldname": "wps_report_reference"
   }
  ],
- "modified": "2025-05-25 02:13:27.920614",
+ "modified": "2026-10-10 16:03:00.000000",
  "module": "People and Payroll",
  "name": "WPS Consolidated Report",
  "naming_rule": "Expression",

@@ -992,8 +992,8 @@ async function Cancel_Request(frm) {
     }
 
     try {
-        if (!frm.doc.custom_allow_cancel) {
-            await frappe.db.set_value(frm.doctype, frm.docname, "custom_allow_cancel", 1);
+        if (!frm.doc.allow_cancel) {
+            await frappe.db.set_value(frm.doctype, frm.docname, "allow_cancel", 1);
             await frm.reload_doc();
         }
 

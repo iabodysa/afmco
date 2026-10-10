@@ -17,7 +17,7 @@ class IqamaRenewalTracking(Document):
 		self.reject_inactive_employee()
 
 	def reject_inactive_employee(self):
-		if self.custom_employee_status != "Active":
+		if self.employee_status != "Active":
 			self.status = "Rejected"
 
 
@@ -163,11 +163,11 @@ NEXT_STATUS = "Awaiting Operations Approval"
 
 
 def due_filters(today: str) -> dict[str, str]:
-    return {"status": DUE_STATUS, "custom_reschedule_date": today}
+    return {"status": DUE_STATUS, "reschedule_date": today}
 
 
 def transition() -> dict[str, object]:
-    return {"status": NEXT_STATUS, "custom_reschedule_date": None}
+    return {"status": NEXT_STATUS, "reschedule_date": None}
 
 
 def reschedule_due_trackings() -> dict[str, object]:
