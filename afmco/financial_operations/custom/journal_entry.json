@@ -8,6 +8,7 @@
    "insert_after": "jv_based_on_submitted_si_cf",
    "is_system_generated": "1",
    "label": "Expense Request",
+   "link_filters": "[[\"Payment Requisition\",\"workflow_state\",\"=\",\"Paid\"]]",
    "module": "Financial Operations",
    "name": "Journal Entry-expense_request_cf",
    "options": "Payment Requisition",
