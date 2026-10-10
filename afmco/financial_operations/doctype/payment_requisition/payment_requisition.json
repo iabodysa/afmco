@@ -431,27 +431,99 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-10 14:00:00.000000",
+ "modified": "2026-10-10 15:15:04.119617",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
+   "amend": 1,
    "export": 1,
+   "import": 1,
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "System Manager",
-   "share": 1,
+   "role": "Accountant",
+   "select": 1,
+   "submit": 1,
    "write": 1
   },
   {
    "read": 1,
    "role": "Accountant Bot"
+  },
+  {
+   "amend": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Auditor",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Bank User",
+   "select": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Desk User",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "General Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "HR Manager",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Projects Manager",
+   "select": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
   }
  ],
  "quick_entry": 1,
