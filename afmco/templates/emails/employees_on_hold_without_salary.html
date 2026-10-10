@@ -7,6 +7,7 @@
   </div>
 
   <div style="padding:14px;">
+    {% if employees %}
     <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
       <span style="background:#fef3c7; color:#92400e; padding:6px 10px; border-radius:999px; font-size:12px;">{{ _("Employees: {0}").format(employees | length) }}</span>
     </div>
@@ -29,6 +30,31 @@
         {% endfor %}
       </table>
     </div>
+    {% endif %}
+
+    {% if failed %}
+    <div style="display:flex; gap:8px; flex-wrap:wrap; margin:{{ '14px' if employees else '0' }} 0 10px;">
+      <span style="background:#fee2e2; color:#991b1b; padding:6px 10px; border-radius:999px; font-size:12px;">{{ _("Could not be put on Hold: {0}").format(failed | length) }}</span>
+    </div>
+
+    <div style="border:1px dashed #fca5a5; border-radius:10px; overflow:hidden;">
+      <table style="width:100%; border-collapse:collapse;">
+        <tr style="background:#fef2f2;">
+          <td style="padding:10px 14px; color:#6b7280; font-size:12px;">{{ _("Employee") }}</td>
+          <td style="padding:10px 14px; color:#6b7280; font-size:12px; text-align:end;">{{ _("Reason") }}</td>
+        </tr>
+        {% for row in failed %}
+        <tr style="border-top:1px dashed #fca5a5;">
+          <td style="padding:10px 14px;">
+            <div style="color:#111827; font-weight:600;">{{ row.employee_name }}</div>
+            <div style="color:#6b7280; font-size:12px;">{{ row.name }}</div>
+          </td>
+          <td style="padding:10px 14px; text-align:end; color:#991b1b;">{{ row.reason }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% endif %}
 
     <div style="text-align:center; margin-top:14px;">
       <a href="{{ site_url }}/app/employee?status=Hold" style="display:inline-block; background:#16a34a; color:#ffffff; padding:12px 22px; text-decoration:none; border-radius:8px; font-weight:700;">{{ _("Open Employee List") }}</a>

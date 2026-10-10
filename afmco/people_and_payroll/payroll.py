@@ -111,14 +111,14 @@ def comment_for(today: str) -> str:
 
 def process_deactivations(names: Iterable[str], apply: Callable[[str], bool]) -> dict[str, object]:
     moved: list[str] = []
-    errors: list[str] = []
+    failed: list[dict[str, str]] = []
     for name in names:
         try:
             if apply(name):
                 moved.append(name)
         except Exception as error:
-            errors.append(f"{name}: {error}")
-    return {"updated": len(moved), "moved": moved, "errors": errors}
+            failed.append({"employee": name, "reason": str(error) or type(error).__name__})
+    return {"updated": len(moved), "moved": moved, "failed": failed}
 
 
 def last_salary_month(employee: str) -> str | None:
@@ -148,12 +148,39 @@ def moved_rows(names: list[str]) -> list[dict]:
     return rows
 
 
-def notify_hr_managers(moved: list[str]) -> None:
+def short_reason(reason: str) -> str:
+    lines = [line.strip() for line in reason.splitlines() if line.strip()]
+    return lines[0] if lines else reason
+
+
+def failed_rows(failed: list[dict[str, str]]) -> list[dict]:
+    import frappe
+    from frappe.utils import strip_html_tags
+
+    names = dict(
+        frappe.get_all(
+            EMPLOYEE_DOCTYPE,
+            filters={"name": ["in", [row["employee"] for row in failed]]},
+            fields=["name", "employee_name"],
+            as_list=True,
+        )
+    )
+    return [
+        {
+            "name": row["employee"],
+            "employee_name": names.get(row["employee"]) or row["employee"],
+            "reason": short_reason(strip_html_tags(row["reason"])),
+        }
+        for row in failed
+    ]
+
+
+def notify_hr_managers(moved: list[str], failed: list[dict[str, str]]) -> None:
     import frappe
     from frappe.utils.jinja_globals import is_rtl
     from frappe.utils.user import get_users_with_role
 
-    if not moved:
+    if not moved and not failed:
         return
     recipients = get_users_with_role(NOTIFIED_ROLE)
     if not recipients:
@@ -163,7 +190,8 @@ def notify_hr_managers(moved: list[str]) -> None:
         subject=frappe._("Employees on Hold for no salary slip in the last 3 months"),
         template=HOLD_EMAIL_TEMPLATE,
         args={
-            "employees": moved_rows(moved),
+            "employees": moved_rows(moved) if moved else [],
+            "failed": failed_rows(failed) if failed else [],
             "direction": "rtl" if is_rtl() else "ltr",
             "site_url": frappe.utils.get_url(),
         },
@@ -193,10 +221,5 @@ def deactivate_employees_without_salary_slip() -> dict[str, object]:
         return True
 
     outcome = process_deactivations(candidates, apply)
-    if outcome["errors"]:
-        frappe.log_error(
-            title="Hold without salary slip task",
-            message="\n".join(str(error) for error in outcome["errors"]),
-        )
-    notify_hr_managers(outcome["moved"])
+    notify_hr_managers(outcome["moved"], outcome["failed"])
     return outcome
