@@ -283,7 +283,6 @@ fmt:jsonl|keys:key,caller|key:ar.csv source string whose live caller sits only i
 {"key": "Helpdesk Contact", "caller": "Role:role_name"}
 {"key": "Internal Auditor", "caller": "Role:role_name"}
 {"key": "IT", "caller": "Role:role_name"}
-{"key": "Journal Entry Approver", "caller": "Role:role_name"}
 {"key": "Loan Appraiser", "caller": "Role:role_name"}
 {"key": "Loan LOS User", "caller": "Role:role_name"}
 {"key": "Loan Officer", "caller": "Role:role_name"}
