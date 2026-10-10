@@ -1289,9 +1289,9 @@ function handleFinancialControllerPermissions(frm) {
 }
 
 function displayPaymentApproverPermissions(frm) {
-    if (!frm.doc.custom_role) return;
+    if (!frm.doc.role) return;
 
-    const formatted_role = escapeHtmlWithLineBreaks(frm.doc.custom_role);
+    const formatted_role = escapeHtmlWithLineBreaks(frm.doc.role);
     const alertHtml = build_afmco_alert(
         'info',
         __('Please note that this document is pending approval from the {0}. Ensure all required verifications are completed before proceeding.', [formatted_role]),

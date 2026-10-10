@@ -334,12 +334,12 @@ function buildMuqeemDashboardHTML(frm, visas, insurances, dependents) {
         `<span class="indicator-pill whitespace-nowrap ${color}" style="margin-inline-end:8px;margin-bottom:6px;"><span>${text}</span></span>`;
 
     let pills = '';
-    const balance = frm.doc.custom_muqeem_balance;
+    const balance = frm.doc.muqeem_balance;
     if (balance !== undefined && balance !== null) {
         pills += pill(__('Muqeem balance: {0}', [esc(balance)], 'Employee'), balance > 0 ? 'blue' : 'gray');
     }
-    const vCount = frm.doc.custom_muqeem_violations_count || 0;
-    const vCost = frm.doc.custom_muqeem_violations_cost || 0;
+    const vCount = frm.doc.muqeem_violations_count || 0;
+    const vCost = frm.doc.muqeem_violations_cost || 0;
     pills += pill(__('Violations: {0}', [esc(vCount)], 'Employee'), vCount > 0 ? 'red' : 'green');
     if (vCount > 0) pills += pill(__('Amount: {0} SAR', [esc(format_number(vCost, null, 0))], 'Employee'), 'orange');
 
@@ -521,16 +521,16 @@ function showEmployeeDuesDialog(employee, balance, netPay) {
 }
 
 function handleIqamaExpiredStatus(frm) {
-    frm.set_df_property('custom_iqama_expired', 'hidden', 1);
+    frm.set_df_property('iqama_expired', 'hidden', 1);
 
-    if (frm.doc.custom_iqama_expired && frm.doc.status === 'Active') {
+    if (frm.doc.iqama_expired && frm.doc.status === 'Active') {
         frm.set_df_property('status', 'description', 'Expired Iqama');
         frm.set_df_property('status', 'field_style', 'color: red;');
     }
 }
 
 function displayIqamaExpiredAlert(frm) {
-    if (!frm.doc.custom_iqama_expired) return;
+    if (!frm.doc.iqama_expired) return;
 
     let sidebar = $('ul.list-unstyled.sidebar-menu.text-muted');
     let alert_title = __('Iqama Expired', null, 'Employee');

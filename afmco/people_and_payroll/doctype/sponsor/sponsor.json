@@ -42,10 +42,10 @@
  "links": [
   {
    "link_doctype": "Employee",
-   "link_fieldname": "custom_ajeer_from"
+   "link_fieldname": "ajeer_from"
   }
  ],
- "modified": "2025-07-01 17:15:37.279205",
+ "modified": "2026-10-10 16:03:00.000000",
  "module": "People and Payroll",
  "name": "Sponsor",
  "naming_rule": "By fieldname",

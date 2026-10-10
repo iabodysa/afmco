@@ -1261,8 +1261,8 @@ Object.assign(IqamaControl.prototype, {
 				// work permit and the iqama renewal — so each gets its own labeled
 				// row instead of one combined, indistinguishable line.
 				[
-					[row.custom_pr_reference, t("pr_row_work_card")],
-					[row.custom_pr_reference_2, t("pr_row_iqama")],
+					[row.pr_reference, t("pr_row_work_card")],
+					[row.pr_reference_2, t("pr_row_iqama")],
 				]
 					.filter(([name]) => Boolean(name))
 					.forEach(([name, label]) => {
@@ -1353,11 +1353,11 @@ Object.assign(IqamaControl.prototype, {
 			$('<span class="ic-flag ic-flag--stop"></span>').text(t("blocked")).appendTo($flags);
 			shown = true;
 		}
-		if (!IC_ALLOWED_EMPLOYEE_STATUS.includes(row.custom_employee_status)) {
+		if (!IC_ALLOWED_EMPLOYEE_STATUS.includes(row.employee_status)) {
 			// K-26: routed through ic_label so Suspended/Left/On Leave read in
 			// Arabic instead of the raw DocType value.
 			$('<span class="ic-flag ic-flag--warn"></span>')
-				.text(ic_label(row.custom_employee_status) || t("inactive"))
+				.text(ic_label(row.employee_status) || t("inactive"))
 				.appendTo($flags);
 			shown = true;
 		}
@@ -1377,7 +1377,7 @@ Object.assign(IqamaControl.prototype, {
 		}
 		// R16-L: the "label: date" chip this block used to add here fused two
 		// values into one text node, breaking the page's own label-and-value
-		// rule (H-04). custom_reschedule_date is in IC_LENSES.operations and
+		// rule (H-04). reschedule_date is in IC_LENSES.operations and
 		// .all (ic_config.js), so _render_fields() already prints it above,
 		// labeled and valued like every other field — one presentation, not
 		// two. ic_batch.js's own "Rescheduled" chip is a different surface

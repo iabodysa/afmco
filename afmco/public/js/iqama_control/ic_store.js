@@ -793,7 +793,7 @@ Object.assign(IqamaControl.prototype, {
 		return Boolean(
 			cint(row.iqama_renewal_issue) ||
 				row.status === IC_BLOCKED_STATUS ||
-				!IC_ALLOWED_EMPLOYEE_STATUS.includes(row.custom_employee_status)
+				!IC_ALLOWED_EMPLOYEE_STATUS.includes(row.employee_status)
 		);
 	},
 
@@ -866,7 +866,7 @@ Object.assign(IqamaControl.prototype, {
 		if (!row || !row.employee || !row.iqama_expiration_date) return Promise.resolve([]);
 		return frappe.db
 			.get_list(IC_DOCTYPE, {
-				fields: ["name", "status", "pr_status", "custom_pr_reference", "custom_pr_reference_2"],
+				fields: ["name", "status", "pr_status", "pr_reference", "pr_reference_2"],
 				filters: {
 					employee: row.employee,
 					iqama_expiration_date: row.iqama_expiration_date,

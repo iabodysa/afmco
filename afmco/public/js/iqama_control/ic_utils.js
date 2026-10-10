@@ -396,7 +396,7 @@ function ic_pr_still_creatable(row) {
 function ic_skip_reason(row, config, payment_type) {
 	if (cint(row.iqama_renewal_issue)) return t("row_blocked");
 	if (row.status !== IC_PAYABLE_STATUS) return t("status_must_be", ic_label(IC_PAYABLE_STATUS));
-	if (!IC_ALLOWED_EMPLOYEE_STATUS.includes(row.custom_employee_status)) return t("emp_not_active");
+	if (!IC_ALLOWED_EMPLOYEE_STATUS.includes(row.employee_status)) return t("emp_not_active");
 	if (row.pr_status === payment_type || row.pr_status === IC_BOTH) return t("pr_exists");
 	if (config.requires_sadad && !row.sadad_invoice) return t("sadad_missing");
 	if (flt(row[config.amount_field]) <= 0) return t("amount_zero");
@@ -482,7 +482,7 @@ const IC_ACTIONS = [
 		from: ["Awaiting Operations Approval"],
 		fields: () => [
 			{
-				fieldname: "custom_reschedule_date",
+				fieldname: "reschedule_date",
 				fieldtype: "Date",
 				label: t("f_reschedule_date"),
 				reqd: 1,
@@ -490,7 +490,7 @@ const IC_ACTIONS = [
 		],
 		patch: (row, values) => ({
 			status: "Rescheduled",
-			custom_reschedule_date: values.custom_reschedule_date,
+			reschedule_date: values.reschedule_date,
 		}),
 	},
 	// "Rescheduled" was a dead end: nothing in the original moves a record out
@@ -593,8 +593,8 @@ const IC_ACTIONS = [
 		],
 		patch: () => ({
 			pr_status: "",
-			custom_pr_reference: "",
-			custom_pr_reference_2: "",
+			pr_reference: "",
+			pr_reference_2: "",
 		}),
 		comment: (row, values) => values.cancel_reason,
 	},
@@ -756,7 +756,7 @@ const IC_ACTIONS = [
 // up front for a row this page already knows carries a disallowed employee
 // status, rather than let the write land and misreport as applied.
 function ic_action_allows(action, row) {
-	if (!IC_ALLOWED_EMPLOYEE_STATUS.includes(row.custom_employee_status)) return false;
+	if (!IC_ALLOWED_EMPLOYEE_STATUS.includes(row.employee_status)) return false;
 	if (action.from.includes(row.status)) return true;
 	return Boolean(action.also && action.also(row));
 }

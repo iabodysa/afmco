@@ -8,7 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "custom_role",
+  "role",
   "urgency_and_status_section",
   "date",
   "column_break_created_by",
@@ -69,7 +69,7 @@
  "fields": [
   {
    "fetch_from": "payment_approver.roles",
-   "fieldname": "custom_role",
+   "fieldname": "role",
    "fieldtype": "Text",
    "hidden": 1,
    "ignore_user_permissions": 1,
@@ -472,7 +472,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-10 18:00:00.000000",
+ "modified": "2026-10-10 18:05:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",

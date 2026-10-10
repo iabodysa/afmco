@@ -28,7 +28,7 @@ EMP_HEADERS_SIBC = [
     "Net Pay", "Remark",
 ]
 
-CUSTOM_PE_FIELD = "custom_wps_report_reference"     # Link field inside Payroll Entry
+CUSTOM_PE_FIELD = "wps_report_reference"     # Link field inside Payroll Entry
 CSV_LIMIT        = 1_000                            # Batch size for SQL fetching
 # -----------------------------------------------------------------------------
 
@@ -160,7 +160,7 @@ class WPSConsolidatedReport(Document):
                         "name", "employee", "employee_name", "iban_holder_name", "payroll_entry",
                         "labor_office_file_number", "bank_name", "bank_account_no",
                         "basic33", "housing33", "other_allowance33", "deduction33",
-                        "remark", "net_pay", "custom_hold", "start_date", "end_date",
+                        "remark", "net_pay", "hold", "start_date", "end_date",
                         "company"
                     ],
                     limit_start=start,
@@ -185,7 +185,7 @@ class WPSConsolidatedReport(Document):
         # First pass: separate hold slips from regular slips
         for s in slips:
             # Check if this is a hold slip
-            if s.get("custom_hold") == 1:
+            if s.get("hold") == 1:
                 hold_slips.append(s)
                 continue
                 

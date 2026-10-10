@@ -194,14 +194,14 @@ function renderDashboard(frm) {
     
     frm.custom_dashboard_area.append(statusHtml);
     
-    if (frm.doc.custom_employee_status) {
+    if (frm.doc.employee_status) {
         const employeeHtml = `
             <div class="dashboard-item" style="border-left-color: var(--gray-600);">
                 <div class="d-flex align-items-center mb-2">
                     <i class="fa fa-user mr-2" style="color: var(--gray-600)"></i>
                     <span class="title">${__('Employee Status')}</span>
                 </div>
-                <div class="count">${frappe.utils.escape_html(frm.doc.custom_employee_status)}</div>
+                <div class="count">${frappe.utils.escape_html(frm.doc.employee_status)}</div>
             </div>
         `;
         frm.custom_dashboard_area.append(employeeHtml);
@@ -246,7 +246,7 @@ function renderContractCard(frm) {
 }
 
 function buildContractCard(frm) {
-    const doj = frm.doc.custom_date_of_joining;
+    const doj = frm.doc.date_of_joining;
     if (!doj) return null;
 
     try {
@@ -269,13 +269,13 @@ function buildContractCard(frm) {
         let icon = 'check-circle';
         let note = __('Contract status is active and in good standing.');
 
-        const empState = (frm.doc.custom_employee_status || '').toLowerCase();
+        const empState = (frm.doc.employee_status || '').toLowerCase();
 
         if (empState && empState !== 'active') {
             stage = __('Employment Inactive');
             color = '#6c757d'; 
             icon = 'user-slash';
-            note = __('Employee status is {0}. Contract handling not required.', [frm.doc.custom_employee_status]);
+            note = __('Employee status is {0}. Contract handling not required.', [frm.doc.employee_status]);
         } else if (today < probationEnd) {
             stage = __('Probationary Period');
             color = '#ffc107'; 
@@ -331,7 +331,7 @@ function buildContractCard(frm) {
 
 function hideFieldsShownInDashboard(frm) {
     frm.set_df_property('status', 'hidden', 1);
-    frm.set_df_property('custom_employee_status', 'hidden', 1);
+    frm.set_df_property('employee_status', 'hidden', 1);
     frm.set_df_property('posting_date', 'hidden', 1);
 }
 
@@ -347,7 +347,7 @@ function addCustomButtons(frm) {
                 }
             ], (values) => {
                 frm.set_value('status', 'Rescheduled');
-                frm.set_value('custom_reschedule_date', values.reschedule_date);
+                frm.set_value('reschedule_date', values.reschedule_date);
                 frm.save();
                 frappe.show_alert({
                     message: __('Scheduled for {0}', [values.reschedule_date]),
