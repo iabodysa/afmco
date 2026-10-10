@@ -13085,7 +13085,7 @@ Loyalty Program,برنامج الولاء
 Sales Person,مندوب المبيعات
 Sell Asset,بيع أصل
 Price List,قائمة الاسعار
-Account No,رقم الحساب / رقم السداد
+Account No,رقم الحساب
 Total Sales Amount,إجمالي حجم المبيعات
 Customer,عميل
 Sales Partner,شريك مبيعات
@@ -13360,7 +13360,11 @@ Merged,مدمج,
 Not merged,غير مدمج,
 Journal Entry dossier check failed,فشل التحقق من الطباعة مع المرفقات لقيد اليومية,
 "{0} has {1} pages, expected {2}; the previous print with attachments is kept.","يحتوي {0} على {1} صفحة والمتوقع {2}، وأبقيت الطباعة السابقة مع المرفقات.",
-Multiple Beneficiaries (per attachment),عدة مستفيدين (حسب المرفق),
+Multiple Beneficiaries / Bills (per attachment),أكثر من مستفيد أو رقم سداد (حسب المرفق),
 Beneficiaries Sheet Missing,ملف المستفيدين غير مرفق,
 Attach the beneficiaries sheet (Excel or CSV) before sending a Payment Requisition with multiple beneficiaries.,أرفق ملف المستفيدين (Excel أو CSV) قبل إرسال طلب الصرف متعدد المستفيدين.,
 Payment Requisition {0} is already linked to Journal Entry {1}.,طلب الصرف {0} مربوط من قبل بالقيد {1}.,
+SADAD Biller Code,رمز المفوتر,
+SADAD Bill Number,رقم فاتورة سداد,
+{0} must contain digits only.,يجب أن يحتوي {0} على أرقام فقط.,
+Invalid SADAD Number,رقم سداد غير صحيح,
