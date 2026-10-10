@@ -7,34 +7,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 
-BANK_CODES = {
-	"78": "STCJ",
-	"10": "NCBK",
-	"80": "RJHI",
-	"20": "RIBL",
-	"05": "INMA",
-	"15": "ALBI",
-	"60": "BJAZ",
-	"30": "ARNB",
-	"55": "BSFR",
-	"45": "SABB",
-	"40": "SAMB",
-	"65": "SIBC",
-	"90": "GULF",
-	"76": "BMUS",
-	"98": "BNPA",
-	"81": "DEUT",
-	"95": "EBIL",
-	"71": "NBOB",
-	"75": "NBOK",
-	"82": "NBOP",
-	"01": "SAMA",
-	"50": "AAAL",
-	"83": "SBOI",
-	"84": "TCZT",
-	"87": "ICBK",
-	"86": "CHAS",
-}
+from afmco.people_and_payroll.iban import BANK_CODES
 
 
 def validate_saudi_iban(iban):
