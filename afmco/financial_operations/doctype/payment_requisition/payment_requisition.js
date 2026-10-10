@@ -598,6 +598,12 @@ frappe.ui.form.on('Payment Requisition', {
         validateAndDisplayBankAccountAlert(frm);
     },
 
+    payment_type(frm) {
+        if (frm.doc.payment_type === 'Payroll (Salary)' && !frm.doc.multiple_beneficiaries) {
+            frm.set_value('multiple_beneficiaries', 1);
+        }
+    },
+
     open_reference_document(frm) {
         let doctype = frm.doc.payment_type;
         if (doctype === 'Payroll (Salary)') {

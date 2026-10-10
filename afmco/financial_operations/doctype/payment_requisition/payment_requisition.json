@@ -21,6 +21,7 @@
   "column_break_urgency_reason",
   "reason_of_urgency",
   "beneficiary_information_section",
+  "multiple_beneficiaries",
   "account_no",
   "column_break_beneficiary_name",
   "beneficiary_name",
@@ -104,10 +105,19 @@
   },
   {
    "allow_in_quick_entry": 1,
+   "default": "0",
+   "fieldname": "multiple_beneficiaries",
+   "fieldtype": "Check",
+   "label": "Multiple Beneficiaries (per attachment)",
+   "read_only_depends_on": "eval:doc.payment_type == 'Payroll (Salary)'"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "depends_on": "eval:!doc.multiple_beneficiaries",
    "fieldname": "account_no",
    "fieldtype": "Data",
    "label": "Account No",
-   "reqd": 1
+   "mandatory_depends_on": "eval:!doc.multiple_beneficiaries"
   },
   {
    "fieldname": "remark_section",
@@ -365,6 +375,7 @@
   },
   {
    "allow_in_quick_entry": 1,
+   "depends_on": "eval:!doc.multiple_beneficiaries",
    "fieldname": "beneficiary_name",
    "fieldtype": "Data",
    "label": "Beneficiary name"
@@ -493,7 +504,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-10 18:30:00.000000",
+ "modified": "2026-10-10 20:00:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",
