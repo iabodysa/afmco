@@ -436,7 +436,7 @@
    "hidden": 1,
    "label": "Employee Status Before Relieving",
    "no_copy": 1,
-   "options": "\nActive\nInactive\nSuspended\nLeft",
+   "options": "\nActive\nInactive\nSuspended\nLeft\nOn Leave\nHold",
    "read_only": 1
   },
   {
@@ -487,7 +487,7 @@
    "link_fieldname": "tax_invoice_number"
   }
  ],
- "modified": "2026-10-10 12:00:00.000000",
+ "modified": "2026-10-10 14:00:00.000000",
  "module": "People and Payroll",
  "name": "End of Service Settlement",
  "naming_rule": "By \"Naming Series\" field",

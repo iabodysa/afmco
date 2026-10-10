@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from collections.abc import Callable, Iterable
 
+from afmco.people_and_payroll.employee import HOLD_STATUS
+
 
 BANK_CODES = {
     "10": "NCBK",
@@ -74,11 +76,10 @@ def update_employee_bank_names() -> dict[str, object]:
 SALARY_SLIP_DOCTYPE = "Salary Slip"
 WINDOW_MONTHS = -3
 EXCLUDED_DEPARTMENTS = ["Remotely - عن بعد - AF"]
-SUSPENDED_STATUS = "Suspended"
 REASON = "no salary slip in the last 3 months"
 DEACTIVATION_SAVEPOINT = "afmco_employee_deactivation"
 NOTIFIED_ROLE = "HR Manager"
-SUSPENSION_EMAIL_TEMPLATE = "employees_suspended_without_salary"
+HOLD_EMAIL_TEMPLATE = "employees_on_hold_without_salary"
 
 
 def candidate_filters(window_start: str) -> dict[str, object]:
@@ -99,13 +100,13 @@ def should_deactivate(salary_slips: list) -> bool:
 
 def employee_values() -> dict[str, str]:
     return {
-        "status": SUSPENDED_STATUS,
-        "feedback": f"Employee status updated to '{SUSPENDED_STATUS}' due to {REASON}.",
+        "status": HOLD_STATUS,
+        "feedback": f"Employee status updated to '{HOLD_STATUS}' due to {REASON}.",
     }
 
 
 def comment_for(today: str) -> str:
-    return f"Status updated to {SUSPENDED_STATUS} on {today} due to {REASON}."
+    return f"Status updated to {HOLD_STATUS} on {today} due to {REASON}."
 
 
 def process_deactivations(names: Iterable[str], apply: Callable[[str], bool]) -> dict[str, object]:
@@ -159,8 +160,8 @@ def notify_hr_managers(moved: list[str]) -> None:
         return
     frappe.sendmail(
         recipients=recipients,
-        subject=frappe._("Employees suspended for no salary slip in the last 3 months"),
-        template=SUSPENSION_EMAIL_TEMPLATE,
+        subject=frappe._("Employees on Hold for no salary slip in the last 3 months"),
+        template=HOLD_EMAIL_TEMPLATE,
         args={
             "employees": moved_rows(moved),
             "direction": "rtl" if is_rtl() else "ltr",
@@ -194,7 +195,7 @@ def deactivate_employees_without_salary_slip() -> dict[str, object]:
     outcome = process_deactivations(candidates, apply)
     if outcome["errors"]:
         frappe.log_error(
-            title="Suspended without salary slip task",
+            title="Hold without salary slip task",
             message="\n".join(str(error) for error in outcome["errors"]),
         )
     notify_hr_managers(outcome["moved"])

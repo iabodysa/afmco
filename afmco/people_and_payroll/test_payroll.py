@@ -11,13 +11,13 @@ from frappe.utils.jinja import get_email_from_template
 from afmco.people_and_payroll import payroll
 
 MODULE = "afmco.people_and_payroll.payroll"
-ENABLED_MANAGER = "_t-suspension-enabled@example.com"
-DISABLED_MANAGER = "_t-suspension-disabled@example.com"
+ENABLED_MANAGER = "_t-hold-enabled@example.com"
+DISABLED_MANAGER = "_t-hold-disabled@example.com"
 
 
-class TestSuspensionRules(TestCase):
-	def test_moved_employee_gets_suspended_status(self):
-		self.assertEqual(payroll.employee_values()["status"], "Suspended")
+class TestHoldRules(TestCase):
+	def test_moved_employee_gets_hold_status(self):
+		self.assertEqual(payroll.employee_values()["status"], "Hold")
 
 	def test_only_employees_actually_moved_are_counted(self):
 		outcomes = {"MOVED": True, "KEPT": False}
@@ -110,12 +110,12 @@ def run_job_for(names):
 	return outcome, sendmail
 
 
-class TestSuspensionJob(IntegrationTestCase):
+class TestHoldJob(IntegrationTestCase):
 	def setUp(self):
 		make_hr_manager(ENABLED_MANAGER, 1)
 		make_hr_manager(DISABLED_MANAGER, 0)
-		self.absent = make_employee("_T-Suspension-Absent")
-		self.paid = make_employee("_T-Suspension-Paid")
+		self.absent = make_employee("_T-Hold-Absent")
+		self.paid = make_employee("_T-Hold-Paid")
 		slip = frappe.new_doc("Salary Slip")
 		slip.update(
 			{
@@ -131,11 +131,11 @@ class TestSuspensionJob(IntegrationTestCase):
 	def tearDown(self):
 		frappe.db.rollback()
 
-	def test_job_suspends_employee_without_slip_and_mails_enabled_hr_managers_once(self):
+	def test_job_holds_employee_without_slip_and_mails_enabled_hr_managers_once(self):
 		outcome, sendmail = run_job_for([self.absent, self.paid])
 
 		self.assertEqual(outcome["moved"], [self.absent])
-		self.assertEqual(frappe.db.get_value("Employee", self.absent, "status"), "Suspended")
+		self.assertEqual(frappe.db.get_value("Employee", self.absent, "status"), "Hold")
 		self.assertEqual(frappe.db.get_value("Employee", self.paid, "status"), "Active")
 		sendmail.assert_called_once()
 		recipients = set(sendmail.call_args.kwargs["recipients"])

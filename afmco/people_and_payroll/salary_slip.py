@@ -3,10 +3,13 @@
 
 import frappe
 
+from afmco.people_and_payroll.employee import validate_not_on_hold
+
 
 class AfmcoSalarySlip:
 	def validate(self):
 		super().validate()
+		validate_not_on_hold(self.employee)
 		if frappe.flags.in_install or frappe.flags.in_migrate:
 			return
 		total = (self.basic33 or 0) + (self.housing33 or 0)
