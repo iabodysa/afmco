@@ -7,6 +7,7 @@ from afmco.financial_operations.doctype.payment_requisition.payment_requisition 
 	ACCOUNTS_BOT_ROLE,
 	ACCOUNTS_BOT_VIEWER_ROLES,
 	ACCOUNTS_ROLES,
+	RECEIPT_READ_ROLES,
 )
 
 
@@ -32,3 +33,15 @@ def retry_accounts_bot(name: str) -> None:
 def set_accounts_bot_status(name: str, status: str, note: str | None = None) -> None:
 	frappe.only_for(ACCOUNTS_BOT_ROLE)
 	locked_requisition(name).set_accounts_bot_status(status, note)
+
+
+@frappe.whitelist(methods=["POST"])
+def request_receipt_read(name: str) -> str:
+	frappe.only_for(RECEIPT_READ_ROLES)
+	return locked_requisition(name).queue_receipt_read()
+
+
+@frappe.whitelist(methods=["POST"])
+def fill_payment_fields(name: str, values: dict | str) -> dict:
+	frappe.only_for(ACCOUNTS_BOT_ROLE)
+	return locked_requisition(name).fill_payment_fields(frappe.parse_json(values))

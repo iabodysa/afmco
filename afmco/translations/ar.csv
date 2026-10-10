@@ -13141,6 +13141,22 @@ Retry Account Bot,إعادة الإرسال إلى بوت المحاسبة
 Accounts Bot has not picked up the request yet,البوت ما استلم الطلب للحين
 Only a stopped Accounts Bot request can be retried.,لا تعاد إلا الطلبات المتوقفة لدى بوت المحاسبة.
 {0} is not an Accounts Bot status.,{0} ليست حالة من حالات بوت المحاسبة.
+Read Receipt,قراءة الإيصال
+Receipt Read,تمت قراءة الإيصال
+Paid Amount,المبلغ المدفوع
+Beneficiary Employee,الموظف المستفيد
+Bank Reference,مرجع البنك
+Accounts Bot Read Receipt,قراءة الإيصال لدى بوت المحاسبة
+Only a Payment Requisition in Document Upload state can be read by the Accounts Bot.,لا يقرأ بوت المحاسبة إلا طلب صرف في مرحلة رفع المستندات.
+Attach the bank receipt before asking the Accounts Bot to read it.,أرفق إيصال البنك قبل ما تطلب من بوت المحاسبة قراءته.
+Payment fields must be sent as an object.,لازم ترسل حقول الدفع ككائن.
+The Accounts Bot cannot write {0}.,بوت المحاسبة ما يقدر يكتب {0}.
+Filled by Accounts Bot: {0},عبأها بوت المحاسبة: {0}
+{0} is not a bank payment date for this Payment Requisition.,{0} ليس تاريخ دفع بنكي لهذا الطلب.
+{0} is not a bank account of {1}.,{0} ليس حساب بنك لدى {1}.
+{0} is not a paid amount.,{0} ليس مبلغا مدفوعا.
+{0} is not an active employee.,{0} ليس موظفا على رأس العمل.
+{0} is not a bank reference.,{0} ليس مرجع بنك.
 The Accounts Bot already created the Journal Entry for this Payment Requisition.,أنشأ بوت المحاسبة قيد اليومية لطلب الصرف هذا مسبقًا.
 Accounts Bot Status,حالة بوت المحاسبة
 Accounts Bot Note,ملاحظة بوت المحاسبة

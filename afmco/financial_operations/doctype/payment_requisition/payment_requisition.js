@@ -633,20 +633,30 @@ function addSupportingPackButton(frm) {
 const ACCOUNTS_BOT_STOPPED = 'Stopped - Needs Review';
 const ACCOUNTS_BOT_CREATED = 'Journal Entry Created';
 const ACCOUNTS_BOT_REQUEST_SENT = 'Request Sent';
+const ACCOUNTS_BOT_RECEIPT_READ = 'Receipt Read';
 const ACCOUNTS_BOT_PICKUP_MINUTES = 15;
 
 function addAccountsBotButton(frm) {
     const sendLabel = __('Account Bot');
     const retryLabel = __('Retry Account Bot');
+    const receiptLabel = __('Read Receipt');
     frm.remove_custom_button(sendLabel);
     frm.remove_custom_button(retryLabel);
+    frm.remove_custom_button(receiptLabel);
     const onload = frm.doc.__onload || {};
 
-    if (onload.accounts_bot_allowed && !frm.doc.accounts_bot_status) {
+    if (
+        onload.accounts_bot_allowed &&
+        !frm.doc.accounts_bot_cf &&
+        (!frm.doc.accounts_bot_status || frm.doc.accounts_bot_read_receipt_cf)
+    ) {
         frm.add_custom_button(sendLabel, () => callAccountsBot(frm, 'set_accounts_bot'));
     }
-    if (onload.accounts_bot_viewer && frm.doc.accounts_bot_status === ACCOUNTS_BOT_STOPPED) {
+    if (onload.accounts_bot_viewer && frm.doc.accounts_bot_cf && frm.doc.accounts_bot_status === ACCOUNTS_BOT_STOPPED) {
         frm.add_custom_button(retryLabel, () => callAccountsBot(frm, 'retry_accounts_bot'));
+    }
+    if (onload.receipt_read_allowed && [ACCOUNTS_BOT_RECEIPT_READ, ACCOUNTS_BOT_STOPPED, undefined, null, ''].includes(frm.doc.accounts_bot_status)) {
+        frm.add_custom_button(receiptLabel, () => callAccountsBot(frm, 'request_receipt_read'));
     }
     renderAccountsBotIntro(frm);
     listenAccountsBotStatus(frm);
@@ -662,13 +672,14 @@ function callAccountsBot(frm, method) {
 
 function renderAccountsBotIntro(frm) {
     const status = frm.doc.accounts_bot_status;
-    if (!status || !(frm.doc.__onload || {}).accounts_bot_viewer) {
+    const onload = frm.doc.__onload || {};
+    if (!status || !(onload.accounts_bot_viewer || onload.receipt_read_viewer)) {
         frm.set_intro();
         return;
     }
     let text = `${__('Accounts Bot')}: ${__(status)}`;
     let color = 'blue';
-    if (status === ACCOUNTS_BOT_CREATED) {
+    if (status === ACCOUNTS_BOT_CREATED || status === ACCOUNTS_BOT_RECEIPT_READ) {
         color = 'green';
     } else if (status === ACCOUNTS_BOT_STOPPED) {
         color = 'orange';

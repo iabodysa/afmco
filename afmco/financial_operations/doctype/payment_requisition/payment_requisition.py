@@ -5,7 +5,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 from erpnext import get_default_company
-from frappe.utils import  money_in_words, now
+from frappe.utils import escape_html, flt, getdate, money_in_words, now, today
 from frappe.utils.html_utils import sanitize_html
 
 from afmco.approver_check import engine
@@ -16,6 +16,10 @@ ACCOUNTS_BOT_ROLE = "Accountant Bot"
 REQUEST_SENT = "Request Sent"
 JOURNAL_ENTRY_CREATED = "Journal Entry Created"
 STOPPED = "Stopped - Needs Review"
+RECEIPT_READ = "Receipt Read"
+DOCUMENT_UPLOAD = "Document Upload"
+RECEIPT_READ_ROLES = ("Auditor", *ACCOUNTS_ROLES)
+RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "beneficiary_employee_cf", "bank_reference_cf")
 
 
 class PaymentRequisition(Document):
@@ -27,6 +31,11 @@ class PaymentRequisition(Document):
 			not self.accounts_bot_cf and bool(roles.intersection(ACCOUNTS_ROLES)) and not refusal,
 		)
 		self.set_onload("accounts_bot_viewer", bool(roles.intersection(ACCOUNTS_BOT_VIEWER_ROLES)))
+		receipt_role = bool(roles.intersection(RECEIPT_READ_ROLES)) and not self.receipt_read_refusal()
+		self.set_onload("receipt_read_viewer", receipt_role)
+		self.set_onload(
+			"receipt_read_allowed", receipt_role and not self.receipt_read_pending() and self.has_attachment()
+		)
 		self.set_onload("approver_check_allowed", engine.approver_allowed(self))
 
 	def approver_checklist(self, deferred: bool = False) -> dict:
@@ -64,6 +73,88 @@ class PaymentRequisition(Document):
 			update_modified=True,
 			notify=True,
 		)
+
+	def receipt_read_refusal(self) -> str | None:
+		if self.workflow_state != DOCUMENT_UPLOAD:
+			return _("Only a Payment Requisition in Document Upload state can be read by the Accounts Bot.")
+		return None
+
+	def receipt_read_pending(self) -> bool:
+		return bool(self.accounts_bot_read_receipt_cf) and self.accounts_bot_status not in (RECEIPT_READ, STOPPED)
+
+	def has_attachment(self) -> bool:
+		return bool(frappe.db.exists("File", {"attached_to_doctype": self.doctype, "attached_to_name": self.name}))
+
+	def queue_receipt_read(self) -> str:
+		if refusal := self.receipt_read_refusal():
+			frappe.throw(refusal)
+		if not self.has_attachment():
+			frappe.throw(_("Attach the bank receipt before asking the Accounts Bot to read it."))
+		if self.receipt_read_pending():
+			return "already queued"
+		self.db_set(
+			{
+				"accounts_bot_read_receipt_cf": 1,
+				"accounts_bot_status": REQUEST_SENT,
+				"accounts_bot_note": None,
+				"accounts_bot_updated": now(),
+			},
+			update_modified=True,
+			notify=True,
+		)
+		self.save_version()
+		return "queued"
+
+	def fill_payment_fields(self, values: dict) -> dict:
+		if refusal := self.receipt_read_refusal():
+			frappe.throw(refusal)
+		if not isinstance(values, dict):
+			frappe.throw(_("Payment fields must be sent as an object."))
+		if unknown := sorted(set(values) - set(RECEIPT_FIELDS)):
+			frappe.throw(_("The Accounts Bot cannot write {0}.").format(", ".join(unknown)))
+		changes, skipped = {}, []
+		for fieldname, value in values.items():
+			if self.get(fieldname):
+				skipped.append({"field": fieldname, "reason": "not empty"})
+			else:
+				changes[fieldname] = self.receipt_value(fieldname, value)
+		if changes:
+			self.db_set(dict(changes), update_modified=True, notify=True)
+			self.save_version()
+			self.add_comment(
+				"Comment",
+				_("Filled by Accounts Bot: {0}").format(
+					", ".join(f"{_(self.meta.get_label(f))}: {escape_html(str(v))}" for f, v in changes.items())
+				),
+			)
+		return {"written": list(changes), "skipped": skipped}
+
+	def receipt_value(self, fieldname: str, value):
+		if fieldname == "bank_payment_date":
+			paid_on = getdate(value) if isinstance(value, str) and value else None
+			if not paid_on or paid_on > getdate(today()) or (self.date and paid_on < getdate(self.date)):
+				frappe.throw(_("{0} is not a bank payment date for this Payment Requisition.").format(value))
+			return paid_on
+		if fieldname == "bank_account":
+			company = frappe.db.get_single_value("Global Defaults", "default_company")
+			account = isinstance(value, str) and frappe.db.get_value(
+				"Account", value, ["account_type", "company", "is_group", "disabled"], as_dict=True
+			)
+			if not account or account.account_type != "Bank" or account.is_group or account.disabled or account.company != company:
+				frappe.throw(_("{0} is not a bank account of {1}.").format(value, company))
+			return value
+		if fieldname == "paid_amount_cf":
+			if isinstance(value, bool) or not isinstance(value, (int, float, str)) or flt(value) <= 0:
+				frappe.throw(_("{0} is not a paid amount.").format(value))
+			return flt(value, self.precision(fieldname))
+		if fieldname == "beneficiary_employee_cf":
+			if not isinstance(value, str) or frappe.db.get_value("Employee", value, "status") != "Active":
+				frappe.throw(_("{0} is not an active employee.").format(value))
+			return value
+		reference = value.strip() if isinstance(value, str) else ""
+		if not reference or len(reference) > 140:
+			frappe.throw(_("{0} is not a bank reference.").format(value))
+		return reference
 
 	def set_accounts_bot_status(self, status: str, note: str | None = None) -> None:
 		if not status or status not in self.meta.get_options("accounts_bot_status").split("\n"):
