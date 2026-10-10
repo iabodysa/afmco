@@ -325,8 +325,6 @@ Iqama Expiry,انتهاء الإقامة
 Iqama Expiry Date,تاريخ انتهاء الإقامة
 Iqama Number,رقم الإقامة
 Iqama Renewal Amount,مبلغ تجديد الإقامة
-Iqama Renewal Management,إدارة تجديد الإقامة
-Iqama Renewal Payment Management Item,بند إدارة مدفوعات تجديد الإقامة
 Iqama Renewal Payment Tracking Item,بند متابعة مدفوعات تجديد الإقامة
 Iqama Renewal Tracking Item,بند متابعة تجديد الإقامة
 Iqama Status,حالة الإقامة
@@ -1032,7 +1030,6 @@ Sri Lanka,سريلانكي,Demonym
 Bangladesh,بنغالي,Demonym variant
 Sri Lanka,سيريلانكي,Demonym variant
 Saudi Bank,بنك سعودي
-Iqama Renewal Fee Tracking,متابعة رسوم تجديد الإقامة
 Settlement Deduction Item,بند خصم التسوية
 Iqama,الإقامة
 Labor Operating Costs Quotation,عرض سعر تكاليف التشغيل العمالية
@@ -1347,12 +1344,6 @@ Employee Name,اسم الموظف,Leave Application
 Employee ID,الرقم الوظيفي,Leave Application
 E-Invoicing Integration Requirement Violation,مخالفة متطلبات الربط والتكامل للفوترة الإلكترونية,Sales Invoice
 No,لا,Iqama Control
-No data found to fetch.,لا توجد بيانات لجلبها.,Iqama Renewal Management
-Data fetched successfully.,تم جلب البيانات بنجاح.,Iqama Renewal Management
-Row {0}: please select the renewal period for employee {1}.,الصف رقم {0}: يرجى تحديد مدة التجديد للموظف {1}.,Iqama Renewal Management
-Input Errors,أخطاء في الإدخال,Iqama Renewal Management
-Updated the data of {0} employees.,تم تحديث بيانات {0} موظف.,Iqama Renewal Management
-{0} rows were skipped because no renewal option was set.,تم تخطي {0} من الصفوف لعدم تحديد خيار التجديد.,Iqama Renewal Management
 No previous results found.,لم يتم العثور على نتائج سابقة.,Payroll Entry
 Previous Verification Results,نتائج التحقق السابقة,Payroll Entry
 The following warnings were found:,تم العثور على الملاحظات التالية:,Payroll Entry
@@ -1371,23 +1362,6 @@ Checking Employee Holidays,التحقق من عطلات الموظف,Payroll Ent
 Verifying Employee Information,التحقق من معلومات الموظف,Payroll Entry
 Checking Existing Salary Slips,التحقق من قسائم الرواتب الموجودة,Payroll Entry
 Checking Salary Structure and Conflicts,التحقق من هيكل الراتب والتعارضات,Payroll Entry
-Show List of Qiwa Payment Number,عرض قائمة أرقام سداد قوى,iQama Renewal Payment Management
-Create Payment Request,إنشاء طلب صرف,iQama Renewal Payment Management
-Download Bank File,تنزيل ملف البنك,iQama Renewal Payment Management
-Show Residency Renewal Requests with Renewal Issues,عرض طلبات تجديد الإقامة التي تواجه مشكلات في التجديد,iQama Renewal Payment Management
-Show Muqeem Balance,عرض رصيد مقيم,iQama Renewal Payment Management
-Record Journal Entries,تسجيل قيود اليومية,iQama Renewal Payment Management
-Export CSV,تصدير ملف البنك,iQama Renewal Payment Management
-Record SADAD Number,تسجيل رقم سداد,iQama Renewal Payment Management
-Payment Request Created,تم إنشاء طلب الصرف,iQama Renewal Payment Management
-Error creating PR for item:,خطأ في إنشاء طلب الصرف للبند:,iQama Renewal Payment Management
-No data matching the criteria to process,لا توجد بيانات تطابق المعايير للمعالجة,iQama Renewal Payment Management
-Errors occurred,حدثت أخطاء,iQama Renewal Payment Management
-Save Changes,حفظ التغييرات,iQama Renewal Payment Management
-Item,البند,iQama Renewal Payment Management
-Please enter the SADAD number before updating.,يرجى إدخال رقم سداد قبل التحديث.,iQama Renewal Payment Management
-Please select at least one row.,يرجى تحديد صف واحد على الأقل.,iQama Renewal Payment Management
-No records found.,لم يعثر على سجلات.,iQama Renewal Payment Management
 Payment Request Created,تم إنشاء طلب الصرف,Iqama Renewal Tracking
 Error creating Payment Request for:,خطأ في إنشاء طلب الصرف لـ:,Iqama Renewal Tracking
 Employee is not Active.,الموظف ليس على رأس العمل.,Iqama Control
@@ -2332,7 +2306,6 @@ contract end date,تاريخ نهاية العقد
 contract start date,تاريخ بدء العقد
 iQama Expiration,تاريخ انتهاء الإقامة
 iQama No.,رقم الإقامة
-iQama Renewal Payment Management,إدارة مدفوعات تجديد الإقامة
 indebtedness,المديونية
 loan Schedule,جدول القرض
 naming_series,سلسلة الترقيم

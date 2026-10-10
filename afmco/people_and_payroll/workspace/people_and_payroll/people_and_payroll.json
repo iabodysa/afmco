@@ -88,7 +88,7 @@
   },
   {
    "label": "Iqama",
-   "link_count": 3,
+   "link_count": 2,
    "link_type": "DocType",
    "type": "Card Break"
   },
@@ -101,12 +101,6 @@
   {
    "label": "Iqama Renewal Tracking",
    "link_to": "Iqama Renewal Tracking",
-   "link_type": "DocType",
-   "type": "Link"
-  },
-  {
-   "label": "Iqama Renewal Management",
-   "link_to": "Iqama Renewal Management",
    "link_type": "DocType",
    "type": "Link"
   },
@@ -149,7 +143,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-10 20:00:00.000000",
+ "modified": "2026-10-10 20:00:01.000000",
  "module": "People and Payroll",
  "name": "People and Payroll",
  "number_cards": [
