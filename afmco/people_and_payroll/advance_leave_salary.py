@@ -21,6 +21,7 @@ from frappe.utils import (
 ADVANCE_LEAVE_SALARY = "Advance Leave Salary"
 END_OF_SERVICE = "End of Service Settlement"
 PERIOD_DOCTYPE = "Contract Vacation Allowance"
+PAYMENT_REQUISITION = "Payment Requisition"
 APPROVED = "Approved"
 SETTLED_STATES = (APPROVED, "Paid")
 PAID = "Paid"
@@ -194,18 +195,40 @@ def build_periods(doc):
     return rows
 
 
+def settled_names(doctype, doc, include_cancelled=True):
+    records = frappe.get_all(
+        doctype,
+        filters={"employee": doc.employee, "name": ["!=", doc.name]},
+        fields=["name", "workflow_state", "docstatus"],
+    )
+    if not records:
+        return []
+    paid = set(
+        frappe.get_all(
+            PAYMENT_REQUISITION,
+            filters={
+                "tax_invoice_number": ["in", [record.name for record in records]],
+                "docstatus": 1,
+                "workflow_state": PAID,
+            },
+            pluck="tax_invoice_number",
+        )
+    )
+    return [
+        record.name
+        for record in records
+        if record.name in paid
+        or (
+            record.workflow_state in SETTLED_STATES
+            and (include_cancelled or record.docstatus < 2)
+        )
+    ]
+
+
 def settled_periods(doc):
     periods = []
     for doctype in (ADVANCE_LEAVE_SALARY, END_OF_SERVICE):
-        names = frappe.get_all(
-            doctype,
-            filters={
-                "employee": doc.employee,
-                "name": ["!=", doc.name],
-                "workflow_state": ["in", SETTLED_STATES],
-            },
-            pluck="name",
-        )
+        names = settled_names(doctype, doc)
         if names:
             periods += frappe.get_all(
                 PERIOD_DOCTYPE,
@@ -285,7 +308,7 @@ def refuse_unsupported_fill(doc, rows):
 def fill_periods(doc):
     RECOMPUTE[doc.doctype](doc)
     rows = build_periods(doc)
-    periods = settled_periods(doc)
+    periods = settled_periods(doc) + [row for row in doc.cva or [] if row.status == PAID]
     clearance = None
     if doc.doctype == ADVANCE_LEAVE_SALARY:
         clearance = frappe.db.get_value(
@@ -299,6 +322,24 @@ def fill_periods(doc):
     refuse_unsupported_fill(doc, rows)
     doc.set("cva", rows)
     RECOMPUTE[doc.doctype](doc)
+
+
+def refuse_settled_employee(doc):
+    settlement = frappe.db.get_value(
+        END_OF_SERVICE,
+        {
+            "employee": doc.employee,
+            "docstatus": ["!=", 2],
+            "workflow_state": ["not in", ["Cancelled"]],
+        },
+        "name",
+    )
+    if settlement:
+        frappe.throw(
+            _(
+                "Employee {0} has End of Service Settlement {1}, so no Advance Leave Salary can be created for this employee."
+            ).format(doc.employee, settlement)
+        )
 
 
 def refuse_unpaid_settled_period(doc):
