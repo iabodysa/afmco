@@ -91,7 +91,7 @@ class TestEmployeeFinancialSummary(IntegrationTestCase):
 	def test_eos_estimate_up_to_five_years_counts_calendar_span_like_settlement(self):
 		frappe.db.set_value("Employee", self.employee, "date_of_joining", "2023-01-01")
 		result = estimate(self.employee)
-		self.assertEqual(result["service_days"], 1096)
+		self.assertEqual(result["service_days"], 1097)
 		self.assertEqual(result["eos_days"], 45.04)
 		self.assertEqual(result["amount"], 4504.17)
 

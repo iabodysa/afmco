@@ -1,4 +1,5 @@
 import frappe
+from dateutil.relativedelta import relativedelta
 from frappe import _
 from frappe.model.document import Document
 
@@ -28,7 +29,7 @@ class EmployeeSalaryAdjustment(Document):
 
 		if self.date_of_joining:
 			today = frappe.utils.nowdate()
-			years_of_service = frappe.utils.date_diff(today, self.date_of_joining) // 365
+			years_of_service = relativedelta(frappe.utils.getdate(today), frappe.utils.getdate(self.date_of_joining)).years
 			self.years_of_service = years_of_service
 
 		fixed_increase = increase_matrix[self.grade]['fixed_increase']

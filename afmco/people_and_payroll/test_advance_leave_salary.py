@@ -142,20 +142,62 @@ ALL_SLIPS = monthly_slips("2022-10-01", "2025-10-01")
 
 
 class TestFillPeriods(LedgerCase):
-    def test_settlement_rows_run_yearly_from_first_to_last_day_with_364_day_amounts(
-        self,
-    ):
+    def test_settlement_rows_run_from_each_anniversary_to_the_day_before_the_next(self):
         doc = self.filled(advance_leave_salary.END_OF_SERVICE, SETTLEMENT, Ledger(slips=ALL_SLIPS))
         self.assertEqual(
             rows_of(doc),
             [
-                ("2022-10-16", "2023-10-16", "unpaid", "21", 1190),
-                ("2023-10-17", "2024-10-15", "unpaid", "21", 1190),
-                ("2024-10-16", "2025-10-16", "unpaid", "21", 1190),
+                ("2022-10-16", "2023-10-15", "unpaid", "21", 1190),
+                ("2023-10-16", "2024-10-15", "unpaid", "21", 1190),
+                ("2024-10-16", "2025-10-15", "unpaid", "21", 1190),
             ],
         )
         self.assertEqual(
             (doc.cva_total, doc.amount, doc.total_eos), (3570, 6623, 2552.51)
+        )
+
+    def test_feb_29_joiner_rows_start_on_each_anniversary_and_first_year_ends_feb_27(self):
+        doc = self.filled(
+            advance_leave_salary.ADVANCE_LEAVE_SALARY,
+            {**ADVANCE, "date_1": "2024-02-29", "date_2": "2027-02-27"},
+            Ledger(slips=monthly_slips("2024-01-01", "2027-02-01")),
+        )
+        self.assertEqual(
+            rows_of(doc),
+            [
+                ("2024-02-29", "2025-02-27", "unpaid", "21", 1190),
+                ("2025-02-28", "2026-02-27", "unpaid", "21", 1190),
+                ("2026-02-28", "2027-02-27", "unpaid", "21", 1190),
+            ],
+        )
+
+    def test_advance_last_row_ending_on_anniversary_is_capped_at_one_contract_year(self):
+        cases = (
+            ("2022-10-16", "2025-10-16", ("2024-10-16", "2025-10-15")),
+            ("2024-02-29", "2027-02-28", ("2026-02-28", "2027-02-27")),
+            ("2023-03-01", "2024-03-01", ("2023-03-01", "2024-02-29")),
+        )
+        for date_1, date_2, last_row in cases:
+            with self.subTest(date_1=date_1):
+                doc = self.filled(
+                    advance_leave_salary.ADVANCE_LEAVE_SALARY,
+                    {**ADVANCE, "date_1": date_1, "date_2": date_2},
+                    Ledger(slips=monthly_slips("2022-10-01", date_2)),
+                )
+                self.assertEqual(rows_of(doc)[-1], (*last_row, "unpaid", "21", 1190))
+
+    def test_partial_last_row_is_prorated_over_its_contract_year_days(self):
+        doc = self.filled(
+            advance_leave_salary.END_OF_SERVICE,
+            {**SETTLEMENT, "date_1": "2023-03-01", "date_2": "2024-08-31"},
+            Ledger(slips=monthly_slips("2023-03-01", "2024-08-01")),
+        )
+        self.assertEqual(
+            rows_of(doc),
+            [
+                ("2023-03-01", "2024-02-29", "unpaid", "21", 1190),
+                ("2024-03-01", "2024-08-31", "unpaid", "21", 600),
+            ],
         )
 
     def test_rows_from_sixth_year_use_30_vacation_days(self):
@@ -262,6 +304,22 @@ class TestRecomputeAndSubmit(LedgerCase):
         advance_leave_salary.recompute_settlement(doc)
         self.assertEqual((doc.cva_total, doc.amount), (2380, 5433))
 
+    def test_settlement_service_years_is_calendar_span_across_leap_days(self):
+        doc = make(
+            advance_leave_salary.END_OF_SERVICE,
+            {**SETTLEMENT, "date_1": "2010-01-01", "date_2": "2025-12-31"},
+        )
+        advance_leave_salary.recompute_settlement(doc)
+        self.assertEqual(doc.dos_years, "16.00")
+
+    def test_duration_of_service_counts_the_last_working_day(self):
+        year = {"date_1": "2025-01-01", "date_2": "2025-12-31"}
+        settlement = make(advance_leave_salary.END_OF_SERVICE, {**SETTLEMENT, **year})
+        advance = make(advance_leave_salary.ADVANCE_LEAVE_SALARY, {**ADVANCE, **year})
+        advance_leave_salary.recompute_settlement(settlement)
+        advance_leave_salary.recompute_advance(advance)
+        self.assertEqual((settlement.duration_of_service, advance.duration_of_service), ("365.00", "365.00"))
+
     def test_advance_validate_recomputes_totals_from_rows(self):
         rows = [
             {"status": "unpaid", "amount3": 1190},
@@ -317,6 +375,45 @@ class TestRecomputeAndSubmit(LedgerCase):
             ledger,
             AdvanceLeaveSalary.before_submit,
             make(advance_leave_salary.ADVANCE_LEAVE_SALARY, {}, rows),
+        )
+
+
+def approving(creation, rows, state="Approved"):
+    doc = make(
+        advance_leave_salary.ADVANCE_LEAVE_SALARY,
+        {**ADVANCE, "date_1": "2025-04-01", "date_2": "2025-12-31", "creation": creation},
+        rows,
+    )
+    doc.workflow_state = state
+    doc.has_value_changed = lambda field: field == "workflow_state"
+    return doc
+
+
+OPEN_YEAR_ROW = {
+    "contract_start_date": "2025-04-01",
+    "contract_end_date": "2025-12-31",
+    "status": "unpaid",
+}
+
+
+class TestApprovalLead(LedgerCase):
+    def test_approval_passes_when_contract_year_ends_90_days_after_creation(self):
+        self.run_with(Ledger(), AdvanceLeaveSalary.validate, approving("2026-01-01 09:00:00", [OPEN_YEAR_ROW]))
+
+    def test_approval_refused_when_contract_year_ends_91_days_after_creation(self):
+        with self.assertRaisesRegex(frappe.ValidationError, "Row 1 .* 2025-04-01 to 2026-03-31"):
+            self.run_with(Ledger(), AdvanceLeaveSalary.validate, approving("2025-12-31 09:00:00", [OPEN_YEAR_ROW]))
+
+    def test_paid_row_and_non_approval_transition_skip_the_lead_rule(self):
+        self.run_with(
+            Ledger(),
+            AdvanceLeaveSalary.validate,
+            approving("2025-06-01 09:00:00", [{**OPEN_YEAR_ROW, "status": "Paid"}]),
+        )
+        self.run_with(
+            Ledger(),
+            AdvanceLeaveSalary.validate,
+            approving("2025-06-01 09:00:00", [OPEN_YEAR_ROW], state="Pending"),
         )
 
 

@@ -21,11 +21,12 @@ from frappe.utils import (
 ADVANCE_LEAVE_SALARY = "Advance Leave Salary"
 END_OF_SERVICE = "End of Service Settlement"
 PERIOD_DOCTYPE = "Contract Vacation Allowance"
-SETTLED_STATES = ("Approved", "Paid")
+APPROVED = "Approved"
+SETTLED_STATES = (APPROVED, "Paid")
 PAID = "Paid"
+APPROVAL_LEAD_DAYS = 90
 UNPAID = "unpaid"
 NEW_JOINER_FROM = date(2023, 11, 15)
-YEAR_SPANS = {END_OF_SERVICE: (365, 364), ADVANCE_LEAVE_SALARY: (364, 365)}
 
 NO_EOS_REASONS = {
     "3-Termination by the employer under Article 80",
@@ -120,8 +121,8 @@ def recompute_settlement(doc):
     )
     allowance = js_round(unpaid_allowance(doc))
     doc.total_eos = total_eos
-    doc.dos_years = fixed(days / 365)
-    doc.duration_of_service = fixed(days)
+    doc.dos_years = fixed(service_years(*span))
+    doc.duration_of_service = fixed(days + 1)
     if eos_days is not None:
         doc.days_of_eos = money(eos_days)
     doc.cva_total = money(allowance)
@@ -147,7 +148,7 @@ def recompute_advance(doc):
     deducted = total_deductions(doc)
     ticket = 0 if doc.get("not") == 1 or doc.check1 == 0 else flt(doc.ticket_allowance)
     doc.dos_years = fixed(js_round(days / 365))
-    doc.duration_of_service = fixed(days)
+    doc.duration_of_service = fixed(days + 1)
     doc.cva_total = money(unpaid)
     doc.deductions = money(deducted)
     doc.amount = money(
@@ -165,20 +166,17 @@ RECOMPUTE = {
 
 
 def build_periods(doc):
-    first, step = YEAR_SPANS[doc.doctype]
+    first = getdate(doc.date_1)
     last_day = getdate(doc.date_2)
-    start = getdate(doc.date_1)
-    end = start + timedelta(days=first)
     years = flt(doc.dos_years)
     rows = []
     j = 0
     while j < years:
-        period_end = min(end, last_day)
-        if j == years - 1:
-            period_end = last_day
-        days = (period_end - start).days
-        if days == 365:
-            days = 364
+        start = first + relativedelta(years=j)
+        year_end = first + relativedelta(years=j + 1) - timedelta(days=1)
+        period_end = min(year_end, last_day)
+        days = (period_end - start).days + 1
+        year_days = (year_end - start).days + 1
         vad = doc.vacation_days_per_year or 21
         if j + 1 >= 6 and flt(vad) < 30:
             vad = 30
@@ -189,12 +187,9 @@ def build_periods(doc):
                 "status": UNPAID,
                 "note": _("Add your notes here"),
                 "vad": cstr(vad),
-                "amount3": js_round(flt(doc.salary_per_day) * (days / 364 * flt(vad))),
+                "amount3": js_round(flt(doc.salary_per_day) * (days / year_days * flt(vad))),
             }
         )
-        end = end + timedelta(days=1)
-        start = end
-        end = end + timedelta(days=step)
         j += 1
     return rows
 
@@ -314,4 +309,21 @@ def refuse_unpaid_settled_period(doc):
                 _(
                     "Row {0} of the leave allowance table overlaps a paid leave period and must be Paid before submitting."
                 ).format(row.idx)
+            )
+
+
+def refuse_unfinished_contract_year(doc):
+    joined = getdate(doc.date_1)
+    requested = getdate(doc.creation)
+    for row in doc.cva or []:
+        if row.status == PAID or not row.contract_end_date:
+            continue
+        year = relativedelta(getdate(row.contract_end_date), joined).years
+        year_start = joined + relativedelta(years=year)
+        year_end = joined + relativedelta(years=year + 1) - timedelta(days=1)
+        if (year_end - requested).days + 1 > APPROVAL_LEAD_DAYS:
+            frappe.throw(
+                _(
+                    "Row {0} of the leave allowance table falls in the contract year {1} to {2}, which ends more than 90 days after this request was created."
+                ).format(row.idx, year_start.isoformat(), year_end.isoformat())
             )

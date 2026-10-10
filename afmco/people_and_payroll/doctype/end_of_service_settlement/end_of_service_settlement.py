@@ -6,7 +6,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 
-from afmco.people_and_payroll.advance_leave_salary import recompute_settlement, refuse_unpaid_settled_period
+from afmco.people_and_payroll.advance_leave_salary import recompute_settlement, refuse_unpaid_settled_period, service_span
 
 
 class EndofServiceSettlement(Document):
@@ -78,19 +78,20 @@ def relieving_date_for(record):
     last_working_day = _value(record, "date_2")
     if not last_working_day:
         return None
-    return frappe.utils.add_days(frappe.utils.getdate(last_working_day), 1)
+    return frappe.utils.getdate(last_working_day)
 
 
 def is_due(relieving_date, today) -> bool:
     if not relieving_date:
         return False
-    return today >= relieving_date
+    return today > relieving_date
 
 
 def service_duration(record) -> str:
-    total_days = frappe.utils.cint(frappe.utils.flt(_value(record, "duration_of_service")))
-    years, remaining_days = divmod(total_days, 365)
-    months, days = divmod(remaining_days, 30)
+    start, end = _value(record, "date_1"), _value(record, "date_2")
+    if not (start and end):
+        return ""
+    years, months, days = service_span(start, end)
     return f"{years} Year(s), {months} Month(s), {days} Day(s)"
 
 

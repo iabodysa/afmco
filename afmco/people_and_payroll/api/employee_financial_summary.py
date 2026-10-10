@@ -292,7 +292,7 @@ def eos_section(source, offset):
 	return {
 		"estimate": {
 			"years": round(service_years(*span), 2),
-			"service_days": date_diff(as_of, source.date_of_joining),
+			"service_days": date_diff(as_of, source.date_of_joining) + 1,
 			"eos_days": round(eos_days, 2),
 			"wage": wage,
 			"per_day": per_day,

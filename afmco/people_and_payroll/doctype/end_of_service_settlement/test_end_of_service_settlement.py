@@ -22,7 +22,9 @@ from afmco.people_and_payroll.doctype.end_of_service_settlement.end_of_service_s
 	EndofServiceSettlement,
 	employee_values,
 	feedback_for,
+	is_due,
 	pending_filters,
+	relieving_date_for,
 )
 
 IGNORE_TEST_RECORD_DEPENDENCIES = ["Department", "Employee"]
@@ -41,14 +43,19 @@ SETTLEMENT = {
 	"duration_of_service": "1249.00",
 	"end_of_service_reason": "1-End of term or mutual agreement",
 	"alternative_reward": None,
+	"date_1": "2022-08-31",
 	"date_2": "2026-01-31",
 	"creation": "2026-01-01 10:00:00",
 }
 
 
 class TestEndOfServiceFeedback(TestCase):
-	def test_feedback_prints_service_duration_in_years_months_days(self):
-		self.assertIn("- Service Duration: 3 Year(s), 5 Month(s), 4 Day(s)", feedback_for(SETTLEMENT))
+	def test_feedback_prints_service_duration_as_calendar_span_of_settlement_dates(self):
+		self.assertIn("- Service Duration: 3 Year(s), 5 Month(s), 1 Day(s)", feedback_for(SETTLEMENT))
+
+	def test_feedback_prints_full_calendar_year_as_one_year(self):
+		year = {**SETTLEMENT, "date_1": "2023-01-01", "date_2": "2023-12-31", "duration_of_service": "364.00"}
+		self.assertIn("- Service Duration: 1 Year(s), 0 Month(s), 0 Day(s)", feedback_for(year))
 
 	def test_feedback_prints_unset_amounts_empty(self):
 		text = feedback_for(SETTLEMENT)
@@ -62,8 +69,13 @@ class TestEndOfServiceFeedback(TestCase):
 			"Exit-2026-00001 | 1-End of term or mutual agreement",
 		)
 
-	def test_relieving_date_is_day_after_last_working_day(self):
-		self.assertEqual(employee_values(SETTLEMENT)["relieving_date"], date(2026, 2, 1))
+	def test_relieving_date_is_last_working_day(self):
+		self.assertEqual(employee_values(SETTLEMENT)["relieving_date"], date(2026, 1, 31))
+
+	def test_scheduled_relieving_is_due_only_after_last_working_day(self):
+		last_working_day = relieving_date_for(SETTLEMENT)
+		self.assertFalse(is_due(last_working_day, date(2026, 1, 31)))
+		self.assertTrue(is_due(last_working_day, date(2026, 2, 1)))
 
 	def test_resignation_letter_date_is_settlement_creation_date(self):
 		self.assertEqual(employee_values(SETTLEMENT)["resignation_letter_date"], date(2026, 1, 1))
