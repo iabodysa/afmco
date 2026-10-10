@@ -21,8 +21,10 @@ from frappe.utils import (
 ADVANCE_LEAVE_SALARY = "Advance Leave Salary"
 END_OF_SERVICE = "End of Service Settlement"
 PERIOD_DOCTYPE = "Contract Vacation Allowance"
-SETTLED_STATES = ("Approved", "Paid")
+APPROVED = "Approved"
+SETTLED_STATES = (APPROVED, "Paid")
 PAID = "Paid"
+APPROVAL_LEAD_DAYS = 90
 UNPAID = "unpaid"
 NEW_JOINER_FROM = date(2023, 11, 15)
 YEAR_SPANS = {END_OF_SERVICE: (365, 364), ADVANCE_LEAVE_SALARY: (364, 365)}
@@ -314,4 +316,21 @@ def refuse_unpaid_settled_period(doc):
                 _(
                     "Row {0} of the leave allowance table overlaps a paid leave period and must be Paid before submitting."
                 ).format(row.idx)
+            )
+
+
+def refuse_unfinished_contract_year(doc):
+    joined = getdate(doc.date_1)
+    requested = getdate(doc.creation)
+    for row in doc.cva or []:
+        if row.status == PAID or not row.contract_end_date:
+            continue
+        year = relativedelta(getdate(row.contract_end_date), joined).years
+        year_start = joined + relativedelta(years=year)
+        year_end = joined + relativedelta(years=year + 1) - timedelta(days=1)
+        if (year_end - requested).days + 1 > APPROVAL_LEAD_DAYS:
+            frappe.throw(
+                _(
+                    "Row {0} of the leave allowance table falls in the contract year {1} to {2}, which ends more than 90 days after this request was created."
+                ).format(row.idx, year_start.isoformat(), year_end.isoformat())
             )

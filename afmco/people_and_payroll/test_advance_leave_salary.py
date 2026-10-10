@@ -320,6 +320,45 @@ class TestRecomputeAndSubmit(LedgerCase):
         )
 
 
+def approving(creation, rows, state="Approved"):
+    doc = make(
+        advance_leave_salary.ADVANCE_LEAVE_SALARY,
+        {**ADVANCE, "date_1": "2025-04-01", "date_2": "2025-12-31", "creation": creation},
+        rows,
+    )
+    doc.workflow_state = state
+    doc.has_value_changed = lambda field: field == "workflow_state"
+    return doc
+
+
+OPEN_YEAR_ROW = {
+    "contract_start_date": "2025-04-01",
+    "contract_end_date": "2025-12-31",
+    "status": "unpaid",
+}
+
+
+class TestApprovalLead(LedgerCase):
+    def test_approval_passes_when_contract_year_ends_90_days_after_creation(self):
+        self.run_with(Ledger(), AdvanceLeaveSalary.validate, approving("2026-01-01 09:00:00", [OPEN_YEAR_ROW]))
+
+    def test_approval_refused_when_contract_year_ends_91_days_after_creation(self):
+        with self.assertRaisesRegex(frappe.ValidationError, "Row 1 .* 2025-04-01 to 2026-03-31"):
+            self.run_with(Ledger(), AdvanceLeaveSalary.validate, approving("2025-12-31 09:00:00", [OPEN_YEAR_ROW]))
+
+    def test_paid_row_and_non_approval_transition_skip_the_lead_rule(self):
+        self.run_with(
+            Ledger(),
+            AdvanceLeaveSalary.validate,
+            approving("2025-06-01 09:00:00", [{**OPEN_YEAR_ROW, "status": "Paid"}]),
+        )
+        self.run_with(
+            Ledger(),
+            AdvanceLeaveSalary.validate,
+            approving("2025-06-01 09:00:00", [OPEN_YEAR_ROW], state="Pending"),
+        )
+
+
 SEVEN = "7-Termination by the employee or termination of employment by the employee for reasons other than those specified in Article 81"
 EIGHT = "8-Resignation"
 
