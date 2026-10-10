@@ -1509,6 +1509,16 @@
   {
    "doc_type": "Employee",
    "doctype_or_field": "DocField",
+   "field_name": "status",
+   "module": "People and Payroll",
+   "name": "Employee-status-options",
+   "property": "options",
+   "property_type": "Text",
+   "value": "Active\nInactive\nSuspended\nLeft\nOn Leave\nHold"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
    "field_name": "unsubscribed",
    "module": "People and Payroll",
    "name": "Employee-unsubscribed-hidden",

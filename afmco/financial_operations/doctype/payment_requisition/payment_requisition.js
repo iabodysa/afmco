@@ -1601,7 +1601,7 @@ function createEmployeeTable(employee) {
 
 function createTableRow(field, value) {
     const isExpired = field.key === 'iqama_expiration_date' && value !== '-' && new Date(value) < new Date();
-    const isInactive = field.key === 'status' && value === 'Inactive';
+    const isInactive = field.key === 'status' && ['Inactive', 'Hold'].includes(value);
     const dangerClass = (isExpired || isInactive) ? 'text-danger font-weight-bold' : '';
 
     return `

@@ -146,13 +146,18 @@ permission_query_conditions = {
 # }
 
 extend_doctype_class = {
+	"Attendance": "afmco.people_and_payroll.attendance.AfmcoAttendance",
+	"Employee": "afmco.people_and_payroll.employee.AfmcoEmployee",
 	"Journal Entry": "afmco.financial_operations.journal_entry.AfmcoJournalEntry",
 	"Leave Application": "afmco.people_and_payroll.leave_application.AfmcoLeaveApplication",
 	"Loan": "afmco.people_and_payroll.loan.AfmcoLoan",
 	"Loan Repayment": "afmco.people_and_payroll.loan_repayment.AfmcoLoanRepayment",
+	"Payroll Entry": "afmco.people_and_payroll.payroll_entry.AfmcoPayrollEntry",
 	"Salary Slip": "afmco.people_and_payroll.salary_slip.AfmcoSalarySlip",
 	"Salary Structure Assignment": "afmco.people_and_payroll.salary_structure_assignment.AfmcoSalaryStructureAssignment",
 	"Sales Invoice": "afmco.financial_operations.sales_invoice.AfmcoSalesInvoice",
+	"Shift Type": "afmco.people_and_payroll.shift_type.AfmcoShiftType",
+	"Timesheet": "afmco.people_and_payroll.timesheet.AfmcoTimesheet",
 }
 
 # Scheduled Tasks
