@@ -1805,9 +1805,9 @@ Workflow Action,إجراء سير العمل
 jane@example.com,jane@example.com
 Years,سنوات
 Restricts this user to the Payment Requisitions addressed to this approver,يقصر هذا المستخدم على طلبات الصرف الموجهة إلى مسؤول الموافقة هذا
-"Salary Slip Custom (Excel)",قسائم الرواتب المخصصة (Excel)
+Salary Slip Custom (Excel),قسائم الرواتب المخصصة (Excel)
 Please check at least one row to export.,يرجى تحديد صف واحد على الأقل للتصدير.
-"Generating Excel export for {0} records...",جار إنشاء ملف Excel لعدد {0} من السجلات...
+Generating Excel export for {0} records...,جار إنشاء ملف Excel لعدد {0} من السجلات...
 Export All Requisitions to Excel,تصدير جميع طلبات الصرف إلى Excel
 {0} m,{0} دقيقة
 {0} h,{0} ساعة
@@ -13215,7 +13215,7 @@ Leave allowance table not filled: no submitted Salary Slip for {0}. Fill the tab
 "Leave allowance table not filled: the employee has no earlier Paid Advance Leave Salary and joined on {0}, before {1}. Fill the table by hand.",لم يعبأ جدول بدل الإجازة: لا يوجد للموظف راتب إجازة مقدم سابق مدفوع، وتاريخ التحاق الموظف {0} قبل {1}. عبّئ الجدول يدوياً.
 "Employee {0} has End of Service Settlement {1}, so no Advance Leave Salary can be created for this employee.",للموظف {0} تصفية نهاية خدمة {1}، لذلك لا يمكن إنشاء راتب إجازة مقدم لهذا الموظف.
 Row {0} of the leave allowance table overlaps a paid leave period and must be Paid before submitting.,الصف {0} في جدول بدل الإجازة يتداخل مع فترة إجازة مدفوعة، ويجب جعله مدفوعاً قبل الاعتماد.
-"Row {0} of the leave allowance table falls in the contract year {1} to {2}, which ends more than 90 days after this request was created.","الصف {0} في جدول بدل الإجازة يقع في سنة العقد من {1} إلى {2}، وهي تنتهي بعد أكثر من 90 يوماً من تاريخ إنشاء هذا الطلب."
+"Row {0} of the leave allowance table falls in the contract year {1} to {2}, which ends more than 90 days after this request was created.",الصف {0} في جدول بدل الإجازة يقع في سنة العقد من {1} إلى {2}، وهي تنتهي بعد أكثر من 90 يوماً من تاريخ إنشاء هذا الطلب.
 Iqama Renewal Control,إدارة تجديد الإقامة
 Corporation,الشركة
 View open jobs,عرض الوظائف المتاحة
@@ -13338,3 +13338,18 @@ Read {0},قُرئت {0}
 Attachments of {0} are not verified.,لا يتم التحقق من مرفقات {0}.
 Only an approver at the current workflow step can verify the attachments.,التحقق من المرفقات متاح فقط للمعتمد في مرحلة سير العمل الحالية.
 Attachment readings are not kept for {0}.,لا تُحفظ قراءات المرفقات لـ {0}.
+"Attached without a lock, legacy .xls format: {0}",أرفق بدون قفل، صيغة .xls قديمة: {0},
+Attached separately,مرفق بشكل منفصل,
+Cheque No.,رقم الشيك,
+Included,مضمّن,
+Journal Entry Voucher,سند قيد يومية,
+Supporting Documents,المستندات المؤيدة,
+Voucher No.,رقم السند,
+{0} does not include: {1},{0} لا يتضمن: {1},
+Journal Entry {0} must be submitted before printing with attachments.,يجب اعتماد قيد اليومية {0} قبل الطباعة مع المرفقات.,
+Print with attachments,طباعة مع المرفقات,
+Preparing the print with attachments...,جاري تجهيز الطباعة مع المرفقات...,
+The print with attachments is being prepared and will be attached to {0}.,يجري تجهيز الطباعة مع المرفقات وسترفق بـ {0}.,
+Open the print with attachments,فتح الطباعة مع المرفقات,
+"Listed by name, not merged: {0}",مذكورة بالاسم ولم تدمج: {0},
+"Not included, unreadable or protected: {0}",لم تدرج لأنها تالفة أو محمية: {0},
