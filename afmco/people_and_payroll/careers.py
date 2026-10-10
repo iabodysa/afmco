@@ -30,6 +30,7 @@ def get_open_jobs():
 		filters=OPEN_JOB_FILTERS,
 		fields=[
 			"name",
+			"route",
 			"job_title",
 			"description",
 			"location",

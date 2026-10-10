@@ -31,8 +31,11 @@ def get_context(context):
 	context.portal_js = frappe.read_file(frappe.get_app_path("afmco", "www", "portal", "index.js"))
 
 	context.jobs = get_open_jobs()
-	requested_job = frappe.form_dict.job_title
-	context.selected_job = requested_job if any(job.name == requested_job for job in context.jobs) else ""
+	requested_job, requested_route = frappe.form_dict.job_title, frappe.form_dict.job_route
+	context.selected_job = next(
+		(job.name for job in context.jobs if job.name == requested_job or (requested_route and job.route == requested_route)),
+		"",
+	)
 	options = get_application_options()
 	context.countries = options["countries"]
 	context.currencies = options["currencies"]

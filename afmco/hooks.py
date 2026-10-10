@@ -45,6 +45,13 @@ website_redirects = [
 		"redirect_http_status": 302,
 		"forward_query_parameters": True,
 	},
+	{"source": r"/job(/.*)?", "target": "/careers", "redirect_http_status": 302},
+	{
+		"source": r"/jobs/(.+)",
+		"target": r"/careers?job_route=jobs/\1",
+		"redirect_http_status": 302,
+	},
+	{"source": r"/jobs", "target": "/careers", "redirect_http_status": 302},
 ]
 # web_include_js = "/assets/afmco/js/afmco.js"
 

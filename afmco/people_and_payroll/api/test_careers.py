@@ -13,6 +13,7 @@ from werkzeug.wrappers import Request
 
 from afmco.people_and_payroll.api.careers import apply
 from afmco.people_and_payroll.careers import MAX_RESUME_BYTES, create_application
+from afmco.www.careers.index import get_context
 
 APPLY_CMD = "afmco.people_and_payroll.api.careers.apply"
 DESIGNATION = "Careers Test Designation"
@@ -171,3 +172,30 @@ class TestCareersPage(IntegrationTestCase):
 		with self.assertRaises(frappe.Redirect):
 			resolve_redirect("job_application/new", b"job_title=HR-OPN-0001")
 		self.assertEqual(frappe.flags.redirect_location, "/careers?job_title=HR-OPN-0001")
+
+	def test_employment_form_and_hrms_jobs_routes_redirect_to_careers(self):
+		for path, query, target in (
+			("job", None, "/careers"),
+			("job/new", None, "/careers"),
+			("jobs", None, "/careers"),
+			("jobs", b"company=X", "/careers"),
+			("jobs/my-company/delivery-driver", None, "/careers?job_route=jobs/my-company/delivery-driver"),
+		):
+			frappe.cache.delete_value("website_redirects")
+			frappe.flags.redirect_location = None
+			with self.assertRaises(frappe.Redirect) as caught:
+				resolve_redirect(path, query)
+			self.assertEqual(caught.exception.http_status_code, 302)
+			self.assertEqual(frappe.flags.redirect_location, target, path)
+
+	def test_job_opening_web_route_preselects_that_job_in_the_apply_form(self):
+		job = make_job_opening("Careers Routed Job")
+		context = frappe._dict()
+		frappe.set_user("Guest")
+		frappe.local.form_dict = frappe._dict(job_route=job.route)
+		try:
+			get_context(context)
+		finally:
+			frappe.set_user("Administrator")
+			frappe.local.form_dict = frappe._dict()
+		self.assertEqual(context.selected_job, job.name)
