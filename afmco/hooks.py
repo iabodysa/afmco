@@ -228,6 +228,8 @@ jinja = {
 	"methods": [
 		"afmco.financial_operations.asset_label.asset_qr_data_uri",
 		"afmco.financial_operations.saudi_riyal.saudi_riyal_font_face",
+		"afmco.financial_operations.journal_entry_print.journal_entry_trail",
+		"afmco.financial_operations.journal_entry_print.money_words",
 	],
 }
 
