@@ -515,6 +515,10 @@ function je_dossier_build(frm) {
             frappe.msgprint(__('The print with attachments is being prepared and will be attached to {0}.', [frm.doc.name]));
             return;
         }
+        if (message.error) {
+            frappe.msgprint({ message: frappe.utils.escape_html(message.error), indicator: 'red' });
+            return;
+        }
         const link = $('<a target="_blank" rel="noopener"></a>').attr('href', message.file_url).text(__('Open the print with attachments'));
         let text = link.prop('outerHTML');
         if (message.listed.length) {

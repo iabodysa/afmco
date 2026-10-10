@@ -15,14 +15,9 @@ def build_dossier(journal_entry: str) -> dict:
 	entry.check_permission("read")
 	if entry.docstatus == 0:
 		frappe.throw(_("Journal Entry {0} must be submitted before printing with attachments.").format(journal_entry))
-	files = journal_entry_dossier.inputs(entry)
-	if requisition_pack.input_size(files) > requisition_pack.BACKGROUND_THRESHOLD and not frappe.db.exists(
-		"File",
-		{
-			"attached_to_doctype": JOURNAL_ENTRY,
-			"attached_to_name": journal_entry,
-			"file_name": journal_entry_dossier.dossier_file_name(entry, files),
-		},
+	files, dossiers = journal_entry_dossier.split(journal_entry)
+	if requisition_pack.input_size(files) > requisition_pack.BACKGROUND_THRESHOLD and not journal_entry_dossier.current(
+		entry, files, dossiers
 	):
 		frappe.enqueue(
 			journal_entry_dossier.build,
