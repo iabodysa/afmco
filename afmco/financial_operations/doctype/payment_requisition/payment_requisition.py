@@ -8,6 +8,8 @@ from erpnext import get_default_company
 from frappe.utils import  money_in_words, now
 from frappe.utils.html_utils import sanitize_html
 
+from afmco.approver_check import engine
+
 ACCOUNTS_ROLES = ("Accounts User", "Accounts Manager")
 ACCOUNTS_BOT_VIEWER_ROLES = (*ACCOUNTS_ROLES, "System Manager")
 ACCOUNTS_BOT_ROLE = "Accountant Bot"
@@ -25,6 +27,10 @@ class PaymentRequisition(Document):
 			not self.accounts_bot_cf and bool(roles.intersection(ACCOUNTS_ROLES)) and not refusal,
 		)
 		self.set_onload("accounts_bot_viewer", bool(roles.intersection(ACCOUNTS_BOT_VIEWER_ROLES)))
+		self.set_onload("approver_check_allowed", engine.approver_allowed(self))
+
+	def approver_checklist(self, deferred: bool = False) -> dict:
+		return engine.run(self, deferred=deferred)
 
 	def accounts_bot_refusal(self) -> str | None:
 		if self.docstatus != 1 or self.workflow_state != "Paid":
