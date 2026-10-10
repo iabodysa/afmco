@@ -521,7 +521,6 @@ function showEmployeeDuesDialog(employee, balance, netPay) {
 }
 
 function handleIqamaExpiredStatus(frm) {
-    frm.set_df_property('iqama_expired', 'hidden', 1);
 
     if (frm.doc.iqama_expired && frm.doc.status === 'Active') {
         frm.set_df_property('status', 'description', 'Expired Iqama');
