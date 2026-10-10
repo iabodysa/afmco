@@ -296,7 +296,7 @@ def counted_periods_elsewhere(ctx: Context) -> list[dict]:
 	for doctype in (ADVANCE_LEAVE_SALARY, END_OF_SERVICE):
 		names = frappe.get_all(
 			doctype,
-			filters={"employee": doc.employee, "name": ["!=", doc.name], "workflow_state": ["in", SETTLED_STATES]},
+			filters={"employee": doc.employee, "name": ["!=", doc.name], "docstatus": ["<", 2], "workflow_state": ["in", SETTLED_STATES]},
 			pluck="name",
 		)
 		if not names:

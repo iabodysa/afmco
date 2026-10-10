@@ -106,6 +106,13 @@ class TestLeaveAndSettlementPolicy(IntegrationTestCase):
 		make_leave(staff, state="Rejected", rows=[row("2022-01-01", "2022-12-31", 2100)])
 		self.assertEqual(status(record(ALS, staff, cva=[row("2022-03-01", "2023-02-28", 2100)]), "ALS-POL-01"), "pass")
 
+	def test_period_counted_in_a_cancelled_record_still_marked_paid_is_ignored(self):
+		staff = staff_member()
+		settlement = make_settlement(staff, state="Paid", rows=[row("2022-01-01", "2022-12-31", 2100)])
+		frappe.db.set_value(EOS, settlement.name, "docstatus", 2, update_modified=False)
+		self.assertEqual(status(record(ALS, staff, cva=[row("2022-03-01", "2023-02-28", 2100)]), "ALS-POL-01"), "pass")
+		self.assertEqual(status(record(EOS, staff, cva=[row("2022-03-01", "2023-02-28", 2100)]), "EOS-POL-05"), "pass")
+
 	def test_leave_days_below_twenty_one_warn(self):
 		staff = staff_member()
 		self.assertEqual(status(record(ALS, staff, cva=[row("2024-01-01", "2024-12-30", 2000, vad="20")]), "ALS-POL-02"), "warn")
