@@ -453,7 +453,7 @@ function addOpeningLeaveAllocationButton(frm) {
                 in_place_edit: true,
                 data: [{
                     from_date: frm.doc.date_of_joining,
-                    to_date: frappe.datetime.add_months(frm.doc.date_of_joining, 12)
+                    to_date: frappe.datetime.add_days(frappe.datetime.add_months(frm.doc.date_of_joining, 12), -1)
                 }],
                 fields: [
                     { fieldname: 'leave_type', fieldtype: 'Link', options: 'Leave Type', label: __('Leave Type'), in_list_view: 1, reqd: 1 },
