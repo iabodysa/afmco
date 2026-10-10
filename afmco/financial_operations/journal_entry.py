@@ -6,7 +6,7 @@ from frappe import _
 from frappe.utils import cint, get_link_to_form
 
 DRAFT_LIMIT_FIELD = "afmco_journal_entry_draft_limit"
-SINGLE_ACTIVE_LINK_FIELDS = ("expense_request_cf", "jv_based_on_submitted_si_cf")
+SINGLE_ACTIVE_LINK_FIELDS = ("jv_based_on_submitted_si_cf",)
 
 
 class AfmcoJournalEntry:
@@ -62,6 +62,20 @@ class AfmcoJournalEntry:
 		)
 
 	def validate_single_active_links(self):
+		if self.expense_request_cf and (
+			other := frappe.db.get_value(
+				self.doctype,
+				{"expense_request_cf": self.expense_request_cf, "docstatus": ["<", 2], "name": ["!=", self.name]},
+				"name",
+			)
+		):
+			frappe.msgprint(
+				_("Payment Requisition {0} is already linked to Journal Entry {1}.").format(
+					frappe.bold(self.expense_request_cf), get_link_to_form(self.doctype, other)
+				),
+				indicator="orange",
+				alert=1,
+			)
 		for fieldname in SINGLE_ACTIVE_LINK_FIELDS:
 			value = self.get(fieldname)
 			if value and frappe.db.exists(

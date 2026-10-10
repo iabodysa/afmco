@@ -13363,3 +13363,4 @@ Journal Entry dossier check failed,فشل التحقق من الطباعة مع 
 Multiple Beneficiaries (per attachment),عدة مستفيدين (حسب المرفق),
 Beneficiaries Sheet Missing,ملف المستفيدين غير مرفق,
 Attach the beneficiaries sheet (Excel or CSV) before sending a Payment Requisition with multiple beneficiaries.,أرفق ملف المستفيدين (Excel أو CSV) قبل إرسال طلب الصرف متعدد المستفيدين.,
+Payment Requisition {0} is already linked to Journal Entry {1}.,طلب الصرف {0} مربوط من قبل بالقيد {1}.,
