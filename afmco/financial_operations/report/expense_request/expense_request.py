@@ -15,6 +15,8 @@ FIELDS = [
 	"if_it__urgent",
 	"reason_of_urgency",
 	"account_no",
+	"sadad_biller_code",
+	"sadad_bill_number",
 	"assign_to_employee",
 	"jv_status",
 	"supplier_name",
@@ -29,6 +31,8 @@ FIELDS = [
 
 def execute(filters=None):
 	results = frappe.get_all("Payment Requisition", fields=FIELDS, filters=filters, order_by="date DESC")
+	for row in results:
+		row.account_no = row.account_no or " / ".join(filter(None, (row.sadad_biller_code, row.sadad_bill_number)))
 	return get_columns(), results, None
 
 
