@@ -170,3 +170,14 @@ class TestApproverPermissionScope(IntegrationTestCase):
 		frappe.set_user("Administrator")
 		item = next(row for row in engine.run(leave)["items"] if row["id"] == "ALS-ACC-02")
 		self.assertIn(str(3000 + DISTINCT_HOUSING), json.dumps(item))
+
+	def test_user_permission_restricting_employees_hides_other_employees_rows(self):
+		staff = employee()
+		visible = employee()
+		leave = make_leave(staff, state="Waiting Manager Approval")
+		make_user(BYSTANDER, "HR User")
+		frappe.get_doc({"doctype": "User Permission", "user": BYSTANDER, "allow": "Employee", "for_value": visible, "apply_to_all_doctypes": 0, "applicable_for": "Employee"}).insert()
+		frappe.set_user(BYSTANDER)
+		self.assertFalse(frappe.has_permission("Employee", "read", doc=frappe.get_doc("Employee", staff)))
+		item = next(row for row in engine.run(leave)["items"] if row["id"] == "ALS-ACC-03")
+		self.assertEqual(item["status"], "unknown")
