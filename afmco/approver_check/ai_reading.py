@@ -1,22 +1,29 @@
 # Copyright (c) 2026, AFMCO and contributors
 # For license information, please see license.txt
 
+import hashlib
 from datetime import date
 
 import frappe
 from frappe import _
+from frappe.model.workflow import get_transitions, get_workflow_name
+from frappe.utils import cstr, now
 
-from afmco.approver_check.attachments import current_files, files_hash
+from afmco.approver_check.registry import APPROVER_STATES
 
 VERSION = 1
 LIMIT_BYTES = 64 * 1024
 READ = "read"
 FAILED = "failed"
+READING = "reading"
+FINDING = "finding"
+CLEAN = "clean"
+READ_FLAG = "accounts_bot_read_cf"
+EVENT = "afmco_attachment_reading"
 STATUSES = (READ, "partial", FAILED)
 DOC_TYPES = ("bank_receipt", "invoice", "tax_invoice", "quotation", "salary_sheet", "bank_statement", "id_document", "letter", "other")
 CONFIDENCE = ("high", "medium", "low")
-CODES = ("amount_mismatch", "iban_mismatch", "name_mismatch", "date_mismatch", "tamper", "unreadable", "missing_document")
-BENEFICIARY_CODES = ("name_mismatch", "iban_mismatch")
+CODES = ("amount_mismatch", "iban_mismatch", "name_mismatch", "date_mismatch", "tamper", "unreadable", "missing_document", "id_mismatch")
 TOP_KEYS = {"v", "status", "files", "findings"}
 FILE_KEYS = {"file", "file_name", "readable", "doc_type", "amount", "currency", "iban", "name", "date", "reference", "vat_number", "tamper_signs", "confidence"}
 FINDING_KEYS = {"code", "field", "form_value", "file_value", "file", "label", "detail"}
@@ -106,6 +113,19 @@ def parse(reading) -> dict:
 	return dict(reading)
 
 
+def current_files(doctype: str, name: str) -> list[dict]:
+	return frappe.get_all(
+		"File",
+		filters={"attached_to_doctype": doctype, "attached_to_name": name, "is_folder": 0},
+		fields=["name", "content_hash"],
+	)
+
+
+def files_hash(files: list[dict]) -> str:
+	listed = sorted(f"{file.name}:{cstr(file.content_hash)}" for file in files)
+	return hashlib.sha256("\n".join(listed).encode()).hexdigest()
+
+
 def read_hash(doc, reading: dict) -> str:
 	attached = {file.name: file for file in current_files(doc.doctype, doc.name)}
 	named = {file["file"] for file in reading["files"]}
@@ -126,3 +146,78 @@ def stale(doc) -> bool:
 def fresh(doc) -> dict | None:
 	reading = stored(doc)
 	return reading if reading and not stale(doc) else None
+
+
+def save(doc, reading) -> None:
+	reading = parse(reading)
+	values = {
+		"ai_reading_cf": frappe.as_json(reading),
+		"ai_reading_at": now(),
+		"ai_reading_files_hash": read_hash(doc, reading),
+		READ_FLAG: 0,
+	}
+	doc.db_set(values, update_modified=False)
+	frappe.publish_realtime(EVENT, {"doctype": doc.doctype, "name": doc.name}, doctype=doc.doctype, docname=doc.name, after_commit=True)
+
+
+def request(doc) -> None:
+	doc.db_set(READ_FLAG, 1, update_modified=False, notify=True)
+
+
+def entered_approver_state(doc) -> None:
+	if doc.get(READ_FLAG) or doc.get("workflow_state") not in APPROVER_STATES[doc.doctype]:
+		return
+	if doc.has_value_changed("workflow_state"):
+		request(doc)
+
+
+def attachment_changed(file) -> None:
+	doctype, name = file.attached_to_doctype, file.attached_to_name
+	if file.is_folder or not name or doctype not in APPROVER_STATES:
+		return
+	if frappe.db.get_value(doctype, name, "workflow_state") in APPROVER_STATES[doctype]:
+		request(frappe.get_doc(doctype, name))
+
+
+def approver_allowed(doc) -> bool:
+	if doc.doctype not in APPROVER_STATES or doc.is_new():
+		return False
+	if doc.get("workflow_state") not in APPROVER_STATES[doc.doctype]:
+		return False
+	if not get_workflow_name(doc.doctype) or not doc.has_permission("read"):
+		return False
+	return bool(get_transitions(doc))
+
+
+def needs_reading(doc) -> bool:
+	current = state(doc)
+	return current is None or current["status"] == FAILED
+
+
+def state(doc) -> dict | None:
+	if doc.get(READ_FLAG):
+		return {"status": READING, "at": None, "findings": []}
+	reading = fresh(doc)
+	if reading is None:
+		return None
+	findings = [{"label": finding["label"], "detail": finding["detail"]} for finding in reading["findings"]]
+	if reading["status"] == FAILED or (reading["status"] != READ and not findings):
+		status = FAILED
+	else:
+		status = FINDING if findings else CLEAN
+	return {"status": status, "at": doc.ai_reading_at, "findings": findings}
+
+
+def set_onload(doc) -> None:
+	allowed = approver_allowed(doc)
+	doc.set_onload("attachment_check", {"state": state(doc)} if allowed else None)
+
+
+class AfmcoFile:
+	def after_insert(self):
+		super().after_insert()
+		attachment_changed(self)
+
+	def on_trash(self):
+		super().on_trash()
+		attachment_changed(self)

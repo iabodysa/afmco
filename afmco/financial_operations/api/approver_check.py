@@ -3,50 +3,19 @@
 
 import frappe
 from frappe import _
-from frappe.utils import cint
 
-from afmco.approver_check import engine
-from afmco.approver_check.model import PAYMENT_REQUISITION
-from afmco.approver_check.registry import REGISTRY
+from afmco.approver_check import ai_reading
+from afmco.approver_check.registry import APPROVER_STATES
 
 
-def approver_doc(doctype: str, name: str):
-	if doctype not in REGISTRY:
-		frappe.throw(_("The approver check does not cover {0}.").format(doctype), frappe.PermissionError)
-	doc = frappe.get_doc(doctype, name)
+@frappe.whitelist(methods=["POST"])
+def verify_attachments(doctype: str, name: str) -> dict | None:
+	if doctype not in APPROVER_STATES:
+		frappe.throw(_("Attachments of {0} are not verified.").format(_(doctype)), frappe.PermissionError)
+	doc = frappe.get_doc(doctype, name, for_update=True)
 	doc.check_permission("read")
-	if not engine.approver_allowed(doc):
-		frappe.throw(_("Only an approver at the current workflow step can run the approver check."), frappe.PermissionError)
-	return doc
-
-
-@frappe.whitelist(methods=["POST"])
-def ai_check(doctype: str, name: str) -> dict:
-	doc = approver_doc(doctype, name)
-	return engine.run(doc, engine.ai_first(doc.doctype))
-
-
-@frappe.whitelist(methods=["POST"])
-def request_reading(name: str) -> dict:
-	doc = approver_doc(PAYMENT_REQUISITION, name)
-	doc.request_attachment_reading()
-	return engine.run(doc, engine.ai_first(doc.doctype))
-
-
-@frappe.whitelist(methods=["POST"])
-def run(doctype: str, name: str, retry: int = 0) -> dict:
-	doc = approver_doc(doctype, name)
-	if cint(retry):
-		if engine.RECHECK_ROLE not in frappe.get_roles():
-			frappe.throw(_("Only a System Manager can run the check again."), frappe.PermissionError)
-		engine.forget(doc)
-	return doc.approver_checklist(deferred=True)
-
-
-@frappe.whitelist(methods=["POST"])
-def get_result(doctype: str, name: str) -> dict:
-	doc = approver_doc(doctype, name)
-	stored = engine.stored_items(doc)
-	if not engine.complete(doc, stored):
-		return {"pending": True, "modified": str(doc.modified)}
-	return engine.serve(doc, stored)
+	if not ai_reading.approver_allowed(doc):
+		frappe.throw(_("Only an approver at the current workflow step can verify the attachments."), frappe.PermissionError)
+	if ai_reading.needs_reading(doc):
+		ai_reading.request(doc)
+	return ai_reading.state(doc)

@@ -6,16 +6,16 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 
-from afmco.approver_check import engine
+from afmco.approver_check import ai_reading
 from afmco.people_and_payroll.advance_leave_salary import recompute_settlement, refuse_unpaid_settled_period, service_span
 
 
 class EndofServiceSettlement(Document):
     def onload(self):
-        engine.set_onload(self)
+        ai_reading.set_onload(self)
 
-    def approver_checklist(self, deferred: bool = False) -> dict:
-        return engine.run(self, deferred=deferred)
+    def on_change(self):
+        ai_reading.entered_approver_state(self)
 
     def validate(self):
         if self.employee and frappe.get_all(

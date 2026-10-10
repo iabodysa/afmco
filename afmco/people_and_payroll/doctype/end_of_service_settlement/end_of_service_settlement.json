@@ -70,6 +70,10 @@
   "column_break_pr_status",
   "pr_status",
   "ticket_allowance_confirmed",
+  "accounts_bot_read_cf",
+  "ai_reading_cf",
+  "ai_reading_at",
+  "ai_reading_files_hash",
   "amended_from"
  ],
  "fields": [
@@ -468,6 +472,43 @@
    "label": "ticket_allowance_confirmed"
   },
   {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "accounts_bot_read_cf",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Accounts Bot Read Attachments",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "ai_reading_cf",
+   "fieldtype": "JSON",
+   "hidden": 1,
+   "label": "AI Reading",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "ai_reading_at",
+   "fieldtype": "Datetime",
+   "hidden": 1,
+   "label": "AI Reading At",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "ai_reading_files_hash",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "AI Reading Files Hash",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
@@ -487,7 +528,7 @@
    "link_fieldname": "tax_invoice_number"
   }
  ],
- "modified": "2026-10-10 14:00:00.000000",
+ "modified": "2026-10-10 18:00:00.000000",
  "module": "People and Payroll",
  "name": "End of Service Settlement",
  "naming_rule": "By \"Naming Series\" field",
@@ -569,6 +610,10 @@
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Accountant Bot"
   }
  ],
  "quick_entry": 1,

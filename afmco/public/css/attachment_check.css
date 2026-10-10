@@ -1,0 +1,96 @@
+/* Copyright (c) 2026, AFMCO and contributors */
+
+.afmco-attachment-check .ac-check {
+	--ac-bg: var(--bg-blue);
+	--ac-ink: var(--text-on-blue);
+	border-inline-start: 3px solid var(--ac-ink);
+	border-radius: var(--border-radius-md);
+	background: var(--ac-bg);
+	color: var(--ac-ink);
+	overflow: hidden;
+}
+
+.afmco-attachment-check .ac-check[data-status="failed"] {
+	--ac-bg: var(--bg-orange);
+	--ac-ink: var(--text-on-orange);
+}
+
+.afmco-attachment-check .ac-check[data-status="finding"] {
+	--ac-bg: var(--bg-yellow);
+	--ac-ink: var(--text-on-yellow);
+}
+
+.afmco-attachment-check .ac-check[data-status="clean"] {
+	--ac-bg: var(--bg-green);
+	--ac-ink: var(--text-on-green);
+}
+
+.afmco-attachment-check .ac-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--padding-xs) var(--padding-sm);
+	padding: var(--padding-sm) var(--padding-md);
+	font-weight: var(--weight-medium);
+}
+
+.afmco-attachment-check .ac-dot {
+	inline-size: 8px;
+	block-size: 8px;
+	border-radius: 50%;
+	background: currentColor;
+	flex: none;
+}
+
+.afmco-attachment-check .ac-check[data-status="reading"] .ac-dot {
+	animation: ac-pulse 1.6s ease-in-out infinite;
+}
+
+.afmco-attachment-check .ac-time {
+	margin-inline-start: auto;
+	font-size: var(--text-sm);
+	font-weight: var(--weight-regular);
+	opacity: 0.8;
+}
+
+.afmco-attachment-check .ac-findings {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	background: var(--card-bg);
+	color: var(--text-color);
+}
+
+.afmco-attachment-check .ac-finding {
+	display: grid;
+	grid-template-columns: minmax(8rem, max-content) 1fr;
+	gap: var(--padding-xs) var(--padding-md);
+	padding: var(--padding-sm) var(--padding-md);
+	border-block-start: 1px solid var(--border-color);
+}
+
+.afmco-attachment-check .ac-label {
+	font-weight: var(--weight-medium);
+}
+
+.afmco-attachment-check .ac-detail {
+	color: var(--text-muted);
+}
+
+@media (max-width: 576px) {
+	.afmco-attachment-check .ac-finding {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.afmco-attachment-check .ac-check[data-status="reading"] .ac-dot {
+		animation: none;
+	}
+}
+
+@keyframes ac-pulse {
+	50% {
+		opacity: 0.3;
+	}
+}

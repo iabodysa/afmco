@@ -3,8 +3,6 @@
 
 from frappe.model.document import Document
 
-from afmco.approver_check import engine
-
 from afmco.people_and_payroll.advance_leave_salary import (
     APPROVED,
     recompute_advance,
@@ -15,12 +13,6 @@ from afmco.people_and_payroll.advance_leave_salary import (
 
 
 class AdvanceLeaveSalary(Document):
-    def onload(self):
-        engine.set_onload(self)
-
-    def approver_checklist(self, deferred: bool = False) -> dict:
-        return engine.run(self, deferred=deferred)
-
     def validate(self):
         if self.has_value_changed("employee"):
             refuse_settled_employee(self)

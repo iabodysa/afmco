@@ -556,7 +556,7 @@ frappe.ui.form.on('Payment Requisition', {
         addCreateJVButton(frm);
         addSupportingPackButton(frm);
         addAccountsBotButton(frm);
-        frappe.require(["/assets/afmco/js/approver_check.js", "/assets/afmco/css/approver_check.css"], () => afmco.approver_check.attach(frm));
+        frappe.require(["/assets/afmco/js/attachment_check.js", "/assets/afmco/css/attachment_check.css"], () => afmco.attachment_check.render(frm));
     },
 
     remark(frm) {

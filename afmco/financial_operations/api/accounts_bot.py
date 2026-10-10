@@ -2,7 +2,10 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe import _
 
+from afmco.approver_check import ai_reading
+from afmco.approver_check.registry import APPROVER_STATES, PAYMENT_REQUISITION
 from afmco.financial_operations.doctype.payment_requisition.payment_requisition import (
 	ACCOUNTS_BOT_ROLE,
 	ACCOUNTS_BOT_VIEWER_ROLES,
@@ -36,9 +39,13 @@ def set_accounts_bot_status(name: str, status: str, note: str | None = None) -> 
 
 
 @frappe.whitelist(methods=["POST"])
-def save_reading(name: str, reading: dict | str) -> None:
+def save_reading(name: str, reading: dict | str, doctype: str = PAYMENT_REQUISITION) -> None:
 	frappe.only_for(ACCOUNTS_BOT_ROLE)
-	locked_requisition(name).save_reading(reading)
+	if doctype not in APPROVER_STATES:
+		frappe.throw(_("Attachment readings are not kept for {0}.").format(_(doctype)), frappe.PermissionError)
+	doc = frappe.get_doc(doctype, name, for_update=True)
+	doc.check_permission("read")
+	ai_reading.save(doc, reading)
 
 
 @frappe.whitelist(methods=["POST"])
