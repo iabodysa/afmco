@@ -14,7 +14,9 @@ REGISTRY = {
 ROLE_RESTRICTED = dict(checks_payment.ROLE_RESTRICTED)
 
 APPROVER_STATES = {
-	PAYMENT_REQUISITION: checks_payment.APPROVAL_STEPS,
-	ADVANCE_LEAVE_SALARY: ("Waiting Accountant Approval", "Waiting Manager Approval", "Approved"),
-	END_OF_SERVICE: ("Waiting Accountant Approval", "Waiting Manager Approval", "Legal", "Approved"),
+	PAYMENT_REQUISITION: ("Waiting P.M Approval", "Waiting Manager Approval"),
+	ADVANCE_LEAVE_SALARY: (),
+	END_OF_SERVICE: (),
 }
+
+APPROVER_ROLES = ("General Manager", "Projects Manager")

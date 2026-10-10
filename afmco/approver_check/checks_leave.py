@@ -112,7 +112,7 @@ CHECKS = (
 	Check("ALS-POL-06", "no_other_open_als", POLICY, _lt("No other leave salary record awaiting approval"), WARNING, no_other_open_als),
 	Check("ALS-ATT-01", "has_attachment", ATTACHMENTS, _lt("Supporting file attached"), INFO, als_attachment),
 	Check("ALS-BEN-01", "iban_valid", BENEFICIARY, _lt("IBAN is valid"), BLOCK, als_iban_valid),
-	Check("ALS-BEN-02", "account_matches_employee", BENEFICIARY, _lt("Account matches the employee record"), WARNING, als_account_matches_employee),
-	Check("ALS-BEN-03", "account_changed_recently", BENEFICIARY, _lt("Employee bank account not changed recently"), WARNING, als_account_changed_recently),
-	Check("ALS-POL-07", "approver_not_requester", POLICY, _lt("Approver is not the requester"), WARNING, approver_not_requester),
+	Check("ALS-BEN-02", "account_matches_employee", BENEFICIARY, _lt("Account matches the employee record"), WARNING, als_account_matches_employee, viewer=True),
+	Check("ALS-BEN-03", "account_changed_recently", BENEFICIARY, _lt("Employee bank account not changed recently"), WARNING, als_account_changed_recently, viewer=True),
+	Check("ALS-POL-07", "approver_not_requester", POLICY, _lt("Approver is not the requester"), WARNING, approver_not_requester, viewer=True),
 )

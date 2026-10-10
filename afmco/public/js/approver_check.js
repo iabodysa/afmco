@@ -57,12 +57,14 @@ afmco.approver_check.key = function (frm) {
 };
 
 afmco.approver_check.open = function (frm) {
+	const recheck = frappe.user.has_role("System Manager")
+		? { primary_action_label: __("Re-run"), primary_action: () => afmco.approver_check.load(dialog, frm, true) }
+		: {};
 	const dialog = new frappe.ui.Dialog({
 		title: __("Approver Check — {0}", [frm.docname]),
 		size: "extra-large",
 		fields: [{ fieldtype: "HTML", fieldname: "body" }],
-		primary_action_label: __("Re-run"),
-		primary_action: () => afmco.approver_check.load(dialog, frm, true),
+		...recheck,
 		secondary_action_label: __("Close"),
 		secondary_action: () => dialog.hide(),
 	});
@@ -206,7 +208,7 @@ afmco.approver_check.row = function (item) {
 		item.status === "fail" && item.severity === "block" ? `<span class="ac-badge ac-badge-block">${__("Blocking")}</span>` : "";
 	const ai = item.mode === "ai" ? `<span class="ac-badge">${__("AI")}</span>` : "";
 	const evidence = (item.evidence || []).map(afmco.approver_check.evidence).join("");
-	const retry = item.status === "timeout" ? ` <button type="button" class="btn btn-xs btn-default ac-retry">${__("Retry")}</button>` : "";
+	const retry = item.status === "timeout" && frappe.user.has_role("System Manager") ? ` <button type="button" class="btn btn-xs btn-default ac-retry">${__("Retry")}</button>` : "";
 	const detail = `<div class="ac-detail">${frappe.utils.escape_html(item.detail || "")}${retry}</div>`;
 	const head = `<span class="ac-icon ac-${tone}">${meta.icon}</span><span class="ac-word ac-${tone}">${meta.word}</span><span class="ac-label">${frappe.utils.escape_html(item.label)}</span>${blocking}${ai}`;
 	if (!evidence) {

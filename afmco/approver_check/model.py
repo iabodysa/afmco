@@ -62,6 +62,7 @@ class Check:
 	run: Callable[[Context], Result]
 	mode: str = DETERMINISTIC
 	background: bool = False
+	viewer: bool = False
 
 
 def evidence(label, value, doctype: str | None = None, name: str | None = None) -> dict:
@@ -72,26 +73,60 @@ def evidence(label, value, doctype: str | None = None, name: str | None = None) 
 
 
 class Context:
-	def __init__(self, doc):
+	def __init__(self, doc, user: str | None = None):
 		self.doc = doc
-		self.user = frappe.session.user
+		self.user = user or frappe.session.user
 		self.roles = set(frappe.get_roles(self.user))
 		self.today = getdate(nowdate())
 		self.memo = {}
+		self.needs = []
 
 	def remember(self, key, compute):
 		if key not in self.memo:
-			self.memo[key] = compute()
-		return self.memo[key]
+			outer, self.needs = self.needs, []
+			try:
+				value = compute()
+			finally:
+				inner, self.needs = self.needs, outer
+			self.memo[key] = (value, inner)
+		value, needs = self.memo[key]
+		self.needs.extend(needs)
+		return value
+
+	def need(self, doctype: str, names=(), fields=()) -> None:
+		self.needs.append({"doctype": doctype, "names": sorted(set(names)), "fields": list(fields)})
+
+	def grants(self, need: dict) -> bool:
+		return self.remember(("grant", need["doctype"], tuple(need["names"]), tuple(need["fields"])), lambda: self.permits(need))
+
+	def permits(self, need: dict) -> bool:
+		doctype, names = need["doctype"], set(need["names"])
+		if not frappe.has_permission(doctype, "read", user=self.user):
+			return False
+		if names and self.listed(doctype, names) != names:
+			return False
+		return self.permlevels(doctype, need["fields"])
+
+	def listed(self, doctype: str, names) -> set[str]:
+		return set(frappe.get_list(doctype, filters={"name": ["in", list(names)]}, pluck="name", limit_page_length=0, user=self.user))
+
+	def permlevels(self, doctype: str, fields) -> bool:
+		meta = frappe.get_meta(doctype)
+		levels = meta.get_permlevel_access("read", user=self.user)
+		return all((df := meta.get_field(f)) is not None and df.permlevel in levels for f in fields)
 
 	def can_read(self, doctype: str, doc) -> bool:
+		self.need(doctype, [getattr(doc, "name", doc)])
 		return bool(frappe.has_permission(doctype, "read", doc=doc, user=self.user))
 
 	def readable_names(self, doctype: str, names) -> set[str]:
 		names = list(set(names))
-		if not names or not frappe.has_permission(doctype, "read", user=self.user):
+		if not names:
 			return set()
-		return set(frappe.get_list(doctype, filters={"name": ["in", names]}, pluck="name", limit_page_length=0))
+		self.need(doctype, names)
+		if not frappe.has_permission(doctype, "read", user=self.user):
+			return set()
+		return self.listed(doctype, names)
 
 	def employee(self, name: str | None, fields: tuple[str, ...]):
 		if not name:
@@ -101,18 +136,14 @@ class Context:
 			raise Unverifiable(_("Employee {0} was not found.").format(name))
 		if not self.can_read(EMPLOYEE, record):
 			raise no_permission()
-		for fieldname in fields:
-			df = record.meta.get_field(fieldname)
-			if df is None or not record.has_permlevel_access_to(fieldname, df=df):
-				raise no_permission()
+		self.need(EMPLOYEE, [record.name], fields)
+		if not self.permlevels(EMPLOYEE, fields):
+			raise no_permission()
 		return record
 
 	def may_read_employee_fields(self, fields: tuple[str, ...]) -> bool:
-		if not frappe.has_permission(EMPLOYEE, "read", user=self.user):
-			return False
-		meta = frappe.get_meta(EMPLOYEE)
-		levels = meta.get_permlevel_access("read", user=self.user)
-		return all((df := meta.get_field(f)) is not None and df.permlevel in levels for f in fields)
+		self.need(EMPLOYEE, (), fields)
+		return bool(frappe.has_permission(EMPLOYEE, "read", user=self.user)) and self.permlevels(EMPLOYEE, fields)
 
 
 def employee_or_none(name: str):

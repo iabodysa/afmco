@@ -179,8 +179,8 @@ CHECKS = (
 	Check("EOS-POL-06", "settlement_overdue", POLICY, _lt("Settlement paid on time"), INFO, settlement_overdue),
 	Check("EOS-ATT-01", "has_attachment", ATTACHMENTS, _lt("Supporting file attached"), WARNING, eos_attachment),
 	Check("EOS-BEN-01", "iban_valid", BENEFICIARY, _lt("IBAN is valid"), BLOCK, eos_iban_valid),
-	Check("EOS-BEN-02", "account_matches_employee", BENEFICIARY, _lt("Account matches the employee record"), WARNING, eos_account_matches_employee),
-	Check("EOS-BEN-03", "account_changed_recently", BENEFICIARY, _lt("Employee bank account not changed recently"), WARNING, eos_account_changed_recently),
-	Check("EOS-BEN-04", "cash_exception_documented", BENEFICIARY, _lt("Cash payment exception is documented"), WARNING, cash_exception_documented),
-	Check("EOS-POL-07", "approver_not_requester", POLICY, _lt("Approver is not the requester"), WARNING, approver_not_requester),
+	Check("EOS-BEN-02", "account_matches_employee", BENEFICIARY, _lt("Account matches the employee record"), WARNING, eos_account_matches_employee, viewer=True),
+	Check("EOS-BEN-03", "account_changed_recently", BENEFICIARY, _lt("Employee bank account not changed recently"), WARNING, eos_account_changed_recently, viewer=True),
+	Check("EOS-BEN-04", "cash_exception_documented", BENEFICIARY, _lt("Cash payment exception is documented"), WARNING, cash_exception_documented, viewer=True),
+	Check("EOS-POL-07", "approver_not_requester", POLICY, _lt("Approver is not the requester"), WARNING, approver_not_requester, viewer=True),
 )

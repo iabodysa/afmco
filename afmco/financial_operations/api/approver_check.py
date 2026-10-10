@@ -23,6 +23,8 @@ def approver_doc(doctype: str, name: str):
 def run(doctype: str, name: str, retry: int = 0) -> dict:
 	doc = approver_doc(doctype, name)
 	if cint(retry):
+		if engine.RECHECK_ROLE not in frappe.get_roles():
+			frappe.throw(_("Only a System Manager can run the check again."), frappe.PermissionError)
 		engine.forget(doc)
 	return doc.approver_checklist(deferred=True)
 
@@ -30,6 +32,7 @@ def run(doctype: str, name: str, retry: int = 0) -> dict:
 @frappe.whitelist(methods=["POST"])
 def get_result(doctype: str, name: str) -> dict:
 	doc = approver_doc(doctype, name)
-	if engine.stored_items(doc) is None:
+	stored = engine.stored_items(doc)
+	if not engine.complete(doc, stored):
 		return {"pending": True, "modified": str(doc.modified)}
-	return doc.approver_checklist(deferred=True)
+	return engine.serve(doc, stored)

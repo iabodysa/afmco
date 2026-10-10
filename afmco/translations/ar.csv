@@ -13485,3 +13485,8 @@ Not finished,لم يكتمل,Approver Check
 Pending,قيد الانتظار,Approver Check
 The check did not finish in time.,لم ينته الفحص في الوقت المحدد.
 Retry,إعادة المحاولة,Approver Check
+The check is running; the result appears here when it is ready.,الفحص قيد التشغيل؛ تظهر النتيجة هنا عند اكتمالها.
+Only a System Manager can run the check again.,إعادة الفحص لمدير النظام فقط.
+Approver Check Result,نتيجة فحص المعتمد
+Document Modified,تاريخ تعديل المستند
+Engine Version,إصدار المحرك
