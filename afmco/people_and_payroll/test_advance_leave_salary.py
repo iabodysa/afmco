@@ -171,6 +171,21 @@ class TestFillPeriods(LedgerCase):
             ],
         )
 
+    def test_advance_last_row_ending_on_anniversary_is_capped_at_one_contract_year(self):
+        cases = (
+            ("2022-10-16", "2025-10-16", ("2024-10-16", "2025-10-15")),
+            ("2024-02-29", "2027-02-28", ("2026-02-28", "2027-02-27")),
+            ("2023-03-01", "2024-03-01", ("2023-03-01", "2024-02-29")),
+        )
+        for date_1, date_2, last_row in cases:
+            with self.subTest(date_1=date_1):
+                doc = self.filled(
+                    advance_leave_salary.ADVANCE_LEAVE_SALARY,
+                    {**ADVANCE, "date_1": date_1, "date_2": date_2},
+                    Ledger(slips=monthly_slips("2022-10-01", date_2)),
+                )
+                self.assertEqual(rows_of(doc)[-1], (*last_row, "unpaid", "21", 1190))
+
     def test_partial_last_row_is_prorated_over_its_contract_year_days(self):
         doc = self.filled(
             advance_leave_salary.END_OF_SERVICE,
@@ -224,7 +239,7 @@ class TestFillPeriods(LedgerCase):
             [row.status for row in doc.cva], ["unpaid", "unpaid", "unpaid"]
         )
 
-    def test_advance_periods_starting_on_or_before_last_clearance_are_paid_at_zero_and_last_row_runs_to_date_2(
+    def test_advance_periods_starting_on_or_before_last_clearance_are_paid_at_zero(
         self,
     ):
         doc = self.filled(
@@ -234,7 +249,7 @@ class TestFillPeriods(LedgerCase):
         )
         self.assertEqual(
             [(row.status, row.amount3) for row in doc.cva],
-            [("Paid", 0), ("Paid", 0), ("unpaid", 1193)],
+            [("Paid", 0), ("Paid", 0), ("unpaid", 1190)],
         )
 
     def test_employee_joined_before_cutoff_without_paid_advance_is_refused(self):

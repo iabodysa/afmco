@@ -175,8 +175,6 @@ def build_periods(doc):
         start = first + relativedelta(years=j)
         year_end = first + relativedelta(years=j + 1) - timedelta(days=1)
         period_end = min(year_end, last_day)
-        if j == years - 1 and doc.doctype == ADVANCE_LEAVE_SALARY:
-            period_end = last_day
         days = (period_end - start).days + 1
         year_days = (year_end - start).days + 1
         vad = doc.vacation_days_per_year or 21
