@@ -431,7 +431,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-10 15:15:04.119617",
+ "modified": "2026-10-10 16:40:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",
@@ -440,7 +440,6 @@
   {
    "amend": 1,
    "export": 1,
-   "import": 1,
    "print": 1,
    "read": 1,
    "report": 1,
@@ -472,7 +471,6 @@
    "write": 1
   },
   {
-   "cancel": 1,
    "create": 1,
    "if_owner": 1,
    "print": 1,
@@ -515,7 +513,6 @@
    "delete": 1,
    "email": 1,
    "export": 1,
-   "import": 1,
    "print": 1,
    "read": 1,
    "report": 1,
