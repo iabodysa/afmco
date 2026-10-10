@@ -10,6 +10,7 @@ from afmco.desk_host import DESK_HOST
 no_cache = 1
 
 SUPPORT_URL = "https://care.afmco.sa/"
+APEX_URL = "https://apex.afmco.sa"
 APP_URL = f"https://{DESK_HOST}"
 PAGE_LANGUAGES = ("en", "ar")
 LANGUAGE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365
@@ -29,6 +30,7 @@ def get_context(context):
 	)
 	context.support_url = SUPPORT_URL
 	context.portal_link, context.portal_label = get_portal_entry(is_guest, is_website_user)
+	context.apex_url = APEX_URL
 	context.services = get_services()
 	context.activities = get_activities()
 	context.company_values = get_company_values()
