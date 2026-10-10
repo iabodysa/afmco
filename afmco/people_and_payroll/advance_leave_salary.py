@@ -121,7 +121,7 @@ def recompute_settlement(doc):
     )
     allowance = js_round(unpaid_allowance(doc))
     doc.total_eos = total_eos
-    doc.dos_years = fixed(days / 365)
+    doc.dos_years = fixed(service_years(*span))
     doc.duration_of_service = fixed(days)
     if eos_days is not None:
         doc.days_of_eos = money(eos_days)

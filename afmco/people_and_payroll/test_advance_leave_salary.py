@@ -289,6 +289,14 @@ class TestRecomputeAndSubmit(LedgerCase):
         advance_leave_salary.recompute_settlement(doc)
         self.assertEqual((doc.cva_total, doc.amount), (2380, 5433))
 
+    def test_settlement_service_years_is_calendar_span_across_leap_days(self):
+        doc = make(
+            advance_leave_salary.END_OF_SERVICE,
+            {**SETTLEMENT, "date_1": "2010-01-01", "date_2": "2025-12-31"},
+        )
+        advance_leave_salary.recompute_settlement(doc)
+        self.assertEqual(doc.dos_years, "16.00")
+
     def test_advance_validate_recomputes_totals_from_rows(self):
         rows = [
             {"status": "unpaid", "amount3": 1190},
