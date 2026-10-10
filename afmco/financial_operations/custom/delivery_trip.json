@@ -1,0 +1,16 @@
+{
+ "doctype": "Delivery Trip",
+ "property_setters": [
+  {
+   "doc_type": "Delivery Trip",
+   "doctype_or_field": "DocField",
+   "field_name": "vehicle",
+   "module": "Financial Operations",
+   "name": "Delivery Trip-vehicle-reqd",
+   "property": "reqd",
+   "property_type": "Check",
+   "value": "0"
+  }
+ ],
+ "sync_on_migrate": 1
+}
