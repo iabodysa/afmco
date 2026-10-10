@@ -43,14 +43,19 @@ SETTLEMENT = {
 	"duration_of_service": "1249.00",
 	"end_of_service_reason": "1-End of term or mutual agreement",
 	"alternative_reward": None,
+	"date_1": "2022-08-31",
 	"date_2": "2026-01-31",
 	"creation": "2026-01-01 10:00:00",
 }
 
 
 class TestEndOfServiceFeedback(TestCase):
-	def test_feedback_prints_service_duration_in_years_months_days(self):
-		self.assertIn("- Service Duration: 3 Year(s), 5 Month(s), 4 Day(s)", feedback_for(SETTLEMENT))
+	def test_feedback_prints_service_duration_as_calendar_span_of_settlement_dates(self):
+		self.assertIn("- Service Duration: 3 Year(s), 5 Month(s), 1 Day(s)", feedback_for(SETTLEMENT))
+
+	def test_feedback_prints_full_calendar_year_as_one_year(self):
+		year = {**SETTLEMENT, "date_1": "2023-01-01", "date_2": "2023-12-31", "duration_of_service": "364.00"}
+		self.assertIn("- Service Duration: 1 Year(s), 0 Month(s), 0 Day(s)", feedback_for(year))
 
 	def test_feedback_prints_unset_amounts_empty(self):
 		text = feedback_for(SETTLEMENT)
