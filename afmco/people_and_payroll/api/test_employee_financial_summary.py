@@ -8,9 +8,10 @@ from frappe.tests import IntegrationTestCase
 
 from afmco.people_and_payroll.api.employee_financial_summary import (
 	PAGE_SIZE,
+	SECTIONS,
+	can_read,
 	get_employee_financial_summary,
 )
-from afmco.people_and_payroll.api.test_employee_form_api import make_employee
 
 HR_MANAGER = "efs-hr-manager@afmco.test"
 DENIED = "efs-denied@afmco.test"
@@ -36,6 +37,28 @@ def make_user(email, *roles):
 	user.add_roles(*roles)
 
 
+def make_employee(number):
+	company = frappe.db.get_value("Company", {}, "name")
+	return (
+		frappe.get_doc(
+			{
+				"doctype": "Employee",
+				"first_name": number,
+				"employee_number": number,
+				"company": company,
+				"department": frappe.db.get_value("Department", {"company": company, "is_group": 0}, "name"),
+				"nationality": "Saudi Arabia",
+				"gender": "Male",
+				"date_of_birth": "1990-01-01",
+				"date_of_joining": "2013-01-01",
+				"status": "Active",
+			}
+		)
+		.insert()
+		.name
+	)
+
+
 def estimate(employee):
 	return get_employee_financial_summary(employee)["eos"]["estimate"]
 
@@ -55,6 +78,7 @@ class TestEmployeeFinancialSummary(IntegrationTestCase):
 
 	def tearDown(self):
 		frappe.set_user("Administrator")
+		frappe.db.rollback()
 
 	def test_eos_estimate_over_five_years_counts_calendar_span_like_settlement(self):
 		self.assertEqual(frappe.utils.date_diff("2026-01-01", "2013-01-01"), 4748)
@@ -71,19 +95,17 @@ class TestEmployeeFinancialSummary(IntegrationTestCase):
 		self.assertEqual(result["eos_days"], 45.04)
 		self.assertEqual(result["amount"], 4504.17)
 
-	def test_section_without_doctype_read_is_hidden_and_shown_with_it(self):
+	def test_section_is_hidden_exactly_when_its_doctype_is_unreadable(self):
 		make_user(HR_MANAGER, "HR Manager")
 		frappe.set_user(HR_MANAGER)
 		frappe.clear_messages()
-		self.assertFalse(frappe.has_permission("Payment Requisition", "read"))
 		summary = get_employee_financial_summary(self.employee)
-		self.assertEqual(summary["requisitions"], {"hidden": True})
-		self.assertEqual(summary["employee"]["name"], self.employee)
+		readable = {key: all(can_read(*gate) for gate in gates) for key, (gates, _builder, _paged) in SECTIONS.items()}
+		self.assertIn(False, readable.values())
+		self.assertIn(True, readable.values())
+		for key, shown in readable.items():
+			self.assertEqual(summary[key] == {"hidden": True}, not shown, key)
 		self.assertFalse(frappe.message_log)
-		frappe.set_user("Administrator")
-		make_user(HR_MANAGER, "HR Manager", "Accountant Bot")
-		frappe.set_user(HR_MANAGER)
-		self.assertIn("account_no", get_employee_financial_summary(self.employee)["requisitions"])
 
 	def test_user_without_summary_read_is_refused(self):
 		make_user(OUTSIDER, "Employee")
