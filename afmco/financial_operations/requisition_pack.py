@@ -8,6 +8,8 @@ import frappe
 import pikepdf
 from PIL import Image, ImageOps, UnidentifiedImageError
 
+from afmco.financial_operations import excel_lock
+
 PAYMENT_REQUISITION = "Payment Requisition"
 JOURNAL_ENTRY = "Journal Entry"
 PRINT_FORMAT = "Payment Request Form"
@@ -72,7 +74,7 @@ def attachment_pdf(file: dict, downsample: bool) -> pikepdf.Pdf | None:
 		if extension == "pdf":
 			return pikepdf.Pdf.open(io.BytesIO(content))
 		return image_pdf(content, downsample)
-	except pikepdf.PdfError, pikepdf.PasswordError, UnidentifiedImageError, OSError:
+	except (pikepdf.PdfError, pikepdf.PasswordError, UnidentifiedImageError, OSError):
 		return None
 
 
@@ -121,26 +123,51 @@ def attach(requisition: str, journal_entry: str) -> dict:
 	separate = attach_excel(files, journal_entry)
 	return {
 		"file_url": file.file_url,
-		"skipped": [name for name in skipped if name not in separate],
-		"attached": separate,
+		"skipped": [name for name in skipped if name not in separate["originals"]],
+		"attached": separate["locked"],
+		"not_locked": separate["not_locked"],
 	}
 
 
-def attach_excel(files: list[dict], journal_entry: str) -> list[str]:
+def locked_file_name(file_name: str) -> str:
+	return f"{Path(file_name).stem}-locked.xlsx"
+
+
+def attach_excel(files: list[dict], journal_entry: str) -> dict:
 	excel = [f for f in files if file_extension(f) in EXCEL_EXTENSIONS]
-	present = set(
+	attached = set(
 		frappe.get_all(
 			"File",
-			filters={
-				"attached_to_doctype": JOURNAL_ENTRY,
-				"attached_to_name": journal_entry,
-				"file_url": ["in", [f.file_url for f in excel] or [""]],
-			},
-			pluck="file_url",
+			filters={"attached_to_doctype": JOURNAL_ENTRY, "attached_to_name": journal_entry},
+			pluck="file_name",
 		)
 	)
+	password = excel_lock.lock_password()
+	locked, not_locked = [], []
 	for f in excel:
-		if f.file_url not in present:
-			frappe.get_doc("File", f.name).create_attachment_copy(JOURNAL_ENTRY, journal_entry)
-			present.add(f.file_url)
-	return [f.file_name for f in excel]
+		if file_extension(f) == "xls":
+			if f.file_name not in attached:
+				frappe.get_doc("File", f.name).create_attachment_copy(JOURNAL_ENTRY, journal_entry)
+				attached.add(f.file_name)
+			not_locked.append(f.file_name)
+			continue
+		name = locked_file_name(f.file_name)
+		if name not in attached:
+			content = Path(frappe.get_doc("File", f.name).get_full_path()).read_bytes()
+			frappe.get_doc(
+				{
+					"doctype": "File",
+					"file_name": name,
+					"attached_to_doctype": JOURNAL_ENTRY,
+					"attached_to_name": journal_entry,
+					"is_private": 1,
+					"content": excel_lock.lock(content, password),
+				}
+			).insert()
+			attached.add(name)
+		locked.append(name)
+	return {
+		"originals": [f.file_name for f in excel],
+		"locked": locked,
+		"not_locked": not_locked,
+	}
