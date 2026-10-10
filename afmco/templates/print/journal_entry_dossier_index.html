@@ -1,4 +1,4 @@
-{%- macro stack(en) -%}<div>{{ _(en, "ar") }}</div><div class="en">{{ en }}</div>{%- endmacro -%}
+{%- macro stack(ar, en) -%}<div>{{ ar }}</div><div class="en">{{ en }}</div>{%- endmacro -%}
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -14,19 +14,19 @@ th { background: #f2f2f2; }
 </style>
 </head>
 <body>
-<h1>{{ stack("Attachments Index") }}<div class="ltr">{{ entry.name | e }}</div></h1>
+<h1>{{ stack(_("Attachments Index", "ar"), "Attachments Index") }}<div class="ltr">{{ entry.name | e }}</div></h1>
 <table>
-<thead><tr><th>{{ stack("File") }}</th><th>{{ stack("Type") }}</th><th>{{ stack("Pages") }}</th><th>{{ stack("Merged") }}</th></tr></thead>
+<thead><tr><th>{{ stack(_("File", "ar"), "File") }}</th><th>{{ stack(_("Type", "ar"), "Type") }}</th><th>{{ stack(_("Pages", "ar"), "Pages") }}</th><th>{{ stack(_("Merged", "ar"), "Merged") }}</th></tr></thead>
 <tbody>
 {%- for row in rows %}
 <tr>
 <td class="ltr">{{ row.file_name | e }}</td>
 <td class="ltr">{{ row.file_type | e }}</td>
 <td class="ltr">{% if row.merged %}{{ row.first }}{% if row.last != row.first %} - {{ row.last }}{% endif %}{% endif %}</td>
-<td>{% if row.merged %}{{ stack("Yes") }}{% else %}{{ stack("Not merged") }}{% endif %}</td>
+<td>{% if row.merged %}{{ stack(_("Yes", "ar"), "Yes") }}{% else %}{{ stack(_("Not merged", "ar"), "Not merged") }}{% endif %}</td>
 </tr>
 {%- else %}
-<tr><td colspan="4">{{ stack("No attachments") }}</td></tr>
+<tr><td colspan="4">{{ stack(_("No attachments", "ar"), "No attachments") }}</td></tr>
 {%- endfor %}
 </tbody>
 </table>

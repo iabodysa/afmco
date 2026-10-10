@@ -51,7 +51,6 @@ Approve,موافقة
 Approve Renewal,الموافقة على التجديد
 Approved By,وافق عليه
 Approvers,مسؤولو الموافقة
-April,أبريل
 Asset Type,نوع الأصل
 Assignment,الإسناد
 Assignment Details,تفاصيل التكليف
@@ -60,7 +59,6 @@ Attach the signed declaration before moving the request out of Pending.,أرفق
 Attachments View,عرض المرفقات
 Attachments,المرفقات
 Attendance Allowance,بدل الحضور
-August,أغسطس
 BASIC 2,الأساسي 2
 BASIC WAGE,الأجر الأساسي
 Balance Amount,مبلغ الرصيد
@@ -114,7 +112,6 @@ Convert,تحويل
 Copy BAT Script,نسخ برنامج BAT النصي
 Cost Calculation Details,تفاصيل احتساب التكلفة
 Create Bank Entry,إنشاء قيد بنكي
-Create Bank File,إنشاء ملف البنك
 Create Bulk Payment Order,إنشاء أمر دفع جماعي
 Create Expense Request,إنشاء طلب مصروف
 Create JV,إنشاء قيد يومية
@@ -138,7 +135,6 @@ Days Past Due,أيام التأخر في السداد
 Days Past Due Threshold,حد أيام التأخر في السداد
 Days for which Holidays are blocked for this department.,الأيام المحظورة فيها الإجازات لهذا القسم.
 Deceleration,الإقرار
-December,ديسمبر
 Default Account,الحساب الافتراضي
 Default Employee Advance Account,حساب سلف الموظفين الافتراضي
 Default Expense Claim Payable Account,حساب مطالبات المصروفات المستحقة الدفع الافتراضي
@@ -152,7 +148,6 @@ Departments,الأقسام
 Depreciation Schedule,جدول الإهلاك
 Details loaded successfully,حمّلت التفاصيل بنجاح
 Discount Rate,نسبة الخصم
-Document to track and manage payment details for Iqama renewals.,مستند لمتابعة وإدارة تفاصيل مدفوعات تجديد الإقامات.
 Document {0} for employee {1} has no SADAD number. Please try again after adding the SADAD number.,المستند {0} للموظف {1} لا يحتوي على رقم سداد. أعد المحاولة بعد إضافة رقم سداد.
 Download Employee Card,تنزيل بطاقة الموظف
 Download WPS,تنزيل ملف حماية الأجور
@@ -186,7 +181,6 @@ Employee {0} already has active Temporary IBAN {1},الموظف {0} لديه آ�
 Employee {0} excluded due to renewal issue.,استبعد الموظف {0} بسبب مشكلة في التجديد.
 Employee-wise Journal Entry created for Payroll Entry:,أنشئ قيد يومية لكل موظف لمسير الرواتب:
 Employees,الموظفون
-Employees Details,تفاصيل الموظفين
 Employment Active,على رأس العمل
 Employment Contract Overview,نظرة عامة على عقد العمل
 Employment Details,تفاصيل التوظيف
@@ -194,7 +188,6 @@ Employment Inactive,خارج العمل
 End Location,موقع النهاية
 End of Service (Months),مكافأة نهاية الخدمة (أشهر)
 Ending Contract (From Qiwa),العقود المنتهية (من قوى)
-English,الإنجليزية
 Enter Renewal Preference,أدخل رغبة التجديد
 Equipment Costs,تكاليف المعدات
 Error creating Accrual Entry:,خطأ في إنشاء قيد الاستحقاق:
@@ -233,7 +226,6 @@ Failed to retrieve the bank account number and cost center for the applicant.,ت
 Failed to submit Salary Slip:,تعذر اعتماد قسيمة الراتب:
 Failed to update documents: {0},تعذر تحديث المستندات: {0}
 Failed to validate employees: {0},تعذر التحقق من الموظفين: {0}
-February,فبراير
 Fees per Transfer,الرسوم لكل تحويل
 Fetch Details,جلب التفاصيل
 Fetch Salary,جلب الراتب
@@ -341,7 +333,6 @@ JV Created for Renewal Fees,أنشئ قيد يومية لرسوم التجديد
 JV Created for Sadad Invoice,أنشئ قيد يومية لفاتورة سداد
 JV Due Date,تاريخ استحقاق القيد
 JV Series,سلسلة قيود اليومية
-January,يناير
 Job Title,المسمى الوظيفي
 Journal Entry {0} is created.,أنشئ قيد اليومية {0}.
 KSA E-Invoicing QR,رمز QR للفوترة الإلكترونية في المملكة
@@ -360,7 +351,6 @@ Leave Salary (Months),راتب الإجازة (أشهر)
 Legal Entity / Subsidiary with a separate Chart of Establishment belonging to the Organization.,كيان نظامي أو شركة تابعة لها دليل منشآت مستقل يتبع الجهة.
 Legal user,مستخدم الشؤون القانونية
 License Plate,لوحة المركبة
-List of Iqamas with Renewal Issues,قائمة الإقامات التي بها مشكلات تجديد
 Loading details...,جار تحميل التفاصيل...
 Loading documents...,جار تحميل المستندات...
 Loan,القرض
@@ -375,7 +365,6 @@ Maximum draft Journal Entries one user can hold. 0 removes the limit.,أقصى �
 Make Accrual Entry,إنشاء قيد استحقاق
 Make Bank Entry,إنشاء قيد بنكي
 Man,رجل
-March,مارس
 Medical Exam Fee (24 months),رسوم الفحص الطبي (24 شهرًا)
 Medical Insurance (Annual),التأمين الطبي (سنوي)
 Message Greeting,تحية الرسالة
@@ -404,15 +393,12 @@ No Salary Slips found.,لم يعثر على قسائم رواتب.
 No Valid Documents,لا توجد مستندات صالحة
 No comments yet,لا توجد تعليقات بعد
 No data found.,لم يعثر على بيانات.
-No data matching the criteria to export,لا توجد بيانات تطابق المعايير للتصدير
-No data matching the criteria to process,لا توجد بيانات تطابق المعايير للمعالجة
 No data with credit to export,لا توجد بيانات دائنة للتصدير
 No draft Salary Slips found for this Payroll Entry.,لم يعثر على قسائم رواتب مسودة لمسير الرواتب هذا.
 No outstanding cheques or deposits in this period,لا توجد شيكات أو إيداعات معلقة في هذه الفترة
 No submitted Salary Slips found,لم يعثر على قسائم رواتب معتمدة
 No valid Employee IDs found after parsing.,لم يعثر على أرقام وظيفية صالحة بعد التحليل.
 No workflow history available,لا يوجد سجل لسير العمل
-November,نوفمبر
 Number of Documents,عدد المستندات
 Number of Employees,عدد الموظفين
 Number of vacation days per year,عدد أيام الإجازة السنوية
@@ -422,7 +408,6 @@ Open the form,فتح النموذج
 OT Hour,ساعة العمل الإضافي
 OTHER ALLOWANCE 2,بدلات أخرى 2
 Occupation,المهنة
-October,أكتوبر
 Odometer Value,قراءة العداد
 Old Parent,العنصر الرئيسي السابق
 One-time Employment Costs,تكاليف التوظيف لمرة واحدة
@@ -465,7 +450,6 @@ Payment Order created successfully:,أنشئ أمر الدفع بنجاح:
 Payment Order is already created.,سبق إنشاء أمر الدفع.
 Payment Order is not required for Company Transport.,لا يلزم أمر دفع لنقل الشركة.
 Payment Request Details,تفاصيل طلب الصرف
-Payment Request Number,رقم طلب الصرف
 Payment Request already created for document {0} for employee {1}.,سبق إنشاء طلب صرف للمستند {0} للموظف {1}.
 Payroll Clearing Account,حساب تسوية الرواتب
 Payroll Cost Center,مركز تكلفة الرواتب
@@ -534,7 +518,6 @@ Project Branch,فرع المشروع
 Property manager,مدير العقار
 Purchase Invoice Series,سلسلة فواتير الشراء
 Purchase Receipt,سند استلام المشتريات
-Qiwa,قوى
 Quota,الحصة
 Rabet Muqeem Integrator,رابط تكامل مقيم
 Ras Al Khaimah,رأس الخيمة
@@ -610,7 +593,6 @@ Self-Service Employee,موظف الخدمة الذاتية
 Send WhatsApp to Driver,إرسال واتساب إلى السائق
 Send WhatsApp to Supplier,إرسال واتساب إلى المورد
 Senior Tenure,خدمة طويلة
-September,سبتمبر
 Service Codes,رموز الخدمات
 Service Provider,مزود الخدمة
 Sharjah,الشارقة
@@ -751,11 +733,9 @@ You are updating {0} document(s),أنت تحدّث {0} مستند
 "You cannot uncheck ""Accrual Entry Created"" once it has been set.","لا يمكنك إلغاء تحديد ""Accrual Entry Created"" بعد تعيينه."
 "You cannot uncheck ""Bank Entry Created"" once it has been set.","لا يمكنك إلغاء تحديد ""Bank Entry Created"" بعد تعيينه."
 approved,موافق عليه
-arabic,العربية
 currency,العملة
 delivery,التوصيل
 employees,الموظفون
-english,الإنجليزية
 facility closed,المنشأة مغلقة
 generated,منشأ
 iQama Expired,إقامة منتهية
@@ -773,7 +753,6 @@ rejected,مرفوض
 supervisor,المشرف
 update,تحديث
 updated the status,حدّث الحالة
-witing,بالانتظار
 worker's monthly cost,التكلفة الشهرية للعامل
 {0} copied to clipboard,نسخ {0} إلى الحافظة
 "{0} uploaded, {1} skipped (already attached)",رفع {0}، وتم تخطي {1} (مرفق مسبقًا)
@@ -954,7 +933,6 @@ Urgency,درجة الاستعجال
 Supplier and Purchase Order,المورد وأمر الشراء
 Workflow,سير العمل
 Vehicle,المركبة
-Invoice Details,بيانات الفاتورة
 Payment Details,تفاصيل الدفع
 Totals,الإجماليات
 Payment Request,طلب الصرف
@@ -977,7 +955,6 @@ Report Settings,إعدادات التقرير
 Reward and Tickets,المكافأة والتذاكر
 Sponsor Status,حالة صاحب العمل
 Asset Details,تفاصيل الأصل
-Department and Corporation,القسم والمؤسسة
 Calculated from the contract start and end dates.,تحسب من تاريخ بدء العقد وتاريخ نهايته.
 "Enter the full monthly salary, including the food allowance.",أدخل الراتب الشهري كاملًا شاملًا بدل الطعام.
 "Monthly pay for hours above 8 a day, over 26 working days.",أجر الساعات الزائدة على 8 يوميًا عن 26 يوم عمل في الشهر.
@@ -1427,9 +1404,6 @@ This quotation is valid for 30 days from the issue date. The general contract te
 "Thank you for your interest in our services. If you have any questions or additional needs, please do not hesitate to contact us.",نشكركم على اهتمامكم بخدماتنا. إذا كان لديكم أي استفسارات أو احتياجات إضافية، يرجى عدم التردد في الاتصال بنا.,Labor Operating Costs Quotation
 Name:,الاسم:,Labor Operating Costs Quotation
 Signature:,التوقيع:,Labor Operating Costs Quotation
-End of Service Settlement Notice,إشعار بوجود تصفية نهاية خدمة,Advance Leave Salary
-"Dear user,",عزيزي المستخدم،,Advance Leave Salary
-Thank you for your understanding. Please verify the data and the work procedures in place before submitting any new request.,نشكرك على تفهمك ونطلب منك التحقق من صحة البيانات وإجراءات العمل المتبعة قبل محاولة تقديم أي طلبات جديدة.,Advance Leave Salary
 Important Notice,إشعار مهم,Advance Leave Salary
 Attention,تنبيه,End of Service Settlement
 "The duration of the employee's service is less than two years, which may affect certain calculations and entitlements.",مدة خدمة الموظف تقل عن عامين، مما قد يؤثر في بعض الحسابات والاستحقاقات.,End of Service Settlement
@@ -2191,12 +2165,10 @@ PC-.YYYY.-,PC-.YYYY.-
 PR Created,تم إنشاء طلب الصرف
 PR Not Created,لم ينشأ طلب الصرف
 PR-.YYYY.-,PR-.YYYY.-
-PR2,PR2
 PUP,PUP
 Passport Fee Payment,سداد رسوم الجواز
 Payment Approver,مسؤول موافقة الدفع
 Payment Date,تاريخ الدفع
-Payment Request Iqama List,قائمة إقامات طلب الصرف
 Payment of SADAD By Group,دفع سداد حسب المجموعة
 Payroll (Salary),الرواتب
 Permission Role {0} is already held by Payment Approver {1},دور الصلاحية {0} مسند مسبقًا إلى مسؤول موافقة الدفع {1}
@@ -2232,7 +2204,6 @@ Refundable Balance,الرصيد القابل للاسترداد
 Registration Status,حالة التسجيل
 Religion,الديانة
 Remotely - عن بعد,عن بعد
-Renewal List,قائمة التجديد
 Renewal Period,مدة التجديد
 Renewal Procedures,إجراءات التجديد
 Renewal expiration violation on employee,مخالفة انتهاء التجديد على الموظف
@@ -2262,7 +2233,6 @@ SMSA Labours - سمسا عمال,سمسا عمال
 SPO,SPO
 STCJ,STCJ
 Sadad Invoice,فاتورة سداد
-Sadad Invoice Number,رقم فاتورة سداد
 Salary Per Day,الراتب اليومي
 Salary Register WPS,سجل رواتب حماية الأجور
 Show Archive,عرض الأرشيف
@@ -13259,56 +13229,10 @@ This job is no longer open for applications.,هذه الوظيفة لم تعد �
 Please choose a value from the list.,يرجى اختيار قيمة من القائمة.
 Please enter a valid expected salary range.,يرجى إدخال نطاق صالح للراتب المتوقع.
 {0} on {1},{0} بتاريخ {1}
-Stored amounts match a fresh calculation,المبالغ المحفوظة تطابق حسابا جديدا
-Salary matches the employee record,الراتب يطابق سجل الموظف
-Joining date matches the employee record,تاريخ المباشرة يطابق سجل الموظف
-Leave period amounts match the formula,مبالغ فترات الإجازة تطابق المعادلة
-End of service reason is selected,سبب انتهاء الخدمة محدد
-Article 80 termination is documented,الفصل وفق المادة 80 موثق
-Full award exception is documented,استثناء المكافأة الكاملة موثق
-Deductions within half of final dues,الاستقطاعات في حدود نصف المستحقات النهائية
-Leave period not already settled,فترة الإجازة غير مصروفة سابقا
-Settlement paid on time,التصفية مدفوعة في موعدها
-Supporting file attached,مستند داعم مرفق
-IBAN is valid,IBAN صحيح
-Account matches the employee record,الحساب يطابق سجل الموظف
-Employee bank account not changed recently,الحساب البنكي للموظف لم يتغير مؤخرا
-Cash payment exception is documented,استثناء الدفع النقدي موثق
-Approver is not the requester,المعتمد ليس مقدم الطلب
-At least 21 leave days a year,21 يوم إجازة في السنة على الأقل
-No period before the joining date,لا توجد فترة قبل تاريخ المباشرة
-Advance requested within 90 days of the leave,طلب السلفة خلال 90 يوما من الإجازة
-Employee is active,الموظف على رأس العمل
-No other leave salary record awaiting approval,لا يوجد سجل راتب إجازة آخر بانتظار الموافقة
-Amount is greater than zero,المبلغ أكبر من صفر
-Reference points to an existing source record,المرجع يشير إلى سجل مصدر موجود
-Source record is approved,السجل المصدر موافق عليه
-Amount matches the source record,المبلغ يطابق السجل المصدر
-Reference is not overpaid,المرجع غير مدفوع بأكثر من مبلغه
-Cost center is set,مركز التكلفة محدد
-Remark describes the purpose,الملاحظة تصف الغرض
-Urgent request has a reason,الطلب العاجل له سبب
-Already paid flag,علامة مدفوع مسبقا
-Attached files can be opened,الملفات المرفقة قابلة للفتح
-Attachment not reused for another account,المرفق غير مكرر لحساب آخر
-Files added after the last workflow step,ملفات أضيفت بعد آخر مرحلة في سير العمل
-PDF shows no sign of editing,ملف PDF بلا علامات تعديل
-Invoice QR code matches,رمز QR للفاتورة مطابق
-Beneficiary name is filled,اسم المستفيد مدخل
-Beneficiary name matches the employee,اسم المستفيد يطابق الموظف
-Account payment history,سجل الدفعات إلى الحساب
-Supplier payment does not go to an employee,دفعة المورد لا تذهب إلى موظف
-Account not shared by several employees,الحساب غير مشترك بين عدة موظفين
-Account not of an employee who left,الحساب ليس لموظف انتهت خدمته
-Approver did not approve an earlier step,المعتمد لم يوافق على مرحلة سابقة
-No duplicate payment within 14 days,لا توجد دفعة مكررة خلال 14 يوما
-AI reading of attachments,قراءة المرفقات بالذكاء الاصطناعي
 Fail,غير مطابق,Approver Check
 Warning,يحتاج مراجعة,Approver Check
 Pass,تم التحقق,Approver Check
 Blocking,يمنع الاعتماد
-Article 80 lets the employer end the contract without the end of service award of Articles 84 and 85 only in the cases it lists; attach the investigation record that proves the case.,المادة 80 تجيز لصاحب العمل إنهاء العقد دون مكافأة نهاية الخدمة الواردة في المادتين 84 و85 في الحالات التي تذكرها فقط؛ أرفق محضر التحقيق الذي يثبت الحالة.
-"Article 84: half a month's wage for each of the first five years of service and a full month's wage for each later year. Article 85: a worker who resigns receives one third of that award after two to five years, two thirds after five to ten years, and the full award after ten years.",المادة 84: أجر نصف شهر عن كل سنة من السنوات الخمس الأولى من الخدمة، وأجر شهر كامل عن كل سنة بعدها. المادة 85: العامل المستقيل يستحق ثلث المكافأة بعد خدمة من سنتين إلى خمس سنوات، وثلثيها بعد خمس إلى عشر سنوات، والمكافأة كاملة بعد عشر سنوات.
 Pending,قيد الانتظار,Approver Check
 Retry,إعادة المحاولة,Approver Check
 No salary slip in the last 3 months,لم يُصرف لهم راتب خلال آخر 3 أشهر
