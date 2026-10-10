@@ -13214,6 +13214,7 @@ Copy,نسخ,WPS File
 Add your notes here,اضف ملاحظاتك هنا
 Leave allowance table not filled: no submitted Salary Slip for {0}. Fill the table by hand.,لم يعبأ جدول بدل الإجازة: لا توجد قسيمة راتب معتمدة لـ {0}. عبّئ الجدول يدوياً.
 "Leave allowance table not filled: the employee has no earlier Paid Advance Leave Salary and joined on {0}, before {1}. Fill the table by hand.",لم يعبأ جدول بدل الإجازة: لا يوجد للموظف راتب إجازة مقدم سابق مدفوع، وتاريخ التحاق الموظف {0} قبل {1}. عبّئ الجدول يدوياً.
+"Employee {0} has End of Service Settlement {1}, so no Advance Leave Salary can be created for this employee.",للموظف {0} تصفية نهاية خدمة {1}، لذلك لا يمكن إنشاء راتب إجازة مقدم لهذا الموظف.
 Row {0} of the leave allowance table overlaps a paid leave period and must be Paid before submitting.,الصف {0} في جدول بدل الإجازة يتداخل مع فترة إجازة مدفوعة، ويجب جعله مدفوعاً قبل الاعتماد.
 "Row {0} of the leave allowance table falls in the contract year {1} to {2}, which ends more than 90 days after this request was created.","الصف {0} في جدول بدل الإجازة يقع في سنة العقد من {1} إلى {2}، وهي تنتهي بعد أكثر من 90 يوماً من تاريخ إنشاء هذا الطلب."
 Iqama Renewal Control,إدارة تجديد الإقامة

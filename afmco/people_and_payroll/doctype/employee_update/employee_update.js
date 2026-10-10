@@ -71,13 +71,11 @@ function createAdvanceLeaveSalaryDialog(frm) {
 }
 
 function submitAdvanceLeaveSalaryForm(values, frm) {
-    const newRecord = frappe.model.get_new_doc('Advance Leave Salary');
-    newRecord.date_2 = values.vacation_start_date;
-    newRecord.check1 = values.check1;
-    newRecord.employee = frm.doc.employee;
-    frappe.db.insert(newRecord).then(doc => {
-        frappe.set_route('Form', doc.doctype, doc.name);
-    });
+    frappe.xcall('afmco.people_and_payroll.api.advance_leave_salary.create_advance_leave_salary', {
+        employee: frm.doc.employee,
+        vacation_start_date: values.vacation_start_date,
+        check1: values.check1,
+    }).then((name) => frappe.set_route('Form', 'Advance Leave Salary', name));
 }
 
 function updateEmployeeDetails(frm) {

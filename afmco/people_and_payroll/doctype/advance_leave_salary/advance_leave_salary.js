@@ -748,29 +748,6 @@ frappe.ui.form.on('Advance Leave Salary', {
         frappe.validated = false;
       }
     });
-    if (!frappe.validated) return;
-    
-    frappe.db.get_list('End of Service Settlement', {
-    filters: {
-        'employee': frm.doc.employee,
-        'docstatus': ['!=', 2],
-        'workflow_state': ['not in', ['Cancelled']],
-    },
-    fields: ['name']
-  }).then(records => {
-    if (records.length > 0) {
-
-      frappe.msgprint(`
-        <div style="font-family: Arial, sans-serif; font-size: 14px;">
-          <h4>${__("End of Service Settlement Notice", null, "Advance Leave Salary")}</h4>
-          <p>${__("Dear user,", null, "Advance Leave Salary")}</p>
-          <p>${__("All dues of this employee have already been settled, and our records hold a completed End of Service Settlement. Therefore, <strong>an advance leave salary payment cannot be made</strong> for this employee at this time.", null, "Advance Leave Salary")}</p>
-          <p>${__("Thank you for your understanding. Please verify the data and the work procedures in place before submitting any new request.", null, "Advance Leave Salary")}</p>
-        </div>
-      `, __("Important Notice", null, "Advance Leave Salary"));
-      frappe.validated = false; 
-    }
-  });
 },
   refresh: function(frm) {
         updateDashboards(frm);

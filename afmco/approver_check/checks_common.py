@@ -29,10 +29,10 @@ from afmco.people_and_payroll.advance_leave_salary import (
 	END_OF_SERVICE,
 	PAID,
 	PERIOD_DOCTYPE,
-	SETTLED_STATES,
 	daily_wage,
 	js_round,
 	overlaps,
+	settled_names,
 )
 from afmco.people_and_payroll.iban import (
 	BANK_CODE,
@@ -294,11 +294,7 @@ def counted_periods_elsewhere(ctx: Context) -> list[dict]:
 	doc = ctx.doc
 	found = []
 	for doctype in (ADVANCE_LEAVE_SALARY, END_OF_SERVICE):
-		names = frappe.get_all(
-			doctype,
-			filters={"employee": doc.employee, "name": ["!=", doc.name], "docstatus": ["<", 2], "workflow_state": ["in", SETTLED_STATES]},
-			pluck="name",
-		)
+		names = settled_names(doctype, doc, include_cancelled=False)
 		if not names:
 			continue
 		readable = ctx.readable_names(doctype, names)
