@@ -3,7 +3,6 @@ frappe.ui.form.on('Iqama Renewal Tracking', {
         try {
             renderDashboard(frm);
             renderContractCard(frm);
-            hideFieldsShownInDashboard(frm);
             updateStatus(frm);
             addCustomButtons(frm);
         } catch (error) {
@@ -327,12 +326,6 @@ function buildContractCard(frm) {
             color: '#dc3545'
         };
     }
-}
-
-function hideFieldsShownInDashboard(frm) {
-    frm.set_df_property('status', 'hidden', 1);
-    frm.set_df_property('employee_status', 'hidden', 1);
-    frm.set_df_property('posting_date', 'hidden', 1);
 }
 
 function addCustomButtons(frm) {
