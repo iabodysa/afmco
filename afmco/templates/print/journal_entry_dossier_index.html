@@ -1,0 +1,34 @@
+{%- macro stack(en) -%}<div>{{ _(en, "ar") }}</div><div class="en">{{ en }}</div>{%- endmacro -%}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<style>
+body { font-family: "Tajawal", sans-serif; font-size: 9pt; color: #1a1a1a; margin: 0; direction: rtl; }
+h1 { font-size: 12pt; margin: 0 0 8px; }
+.en { font-size: 7pt; color: #6b6b6b; direction: ltr; text-align: right; }
+.ltr { direction: ltr; unicode-bidi: embed; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 1px solid #999; padding: 4px 6px; text-align: right; vertical-align: top; }
+th { background: #f2f2f2; }
+</style>
+</head>
+<body>
+<h1>{{ stack("Attachments Index") }}<div class="ltr">{{ entry.name | e }}</div></h1>
+<table>
+<thead><tr><th>{{ stack("File") }}</th><th>{{ stack("Type") }}</th><th>{{ stack("Pages") }}</th><th>{{ stack("Merged") }}</th></tr></thead>
+<tbody>
+{%- for row in rows %}
+<tr>
+<td class="ltr">{{ row.file_name | e }}</td>
+<td class="ltr">{{ row.file_type | e }}</td>
+<td class="ltr">{% if row.merged %}{{ row.first }}{% if row.last != row.first %} - {{ row.last }}{% endif %}{% endif %}</td>
+<td>{% if row.merged %}{{ stack("Yes") }}{% else %}{{ stack("Not merged") }}{% endif %}</td>
+</tr>
+{%- else %}
+<tr><td colspan="4">{{ stack("No attachments") }}</td></tr>
+{%- endfor %}
+</tbody>
+</table>
+</body>
+</html>

@@ -6,16 +6,13 @@ from frappe import _
 from frappe.translate import print_language
 from frappe.utils import flt, get_fullname, in_words, money_in_words
 
+from afmco.financial_operations.journal_entry_dossier import split
 from afmco.financial_operations.requisition_pack import (
 	IMAGE_EXTENSIONS,
 	JOURNAL_ENTRY,
-	PAYMENT_REQUISITION,
 	file_extension,
-	pack_file_name,
-	requisition_files,
 )
 
-DOSSIER_MARK = "-dossier-"
 SUBMIT_CHANGE = '%["docstatus",0,1]%'
 
 
@@ -47,30 +44,7 @@ def approval(doc):
 
 
 def attachments(doc):
-	files = [
-		f
-		for f in frappe.get_all(
-			"File",
-			filters={
-				"attached_to_doctype": JOURNAL_ENTRY,
-				"attached_to_name": doc.name,
-				"is_folder": 0,
-			},
-			fields=["name", "file_name", "file_url", "file_size"],
-			order_by="creation asc",
-		)
-		if not is_dossier(f)
-	]
-	rows = [attachment_row(f, JOURNAL_ENTRY) for f in files]
-	requisition = doc.get("expense_request_cf")
-	if requisition and pack_file_name(requisition) not in {f.file_name for f in files}:
-		rows += [attachment_row(f, PAYMENT_REQUISITION) for f in requisition_files(requisition)]
-	return rows
-
-
-def is_dossier(file):
-	name = file.file_name or ""
-	return DOSSIER_MARK in name and name.lower().endswith(".pdf")
+	return [attachment_row(f, JOURNAL_ENTRY) for f in split(doc.name)[0]]
 
 
 def attachment_row(file, source):
