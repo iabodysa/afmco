@@ -297,6 +297,14 @@ class TestRecomputeAndSubmit(LedgerCase):
         advance_leave_salary.recompute_settlement(doc)
         self.assertEqual(doc.dos_years, "16.00")
 
+    def test_duration_of_service_counts_the_last_working_day(self):
+        year = {"date_1": "2025-01-01", "date_2": "2025-12-31"}
+        settlement = make(advance_leave_salary.END_OF_SERVICE, {**SETTLEMENT, **year})
+        advance = make(advance_leave_salary.ADVANCE_LEAVE_SALARY, {**ADVANCE, **year})
+        advance_leave_salary.recompute_settlement(settlement)
+        advance_leave_salary.recompute_advance(advance)
+        self.assertEqual((settlement.duration_of_service, advance.duration_of_service), ("365.00", "365.00"))
+
     def test_advance_validate_recomputes_totals_from_rows(self):
         rows = [
             {"status": "unpaid", "amount3": 1190},

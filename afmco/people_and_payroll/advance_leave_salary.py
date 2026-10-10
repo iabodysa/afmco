@@ -122,7 +122,7 @@ def recompute_settlement(doc):
     allowance = js_round(unpaid_allowance(doc))
     doc.total_eos = total_eos
     doc.dos_years = fixed(service_years(*span))
-    doc.duration_of_service = fixed(days)
+    doc.duration_of_service = fixed(days + 1)
     if eos_days is not None:
         doc.days_of_eos = money(eos_days)
     doc.cva_total = money(allowance)
@@ -148,7 +148,7 @@ def recompute_advance(doc):
     deducted = total_deductions(doc)
     ticket = 0 if doc.get("not") == 1 or doc.check1 == 0 else flt(doc.ticket_allowance)
     doc.dos_years = fixed(js_round(days / 365))
-    doc.duration_of_service = fixed(days)
+    doc.duration_of_service = fixed(days + 1)
     doc.cva_total = money(unpaid)
     doc.deductions = money(deducted)
     doc.amount = money(
