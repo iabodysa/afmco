@@ -528,7 +528,7 @@
    "link_fieldname": "tax_invoice_number"
   }
  ],
- "modified": "2026-10-10 18:00:00.000000",
+ "modified": "2026-10-10 23:30:00.000000",
  "module": "People and Payroll",
  "name": "End of Service Settlement",
  "naming_rule": "By \"Naming Series\" field",
@@ -544,9 +544,7 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
-   "set_user_permissions": "0",
    "share": 1,
-   "submit": 1,
    "write": 1
   },
   {
@@ -557,59 +555,55 @@
    "read": 1,
    "role": "Desk User",
    "select": 1,
-   "set_user_permissions": "0",
    "share": 1,
    "write": 1
   },
   {
-   "create": 1,
    "email": 1,
    "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "Support Team",
-   "set_user_permissions": "0",
+   "select": 1,
    "share": 1,
-   "submit": 1,
    "write": 1
   },
   {
-   "create": 1,
    "email": 1,
    "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "Legal user",
-   "set_user_permissions": "0",
+   "select": 1,
    "share": 1,
    "write": 1
   },
   {
-   "create": 1,
    "email": 1,
    "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "Accounts User",
-   "set_user_permissions": "0",
+   "select": 1,
    "share": 1,
    "write": 1
   },
   {
+   "amend": 1,
    "create": 1,
-   "email": 1,
    "export": 1,
-   "print": 1,
    "read": 1,
-   "report": 1,
    "role": "HR Manager",
-   "set_user_permissions": "0",
-   "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "print": 1,
+   "read": 1,
+   "role": "Amazon"
   },
   {
    "read": 1,
