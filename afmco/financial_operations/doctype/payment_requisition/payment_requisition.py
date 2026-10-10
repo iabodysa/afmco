@@ -21,6 +21,8 @@ RECEIPT_READ = "Receipt Read"
 DOCUMENT_UPLOAD = "Document Upload"
 RECEIPT_READ_ROLES = ("Auditor", *ACCOUNTS_ROLES)
 RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "beneficiary_employee_cf", "bank_reference_cf")
+SALARY_PAYMENT_TYPE = "Payroll (Salary)"
+BENEFICIARY_SHEET_EXTENSIONS = (".xlsx", ".xls", ".csv")
 
 
 class PaymentRequisition(Document):
@@ -181,8 +183,30 @@ class PaymentRequisition(Document):
 			self.amount_in_words=money_in_words(self.amount,frappe.get_cached_value("Company", get_default_company(), "default_currency"))
 		if frappe.flags.in_install or frappe.flags.in_migrate:
 			return
+		self.apply_multiple_beneficiaries()
 		self.sync_workflow_state_to_jv()
 		self.sync_paid_eos_settlement()
+
+	def apply_multiple_beneficiaries(self):
+		if self.payment_type == SALARY_PAYMENT_TYPE:
+			self.multiple_beneficiaries = 1
+		if not self.multiple_beneficiaries:
+			return
+		self.account_no = None
+		leaving_state = self._action == "submit" or self.has_value_changed("workflow_state")
+		if not self.is_new() and leaving_state and not self.has_beneficiary_sheet():
+			frappe.throw(
+				_("Attach the beneficiaries sheet (Excel or CSV) before sending a Payment Requisition with multiple beneficiaries."),
+				title=_("Beneficiaries Sheet Missing"),
+			)
+
+	def has_beneficiary_sheet(self) -> bool:
+		file_names = frappe.get_all(
+			"File",
+			filters={"attached_to_doctype": self.doctype, "attached_to_name": self.name},
+			pluck="file_name",
+		)
+		return any((name or "").lower().endswith(BENEFICIARY_SHEET_EXTENSIONS) for name in file_names)
 
 	def sync_workflow_state_to_jv(self):
 		try:
