@@ -13490,3 +13490,11 @@ Only a System Manager can run the check again.,إعادة الفحص لمدير 
 Approver Check Result,نتيجة فحص المعتمد
 Document Modified,تاريخ تعديل المستند
 Engine Version,إصدار المحرك
+Suspended,منقطع عن العمل,Employee
+Suspended Employees,الموظفون المنقطعون عن العمل
+No salary slip in the last 3 months,لم يُصرف لهم راتب خلال آخر 3 أشهر
+Employees: {0},عدد الموظفين: {0}
+Last Salary Month,آخر شهر صُرف فيه راتب
+No salary slip,لا يوجد راتب
+Open Employee List,فتح قائمة الموظفين
+Employees suspended for no salary slip in the last 3 months,موظفون منقطعون عن العمل لعدم صرف رواتبهم خلال آخر 3 أشهر

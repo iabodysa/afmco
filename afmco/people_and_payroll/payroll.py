@@ -74,9 +74,11 @@ def update_employee_bank_names() -> dict[str, object]:
 SALARY_SLIP_DOCTYPE = "Salary Slip"
 WINDOW_MONTHS = -3
 EXCLUDED_DEPARTMENTS = ["Remotely - عن بعد - AF"]
-INACTIVE_STATUS = "Inactive"
+SUSPENDED_STATUS = "Suspended"
 REASON = "no salary slip in the last 3 months"
 DEACTIVATION_SAVEPOINT = "afmco_employee_deactivation"
+NOTIFIED_ROLE = "HR Manager"
+SUSPENSION_EMAIL_TEMPLATE = "employees_suspended_without_salary"
 
 
 def candidate_filters(window_start: str) -> dict[str, object]:
@@ -97,26 +99,74 @@ def should_deactivate(salary_slips: list) -> bool:
 
 def employee_values() -> dict[str, str]:
     return {
-        "status": INACTIVE_STATUS,
-        "feedback": f"Employee status updated to '{INACTIVE_STATUS}' due to {REASON}.",
+        "status": SUSPENDED_STATUS,
+        "feedback": f"Employee status updated to '{SUSPENDED_STATUS}' due to {REASON}.",
     }
 
 
 def comment_for(today: str) -> str:
-    return f"Status updated to {INACTIVE_STATUS} on {today} due to {REASON}."
+    return f"Status updated to {SUSPENDED_STATUS} on {today} due to {REASON}."
 
 
-def process_deactivations(names: Iterable[str], apply: Callable[[str], None]) -> dict[str, object]:
-    updated = 0
+def process_deactivations(names: Iterable[str], apply: Callable[[str], bool]) -> dict[str, object]:
+    moved: list[str] = []
     errors: list[str] = []
     for name in names:
         try:
-            apply(name)
+            if apply(name):
+                moved.append(name)
         except Exception as error:
             errors.append(f"{name}: {error}")
-        else:
-            updated += 1
-    return {"updated": updated, "errors": errors}
+    return {"updated": len(moved), "moved": moved, "errors": errors}
+
+
+def last_salary_month(employee: str) -> str | None:
+    import frappe
+
+    starts = frappe.get_all(
+        SALARY_SLIP_DOCTYPE,
+        filters={"employee": employee, "docstatus": 1},
+        pluck="start_date",
+        order_by="start_date desc",
+        limit=1,
+    )
+    return frappe.utils.getdate(starts[0]).strftime("%Y-%m") if starts else None
+
+
+def moved_rows(names: list[str]) -> list[dict]:
+    import frappe
+
+    rows = frappe.get_all(
+        EMPLOYEE_DOCTYPE,
+        filters={"name": ["in", names]},
+        fields=["name", "employee_name", "department", "designation"],
+        order_by="name asc",
+    )
+    for row in rows:
+        row["last_salary_month"] = last_salary_month(row["name"])
+    return rows
+
+
+def notify_hr_managers(moved: list[str]) -> None:
+    import frappe
+    from frappe.utils.jinja_globals import is_rtl
+    from frappe.utils.user import get_users_with_role
+
+    if not moved:
+        return
+    recipients = get_users_with_role(NOTIFIED_ROLE)
+    if not recipients:
+        return
+    frappe.sendmail(
+        recipients=recipients,
+        subject=frappe._("Employees suspended for no salary slip in the last 3 months"),
+        template=SUSPENSION_EMAIL_TEMPLATE,
+        args={
+            "employees": moved_rows(moved),
+            "direction": "rtl" if is_rtl() else "ltr",
+            "site_url": frappe.utils.get_url(),
+        },
+    )
 
 
 def deactivate_employees_without_salary_slip() -> dict[str, object]:
@@ -126,10 +176,10 @@ def deactivate_employees_without_salary_slip() -> dict[str, object]:
     window_start = frappe.utils.add_months(today, WINDOW_MONTHS)
     candidates = frappe.get_all(EMPLOYEE_DOCTYPE, filters=candidate_filters(window_start), pluck="name")
 
-    def apply(name: str) -> None:
+    def apply(name: str) -> bool:
         slips = frappe.get_all(SALARY_SLIP_DOCTYPE, filters=slip_filters(name, window_start), pluck="name")
         if not should_deactivate(slips):
-            return
+            return False
         frappe.db.savepoint(DEACTIVATION_SAVEPOINT)
         try:
             employee = frappe.get_doc(EMPLOYEE_DOCTYPE, name)
@@ -139,11 +189,13 @@ def deactivate_employees_without_salary_slip() -> dict[str, object]:
         except Exception:
             frappe.db.rollback(save_point=DEACTIVATION_SAVEPOINT)
             raise
+        return True
 
     outcome = process_deactivations(candidates, apply)
     if outcome["errors"]:
         frappe.log_error(
-            title="Inactive without salary slip task",
+            title="Suspended without salary slip task",
             message="\n".join(str(error) for error in outcome["errors"]),
         )
+    notify_hr_managers(outcome["moved"])
     return outcome
