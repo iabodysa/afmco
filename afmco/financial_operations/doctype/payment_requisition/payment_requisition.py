@@ -9,6 +9,7 @@ from frappe.utils import escape_html, flt, getdate, money_in_words, now, today
 from frappe.utils.html_utils import sanitize_html
 
 from afmco.approver_check import engine
+from afmco.people_and_payroll.doctype.end_of_service_settlement.end_of_service_settlement import mark_settlement_paid
 
 ACCOUNTS_ROLES = ("Accounts User", "Accounts Manager")
 ACCOUNTS_BOT_VIEWER_ROLES = (*ACCOUNTS_ROLES, "System Manager")
@@ -203,9 +204,7 @@ class PaymentRequisition(Document):
 			return
 		frappe.db.savepoint("afmco_eos_paid_sync")
 		try:
-			eos = frappe.get_doc("End of Service Settlement", self.tax_invoice_number)
-			eos.update({"workflow_state": "Paid", "docstatus": 1})
-			eos.save(ignore_permissions=True)
+			mark_settlement_paid(self.tax_invoice_number)
 		except Exception:
 			frappe.db.rollback(save_point="afmco_eos_paid_sync")
 			frappe.log_error(title="EOS Update Failed")

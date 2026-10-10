@@ -186,6 +186,22 @@ def update_employee_status_for_settlements() -> dict[str, object]:
     return outcome
 
 
+def mark_settlement_paid(name):
+    frappe.db.set_value("End of Service Settlement", name, {
+        "pr_status": "PR Created",
+        "workflow_state": "Paid",
+        "docstatus": 1
+    })
+
+    frappe.get_doc({
+        "doctype": "Comment",
+        "comment_type": "Info",
+        "reference_doctype": "End of Service Settlement",
+        "reference_name": name,
+        "content": "Payment Request marked as Paid. EOS record has been automatically updated accordingly."
+    }).insert(ignore_permissions=True)
+
+
 def mark_paid_settlements():
     eos_docs = frappe.get_all(
         "End of Service Settlement",
@@ -201,22 +217,10 @@ def mark_paid_settlements():
                 ["name", "workflow_state"]
             )
 
-            if pr:
+            if pr and pr[1] == "Paid":
+                mark_settlement_paid(eos.name)
+            elif pr:
                 frappe.db.set_value("End of Service Settlement", eos.name, "pr_status", "PR Created")
-
-                if pr[1] == "Paid":
-                    frappe.db.set_value("End of Service Settlement", eos.name, {
-                        "workflow_state": "Paid",
-                        "docstatus": 1
-                    })
-
-                    frappe.get_doc({
-                        "doctype": "Comment",
-                        "comment_type": "Info",
-                        "reference_doctype": "End of Service Settlement",
-                        "reference_name": eos.name,
-                        "content": "Payment Request marked as Paid. EOS record has been automatically updated accordingly."
-                    }).insert(ignore_permissions=True)
         except Exception as e:
             frappe.log_error(f"Error processing EOS {eos.name}: {str(e)}", "EOS Payment Sync Error")
 
