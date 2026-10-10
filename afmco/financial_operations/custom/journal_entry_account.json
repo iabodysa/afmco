@@ -75,6 +75,16 @@
    "property": "print_width",
    "property_type": "Data",
    "value": "12%"
+  },
+  {
+   "doc_type": "Journal Entry Account",
+   "doctype_or_field": "DocType",
+   "field_name": null,
+   "module": "Financial Operations",
+   "name": "Journal Entry Account-main-field_order",
+   "property": "field_order",
+   "property_type": "Data",
+   "value": "[\"account\", \"debit_in_account_currency\", \"credit_in_account_currency\", \"user_remark\", \"col_break1\", \"employee\", \"cost_center\", \"party_type\", \"party\", \"account_type\", \"bank_account\", \"accounting_dimensions_section\", \"dimension_col_break\", \"project\", \"currency_section\", \"account_currency\", \"column_break_10\", \"exchange_rate\", \"sec_break1\", \"debit\", \"col_break2\", \"credit\", \"reference\", \"reference_type\", \"reference_name\", \"reference_due_date\", \"reference_detail_no\", \"advance_voucher_type\", \"advance_voucher_no\", \"is_tax_withholding_account\", \"col_break3\", \"is_advance\", \"against_account\"]"
   }
  ],
  "sync_on_migrate": 1
