@@ -19,7 +19,7 @@ JOURNAL_ENTRY_CREATED = "Journal Entry Created"
 STOPPED = "Stopped - Needs Review"
 RECEIPT_READ = "Receipt Read"
 DOCUMENT_UPLOAD = "Document Upload"
-ACCOUNTS_BOT_STATES = (DOCUMENT_UPLOAD, "Paid")
+ACCOUNTS_BOT_STATES = {DOCUMENT_UPLOAD: 0, "Paid": 1}
 PRELIMINARY_FIELD = "accounts_bot_preliminary"
 RECEIPT_READ_ROLES = ("Auditor", *ACCOUNTS_ROLES)
 RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "beneficiary_employee_cf", "bank_reference_cf")
@@ -46,10 +46,8 @@ class PaymentRequisition(Document):
 		ai_reading.set_onload(self)
 
 	def accounts_bot_refusal(self) -> str | None:
-		if self.docstatus != 1 or self.workflow_state not in ACCOUNTS_BOT_STATES:
-			return _(
-				"Only a submitted Payment Requisition in Document Upload or Paid state can be sent to the Accounts Bot."
-			)
+		if ACCOUNTS_BOT_STATES.get(self.workflow_state) != self.docstatus:
+			return _("Only a Payment Requisition in Document Upload or Paid state can be sent to the Accounts Bot.")
 		journal_entries = frappe.get_all(
 			"Journal Entry",
 			filters={"expense_request_cf": self.name, "docstatus": ["<", 2]},
