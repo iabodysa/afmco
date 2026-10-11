@@ -11,7 +11,7 @@ from afmco.people_and_payroll.wps_file import build_payroll_entry_file
 def payroll_entries_newest_first(doctype, txt, searchfield, start, page_len, filters):
 	return frappe.get_list(
 		"Payroll Entry",
-		filters={"name": ("like", f"%{txt}%")},
+		filters={**filters, "name": ("like", f"%{txt}%")},
 		fields=["name"],
 		order_by="creation desc",
 		offset=start,

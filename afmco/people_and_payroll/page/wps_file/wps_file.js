@@ -82,7 +82,8 @@ class WpsFile {
 				fieldtype: "Link",
 				options: "Payroll Entry",
 				get_query: () => ({
-					filters: { company: this.filters.company.get_value(), docstatus: 1 },
+					query: "afmco.people_and_payroll.api.wps_report.payroll_entries_newest_first",
+					filters: { company: this.filters.company.get_value() },
 				}),
 				change: reload,
 			}),
