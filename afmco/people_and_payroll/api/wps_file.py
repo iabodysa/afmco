@@ -31,5 +31,4 @@ def download(company, from_date, to_date, payroll_entry=None, file_format=REGIST
 		frappe.throw(
 			_("Resolve the {0} open checks before issuing the file", context="WPS File").format(len(problems))
 		)
-	filename, content = build_file(slips, file_format, payroll_entry or f"{from_date}_{to_date}")
-	return {"filename": filename, "content": content}
+	return {"files": build_file(slips, file_format)}

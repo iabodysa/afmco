@@ -207,18 +207,22 @@ class WpsFile {
 			return;
 		}
 		frappe.call({ method: `${WPS_API}.download`, type: "GET", args, freeze: true }).then((r) => {
-			this.issued = { filename: r.message.filename, file_format: args.file_format };
-			const bytes = Uint8Array.from(atob(r.message.content), (char) => char.charCodeAt(0));
-			const type = r.message.filename.endsWith(".zip") ? "application/zip" : "text/csv;charset=utf-8;";
-			const blob = new Blob([bytes], { type });
-			const link = document.createElement("a");
-			link.href = URL.createObjectURL(blob);
-			link.download = r.message.filename;
-			document.body.appendChild(link);
-			link.click();
-			document.body.removeChild(link);
-			URL.revokeObjectURL(link.href);
+			const { files } = r.message;
+			this.issued = { filename: files.map((file) => file.filename), file_format: args.file_format };
+			files.forEach((file, index) => setTimeout(() => this.save(file), index * 400));
 		});
+	}
+
+	save(file) {
+		const bytes = Uint8Array.from(atob(file.content), (char) => char.charCodeAt(0));
+		const type = file.filename.endsWith(".csv") ? "text/csv;charset=utf-8;" : "application/octet-stream";
+		const link = document.createElement("a");
+		link.href = URL.createObjectURL(new Blob([bytes], { type }));
+		link.download = file.filename;
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+		URL.revokeObjectURL(link.href);
 	}
 
 	show_email() {
@@ -283,7 +287,8 @@ class WpsFile {
 			);
 		}
 		lines.push(
-			`File: ${this.issued.filename}`,
+			"Files:",
+			...this.issued.filename,
 			"",
 			"Important: Please double-check the totals before uploading to the bank system.",
 			"",

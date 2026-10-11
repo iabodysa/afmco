@@ -176,25 +176,38 @@ def file_name(slips):
 	return f"Salary_Register_{len(slips)}_Rows.csv"
 
 
-def build_file(slips, file_format, reference):
+def build_file(slips, file_format):
 	if file_format not in FILE_FORMATS:
 		frappe.throw(_("Unknown file format {0}", context="WPS File").format(file_format))
 	if file_format == REGISTER_FORMAT:
-		filename, content = file_name(slips), build_csv(slips).encode("utf-8")
+		files = [{"filename": file_name(slips), "content": build_csv(slips)}]
 	else:
 		builder = frappe.new_doc("WPS Consolidated Report")
-		builder.name = reference
 		builder.bank_format = file_format
 		builder.file_type = "CSV"
-		filename, content = bundle_bank_files(builder, slips)
-	return filename, base64.b64encode(content).decode("ascii")
+		files, bat_script = bank_files(builder, slips)
+		if len(files) > 1:
+			files = [*files, {"filename": "generate_wps_files.bat", "content": bat_script}]
+	return [
+		{
+			"filename": file["filename"],
+			"content": base64.b64encode(
+				file["content"].encode("utf-8") if isinstance(file["content"], str) else file["content"]
+			).decode("ascii"),
+		}
+		for file in files
+	]
 
 
-def bundle_bank_files(builder, slips):
+def bank_files(builder, slips):
 	files, bat_blocks = builder._build_files(builder._group_by_labor_office(slips))
 	if not files:
 		frappe.throw(_("No submitted salary slips with net pay in this payroll entry", context="WPS File"))
-	content, filename, _single_file = builder._bundle_files(files, builder._build_bat_script(bat_blocks))
+	return files, builder._build_bat_script(bat_blocks)
+
+
+def bundle_bank_files(builder, slips):
+	content, filename, _single_file = builder._bundle_files(*bank_files(builder, slips))
 	return filename, content.getvalue()
 
 
