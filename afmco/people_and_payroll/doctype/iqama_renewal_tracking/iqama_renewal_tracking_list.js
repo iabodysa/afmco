@@ -102,10 +102,8 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                     'fieldname': 'renewal_preference',
                     'fieldtype': 'Select',
                     'label': __('Renewal Preference'),
-                    'options': [
-                        {'label': __('Yes'), 'value': 'Yes'},
-                        {'label': __('No'), 'value': 'No'}
-                    ],
+                    'options': frappe.meta.get_docfield('Iqama Renewal Tracking', 'renewal_preference').options
+                        .split('\n').filter(Boolean).map(value => ({'label': __(value), 'value': value})),
                     'reqd': 1
                 },
                 {
@@ -125,7 +123,7 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                     'fieldname': 'reason_of_not_renew',
                     'fieldtype': 'Small Text',
                     'label': __('Reason of Not Renewal'),
-                    'depends_on': 'eval:doc.renewal_preference == "No"',
+                    'depends_on': 'eval:doc.renewal_preference && doc.renewal_preference != "Yes"',
                     'reqd': 0
                 }
             ],
@@ -134,7 +132,7 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                     frappe.msgprint(__('Renewal Duration is required when Renewal Preference is Yes.'));
                     return;
                 }
-                if (values.renewal_preference === 'No' && !values.reason_of_not_renew) {
+                if (values.renewal_preference !== 'Yes' && !values.reason_of_not_renew) {
                     frappe.msgprint(__('Reason of Not Renewal is required when Renewal Preference is No.'));
                     return;
                 }
