@@ -2,19 +2,16 @@
 # For license information, please see license.txt
 
 import math
-from datetime import date, timedelta
+from datetime import timedelta
 
 import frappe
 from dateutil.relativedelta import relativedelta
 from frappe import _
 from frappe.utils import (
-    add_months,
     cint,
     cstr,
     date_diff,
     flt,
-    get_first_day,
-    get_last_day,
     getdate,
 )
 
@@ -27,7 +24,6 @@ SETTLED_STATES = (APPROVED, "Paid")
 PAID = "Paid"
 APPROVAL_LEAD_DAYS = 90
 UNPAID = "unpaid"
-NEW_JOINER_FROM = date(2023, 11, 15)
 
 NO_EOS_REASONS = {
     "3-Termination by the employer under Article 80",
@@ -256,55 +252,6 @@ def overlaps(row, period):
     )
 
 
-def months_without_salary_slip(employee, anchor, last_day):
-    first_month = get_first_day(anchor)
-    slips = frappe.get_all(
-        "Salary Slip",
-        filters={
-            "employee": employee,
-            "docstatus": 1,
-            "end_date": [">=", first_month],
-            "start_date": ["<=", last_day],
-        },
-        fields=["start_date", "end_date"],
-    )
-    missing = []
-    month = first_month
-    while month < get_first_day(last_day):
-        month_end = get_last_day(month)
-        if not any(
-            getdate(slip.start_date) <= month_end and getdate(slip.end_date) >= month
-            for slip in slips
-        ):
-            missing.append(month.strftime("%Y-%m"))
-        month = getdate(add_months(month, 1))
-    return missing
-
-
-def refuse_unsupported_fill(doc, rows):
-    joined = getdate(frappe.db.get_value("Employee", doc.employee, "date_of_joining"))
-    if joined < NEW_JOINER_FROM and not frappe.db.exists(
-        ADVANCE_LEAVE_SALARY,
-        {"employee": doc.employee, "name": ["!=", doc.name], "workflow_state": PAID},
-    ):
-        frappe.throw(
-            _(
-                "Leave allowance table not filled: the employee has no earlier Paid Advance Leave Salary and joined on {0}, before {1}. Fill the table by hand."
-            ).format(joined.isoformat(), NEW_JOINER_FROM.isoformat())
-        )
-    paid_ends = [
-        getdate(row["contract_end_date"]) for row in rows if row["status"] == PAID
-    ]
-    anchor = max(paid_ends) if paid_ends else joined
-    missing = months_without_salary_slip(doc.employee, anchor, getdate(doc.date_2))
-    if missing:
-        frappe.throw(
-            _(
-                "Leave allowance table not filled: no submitted Salary Slip for {0}. Fill the table by hand."
-            ).format(", ".join(missing))
-        )
-
-
 def fill_periods(doc):
     RECOMPUTE[doc.doctype](doc)
     rows = build_periods(doc)
@@ -319,7 +266,6 @@ def fill_periods(doc):
             row["status"] = PAID
         if clearance and getdate(row["contract_start_date"]) <= getdate(clearance):
             row.update(status=PAID, amount3=0)
-    refuse_unsupported_fill(doc, rows)
     doc.set("cva", rows)
     RECOMPUTE[doc.doctype](doc)
 
