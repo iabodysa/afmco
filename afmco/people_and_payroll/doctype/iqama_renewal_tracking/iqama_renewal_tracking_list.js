@@ -110,12 +110,8 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                     'fieldname': 'renewal_duration',
                     'fieldtype': 'Select',
                     'label': __('Renewal Duration'),
-                    'options': [
-                        {'label': __('3 months'), 'value': '3 months'},
-                        {'label': __('6 months'), 'value': '6 months'},
-                        {'label': __('9 months'), 'value': '9 months'},
-                        {'label': __('1 year'), 'value': '1 year'}
-                    ],
+                    'options': frappe.meta.get_docfield('Iqama Renewal Tracking', 'renewal_duration').options
+                        .split('\n').filter(Boolean).map(value => ({'label': __(value), 'value': value})),
                     'depends_on': 'eval:doc.renewal_preference == "Yes"',
                     'reqd': 0
                 },
