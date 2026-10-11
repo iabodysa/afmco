@@ -87,12 +87,6 @@ class WpsFile {
 				}),
 				change: reload,
 			}),
-			bank_name: this.page.add_field({
-				fieldname: "bank_name",
-				label: __("Bank", null, "WPS File"),
-				fieldtype: "Data",
-				change: reload,
-			}),
 		};
 	}
 
@@ -255,9 +249,7 @@ class WpsFile {
 			currency: "SAR",
 			minimumFractionDigits: 2,
 		});
-		const bank =
-			args.bank_name ||
-			(this.issued.file_format === WPS_REGISTER_FORMAT ? "Bank" : this.issued.file_format);
+		const bank = this.issued.file_format === WPS_REGISTER_FORMAT ? "Bank" : this.issued.file_format;
 		const reference = args.payroll_entry || `${args.from_date} - ${args.to_date}`;
 		const rows = files.map((file) =>
 			[

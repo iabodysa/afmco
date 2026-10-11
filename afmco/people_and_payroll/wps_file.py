@@ -49,7 +49,7 @@ def check_access():
 	frappe.has_permission("Salary Slip", "report", throw=True)
 
 
-def get_slips(company, from_date, to_date, payroll_entry=None, bank_name=None):
+def get_slips(company, from_date, to_date, payroll_entry=None):
 	filters = {
 		"docstatus": 1,
 		"company": company,
@@ -58,8 +58,6 @@ def get_slips(company, from_date, to_date, payroll_entry=None, bank_name=None):
 	}
 	if payroll_entry:
 		filters["payroll_entry"] = payroll_entry
-	if bank_name:
-		filters["bank_name"] = bank_name
 	slips = frappe.get_list(
 		"Salary Slip",
 		filters=filters,
