@@ -369,7 +369,8 @@ def create_payment_request(batch):
 			"doctype": PAYMENT_REQUEST,
 			"naming_series": PAYMENT_REQUEST_SERIES,
 			"tax_invoice_number": doc.name,
-			"account_no": _invoice_number(doc, rows),
+			"sadad_biller_code": _biller_code(rows),
+			"sadad_bill_number": _invoice_number(doc, rows),
 			"beneficiary_name": BENEFICIARY,
 			"amount": _totals(doc)[1],
 			"remark": "".join(_payment_request_remark(row) for row in rows),
@@ -930,6 +931,18 @@ def _invoice_number(doc, rows):
 			"The batch needs exactly one SADAD invoice number; found {0}.",
 			context=CONTEXT,
 		).format(len(numbers))
+	)
+
+
+def _biller_code(rows):
+	billers = {cstr(row.biller).strip() for row in rows} - {""}
+	if len(billers) == 1:
+		return billers.pop()
+	frappe.throw(
+		_(
+			"The batch needs exactly one SADAD biller code; found {0}.",
+			context=CONTEXT,
+		).format(len(billers))
 	)
 
 
