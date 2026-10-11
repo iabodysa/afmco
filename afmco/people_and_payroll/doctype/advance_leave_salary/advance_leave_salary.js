@@ -841,6 +841,8 @@ frappe.ui.form.on('Advance Leave Salary', {
         expenseRequest.date = frappe.datetime.nowdate();
         expenseRequest.payment_type = 'SADAD Payment';
         expenseRequest.mode_of_payment = 'SADAD Payment';
+        expenseRequest.multiple_beneficiaries = 1;
+        expenseRequest.payment_approver = 'Human Resources - الموارد البشرية';
         expenseRequest.remark = `Exit and return visa:
 - Employee Name: ${frm.doc.employee_name}
 - Employee ID: ${frm.doc.employee}
