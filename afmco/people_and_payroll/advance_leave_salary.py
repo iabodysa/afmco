@@ -24,6 +24,7 @@ SETTLED_STATES = (APPROVED, "Paid")
 PAID = "Paid"
 APPROVAL_LEAD_DAYS = 90
 UNPAID = "unpaid"
+DRIFT_DAYS = 7
 
 NO_EOS_REASONS = {
     "3-Termination by the employer under Article 80",
@@ -252,6 +253,38 @@ def overlaps(row, period):
     )
 
 
+def shared_days(row, period):
+    start = max(getdate(row.contract_start_date), getdate(period.contract_start_date))
+    end = min(getdate(row.contract_end_date), getdate(period.contract_end_date))
+    return (end - start).days + 1
+
+
+def same_year(row, period):
+    return (
+        abs(date_diff(row.contract_start_date, period.contract_start_date)) <= DRIFT_DAYS
+        and abs(date_diff(row.contract_end_date, period.contract_end_date)) <= DRIFT_DAYS
+    )
+
+
+def trim(row, period):
+    start = getdate(row["contract_start_date"])
+    end = getdate(row["contract_end_date"])
+    days = (end - start).days + 1
+    if getdate(period.contract_end_date) < end:
+        start = getdate(period.contract_end_date) + timedelta(days=1)
+    else:
+        end = getdate(period.contract_start_date) - timedelta(days=1)
+    kept = (end - start).days + 1
+    row.update(
+        contract_start_date=start,
+        contract_end_date=end,
+        amount3=js_round(flt(row["amount3"]) * kept / days),
+        note=_("{0} days settled in a previous clearance were removed from this period.").format(
+            days - kept
+        ),
+    )
+
+
 def fill_periods(doc):
     RECOMPUTE[doc.doctype](doc)
     rows = build_periods(doc)
@@ -262,8 +295,21 @@ def fill_periods(doc):
             "Employee", doc.employee, "date_of_last_vacation_clearance"
         )
     for row in rows:
-        if any(overlaps(frappe._dict(row), period) for period in periods):
+        current = frappe._dict(row)
+        matched = [period for period in periods if overlaps(current, period)]
+        twin = next((period for period in matched if same_year(current, period)), None)
+        if twin:
+            row.update(
+                status=PAID,
+                contract_start_date=twin.contract_start_date,
+                contract_end_date=twin.contract_end_date,
+            )
+        elif any(shared_days(current, period) > DRIFT_DAYS for period in matched):
             row["status"] = PAID
+        else:
+            for period in matched:
+                if overlaps(frappe._dict(row), period):
+                    trim(row, period)
         if clearance and getdate(row["contract_start_date"]) <= getdate(clearance):
             row.update(status=PAID, amount3=0)
     doc.set("cva", rows)

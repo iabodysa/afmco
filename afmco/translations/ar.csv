@@ -13289,3 +13289,4 @@ SADAD Biller Code,رمز المفوتر,
 SADAD Bill Number,رقم فاتورة سداد,
 {0} must contain digits only.,يجب أن يحتوي {0} على أرقام فقط.,
 Invalid SADAD Number,رقم سداد غير صحيح,
+{0} days settled in a previous clearance were removed from this period.,حُذف من هذه الفترة {0} يوم سبق تسويتها في مخالصة سابقة.
