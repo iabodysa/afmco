@@ -1531,11 +1531,10 @@ WPS Salary File,ملف رواتب حماية الأجور,WPS File
 Issue WPS file,إصدار ملف حماية الأجور,WPS File
 Refresh,إعادة تحميل,WPS File
 Company,الشركة,WPS File
-From Date,من تاريخ,WPS File
-To Date,إلى تاريخ,WPS File
 Payroll Entry,مسير الرواتب,WPS File
 Bank,البنك,WPS File
-Select a company and a date range,اختر الشركة والفترة,WPS File
+Select a company and a Payroll Entry,اختر الشركة ومسير الرواتب,WPS File
+Select a Payroll Entry,اختر مسير الرواتب,WPS File
 No submitted salary slips match these filters,لا توجد قسائم رواتب معتمدة تطابق عوامل التصفية هذه,WPS File
 {0} open checks,{0} ملاحظة مفتوحة,WPS File
 Ready to issue,جاهز للإصدار,WPS File

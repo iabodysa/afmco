@@ -60,27 +60,12 @@ class WpsFile {
 				default: frappe.defaults.get_user_default("Company"),
 				change: reload,
 			}),
-			from_date: this.page.add_field({
-				fieldname: "from_date",
-				label: __("From Date", null, "WPS File"),
-				fieldtype: "Date",
-				reqd: 1,
-				default: frappe.datetime.month_start(),
-				change: reload,
-			}),
-			to_date: this.page.add_field({
-				fieldname: "to_date",
-				label: __("To Date", null, "WPS File"),
-				fieldtype: "Date",
-				reqd: 1,
-				default: frappe.datetime.month_end(),
-				change: reload,
-			}),
 			payroll_entry: this.page.add_field({
 				fieldname: "payroll_entry",
 				label: __("Payroll Entry", null, "WPS File"),
 				fieldtype: "Link",
 				options: "Payroll Entry",
+				reqd: 1,
 				get_query: () => ({
 					query: "afmco.people_and_payroll.api.wps_report.payroll_entries_newest_first",
 					filters: { company: this.filters.company.get_value() },
@@ -102,7 +87,7 @@ class WpsFile {
 	}
 
 	ready(args) {
-		return args.company && args.from_date && args.to_date;
+		return args.company && args.payroll_entry;
 	}
 
 	load() {
@@ -110,7 +95,7 @@ class WpsFile {
 		this.result = null;
 		this.issued = null;
 		if (!this.ready(args)) {
-			this.render_message(__("Select a company and a date range", null, "WPS File"));
+			this.render_message(__("Select a company and a Payroll Entry", null, "WPS File"));
 			return;
 		}
 		frappe
@@ -203,7 +188,7 @@ class WpsFile {
 		const args = this.args();
 		args.file_format = this.file_format.get_value();
 		if (!this.ready(args)) {
-			frappe.msgprint(__("Select a company and a date range", null, "WPS File"));
+			frappe.msgprint(__("Select a company and a Payroll Entry", null, "WPS File"));
 			return;
 		}
 		frappe.call({ method: `${WPS_API}.download`, type: "GET", args, freeze: true }).then((r) => {
@@ -256,8 +241,7 @@ class WpsFile {
 			minimumFractionDigits: 2,
 		});
 		const bank = this.issued.file_format === WPS_REGISTER_FORMAT ? "Bank" : this.issued.file_format;
-		const reference = args.payroll_entry || `${args.from_date} - ${args.to_date}`;
-		const rows = files.map((file) =>
+				const rows = files.map((file) =>
 			[
 				file.labor_office_file_number ? `1 - ${file.labor_office_file_number}` : "N/A",
 				file.corporation_cr || "-",
@@ -268,7 +252,7 @@ class WpsFile {
 		const lines = [
 			`Dear ${bank} Representative,`,
 			"",
-			`Please find attached the WPS file for payroll processing (${reference}). Below is a summary of the file:`,
+			`Please find attached the WPS file for payroll processing (${args.payroll_entry}). Below is a summary of the file:`,
 			"",
 			"MOL No. | CR | Count | Total Amount",
 			...rows,

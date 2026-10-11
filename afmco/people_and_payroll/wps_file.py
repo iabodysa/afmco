@@ -50,15 +50,10 @@ def check_access():
 	frappe.has_permission("Salary Slip", "report", throw=True)
 
 
-def get_slips(company, from_date, to_date, payroll_entry=None):
-	filters = {
-		"docstatus": 1,
-		"company": company,
-		"start_date": [">=", from_date],
-		"end_date": ["<=", to_date],
-	}
-	if payroll_entry:
-		filters["payroll_entry"] = payroll_entry
+def get_slips(company, payroll_entry):
+	if not payroll_entry:
+		frappe.throw(_("Select a Payroll Entry", context="WPS File"))
+	filters = {"docstatus": 1, "company": company, "payroll_entry": payroll_entry}
 	slips = frappe.get_list(
 		"Salary Slip",
 		filters=filters,

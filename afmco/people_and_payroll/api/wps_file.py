@@ -15,16 +15,16 @@ from afmco.people_and_payroll.wps_file import (
 
 
 @frappe.whitelist(methods=["GET"])
-def preview(company, from_date, to_date, payroll_entry=None):
+def preview(company, payroll_entry=None):
 	check_access()
-	slips = get_slips(company, from_date, to_date, payroll_entry)
+	slips = get_slips(company, payroll_entry)
 	return {"rows": slips, "problems": get_problems(slips), "groups": get_file_groups(slips)}
 
 
 @frappe.whitelist(methods=["GET"])
-def download(company, from_date, to_date, payroll_entry=None, file_format=REGISTER_FORMAT):
+def download(company, payroll_entry=None, file_format=REGISTER_FORMAT):
 	check_access()
-	slips = get_slips(company, from_date, to_date, payroll_entry)
+	slips = get_slips(company, payroll_entry)
 	if not slips:
 		frappe.throw(_("No submitted salary slips match these filters", context="WPS File"))
 	if problems := get_problems(slips):
