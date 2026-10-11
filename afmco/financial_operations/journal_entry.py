@@ -47,6 +47,8 @@ class AfmcoJournalEntry:
 
 	def validate(self):
 		super().validate()
+		if not frappe.flags.in_import:
+			self.validate_total_debit_and_credit()
 		self.validate_single_active_links()
 		if not self.expense_request_cf:
 			return
