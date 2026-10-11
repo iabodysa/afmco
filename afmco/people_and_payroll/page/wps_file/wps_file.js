@@ -208,7 +208,9 @@ class WpsFile {
 		}
 		frappe.call({ method: `${WPS_API}.download`, type: "GET", args, freeze: true }).then((r) => {
 			this.issued = { filename: r.message.filename, file_format: args.file_format };
-			const blob = new Blob([r.message.content], { type: "text/csv;charset=utf-8;" });
+			const bytes = Uint8Array.from(atob(r.message.content), (char) => char.charCodeAt(0));
+			const type = r.message.filename.endsWith(".zip") ? "application/zip" : "text/csv;charset=utf-8;";
+			const blob = new Blob([bytes], { type });
 			const link = document.createElement("a");
 			link.href = URL.createObjectURL(blob);
 			link.download = r.message.filename;

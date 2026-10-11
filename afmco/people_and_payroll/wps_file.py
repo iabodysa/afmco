@@ -1,6 +1,7 @@
 # Copyright (c) 2026, AFMCO and contributors
 # For license information, please see license.txt
 
+import base64
 import csv
 import io
 import re
@@ -61,10 +62,27 @@ def get_slips(company, from_date, to_date, payroll_entry=None):
 	slips = frappe.get_list(
 		"Salary Slip",
 		filters=filters,
-		fields=["name", "payroll_entry", "iban_holder_name", "labor_office_file_number", "hold", *FILE_FIELDS],
+		fields=[
+			"name",
+			"payroll_entry",
+			"iban_holder_name",
+			"labor_office_file_number",
+			"hold",
+			"end_date",
+			*FILE_FIELDS,
+		],
 		order_by="name asc",
 	)
+	cost_centers = dict(
+		frappe.get_all(
+			"Payroll Entry",
+			filters={"name": ["in", list({slip.payroll_entry for slip in slips if slip.payroll_entry})]},
+			fields=["name", "cost_center"],
+			as_list=True,
+		)
+	)
 	for slip in slips:
+		slip.cost_center = cost_centers.get(slip.payroll_entry) or ""
 		for field in NUMBER_FIELDS:
 			slip[field] = flt(slip[field])
 	return slips
@@ -158,15 +176,26 @@ def file_name(slips):
 	return f"Salary_Register_{len(slips)}_Rows.csv"
 
 
-def build_file(slips, file_format):
+def build_file(slips, file_format, reference):
 	if file_format not in FILE_FORMATS:
 		frappe.throw(_("Unknown file format {0}", context="WPS File").format(file_format))
 	if file_format == REGISTER_FORMAT:
-		return file_name(slips), build_csv(slips)
-	builder = frappe.new_doc("WPS Consolidated Report")
-	builder.bank_format = file_format
-	headers, rows = builder._build_matrix_rows(slips)
-	return f"WPS_{file_format}_{len(slips)}_Rows.csv", builder._make_csv(headers, rows).decode("utf-8")
+		filename, content = file_name(slips), build_csv(slips).encode("utf-8")
+	else:
+		builder = frappe.new_doc("WPS Consolidated Report")
+		builder.name = reference
+		builder.bank_format = file_format
+		builder.file_type = "CSV"
+		filename, content = bundle_bank_files(builder, slips)
+	return filename, base64.b64encode(content).decode("ascii")
+
+
+def bundle_bank_files(builder, slips):
+	files, bat_blocks = builder._build_files(builder._group_by_labor_office(slips))
+	if not files:
+		frappe.throw(_("No submitted salary slips with net pay in this payroll entry", context="WPS File"))
+	content, filename, _single_file = builder._bundle_files(files, builder._build_bat_script(bat_blocks))
+	return filename, content.getvalue()
 
 
 def build_payroll_entry_file(payroll_entry, bank_format, file_type):
@@ -176,8 +205,4 @@ def build_payroll_entry_file(payroll_entry, bank_format, file_type):
 	builder.file_type = file_type
 	builder.append("payroll_entries", {"payroll_entry": payroll_entry})
 	builder._validate_selects()
-	files, bat_blocks = builder._build_files(builder._group_by_labor_office(builder._fetch_slips()))
-	if not files:
-		frappe.throw(_("No submitted salary slips with net pay in this payroll entry", context="WPS File"))
-	content, filename, _single_file = builder._bundle_files(files, builder._build_bat_script(bat_blocks))
-	return filename, content.getvalue()
+	return bundle_bank_files(builder, builder._fetch_slips())
