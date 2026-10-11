@@ -44,7 +44,7 @@ RENAMES = {
 		"custom_hold": "hold",
 		"custom_loan": "loan",
 		"custom_loan_account": "loan_account",
-		"custom_loans": "loans",
+		"custom_loans": "salary_loan_repayment",
 		"custom_loans_amount": "loans_amount",
 	},
 	"Purchase Invoice": {"custom_year": "year"},

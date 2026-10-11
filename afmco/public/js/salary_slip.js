@@ -17,11 +17,11 @@ frappe.ui.form.on('Salary Slip', {
                         let loan = r.message[0];  
                         
                      
-                        frm.set_value('loans', loan.name);  
+                        frm.set_value('salary_loan_repayment', loan.name);  
                         frm.set_value('loans_amount', loan.amount);  
                         frm.set_value('loan_account', loan.loan_account);  
 
-                        frm.refresh_field('loans');
+                        frm.refresh_field('salary_loan_repayment');
                         frm.refresh_field('loans_amount');
                         frm.refresh_field('loan_account');
                     }
