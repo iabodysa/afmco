@@ -19,6 +19,8 @@ JOURNAL_ENTRY_CREATED = "Journal Entry Created"
 STOPPED = "Stopped - Needs Review"
 RECEIPT_READ = "Receipt Read"
 DOCUMENT_UPLOAD = "Document Upload"
+ACCOUNTS_BOT_STATES = (DOCUMENT_UPLOAD, "Paid")
+PRELIMINARY_FIELD = "accounts_bot_preliminary"
 RECEIPT_READ_ROLES = ("Auditor", *ACCOUNTS_ROLES)
 RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "beneficiary_employee_cf", "bank_reference_cf")
 BENEFICIARY_SHEET_EXTENSIONS = (".xlsx", ".xls", ".csv")
@@ -31,7 +33,9 @@ class PaymentRequisition(Document):
 		refusal = self.accounts_bot_refusal()
 		self.set_onload(
 			"accounts_bot_allowed",
-			not self.accounts_bot_cf and bool(roles.intersection(ACCOUNTS_ROLES)) and not refusal,
+			(not self.accounts_bot_cf or self.preliminary_update_due())
+			and bool(roles.intersection(ACCOUNTS_ROLES))
+			and not refusal,
 		)
 		self.set_onload("accounts_bot_viewer", bool(roles.intersection(ACCOUNTS_BOT_VIEWER_ROLES)))
 		receipt_role = bool(roles.intersection(RECEIPT_READ_ROLES)) and not self.receipt_read_refusal()
@@ -42,21 +46,40 @@ class PaymentRequisition(Document):
 		ai_reading.set_onload(self)
 
 	def accounts_bot_refusal(self) -> str | None:
-		if self.docstatus != 1 or self.workflow_state != "Paid":
-			return _("Only a submitted Payment Requisition in Paid state can be sent to the Accounts Bot.")
-		if self.jv_status == "JV Created" or frappe.db.exists(
-			"Journal Entry", {"expense_request_cf": self.name, "docstatus": ["<", 2]}
+		if self.docstatus != 1 or self.workflow_state not in ACCOUNTS_BOT_STATES:
+			return _(
+				"Only a submitted Payment Requisition in Document Upload or Paid state can be sent to the Accounts Bot."
+			)
+		journal_entries = frappe.get_all(
+			"Journal Entry",
+			filters={"expense_request_cf": self.name, "docstatus": ["<", 2]},
+			fields=["docstatus", PRELIMINARY_FIELD],
+		)
+		if any(row.docstatus or not row.get(PRELIMINARY_FIELD) for row in journal_entries) or (
+			self.jv_status == "JV Created" and not journal_entries
 		):
 			return _("A Journal Entry already exists for this Payment Requisition.")
 		return None
 
+	def preliminary_update_due(self) -> bool:
+		return self.accounts_bot_status == JOURNAL_ENTRY_CREATED and bool(
+			frappe.db.exists(
+				"Journal Entry", {"expense_request_cf": self.name, "docstatus": 0, PRELIMINARY_FIELD: 1}
+			)
+		)
+
 	def queue_for_accounts_bot(self) -> str:
-		if self.accounts_bot_cf:
+		if self.accounts_bot_cf and not self.preliminary_update_due():
 			return "already queued"
 		if refusal := self.accounts_bot_refusal():
 			frappe.throw(refusal)
 		self.db_set(
-			{"accounts_bot_cf": 1, "accounts_bot_status": REQUEST_SENT, "accounts_bot_updated": now()},
+			{
+				"accounts_bot_cf": 1,
+				"accounts_bot_status": REQUEST_SENT,
+				"accounts_bot_note": None,
+				"accounts_bot_updated": now(),
+			},
 			update_modified=True,
 			notify=True,
 		)

@@ -8,11 +8,25 @@
    "insert_after": "jv_based_on_submitted_si_cf",
    "is_system_generated": "1",
    "label": "Expense Request",
-   "link_filters": "[[\"Payment Requisition\",\"workflow_state\",\"=\",\"Paid\"]]",
+   "link_filters": "[[\"Payment Requisition\",\"workflow_state\",\"in\",[\"Document Upload\",\"Paid\"]]]",
    "module": "Financial Operations",
    "name": "Journal Entry-expense_request_cf",
    "options": "Payment Requisition",
    "unique": "0"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.accounts_bot_preliminary",
+   "dt": "Journal Entry",
+   "fieldname": "accounts_bot_preliminary",
+   "fieldtype": "Check",
+   "insert_after": "expense_request_cf",
+   "is_system_generated": "0",
+   "label": "Preliminary",
+   "module": "Financial Operations",
+   "name": "Journal Entry-accounts_bot_preliminary",
+   "no_copy": "1",
+   "read_only": "1"
   },
   {
    "dt": "Journal Entry",

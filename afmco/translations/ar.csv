@@ -13095,7 +13095,8 @@ Summary,الملخص
 Account Bot,بوت المحاسبة
 Accounts Bot,بوت المحاسبة
 Accountant Bot,بوت المحاسبة
-Only a submitted Payment Requisition in Paid state can be sent to the Accounts Bot.,لا يرسل إلى بوت المحاسبة إلا طلب صرف معتمد في حالة مدفوع.
+Only a submitted Payment Requisition in Document Upload or Paid state can be sent to the Accounts Bot.,لا يرسل إلى بوت المحاسبة إلا طلب صرف معتمد في مرحلة رفع المستندات أو مدفوع.
+Preliminary,مبدئي
 A Journal Entry already exists for this Payment Requisition.,يوجد قيد يومية لطلب الصرف هذا مسبقًا.
 Request Sent,تم إرسال الطلب
 Received by Accounts Bot,استلم البوت الطلب

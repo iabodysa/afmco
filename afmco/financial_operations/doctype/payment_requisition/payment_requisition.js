@@ -661,8 +661,7 @@ function addAccountsBotButton(frm) {
 
     if (
         onload.accounts_bot_allowed &&
-        !frm.doc.accounts_bot_cf &&
-        (!frm.doc.accounts_bot_status || frm.doc.accounts_bot_read_receipt_cf)
+        (frm.doc.accounts_bot_cf || !frm.doc.accounts_bot_status || frm.doc.accounts_bot_read_receipt_cf)
     ) {
         frm.add_custom_button(sendLabel, () => callAccountsBot(frm, 'set_accounts_bot'));
     }
