@@ -22,14 +22,6 @@ frappe.ui.form.on('Iqama Renewal Tracking', {
         }
     },
 
-    before_save: function(frm) {
-        try {
-            handleStatusTransitions(frm);
-        } catch (error) {
-            logError(error, 'before_save');
-        }
-    },
-
     renewal_duration: function(frm) {
         try {
             updateNewExpiryDate(frm);
@@ -348,20 +340,6 @@ function addCustomButtons(frm) {
                 });
             }, __('Schedule Request'));
         });
-    }
-}
-
-function handleStatusTransitions(frm) {
-    if (frm.doc.renewal_preference == 'Yes' && 
-        frm.doc.status == 'Awaiting Operations Approval' && 
-        frm.doc.renewal_duration) {
-        frm.set_value('status', 'Awaiting Payment');
-        showNotification(__('Status has been changed to Awaiting Payment'));
-    } else if (frm.doc.renewal_preference == 'NO' && 
-               frm.doc.status == 'Awaiting Operations Approval' && 
-               frm.doc.reason_of_not_renew) {
-        frm.set_value('status', 'Rejected');
-        showNotification(__('Status has been changed to Rejected'));
     }
 }
 

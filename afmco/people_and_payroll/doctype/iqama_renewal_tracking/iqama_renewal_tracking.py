@@ -14,7 +14,16 @@ class IqamaRenewalTracking(Document):
 	def validate(self):
 		if frappe.flags.in_install or frappe.flags.in_migrate:
 			return
+		self.apply_operations_decision()
 		self.reject_inactive_employee()
+
+	def apply_operations_decision(self):
+		if self.status != "Awaiting Operations Approval":
+			return
+		if self.renewal_preference == "Yes" and self.renewal_duration:
+			self.status = "Awaiting Payment"
+		elif self.renewal_preference == "NO" and self.reason_of_not_renew:
+			self.status = "Rejected"
 
 	def reject_inactive_employee(self):
 		if self.employee_status != "Active":
