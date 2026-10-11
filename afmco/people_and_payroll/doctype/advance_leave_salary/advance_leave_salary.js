@@ -831,7 +831,6 @@ frappe.ui.form.on('Advance Leave Salary', {
         let VisaAmount = frm.doc.days1 === '30' ? 200 : frm.doc.days1 === '60' ? 200 : frm.doc.days1 === '90' ? 300 : frm.doc.days1 === '120' ? 400 : 0;
         const expenseRequest = frappe.model.get_new_doc('Payment Requisition');
         expenseRequest.tax_invoice_number = frm.doc.name;
-        expenseRequest.account_no = "MOI SADAD";
         expenseRequest.beneficiary_name = `${frm.doc.employee_name} ${frm.doc.employee}`;
         expenseRequest.amount = VisaAmount;
         expenseRequest.project = frm.doc.payroll_cost_center;
@@ -841,7 +840,7 @@ frappe.ui.form.on('Advance Leave Salary', {
         expenseRequest.bank_payment_date = frappe.datetime.nowdate();
         expenseRequest.date = frappe.datetime.nowdate();
         expenseRequest.payment_type = 'SADAD Payment';
-        expenseRequest.mode_of_payment = 'Bank Transfer';
+        expenseRequest.mode_of_payment = 'SADAD Payment';
         expenseRequest.remark = `Exit and return visa:
 - Employee Name: ${frm.doc.employee_name}
 - Employee ID: ${frm.doc.employee}
