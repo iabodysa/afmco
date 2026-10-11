@@ -151,11 +151,13 @@
   },
   {
    "fieldname": "column_break_amount_in_words",
-   "fieldtype": "Column Break"
+   "fieldtype": "Column Break",
+   "hidden": 1
   },
   {
    "fieldname": "amount_in_words",
    "fieldtype": "Read Only",
+   "hidden": 1,
    "label": "Amount in Words"
   },
   {
@@ -521,7 +523,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-10 23:50:00.000000",
+ "modified": "2026-10-11 12:00:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",

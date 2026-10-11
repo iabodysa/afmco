@@ -555,11 +555,16 @@ frappe.ui.form.on('Payment Requisition', {
         addCreateJVButton(frm);
         addSupportingPackButton(frm);
         addAccountsBotButton(frm);
+        showAmountInWords(frm, frm.doc.amount_in_words);
         frappe.require(["/assets/afmco/js/attachment_check.js", "/assets/afmco/css/attachment_check.css"], () => afmco.attachment_check.render(frm));
     },
 
     remark(frm) {
         renderRemarkExcelDashboard(frm);
+    },
+
+    amount(frm) {
+        showAmountInWords(frm, '');
     },
 
     validate(frm) {
@@ -611,6 +616,10 @@ frappe.ui.form.on('Payment Requisition', {
         frappe.set_route('Form', doctype, frm.doc.tax_invoice_number);
     }
 });
+
+function showAmountInWords(frm, words) {
+    frm.set_df_property('amount', 'description', words ? frappe.utils.escape_html(words) : '');
+}
 
 // Journal Entry creation -------------------------------------------------------
 function addCreateJVButton(frm) {

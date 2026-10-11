@@ -199,7 +199,7 @@ const IC_PR_DEFAULTS = {
 	jv_status: "JV Not Created",
 	payment_type: "SADAD Payment",
 	mode_of_payment: "SADAD Payment",
-	account_no: "SADAD numbers attached",
+	multiple_beneficiaries: 1,
 	payment_approver: "Human Resources - الموارد البشرية",
 };
 

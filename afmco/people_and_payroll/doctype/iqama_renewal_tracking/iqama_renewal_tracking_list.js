@@ -440,7 +440,7 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                             paymentRequest.payment_type = 'SADAD Payment';
                             paymentRequest.mode_of_payment = 'SADAD Payment';
                             paymentRequest.remark = remarks;
-                            paymentRequest.account_no = 'SADAD numbers attached';
+                            paymentRequest.multiple_beneficiaries = 1;
                             paymentRequest.payment_approver = 'Human Resources - الموارد البشرية';  //new
         
                             try {
@@ -448,7 +448,6 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                                 //frappe.set_route('Form', paymentRequest.doctype, paymentRequest.name);
                                 paymentRequest = await frappe.db.insert(paymentRequest); // new
 
-                                await frappe.model.set_value(paymentRequest.doctype, paymentRequest.name, 'account_no', paymentRequest.account_no);
                                 await frappe.model.set_value(paymentRequest.doctype, paymentRequest.name, 'remark', paymentRequest.remark);
                                 //frappe.msgprint(messages.pr_created[lang]);
         
