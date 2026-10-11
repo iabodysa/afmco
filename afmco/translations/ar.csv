@@ -13290,3 +13290,352 @@ SADAD Bill Number,رقم فاتورة سداد,
 {0} must contain digits only.,يجب أن يحتوي {0} على أرقام فقط.,
 Invalid SADAD Number,رقم سداد غير صحيح,
 {0} days settled in a previous clearance were removed from this period.,حُذف من هذه الفترة {0} يوم سبق تسويتها في مخالصة سابقة.
+"<span style=""font-size: 18px;""><b>Masters &amp; Reports</b></span>","<span style=""font-size: 18px;""><b>البيانات الرئيسية والتقارير</b></span>"
+Accrual Journal Entry for salaries from {0} to {1},قيد اليومية للرواتب المستحقة من {0} إلى {1}
+Actual Amount,المبلغ الفعلي
+Add unused leaves from previous allocations,إضافة الإجازات غير المستخدمة من التخصيصات السابقة
+Added to details,تمت الإضافة إلى التفاصيل
+Additional PF,صندوق الادخار الإضافي
+Allocation Expired!,انتهى التخصيص!
+Allow User,السماح للمستخدم
+Allow check-out after shift end time (in minutes),السماح بتسجيل الانصراف بعد وقت نهاية الوردية (بالدقائق)
+Allow the following users to approve Leave Applications for block days.,السماح للمستخدمين التاليين بالموافقة على طلبات الإجازة في الأيام المحظورة.
+Alternating entries as IN and OUT during the same shift,اعتبار السجلات المتتالية دخولاً وخروجاً بالتناوب خلال الوردية نفسها
+Amount based on formula,المبلغ حسب الصيغة
+Applicable in the case of Employee Onboarding,ينطبق في حالة الإعداد الأولي للموظف
+Applicant name,اسم المتقدم
+Application period cannot be across two allocation records,لا يمكن أن تمتد فترة الطلب عبر سجلي تخصيص
+Application period cannot be outside leave allocation period,لا يمكن أن تكون فترة الطلب خارج فترة تخصيص الإجازة
+Apply Now,التقديم الآن
+Appointment Letter,رسالة التعيين
+Appraisal,تقييم الأداء
+Appraisal Goal,هدف التقييم
+Appraisal Template Goal,هدف قالب تقييم الأداء
+Apprentice,المتدرب المهني
+Approval Status must be 'Approved' or 'Rejected',يجب أن تكون حالة الموافقة 'موافق عليه' أو 'مرفوض'
+Arrival Datetime,تاريخ ووقت الوصول
+Assigning Structures...,تعيين الهياكل...
+Attendance From Date and Attendance To Date is mandatory,حقلا الحضور من تاريخ والحضور إلى تاريخ إلزاميان
+Attendance Marked,تم تسجيل الحضور
+Attendance not submitted for {0} as it is a Holiday.,لم يتم اعتماد الحضور لـ {0} لأنه يوم عطلة.
+Attendance will be marked automatically only after this date.,سيتم تسجيل الحضور تلقائياً بعد هذا التاريخ فقط.
+Auto Leave Encashment,الصرف التلقائي لرصيد الإجازات
+Bank Entries,قيود البنك
+Base,الأساسي
+Begin check-in before shift start time (in minutes),بدء تسجيل الحضور قبل وقت بداية الوردية (بالدقائق)
+Benefit,الميزة
+Bonus Amount,مبلغ المكافأة
+Bonus Payment Date cannot be a past date,لا يمكن أن يكون تاريخ دفع المكافأة تاريخاً سابقاً
+Cannot find active Leave Period,لا يمكن العثور على فترة إجازة نشطة
+Carry Forward,ترحيل الرصيد
+Carry Forwarded Leaves,الإجازات المرحلة
+Casual Leave,إجازة عارضة
+Check-out Date,تاريخ المغادرة
+Claim Benefit For,المطالبة بالميزة لـ
+Claimed,المطالب به
+Compensatory Off,إجازة تعويضية
+Consider Unmarked Attendance As,اعتبار الحضور غير المسجل كـ
+Contact Number,رقم جهة الاتصال
+Cover Letter,خطاب التقديم
+Create Salary Slip,إنشاء قسيمة الراتب
+Creating Payment Entries......,إنشاء سندات القبض والدفع......
+Current Openings,الوظائف الشاغرة الحالية
+Daily Work Summary Replies,ردود ملخص العمل اليومي
+Date is repeated,التاريخ مكرر
+Debit A/C Number,رقم حساب الخصم
+Deduct Tax For Unsubmitted Tax Exemption Proof,خصم الضريبة عن إثبات الإعفاء الضريبي غير المعتمد
+Default Bank / Cash account will be automatically updated in Salary Journal Entry when this mode is selected.,سيتم تحديث الحساب البنكي أو النقدي الافتراضي تلقائياً في قيد اليومية للرواتب عند اختيار هذا الوضع.
+Department Approver,المخول بالموافقة في القسم
+Designation Skill,مهارة المسمى الوظيفي
+Early Exit Grace Period,فترة السماح للخروج المبكر
+Earning Component,مكون الاستحقاق
+Email Salary Slip to Employee,إرسال قسيمة الراتب إلى الموظف بالبريد الإلكتروني
+Email Sent To,البريد الإلكتروني مرسل إلى
+Emails salary slip to employee based on preferred email selected in Employee,إرسال قسيمة الراتب إلى الموظف على البريد الإلكتروني المفضل المحدد في سجل الموظف
+Employee A/C Number,رقم حساب الموظف
+Employee Advance Summary,ملخص سلفة الموظف
+Employee Benefit Application,طلب ميزة الموظف
+Employee Benefit Application Detail,تفاصيل طلب ميزة الموظف
+Employee Benefit Claim,مطالبة ميزة الموظف
+Employee Benefits,مزايا الموظف
+Employee Boarding Activity,نشاط الإعداد الأولي للموظف
+Employee Onboarding,الإعداد الأولي للموظف
+Employee Onboarding Template,قالب الإعداد الأولي للموظف
+Employee Other Income,الدخل الآخر للموظف
+Employee Property History,سجل تغييرات بيانات الموظف
+Employee Separation,انتهاء خدمة الموظف
+Employee Separation Template,قالب انتهاء خدمة الموظف
+Employee Tax Exemption Declaration,إقرار الإعفاء الضريبي للموظف
+Employee Tax Exemption Declaration Category,فئة إقرار الإعفاء الضريبي للموظف
+Employee Tax Exemption Proof Submission,تقديم إثبات الإعفاء الضريبي للموظف
+Employee Tax Exemption Proof Submission Detail,تفاصيل تقديم إثبات الإعفاء الضريبي للموظف
+Employee Tax Exemption Sub Category,الفئة الفرعية للإعفاء الضريبي للموظف
+Employee Transfer Detail,تفاصيل نقل الموظف
+Employee {0} is not active or does not exist,الموظف {0} غير نشط أو غير موجود
+Employee {0} is on Leave on {1},الموظف {0} في إجازة بتاريخ {1}
+Employee {0} on Half day on {1},الموظف {0} في إجازة نصف يوم بتاريخ {1}
+Encashment,الصرف النقدي
+Encashment Amount,مبلغ الصرف النقدي
+End time cannot be before start time,لا يمكن أن يكون وقت النهاية قبل وقت البداية
+Estimated Cost Per Position,التكلفة التقديرية لكل وظيفة
+Event Name,اسم الحدث
+Every Valid Check-in and Check-out,كل تسجيل حضور وانصراف صالح
+Exemption Sub Category,الفئة الفرعية للإعفاء
+Exit Interview Summary,ملخص مقابلة الخروج
+Expense Approver Mandatory In Expense Claim,المخول بالموافقة على المصروفات إلزامي في مطالبة المصروفات
+Expense Claim Account,حساب مطالبة المصروفات
+Expense Claim Advance,سلفة مطالبة المصروفات
+Expense Claim Detail,تفاصيل مطالبة المصروفات
+Expense Claim for Vehicle Log {0},مطالبة مصروفات لسجل السيارة {0}
+Expense Claim {0} already exists for the Vehicle Log,مطالبة المصروفات {0} موجودة بالفعل لسجل السيارة
+Expense Date,تاريخ المصروفات
+Expense Proof,إثبات المصروفات
+Expense Taxes and Charges,ضرائب ورسوم المصروفات
+Expense Type,نوع المصروفات
+Expire Allocation,إنهاء صلاحية التخصيص
+Expire Carry Forwarded Leaves (Days),انتهاء صلاحية الإجازات المرحلة (بالأيام)
+First Check-in and Last Check-out,أول تسجيل حضور وآخر تسجيل انصراف
+Fiscal Year {0} not found,السنة المالية {0} غير موجودة
+Flexible Benefits,المزايا المرنة
+From Amount,من المبلغ
+From Date {0} cannot be after employee's relieving Date {1},لا يمكن أن يكون من تاريخ {0} بعد تاريخ ترك الموظف للعمل {1}
+Fuel Expense,مصروفات الوقود
+Get Template,جلب القالب
+Half Day Date should be between From Date and To Date,يجب أن يكون تاريخ نصف اليوم بين من تاريخ وإلى تاريخ
+Half Day Date should be in between Work From Date and Work End Date,يجب أن يكون تاريخ نصف اليوم بين تاريخ بداية العمل وتاريخ نهاية العمل
+Half day date should be in between from date and to date,يجب أن يكون تاريخ نصف اليوم بين من تاريخ وإلى تاريخ
+Health Insurance Name,اسم التأمين الصحي
+House rented dates required for exemption calculation,تواريخ استئجار السكن مطلوبة لحساب الإعفاء
+House rented dates should be atleast 15 days apart,يجب ألا تقل المدة بين تواريخ استئجار السكن عن 15 يوماً
+IN,دخول
+"If checked, hides and disables Rounded Total field in Salary Slips",إذا تم تحديده، يتم إخفاء حقل الإجمالي المقرب وتعطيله في قسائم الرواتب
+"If not checked, the list will have to be added to each Department where it has to be applied.",إذا لم يتم التحديد، يجب إضافة القائمة إلى كل قسم يجب تطبيقها فيه.
+"If selected, the value specified or calculated in this component will not contribute to the earnings or deductions. However, it's value can be referenced by other components that can be added or deducted. ",إذا تم تحديده، فإن القيمة المحددة أو المحسوبة في هذا المكون لن تدخل في المستحقات أو الاستقطاعات. ومع ذلك، يمكن للمكونات الأخرى التي تضاف أو تخصم الرجوع إلى قيمته.
+Import Attendance,استيراد الحضور
+In Time,وقت الدخول
+Include holidays in Total no. of Working Days,تضمين العطلات في إجمالي عدد أيام العمل
+Include holidays within leaves as leaves,اعتبار العطلات الواقعة ضمن فترة الإجازة جزءاً من الإجازة
+Income Tax Slab,شريحة ضريبة الدخل
+Income Tax Slab Other Charges,الرسوم الأخرى لشريحة ضريبة الدخل
+Income Tax Slab must be effective on or before Payroll Period Start Date: {0},يجب أن تكون شريحة ضريبة الدخل سارية في تاريخ بدء فترة الرواتب أو قبله: {0}
+Income Tax Slab not set in Salary Structure Assignment: {0},لم يتم تعيين شريحة ضريبة الدخل في تعيين هيكل الرواتب: {0}
+Income Tax Slab: {0} is disabled,شريحة ضريبة الدخل: {0} معطلة
+Invited,المدعو
+Is Carry Forward,ترحيل الرصيد
+Is Compensatory,إجازة تعويضية
+Is Earned Leave,إجازة مكتسبة
+Is Flexible Benefit,ميزة مرنة
+Is Income Tax Component,مكون ضريبة دخل
+Is Optional Leave,إجازة اختيارية
+Is Tax Applicable,خاضع للضريبة
+Job Applicant Source,مصدر المتقدم للوظيفة
+Job Offer: {0} is already for Job Applicant: {1},عرض العمل: {0} مقدم بالفعل للمتقدم للوظيفة: {1}
+"Job profile, qualifications required etc.",الملف الوظيفي، المؤهلات المطلوبة، إلخ.
+Key Performance Area,مجال الأداء الرئيسي
+Key Responsibility Area,مجال المسؤولية الرئيسي
+Last Known Successful Sync of Employee Checkin. Reset this only if you are sure that all Logs are synced from all the locations. Please don't modify this if you are unsure.,آخر مزامنة ناجحة معروفة لبصمة الموظف. لا تعد ضبط هذا الحقل إلا إذا كنت متأكداً من مزامنة جميع السجلات من جميع المواقع. يرجى عدم تعديله إذا لم تكن متأكداً.
+Last Sync of Checkin,آخر مزامنة للبصمة
+Late Entry,الدخول المتأخر
+Late Entry Grace Period,فترة السماح للدخول المتأخر
+Leave Allocations,تخصيصات الإجازات
+Leave Application,طلب إجازة
+Leave Approval Notification,إشعار الموافقة على الإجازة
+Leave Approval Notification Template,قالب إشعار الموافقة على الإجازة
+Leave Approver Mandatory In Leave Application,المخول بالموافقة على الإجازة إلزامي في طلب الإجازة
+Leave Approver Name,اسم المخول بالموافقة على الإجازة
+Leave Balance,رصيد الإجازات
+Leave Balance Before Application,رصيد الإجازات قبل الطلب
+Leave Block List Allow,السماح في قائمة حظر الإجازات
+Leave Block List Allowed,المسموح لهم في قائمة حظر الإجازات
+Leave Block List Date,تاريخ قائمة حظر الإجازات
+Leave Block List Dates,تواريخ قائمة حظر الإجازات
+Leave Block List Name,اسم قائمة حظر الإجازات
+Leave Control Panel,لوحة تحكم الإجازات
+Leave Encashment,الصرف النقدي للإجازات
+Leave Encashment Amount Per Day,مبلغ الصرف النقدي للإجازة لكل يوم
+Leave Ledger Entry,قيد دفتر أستاذ الإجازات
+Leave Period,فترة الإجازة
+Leave Policy Detail,تفاصيل سياسة الإجازة
+Leave Policy Details,تفاصيل سياسة الإجازة
+Leave Status Notification,إشعار حالة الإجازة
+Leave Status Notification Template,قالب إشعار حالة الإجازة
+Leave Type,نوع الإجازة
+Leave Type Name,اسم نوع الإجازة
+Leave Type {0} cannot be allocated since it is leave without pay,لا يمكن تخصيص نوع الإجازة {0} لأنه إجازة بدون راتب
+Leave Type {0} cannot be carry-forwarded,لا يمكن ترحيل نوع الإجازة {0}
+Leave Type {0} is not encashable,نوع الإجازة {0} غير قابل للصرف النقدي
+Leave Without Pay,إجازة بدون راتب
+Leave application is linked with leave allocations {0}. Leave application cannot be set as leave without pay,طلب الإجازة مرتبط بتخصيصات الإجازة {0}. لا يمكن تعيين طلب الإجازة كإجازة بدون راتب
+"Leave cannot be allocated before {0}, as leave balance has already been carry-forwarded in the future leave allocation record {1}",لا يمكن تخصيص إجازة قبل {0}، لأن رصيد الإجازات تم ترحيله بالفعل إلى سجل تخصيص إجازات مستقبلي {1}
+"Leave cannot be applied/cancelled before {0}, as leave balance has already been carry-forwarded in the future leave allocation record {1}",لا يمكن تقديم الإجازة أو إلغاؤها قبل {0}، لأن رصيد الإجازات تم ترحيله بالفعل إلى سجل تخصيص إجازات مستقبلي {1}
+Leaves,الإجازات
+Leaves Allocated,الإجازات المخصصة
+Leaves per Year,الإجازات في السنة
+Loan Repayment Entry,قيد سداد القرض
+Lodging Required,السكن مطلوب
+Log Type is required for check-ins falling in the shift: {0}.,نوع السجل مطلوب لتسجيلات الحضور الواقعة ضمن الوردية: {0}.
+Mark attendance based on 'Employee Checkin' for Employees assigned to this shift.,تسجيل الحضور استناداً إلى 'بصمة الموظف' للموظفين المعينين لهذه الوردية.
+Max Benefit Amount,الحد الأقصى لمبلغ الميزة
+Max Benefit Amount (Yearly),الحد الأقصى لمبلغ الميزة (سنوياً)
+Max Benefits (Amount),الحد الأقصى للمزايا (المبلغ)
+Max Benefits (Yearly),الحد الأقصى للمزايا (سنوياً)
+Max Exemption Amount,الحد الأقصى لمبلغ الإعفاء
+Max working hours against Timesheet,الحد الأقصى لساعات العمل مقابل سجل ساعات العمل
+Maximum Carry Forwarded Leaves,الحد الأقصى للإجازات المرحلة
+Maximum Exemption Amount,الحد الأقصى لمبلغ الإعفاء
+Mode of payment is required to make a payment,طريقة الدفع مطلوبة لإجراء الدفع
+Net Salary Amount,مبلغ صافي الراتب
+Net pay cannot be negative,لا يمكن أن يكون صافي الأجر سالباً
+New Leaves Allocated,الإجازات الجديدة المخصصة
+No Employee Found,لم يتم العثور على أي موظف
+No Leaves Allocated to Employee: {0} for Leave Type: {1},لا توجد إجازات مخصصة للموظف: {0} لنوع الإجازة: {1}
+No Staffing Plans found for this Designation,لم يتم العثور على خطط توظيف لهذا المسمى الوظيفي
+No active or default Salary Structure found for employee {0} for the given dates,لم يتم العثور على هيكل راتب نشط أو افتراضي للموظف {0} للتواريخ المحددة
+No salary slip found to submit for the above selected criteria OR salary slip already submitted,لم يتم العثور على قسيمة راتب لاعتمادها وفق المعايير المحددة أعلاه أو أن قسيمة الراتب معتمدة بالفعل
+Non Diary,بدون منتجات الألبان
+Notice Period,مدة الإشعار
+Notify users by email,إبلاغ المستخدمين عبر البريد الإلكتروني
+Number Of Positions,عدد الوظائف
+OUT,خروج
+Only Leave Applications with status 'Approved' and 'Rejected' can be submitted,لا يمكن اعتماد إلا طلبات الإجازة التي حالتها 'موافق عليه' أو 'مرفوض'
+Only Shift Request with status 'Approved' and 'Rejected' can be submitted,لا يمكن اعتماد إلا طلبات الوردية التي حالتها 'موافق عليه' أو 'مرفوض'
+Only users with the {0} role can create backdated leave applications,يمكن فقط للمستخدمين الذين لديهم الدور {0} إنشاء طلبات إجازة بتاريخ سابق
+Overwrite Salary Structure Amount,تجاوز مبلغ هيكل الراتب
+PAN Number,رقم الحساب الدائم
+PF Account,حساب صندوق الادخار
+PF Amount,مبلغ صندوق الادخار
+PF Loan,قرض صندوق الادخار
+Part-time,دوام جزئي
+Password policy for Salary Slips is not set,لم يتم تعيين سياسة كلمة المرور لقسائم الرواتب
+Payroll Date,تاريخ الرواتب
+Payroll Employee Detail,تفاصيل موظف مسير الرواتب
+Payroll Period,فترة الرواتب
+Payroll Period Date,تاريخ فترة الرواتب
+Payroll Settings,إعدادات الرواتب
+Payroll date can not be greater than employee's relieving date.,لا يمكن أن يكون تاريخ الرواتب بعد تاريخ ترك الموظف للعمل.
+Percent Deduction,نسبة الخصم
+Piecework,العمل بالقطعة
+Planned number of Positions,العدد المخطط للوظائف
+Please confirm once you have completed your training,يرجى التأكيد بمجرد إتمام التدريب
+Please enter the designation,الرجاء إدخال المسمى الوظيفي
+Please select Company and Designation,يرجى تحديد الشركة والمسمى الوظيفي
+Please set Payroll based on in Payroll settings,يرجى تعيين 'الرواتب حسب' في إعدادات الرواتب
+Please set default template for Leave Approval Notification in HR Settings.,يرجى تعيين القالب الافتراضي لإشعار الموافقة على الإجازة في إعدادات الموارد البشرية.
+Please set the Date Of Joining for employee {0},يرجى تعيين تاريخ الالتحاق للموظف {0}
+Please setup Employee Naming System in Human Resource > HR Settings,يرجى إعداد نظام تسمية الموظفين في الموارد البشرية > إعدادات الموارد البشرية
+Please setup numbering series for Attendance via Setup > Numbering Series,يرجى إعداد سلسلة الترقيم للحضور عبر الإعداد > سلسلة الترقيم
+Please share your feedback to the training by clicking on 'Training Feedback' and then 'New',يرجى مشاركة ملاحظاتك على التدريب بالنقر على 'ملاحظات التدريب' ثم 'جديد'
+Preview Salary Slip,معاينة قسيمة الراتب
+Probationary Period,فترة التجربة
+Process Attendance After,معالجة الحضور بعد
+Proficiency,الإتقان
+Promotion Date,تاريخ الترقية
+Property already added,تمت إضافة الخاصية بالفعل
+Re-allocate Leaves,إعادة تخصيص الإجازات
+Relieving Date ,تاريخ ترك العمل
+Remaining Benefits (Yearly),المزايا المتبقية (سنوياً)
+Reminded,تم التذكير
+Resume Attachment,مرفق السيرة الذاتية
+Role Allowed to Create Backdated Leave Application,الدور المسموح له بإنشاء طلب إجازة بتاريخ سابق
+Round to the Nearest Integer,التقريب إلى أقرب عدد صحيح
+Row {0}# Paid Amount cannot be greater than requested advance amount,الصف {0}# المبلغ المدفوع لا يمكن أن يكون أكبر من مبلغ السلفة المطلوب
+Row {0}: {1} is required in the expenses table to book an expense claim.,الصف {0}: {1} مطلوب في جدول المصروفات لتسجيل مطالبة مصروفات.
+Salary Component for timesheet based payroll.,مكون الراتب للرواتب المبنية على سجل ساعات العمل.
+Salary Slip Based on Timesheet,قسيمة الراتب حسب سجل ساعات العمل
+Salary Slip ID,رقم قسيمة الراتب
+Salary Slip Loan,قرض قسيمة الراتب
+Salary Slip Timesheet,سجل ساعات العمل لقسيمة الراتب
+Salary Slip of employee {0} already created for this period,تم إنشاء قسيمة راتب الموظف {0} بالفعل لهذه الفترة
+Salary Slip of employee {0} already created for time sheet {1},تم إنشاء قسيمة راتب الموظف {0} بالفعل لسجل ساعات العمل {1}
+Salary Slips Created,تم إنشاء قسائم الرواتب
+Salary Slips Submitted,تم اعتماد قسائم الرواتب
+Salary Structure Missing,هيكل الراتب مفقود
+"Salary already processed for period between {0} and {1}, Leave application period cannot be between this date range.",تمت معالجة الراتب بالفعل للفترة بين {0} و{1}، ولا يمكن أن تقع فترة طلب الإجازة ضمن هذا النطاق.
+Salary breakup based on Earning and Deduction.,تقسيم الراتب حسب المستحقات والاستقطاعات.
+Score Earned,النقاط المكتسبة
+Score must be less than or equal to 5,يجب أن تكون النقاط أقل من أو تساوي 5
+Select Payment Account to make Bank Entry,تحديد حساب الدفع لإنشاء قيد البنك
+Select Property,تحديد الخاصية
+Select Terms and Conditions,تحديد الشروط والأحكام
+Select Users,تحديد المستخدمين
+Select an employee to get the employee advance.,حدد موظفاً لجلب سلفة الموظف.
+Service Expense,مصروفات الخدمة
+Shift & Attendance,الورديات والحضور
+Shift Actual End,النهاية الفعلية للوردية
+Shift Actual Start,البداية الفعلية للوردية
+Shift Assignment,تعيين الوردية
+Shift Assignment: {0} created for Employee: {1},تعيين الوردية: {0} تم إنشاؤه للموظف: {1}
+Shift End,نهاية الوردية
+Shift Request,طلب الوردية
+Shift Start,بداية الوردية
+Show Leaves Of All Department Members In Calendar,إظهار إجازات جميع أعضاء القسم في التقويم
+Show Salary Slip,عرض قسيمة الراتب
+Sick Leave,الإجازة المرضية
+"Skipping Salary Structure Assignment for the following employees, as Salary Structure Assignment records already exists against them. {0}",تخطي تعيين هيكل الرواتب للموظفين التاليين، لأن سجلات تعيين هيكل الرواتب موجودة لهم بالفعل. {0}
+Sponsored Amount,مبلغ الرعاية
+Staffing Plan {0} already exist for designation {1},خطة التوظيف {0} موجودة بالفعل للمسمى الوظيفي {1}
+Standard Tax Exemption Amount,مبلغ الإعفاء الضريبي القياسي
+"Start and end dates not in a valid Payroll Period, cannot calculate {0}.",تاريخا البداية والنهاية ليسا ضمن فترة رواتب صالحة، ولا يمكن حساب {0}.
+Stock Options,خيارات الأسهم
+Stop users from making Leave Applications on following days.,منع المستخدمين من تقديم طلبات إجازة في الأيام التالية.
+Strictly based on Log Type in Employee Checkin,يعتمد بدقة على نوع السجل في بصمة الموظف
+Submit Salary Slip,اعتماد قسيمة الراتب
+Submit this to create the Employee record,يرجى اعتماد هذا المستند لإنشاء سجل الموظف
+Submitting Salary Slips and creating Journal Entry...,اعتماد قسائم الرواتب وإنشاء قيد اليومية...
+Submitting Salary Slips...,اعتماد قسائم الرواتب...
+Tax Exemption Proofs,إثباتات الإعفاء الضريبي
+Tax on flexible benefit,الضريبة على الميزة المرنة
+Taxable Salary Slab,شريحة الراتب الخاضع للضريبة
+Taxable Salary Slabs,شرائح الراتب الخاضع للضريبة
+Taxi,سيارة أجرة
+The day(s) on which you are applying for leave are holidays. You need not apply for leave.,الأيام التي تطلب فيها الإجازة أيام عطلة، ولا حاجة إلى طلب إجازة لها.
+"The salary slip emailed to the employee will be password protected, the password will be generated based on the password policy.",ستكون قسيمة الراتب المرسلة إلى الموظف بالبريد الإلكتروني محمية بكلمة مرور، وسيتم إنشاء كلمة المرور حسب سياسة كلمة المرور.
+The time after the shift start time when check-in is considered as late (in minutes).,الوقت بعد وقت بداية الوردية الذي يعد فيه تسجيل الحضور متأخراً (بالدقائق).
+The time before the shift end time when check-out is considered as early (in minutes).,الوقت قبل وقت نهاية الوردية الذي يعد فيه تسجيل الانصراف مبكراً (بالدقائق).
+The time before the shift start time during which Employee Check-in is considered for attendance.,الوقت الذي يسبق وقت بداية الوردية ويحتسب خلاله تسجيل حضور الموظف.
+There are more holidays than working days this month.,أيام العطل في هذا الشهر أكثر من أيام العمل.
+This will submit Salary Slips and create accrual Journal Entry. Do you want to proceed?,سيؤدي هذا إلى اعتماد قسائم الرواتب وإنشاء قيد اليومية للاستحقاق. هل تريد المتابعة؟
+Time after the end of shift during which check-out is considered for attendance.,الوقت بعد نهاية الوردية الذي يحتسب خلاله تسجيل الانصراف للحضور.
+To Amount,إلى المبلغ
+To date can not be equal or less than from date,لا يمكن أن يكون إلى تاريخ مساوياً لـ من تاريخ أو أقل منه
+To date can not be greater than employee's relieving date.,لا يمكن أن يكون إلى تاريخ بعد تاريخ ترك الموظف للعمل.
+To date can not be less than from date,لا يمكن أن يكون إلى تاريخ قبل من تاريخ
+To date can not greater than employee's relieving date,لا يمكن أن يكون إلى تاريخ بعد تاريخ ترك الموظف للعمل
+Total Advance Amount,إجمالي مبلغ السلفة
+Total Early Exits,إجمالي حالات الخروج المبكر
+Total Earning,إجمالي المستحقات
+Total Late Entries,إجمالي حالات الدخول المتأخر
+Total Leaves Allocated,إجمالي الإجازات المخصصة
+Total Leaves Encashed,إجمالي الإجازات المصروفة نقداً
+Total advance amount cannot be greater than total sanctioned amount,لا يمكن أن يكون إجمالي مبلغ السلفة أكبر من إجمالي المبلغ الموافق عليه
+Training Event Employee,موظف حدث التدريب
+Training Feedback,ملاحظات التدريب
+Training Result Employee,موظف نتيجة التدريب
+Transfer Date,تاريخ النقل
+Travel Advance Required,سلفة السفر مطلوبة
+Travel To,السفر إلى
+Type of Proof,نوع الإثبات
+Unmarked Attendance for days,الحضور غير المسجل للأيام
+Unmarked Days,الأيام غير المسجلة
+Unmarked days,الأيام غير المسجلة
+Unpaid Expense Claim,مطالبة المصروفات غير المدفوعة
+Vacancies cannot be lower than the current openings,لا يمكن أن يكون عدد الوظائف الشاغرة أقل من الشواغر الحالية
+Variable Based On Taxable Salary,متغير حسب الراتب الخاضع للضريبة
+Warning: Leave application contains following block dates,تحذير: طلب الإجازة يتضمن تواريخ الحظر التالية
+Work From Date,تاريخ بداية العمل
+Work Summary for {0},ملخص العمل لـ {0}
+Worked On Holiday,العمل في يوم عطلة
+Working Hours Calculation Based On,حساب ساعات العمل حسب
+Working Hours Threshold for Absent,حد ساعات العمل للغياب
+Working Hours Threshold for Half Day,حد ساعات العمل لنصف اليوم
+Working hours below which Absent is marked. (Zero to disable),ساعات العمل التي يسجل دونها غياب. (صفر للتعطيل)
+Working hours below which Half Day is marked. (Zero to disable),ساعات العمل التي يسجل دونها نصف يوم. (صفر للتعطيل)
+You are not authorized to approve leaves on Block Dates,غير مصرح لك بالموافقة على الإجازات في التواريخ المحظورة
+You are not present all day(s) between compensatory leave request days,لم تكن حاضراً طوال الأيام الواقعة بين أيام طلب الإجازة التعويضية
+You can not request for your Default Shift: {0},لا يمكنك طلب ورديتك الافتراضية: {0}
+You can only submit Leave Encashment for a valid encashment amount,يمكنك فقط اعتماد الصرف النقدي للإجازة لمبلغ صرف صالح
+cancelled,ملغى
+reviews,المراجعات
+submitted,معتمد
+{0} is not in Optional Holiday List,{0} ليس في قائمة العطلات الاختيارية
+{0} must be submitted,يجب اعتماد {0}
