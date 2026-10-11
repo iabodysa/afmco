@@ -357,7 +357,7 @@ function getMonthsFromDuration(duration) {
         '3 أشهر': 3,
         '6 months': 6,
         '6 أشهر': 6,
-        '9 months': 9,
+        '9 Months': 9,
         '9 أشهر': 9,
         '1 year': 12,
         'سنة واحدة': 12

@@ -158,7 +158,7 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                                 case '6 months':
                                     months = 6;
                                     break;
-                                case '9 months':
+                                case '9 Months':
                                     months = 9;
                                     break;
                                 case '1 year':
