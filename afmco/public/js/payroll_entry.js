@@ -1039,7 +1039,7 @@ async function create_employee_wise_journal_entry(frm, salary_slips) {
             doctype: 'Journal Entry',
             voucher_type: 'Payroll Entry',
             payroll_entry: frm.doc.name,
-            company: frm.doc.company || 'Default Company',
+            company: frm.doc.company,
             posting_date: frm.doc.posting_date || frappe.datetime.now_date(),
             accounts: []
         };
@@ -1071,9 +1071,9 @@ async function create_employee_wise_journal_entry(frm, salary_slips) {
                     journal_entry.accounts.push({
                         account: earning.account,
                         debit_in_account_currency: earning.amount || 0,
-                        cost_center: salary_slip_data.cost_center || 'Default Cost Center',
+                        cost_center: salary_slip_data.cost_center || frm.doc.cost_center,
                         user_remark: salary_slip_data.remark || 'No remark',
-                        employee: salary_slip_data.employee || 'Unknown Employee'
+                        employee: salary_slip_data.employee
                     });
                     total_credit += earning.amount;
                     employee_credit += earning.amount;
@@ -1088,7 +1088,7 @@ async function create_employee_wise_journal_entry(frm, salary_slips) {
                         credit_in_account_currency: deduction.amount || 0,
                         user_remark: salary_slip_data.remark || 'No remark',
                         party_type: 'Employee',
-                        party: salary_slip_data.employee || 'Unknown Employee'
+                        party: salary_slip_data.employee
                     });
                     total_debit += deduction.amount;
                     employee_debit += deduction.amount;
@@ -1099,20 +1099,20 @@ async function create_employee_wise_journal_entry(frm, salary_slips) {
             const net_pay = employee_credit - employee_debit;
             if (net_pay > 0) {
                 journal_entry.accounts.push({
-                    account: frm.doc.payroll_payable_account || 'Default Payable Account',
+                    account: frm.doc.payroll_payable_account,
                     credit_in_account_currency: net_pay,
                     user_remark: salary_slip_data.remark || 'No remark',
                     party_type: 'Employee',
-                    party: salary_slip_data.employee || 'Unknown Employee'
+                    party: salary_slip_data.employee
                 });
                 total_debit += net_pay;
             } else if (net_pay < 0) {
                 journal_entry.accounts.push({
-                    account: frm.doc.payroll_receivable_account || 'Default Receivable Account',
-                    user_remark: salary_slip_data.remark || 'No remark',
+                    account: frm.doc.payroll_payable_account,
                     debit_in_account_currency: Math.abs(net_pay),
-                    cost_center: salary_slip_data.cost_center || 'Default Cost Center',
-                    employee: salary_slip_data.employee || 'Unknown Employee'
+                    user_remark: salary_slip_data.remark || 'No remark',
+                    party_type: 'Employee',
+                    party: salary_slip_data.employee
                 });
                 total_credit += Math.abs(net_pay);
             }
