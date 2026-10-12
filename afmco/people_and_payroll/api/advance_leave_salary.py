@@ -9,9 +9,8 @@ from afmco.people_and_payroll.advance_leave_salary import (
     ADVANCE_LEAVE_SALARY,
     RECOMPUTE,
     fill_periods,
-    service_span,
-    service_years,
 )
+from afmco.people_and_payroll.service_calendar import service_value, unpaid_leave
 
 
 @frappe.whitelist(methods=["POST"])
@@ -38,5 +37,7 @@ def create_advance_leave_salary(employee: str, vacation_start_date: str, check1:
 
 
 @frappe.whitelist(methods=["GET"])
-def end_of_service_years(start: str, end: str) -> float:
-    return service_years(*service_span(start, end))
+def end_of_service_years(start: str, end: str, employee: str | None = None) -> float:
+    if employee:
+        frappe.has_permission("Employee", "read", employee, throw=True)
+    return service_value(start, end, unpaid_leave(employee))
