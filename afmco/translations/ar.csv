@@ -15411,3 +15411,131 @@ with reference no. {},برقم مرجعي {}
 {0} should be between 1 and 99,يجب أن تكون {0} بين 1 و99
 {} Open,{} مفتوح
 {} against loan {},{} مقابل القرض {}
+BOM and Finished Good Quantity is mandatory for Disassembly,يعدّ كل من قائمة المواد وكمية المنتج النهائي شرطًا أساسيًا لعملية التفكيك
+"Enabling this will do the following:\n<ul style=""padding-left:16px"">\n<li>Make the rate column of all Packed/Bundle Items tables editable.</li>\n<li>Calculate the prices of all <a href=""/desk/product-bundle"" rel=""noopener noreferrer"">Product Bundles</a> in the Items table, based on the prices of its child Items, specified in the Packed/Bundle Items table. </li>\n</ul>\nNote: If this is enabled, updating the rate of the Product Bundle in the Items table will not change its price. It will get reset to the price based on its Child Items on saving the doc.","سيؤدي تفعيل هذا إلى ما يلي:\n<ul style=""padding-left:16px"">\n<li>جعل عمود السعر في جميع جداول الأصناف المعبأة/المجمّعة قابلاً للتعديل.</li>\n<li>حساب أسعار جميع <a href=""/desk/product-bundle"" rel=""noopener noreferrer"">تجميعات الأصناف</a> في جدول الأصناف بناء على أسعار الأصناف الفرعية المحددة في جدول الأصناف المعبأة/المجمّعة. </li>\n</ul>\nملاحظة: عند تفعيل هذا، فإن تحديث سعر تجميعة الأصناف في جدول الأصناف لن يغيّر سعرها. سيعاد ضبطه إلى السعر المحسوب من أصنافها الفرعية عند حفظ المستند."
+Expected,المتوقع
+Finished good batch this raw material was consumed into (Manufacture / Repack),تشغيلة المنتج التام التي استهلكت فيها هذه المادة الخام (تصنيع / إعادة تعبئة)
+Finished good serial no this raw material was consumed into (Manufacture / Repack),الرقم التسلسلي للمنتج التام الذي استهلكت فيه هذه المادة الخام (تصنيع / إعادة تعبئة)
+"On submit of a Manufacture / Repack entry, map the raw material serial / batch nos that were not mapped in draft to the finished goods, in order",عند اعتماد قيد تصنيع / إعادة تعبئة، اربط الأرقام التسلسلية / أرقام تشغيلة المواد الخام التي لم تربط في حالة المسودة بالمنتجات التامة، بالترتيب
+Qualified,المؤهل
+Quintal,القنطار
+"Row #{0}: Delivery of Item {1} is ensured by produced Serial No, but no Serial No is reserved against Sales Order {2}. Reserve the produced Serial Nos from the Sales Order.",الصف #{0}: تسليم الصنف {1} مضمون برقم تسلسلي منتج، لكن لا يوجد رقم تسلسلي محجوز لأمر البيع {2}. احجز الأرقام التسلسلية المنتجة من أمر البيع.
+Row #{0}: Serial No {1} is not reserved against Sales Order {2}. Deliver only the Serial Nos produced and reserved for it.,الصف #{0}: الرقم التسلسلي {1} غير محجوز لأمر البيع {2}. سلّم فقط الأرقام التسلسلية المنتجة والمحجوزة له.
+"Set automatically to the day after the previous Stock Closing Entry, or to the first stock transaction's date",يحدّد تلقائيا بيوم يلي قيد إقفال المخزون السابق، أو بتاريخ أول حركة مخزون
+"Speeds up Item search on large catalogues. Requires a single app server: the index is a file on that server's disk, and several servers would each answer from a different copy. Building it takes about 20 minutes for 3 million items, and runs in the background.",يسرّع البحث عن الأصناف في الكتالوجات الكبيرة. يتطلب خادم تطبيق واحدا: الفهرس ملف على قرص ذلك الخادم، وكل خادم إضافي سيجيب من نسخة مختلفة. يستغرق إنشاؤه نحو 20 دقيقة لـ 3 مليون صنف، ويعمل في الخلفية.
+"System will use the latest saved Currency Exchange rate on or before the transaction date, however old it is. <br>\nUncheck to ignore rates older than Stale Days and fetch a fresh rate from the exchange rate provider instead.",سيستخدم النظام آخر سعر صرف عملة محفوظ في تاريخ المعاملة أو قبله، بغض النظر عن قدمه. <br>\nألغ التحديد لتجاهل الأسعار الأقدم من أيام التقادم وجلب سعر جديد من مزود سعر الصرف بدلاً من ذلك.
+There are no serial / batch tracked raw materials or finished goods to map,لا توجد مواد خام أو منتجات تامة متتبّعة بالرقم التسلسلي/التشغيلة لربطها
+Work Order Not Finished,أمر العمل غير منته
+{0} has no serial / batch tracked finished good,{0} لا يحتوي على منتج تام متتبّع بالرقم التسلسلي/التشغيلة
+Master,الرئيسي
+% of tickets created that were resolved within SLA,النسبة المئوية للتذاكر المنشأة التي حلّت ضمن اتفاقية مستوى الخدمة
+All articles from this category will move to General category.,ستنقل جميع المقالات من هذه الفئة إلى فئة عام.
+Amber,البرتقالي
+Are you sure you want to change tabs? Unsaved changes will be lost.,هل تريد بالتأكيد تبديل التبويبات؟ ستفقد التغييرات غير المحفوظة.
+Are you sure you want to delete this customer? The reference to this customer will be removed from all the related tickets.,هل تريد بالتأكيد حذف هذا العميل؟ ستزال الإشارة إلى هذا العميل من جميع التذاكر المرتبطة به.
+Are you sure you want to go back? Unsaved changes will be lost.,هل تريد بالتأكيد الرجوع؟ ستفقد التغييرات غير المحفوظة.
+Are you sure you want to leave? Unsaved changes will be lost.,هل تريد بالتأكيد مغادرة الصفحة؟ ستفقد التغييرات غير المحفوظة.
+Assignee's updated successfully.,تم تحديث المعيّن إليهم بنجاح.
+Assignees updated successfully.,تم تحديث المعيّن إليهم بنجاح.
+Assignment Rules automatically route tickets to the right team members based on predefined conditions.,توجّه قواعد التعيين التذاكر تلقائياً إلى أعضاء الفريق المناسبين بناء على شروط محددة مسبقاً.
+Auto-generated from the portal view — do not edit directly unless you know what you're doing! ,تم إنشاؤه تلقائياً من عرض البوابة — لا تعدّله مباشرة إلا إذا كنت تعرف ما تفعله!
+Cc,النسخة
+Closed or rated tickets cannot be updated by non-agents,لا يمكن لغير الوكلاء تحديث التذاكر المغلقة أو المقيّمة
+Commented By,المعلّق
+Create field dependencies to dynamically update options based on user selections. Learn more about field dependencies,إنشاء تبعيات الحقول لتحديث الخيارات تلقائياً بناء على اختيارات المستخدم. معرفة المزيد عن تبعيات الحقول
+Duplicate contacts are not allowed,لا يسمح بتكرار جهات الاتصال
+Failed to update Assignee's.,فشل تحديث المعيّن إليه.
+Failed to update Assignees.,فشل تحديث المعيّن إليهم.
+Global,العام
+Hey,المرحباً
+"If enabled, a ticket creation acknowledgement email will be sent to the user right after creating an email ticket",إذا تم التفعيل، يرسل بريد إلكتروني لتأكيد إنشاء التذكرة إلى المستخدم فور إنشاء تذكرة بالبريد الإلكتروني
+"If enabled, an email is sent to all of the recipients associated with an agent's reply",إذا تم التفعيل، يرسل بريد إلكتروني إلى جميع المستلمين المرتبطين برد الوكيل
+"If enabled, an email will be sent to all of the assigned agents after a reply from one of the contacts",إذا تم التفعيل، يرسل بريد إلكتروني إلى جميع الوكلاء المعينين بعد رد أحد جهات الاتصال
+"If your issue isn't resolved, raise a support ticket",إذا لم تحل مشكلتك، أنشئ تذكرة دعم
+"Image to be used in various places, including Login and Signup pages. An image with transparent background and 160 x 32 is preferred",صورة تستخدم في مواضع متعددة، بما في ذلك صفحتا تسجيل الدخول والتسجيل. يفضّل أن تكون الصورة بخلفية شفافة وبمقاس 160 × 32
+Invite,الدعوة
+Mention,الإشارة
+Negative,السالب
+New and updated customers sync automatically between Helpdesk and ERPNext.,تتزامن بيانات العملاء الجديدة والمحدّثة تلقائياً بين مكتب المساعدة و ERPNext.
+No articles found for the applied filters. Try adjusting or clearing your filters.,لم يتم العثور على مقالات لعوامل التصفية المطبّقة. حاول تعديل عوامل التصفية أو إزالتها.
+No charts added,لم تضف أي مخططات
+No contacts found for the applied filters. Try adjusting or clearing your filters.,لم يتم العثور على جهات اتصال لعوامل التصفية المطبّقة. حاول تعديل عوامل التصفية أو إزالتها.
+No customers found for the applied filters. Try adjusting or clearing your filters.,لم يتم العثور على عملاء لعوامل التصفية المطبّقة. حاول تعديل عوامل التصفية أو إزالتها.
+No tickets found for the applied filters. Try adjusting or clearing your filters.,لم يتم العثور على تذاكر لعوامل التصفية المطبّقة. حاول تعديل عوامل التصفية أو إزالتها.
+Not Assigned,غير معيّن
+Not installed,غير مثبّت
+Only one default view is allowed per user for {0},يسمح بعرض افتراضي واحد فقط لكل مستخدم لـ {0}
+Open: SLA continues. <br>\nPaused: SLA is paused. <br>\nResolved: SLA timer stops.,مفتوحة: تستمر اتفاقية مستوى الخدمة. <br>\nمتوقفة مؤقتاً: توقف اتفاقية مستوى الخدمة. <br>\nمحلولة: يتوقف عداد اتفاقية مستوى الخدمة.
+Positive,الإيجابي
+Rated Tickets,التذاكر المقيّمة
+Required,المطلوب
+SLAs align your team and customers with defined timelines for a reliable experience. Learn more about SLA ,تنسّق اتفاقيات مستوى الخدمة بين فريقك وعملائك عبر جداول زمنية محددة لتجربة موثوقة. اطّلع على المزيد حول اتفاقية مستوى الخدمة
+Sent to all of the agents assigned to the ticket whenever a contact has replied.,يرسل إلى جميع الوكلاء المكلفين بالتذكرة عند رد جهة الاتصال.
+Sent to all of the recipients associated with the ticket whenever an agent has replied.,يرسل إلى جميع المستلمين المرتبطين بالتذكرة عند رد الوكيل.
+Sent to the user right after creating an email ticket.,يرسل إلى المستخدم مباشرة بعد إنشاء تذكرة بالبريد الإلكتروني.
+Sent to the user who has raised the ticket after the ticket is closed or resolved.,يرسل إلى المستخدم الذي أنشأ التذكرة بعد إغلاقها أو حلها.
+"Set the default status assigned when a ticket is created, and the status to apply when a ticket is reopened. If not specified, the default status from HD Settings will be used.",عيّن الحالة الافتراضية عند إنشاء التذكرة، والحالة التي تطبّق عند إعادة فتحها. إذا لم تحدّد، تستخدم الحالة الافتراضية من إعدادات مكتب المساعدة.
+Setting <strong>{0}</strong> as the default SLA removes <strong>{1}</strong> as the default SLA. You’ll need to add a condition in <strong>{1}</strong> for the SLA to work.,عند تعيين <strong>{0}</strong> كاتفاقية مستوى الخدمة الافتراضية، تزال <strong>{1}</strong> من كونها الافتراضية. ستحتاج إلى إضافة شرط في <strong>{1}</strong> لتعمل اتفاقية مستوى الخدمة.
+Setting up,جار الإعداد
+"Status of the ticket, when a customer replies on the ticket with this SLA.\n\nIf not selected, the value will be takes from HD Settings DocType.",حالة التذكرة عند رد العميل على التذكرة بهذه اتفاقية مستوى الخدمة.\n\nإذا لم تحدّد، تؤخذ القيمة من نوع المستند إعدادات مكتب المساعدة.
+"Status of the ticket, when it is created in the system with this SLA.\nIf not selected, the value will be taken from HD Settings DocType",حالة التذكرة عند إنشائها في النظام بهذه اتفاقية مستوى الخدمة.\nإذا لم تحدّد، تؤخذ القيمة من نوع المستند إعدادات مكتب المساعدة
+Switch between outgoing email accounts when sending emails from your configured accounts.,التبديل بين حسابات البريد الصادر عند إرسال رسائل من حساباتك المهيّأة.
+Syncing…,جار المزامنة…
+Tampered Access,وصول متلاعب به
+Teal,الفيروزي
+"This date is calculated based on configured SLAs, working hours, and holidays.",يحسب هذا التاريخ بناء على اتفاقيات مستوى الخدمة المهيّأة وساعات العمل والعطلات.
+This doctype will be deprecated in the future,سيهجر نوع المستند هذا في المستقبل
+"This field is used to send an email instantly without adding it into the queue. If this field is checked, the email will be sent immediately after clicking the ""Send"" button, instead of being added to the email queue for later processing.","يستخدم هذا الحقل لإرسال بريد إلكتروني فورا دون إضافته إلى قائمة الانتظار. إذا تم تحديد هذا الحقل، سيرسل البريد الإلكتروني مباشرة عند الضغط على زر ""إرسال""، بدلاً من إضافته إلى قائمة انتظار البريد للمعالجة لاحقا."
+"This field is used to skip email-related workflows for tickets. If this field is checked, no emails will be sent related to tickets, such as new ticket creation, status updates, or notifications.",يستخدم هذا الحقل لتجاوز سير العمل المرتبط بالبريد الإلكتروني للتذاكر. إذا تم تحديد هذا الحقل، لن ترسل أي رسائل بريد إلكتروني متعلقة بالتذاكر، مثل إنشاء تذكرة جديدة أو تحديثات الحالة أو الإشعارات.
+"This view is public, and will be removed for all users.",هذا العرض عام، وسيزال لجميع المستخدمين.
+This view is public. Changes made will be visible to everyone.,هذا العرض عام. التغييرات المجراة ستكون مرئية لجميع المستخدمين.
+Ticket not found for the provided key.,التذكرة غير موجودة للمفتاح المقدّم.
+Tickets assigned to you in the last 7 days,التذاكر المكلّف بها خلال آخر 7 أيام
+Total number of tickets created,إجمالي عدد التذاكر المنشأة
+Unauthorized Access,وصول غير مصرّح به
+Unauthorized access.,وصول غير مصرّح به.
+Uploading {0}%,جار الرفع {0}%
+You are not allowed to view another agent's stats.,لا يسمح لك بعرض إحصاءات وكيل آخر.
+You are not allowed to view this dashboard data.,لا يسمح لك بعرض بيانات لوحة المعلومات هذه.
+You are not permitted to access this resource.,لا يسمح لك بالوصول إلى هذا المورد.
+You are not permitted to add a comment,لا يسمح لك بإضافة تعليق
+You are not permitted to reply as an agent,لا يسمح لك بالرد كوكيل
+Your old conditions will be overwritten. Are you sure you want to save?,ستستبدل شروطك القديمة. هل أنت متأكد من أنك تريد الحفظ؟
+{0} is already added,{0} مضاف مسبقا
+"Choose how the hourly overtime amount is calculated:\n<ol style=""padding-left:15px;""><li>Fixed Hourly Rate: A fixed, manually entered hourly rate.</li>\n<li>Salary Component-Based:\n\n(Sum of selected component amounts) ÷ (Payment Days) ÷ (Standard Daily Hours)</li></ol>","حدد طريقة حساب مبلغ العمل الإضافي بالساعة:\n<ol style=""padding-left:15px;""><li>معدل ساعي ثابت: معدل ساعي ثابت يدخل يدوياً.</li>\n<li>بناء على عنصر الراتب:\n\n(مجموع مبالغ العناصر المحددة) ÷ (أيام الدفع) ÷ (ساعات العمل اليومية القياسية)</li></ol>"
+Multipliers that adjust the hourly overtime amount for specific scenarios\n\n,معاملات تعدّل مبلغ العمل الإضافي بالساعة في حالات معينة
+Adjusted Amount,المبلغ المعدّل
+Adjusted Interest,الفائدة المعدّلة
+All entries on and after this date will be reposted,سيعاد ترحيل جميع القيود من هذا التاريخ فصاعداً
+Amount on which interest is calculated,المبلغ الذي تحسب عليه الفائدة
+Capitalize,الرسملة
+Centralized,المركزي
+Charge Based On,الرسم بناء على
+Day of every month on which the repayment date is considered,يوم من كل شهر يعتمد فيه تاريخ السداد
+Event,الحدث
+Loan To Value Ratio expresses the ratio of the loan amount to the value of the security pledged. A loan security shortfall will be triggered if this falls below the specified value for any loan ,تعبّر نسبة القرض إلى القيمة عن نسبة مبلغ القرض إلى قيمة الضمان المرهون. يؤدي انخفاضها عن القيمة المحددة لأي قرض إلى حدوث عجز في ضمان القرض
+Loans will be marked as NPA when the days past due count exceed this threshold,تصنّف القروض متعثرة عندما يتجاوز عدد أيام التأخر عن السداد هذا الحد
+Manually marked as NPA,مصنّف متعثراً يدوياً
+Member,العضو
+Misc,المتنوع
+No. of days from due date until which penalty won't be charged in case of delay in loan repayment,عدد الأيام من تاريخ الاستحقاق التي لا تفرض فيها غرامة في حال تأخر سداد القرض
+Outdated,القديم
+Penalty Interest Rate is levied on the pending amount on a daily basis in case of delayed repayment ,تفرض فائدة الغرامة على المبلغ المعلق يومياً في حال تأخر السداد
+Pledged,المرهون
+Principal Adjusted,أصل القرض المعدّل
+Repossessed,مستحوذ عليه
+Restructured,معاد هيكلته
+Secured,المضمون
+Sharing Parameter,معامل المشاركة
+The schedule type that will be used for generating the term loan schedules (will affect the payment date and monthly repayment amount),نوع الجدول الذي سيستخدم لإنشاء جداول القرض لأجل (يؤثر على تاريخ الدفع ومبلغ السداد الشهري)
+"There are overlapping accruals here {}, the current acrrual date gets accrued from {} to {}",توجد استحقاقات متداخلة هنا {}، ويستحق تاريخ الاستحقاق الحالي من {} إلى {}
+Unbooked Interest Paid,الفائدة المدفوعة غير المسجّلة
+Unbooked Penalty Paid,الغرامة المدفوعة غير المسجّلة
+Upfront Deduction,خصم مقدّم
+Utilized Limit,الحد المستخدم
+Utilized Limit Amount,مبلغ الحد المستخدم
+Utilized Security Value,قيمة الضمان المستخدمة
+Waived Amount,المبلغ المتنازل عنه
+Waived amount {0} cannot be greater than outstanding amount {1},لا يمكن أن يكون المبلغ المتنازل عنه {0} أكبر من المبلغ المستحق {1}
+Waived {0} amount {1} cannot be greater than overdue amount {2},لا يمكن أن يكون مبلغ {0} المتنازل عنه {1} أكبر من المبلغ المتأخر {2}
+Waiver account not set for charge {0} in Loan Product {1},حساب الإعفاء غير محدّد للرسم {0} في منتج القرض {1}

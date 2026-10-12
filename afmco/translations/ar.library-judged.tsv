@@ -9173,3 +9173,131 @@ with reference no. {}	lending	override	R26
 {0} should be between 1 and 99	lending	override	R26
 {} Open	lending	override	R26
 {} against loan {}	lending	override	R26
+BOM and Finished Good Quantity is mandatory for Disassembly	erpnext	override	R25
+"Enabling this will do the following:\n<ul style=""padding-left:16px"">\n<li>Make the rate column of all Packed/Bundle Items tables editable.</li>\n<li>Calculate the prices of all <a href=""/desk/product-bundle"" rel=""noopener noreferrer"">Product Bundles</a> in the Items table, based on the prices of its child Items, specified in the Packed/Bundle Items table. </li>\n</ul>\nNote: If this is enabled, updating the rate of the Product Bundle in the Items table will not change its price. It will get reset to the price based on its Child Items on saving the doc."	erpnext	override	R01
+Expected	erpnext	override	R11
+Finished good batch this raw material was consumed into (Manufacture / Repack)	erpnext	override	R08
+Finished good serial no this raw material was consumed into (Manufacture / Repack)	erpnext	override	R08
+On submit of a Manufacture / Repack entry, map the raw material serial / batch nos that were not mapped in draft to the finished goods, in order	erpnext	override	R16
+Qualified	erpnext	override	R11
+Quintal	erpnext	override	R11
+Row #{0}: Delivery of Item {1} is ensured by produced Serial No, but no Serial No is reserved against Sales Order {2}. Reserve the produced Serial Nos from the Sales Order.	erpnext	override	R26
+Row #{0}: Serial No {1} is not reserved against Sales Order {2}. Deliver only the Serial Nos produced and reserved for it.	erpnext	override	R26
+Set automatically to the day after the previous Stock Closing Entry, or to the first stock transaction's date	erpnext	override	R01
+Speeds up Item search on large catalogues. Requires a single app server: the index is a file on that server's disk, and several servers would each answer from a different copy. Building it takes about 20 minutes for 3 million items, and runs in the background.	erpnext	override	R30
+System will use the latest saved Currency Exchange rate on or before the transaction date, however old it is. <br>\nUncheck to ignore rates older than Stale Days and fetch a fresh rate from the exchange rate provider instead.	erpnext	override	R26
+There are no serial / batch tracked raw materials or finished goods to map	erpnext	override	R01
+Work Order Not Finished	erpnext	override	R01
+{0} has no serial / batch tracked finished good	erpnext	override	R26
+Master	frappe	override	R11
+% of tickets created that were resolved within SLA	helpdesk	override	R28
+All articles from this category will move to General category.	helpdesk	override	R01
+Amber	helpdesk	override	R11
+Are you sure you want to change tabs? Unsaved changes will be lost.	helpdesk	override	R01
+Are you sure you want to delete this customer? The reference to this customer will be removed from all the related tickets.	helpdesk	override	R01
+Are you sure you want to go back? Unsaved changes will be lost.	helpdesk	override	R01
+Are you sure you want to leave? Unsaved changes will be lost.	helpdesk	override	R01
+Assignee's updated successfully.	helpdesk	override	R02
+Assignees updated successfully.	helpdesk	override	R02
+Assignment Rules automatically route tickets to the right team members based on predefined conditions.	helpdesk	override	R01
+Auto-generated from the portal view — do not edit directly unless you know what you're doing! 	helpdesk	override	R02
+Cc	helpdesk	override	R11
+Closed or rated tickets cannot be updated by non-agents	helpdesk	override	R01
+Commented By	helpdesk	override	R11
+Create field dependencies to dynamically update options based on user selections. Learn more about field dependencies	helpdesk	override	R01
+Duplicate contacts are not allowed	helpdesk	override	R01
+Failed to update Assignee's.	helpdesk	override	R01
+Failed to update Assignees.	helpdesk	override	R01
+Global	helpdesk	override	R11
+Hey	helpdesk	override	R11
+If enabled, a ticket creation acknowledgement email will be sent to the user right after creating an email ticket	helpdesk	override	R01
+If enabled, an email is sent to all of the recipients associated with an agent's reply	helpdesk	override	R01
+If enabled, an email will be sent to all of the assigned agents after a reply from one of the contacts	helpdesk	override	R01
+If your issue isn't resolved, raise a support ticket	helpdesk	override	R01
+Image to be used in various places, including Login and Signup pages. An image with transparent background and 160 x 32 is preferred	helpdesk	override	R01
+Invite	helpdesk	override	R11
+Mention	helpdesk	override	R11
+Negative	helpdesk	override	R11
+New and updated customers sync automatically between Helpdesk and ERPNext.	helpdesk	override	R29
+No articles found for the applied filters. Try adjusting or clearing your filters.	helpdesk	override	R01
+No charts added	helpdesk	override	R10
+No contacts found for the applied filters. Try adjusting or clearing your filters.	helpdesk	override	R01
+No customers found for the applied filters. Try adjusting or clearing your filters.	helpdesk	override	R01
+No tickets found for the applied filters. Try adjusting or clearing your filters.	helpdesk	override	R01
+Not Assigned	helpdesk	override	R10
+Not installed	helpdesk	override	R10
+Only one default view is allowed per user for {0}	helpdesk	override	R26
+Open: SLA continues. <br>\nPaused: SLA is paused. <br>\nResolved: SLA timer stops.	helpdesk	override	R28
+Positive	helpdesk	override	R11
+Rated Tickets	helpdesk	override	R01
+Required	helpdesk	override	R11
+SLAs align your team and customers with defined timelines for a reliable experience. Learn more about SLA 	helpdesk	override	R28
+Sent to all of the agents assigned to the ticket whenever a contact has replied.	helpdesk	override	R01
+Sent to all of the recipients associated with the ticket whenever an agent has replied.	helpdesk	override	R01
+Sent to the user right after creating an email ticket.	helpdesk	override	R01
+Sent to the user who has raised the ticket after the ticket is closed or resolved.	helpdesk	override	R01
+Set the default status assigned when a ticket is created, and the status to apply when a ticket is reopened. If not specified, the default status from HD Settings will be used.	helpdesk	override	R01
+Setting <strong>{0}</strong> as the default SLA removes <strong>{1}</strong> as the default SLA. You’ll need to add a condition in <strong>{1}</strong> for the SLA to work.	helpdesk	override	R28
+Setting up	helpdesk	override	R01
+Status of the ticket, when a customer replies on the ticket with this SLA.\n\nIf not selected, the value will be takes from HD Settings DocType.	helpdesk	override	R28
+Status of the ticket, when it is created in the system with this SLA.\nIf not selected, the value will be taken from HD Settings DocType	helpdesk	override	R28
+Switch between outgoing email accounts when sending emails from your configured accounts.	helpdesk	override	R01
+Syncing…	helpdesk	override	R25
+Tampered Access	helpdesk	override	R01
+Teal	helpdesk	override	R11
+This date is calculated based on configured SLAs, working hours, and holidays.	helpdesk	override	R28
+This doctype will be deprecated in the future	helpdesk	override	R01
+"This field is used to send an email instantly without adding it into the queue. If this field is checked, the email will be sent immediately after clicking the ""Send"" button, instead of being added to the email queue for later processing."	helpdesk	override	R26
+This field is used to skip email-related workflows for tickets. If this field is checked, no emails will be sent related to tickets, such as new ticket creation, status updates, or notifications.	helpdesk	override	R01
+This view is public, and will be removed for all users.	helpdesk	override	R01
+This view is public. Changes made will be visible to everyone.	helpdesk	override	R01
+Ticket not found for the provided key.	helpdesk	override	R01
+Tickets assigned to you in the last 7 days	helpdesk	override	R30
+Total number of tickets created	helpdesk	override	R01
+Unauthorized Access	helpdesk	override	R01
+Unauthorized access.	helpdesk	override	R01
+Uploading {0}%	helpdesk	override	R26
+You are not allowed to view another agent's stats.	helpdesk	override	R01
+You are not allowed to view this dashboard data.	helpdesk	override	R01
+You are not permitted to access this resource.	helpdesk	override	R01
+You are not permitted to add a comment	helpdesk	override	R01
+You are not permitted to reply as an agent	helpdesk	override	R01
+Your old conditions will be overwritten. Are you sure you want to save?	helpdesk	override	R01
+{0} is already added	helpdesk	override	R26
+"Choose how the hourly overtime amount is calculated:\n<ol style=""padding-left:15px;""><li>Fixed Hourly Rate: A fixed, manually entered hourly rate.</li>\n<li>Salary Component-Based:\n\n(Sum of selected component amounts) ÷ (Payment Days) ÷ (Standard Daily Hours)</li></ol>"	hrms	override	R26
+Multipliers that adjust the hourly overtime amount for specific scenarios\n\n	hrms	override	R01
+Adjusted Amount	lending	override	R11
+Adjusted Interest	lending	override	R11
+All entries on and after this date will be reposted	lending	override	R09
+Amount on which interest is calculated	lending	override	R01
+Capitalize	lending	override	R11
+Centralized	lending	override	R11
+Charge Based On	lending	override	R11
+Day of every month on which the repayment date is considered	lending	override	R19
+Event	lending	override	R11
+Loan To Value Ratio expresses the ratio of the loan amount to the value of the security pledged. A loan security shortfall will be triggered if this falls below the specified value for any loan 	lending	override	R25
+Loans will be marked as NPA when the days past due count exceed this threshold	lending	override	R28
+Manually marked as NPA	lending	override	R28
+Member	lending	override	R11
+Misc	lending	override	R11
+No. of days from due date until which penalty won't be charged in case of delay in loan repayment	lending	override	R28
+Outdated	lending	override	R11
+Penalty Interest Rate is levied on the pending amount on a daily basis in case of delayed repayment 	lending	override	R25
+Pledged	lending	override	R11
+Principal Adjusted	lending	override	R01
+Repossessed	lending	override	R01
+Restructured	lending	override	R01
+Secured	lending	override	R11
+Sharing Parameter	lending	override	R01
+The schedule type that will be used for generating the term loan schedules (will affect the payment date and monthly repayment amount)	lending	override	R01
+There are overlapping accruals here {}, the current acrrual date gets accrued from {} to {}	lending	override	R26
+Unbooked Interest Paid	lending	override	R01
+Unbooked Penalty Paid	lending	override	R01
+Upfront Deduction	lending	override	R01
+Utilized Limit	lending	override	R01
+Utilized Limit Amount	lending	override	R01
+Utilized Security Value	lending	override	R01
+Waived Amount	lending	override	R01
+Waived amount {0} cannot be greater than outstanding amount {1}	lending	override	R26
+Waived {0} amount {1} cannot be greater than overdue amount {2}	lending	override	R26
+Waiver account not set for charge {0} in Loan Product {1}	lending	override	R26
