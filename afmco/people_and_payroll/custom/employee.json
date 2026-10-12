@@ -1319,6 +1319,16 @@
   {
    "doc_type": "Employee",
    "doctype_or_field": "DocField",
+   "field_name": "iban",
+   "module": "People and Payroll",
+   "name": "Employee-iban-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
    "field_name": "basic_2",
    "module": "People and Payroll",
    "name": "Employee-basic_2-permlevel",
