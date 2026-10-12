@@ -70,7 +70,6 @@ SOURCE_FIELDS = [
 	"date_of_joining",
 	"relieving_date",
 	"basic_wage",
-	"iban",
 	"bank_ac_no",
 ]
 
@@ -365,7 +364,7 @@ def ledger_section(source, offset):
 
 
 def requisitions_section(source, offset):
-	account_no = (source.iban or source.bank_ac_no or "").replace(" ", "").upper()
+	account_no = (source.bank_ac_no or "").replace(" ", "").upper()
 	if len(account_no) < 10:
 		return {
 			"rows": [],
