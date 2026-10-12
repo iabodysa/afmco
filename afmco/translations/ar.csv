@@ -15548,3 +15548,38 @@ Twilio,Twilio
 ({0}s),({0} ثانية)
 group_by,تجميع حسب
 Please add partner FLGD Account for Loan Partner {0},يرجى إضافة حساب ضمان خسائر التعثر الأولى لشريك القرض {0}
+Annual Gross Earning,مجمل الاستحقاقات السنوية
+Application Date,تاريخ الطلب
+Auto create disbursement on loan booking,إنشاء الصرف تلقائيًا عند تسجيل القرض
+"Base, Variable & Leave Encashment",الأساسي والمتغير وصرف رصيد الإجازات
+Co-Applicants,مقدمو الطلب المشاركون
+Component properties and references,خصائص المكون ومراجعه
+Dock,شريط الإرساء
+Employer Contribution,مساهمة صاحب العمل
+Employer Contributions,مساهمات صاحب العمل
+Floating,العائم
+Full Settlement Job,مهمة التسوية الكاملة
+Is Imported,مستورد
+Label Color,لون التسمية
+Loan Booking Charges,رسوم تسجيل القرض
+Loan Import Details,تفاصيل استيراد القرض
+Loan Purpose,غرض القرض
+Manual,اليدوي
+Migration Date,تاريخ نقل البيانات
+Moratorium Details,تفاصيل فترة الإمهال
+Muqeem & GOSI,مقيم والتأمينات الاجتماعية
+Primary Applicant Address Details,تفاصيل عنوان مقدم الطلب الرئيسي
+Primary Applicant Contact Info,معلومات التواصل مع مقدم الطلب الرئيسي
+Primary Applicant Details,تفاصيل مقدم الطلب الرئيسي
+Select Dispatch Address,اختر عنوان الإرسال
+Shortlisted,ضمن القائمة المختصرة
+Show Colon After Field Labels,إظهار النقطتين بعد تسميات الحقول
+Show My Space,إظهار مساحتي
+Show navigation buttons,إظهار أزرار التنقل
+Split view in reports,العرض المقسم في التقارير
+Total Cost To Company (CTC),إجمالي التكلفة على الشركة
+Value Color,لون القيمة
+Variants,المتغيرات
+Housing,بدل السكن,Salary Slip
+Housing,بدل السكن,Salary Structure Assignment
+Day/Hour,أيام/ساعات,Sales Invoice Item
