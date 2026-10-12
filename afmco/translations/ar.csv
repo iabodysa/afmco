@@ -857,7 +857,7 @@ Refreshing...,جار التحديث...
 Close Condition,شرط الإغلاق
 Assignment Days,أيام التعيين
 Posting Time,وقت الترحيل
-Edit Posting Date and Time,تعديل وقت الإدخال
+Edit Posting Date and Time,تعديل تاريخ ووقت الترحيل
 Consider for Tax Withholding,احتساب الاستقطاع الضريبي
 On Net Total,على صافي الإجمالي
 In Words,المبلغ كتابة
@@ -3151,7 +3151,7 @@ Started At,وقت البدء
 Static Parameters,المعلمات الثابتة
 Sticky,مثبت
 Stop,إيقاف
-Stopped,طلب مرفوض
+Stopped,متوقف
 Store Attached PDF Document,تخزين مستند PDF المرفق
 Store the API secret securely. It won't be displayed again.,احفظ المفتاح السري لواجهة برمجة التطبيقات (API) بشكل آمن. لن يعرض مرة أخرى.
 Stores the JSON of last known versions of various installed apps. It is used to show release notes.,يخزن JSON لآخر الإصدارات المعروفة للتطبيقات المثبتة المختلفة. ويستخدم لعرض ملاحظات الإصدار.
@@ -4195,7 +4195,7 @@ chrome,chrome
 Create New,إنشاء جديد
 Custom CSS,CSS مخصص
 Custom HTML,HTML مخصص
-Custom HTML Help,مساعدة HTML المخصص
+Custom HTML Help,مساعدة الكود المخصص
 Edit Custom HTML,تعديل HTML المخصص
 Edit Format,تعديل التنسيق
 Edit Heading,تعديل العنوان الرئيسي
@@ -4515,7 +4515,7 @@ Is,يكون
 is disabled,معطّل
 is enabled,مفعّل
 Is Global,على مستوى النظام
-Is Group,هل هو حساب رئيسي
+Is Group,هل هو عنصر رئيسي (مجموعة)
 Jump to field,الانتقال إلى الحقل
 just now,قبل لحظات
 Landscape,أفقي
@@ -5718,12 +5718,12 @@ Customer Ledger Summary,دفتر الأستاذ المختصر للعملاء
 Customer LPO,أمر الشراء المحلي للعميل
 Customer LPO No.,رقم أمر الشراء المحلي للعميل
 Customer Name: ,اسم العميل: 
-Customer PO Details,تفاصيل امر الشراء
+Customer PO Details,تفاصيل أمر الشراء
 Customer Territory,المنطقة البيعية للعميل
 Customer {0} does not belong to project {1},العميل {0} لا ينتمي إلى المشروع {1}
 Customer's Item Code,رمز صنف العميل
-Customer's Purchase Order,رقم امر الشراء
-Customer's Purchase Order Date,تاريخ امر الشراء
+Customer's Purchase Order,رقم أمر الشراء
+Customer's Purchase Order Date,تاريخ أمر الشراء
 Customer: ,العميل: 
 Customers not selected.,لم يتم اختيار العملاء.
 CWIP Account,حساب الأعمال الرأسمالية قيد التنفيذ
@@ -5739,7 +5739,7 @@ Debit and Credit not equal for {0} #{1}. Difference is {2}.,المدين وال�
 Debit in Company Currency,مدين بعملة الشركة
 Debit Note Issued,تم إصدار إشعار مدين
 "Debit Note will update it's own outstanding amount, even if 'Return Against' is specified.","سيحدّث الإشعار المدين مبلغه المستحق، حتى في حال تحديد ""مرتجع مقابل""."
-Debit To,مدين إلى :
+Debit To,مدين إلى:
 Debit to,مدين إلى
 Debit To is required,مدين إلى مطلوب
 Debit-Credit Mismatch,عدم تطابق المدين والدائن
@@ -6106,7 +6106,7 @@ Is Paid,مدفوع
 Is Period Closing Voucher Entry,قيد ناتج عن إقفال الفترة
 Is Recursive,متكرر
 Is Return (Credit Note),هل هو مرتجع (إشعار دائن)
-Is Return (Debit Note),هل هو مرتجع
+Is Return (Debit Note),هل هو مرتجع (إشعار مدين)
 Is Rule Evaluated,تم تقييم القاعدة
 Is Subcontracted,متعاقد عليه من الباطن
 Is Tax Withholding Account,حساب استقطاع ضريبي
@@ -8047,7 +8047,7 @@ Terms Template,قالب الشروط
 "The Access to Request for Quotation From Portal is Disabled. To Allow Access, Enable it in Portal Settings.",الوصول إلى طلب عرض السعر من البوابة معطل. للسماح بالوصول، فعّله في إعدادات البوابة.
 "The percentage by which you are allowed to order more on a Purchase Order than the quantity requested on the originating Material Request. For example, if the Material Request has 100 units and the allowance is 10%, you can order up to 110 units",النسبة المئوية المسموح لك بطلبها زيادة في أمر الشراء عن الكمية المطلوبة في طلب المواد الأصلي. على سبيل المثال، إذا كان طلب المواد يتضمن 100 وحدة ونسبة السماح 10%، فيمكنك طلب ما يصل إلى 110 وحدات
 This covers all scorecards tied to this Setup,يشمل هذا جميع بطاقات الأداء المرتبطة بهذا الإعداد
-To Bill,العمليات للفوترة
+To Bill,للفوترة
 To Date cannot be before From Date.,لا يمكن أن يكون تاريخ النهاية قبل تاريخ البداية.
 To Date must be greater than From Date,يجب أن يكون تاريخ النهاية بعد تاريخ البداية
 To Pay,بانتظار الدفع
@@ -9248,7 +9248,7 @@ You cannot delete Project Type 'External',لا يمكنك حذف نوع المش
 {0}%,{0}%
 {0}'s {1} cannot be after {2}'s Expected End Date.,لا يمكن أن يكون {1} الخاص بـ {0} بعد تاريخ الانتهاء المتوقع لـ {2}.
 {0}'s {1} cannot be before {2}'s Expected Start Date.,لا يمكن أن يكون {1} الخاص بـ {0} قبل تاريخ البدء المتوقع لـ {2}.
- BOM, قائمة المواد
+ BOM,قائمة المواد
  Item, صنف
  Phantom Item, صنف وهمي
  Raw Material, المادة الخام
@@ -9762,7 +9762,7 @@ You cannot submit the order without payment.,لا يمكنك اعتماد الط
 You don't have enough points to redeem.,ليس لديك نقاط كافية لاستبدالها.
 You must select a customer before adding an item.,يجب تحديد عميل قبل إضافة صنف.
 "{0}, {1} or {2} are the only allowed options.",{0} أو {1} أو {2} هي الخيارات الوحيدة المسموح بها.
- Default Work In Progress Warehouse , مستودع الأعمال تحت التنفيذ الافتراضي 
+ Default Work In Progress Warehouse ,مستودع الأعمال تحت التنفيذ الافتراضي
 '{0}' should be in company currency {1}.,يجب أن يكون '{0}' بعملة الشركة {1}.
 A third party distributor / dealer / commission agent / affiliate / reseller who sells the companies products for a commission.,موزع / تاجر / وكيل بالعمولة / شريك تسويق / معيد بيع من طرف ثالث يبيع منتجات الشركة مقابل عمولة.
 Abampere,أبأمبير
@@ -9912,7 +9912,7 @@ Employee {0} not found,الموظف {0} غير موجود
 Empty To Delete List,قائمة الحذف فارغة
 EMU Of Charge,وحدة EMU للشحنة الكهربائية
 EMU of current,وحدة EMU للتيار الكهربائي
-Enable Provisional Accounting For Non Stock Items,تمكين المخزون للأصناف غير المخزنية
+Enable Provisional Accounting For Non Stock Items,تفعيل المحاسبة المؤقتة للأصناف غير المخزنية
 Enabling this option will allow you to record - <br><br> 1. Advances Received in a <b>Liability Account</b> instead of the <b>Asset Account</b><br><br>2. Advances Paid in an <b>Asset Account</b> instead of the <b> Liability Account</b>,سيتيح لك تفعيل هذا الخيار تسجيل - <br><br> 1. الدفعات المقدمة المستلمة في <b>حساب مطلوبات</b> بدلًا من <b>حساب الأصول</b><br><br>2. الدفعات المقدمة المدفوعة في <b>حساب أصول</b> بدلًا من <b> حساب المطلوبات</b>
 Encashment Date,تاريخ التعويض النقدي
 Error getting details for {0}: {1},خطأ في جلب تفاصيل {0}: {1}
@@ -10876,7 +10876,7 @@ Price List Defaults,القيم الافتراضية لقائمة الأسعار
 Price List must be applicable for Buying or Selling,يجب أن تكون قائمة الأسعار منطبقة على الشراء أو البيع
 Price List Name,اسم قائمة الأسعار
 Price Not UOM Dependent,السعر لا يعتمد على وحدة القياس
-Prices HTML,الأسعار (HTML)
+Prices HTML,تفاصيل الأسعار
 Print Without Amount,طباعة بدون مبلغ
 Printing Details,تفاصيل الطباعة
 Priority cannot be lesser than 1.,لا يمكن أن تكون الأولوية أقل من 1.
@@ -11147,7 +11147,7 @@ Stock Ledger Invariant Check,التحقق من ثبات دفتر أستاذ ال
 Stock Ledger Variance,فروقات دفتر أستاذ المخزون
 Stock Ledgers won’t be reposted.,لن يعاد ترحيل دفاتر أستاذ المخزون.
 Stock Levels,مستويات المخزون
-Stock Levels HTML,مستويات المخزون (HTML)
+Stock Levels HTML,تفاصيل مستويات المخزون
 Stock Movement,حركة المخزون
 Stock not available to reserve for the Item {0} in Warehouse {1}.,المخزون غير متاح للحجز للصنف {0} في المستودع {1}.
 Stock Qty vs Batch Qty,كمية المخزون مقابل كمية التشغيلة
@@ -13045,7 +13045,7 @@ User Remark,التعليقات
 Name,الاسم
 Chargeable,قابل للتحميل
 Unit of Measure (UOM),وحدات القياس
-Feedback,معلومات أخرى
+Feedback,ملاحظات
 Delete Transactions,مسح جميع البيانات
 Sales,المبيعات
 Loyalty Program,برنامج الولاء
@@ -15583,3 +15583,24 @@ Variants,المتغيرات
 Housing,بدل السكن,Salary Slip
 Housing,بدل السكن,Salary Structure Assignment
 Day/Hour,أيام/ساعات,Sales Invoice Item
+Medium,الوسيلة,Delivery Note
+Medium,الوسيلة,Lead
+Medium,الوسيلة,Opportunity
+Medium,الوسيلة,POS Invoice
+Medium,الوسيلة,POS Profile
+Medium,الوسيلة,Quotation
+Medium,الوسيلة,Sales Invoice
+Medium,الوسيلة,Sales Order
+Address Line 1,سطر العنوان 1
+Address Line 2,سطر العنوان 2
+Billing Address Name,اسم عنوان الفوترة
+Is Internal Customer,عميل داخلي
+Is System Generated,منشأ تلقائياً بواسطة النظام
+Represents Company,تمثيل الشركة
+Monthly Long,شهري طويل
+Address HTML,تفاصيل العنوان
+Contact HTML,تفاصيل الاتصال
+HTML,كود HTML,Print Format
+Modules HTML,عرض الوحدات
+Roles HTML,عرض الأدوار
+Is Group,هل هو حساب رئيسي,Account
