@@ -197,7 +197,6 @@ const IC_PR_DEFAULTS = {
 	project: "الادارة رئيسي - Head Office - AF",
 	cost_center: "الادارة رئيسي - Head Office - AF",
 	jv_status: "JV Not Created",
-	payment_type: "SADAD Payment",
 	mode_of_payment: "SADAD Payment",
 	multiple_beneficiaries: 1,
 	payment_approver: "Human Resources - الموارد البشرية",

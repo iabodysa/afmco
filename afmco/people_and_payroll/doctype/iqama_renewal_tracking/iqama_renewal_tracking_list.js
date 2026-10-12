@@ -431,7 +431,6 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                             paymentRequest.naming_series = 'PR-.YYYY.-';
                             paymentRequest.date = frappe.datetime.nowdate();
                             paymentRequest.bank_payment_date = frappe.datetime.nowdate();
-                            paymentRequest.payment_type = 'SADAD Payment';
                             paymentRequest.mode_of_payment = 'SADAD Payment';
                             paymentRequest.remark = remarks;
                             paymentRequest.multiple_beneficiaries = 1;
