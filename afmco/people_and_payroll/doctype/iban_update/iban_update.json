@@ -16,9 +16,14 @@
   "iban_details_section",
   "iban",
   "account_holder_name",
+  "account_holder",
   "column_break_bank",
   "bank_name",
   "note",
+  "temporary_iban",
+  "previous_iban",
+  "previous_bank_name",
+  "previous_holder",
   "naming_series",
   "deceleration",
   "iqama_copy",
@@ -88,6 +93,14 @@
    "reqd": 1
   },
   {
+   "default": "Employee",
+   "fieldname": "account_holder",
+   "fieldtype": "Select",
+   "label": "Account Holder",
+   "options": "Employee\nAnother person",
+   "reqd": 1
+  },
+  {
    "fieldname": "column_break_bank",
    "fieldtype": "Column Break"
   },
@@ -102,7 +115,41 @@
    "description": "If the account is not in your name, explain why.",
    "fieldname": "note",
    "fieldtype": "Small Text",
-   "label": "Note"
+   "label": "Note",
+   "mandatory_depends_on": "eval:doc.account_holder == 'Another person'"
+  },
+  {
+   "depends_on": "temporary_iban",
+   "fieldname": "temporary_iban",
+   "fieldtype": "Link",
+   "label": "Temporary IBAN",
+   "no_copy": 1,
+   "options": "Temporary IBAN",
+   "read_only": 1
+  },
+  {
+   "fieldname": "previous_iban",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Previous IBAN",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "previous_bank_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Previous Bank Name",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "previous_holder",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Previous Account Holder Name",
+   "no_copy": 1,
+   "read_only": 1
   },
   {
    "fieldname": "naming_series",
@@ -142,22 +189,60 @@
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "modified": "2026-09-25 12:00:00.000000",
+ "modified": "2026-10-12 20:25:00.000000",
  "module": "People and Payroll",
  "name": "IBAN Update",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "AI Agent",
+   "write": 1
+  },
+  {
+   "cancel": 1,
    "email": 1,
    "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "System Manager",
-   "share": 1,
+   "role": "Payroll User",
+   "submit": 1,
    "write": 1
   }
  ],

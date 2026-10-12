@@ -6,6 +6,7 @@ from frappe import _
 from frappe.model.document import Document
 
 from afmco.people_and_payroll.doctype.iban_update.iban_update import validate_saudi_iban
+from afmco.people_and_payroll.iban import refresh_draft_slips
 
 
 class TemporaryIBAN(Document):
@@ -17,6 +18,15 @@ class TemporaryIBAN(Document):
 
 	def before_update_after_submit(self):
 		self.validate_single_active()
+
+	def on_submit(self):
+		refresh_draft_slips(self.employee)
+
+	def on_update_after_submit(self):
+		refresh_draft_slips(self.employee)
+
+	def on_cancel(self):
+		refresh_draft_slips(self.employee)
 
 	def validate_single_active(self):
 		if not self.active:

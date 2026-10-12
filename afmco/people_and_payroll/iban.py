@@ -3,6 +3,8 @@
 
 import re
 
+import frappe
+
 BANK_CODES = {
 	"78": "STCJ",
 	"10": "NCBK",
@@ -39,6 +41,7 @@ MISSING = "missing"
 SHAPE = "shape"
 CHECKSUM = "checksum"
 BANK_CODE = "bank_code"
+SLIP_BANK_FIELDS = ("bank_name", "bank_account_no", "iban_holder_name", "temporary_iban")
 
 
 def normalise_account(value) -> str:
@@ -63,3 +66,10 @@ def parse_saudi_iban(value) -> tuple[bool, str | None, str | None]:
 	if not bank:
 		return False, BANK_CODE, None
 	return True, None, bank
+
+
+def refresh_draft_slips(employee):
+	for name in frappe.get_all("Salary Slip", filters={"employee": employee, "docstatus": 0}, pluck="name"):
+		slip = frappe.get_doc("Salary Slip", name)
+		slip.pull_emp_details()
+		slip.db_set({field: slip.get(field) for field in SLIP_BANK_FIELDS})

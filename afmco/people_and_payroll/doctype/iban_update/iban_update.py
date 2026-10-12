@@ -7,7 +7,10 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 
-from afmco.people_and_payroll.iban import BANK_CODES
+from afmco.people_and_payroll.iban import BANK_CODES, refresh_draft_slips
+
+APPROVED = "Approved"
+ANOTHER_PERSON = "Another person"
 
 
 def validate_saudi_iban(iban):
@@ -32,42 +35,81 @@ class IBANUpdate(Document):
 		self.bank_name = validate_saudi_iban(self.iban)
 
 	def before_submit(self):
-		if frappe.flags.in_install or frappe.flags.in_migrate:
+		if frappe.flags.in_install or frappe.flags.in_migrate or self.workflow_state != APPROVED:
 			return
-		self.update_employee_bank_details()
+		deactivate_temporary_ibans(self.employee)
+		if self.account_holder == ANOTHER_PERSON:
+			self.open_temporary_iban()
+		else:
+			self.update_employee_bank_details()
+
+	def on_submit(self):
+		if self.workflow_state == APPROVED:
+			refresh_draft_slips(self.employee)
+
+	def on_cancel(self):
+		before = self.get_doc_before_save()
+		if not before or before.workflow_state != APPROVED:
+			return
+		if self.temporary_iban:
+			temporary_iban = frappe.get_doc("Temporary IBAN", self.temporary_iban)
+			if temporary_iban.docstatus == 1:
+				temporary_iban.flags.ignore_permissions = True
+				temporary_iban.cancel()
+		else:
+			self.restore_employee_bank_details()
+		refresh_draft_slips(self.employee)
+
+	def open_temporary_iban(self):
+		temporary_iban = frappe.get_doc(
+			{
+				"doctype": "Temporary IBAN",
+				"employee": self.employee,
+				"iban": self.iban,
+				"iban_holder_name": self.account_holder_name,
+				"reason": self.note,
+				"iban_update": self.name,
+				"active": 1,
+			}
+		)
+		temporary_iban.insert(ignore_permissions=True)
+		temporary_iban.submit()
+		self.temporary_iban = temporary_iban.name
 
 	def update_employee_bank_details(self):
-		if not self.employee:
-			frappe.throw("Employee ID is missing")
-
 		employee = frappe.get_doc("Employee", self.employee)
+		self.previous_iban = employee.bank_ac_no
+		self.previous_bank_name = employee.bank_name
+		self.previous_holder = employee.iban_holder_name
+		employee.bank_ac_no = self.iban
+		employee.bank_name = self.bank_name
+		employee.iban_holder_name = self.account_holder_name
+		employee.iban_verified = 1
+		employee.save(ignore_permissions=True)
+		employee.add_comment(
+			"Comment", _("IBAN and Bank Name updated via IBAN Update document {0}.").format(self.name)
+		)
 
-		if not employee:
-			frappe.throw("Employee not found")
+	def restore_employee_bank_details(self):
+		employee = frappe.get_doc("Employee", self.employee)
+		if employee.bank_ac_no != self.iban or not self.previous_iban:
+			employee.add_comment(
+				"Comment", _("IBAN Update {0} was cancelled and the bank details were kept.").format(self.name)
+			)
+			return
+		employee.bank_ac_no = self.previous_iban
+		employee.bank_name = self.previous_bank_name
+		employee.iban_holder_name = self.previous_holder
+		employee.save(ignore_permissions=True)
+		employee.add_comment(
+			"Comment", _("Bank details restored after IBAN Update {0} was cancelled.").format(self.name)
+		)
 
-		if self.workflow_state == "Approved":
-			if not self.iban or not self.bank_name:
-				frappe.throw("IBAN or Bank Name is missing")
 
-			try:
-				employee.bank_ac_no = self.iban
-				employee.bank_name = self.bank_name
-				employee.iban_verified = 1
-
-				employee.save(ignore_permissions=True)
-
-				frappe.get_doc({
-					"doctype": "Comment",
-					"comment_type": "Comment",
-					"reference_doctype": "Employee",
-					"reference_name": employee.name,
-					"content": f"IBAN and Bank Name updated via IBAN Update document {self.name}."
-				}).insert(ignore_permissions=True)
-
-			except AttributeError as e:
-				frappe.log_error(f"Attribute error: {str(e)}", "IBAN Update Error")
-				frappe.throw(f"Attribute error: {str(e)}")
-
-			except Exception as e:
-				frappe.log_error(f"Error updating IBAN and Bank Name: {str(e)}", "IBAN Update Error")
-				frappe.throw(f"Failed to update IBAN and Bank Name: {str(e)}")
+def deactivate_temporary_ibans(employee):
+	for name in frappe.get_all(
+		"Temporary IBAN", filters={"employee": employee, "docstatus": 1, "active": 1}, pluck="name"
+	):
+		temporary_iban = frappe.get_doc("Temporary IBAN", name)
+		temporary_iban.active = 0
+		temporary_iban.save(ignore_permissions=True)

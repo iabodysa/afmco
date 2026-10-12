@@ -15550,3 +15550,11 @@ Document {0} for employee {1} has no SADAD number.,المستند {0} للموظ
 Document {0} for employee {1} has no renewal duration.,المستند {0} للموظف {1} ليس فيه مدة تجديد.
 Payment Requisition {0} created,تم إنشاء طلب الصرف {0}
 Payment type {0} has no bank file layout.,نوع الدفع {0} ليس له نموذج ملف بنكي.
+Account Holder,صاحب الحساب
+Another person,شخص آخر
+Bank details restored after IBAN Update {0} was cancelled.,أُعيدت بيانات البنك بعد إلغاء تحديث الآيبان {0}.
+IBAN Update {0} was cancelled and the bank details were kept.,أُلغي تحديث الآيبان {0} وبقيت بيانات البنك كما هي.
+IBAN and Bank Name updated via IBAN Update document {0}.,حُدّث الآيبان واسم البنك عبر مستند تحديث الآيبان {0}.
+Previous Account Holder Name,اسم صاحب الحساب السابق
+Previous Bank Name,اسم البنك السابق
+Previous IBAN,الآيبان السابق

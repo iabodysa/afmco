@@ -16,6 +16,7 @@
   "bank_name",
   "section_break_reason",
   "reason",
+  "iban_update",
   "wps_used",
   "amended_from"
  ],
@@ -89,6 +90,14 @@
    "reqd": 1
   },
   {
+   "fieldname": "iban_update",
+   "fieldtype": "Link",
+   "label": "IBAN Update",
+   "options": "IBAN Update",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
    "fieldname": "wps_used",
    "fieldtype": "Table MultiSelect",
    "label": "WPS Used",
@@ -109,7 +118,7 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2026-10-03 00:00:00.000000",
+ "modified": "2026-10-12 20:25:00.000000",
  "modified_by": "Administrator",
  "module": "People and Payroll",
  "name": "Temporary IBAN",
