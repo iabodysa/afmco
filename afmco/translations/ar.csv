@@ -13639,3 +13639,153 @@ reviews,المراجعات
 submitted,معتمد
 {0} is not in Optional Holiday List,{0} ليس في قائمة العطلات الاختيارية
 {0} must be submitted,يجب اعتماد {0}
+Opening (Cr),افتتاحي (دائن)
+Please select Subcontracting Order instead of Purchase Order {0},يرجى تحديد أمر تعاقد من الباطن بدلاً من أمر الشراء {0}
+Please set default Cash or Bank account in Mode of Payment {},يرجى تعيين حساب النقدية أو البنك الافتراضي في طريقة الدفع {}
+Please set default Cash or Bank account in Mode of Payments {},يرجى تعيين حساب النقدية أو البنك الافتراضي في طرق الدفع {}
+Pound-Force,رطل القوة
+Pound/Cubic Foot,رطل/قدم مكعب
+Pound/Cubic Inch,رطل/بوصة مكعبة
+Pound/Gallon (US),رطل/غالون (الولايات المتحدة)
+Primary Contact,جهة الاتصال الأساسية
+Purchase Orders {0} are un-linked,تم إلغاء ربط أوامر الشراء {0}
+Rejected Warehouse and Accepted Warehouse cannot be same.,لا يمكن أن يكون مستودع المرفوضات نفس مستودع الكميات المقبولة.
+"Row #{0}: Selling rate for item {1} is lower than its {2}.
+\t\t\t\t\tSelling {3} should be atleast {4}.<br><br>Alternatively,
+\t\t\t\t\tyou can disable '{5}' in {6} to bypass
+\t\t\t\t\tthis validation.","الصف #{0}: سعر بيع الصنف {1} أقل من {2}.
+\t\t\t\t\tيجب أن يكون {3} البيع {4} على الأقل.<br><br>كبديل عن ذلك،
+\t\t\t\t\tيمكنك تعطيل '{5}' في {6} لتجاوز
+\t\t\t\t\tهذا التحقق."
+Row #{}: {} {} doesn't belong to Company {}. Please select valid {}.,الصف #{}: {} {} لا ينتمي إلى الشركة {}. يرجى تحديد {} صحيح.
+Sales Opportunities by Medium,فرص المبيعات حسب الوسيلة
+Serial No {0} does not exists,الرقم التسلسلي {0} غير موجود
+Shipping Address,عنوان الشحن
+Signee,الموقّع
+Split Early Payment Discount Loss into Income and Tax Loss,قسّم خسارة خصم الدفع المبكر إلى خسارة في الدخل وخسارة ضريبية
+Subscription,الاشتراك
+Suggestions,الاقتراحات
+Supplier is required for all selected Items,يشترط وجود مورد لجميع الأصناف المختارة
+Tax,الضريبة
+"Tax detail table fetched from item master as a string and stored in this field.
+Used for Taxes and Charges","يتم استخراج جدول تفاصيل الضرائب من بيانات الصنف الرئيسية كسلسلة نصية وتخزينه في هذا الحقل.
+يستخدم للضرائب والرسوم"
+Team,الفريق
+"The Payment Request {0} is already paid, cannot process payment twice",تم دفع طلب الدفع {0} بالفعل، ولا يمكن معالجة الدفع مرتين
+The field {0} in row {1} is not set,الحقل {0} في الصف {1} غير معيّن
+"The percentage you are allowed to receive or deliver more against the quantity ordered. For example, if you have ordered 100 units, and your Allowance is 10%, then you are allowed to receive 110 units.",النسبة المئوية المسموح لك باستلام أو تسليم كمية إضافية مقارنة بالكمية المطلوبة. على سبيل المثال، إذا طلبت 100 وحدة، وكانت نسبة الزيادة المسموح بها 10%، فيسمح لك باستلام 110 وحدات.
+"The percentage you are allowed to transfer more against the quantity ordered. For example, if you have ordered 100 units, and your Allowance is 10%, then you are allowed transfer 110 units.",النسبة المئوية المسموح لك بنقلها زيادة عن الكمية المطلوبة. على سبيل المثال، إذا طلبت 100 وحدة، وكانت نسبة الزيادة المسموح بها 10%، فيسمح لك بنقل 110 وحدات.
+"The system will create a Sales Invoice or a POS Invoice from the POS interface based on this setting. For high-volume transactions, it is recommended to use POS Invoice.",سيقوم النظام بإنشاء فاتورة مبيعات أو فاتورة نقاط بيع من واجهة نقاط البيع بناء على هذا الإعداد. ينصح باستخدام فاتورة نقاط البيع في حالة المعاملات ذات الحجم الكبير.
+The warehouse where your Items will be transferred when you begin production. Group Warehouse can also be selected as a Work in Progress warehouse.,المستودع الذي ستنقل إليه منتجاتك عند بدء الإنتاج. يمكن أيضاً اختيار مستودع المجموعة كمستودع للمنتجات قيد التصنيع.
+"Then Pricing Rules are filtered out based on Customer, Customer Group, Territory, Supplier, Supplier Type, Campaign, Sales Partner etc.",ثم يتم تصفية قواعد التسعير بناء على العميل، ومجموعة العملاء، والمنطقة، والمورد، ونوع المورد، والحملة، وشريك المبيعات، وما إلى ذلك.
+This field is used to set the 'Customer'.,"يستخدم هذا الحقل لتعيين ""العميل""."
+This is a root supplier group and cannot be edited.,هذه مجموعة مورّد جذر ولا يمكن تحريرها.
+This is considered dangerous from accounting point of view.,يعتبر هذا الأمر خطيراً من وجهة نظر المحاسبة.
+"This is enabled by default. If you want to plan materials for sub-assemblies of the Item you're manufacturing leave this enabled. If you plan and manufacture the sub-assemblies separately, you can disable this checkbox.",هذا الخيار مفعّل افتراضيًا. إذا كنت ترغب في تخطيط المواد اللازمة لتجميعات فرعية للمنتج الذي تقوم بتصنيعه، فاترك هذا الخيار مفعّلًا. أما إذا كنت تخطط وتصنّع التجميعات الفرعية بشكل منفصل، فيمكنك تعطيل هذا الخيار.
+"This table is used to set details about the 'Item', 'Qty', 'Basic Rate', etc.","يستخدم هذا الجدول لتعيين تفاصيل حول ""الصنف"" و""الكمية"" و""السعر الأساسي"" وما إلى ذلك."
+This tool helps you to update or fix the quantity and valuation of stock in the system. It is typically used to synchronise the system values and what actually exists in your warehouses.,تساعدك هذه الأداة على تحديث أو تصحيح كمية وقيمة المخزون في النظام. وتستخدم عادة لمزامنة قيم النظام مع ما هو موجود فعلياً في مستودعاتك.
+This value shall be used when no matching Common Code for a record is found.,تستخدم هذه القيمة عندما لا يتم العثور على رمز مشترك مطابق لسجل ما.
+Timer,المؤقت
+Total Number of Booked Depreciations ,إجمالي عدد الإهلاكات المسجلة
+UPC,رمز المنتج العالمي
+"Under Working Hours table, you can add start and end times for a Workstation. For example, a Workstation may be active from 9 am to 1 pm, then 2 pm to 5 pm. You can also specify the working hours based on shifts. While scheduling a Work Order, the system will check for the availability of the Workstation based on the working hours specified.",ضمن جدول ساعات العمل، يمكنك إضافة أوقات بدء وانتهاء العمل لمحطة العمل. على سبيل المثال، قد تكون محطة العمل نشطة من الساعة 9 صباحًا إلى 1 ظهرًا، ثم من 2 ظهرًا إلى 5 مساء. كما يمكنك تحديد ساعات العمل بناء على الورديات. عند جدولة أمر عمل، سيتحقق النظام من توافر محطة العمل بناء على ساعات العمل المحددة.
+Unit,الوحدة
+Unreconciled Amount,المبلغ غير المسوّى
+Update Billed Amount in Purchase Order,تحديث المبلغ المفوتر في أمر الشراء
+Updating details.,جار تحديث التفاصيل.
+Valuation,التقييم
+Variant Based On cannot be changed,لا يمكن تغيير المتغير بناء على
+View Data Based on,عرض البيانات بناء على
+Wages,الأجور
+"Warehouse {0} is not allowed for Sales Order {1}, it should be {2}",لا يسمح باستخدام المستودع {0} في أمر البيع {1}، بل يجب أن يكون {2}
+Warnings,التحذيرات
+"When checked, only transaction threshold will be applied for transaction individually",عند التحديد، سيتم تطبيق حد المعاملة فقط على كل معاملة على حدة
+{0} is a mandatory Accounting Dimension. <br>Please set a value for {0} in Accounting Dimensions section.,{0} بعد محاسبي إلزامي. <br>يرجى تحديد قيمة لـ {0} في قسم الأبعاد المحاسبية.
+{0} not allowed to transact with {1}. Please change the Company or add the Company in the 'Allowed To Transact With'-Section in the Customer record.,"لا يسمح لـ {0} بالتعامل مع {1}. يرجى تغيير الشركة أو إضافتها في قسم ""مسموح بالتعامل معه"" في سجل العميل."
+{0} units of {1} are required in {2} with the inventory dimension: {3} on {4} {5} for {6} to complete the transaction.,يلزم {0} وحدة من {1} في {2} مع بعد المخزون: {3} على {4} {5} لـ {6} لإكمال المعاملة.
+{0} {1} has already been partly paid. Please use the 'Get Outstanding Invoice' or the 'Get Outstanding Orders' button to get the latest outstanding amounts.,"تم سداد جزء من المبلغ المستحق {0} {1} . يرجى استخدام زر ""الحصول على الفاتورة المستحقة"" أو زر ""الحصول على الطلبات المستحقة"" للاطلاع على أحدث المبالغ المستحقة."
+{0} {1}: Account {2} is a Group Account and group accounts cannot be used in transactions,{0} {1}: الحساب {2} هو حساب مجموعة، ولا يمكن استخدام حسابات المجموعة في المعاملات
+Fw: {0},إعادة توجيه: {0}
+Open Document,فتح المستند
+Open reference document,فتح المستند المرجعي
+Printer,الطابعة
+Progress,التقدم
+Project,المشروع
+RAW Information Log,سجل المعلومات الخام
+Read-Only queries are allowed,يسمح فقط باستعلامات القراءة فقط
+Recipient,المستلم
+Reminder,التذكير
+Removed Icons,الأيقونات المزالة
+Report,التقرير
+Resource,المورد
+Restrictions,القيود
+Result,النتيجة
+Route,المسار
+Row,الصف
+Rule,القاعدة
+Sample,العينة
+Saving Changes...,جاري حفظ التغييرات...
+Schedule,الجدول
+Scheduler,المجدول
+Scopes,النطاقات
+Seconds,الثواني
+Sender,المرسل
+Sent To,المرسل إليه
+Separator,الفاصل
+Service,الخدمة
+Setting,الإعداد
+Size,الحجم
+Snippet and more variables:  {0},مقتطف برمجي ومتغيرات أخرى: {0}
+Some columns might get cut off when printing to PDF. Try to keep number of columns under 10.,قد تقتطع بعض الأعمدة عند الطباعة إلى ملف PDF. حاول ألا يتجاوز عدد الأعمدة 10.
+Spacer,الفاصل
+Spawns actions in a background job,ينشئ إجراءات في مهمة خلفية
+Starting Frappe ...,جاري بدء Frappe ...
+Statistics,الإحصائيات
+Step,الخطوة
+Steps,الخطوات
+Sum,المجموع
+Symbol,الرمز
+Table,الجدول
+Text,النص
+There are documents which have workflow states that do not exist in this Workflow. It is recommended that you add these states to the Workflow and change their states before removing these states.,توجد مستندات ذات حالات سير عمل غير موجودة في سير العمل الحالي. ينصح بإضافة هذه الحالات إلى سير العمل وتغييرها قبل حذفها.
+"These fields are used to provide resource server metadata to clients querying the ""well known protected resource"" end point.","تستخدم هذه الحقول لتوفير بيانات تعريف خادم الموارد للعملاء الذين يستعلمون عن نقطة النهاية ""المورد المحمي المعروف""."
+This document has unsaved changes which might not appear in final PDF. <br> Consider saving the document before printing.,يحتوي هذا المستند على تغييرات غير محفوظة قد لا تظهر في ملف PDF النهائي. <br> يرجى حفظ المستند قبل الطباعة.
+"Track if your email has been opened by the recipient.
+<br>
+Note: If you're sending to multiple recipients, even if 1 recipient reads the email, it'll be considered ""Opened""","تتبع ما إذا تم فتح بريدك الإلكتروني من قبل المستلم.
+<br>
+ملاحظة: إذا كنت ترسل إلى عدة مستلمين، حتى لو قرأ مستلم واحد البريد الإلكتروني، فسيعتبر ""مفتوح"""
+Unable to send mail because of a missing email account. Please setup default Email Account from Settings > Email Account,لا يمكن إرسال البريد الإلكتروني بسبب عدم وجود حساب بريد إلكتروني. يرجى إعداد حساب البريد الإلكتروني الافتراضي من الإعدادات > حساب البريد الإلكتروني
+"Unique ID assigned by the client developer used to identify the client software to be dynamically registered.
+<br>
+<b>Should remain same</b> across multiple versions or updates of the software.","معرّف فريد يتم تعيينه بواسطة مطوّر العميل ويستخدم لتحديد برنامج العميل المراد تسجيله ديناميكيًا.
+<br>
+<b>يجب أن يبقى كما هو</b> عبر الإصدارات أو التحديثات المتعددة للبرنامج."
+Updating Email Queue Statuses. The emails will be picked up in the next scheduled run.,جار تحديث حالات قائمة انتظار البريد الإلكتروني. سيتم استلام رسائل البريد الإلكتروني في عملية التشغيل المجدولة التالية.
+Updating related fields...,جار تحديث الحقول ذات الصلة...
+User with email: {0} does not exist in the system. Please ask 'System Administrator' to create the user for you.,المستخدم ذو البريد الإلكتروني: {0} غير موجود في النظام. يرجى طلب إنشاء حساب المستخدم من مسؤول النظام.
+You are not allowed to access this resource,لا يسمح لك بالوصول إلى هذا المورد
+"You are not allowed to access this {0} record because it is linked to {1} '{2}' in row {3}, field {4}",لا يسمح لك بالوصول إلى هذا السجل {0} لأنه مرتبط بالسجل {1} '{2}' في الصف {3}، الحقل {4}
+You are not allowed to delete Standard Report,لا يسمح لك بحذف التقرير القياسي
+You are not allowed to edit the report.,لا يسمح لك بتعديل التقرير.
+You are not authorized to undo this email,أنت غير مفوّض للتراجع عن هذا البريد الإلكتروني
+You are not permitted to access this page without login.,لا يسمح لك بالوصول إلى هذه الصفحة بدون تسجيل الدخول.
+You are not permitted to access this resource. Login to access,لا يسمح لك بالوصول إلى هذا المورد. سجّل الدخول للوصول إليه
+You have not entered a value. The field will be set to empty.,لم تدخل قيمة. سيتم تعيين الحقل فارغًا.
+Your exported report: {0},تقريرك المصدّر: {0}
+{0} is enabled,{0} مفعّل
+Add Assignee,إضافة مكلف
+Add a condition,إضافة شرط
+Add condition,إضافة شرط
+Add filter,إضافة تصفية
+Assignee Rules,قواعد المكلفين
+Category deleted successfully.,تم حذف الفئة بنجاح.
+Default calling medium for logged in user,وسيط الاتصال الافتراضي للمستخدم الحالي
+Paused,متوقف مؤقتًا
+Published On,تاريخ النشر
+Show ,عرض
+Upload image,تحميل صورة
+deleted,محذوف
+More Information,مزيد من المعلومات
+Percentage,النسبة المئوية
+Timestamp,الطابع الزمني
