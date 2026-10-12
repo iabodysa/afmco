@@ -7,7 +7,8 @@ from frappe import _
 from frappe.model.document import Document
 
 from afmco.approver_check import ai_reading
-from afmco.people_and_payroll.advance_leave_salary import recompute_settlement, refuse_unpaid_settled_period, service_span
+from afmco.people_and_payroll.advance_leave_salary import recompute_settlement, refuse_unpaid_settled_period
+from afmco.people_and_payroll.service_calendar import service_span, unpaid_leave
 
 
 class EndofServiceSettlement(Document):
@@ -95,7 +96,7 @@ def service_duration(record) -> str:
     start, end = _value(record, "date_1"), _value(record, "date_2")
     if not (start and end):
         return ""
-    years, months, days = service_span(start, end)
+    years, months, days = service_span(start, end, unpaid_leave(_value(record, "employee")))
     return f"{years} Year(s), {months} Month(s), {days} Day(s)"
 
 

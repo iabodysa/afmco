@@ -107,7 +107,7 @@ frappe.ui.form.on('End of Service Settlement', {
 function end_of_service_years(frm) {
   return frappe.xcall(
     'afmco.people_and_payroll.api.advance_leave_salary.end_of_service_years',
-    { start: frm.doc.date_1, end: frm.doc.date_2 },
+    { start: frm.doc.date_1, end: frm.doc.date_2, employee: frm.doc.employee },
     'GET'
   );
 }

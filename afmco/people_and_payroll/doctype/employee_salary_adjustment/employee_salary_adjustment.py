@@ -1,7 +1,8 @@
 import frappe
-from dateutil.relativedelta import relativedelta
 from frappe import _
 from frappe.model.document import Document
+
+from afmco.people_and_payroll.service_calendar import service_span, unpaid_leave
 
 
 class EmployeeSalaryAdjustment(Document):
@@ -28,9 +29,8 @@ class EmployeeSalaryAdjustment(Document):
 			frappe.throw(_("Grade must be between 1 and 10."))
 
 		if self.date_of_joining:
-			today = frappe.utils.nowdate()
-			years_of_service = relativedelta(frappe.utils.getdate(today), frappe.utils.getdate(self.date_of_joining)).years
-			self.years_of_service = years_of_service
+			yesterday = frappe.utils.add_days(frappe.utils.nowdate(), -1)
+			self.years_of_service = service_span(self.date_of_joining, yesterday, unpaid_leave(self.employee))[0]
 
 		fixed_increase = increase_matrix[self.grade]['fixed_increase']
 		rate_per_year = increase_matrix[self.grade]['rate']

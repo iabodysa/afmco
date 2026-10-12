@@ -4,9 +4,10 @@
 import frappe
 from frappe import _
 from frappe.query_builder.functions import Replace, Upper
-from frappe.utils import cint, date_diff, flt, getdate
+from frappe.utils import cint, flt, getdate
 
-from afmco.people_and_payroll.advance_leave_salary import daily_wage, service_years, settlement_award
+from afmco.people_and_payroll.advance_leave_salary import daily_wage, settlement_award
+from afmco.people_and_payroll.service_calendar import service_years, unpaid_leave, worked_days
 
 PAGE_SIZE = 5
 EOS_REASON = "1-End of term or mutual agreement"
@@ -287,11 +288,12 @@ def eos_section(source, offset):
 		return {"estimate": None}
 	as_of = getdate(source.relieving_date) if source.relieving_date else getdate()
 	per_day = daily_wage(wage)
-	span, eos_days, amount = settlement_award(EOS_REASON, source.date_of_joining, as_of, per_day)
+	unpaid = unpaid_leave(source.name)
+	span, eos_days, amount = settlement_award(EOS_REASON, source.date_of_joining, as_of, per_day, unpaid=unpaid)
 	return {
 		"estimate": {
 			"years": round(service_years(*span), 2),
-			"service_days": date_diff(as_of, source.date_of_joining) + 1,
+			"service_days": worked_days(source.date_of_joining, as_of, unpaid),
 			"eos_days": round(eos_days, 2),
 			"wage": wage,
 			"per_day": per_day,
