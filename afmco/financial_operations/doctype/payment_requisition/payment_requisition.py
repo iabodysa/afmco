@@ -23,7 +23,6 @@ ACCOUNTS_BOT_STATES = {DOCUMENT_UPLOAD: 0, "Paid": 1}
 PRELIMINARY_FIELD = "accounts_bot_preliminary"
 RECEIPT_READ_ROLES = ("Auditor", *ACCOUNTS_ROLES)
 RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "beneficiary_employee_cf", "bank_reference_cf")
-BENEFICIARY_SHEET_EXTENSIONS = (".xlsx", ".xls", ".csv")
 SADAD_NUMBER_FIELDS = ("sadad_biller_code", "sadad_bill_number")
 
 
@@ -212,12 +211,6 @@ class PaymentRequisition(Document):
 		self.account_no = None
 		for fieldname in SADAD_NUMBER_FIELDS:
 			self.set(fieldname, None)
-		leaving_state = self._action == "submit" or self.has_value_changed("workflow_state")
-		if not self.is_new() and leaving_state and not self.has_beneficiary_sheet():
-			frappe.throw(
-				_("Attach the beneficiaries sheet (Excel or CSV) before sending a Payment Requisition with multiple beneficiaries."),
-				title=_("Beneficiaries Sheet Missing"),
-			)
 
 	def validate_sadad_numbers(self):
 		for fieldname in SADAD_NUMBER_FIELDS:
@@ -227,14 +220,6 @@ class PaymentRequisition(Document):
 					_("{0} must contain digits only.").format(_(self.meta.get_label(fieldname))),
 					title=_("Invalid SADAD Number"),
 				)
-
-	def has_beneficiary_sheet(self) -> bool:
-		file_names = frappe.get_all(
-			"File",
-			filters={"attached_to_doctype": self.doctype, "attached_to_name": self.name},
-			pluck="file_name",
-		)
-		return any((name or "").lower().endswith(BENEFICIARY_SHEET_EXTENSIONS) for name in file_names)
 
 	def sync_workflow_state_to_jv(self):
 		try:
