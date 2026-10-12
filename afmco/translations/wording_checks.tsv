@@ -38,6 +38,13 @@ R29	allow	SMS
 R29	allow	OTP
 R29	allow	URL
 R29	allow	API
+R29	allow	SQL
+R29	allow	OAuth
+R29	allow	LDAP
+R29	allow	URI
+R29	allow	EAN
+R29	allow	GTIN
+R29	allow	ISBN
 R29	brand	ERPNext
 R29	brand	Frappe
 R29	brand	Gameplan
@@ -47,6 +54,8 @@ R29	brand	Microsoft
 R29	brand	WhatsApp
 R29	brand	Excel
 R29	brand	Apex
+R29	brand	Jinja
+R29	brand	Twilio
 R03	control	لم يُحدَّث	Not updated
 R04	control	زبون	Customer
 R10	control	في مبلغ الضريبة	Tax Amount

@@ -27,7 +27,7 @@ R25	punctuation	a value MUST mirror the terminal punctuation of the English sour
 R26	numbers-dates	a value MUST keep every placeholder ({0}, %s) and HTML tag of the source exactly, and MUST phrase a counted placeholder as a count field so Arabic dual/plural agreement never applies	script
 R27	numbers-dates	a date label MUST be تاريخ + noun, except a From/To range label under R10, and Hijri MUST appear only where the English says Hijri	script
 R28	abbreviations	an English abbreviation MUST be expanded to the full Arabic term unless it is on the R29 allow-list, and no Arabic abbreviation MAY be invented	script
-R29	transliteration	a value MUST NOT transliterate an English word into Arabic letters and MUST NOT leave English untranslated, except the allow-list: brand names without an Arabic name, and IBAN, SWIFT, FIFO, LIFO, PDF, CSV, ZIP, QR, SMS, OTP, URL, API	script
+R29	transliteration	a value MUST NOT transliterate an English word into Arabic letters and MUST NOT leave English untranslated, except the allow-list: brand names without an Arabic name, and IBAN, SWIFT, FIFO, LIFO, PDF, CSV, ZIP, QR, SMS, OTP, URL, API, SQL, OAuth, LDAP, URI, EAN, GTIN, ISBN	script
 R30	transliteration	a translation row MUST NOT change data (email, code, document name, number), and digits MUST stay 0-9 as the source writes them	script
 R31	prod-override	every Arabic wording MUST ship as a row in afmco/translations/ar.csv; a Translation doctype record MUST NOT be created or edited on prod to change wording	server-readback
 R32	prod-override	the release operator MUST list every prod Translation record that overrides an app key before release and MUST remove them only after the owner gives the go for the release, and MUST write the per-row list it removed	server-readback
