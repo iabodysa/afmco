@@ -9301,3 +9301,11 @@ Waived Amount	lending	override	R01
 Waived amount {0} cannot be greater than outstanding amount {1}	lending	override	R26
 Waived {0} amount {1} cannot be greater than overdue amount {2}	lending	override	R26
 Waiver account not set for charge {0} in Loan Product {1}	lending	override	R26
+Frappe Mail OAuth Error	frappe	override	R13
+These settings are required if 'Custom' LDAP Directory is used	frappe	override	R25
+Configure your Twilio settings for Helpdesk.	helpdesk	override	R29
+Configure your Twilio telephony integration settings here	helpdesk	override	R29
+Failed to save Twilio settings	helpdesk	override	R01
+Please configure your Twilio settings correctly	helpdesk	override	R29
+Please fill all required fields for Twilio	helpdesk	override	R29
+Twilio	helpdesk	override	R29

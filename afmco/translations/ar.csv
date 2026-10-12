@@ -15540,3 +15540,11 @@ Waived amount {0} cannot be greater than outstanding amount {1},لا يمكن أ
 Waived {0} amount {1} cannot be greater than overdue amount {2},لا يمكن أن يكون مبلغ {0} المتنازل عنه {1} أكبر من المبلغ المتأخر {2}
 Waiver account not set for charge {0} in Loan Product {1},حساب الإعفاء غير محدّد للرسم {0} في منتج القرض {1}
 Speed up report,تسريع التقرير
+Frappe Mail OAuth Error,خطأ OAuth في بريد Frappe
+These settings are required if 'Custom' LDAP Directory is used,"هذه الإعدادات مطلوبة في حالة استخدام دليل LDAP ""المخصص"""
+Configure your Twilio settings for Helpdesk.,اضبط إعدادات Twilio لمكتب المساعدة.
+Configure your Twilio telephony integration settings here,اضبط إعدادات تكامل الاتصال الهاتفي مع Twilio هنا
+Failed to save Twilio settings,فشل حفظ إعدادات Twilio
+Please configure your Twilio settings correctly,يرجى تهيئة إعدادات Twilio بشكل صحيح
+Please fill all required fields for Twilio,يرجى تعبئة جميع الحقول المطلوبة لـ Twilio
+Twilio,Twilio
