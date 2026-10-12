@@ -1,0 +1,212 @@
+{% extends "templates/web.html" %}
+
+{%- macro arrow() -%}
+<svg class="afm-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+{%- endmacro -%}
+
+{%- block head_include %}
+{{ super() }}
+<meta name="theme-color" content="#00824E">
+<link rel="preload" href="/assets/afmco/images/portal/afmco-logo.webp" as="image" type="image/webp">
+<link rel="stylesheet" href="/assets/afmco/css/portal-fonts.css">
+{% endblock -%}
+
+{%- block style %}
+<style>{{ portal_css }}</style>
+<style>{{ form_css }}</style>
+{{ super() }}
+{%- endblock -%}
+
+{%- block banner -%}{%- endblock -%}
+{%- block navbar -%}{%- endblock -%}
+{%- block footer -%}{%- endblock -%}
+
+{% block content %}
+<div class="afm afm-iban" dir="{{ text_dir }}" lang="{{ page_lang }}">
+	<a class="afm-skip" href="#afm-main">{{ _("Skip to main content") }}</a>
+	<div class="afm-progress" aria-hidden="true"></div>
+
+	<header class="afm-header">
+		<a class="afm-header__brand" href="/portal" aria-label="{{ _('AFMCO Employee Portal') }}">
+			<img class="afm-logo" src="/assets/afmco/images/portal/afmco-logo.webp" alt="AFMCO" width="1600" height="609">
+		</a>
+		<nav id="afm-nav" class="afm-header__nav" aria-label="{{ _('Main menu') }}">
+			<a href="#steps">{{ _("How it works") }}</a>
+			<a href="#request">{{ _("Send your request") }}</a>
+			<a href="/portal">{{ _("AFMCO Employee Portal") }}</a>
+			<a class="afm-header__menu-cta" href="#request">{{ _("Send your request") }}</a>
+		</nav>
+		<div class="afm-header__tools">
+			{% if show_language_switch %}
+			<div class="afm-lang" role="group" aria-label="{{ _('Language') }}">
+				<a href="?_lang=en" hreflang="en" lang="en"{% if page_lang == "en" %} aria-current="true"{% endif %}>EN</a>
+				<a href="?_lang=ar" hreflang="ar" lang="ar"{% if page_lang == "ar" %} aria-current="true"{% endif %}>العربية</a>
+			</div>
+			{% endif %}
+			<a class="afm-pill afm-pill--small afm-pill--primary afm-header__cta" href="#request">{{ _("Send your request") }}</a>
+			<button type="button" class="afm-burger" aria-controls="afm-nav" aria-expanded="false"
+				aria-label="{{ _('Open menu') }}" data-label-open="{{ _('Open menu') }}" data-label-close="{{ _('Close menu') }}">
+				<span></span><span></span>
+			</button>
+		</div>
+	</header>
+
+	<main id="afm-main" tabindex="-1">
+		<section id="top" class="afm-hero afm-hero--iban" aria-labelledby="afm-hero-title">
+			<img class="afm-hero__bg" src="/assets/afmco/images/portal/warehouse-1600.webp"
+				srcset="/assets/afmco/images/portal/warehouse-800.webp 800w, /assets/afmco/images/portal/warehouse-1600.webp 1600w"
+				sizes="100vw" alt="" width="1600" height="800" fetchpriority="high">
+			<div class="afm-hero__shade" aria-hidden="true"></div>
+			<div class="afm-hero__grid">
+				<div class="afm-hero__copy">
+					<p class="afm-eyebrow afm-in afm-in--1"><span class="afm-eyebrow__rule"></span>{{ _("Salary account") }}</p>
+					<h1 id="afm-hero-title" class="afm-hero__title">
+						<span class="afm-line"><span class="afm-line__text">{{ _("Update your") }}</span></span>
+						<span class="afm-line"><span class="afm-line__text afm-line__text--accent">{{ _("salary account") }}</span></span>
+					</h1>
+					<p class="afm-hero__lead afm-in afm-in--3">{{ description }}</p>
+					<div class="afm-hero__actions afm-in afm-in--4">
+						<a class="afm-pill afm-pill--primary" href="#request">{{ _("Send your request") }}{{ arrow() }}</a>
+						<a class="afm-pill" href="#steps">{{ _("How it works") }}</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="steps" class="afm-section" aria-labelledby="afm-steps-title">
+			<div class="afm-head">
+				<p class="afm-kicker"><span class="afm-kicker__num">01 /</span>{{ _("How it works") }}</p>
+				<div>
+					<h2 id="afm-steps-title" class="afm-title">{{ _("Three steps") }}</h2>
+					<p class="afm-lead">{{ _("You type only the ID number and the new IBAN. We take the rest from the employee file.") }}</p>
+				</div>
+			</div>
+			<ol class="afm-services">
+				<li class="afm-service" data-reveal>
+					<span class="afm-service__num">01</span>
+					<h3 class="afm-service__title">{{ _("Enter the ID number and the IBAN") }}</h3>
+					<p class="afm-service__text">{{ _("The employee's Iqama or national ID number and the new IBAN.") }}</p>
+				</li>
+				<li class="afm-service" data-reveal>
+					<span class="afm-service__num">02</span>
+					<h3 class="afm-service__title">{{ _("We fill in the rest") }}</h3>
+					<p class="afm-service__text">{{ _("The name and the other details come from the employee file, and the bank comes from the IBAN.") }}</p>
+				</li>
+				<li class="afm-service" data-reveal>
+					<span class="afm-service__num">03</span>
+					<h3 class="afm-service__title">{{ _("HR reviews the request") }}</h3>
+					<p class="afm-service__text">{{ _("The salary moves to the new account after HR approves the request.") }}</p>
+				</li>
+			</ol>
+		</section>
+
+		<section id="request" class="afm-section afm-section--ruled" aria-labelledby="afm-request-title">
+			<div class="afm-head">
+				<p class="afm-kicker"><span class="afm-kicker__num">02 /</span>{{ _("Send your request") }}</p>
+				<div>
+					<h2 id="afm-request-title" class="afm-title">{{ _("New salary account") }}</h2>
+					<p class="afm-lead">{{ _("Fields marked * are required.") }}</p>
+				</div>
+			</div>
+
+			<form class="afm-form" method="post" action="/api/method/afmco.people_and_payroll.api.iban_request.submit"
+				novalidate data-banks="{{ banks | e }}"
+				data-msg-bank="{{ _('Bank: {0}') }}"
+				data-msg-bank-unknown="{{ _('We do not recognise the bank of this IBAN yet. Please contact HR.') }}"
+				data-msg-sent="{{ _('Your request {0} was received. HR reviews it before the salary moves to the new account.') }}"
+				data-msg-failed="{{ _('Your request could not be sent. Please try again.') }}"
+				data-msg-required="{{ _('Please fill in all required fields.') }}">
+				<div class="afm-field">
+					<label for="afm-employee-id">{{ _("Employee ID number (Iqama or national ID)") }} *</label>
+					<input id="afm-employee-id" name="employee_id" type="text" maxlength="20" inputmode="numeric"
+						autocomplete="off" dir="ltr" required>
+				</div>
+				<div class="afm-field">
+					<label for="afm-iban">{{ _("New IBAN") }} *</label>
+					<input id="afm-iban" name="iban" type="text" maxlength="34" autocomplete="off" autocapitalize="characters"
+						spellcheck="false" dir="ltr" placeholder="SA00 0000 0000 0000 0000 0000" aria-describedby="afm-iban-bank" required>
+					<p id="afm-iban-bank" class="afm-field__hint afm-iban__bank" aria-live="polite"></p>
+				</div>
+
+				<fieldset class="afm-field afm-field--wide afm-choice">
+					<legend>{{ _("Whose name is the account in?") }} *</legend>
+					<div class="afm-choice__grid">
+						<label class="afm-choice__option">
+							<input type="radio" name="account_holder" value="Employee" checked>
+							<span>{{ _("The employee") }}</span>
+						</label>
+						<label class="afm-choice__option">
+							<input type="radio" name="account_holder" value="Another person">
+							<span>{{ _("Another person") }}</span>
+						</label>
+					</div>
+				</fieldset>
+				<div class="afm-field afm-field--wide afm-reveal-block" data-show-when="account_holder=Another person" hidden>
+					<div class="afm-form afm-form--nested">
+						<div class="afm-field">
+							<label for="afm-holder-name">{{ _("Account holder's full name") }} *</label>
+							<input id="afm-holder-name" name="account_holder_name" type="text" maxlength="140" required disabled>
+						</div>
+						<div class="afm-field">
+							<label for="afm-note">{{ _("Reason for paying the salary into this account") }} *</label>
+							<textarea id="afm-note" name="note" rows="3" maxlength="1000" required disabled></textarea>
+						</div>
+					</div>
+				</div>
+
+				<fieldset class="afm-field afm-field--wide afm-choice">
+					<legend>{{ _("How long should this account be used?") }} *</legend>
+					<div class="afm-choice__grid">
+						<label class="afm-choice__option">
+							<input type="radio" name="duration" value="Permanent" checked>
+							<span>{{ _("Permanent") }}</span>
+							<small>{{ _("The salary goes to this account from now on.") }}</small>
+						</label>
+						<label class="afm-choice__option">
+							<input type="radio" name="duration" value="Temporary">
+							<span>{{ _("Temporary") }}</span>
+							<small>{{ _("The salary goes to this account for a set period.") }}</small>
+						</label>
+					</div>
+				</fieldset>
+				<div class="afm-field afm-field--wide afm-reveal-block" data-show-when="duration=Temporary" hidden>
+					<div class="afm-form afm-form--nested">
+						<div class="afm-field">
+							<label for="afm-valid-from">{{ _("From") }} *</label>
+							<input id="afm-valid-from" name="valid_from" type="date" dir="ltr" required disabled>
+						</div>
+						<div class="afm-field">
+							<label for="afm-valid-until">{{ _("To") }} *</label>
+							<input id="afm-valid-until" name="valid_until" type="date" dir="ltr" required disabled>
+						</div>
+					</div>
+				</div>
+
+				<label class="afm-field--wide afm-confirm">
+					<input type="checkbox" name="declaration" value="1" required>
+					<span>{{ _("I confirm that this information is correct.") }}</span>
+				</label>
+				<div class="afm-form__actions afm-field--wide">
+					<button type="submit" class="afm-pill afm-pill--primary">{{ _("Send request") }}{{ arrow() }}</button>
+					<p class="afm-form__status" role="status" aria-live="polite"></p>
+				</div>
+			</form>
+		</section>
+	</main>
+
+	<footer class="afm-footer">
+		<div class="afm-footer__bar">
+			<div class="afm-footer__brand">
+				<img class="afm-logo afm-logo--footer" src="/assets/afmco/images/portal/afmco-logo.webp" alt="AFMCO" width="1600" height="609" loading="lazy">
+				<p>&copy; {{ _("Abdullah Fahad Al-Mutairi Co. Ltd.") }}</p>
+			</div>
+			<a class="afm-link" href="{{ support_url }}">{{ _("Open a support ticket") }}{{ arrow() }}</a>
+		</div>
+	</footer>
+</div>
+{% endblock %}
+
+{%- block script %}
+<script>{{ portal_js }}</script>
+{{ super() }}
+{%- endblock %}

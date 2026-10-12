@@ -15558,3 +15558,46 @@ IBAN and Bank Name updated via IBAN Update document {0}.,حُدّث الآيبا
 Previous Account Holder Name,اسم صاحب الحساب السابق
 Previous Bank Name,اسم البنك السابق
 Previous IBAN,الآيبان السابق
+Account holder's full name,الاسم الكامل لصاحب الحساب
+Bank: {0},البنك: {0}
+Employee ID number (Iqama or national ID),رقم هوية الموظف (الإقامة أو الهوية الوطنية)
+Enter the ID number and the IBAN,أدخل رقم الهوية والآيبان
+Fields marked * are required.,الحقول المعلَّمة بـ * إلزامية.
+HR reviews the request,تراجع الموارد البشرية الطلب
+How it works,كيف تتم العملية
+How long should this account be used?,ما مدة استخدام هذا الحساب؟
+I confirm that this information is correct.,أقر بصحة هذه البيانات.
+New IBAN,رقم الآيبان الجديد
+New salary account,حساب الراتب الجديد
+Please choose a permanent or a temporary account.,يرجى اختيار حساب دائم أو مؤقت.
+Please choose whose name the account is in.,يرجى اختيار صاحب الحساب.
+Please confirm that the information is correct.,يرجى الإقرار بصحة البيانات.
+Please enter the account holder's name and the reason for the transfer.,يرجى إدخال اسم صاحب الحساب وسبب التحويل إليه.
+Please enter the employee ID number.,يرجى إدخال رقم هوية الموظف.
+Please enter the start and end dates of the period.,يرجى إدخال تاريخ بداية المدة ونهايتها.
+Reason for paying the salary into this account,سبب تحويل الراتب إلى هذا الحساب
+Salary account,حساب الراتب
+Send request,إرسال الطلب
+Send the new IBAN for your salary in a minute. HR reviews every request before the salary moves to the new account.,أرسل رقم الآيبان الجديد لراتبك خلال دقيقة، وتراجع الموارد البشرية كل طلب قبل تحويل الراتب إلى الحساب الجديد.
+Send your request,أرسل طلبك
+The IBAN starts with SA followed by 22 digits.,يبدأ الآيبان بـ SA ويليه 22 رقمًا.
+The employee,الموظف نفسه
+The employee's Iqama or national ID number and the new IBAN.,رقم إقامة الموظف أو هويته الوطنية، ورقم الآيبان الجديد.
+The end date cannot be before the start date.,لا يمكن أن يسبق تاريخ النهاية تاريخ البداية.
+"The name and the other details come from the employee file, and the bank comes from the IBAN.",نأخذ الاسم وباقي البيانات من ملف الموظف، ونعرف البنك من رقم الآيبان.
+The salary goes to this account for a set period.,يحوَّل الراتب إلى هذا الحساب لمدة محددة.
+The salary goes to this account from now on.,يحوَّل الراتب إلى هذا الحساب من الآن فصاعدًا.
+The salary moves to the new account after HR approves the request.,يحوَّل الراتب إلى الحساب الجديد بعد اعتماد الموارد البشرية للطلب.
+This IBAN is not correct. Please compare it with your IBAN certificate from the bank.,رقم الآيبان غير صحيح، يرجى مطابقته مع شهادة الآيبان من البنك.
+Three steps,ثلاث خطوات
+Update your,حدّث
+Update your salary account,تحديث حساب الراتب
+Valid Until,صالح حتى تاريخ
+We could not find an active employee with this ID number. Please check it or contact HR.,لم نجد موظفًا على رأس العمل بهذا الرقم، يرجى التأكد منه أو التواصل مع الموارد البشرية.
+We do not recognise the bank of this IBAN yet. Please contact HR.,لم نتعرف على بنك هذا الآيبان بعد، يرجى التواصل مع الموارد البشرية.
+We fill in the rest,نكمل الباقي
+Whose name is the account in?,باسم من الحساب؟
+You type only the ID number and the new IBAN. We take the rest from the employee file.,تكتب رقم الهوية والآيبان الجديد فقط، ونأخذ الباقي من ملف الموظف.
+Your request could not be sent. Please try again.,تعذّر إرسال طلبك، يرجى المحاولة مرة أخرى.
+Your request {0} was received. HR reviews it before the salary moves to the new account.,وصلنا طلبك {0}، وتراجعه الموارد البشرية قبل تحويل الراتب إلى الحساب الجديد.
+salary account,حساب راتبك
