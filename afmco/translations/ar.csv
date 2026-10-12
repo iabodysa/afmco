@@ -16,7 +16,6 @@ Actual/360,فعلي/360
 Actual/365,فعلي/365
 Actual/Actual,فعلي/فعلي
 Add Supplier Details,إضافة بيانات المورد
-Added {0} Payroll Entries,أضيفت {0} من مسيرات الرواتب
 Adjust for Previous Salary Difference,تسوية فرق الراتب السابق
 Advance Account,حساب السلف
 Advance paid against {0} {1} cannot be greater than Grand Total {2},السلفة المدفوعة مقابل {0} {1} لا يمكن أن تتجاوز الإجمالي الكلي {2}
@@ -30,7 +29,6 @@ Ajeer Notification End Date,تاريخ انتهاء إشعار أجير
 Ajeer from,أجير من
 Ajman,عجمان
 All Salaries,جميع الرواتب
-All Salary Slips have zero Net Pay – nothing to export.,جميع قسائم الرواتب صافيها صفر، ولا يوجد ما يصدّر.
 Allow Cancel,السماح بالإلغاء
 Amount of expense,مبلغ المصروف
 Amount that has been paid against this advance,المبلغ المدفوع مقابل هذه السلفة
@@ -75,7 +73,6 @@ Beneficiary Information,معلومات المستفيد
 Bill Amount,مبلغ الفاتورة
 Black listed,في القائمة السوداء
 Border ID,رقم الحدود
-Building virtual WPS metadata...,جار إعداد بيانات ملف حماية الأجور الظاهري...
 COMMENTS,التعليقات
 COMMISSION 2,العمولة 2
 Contact us,تواصل معنا
@@ -100,14 +97,12 @@ Collection Offset Sequence for Written Off Asset,تسلسل مقاصة التح�
 Commissions (Months),العمولات (أشهر)
 Company Details,بيانات الشركة
 Company Name In Arabic,اسم الشركة بالعربية
-Configure Payroll Entries,إعداد مسيرات الرواتب
 Confirm Payment,تأكيد الدفع
 Contact Message,رسالة تواصل
 Contract Duration (Months),مدة العقد (أشهر)
 Contract Start Date,تاريخ بدء العقد
 Contract status is active and in good standing.,حالة العقد نشطة وسليمة.
 Convert,تحويل
-Copy BAT Script,نسخ برنامج BAT النصي
 Cost Calculation Details,تفاصيل احتساب التكلفة
 Create Bank Entry,إنشاء قيد بنكي
 Create Bulk Payment Order,إنشاء أمر دفع جماعي
@@ -149,7 +144,6 @@ Discount Rate,نسبة الخصم
 Document {0} for employee {1} has no SADAD number. Please try again after adding the SADAD number.,المستند {0} للموظف {1} لا يحتوي على رقم سداد. أعد المحاولة بعد إضافة رقم سداد.
 Download Employee Card,تنزيل بطاقة الموظف
 Download WPS,تنزيل ملف حماية الأجور
-Download ZIP,تنزيل الملف المضغوط
 Driver Mobile Number,رقم جوال السائق
 Dropoff,التنزيل
 Dropoff Location,موقع التنزيل
@@ -191,9 +185,6 @@ Equipment Costs,تكاليف المعدات
 Error creating Accrual Entry:,خطأ في إنشاء قيد الاستحقاق:
 Error creating Bank Journal Entry:,خطأ في إنشاء القيد البنكي:
 Error displaying Bank Entry settings:,خطأ في عرض إعدادات القيد البنكي:
-Error during pre-check validation: {0},خطأ أثناء التحقق المسبق: {0}
-Error in get_query:,خطأ في get_query:
-Error occurred while fetching Payroll Entries.,حدث خطأ أثناء جلب مسيرات الرواتب.
 Error occurred while saving the card,حدث خطأ أثناء حفظ البطاقة
 Error parsing data. Please check the format.,خطأ في تحليل البيانات. يرجى التحقق من الصيغة.
 Error updating Renewal Preference for:,خطأ في تحديث رغبة التجديد لـ:
@@ -212,14 +203,11 @@ Export CSV,تصدير CSV
 Export Excel,تصدير Excel
 Failed documents:,المستندات التي فشلت:
 Failed to copy data to clipboard.,تعذر نسخ البيانات إلى الحافظة.
-Failed to copy {0},تعذر نسخ {0}
 Failed to create Expense Request: {0},تعذر إنشاء طلب المصروف: {0}
 Failed to create Journal Entry for Payroll Entry:,تعذر إنشاء قيد اليومية لمسير الرواتب:
 Failed to fetch Salary Slip:,تعذر جلب قسيمة الراتب:
-Failed to generate ZIP file. Please check the logs for details.,تعذر إنشاء الملف المضغوط. يرجى مراجعة السجلات للتفاصيل.
 Failed to load details,تعذر تحميل التفاصيل
 Failed to load documents: {0},تعذر تحميل المستندات: {0}
-Failed to process ZIP file. Please check the logs.,تعذر معالجة الملف المضغوط. يرجى مراجعة السجلات.
 Failed to retrieve the bank account number and cost center for the applicant.,تعذر جلب رقم الحساب البنكي ومركز التكلفة لمقدم الطلب.
 Failed to submit Salary Slip:,تعذر اعتماد قسيمة الراتب:
 Failed to update documents: {0},تعذر تحديث المستندات: {0}
@@ -228,8 +216,6 @@ Fees per Transfer,الرسوم لكل تحويل
 Fetch Details,جلب التفاصيل
 Fetch Salary,جلب الراتب
 Fetching documents...,جار جلب المستندات...
-Fetching payroll entries...,جار جلب مسيرات الرواتب...
-Fetching salary slips...,جار جلب قسائم الرواتب...
 File already exists: {0},الملف موجود مسبقًا: {0}
 Filter Employees,تصفية الموظفين
 Finance Book,الدفتر المالي
@@ -244,13 +230,7 @@ Fujairah,الفجيرة
 GOSI (Months),التأمينات الاجتماعية (أشهر)
 General Administrative Expenses (Months),المصروفات الإدارية العامة (أشهر)
 Generate 4 Ticket Images,إنشاء 4 صور للتذكرة
-Generate Pre-Check Report,إنشاء تقرير التحقق المسبق
-Generated BAT Script,برنامج BAT النصي المنشأ
-Generated ZIP File,الملف المضغوط المنشأ
 Generated on,أنشئ في
-Generating WPS ZIP,جار إنشاء الملف المضغوط لحماية الأجور
-Generating summary...,جار إعداد الملخص...
-Generation Failed,فشل الإنشاء
 Get Advance Leave Salary,جلب راتب الإجازة المقدم
 GitHub Sync ID,معرّف مزامنة GitHub
 Google Console,وحدة تحكم Google
@@ -384,7 +364,6 @@ No attachments,لا توجد مرفقات
 NPA Flag,مؤشر الأصل غير العامل
 Nationality,الجنسية
 New Expiration Date,تاريخ الانتهاء الجديد
-No Payroll Entries match your criteria.,لا توجد مسيرات رواتب تطابق المعايير.
 No Recruitment Fee,لا توجد رسوم استقدام
 No Salary Slips found for payment.,لم يعثر على قسائم رواتب للدفع.
 No Salary Slips found.,لم يعثر على قسائم رواتب.
@@ -394,7 +373,6 @@ No data found.,لم يعثر على بيانات.
 No data with credit to export,لا توجد بيانات دائنة للتصدير
 No draft Salary Slips found for this Payroll Entry.,لم يعثر على قسائم رواتب مسودة لمسير الرواتب هذا.
 No outstanding cheques or deposits in this period,لا توجد شيكات أو إيداعات معلقة في هذه الفترة
-No submitted Salary Slips found,لم يعثر على قسائم رواتب معتمدة
 No valid Employee IDs found after parsing.,لم يعثر على أرقام وظيفية صالحة بعد التحليل.
 No workflow history available,لا يوجد سجل لسير العمل
 Number of Documents,عدد المستندات
@@ -409,8 +387,6 @@ Occupation,المهنة
 Odometer Value,قراءة العداد
 Old Parent,العنصر الرئيسي السابق
 One-time Employment Costs,تكاليف التوظيف لمرة واحدة
-Only Draft documents can generate the ZIP,يمكن إنشاء الملف المضغوط للمستندات المسودة فقط
-Only Submitted documents can regenerate the ZIP,يمكن إعادة إنشاء الملف المضغوط للمستندات المعتمدة فقط
 Open General Ledger,فتح دفتر الأستاذ العام
 Operation User,مستخدم العمليات
 Operational Costs,التكاليف التشغيلية
@@ -451,10 +427,6 @@ Payment Request Details,تفاصيل طلب الصرف
 Payment Request already created for document {0} for employee {1}.,سبق إنشاء طلب صرف للمستند {0} للموظف {1}.
 Payroll Clearing Account,حساب تسوية الرواتب
 Payroll Cost Center,مركز تكلفة الرواتب
-Payroll Entries,مسيرات الرواتب
-Payroll Entry Filters,عوامل تصفية مسيرات الرواتب
-Payroll Entry Reference,مرجع مسير الرواتب
-Payroll Entry(ies) {0} already linked to report {1},مسيرات الرواتب {0} مرتبطة مسبقًا بالتقرير {1}
 Payroll User,مستخدم الرواتب
 Performance,الأداء
 Period Unit,وحدة الفترة
@@ -484,9 +456,6 @@ Please select Payroll Entry,يرجى اختيار مسير الرواتب
 Please select a Payment Request first,يرجى اختيار طلب صرف أولًا
 Please select an Employee.,يرجى اختيار موظف.
 Please select an employee first.,يرجى اختيار موظف أولًا.
-Please select at least one Payroll Entry,يرجى اختيار مسير رواتب واحد على الأقل
-Please select at least one Payroll Entry before generating ZIP.,يرجى اختيار مسير رواتب واحد على الأقل قبل إنشاء الملف المضغوط.
-Please select at least one Payroll Entry before running pre-check.,يرجى اختيار مسير رواتب واحد على الأقل قبل تشغيل التحقق المسبق.
 Please select at least one document.,يرجى اختيار مستند واحد على الأقل.
 Please select documents to approve renewal.,يرجى اختيار المستندات للموافقة على التجديد.
 Please select documents to confirm payment.,يرجى اختيار المستندات لتأكيد الدفع.
@@ -503,12 +472,6 @@ Please set the Payroll Payable Account.,يرجى تحديد حساب رواتب 
 Policy Info,معلومات الوثيقة
 Policy Number,رقم الوثيقة
 Posting Date,تاريخ الترحيل
-Pre-Check Failed,فشل التحقق المسبق
-Pre-Check Validation,التحقق المسبق
-Pre-Check: Issues Found,التحقق المسبق: توجد مشكلات
-Pre-Check: Validation Passed,التحقق المسبق: نجح التحقق
-Pre-check passed! You can now submit the report.,نجح التحقق المسبق! يمكنك الآن اعتماد التقرير.
-Proceed to Submit,المتابعة إلى الاعتماد
 Processing Accrual Entry...,جار معالجة قيد الاستحقاق...
 Profit Margin (%),هامش الربح (%)
 Profit and Discount,الربح والخصم
@@ -524,7 +487,6 @@ Reason of Preventing Renewal,سبب منع التجديد
 Recoverable Reverse Charge (Percentage),الاحتساب العكسي القابل للاسترداد (نسبة مئوية)
 Recoverable Standard Rated Expenses (AED),المصروفات الخاضعة للنسبة الأساسية القابلة للاسترداد (درهم)
 Recurring Employment Costs,تكاليف التوظيف المتكررة
-Regenerating ZIP,جار إعادة إنشاء ملف ZIP
 Registration Info,معلومات التسجيل
 Reject,رفض
 Reject Renewal,رفض التجديد
@@ -541,14 +503,12 @@ Renewal Required,يلزم التجديد
 Renewal Tracking Report (Trial),تقرير متابعة التجديد (تجريبي)
 Repay Unclaimed Amount from Salary,استرداد المبلغ غير المطالب به من الراتب
 Replacement,الاستبدال
-Report Generated At,وقت إنشاء التقرير
 Request Date,تاريخ الطلب
 Request Scenario,سيناريو الطلب
 Requested By,مقدم الطلب
 Reschedule Date,تاريخ إعادة الجدولة
 Rescheduled,أعيدت جدولته
 Resident Balance,رصيد المقيم
-Resolving commercial registration numbers...,جار التحقق من أرقام السجلات التجارية...
 Restructure Limit % (Overall),حد إعادة الهيكلة % (الإجمالي)
 Return Before,العودة قبل
 Return back to work,العودة إلى العمل
@@ -580,7 +540,6 @@ Schedule Request,جدولة الطلب
 Schedule for Later,جدولة لاحقًا
 Scheduled Hours,الساعات المجدولة
 Scheduled for {0},مجدول في {0}
-Search and Populate,بحث وتعبئة
 Search employees...,ابحث عن الموظفين...
 Select Payment Type,اختر نوع الدفع
 Select Salaries,اختر الرواتب
@@ -601,7 +560,6 @@ Sponsor,صاحب العمل
 Sponsor Name,اسم صاحب العمل
 Sponsorship Transfer,نقل الكفالة
 Sponsorship Transfer Fees ( 24 Months),رسوم نقل الكفالة (24 شهرًا)
-Starting validation...,جار بدء التحقق...
 Station,المحطة
 Status has been changed to Awaiting Payment,تم تغيير الحالة إلى بانتظار الدفع
 Status updated to:,تم تحديث الحالة إلى:
@@ -640,8 +598,6 @@ The following documents are missing IBAN numbers:,المستندات التال�
 The ticket allowance will be allocated as per your decision.,سيخصّص بدل التذاكر حسب قرارك.
 There was an error creating the Expense Request.,حدث خطأ أثناء إنشاء طلب المصروف.
 This request must be in Approved state before creating an Expense Request.,يجب أن يكون هذا الطلب في حالة معتمد قبل إنشاء طلب مصروف.
-This will generate WPS files and cannot be undone. Continue?,سيؤدي هذا إلى إنشاء ملفات حماية الأجور ولا يمكن التراجع عنه. هل تريد المتابعة؟
-This will regenerate the ZIP file. Continue?,سيؤدي هذا إلى إعادة إنشاء ملف ZIP. هل تريد المتابعة؟
 Ticket,التذكرة
 Ticket Analytics,تحليلات التذاكر
 Ticket Configuration,إعدادات التذاكر
@@ -708,12 +664,8 @@ Visa Type,نوع التأشيرة
 Visa issuance date,تاريخ إصدار التأشيرة
 Welcome to our new colleagues,مرحبًا بزملائنا الجدد
 WORKFLOW HISTORY,سجل سير العمل
-WPS Consolidated Report,تقرير حماية الأجور الموحد
-WPS Report Reference,مرجع تقرير حماية الأجور
-WPS ZIP generated successfully with {0} file(s),أنشئ ملف ZIP لحماية الأجور بنجاح ويضم {0} ملف
 Waiting Sadad,بانتظار السداد
 Waiting To join The Work,بانتظار مباشرة العمل
-Warning: processing more than 10 Payroll Entries may take longer,تحذير: قد تستغرق معالجة أكثر من 10 مسيرات رواتب وقتًا أطول
 Watch Period Post Loan Restructure (In Days),فترة المراقبة بعد إعادة هيكلة القرض (بالأيام)
 WhatsApp Driver,واتساب السائق
 WhatsApp Supplier,واتساب المورد
@@ -734,7 +686,6 @@ currency,العملة
 delivery,التوصيل
 employees,الموظفون
 facility closed,المنشأة مغلقة
-generated,منشأ
 iQama Expired,إقامة منتهية
 iQama expiration date,تاريخ انتهاء الإقامة
 iQama issuance date,تاريخ إصدار الإقامة
@@ -745,13 +696,11 @@ period,الفترة
 print builder,منشئ الطباعة
 promo 1,عرض ترويجي 1
 promo 2,عرض ترويجي 2
-regenerated,أعيد إنشاؤه
 rejected,مرفوض
 supervisor,المشرف
 update,تحديث
 updated the status,حدّث الحالة
 worker's monthly cost,التكلفة الشهرية للعامل
-{0} copied to clipboard,نسخ {0} إلى الحافظة
 "{0} uploaded, {1} skipped (already attached)",رفع {0}، وتم تخطي {1} (مرفق مسبقًا)
 "✅ Employee analysis complete. {0} records processed, {1} found.",✅ اكتمل تحليل الموظفين. عولج {0} سجل، ووجد {1}.
 🔍 Analyze Employees,🔍 تحليل الموظفين
@@ -946,7 +895,6 @@ Attendance,الحضور
 Completion and Approval,الإنجاز والموافقة
 Deductions and Clearing,الاستقطاعات والتصفية
 Exit and Return Visa,تأشيرة الخروج والعودة
-Generated Files,الملفات المنشأة
 Performance Details,بيانات الأداء
 Report Settings,إعدادات التقرير
 Reward and Tickets,المكافأة والتذاكر
@@ -1566,12 +1514,6 @@ The IBAN number must have 22 digits following 'SA'.,يجب أن يحتوي رق�
 Invalid bank code: {0},رمز البنك غير صالح: {0}
 The linked EOS document could not be marked as Paid. Please try again.,تعذر تعليم مستند نهاية الخدمة المرتبط كمدفوع. يرجى المحاولة مرة أخرى.
 EOS Update Failed,فشل تحديث مستند نهاية الخدمة
-Only Submitted documents can release Payroll Entries,لا يمكن فك ارتباط مسيرات الرواتب إلا من مستند معتمد
-No Payroll Entries found to unlink.,لا توجد مسيرات رواتب لإلغاء ربطها.
-Unlink Payroll Entries,إلغاء ربط مسيرات الرواتب
-Are you sure you want to unlink all Payroll Entry records from this report?,هل أنت متأكد من إلغاء ربط جميع مسيرات الرواتب بهذا التقرير؟
-Unlinking Payroll Entries...,جار إلغاء ربط مسيرات الرواتب...
-Unlinked {0} out of {1} Payroll Entries.,تم إلغاء ربط {0} من أصل {1} من مسيرات الرواتب.
 "The employee is not currently on leave. Please ensure the employee status is ""On Leave"" before proceeding.","الموظف ليس في إجازة حاليًا. يرجى التأكد من أن حالة الموظف هي ""في إجازة"" قبل المتابعة.",Leave Application
 Employee status has been updated to Active.,تم تحديث حالة الموظف إلى نشط.,Leave Application
 SADAD Bulk Payments,مدفوعات سداد الجماعية,SADAD Bulk
