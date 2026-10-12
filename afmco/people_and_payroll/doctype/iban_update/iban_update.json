@@ -115,7 +115,7 @@
    "fieldname": "bank_name",
    "fieldtype": "Select",
    "label": "Bank Name",
-   "options": "\nSTCJ\nAAAL\nALBI\nARNB\nBJAZ\nBMUS\nBNPA\nBSFR\nCHAS\nDEUT\nEBIL\nGULF\nICBK\nINMA\nNBOK\nNBOB\nNCBK\nNBOP\nRJHI\nRIBL\nSABB\nSAMA\nSAMB\nSBOI\nSIBC\nTCZT\nDBAK",
+   "options": "\nSTCJ\nAAAL\nALBI\nARNB\nBJAZ\nBMUS\nBNPA\nBSFR\nCHAS\nDEUT\nEBIL\nGULF\nICBK\nINMA\nNBOK\nNBOB\nNCBK\nNBPA\nRJHI\nRIBL\nSABB\nSAMA\nSAMB\nSBIN\nSIBC\nTCZB\nDBAK",
    "reqd": 1
   },
   {
@@ -218,7 +218,7 @@
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "modified": "2026-10-12 23:00:00.000000",
+ "modified": "2026-10-12 21:26:00.000000",
  "module": "People and Payroll",
  "name": "IBAN Update",
  "naming_rule": "By \"Naming Series\" field",
