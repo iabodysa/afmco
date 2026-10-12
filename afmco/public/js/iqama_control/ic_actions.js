@@ -501,8 +501,12 @@ Object.assign(IqamaControl.prototype, {
 
 		frappe.dom.freeze(t("creating_pr"));
 
-		frappe.db
-			.insert(request)
+		frappe
+			.xcall("afmco.people_and_payroll.api.iqama_bank_file.create_payment_requisition", {
+				payment_requisition: request,
+				payment_type: payment_type,
+				trackers: eligible.map((row) => row.name),
+			})
 			.then((payment_request) => {
 				const updates = eligible.map((row) => {
 					const patch = {
