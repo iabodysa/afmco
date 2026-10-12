@@ -154,7 +154,7 @@ html {
 	background: rgba(255, 255, 255, 0);
 	border-bottom: 1px solid transparent;
 	transition: background-color 0.45s, color 0.45s, border-color 0.45s;
-	animation: afm-fade 0.9s var(--afm-ease) 0.2s both;
+	animation: afm-fade 0.9s var(--afm-ease) 0.2s backwards;
 }
 
 .afm-js .afm-header {
@@ -275,6 +275,10 @@ html {
 
 .afm--menu .afm-burger span:last-child {
 	transform: translateY(-4.25px) rotate(-45deg);
+}
+
+html:has(.afm--menu) {
+	overflow: hidden;
 }
 
 .afm--menu .afm-header__nav {
