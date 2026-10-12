@@ -51,11 +51,3 @@ def get_active_temporary_ibans(employees):
 		)
 	}
 
-
-def apply_active_temporary_ibans(slips):
-	active = get_active_temporary_ibans({slip.employee for slip in slips})
-	for slip in slips:
-		if temporary_iban := active.get(slip.employee):
-			slip.bank_account_no = temporary_iban.iban
-			slip.bank_name = temporary_iban.bank_name
-			slip.iban_holder_name = temporary_iban.iban_holder_name

@@ -13,6 +13,8 @@ class AfmcoSalarySlip:
 		validate_not_on_hold(self.employee)
 		if frappe.flags.in_install or frappe.flags.in_migrate:
 			return
+		if self.docstatus == 0:
+			self.pull_emp_details()
 		total = (self.basic33 or 0) + (self.housing33 or 0)
 		if self.net_pay > total:
 			self.other_allowance33 = self.net_pay - total
@@ -38,10 +40,12 @@ class AfmcoSalarySlip:
 		super().pull_emp_details()
 		temporary_iban = get_active_temporary_ibans([self.employee]).get(self.employee)
 		self.temporary_iban = temporary_iban.name if temporary_iban else None
-		self.iban_holder_name = temporary_iban.iban_holder_name if temporary_iban else None
 		if temporary_iban:
+			self.iban_holder_name = temporary_iban.iban_holder_name
 			self.bank_account_no = temporary_iban.iban
 			self.bank_name = temporary_iban.bank_name
+		else:
+			self.iban_holder_name = frappe.get_cached_value("Employee", self.employee, "iban_holder_name")
 
 	def on_submit(self):
 		super().on_submit()
