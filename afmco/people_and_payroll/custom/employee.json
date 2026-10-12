@@ -1070,6 +1070,28 @@
    "share": 0,
    "submit": 0,
    "write": 1
+  },
+  {
+   "amend": 0,
+   "cancel": 0,
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "if_owner": 0,
+   "import": 0,
+   "parent": "Employee",
+   "parentfield": "NULL",
+   "parenttype": "NULL",
+   "permlevel": 2,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "HR User",
+   "select": 0,
+   "share": 0,
+   "submit": 0,
+   "write": 0
   }
  ],
  "doctype": "Employee",
@@ -1715,6 +1737,16 @@
    "field_name": "iban",
    "module": "People and Payroll",
    "name": "Employee-iban-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
+   "field_name": "iban_verified",
+   "module": "People and Payroll",
+   "name": "Employee-iban_verified-hidden",
    "property": "hidden",
    "property_type": "Check",
    "value": "1"
