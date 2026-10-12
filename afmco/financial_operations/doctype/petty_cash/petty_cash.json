@@ -155,8 +155,7 @@
    "description": "Save, print with the Petty Cash Format, sign, then attach the signed form here.",
    "fieldname": "attach_the_declaration",
    "fieldtype": "Attach",
-   "label": "Attach the Declaration",
-   "mandatory_depends_on": "eval:!doc.__islocal"
+   "label": "Attach the Declaration"
   },
   {
    "depends_on": "eval:doc.petty_cash_amount",
