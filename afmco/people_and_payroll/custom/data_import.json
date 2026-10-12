@@ -73,7 +73,7 @@
    "create": 1,
    "delete": 0,
    "email": 0,
-   "export": 0,
+   "export": 1,
    "if_owner": 0,
    "import": 0,
    "parent": "Data Import",
