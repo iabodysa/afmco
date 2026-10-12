@@ -15548,3 +15548,6 @@ Failed to save Twilio settings,فشل حفظ إعدادات Twilio
 Please configure your Twilio settings correctly,يرجى تهيئة إعدادات Twilio بشكل صحيح
 Please fill all required fields for Twilio,يرجى تعبئة جميع الحقول المطلوبة لـ Twilio
 Twilio,Twilio
+({0}s),({0} ثانية)
+group_by,تجميع حسب
+Please add partner FLGD Account for Loan Partner {0},يرجى إضافة حساب ضمان خسائر التعثر الأولى لشريك القرض {0}

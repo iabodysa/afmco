@@ -9309,3 +9309,11 @@ Failed to save Twilio settings	helpdesk	override	R01
 Please configure your Twilio settings correctly	helpdesk	override	R29
 Please fill all required fields for Twilio	helpdesk	override	R29
 Twilio	helpdesk	override	R29
+  	erpnext	kept	R09
+"<br>\n<h4>Note</h4>\n<ul>\n<li>\nYou can use <a href=""https://jinja.palletsprojects.com/en/2.11.x/"" target=""_blank"">Jinja tags</a> in <b>Subject</b> and <b>Body</b> fields for dynamic values.\n</li><li>\n    All fields in this doctype are available under the <b>doc</b> object and all fields for the customer to whom the mail will go to is available under the  <b>customer</b> object.\n</li></ul>\n<h4> Examples</h4>\n<!-- {% raw %} -->\n<ul>\n    <li><b>Subject</b>:<br><br><pre><code>Statement Of Accounts for {{ customer.customer_name }}</code></pre><br></li>\n    <li><b>Body</b>: <br><br>\n<pre><code>Hello {{ customer.customer_name }},<br>PFA your Statement Of Accounts from {{ doc.from_date }} to {{ doc.to_date }}.</code> </pre></li>\n</ul>\n<!-- {% endraw %} -->"	erpnext	kept	R30
+"<p><strong>{{ __(""Condition Examples"") }}:</strong></p>\n<pre><code class=""language-python"">doc.status==""Open""<br>doc.due_date==nowdate()<br>doc.total &gt; 40000\n</code></pre>\n"	frappe	kept	R26
+"<p><strong>{{ __(""Condition Examples"") }}:</strong></p>\n<pre>doc.status==""Open""<br>doc.due_date==nowdate()<br>doc.total &gt; 40000\n</pre>"	frappe	kept	R26
+Mx	frappe	kept	R30
+({0}s)	helpdesk	override	R28
+group_by	helpdesk	override	R29
+Please add partner FLGD Account for Loan Partner {0}	lending	override	R28
