@@ -3,7 +3,7 @@
   "doctype": "Custom Sidebar",
   "header_icon": null,
   "label": null,
-  "modified": "2026-10-09 00:00:00.000000",
+  "modified": "2026-10-12 12:00:00.000000",
   "module": "Accounts",
   "name": "9474nsa7gp",
   "sidebar_items": [
@@ -23,6 +23,15 @@
     "hidden": 1,
     "link_to": "Accounts",
     "link_type": "Dashboard",
+    "type": "Link"
+   },
+   {
+    "added": 0,
+    "child": 1,
+    "doctype": "Sidebar Item",
+    "hidden": 1,
+    "link_to": "General Ledger",
+    "link_type": "Report",
     "type": "Link"
    }
   ],
