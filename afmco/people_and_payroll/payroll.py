@@ -3,22 +3,9 @@ from __future__ import annotations
 from collections.abc import Callable, Iterable
 
 from afmco.people_and_payroll.employee import HOLD_STATUS
+from afmco.people_and_payroll.iban import BANK_CODES
 
 
-BANK_CODES = {
-    "10": "NCBK",
-    "80": "RJHI",
-    "30": "RIBL",
-    "05": "INMA",
-    "15": "ALBI",
-    "60": "BJAZ",
-    "35": "ARNB",
-    "55": "BSFR",
-    "45": "SABB",
-    "20": "SAMB",
-    "65": "SIBC",
-    "90": "GULF",
-}
 MINIMUM_ACCOUNT_LENGTH = 6
 EMPLOYEE_DOCTYPE = "Employee"
 
