@@ -102,7 +102,8 @@
    "in_standard_filter": 1,
    "label": "iQama No.",
    "options": "Employee",
-   "reqd": 1
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fetch_from": "employee.employee_name",
