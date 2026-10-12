@@ -20,6 +20,9 @@
   "column_break_bank",
   "bank_name",
   "note",
+  "duration",
+  "valid_from",
+  "valid_until",
   "temporary_iban",
   "previous_iban",
   "previous_bank_name",
@@ -48,10 +51,12 @@
    "reqd": 1
   },
   {
+   "fetch_from": "employee.employee_name",
    "fieldname": "full_name",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Full Name",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -59,18 +64,20 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "employee.cell_number",
    "fieldname": "phone_no",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Phone No.",
-   "reqd": 1
+   "read_only": 1
   },
   {
+   "fetch_from": "employee.project_branch",
    "fieldname": "project",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Project",
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "iban_details_section",
@@ -117,6 +124,28 @@
    "fieldtype": "Small Text",
    "label": "Note",
    "mandatory_depends_on": "eval:doc.account_holder == 'Another person'"
+  },
+  {
+   "default": "Permanent",
+   "fieldname": "duration",
+   "fieldtype": "Select",
+   "label": "Duration",
+   "options": "Permanent\nTemporary",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.duration == 'Temporary'",
+   "fieldname": "valid_from",
+   "fieldtype": "Date",
+   "label": "Valid From",
+   "mandatory_depends_on": "eval:doc.duration == 'Temporary'"
+  },
+  {
+   "depends_on": "eval:doc.duration == 'Temporary'",
+   "fieldname": "valid_until",
+   "fieldtype": "Date",
+   "label": "Valid Until",
+   "mandatory_depends_on": "eval:doc.duration == 'Temporary'"
   },
   {
    "depends_on": "temporary_iban",
@@ -189,7 +218,7 @@
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "modified": "2026-10-12 20:25:00.000000",
+ "modified": "2026-10-12 23:00:00.000000",
  "module": "People and Payroll",
  "name": "IBAN Update",
  "naming_rule": "By \"Naming Series\" field",

@@ -52,6 +52,7 @@ website_redirects = [
 		"redirect_http_status": 302,
 	},
 	{"source": r"/jobs", "target": "/careers", "redirect_http_status": 302},
+	{"source": r"/iban-update(/.*)?", "target": "/iban", "redirect_http_status": 302},
 ]
 # web_include_js = "/assets/afmco/js/afmco.js"
 

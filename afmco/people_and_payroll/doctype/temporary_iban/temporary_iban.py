@@ -4,6 +4,7 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
+from frappe.utils import getdate
 
 from afmco.people_and_payroll.doctype.iban_update.iban_update import validate_saudi_iban
 from afmco.people_and_payroll.iban import refresh_draft_slips
@@ -39,15 +40,16 @@ class TemporaryIBAN(Document):
 			frappe.throw(_("Employee {0} already has active Temporary IBAN {1}").format(self.employee, active))
 
 
-def get_active_temporary_ibans(employees):
+def get_active_temporary_ibans(employees, on_date):
 	if not employees:
 		return {}
+	on_date = getdate(on_date)
 	return {
 		row.employee: row
 		for row in frappe.get_all(
 			"Temporary IBAN",
 			filters={"employee": ("in", list(employees)), "docstatus": 1, "active": 1},
-			fields=["name", "employee", "iban", "bank_name", "iban_holder_name"],
+			fields=["name", "employee", "iban", "bank_name", "iban_holder_name", "valid_from", "valid_until"],
 		)
+		if (not row.valid_from or row.valid_from <= on_date) and (not row.valid_until or row.valid_until >= on_date)
 	}
-

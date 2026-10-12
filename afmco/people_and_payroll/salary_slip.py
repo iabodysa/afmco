@@ -38,7 +38,7 @@ class AfmcoSalarySlip:
 
 	def pull_emp_details(self):
 		super().pull_emp_details()
-		temporary_iban = get_active_temporary_ibans([self.employee]).get(self.employee)
+		temporary_iban = get_active_temporary_ibans([self.employee], self.end_date).get(self.employee)
 		self.temporary_iban = temporary_iban.name if temporary_iban else None
 		if temporary_iban:
 			self.iban_holder_name = temporary_iban.iban_holder_name

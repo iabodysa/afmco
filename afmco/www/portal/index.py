@@ -74,7 +74,7 @@ def get_services():
 			"title": _("Update your IBAN"),
 			"text": _("Send your new bank account number for your salary. HR reviews it before it takes effect."),
 			"note": _("No account needed."),
-			"href": f"{APP_URL}/iban-update/new",
+			"href": "/iban",
 			"link_label": _("Open the form"),
 		},
 		{
