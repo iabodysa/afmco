@@ -440,7 +440,11 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                             try {
                                 // Redirect to the new Expense Request form
                                 //frappe.set_route('Form', paymentRequest.doctype, paymentRequest.name);
-                                paymentRequest = await frappe.db.insert(paymentRequest); // new
+                                paymentRequest = await frappe.xcall('afmco.people_and_payroll.api.iqama_bank_file.create_payment_requisition', {
+                                    payment_requisition: paymentRequest,
+                                    payment_type: payment_type,
+                                    trackers: successList
+                                });
 
                                 await frappe.model.set_value(paymentRequest.doctype, paymentRequest.name, 'remark', paymentRequest.remark);
                                 //frappe.msgprint(messages.pr_created[lang]);
@@ -470,10 +474,6 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                                     }
                                     await frappe.db.set_value('Iqama Renewal Tracking', name, 'status', 'Awaiting Payment');
                                 }
-                                await frappe.call({
-                                    method: 'afmco.people_and_payroll.api.iqama_bank_file.attach_bank_file',
-                                    args: { payment_requisition: paymentRequest.name }
-                                }).catch(() => null);
                                 frappe.show_alert({
                                     message: __('Payment Requisition {0} created', [paymentRequest.name], 'Iqama Renewal Tracking'),
                                     indicator: 'green'

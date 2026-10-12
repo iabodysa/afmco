@@ -15606,6 +15606,5 @@ Roles HTML,عرض الأدوار
 Is Group,هل هو حساب رئيسي,Account
 Document {0} for employee {1} has no SADAD number.,المستند {0} للموظف {1} ليس فيه رقم سداد.
 Document {0} for employee {1} has no renewal duration.,المستند {0} للموظف {1} ليس فيه مدة تجديد.
-No Iqama Renewal Tracking is linked to {0}.,لا توجد متابعة تجديد إقامة مرتبطة بـ {0}.
 Payment Requisition {0} created,تم إنشاء طلب الصرف {0}
-SADAD Setup has no biller code for {0} ({1} months).,إعداد سداد ليس فيه رمز مفوتر لـ {0} ({1} شهر).
+Payment type {0} has no bank file layout.,نوع الدفع {0} ليس له نموذج ملف بنكي.

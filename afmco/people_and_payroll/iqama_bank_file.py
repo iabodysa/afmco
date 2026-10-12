@@ -7,53 +7,50 @@ from frappe.utils import cstr, getdate
 
 PAYMENT_REQUEST = "Payment Requisition"
 TRACKING = "Iqama Renewal Tracking"
-SETUP = "SADAD Setup"
-SETUP_ROW = "SADAD Setup Account"
 CONTEXT = "Iqama Renewal Tracking"
-RENEWAL_TYPE = "Issue or renew residence permit"
-WORK_PERMIT_TYPE = "Fees for the financial counterpart of work permits"
+JAWAZAT_BILLER = "090"
+JAWAZAT_SERVICE = "003"
+WORK_PERMIT_BILLER = "368"
 DURATION_MONTHS = {"3 months": 3, "6 months": 6, "9 Months": 9, "1 year": 12}
+WORK_CARDS = "PR Created for Work Cards"
+IQAMA_RENEWAL = "PR Created for Iqama Renewal"
 TRACKING_FIELDS = ["name", "employee", "employee_name", "renewal_duration", "sadad_invoice"]
 
 
-def attach(payment_requisition):
-	request = frappe.get_doc(PAYMENT_REQUEST, payment_requisition)
-	request.check_permission("read")
-	work_cards = _trackers("pr_reference", request.name)
-	if work_cards:
-		file_name = "SADAD_BILL_PAY.csv"
-		lines = ["Biller Company,Subscriber Number"]
-		lines.extend(_work_card_line(row) for row in work_cards)
-	else:
-		renewals = _trackers("pr_reference_2", request.name)
-		if not renewals:
-			frappe.throw(
-				_("No Iqama Renewal Tracking is linked to {0}.", context=CONTEXT).format(request.name)
-			)
-		file_name = f"JAWAZAT_{getdate().strftime('%d_%b_%y')}.csv"
-		lines = ["Biller,Service,Iqama ID,Iqama Duration"]
-		lines.extend(_renewal_line(row) for row in renewals)
-	file = frappe.get_doc(
+def create_with_bank_file(payment_requisition, payment_type, trackers):
+	file_name, content = _bank_file(payment_type, frappe.parse_json(trackers))
+	request = frappe.get_doc(frappe.parse_json(payment_requisition)).insert()
+	frappe.get_doc(
 		{
 			"doctype": "File",
 			"file_name": file_name,
 			"attached_to_doctype": PAYMENT_REQUEST,
 			"attached_to_name": request.name,
 			"is_private": 1,
-			"content": "\r\n".join(lines) + "\r\n",
+			"content": content,
 		}
-	)
-	file.insert()
-	return {"name": request.name, "file_url": file.file_url, "lines": len(lines) - 1}
+	).insert()
+	return request.as_dict()
 
 
-def _trackers(link_field, payment_requisition):
-	return frappe.get_list(
+def _bank_file(payment_type, trackers):
+	rows = frappe.get_list(
 		TRACKING,
-		filters={link_field: payment_requisition},
+		filters={"name": ["in", trackers]},
 		fields=TRACKING_FIELDS,
 		order_by="name asc",
 	)
+	if payment_type == WORK_CARDS:
+		file_name = "SADAD_BILL_PAY.csv"
+		lines = ["Biller Company,Subscriber Number"]
+		lines.extend(_work_card_line(row) for row in rows)
+	elif payment_type == IQAMA_RENEWAL:
+		file_name = f"JAWAZAT_{getdate().strftime('%d_%b_%y')}.csv"
+		lines = ["Biller,Service,Iqama ID,Iqama Duration"]
+		lines.extend(_renewal_line(row) for row in rows)
+	else:
+		frappe.throw(_("Payment type {0} has no bank file layout.", context=CONTEXT).format(payment_type))
+	return file_name, "\r\n".join(lines) + "\r\n"
 
 
 def _work_card_line(row):
@@ -63,28 +60,11 @@ def _work_card_line(row):
 				row.name, row.employee_name
 			)
 		)
-	biller, _service = _setup_codes(WORK_PERMIT_TYPE, row)
-	return f"{biller},{cstr(row.sadad_invoice).strip()}"
+	return f"{WORK_PERMIT_BILLER},{cstr(row.sadad_invoice).strip()}"
 
 
 def _renewal_line(row):
-	biller, service = _setup_codes(RENEWAL_TYPE, row)
-	return f"{biller},{service},{row.employee},{_months(row):03d}"
-
-
-def _setup_codes(fee_type, row):
-	codes = frappe.db.get_value(
-		SETUP_ROW,
-		{"parent": SETUP, "types_english": fee_type, "period": _months(row), "period_unit": "Month"},
-		["biller", "service_codes"],
-	)
-	if not codes or not codes[0]:
-		frappe.throw(
-			_("SADAD Setup has no biller code for {0} ({1} months).", context=CONTEXT).format(
-				_(fee_type), _months(row)
-			)
-		)
-	return cstr(codes[0]).strip(), cstr(codes[1]).strip()
+	return f"{JAWAZAT_BILLER},{JAWAZAT_SERVICE},{row.employee},{_months(row):03d}"
 
 
 def _months(row):

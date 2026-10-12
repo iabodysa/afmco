@@ -3,9 +3,9 @@
 
 import frappe
 
-from afmco.people_and_payroll.iqama_bank_file import attach
+from afmco.people_and_payroll.iqama_bank_file import create_with_bank_file
 
 
 @frappe.whitelist(methods=["POST"])
-def attach_bank_file(payment_requisition):
-	return attach(payment_requisition)
+def create_payment_requisition(payment_requisition, payment_type, trackers):
+	return create_with_bank_file(payment_requisition, payment_type, trackers)
