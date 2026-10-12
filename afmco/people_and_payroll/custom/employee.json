@@ -305,6 +305,18 @@
    "options": "currency"
   },
   {
+   "depends_on": "eval:doc.salary_mode == 'Bank'",
+   "dt": "Employee",
+   "fieldname": "iban_holder_name",
+   "fieldtype": "Data",
+   "insert_after": "bank_name",
+   "label": "Account Holder Name",
+   "module": "People and Payroll",
+   "name": "Employee-iban_holder_name",
+   "permlevel": "2",
+   "read_only": "1"
+  },
+  {
    "dt": "Employee",
    "fieldname": "iban_verified",
    "fieldtype": "Check",
@@ -313,7 +325,7 @@
    "label": "IBAN Verified",
    "module": "People and Payroll",
    "name": "Employee-iban_verified",
-   "permlevel": "1",
+   "permlevel": "3",
    "read_only": "1"
   },
   {
@@ -1114,6 +1126,50 @@
    "share": 0,
    "submit": 0,
    "write": 0
+  },
+  {
+   "amend": 0,
+   "cancel": 0,
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "if_owner": 0,
+   "import": 0,
+   "parent": "Employee",
+   "parentfield": "NULL",
+   "parenttype": "NULL",
+   "permlevel": 2,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "Payroll User",
+   "select": 0,
+   "share": 0,
+   "submit": 0,
+   "write": 1
+  },
+  {
+   "amend": 0,
+   "cancel": 0,
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "if_owner": 0,
+   "import": 0,
+   "parent": "Employee",
+   "parentfield": "NULL",
+   "parenttype": "NULL",
+   "permlevel": 3,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "Payroll User",
+   "select": 0,
+   "share": 0,
+   "submit": 0,
+   "write": 1
   }
  ],
  "doctype": "Employee",
@@ -1246,6 +1302,16 @@
    "field_name": "bank_name",
    "module": "People and Payroll",
    "name": "Employee-bank_name-read_only",
+   "property": "read_only",
+   "property_type": "Check",
+   "value": "1"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
+   "field_name": "iban",
+   "module": "People and Payroll",
+   "name": "Employee-iban-read_only",
    "property": "read_only",
    "property_type": "Check",
    "value": "1"
@@ -2042,6 +2108,16 @@
    "property": "default",
    "property_type": "Text",
    "value": "Bank"
+  },
+  {
+   "doc_type": "Employee",
+   "doctype_or_field": "DocField",
+   "field_name": "salary_mode",
+   "module": "People and Payroll",
+   "name": "Employee-salary_mode-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
   },
   {
    "doc_type": "Employee",
