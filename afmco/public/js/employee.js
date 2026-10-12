@@ -231,7 +231,7 @@ function saveCanvasAsAttachment(canvas, frm) {
         formData.append('file', blob, filename);
         formData.append('doctype', frm.doc.doctype);
         formData.append('docname', frm.doc.name);
-        formData.append('is_private', 0);
+        formData.append('is_private', 1);
 
         let xhr = new XMLHttpRequest();
         xhr.open('POST', '/api/method/frappe.handler.upload_file');
