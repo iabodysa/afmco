@@ -69,7 +69,6 @@ website_redirects = [
 # include js in doctype views
 doctype_js = {
 	"Additional Salary": "public/js/additional_salary.js",
-	"Data Import": "public/js/data_import.js",
 	"Employee": "public/js/employee.js",
 	"Employee Checkin": "public/js/employee_checkin.js",
 	"Journal Entry": "public/js/journal_entry.js",
