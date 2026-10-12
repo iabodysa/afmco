@@ -679,7 +679,6 @@ Working Hours Per Day,ساعات العمل اليومية
 Yearly Summary,الملخص السنوي
 Years of Service,سنوات الخدمة
 You are updating {0} document(s),أنت تحدّث {0} مستند
-"You cannot uncheck ""Accrual Entry Created"" once it has been set.","لا يمكنك إلغاء تحديد ""Accrual Entry Created"" بعد تعيينه."
 "You cannot uncheck ""Bank Entry Created"" once it has been set.","لا يمكنك إلغاء تحديد ""Bank Entry Created"" بعد تعيينه."
 approved,موافق عليه
 currency,العملة
@@ -841,7 +840,7 @@ Projects Employee,موظف مشاريع
 Administration Employee,موظف إداري
 Create the Entry,إنشاء القيد
 Preparing the entry...,جار تحضير القيد...
-Please make sure a date (Bank Payment Date or Posting Date) is set to calculate the split across years.,يرجى التأكد من وجود تاريخ (تاريخ الدفع البنكي أو تاريخ الترحيل) لحساب تقسيم السنوات.
+Please set the Bank Payment Date to calculate the split across years.,يرجى تحديد تاريخ الدفع البنكي لحساب تقسيم السنوات.
 An error occurred while fetching the accounts. A preliminary entry has been created.,حدث خطأ أثناء جلب الحسابات. تم إنشاء القيد بشكل مبدئي.
 Login to Frappe HR,تسجيل الدخول إلى أفمكو
 A support ticket is the main way to get help. You can follow its progress after you open it.,تذكرة الدعم هي الطريقة الأساسية لطلب المساعدة، ويمكنك متابعة حالتها بعد فتحها.
@@ -1931,7 +1930,7 @@ BMUS,BMUS
 BNPA,BNPA
 BSFR,BSFR
 Balance Loan Amount,رصيد القرض المتبقي
-Bank Payment Date or Posting Date is invalid.,تاريخ الدفع البنكي أو تاريخ الترحيل غير صالح.
+Bank Payment Date is invalid.,تاريخ الدفع البنكي غير صالح.
 Bank Transfer,تحويل بنكي
 Bank cheque,شيك بنكي
 Barn Café Al Amjad - بارن كافيه الامجاد,بارن كافيه الأمجاد
@@ -2121,7 +2120,7 @@ Please note that this document is pending approval from the {0}. Ensure all requ
 Please review the request data and try again.,يرجى مراجعة بيانات الطلب والمحاولة مرة أخرى.
 Please select a valid mode of payment from the dropdown list.,يرجى اختيار طريقة دفع صحيحة من القائمة.
 Please select a valid payment type from the dropdown list.,يرجى اختيار نوع دفع صحيح من القائمة.
-Please verify Bank Payment Date or Posting Date for year allocation.,يرجى التحقق من تاريخ الدفع البنكي أو تاريخ الترحيل لتوزيع المبلغ على السنوات.
+Please verify the Bank Payment Date for year allocation.,يرجى التحقق من تاريخ الدفع البنكي لتوزيع المبلغ على السنوات.
 Please verify the accuracy of the IBAN to avoid errors during banking transactions.,يرجى التحقق من صحة رقم الآيبان لتجنب الأخطاء أثناء العمليات البنكية.
 Postion,المسمى الوظيفي
 Preparing Journal Entry...,جار تجهيز قيد اليومية...

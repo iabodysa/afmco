@@ -32,13 +32,6 @@ frappe.ui.form.on('Payroll Entry', {
 
         
     },
-// new 2025
-    accrual_entry_created: function(frm) {
-        if (frm.doc.accrual_entry_created) {
-            frappe.msgprint(__('You cannot uncheck "Accrual Entry Created" once it has been set.'));
-            frm.set_value('accrual_entry_created', 1);
-        }
-    },
     bank_entry_created: function(frm) {
         if (frm.doc.bank_entry_created) {
             frappe.msgprint(__('You cannot uncheck "Bank Entry Created" once it has been set.'));
@@ -834,7 +827,7 @@ async function createBankJournalEntry(frm, salarySlips, settings) {
                        bank_account: frm.doc.bank_account || null,
                        credit_in_account_currency: totalPayment,
                        cost_center: frm.doc.cost_center,
-                       user_remark: frm.doc.user_remark || `${frm.doc.cost_center} - ${frm.doc.month_name || ''}`,
+                       user_remark: `${frm.doc.cost_center} - ${frm.doc.month_name || ''}`,
                        needs_party: false
                    });
 

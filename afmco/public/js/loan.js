@@ -1,27 +1,4 @@
 frappe.ui.form.on('Loan', {
-    before_save: function(frm) {
-        if (frm.doc.loan_amount && frm.doc.no_of_depreciation && frm.doc.available_for_use_date) {
-            let total_amount = frm.doc.loan_amount;
-            let num_of_installments = frm.doc.no_of_depreciation;
-            let installment_amount = total_amount / num_of_installments;
-            let start_date = frm.doc.available_for_use_date;
-            let remaining_balance = total_amount;
-            frm.clear_table('repayment_details');
-            for (let i = 0; i < num_of_installments; i++) {
-                let due_date = frappe.datetime.add_months(start_date, i);
-                let payment_amount = Math.min(installment_amount, remaining_balance);
-                let row = frm.add_child('repayment_details', {
-                    'payment_date': due_date,
-                    'principal_amount': payment_amount,
-                    'balance_loan_amount': remaining_balance - payment_amount
-                });
-                remaining_balance -= payment_amount;
-            }
-            frm.refresh_field('repayment_details');
-        }
-    }
-});
-frappe.ui.form.on('Loan', {
     before_submit: function(frm) {
         frm.doc.repayment_details.forEach(function(schedule) {
             frappe.call({

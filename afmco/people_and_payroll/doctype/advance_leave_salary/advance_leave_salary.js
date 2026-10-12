@@ -787,7 +787,7 @@ frappe.ui.form.on('Advance Leave Salary', {
             - Total Salary| ${frm.doc.total_salary}
             - Ticket Allowance| ${frm.doc.ticket_allowance}
             - Number of Tickets| ${frm.doc.number_of_tickets}
-            - Total Ticket| ${frm.doc.ticket_allowance * frm.doc.number_of_tickets} (${frm.doc.not_eligible_for_ticket_allowance ? "No" : "Yes"})
+            - Total Ticket| ${frm.doc.ticket_allowance * frm.doc.number_of_tickets}
             - Afmco Reward| ${frm.doc.alternative_reward}
             - Deductions| ${frm.doc.deductions}
             - Total Amount| ${frm.doc.amount}

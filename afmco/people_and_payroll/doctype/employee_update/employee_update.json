@@ -56,7 +56,6 @@
    "options": "Branch"
   },
   {
-   "fetch_from": "employee.",
    "fieldname": "column_break_salary",
    "fieldtype": "Column Break"
   },
@@ -111,7 +110,7 @@
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
- "modified": "2024-08-11 01:05:10.799550",
+ "modified": "2026-10-12 23:57:00.000000",
  "module": "People and Payroll",
  "name": "Employee Update",
  "owner": "Administrator",

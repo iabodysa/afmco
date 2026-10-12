@@ -35,7 +35,7 @@ Loan Request Details:
 - Loan Product: ${frm.doc.loan_product}
 - Monthly Repayment Amount: ${frm.doc.repayment_amount || 'Not specified'}
 - Repayment Period in Months: ${frm.doc.repayment_periods || 'Not specified'}
-- Reason: ${frm.doc.description || 'Not specified'}
+- Reason: ${frm.doc.loan_purpose || 'Not specified'}
 `;
 
                             frappe.set_route('Form', paymentRequest.doctype, paymentRequest.name);

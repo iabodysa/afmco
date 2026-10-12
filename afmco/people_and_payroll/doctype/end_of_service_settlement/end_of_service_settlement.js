@@ -235,7 +235,7 @@ function add_qiwa_calculator_button(frm) {
     const endDate = frm.doc.date_2;
     const salary = frm.doc.total_salary;
     const reasonCode = get_qiwa_reason_code(frm.doc.end_of_service_reason);
-    let contractType = frm.doc.contract_type || 1;
+    let contractType = 1;
 
     if (contractType == 1 && (await end_of_service_years(frm)) > 5) {
       contractType = 2;

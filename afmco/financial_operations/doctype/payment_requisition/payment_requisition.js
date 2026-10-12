@@ -128,9 +128,9 @@ frappe.ui.form.on('Payment Requisition', {
 									add_row(values.bank_account, 0, total_amount, null, null, false);
 
 								} else if (frm.doc.payment_type === "SADAD Payment") {
-									let start_date = frm.doc.bank_payment_date || frm.doc.posting_date;
+									let start_date = frm.doc.bank_payment_date;
 									if (!start_date) {
-										frappe.msgprint(__("Please make sure a date (Bank Payment Date or Posting Date) is set to calculate the split across years."));
+										frappe.msgprint(__("Please set the Bank Payment Date to calculate the split across years."));
 										throw new Error("Missing date");
 									}
 
@@ -843,12 +843,12 @@ function allocateSadadAmountByYear(amount, startDate, periodMonths) {
         throw new Error(__('SADAD amount must be a valid positive number.'));
     }
     if (!dateMatch) {
-        throw new Error(__('Bank Payment Date or Posting Date is invalid.'));
+        throw new Error(__('Bank Payment Date is invalid.'));
     }
 
     const startMonth = Number(dateMatch[2]) - 1;
     if (startMonth < 0 || startMonth > 11) {
-        throw new Error(__('Bank Payment Date or Posting Date is invalid.'));
+        throw new Error(__('Bank Payment Date is invalid.'));
     }
 
     if (!Number.isFinite(normalizedPeriod) || normalizedPeriod <= 0) {
@@ -1023,9 +1023,9 @@ function processJournalEntryCreation(frm, values) {
                 addRow(accountsMap[accountNumbers[1]], vacation, 0, isAdmin, accountNumbers[1]);
                 addRow(values.bank_account, 0, totalAmount, false, __('Credit Bank Account'));
             } else if (frm.doc.payment_type === 'SADAD Payment') {
-                const startDate = frm.doc.bank_payment_date || frm.doc.posting_date;
+                const startDate = frm.doc.bank_payment_date;
                 if (!startDate) {
-                    throw new Error(__('Please verify Bank Payment Date or Posting Date for year allocation.'));
+                    throw new Error(__('Please verify the Bank Payment Date for year allocation.'));
                 }
 
                 let parsedBlocks = 0;
