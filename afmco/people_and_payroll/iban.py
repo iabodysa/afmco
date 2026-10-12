@@ -32,6 +32,7 @@ BANK_CODES = {
 	"84": "TCZT",
 	"87": "ICBK",
 	"86": "CHAS",
+	"36": "DBAK",
 }
 
 SAUDI_IBAN = re.compile(r"SA\d{22}")
