@@ -5,7 +5,7 @@ import frappe
 from frappe import _
 
 from afmco.people_and_payroll.wps_file import (
-	REGISTER_FORMAT,
+	DEFAULT_BANK_FORMAT,
 	build_file,
 	check_access,
 	get_file_groups,
@@ -22,11 +22,11 @@ def preview(company, payroll_entry=None):
 
 
 @frappe.whitelist(methods=["GET"])
-def download(company, payroll_entry=None, file_format=REGISTER_FORMAT):
+def download(company, payroll_entry=None, file_format=DEFAULT_BANK_FORMAT):
 	check_access()
 	slips = get_slips(company, payroll_entry)
 	if not slips:
-		frappe.throw(_("No submitted salary slips match these filters", context="WPS File"))
+		frappe.throw(_("No salary slips match these filters", context="WPS File"))
 	if problems := get_problems(slips):
 		frappe.throw(
 			_("Resolve the {0} open checks before issuing the file", context="WPS File").format(len(problems))

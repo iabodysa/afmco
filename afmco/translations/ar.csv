@@ -1534,7 +1534,7 @@ Payroll Entry,مسير الرواتب,WPS File
 Bank,البنك,WPS File
 Select a company and a Payroll Entry,اختر الشركة ومسير الرواتب,WPS File
 Select a Payroll Entry,اختر مسير الرواتب,WPS File
-No submitted salary slips match these filters,لا توجد قسائم رواتب معتمدة تطابق عوامل التصفية هذه,WPS File
+No salary slips match these filters,لا توجد قسائم رواتب تطابق عوامل التصفية هذه,WPS File
 {0} open checks,{0} ملاحظة مفتوحة,WPS File
 Ready to issue,جاهز للإصدار,WPS File
 Employees,الموظفون,WPS File
@@ -1816,7 +1816,7 @@ SADAD Invoice Number,رقم فاتورة سداد
 Tax Invoice Number,رقم الفاتورة الضريبية
 Traffic Violations,مخالفات مرورية
 Two Year Plan,خطة السنتين
-No submitted salary slips with net pay in this payroll entry,لا توجد قسائم رواتب معتمدة بصافي راتب في مسير الرواتب هذا,WPS File
+No salary slips with net pay in this payroll entry,لا توجد قسائم رواتب بصافي راتب في مسير الرواتب هذا,WPS File
 Clearing End of Service,تصفية مستحقات نهاية الخدمة
 Duration of Service,مدة الخدمة
 Amounts Due,المبالغ المستحقة

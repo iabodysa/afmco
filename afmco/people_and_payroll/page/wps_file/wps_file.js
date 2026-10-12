@@ -1,7 +1,7 @@
 // Copyright (c) 2026, AFMCO and contributors
 
 const WPS_API = "afmco.people_and_payroll.api.wps_file";
-const WPS_REGISTER_FORMAT = "Salary Register WPS";
+const WPS_BANK_FORMATS = ["NCBK", "SIBC"];
 const WPS_AMOUNTS = ["net_pay", "basic33", "housing33", "other_allowance33", "deduction33"];
 const WPS_COLUMNS = [
 	["name", __("Salary Slip", null, "WPS File")],
@@ -38,8 +38,8 @@ class WpsFile {
 			fieldname: "file_format",
 			label: __("File Format", null, "WPS File"),
 			fieldtype: "Select",
-			options: [WPS_REGISTER_FORMAT, "NCBK", "SIBC"].join("\n"),
-			default: WPS_REGISTER_FORMAT,
+			options: WPS_BANK_FORMATS.join("\n"),
+			default: WPS_BANK_FORMATS[0],
 			reqd: 1,
 		});
 		this.page.set_primary_action(__("Issue WPS file", null, "WPS File"), () => this.issue(), "download");
@@ -113,7 +113,7 @@ class WpsFile {
 	render() {
 		const { rows, problems } = this.result;
 		if (!rows.length) {
-			this.render_message(__("No submitted salary slips match these filters", null, "WPS File"));
+			this.render_message(__("No salary slips match these filters", null, "WPS File"));
 			return;
 		}
 		this.$root.html(`${this.summary_html(rows, problems)}${this.problems_html(problems)}${this.table_html(rows)}`);
@@ -240,8 +240,8 @@ class WpsFile {
 			currency: "SAR",
 			minimumFractionDigits: 2,
 		});
-		const bank = this.issued.file_format === WPS_REGISTER_FORMAT ? "Bank" : this.issued.file_format;
-				const rows = files.map((file) =>
+		const bank = this.issued.file_format;
+		const rows = files.map((file) =>
 			[
 				file.labor_office_file_number ? `1 - ${file.labor_office_file_number}` : "N/A",
 				file.corporation_cr || "-",

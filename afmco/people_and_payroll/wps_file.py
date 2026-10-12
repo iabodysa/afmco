@@ -4,7 +4,6 @@
 import base64
 import csv
 import io
-import math
 import re
 import zipfile
 from collections import Counter
@@ -17,21 +16,6 @@ from frappe.utils import cstr, flt
 from afmco.people_and_payroll.doctype.temporary_iban.temporary_iban import apply_active_temporary_ibans
 
 PAGE = "wps-file"
-REGISTER_FORMAT = "Salary Register WPS"
-FILE_FORMATS = (REGISTER_FORMAT, "NCBK", "SIBC")
-HEADER = (
-	"Bank",
-	"IBAN",
-	"Total Salary",
-	"Remark",
-	"Employee Name",
-	"ID",
-	"Address",
-	"Basic salary",
-	"Housing",
-	"Other allowances",
-	"Deductions",
-)
 FILE_FIELDS = (
 	"bank_name",
 	"bank_account_no",
@@ -48,6 +32,7 @@ FILE_FIELDS = (
 NUMBER_FIELDS = ("net_pay", "basic33", "housing33", "other_allowance33", "deduction33")
 NATIONAL_ID = re.compile(r"^[12][0-9]{9}$")
 BANK_FORMATS = ("NCBK", "SIBC")
+DEFAULT_BANK_FORMAT = BANK_FORMATS[0]
 FILE_EXTENSIONS = {"CSV": "csv", "Excel": "xlsx"}
 EMP_HEADERS_NCBK = [
 	"Bank",
@@ -90,7 +75,7 @@ def check_access():
 def get_slips(company, payroll_entry):
 	if not payroll_entry:
 		frappe.throw(_("Select a Payroll Entry", context="WPS File"))
-	filters = {"docstatus": 1, "company": company, "payroll_entry": payroll_entry}
+	filters = {"docstatus": ["!=", 2], "company": company, "payroll_entry": payroll_entry}
 	slips = frappe.get_list(
 		"Salary Slip",
 		filters=filters,
@@ -186,38 +171,12 @@ def get_file_groups(slips):
 	}
 
 
-def js_number(value):
-	return str(int(value)) if value.is_integer() else repr(value)
-
-
-def file_cell(slip, field):
-	value = slip[field]
-	if field in NUMBER_FIELDS:
-		return js_number(value)
-	return cstr(value)
-
-
-def build_csv(slips):
-	buffer = io.StringIO()
-	buffer.write(",".join(HEADER) + "\n")
-	writer = csv.writer(buffer, lineterminator="\n")
-	writer.writerows([*(file_cell(slip, field) for field in FILE_FIELDS), ""] for slip in slips)
-	return buffer.getvalue()
-
-
-def file_name(slips):
-	return f"Salary_Register_{len(slips)}_Rows.csv"
-
-
 def build_file(slips, file_format):
-	if file_format not in FILE_FORMATS:
+	if file_format not in BANK_FORMATS:
 		frappe.throw(_("Unknown file format {0}", context="WPS File").format(file_format))
-	if file_format == REGISTER_FORMAT:
-		files = [{"filename": file_name(slips), "content": build_csv(slips)}]
-	else:
-		files, bat_script = bank_files(slips, file_format, "CSV", [])
-		if len(files) > 1:
-			files = [*files, {"filename": "generate_wps_files.bat", "content": bat_script}]
+	files, bat_script = bank_files(slips, file_format, "CSV", [])
+	if len(files) > 1:
+		files = [*files, {"filename": "generate_wps_files.bat", "content": bat_script}]
 	return [
 		{
 			"filename": file["filename"],
@@ -232,7 +191,7 @@ def build_file(slips, file_format):
 def bank_files(slips, bank_format, file_type, payroll_entries):
 	files, bat_blocks = build_bank_files(group_by_labor_office(slips), bank_format, file_type)
 	if not files:
-		frappe.throw(_("No submitted salary slips with net pay in this payroll entry", context="WPS File"))
+		frappe.throw(_("No salary slips with net pay in this payroll entry", context="WPS File"))
 	return files, build_bat_script(bat_blocks, payroll_entries)
 
 
