@@ -514,7 +514,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-11 12:21:00.000000",
+ "modified": "2026-10-12 22:00:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",
@@ -534,6 +534,14 @@
   {
    "read": 1,
    "role": "Accountant Bot"
+  },
+  {
+   "read": 1,
+   "role": "Accounts Manager"
+  },
+  {
+   "read": 1,
+   "role": "Accounts User"
   },
   {
    "amend": 1,
