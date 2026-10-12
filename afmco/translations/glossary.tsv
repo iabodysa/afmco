@@ -124,7 +124,9 @@ reposting entry		قيد إعادة الترحيل	R09	Entry=قيد
 round off		التقريب	owner order B	Round Off Account=حساب التقريب
 sanctioned amount		المبلغ الموافق عليه	dominant usage 3/5	dominant 3/5
 selling		المبيعات	owner O9	workspace label without the management prefix
+service level agreement		اتفاقية مستوى الخدمة	owner	owner ruling SLA term
 shift type		نوع الوردية	R09	framework value fails meaning
+sla		اتفاقية مستوى الخدمة	owner	owner ruling SLA term
 stock		المستودعات	owner O9	workspace label without the management prefix
 stock uom		وحدة قياس المخزون	dominant usage 22/24	dominant 22/24
 submit		اعتماد	R16	docstatus set

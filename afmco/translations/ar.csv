@@ -260,7 +260,7 @@ Grade,الدرجة
 Grade must be between 1 and 10.,يجب أن تكون الدرجة بين 1 و10.
 Group Type,نوع المجموعة
 HD Agent,موظف الدعم
-HD Service Level Agreement,اتفاقية مستوى خدمة الدعم
+HD Service Level Agreement,اتفاقية مستوى الخدمة لمكتب المساعدة
 HD Settings,إعدادات مكتب المساعدة
 HD Team,فريق الدعم
 HD Ticket,تذكرة الدعم
@@ -14352,7 +14352,7 @@ New Business Holiday,عطلة رسمية جديدة
 New Call Log,سجل مكالمة جديد
 New Field Dependency,تبعية حقل جديدة
 New Holiday List Name,اسم قائمة العطلات الجديدة
-New SLA Policy,سياسة اتفاقية مستوى خدمة جديدة
+New SLA Policy,سياسة جديدة لاتفاقية مستوى الخدمة
 New SLA Policy Name,اسم سياسة اتفاقية مستوى الخدمة الجديدة
 New Saved Reply,رد محفوظ جديد
 New Saved reply Name,اسم الرد المحفوظ الجديد
@@ -14367,7 +14367,7 @@ No Data Found,لا توجد بيانات
 No Email Account found for {0},لا يوجد حساب بريد إلكتروني لـ {0}
 No HD Agent record for current user,لا يوجد سجل وكيل مكتب مساعدة للمستخدم الحالي
 No Holiday list found,لم يتم العثور على قائمة عطلات
-No SLA found,لم يتم العثور على اتفاقية مستوى خدمة
+No SLA found,لم يتم العثور على اتفاقية مستوى الخدمة
 No Team,بلا فريق
 No active tickets,لا توجد تذاكر نشطة
 No additional comments,لا توجد تعليقات إضافية
@@ -14555,7 +14555,7 @@ Set Phone Number,تعيين رقم الهاتف
 Set Primary Contact,تعيين جهة الاتصال الأساسية
 Set Resolution Time for Priority {0} in row {1}.,عيّن وقت الحل للأولوية {0} في الصف {1}.
 Set as Primary,تعيين كأساسي
-Set as default SLA,تعيين كاتفاقية مستوى خدمة افتراضية
+Set as default SLA,تعيين كاتفاقية مستوى الخدمة الافتراضية
 Set as primary,تعيين كأساسي
 Set status,تعيين الحالة
 Set your availability so your team knows when you're reachable.,عيّن حالتك لتعرف فرقك متى يمكنها التواصل معك.
@@ -14719,7 +14719,7 @@ You do not have permission to update contacts,لا تملك صلاحية تحد�
 "You don't have access to this ticket, or it no longer exists.",لا تملك صلاحية الوصول إلى هذه التذكرة، أو أنها غير موجودة.
 "You don't have permission to view this page, or it no longer exists.",لا تملك صلاحية عرض هذه الصفحة، أو أنها غير موجودة.
 You have already provided feedback for this ticket.,لقد قدّمت تقييمًا لهذه التذكرة مسبقًا.
-You must set one SLA as Default. Please check the Default SLA option.,يجب تعيين اتفاقية مستوى خدمة واحدة كافتراضية. يرجى تحديد خيار اتفاقية مستوى الخدمة الافتراضية.
+You must set one SLA as Default. Please check the Default SLA option.,يجب تعيين إحدى اتفاقيات مستوى الخدمة كافتراضية. يرجى تحديد خيار اتفاقية مستوى الخدمة الافتراضية.
 Your performance is,أداؤك هو
 active ticket,تذكرة نشطة
 active tickets,تذاكر نشطة
