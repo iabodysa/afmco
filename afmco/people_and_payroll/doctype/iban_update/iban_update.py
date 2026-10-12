@@ -6,11 +6,13 @@ import re
 import frappe
 from frappe import _
 from frappe.model.document import Document
+from frappe.utils import getdate
 
 from afmco.people_and_payroll.iban import BANK_CODES, refresh_draft_slips
 
 APPROVED = "Approved"
 ANOTHER_PERSON = "Another person"
+TEMPORARY = "Temporary"
 
 
 def validate_saudi_iban(iban):
@@ -33,6 +35,13 @@ class IBANUpdate(Document):
 		if frappe.flags.in_install or frappe.flags.in_migrate:
 			return
 		self.bank_name = validate_saudi_iban(self.iban)
+		if (
+			self.duration == TEMPORARY
+			and self.valid_from
+			and self.valid_until
+			and getdate(self.valid_until) < getdate(self.valid_from)
+		):
+			frappe.throw(_("The end date cannot be before the start date."))
 
 	def before_submit(self):
 		if frappe.flags.in_install or frappe.flags.in_migrate or self.workflow_state != APPROVED:
