@@ -18,8 +18,12 @@ TRACKING_FIELDS = ["name", "employee", "employee_name", "renewal_duration", "sad
 
 
 def create_with_bank_file(payment_requisition, payment_type, trackers):
-	file_name, content = _bank_file(payment_type, frappe.parse_json(trackers))
-	request = frappe.get_doc(frappe.parse_json(payment_requisition)).insert()
+	rows = _trackers(frappe.parse_json(trackers))
+	file_name, content = _bank_file(payment_type, rows)
+	request = frappe.get_doc(frappe.parse_json(payment_requisition))
+	if payment_type == WORK_CARDS:
+		_set_bill(request, rows)
+	request.insert()
 	frappe.get_doc(
 		{
 			"doctype": "File",
@@ -33,13 +37,23 @@ def create_with_bank_file(payment_requisition, payment_type, trackers):
 	return request.as_dict()
 
 
-def _bank_file(payment_type, trackers):
-	rows = frappe.get_list(
+def _trackers(trackers):
+	return frappe.get_list(
 		TRACKING,
 		filters={"name": ["in", trackers]},
 		fields=TRACKING_FIELDS,
 		order_by="name asc",
 	)
+
+
+def _set_bill(request, rows):
+	request.multiple_beneficiaries = int(len(rows) > 1)
+	if len(rows) == 1:
+		request.sadad_biller_code = WORK_PERMIT_BILLER
+		request.sadad_bill_number = cstr(rows[0].sadad_invoice).strip()
+
+
+def _bank_file(payment_type, rows):
 	if payment_type == WORK_CARDS:
 		file_name = "SADAD_BILL_PAY.csv"
 		lines = ["Biller Company,Subscriber Number"]

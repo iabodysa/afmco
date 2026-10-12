@@ -1,5 +1,5 @@
 from afmco.execute_job_retry_guard import install
 
-__version__ = "0.1.25"
+__version__ = "0.1.26"
 
 install()
