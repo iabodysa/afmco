@@ -1147,7 +1147,7 @@
    "select": 0,
    "share": 0,
    "submit": 0,
-   "write": 1
+   "write": 0
   },
   {
    "amend": 0,
@@ -1169,7 +1169,7 @@
    "select": 0,
    "share": 0,
    "submit": 0,
-   "write": 1
+   "write": 0
   }
  ],
  "doctype": "Employee",
