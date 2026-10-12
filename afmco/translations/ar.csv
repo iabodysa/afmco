@@ -13789,3 +13789,1625 @@ deleted,محذوف
 More Information,مزيد من المعلومات
 Percentage,النسبة المئوية
 Timestamp,الطابع الزمني
+'{0}' is a reserved name and cannot be used as a line reference,'{0}' اسم محجوز ولا يمكن استخدامه كمرجع للسطر
+"<div class=""text-muted text-center"">{0}</div>","<div class=""text-muted text-center"">{0}</div>"
+<div>\n<h3> All dimensions in centimeter only </h3>\n</div>,<div>\n<h3> جميع الأبعاد بالسنتيمتر فقط </h3>\n</div>
+"<span class=""h4""><b>Your Shortcuts\n\t\t\t\n\t\t\n\t\t\t\n\t\t\n\t\t\t\n\t\t</b></span>","<span class=""h4""><b>اختصاراتك\n\t\t\t\n\t\t\n\t\t\t\n\t\t\n\t\t\t\n\t\t</b></span>"
+Account {0} does not belong to Company {1},الحساب {0} لا ينتمي إلى الشركة {1}
+All raw materials are already mapped to finished goods,جميع المواد الخام مربوطة مسبقاً بالمنتجات التامة
+Allowed Dimension,البعد المسموح به
+Applicable Dimension,البعد المطبق
+At least one warehouse is mandatory,يشترط وجود مستودع واحد على الأقل
+Auto Map Raw Materials to Finished Goods,الربط التلقائي للمواد الخام بالمنتجات التامة
+Bank Transaction {0} added as {1},تمت إضافة المعاملة البنكية {0} كـ {1}
+"Books are closed till {0} by Period Closing Voucher, remove these rows: {1}",الدفاتر مقفلة حتى {0} بموجب سند إقفال الفترة، يرجى إزالة هذه الصفوف: {1}
+Buffered Cursor,مؤشر مخزّن مؤقتًا
+Cannot cancel Stock Closing Entry {0} because the later Stock Closing Entry {1} is built on it. Cancel {1} first.,لا يمكن إلغاء قيد إقفال المخزون {0} لأن قيد إقفال المخزون اللاحق {1} معتمد عليه. يرجى إلغاء {1} أولاً.
+Cannot create Work Orders from a stopped Material Request,لا يمكن إنشاء أوامر تصنيع من طلب مواد متوقف
+Cannot create {0} from a Bank Transaction,لا يمكن إنشاء {0} من معاملة بنكية
+"Cannot disable Serial and Batch No for Item, as there are items with serial / batch enabled.",لا يمكن تعطيل الرقم التسلسلي ورقم التشغيلة للصنف لوجود أصناف مفعّل لها الرقم التسلسلي أو التشغيلة.
+Cannot enable {0} as {1} is disabled in {2},لا يمكن تفعيل {0} لأن {1} معطّل في {2}
+Clearing Demo Data...,جار مسح بيانات العرض التوضيحي...
+Closed Period Rows Selected,تم تحديد صفوف من فترة مقفلة
+Communication {0} is not on the timeline of Issue {1},التواصل {0} غير موجود في الخط الزمني للمشكلة {1}
+Company is mandatory for generating an invoice. Please set a default company in Global Defaults.,يعدّ تحديد اسم الشركة أمراً إلزامياً لإصدار الفاتورة. يرجى تحديد شركة افتراضية في الإعدادات الافتراضية العامة.
+Components can be returned only after Work Order {0} is Completed or Closed,لا يمكن إرجاع المكونات إلا بعد أن يصبح أمر التصنيع {0} مكتملاً أو مغلقاً
+Could not download the statement. Please try again.,تعذر تحميل البيان. يرجى المحاولة مرة أخرى.
+"Creation of {0} failed.\n\t\t\t\tCheck <b><a href=""/app/bulk-transaction-log"">Bulk Transaction Log</a></b>","تعذر إنشاء {0}.\n\t\t\t\tراجع <b><a href=""/app/bulk-transaction-log"">سجل المعاملات الجماعية</a></b>"
+"Creation of {0} partially successful.\n\t\t\t\tCheck <b><a href=""/app/bulk-transaction-log"">Bulk Transaction Log</a></b>","تم إنشاء {0} جزئياً بنجاح.\n\t\t\t\tراجع <b><a href=""/app/bulk-transaction-log"">سجل المعاملات الجماعية</a></b>"
+Default Supplier for {0} not found,المورد الافتراضي لـ {0} غير موجود
+Default Target Warehouse {0} must be a Transit warehouse when Add to Transit is enabled.,يجب أن يكون المستودع المستهدف الافتراضي {0} مستودع عبور عند تفعيل الإضافة إلى العبور.
+Deletion in Progress!,جار الحذف!
+Enable Item Search Index,تفعيل فهرس بحث الأصناف
+Fetching...,جار الجلب...
+Finished Good Batch No,رقم تشغيلة المنتج التام
+Finished Good Serial / Batch No,الرقم التسلسلي / رقم التشغيلة للمنتج التام
+Finished Good Serial No,الرقم التسلسلي للمنتج التام
+Finished good mapping can't be changed for a cancelled entry,لا يمكن تغيير ربط المنتج التام لقيد ملغى
+Finished good mapping is only allowed for Manufacture and Repack entries,ربط المنتج التام مسموح به فقط لقيود التصنيع وإعادة التعبئة
+From Date cannot be after As On Date,لا يمكن أن يكون تاريخ البداية بعد تاريخ (كما في)
+"Group the report by Sales Order or by Item, not both.",يتم تجميع التقرير حسب أمر المبيعات أو حسب الصنف، لا كلاهما.
+Hide this line if amount is zero,أخف هذا السطر إذا كان المبلغ صفرًا
+If <b>Enabled</b> - Reconciliation happens on the <b>Advance Payment posting date</b><br>\nIf <b>Disabled</b> - Reconciliation happens on oldest of 2 Dates: <b>Invoice Date</b> or the <b>Advance Payment posting date</b><br>\n,إذا كان <b>مفعّلاً</b> - تتم المطابقة في <b>تاريخ ترحيل الدفعة المقدمة</b><br>\nإذا كان <b>معطّلاً</b> - تتم المطابقة في أقدم تاريخين من: <b>تاريخ الفاتورة</b> أو <b>تاريخ ترحيل الدفعة المقدمة</b><br>
+"If enabled, formula for <b>Qty to Order</b>: <br>\nRequired Qty (BOM) - <a href=""https://docs.frappe.io/erpnext/user/manual/en/projected-quantity"">Projected Qty</a>. <br> This helps avoid over-ordering.","إذا تم التفعيل، معادلة <b>الكمية المطلوب طلبها</b>: <br>\nالكمية المطلوبة (قائمة المواد) - <a href=""https://docs.frappe.io/erpnext/user/manual/en/projected-quantity"">الكمية المتوقعة</a>. <br> يساعد ذلك على تجنب الطلب الزائد."
+"If enabled, formula for <b>Required Qty</b>: <br>\nRequired Qty (BOM) - <a href=""https://docs.frappe.io/erpnext/user/manual/en/projected-quantity"">Projected Qty</a>. <br> This helps avoid over-ordering.","إذا تم التفعيل، معادلة <b>الكمية المطلوبة</b>: <br>\nالكمية المطلوبة (قائمة المواد) - <a href=""https://docs.frappe.io/erpnext/user/manual/en/projected-quantity"">الكمية المتوقعة</a>. <br> يساعد ذلك على تجنب الطلب الزائد."
+"If enabled, the system will use the inventory account set in the Item Master or Item Group or Brand. Otherwise, it will use the inventory account set in the Warehouse.",في حال تفعيل هذا الخيار، سيستخدم النظام حساب المخزون المحدد في بيانات الصنف الرئيسية أو مجموعة الأصناف أو العلامة التجارية. وإلا، فسيستخدم حساب المخزون المحدد في المستودع.
+Invalid Price List,قائمة الأسعار غير صالحة
+Invalid Sample Size,حجم العينة غير صالح
+Invalid address,العنوان غير صالح
+Invalid doctype,نوع المستند غير صالح
+Invalid doctype {0},نوع المستند {0} غير صالح
+Invalid document type,نوع المستند غير صالح
+Invalid filter,عامل التصفية غير صالح
+"Invalid line reference format: '{0}'. Must start with a letter and contain only letters, numbers and underscores",تنسيق مرجع السطر غير صالح: '{0}'. يجب أن يبدأ بحرف ويحتوي على حروف وأرقام وشرطات سفلية فقط
+Invalid name,الاسم غير صالح
+Invalid reference,المرجع غير صالح
+Invalid tax master doctype,نوع مستند الضريبة الرئيسي غير صالح
+Invalid type,النوع غير صالح
+Item Restricted for Party,الصنف مقيد للطرف
+Items must be a list of Item codes,يجب أن تكون الأصناف قائمة من رموز الأصناف
+Later Stock Closing Entry Exists,يوجد قيد إقفال مخزون لاحق
+Link the Serial and Batch Bundles of the raw materials and finished goods first. Serial / batch nos picked on submit can be mapped after the entry is submitted.,اربط حزم الأرقام التسلسلية والتشغيلات للمواد الخام والمنتجات التامة أولاً. يمكن ربط الأرقام التسلسلية / أرقام التشغيلة المحددة عند الاعتماد بعد اعتماد القيد.
+Map Raw Materials to Finished Goods,ربط المواد الخام بالمنتجات التامة
+Mapping must be a dictionary of raw material entries to finished goods,يجب أن يكون الربط قائمة من قيود المواد الخام إلى المنتجات التامة
+Mapping saved,تم حفظ الربط
+Material Request must be submitted to create Work Orders,يجب اعتماد طلب المواد لإنشاء أوامر العمل
+Minimum quantity should be as per Stock UOM\n\n,يجب أن تكون الكمية الأدنى وفقاً لوحدة قياس المخزون
+No Matching Vouchers Found,لم يتم العثور على سندات مطابقة
+Not permitted for {0},غير مسموح لـ {0}
+Only users with the {0} role can repost GL entries,لا يمكن إعادة ترحيل قيود دفتر الأستاذ العام إلا للمستخدمين الذين لديهم دور {0}
+Parent document is required to search child rows,المستند الأصل مطلوب للبحث في الصفوف الفرعية
+Pick the finished good serial / batch each raw material went into. The Serial No and Batch Traceability report uses this mapping.,حدد الرقم التسلسلي / تشغيلة المنتج التام الذي انتقلت إليه كل مادة خام. يستخدم تقرير تتبّع الأرقام التسلسلية والتشغيلات هذا الربط.
+Please contact any of the following users for this transaction.,يرجى التواصل مع أحد المستخدمين التاليين بخصوص هذه المعاملة.
+Price List {0} cannot be used on a buying transaction,لا يمكن استخدام قائمة الأسعار {0} في معاملة شراء
+Price List {0} cannot be used on a selling transaction,لا يمكن استخدام قائمة الأسعار {0} في معاملة بيع
+Pricing Rule {0} is disabled,قاعدة التسعير {0} معطّلة
+Qty for Manufacture must be greater than the process loss of {0} to produce a finished good.,يجب أن تكون الكمية المراد تصنيعها أكبر من فقد العملية البالغ {0} لإنتاج منتج تام.
+Raw material {0} is already mapped and can't be changed after {1} is submitted,تم ربط المادة الخام {0} مسبقًا ولا يمكن تغييرها بعد اعتماد {1}
+"Raw material {0} is mapped to {1}, which is not a finished good of this entry",المادة الخام {0} مرتبطة بـ {1}، وهو ليس منتجًا تامًا لهذا القيد
+Repost GL Entries,إعادة ترحيل قيود دفتر الأستاذ
+Repost Stock & GL Entries,إعادة ترحيل قيود المخزون ودفتر الأستاذ
+Row #{0}: Company {1} does not match with the company {2} in Serial and Batch Bundle {3}.,الصف #{0}: الشركة {1} لا تطابق الشركة {2} في حزمة الأرقام التسلسلية والتشغيلات {3}.
+Row #{0}: Planned Qty must be greater than 0 for Item {1}.,الصف #{0}: يجب أن تكون الكمية المخططة أكبر من 0 للصنف {1}.
+Row #{0}: Target Warehouse {1} must be a Transit warehouse when Add to Transit is enabled.,الصف #{0}: يجب أن يكون المستودع المستهدف {1} مستودع عبور عند تفعيل الإضافة إلى العبور.
+Row {0} is not a raw material serial / batch entry of {1},الصف {0} ليس قيد رقم تسلسلي/تشغيلة لمادة خام تابع لـ {1}
+Row {0}: Item {1} is not allowed for {2} {3}.,الصف {0}: الصنف {1} غير مسموح به لـ {2} {3}.
+Sample Size must be greater than zero,يجب أن يكون حجم العينة أكبر من صفر
+Select whether to get items from a Sales Order or a Material Request. For now select <b>Sales Order</b>.\n A Production Plan can also be created manually where you can select the Items to manufacture.,اختر ما إذا كان جلب الأصناف من أمر بيع أو طلب مواد. في الوقت الحالي اختر <b>أمر البيع</b>.\n يمكن أيضًا إنشاء خطة إنتاج يدويًا يمكنك من خلالها اختيار الأصناف المطلوب تصنيعها.
+Serial / Batch No Not Activated,الرقم التسلسلي / التشغيلة غير مفعّل
+Serial No Not Reserved,الرقم التسلسلي غير محجوز
+The following payment schedule(s) already exist:\n{0},جدول (جداول) الدفع التالية موجودة مسبقًا:\n{0}
+"These rows fall in a closed Accounting Period, remove them: {0}",تقع هذه الصفوف في فترة محاسبية مغلقة، أزلها: {0}
+"To Date must be after {0}, the To Date of the last Stock Closing Entry {1}",يجب أن يكون تاريخ الانتهاء بعد {0}، وهو تاريخ الانتهاء لآخر قيد إقفال مخزون {1}
+"Total {0} of all items is zero, charges cannot be distributed on it.",إجمالي {0} لجميع الأصناف صفر، لا يمكن توزيع الرسوم عليه.
+Total {0} of all items is zero. Set 'Distribute Charges Based On' to {1}.,إجمالي {0} لجميع الأصناف صفر. عيّن 'توزيع الرسوم على أساس' إلى {1}.
+fieldname,اسم الحقل
+{0} (Accounting Period {1}),{0} (الفترة المحاسبية {1})
+{0} cannot be cleared against a bank statement,لا يمكن تسوية {0} مقابل كشف حساب بنكي
+{0} cannot be reconciled against a Bank Transaction,لا يمكن مطابقة {0} مقابل حركة بنكية
+{0} does not hold a Serial and Batch Bundle,{0} لا يحتوي على حزمة أرقام تسلسلية وتشغيلات
+"{0} is both a finished good serial no and batch no in {1}, please specify which one",{0} رقم تسلسلي ورقم تشغيلة لمنتج تام معًا في {1}، يرجى تحديد أيهما
+{0} is not a child table,{0} ليس جدولًا فرعيًا
+{0} is not a finished good serial / batch produced by {1},{0} ليس رقمًا تسلسليًا/تشغيلة لمنتج تام تم إنتاجه بواسطة {1}
+{0} is not a valid reference field for {1},{0} ليس حقل مرجع صالحًا لـ {1}
+Access Token,رمز الوصول
+Allow editing after submit,السماح بالتعديل بعد الاعتماد
+Bulk operation is enqueued in background.,تتم إضافة عملية المعالجة الجماعية إلى قائمة الانتظار في الخلفية.
+Dark Theme,السمة الداكنة
+Default Redirect URI,رابط إعادة التوجيه الافتراضي
+ commented,علّق
+% SLA Fulfilled,% الوفاء باتفاقية مستوى الخدمة
+- Default Ticket Status<br>,- حالة التذكرة الافتراضية<br>
+- Ticket Reopen Status<br>,- حالة إعادة فتح التذكرة<br>
+- {0} as Default Status<br>,- {0} كحالة افتراضية<br>
+- {0} as Reopen Status<br>,- {0} كحالة إعادة فتح<br>
+"0 is no feedback, 1 is Like, 2 is Dislike",0 تعني عدم وجود تقييم، 1 تعني إعجاب، 2 تعني عدم إعجاب
+1 Year,سنة واحدة
+1 person reacted to your comment,تفاعل شخص واحد مع تعليقك
+3 Months,3 أشهر
+6 Months,6 أشهر
+<br>Please update HD Settings to use a different status before disabling this status.,<br>يرجى تحديث إعدادات مكتب المساعدة لاستخدام حالة مختلفة قبل تعطيل هذه الحالة.
+<br>Please update the SLA(s) to use a different status before disabling this status.,<br>يرجى تحديث اتفاقية (اتفاقيات) مستوى الخدمة لاستخدام حالة مختلفة قبل تعطيل هذه الحالة.
+"<div class=""ql-editor read-mode""><p>Let us know if we solved your issue well. It’ll help us serve you better next time.</p></div>","<div class=""ql-editor read-mode""><p>يسعدنا معرفة رأيك فيما إذا كنا قد حللنا مشكلتك بالشكل المناسب. سيساعدنا ذلك على خدمتك بشكل أفضل في المرة القادمة.</p></div>"
+"<span class=""h3"" style=""""><a href=""/helpdesk"">Visit Helpdesk</a></span>","<span class=""h3"" style=""""><a href=""/helpdesk"">زيارة مكتب المساعدة</a></span>"
+"<span class=""h4"">Helpdesk Configuration<br></span>","<span class=""h4"">إعدادات مكتب المساعدة<br></span>"
+A short description,وصف مختصر
+A workday with this name already exists,يوجد يوم عمل بهذا الاسم مسبقاً
+Access all team tickets,الوصول إلى جميع تذاكر الفريق
+Access denied,تم رفض الوصول
+Access only this team's tickets,الوصول إلى تذاكر هذا الفريق فقط
+Account Info & Security,معلومات الحساب والأمان
+Action Required,إجراء مطلوب
+Active now,نشط الآن
+Active: The agent is available and working.<br>\nAway: The agent is temporarily unreachable.<br>\nUnavailable: The agent is off and unavailable.,نشط: الوكيل متاح ويعمل.<br>\nغير متاح مؤقتاً: الوكيل غير متاح للتواصل مؤقتاً.<br>\nغير متاح: الوكيل غير متصل وغير متاح.
+Add Category,إضافة فئة
+Add Email,إضافة بريد إلكتروني
+Add Holiday,إضافة عطلة
+Add New Article,إضافة مقالة جديدة
+Add Phone,إضافة هاتف
+Add Sort,إضافة ترتيب
+Add a comment on a ticket,إضافة تعليق على تذكرة
+Add a custom condition,إضافة شرط مخصص
+Add charts to get started,أضف رسوماً بيانية للبدء
+Add condition group,إضافة مجموعة شروط
+Add holidays here to make sure they’re excluded from SLA calculations.,أضف العطلات هنا للتأكد من استثنائها من حسابات اتفاقية مستوى الخدمة.
+Add members to this team to get started.,أضف أعضاء إلى هذا الفريق للبدء.
+Add one to get started.,أضف واحداً للبدء.
+Add recurring holidays such as weekends.,أضف عطلات متكررة مثل عطلات نهاية الأسبوع.
+Add time targets around support milestones like first reply and resolution times.,أضف أهدافاً زمنية حول مراحل الدعم الرئيسية مثل أول رد ووقت الحل.
+Add to recipients,إضافة إلى المستلمين
+"Add, manage agents and assign roles to them.",إضافة الوكلاء وإدارتهم وتعيين الأدوار لهم.
+Agent Dashboard,لوحة معلومات الوكيل
+Agent Manager,مدير الوكلاء
+Agent Name,اسم الوكيل
+Agent Status,حالة الوكيل
+Agent name,اسم الوكيل
+Agents & Teams,الوكلاء والفرق
+Agents will no longer be able to view and create saved replies with global scope.,لن يتمكن الوكلاء بعد الآن من عرض أو إنشاء الردود المحفوظة ذات النطاق العام.
+All SLAs on track,جميع اتفاقيات مستوى الخدمة ضمن المسار
+All Time,كل الوقت
+All Views,جميع العروض
+All comments and emails from both tickets will be merged into the selected ticket,سيتم دمج جميع التعليقات والرسائل من كلا التذكرتين في التذكرة المحددة
+All your assigned tickets have been responded to,تم الرد على جميع التذاكر المعينة لك
+Allow anyone to create tickets,السماح لأي شخص بإنشاء تذاكر
+Allow users to react to comments with emojis,السماح للمستخدمين بالتفاعل مع التعليقات باستخدام الرموز التعبيرية
+Allow users to react to comments with emojis.,السماح للمستخدمين بالتفاعل مع التعليقات باستخدام الرموز التعبيرية.
+Anyone will be able to create tickets without any permission. e.g. from webform.,سيتمكن أي شخص من إنشاء تذاكر دون أي صلاحية، مثل عبر نموذج الويب.
+Appearance,المظهر
+Apply on new page,تطبيق في صفحة جديدة
+Apply outside working hours,تطبيق خارج ساعات العمل
+Apply to customer portal,تطبيق على بوابة العميل
+Are you sure you want to close this ticket?,هل تريد بالتأكيد إغلاق هذه التذكرة؟
+Are you sure you want to delete these articles?,هل تريد بالتأكيد حذف هذه المقالات؟
+Are you sure you want to delete this contact? The contact will be permanently deleted and unlinked from any associated customers and tickets.,هل تريد بالتأكيد حذف جهة الاتصال هذه؟ سيتم حذف جهة الاتصال نهائياً وإلغاء ربطها بجميع العملاء والتذاكر المرتبطة بها.
+Are you sure you want to delete this ticket? This is an irreversible action and cannot be undone.,هل تريد بالتأكيد حذف هذه التذكرة؟ هذا إجراء نهائي لا يمكن التراجع عنه.
+Are you sure you want to delete this view?,هل تريد بالتأكيد حذف هذا العرض؟
+Are you sure you want to discard changes?,هل تريد بالتأكيد تجاهل التغييرات؟
+Are you sure you want to discard this article?,هل تريد بالتأكيد تجاهل هذه المقالة؟
+Are you sure you want to remove the logo?,هل تريد بالتأكيد إزالة الشعار؟
+Are you sure you want to remove this contact from the customer?,هل تريد بالتأكيد إزالة جهة الاتصال هذه من العميل؟
+Are you sure you want to reset the content? Current content will be overridden.,هل تريد بالتأكيد إعادة ضبط المحتوى؟ سيتم استبدال المحتوى الحالي.
+Article,المقالة
+Article body cannot be set as empty.,لا يمكن ترك نص المقالة فارغاً.
+Article created successfully.,تم إنشاء المقالة بنجاح.
+Article deleted successfully.,تم حذف المقالة بنجاح.
+Article link copied to clipboard,تم نسخ رابط المقالة إلى الحافظة
+Article title cannot be set as empty,لا يمكن ترك عنوان المقالة فارغاً
+Article updated successfully.,تم تحديث المقالة بنجاح.
+Articles deleted successfully.,تم حذف المقالات بنجاح.
+Articles moved successfully.,تم نقل المقالات بنجاح.
+Assign a ticket to an agent,تعيين تذكرة لوكيل
+Assign ticket,تعيين التذكرة
+Assign yourself,تعيين نفسك
+Assignment Condition,شرط التعيين
+Assignment Schedule,جدول التعيين
+Assignment rule,قاعدة التعيين
+Assignment rule created successfully.,تم إنشاء قاعدة التعيين بنجاح.
+Assignment rule deleted successfully.,تم حذف قاعدة التعيين بنجاح.
+Assignment rule duplicated successfully.,تم تكرار قاعدة التعيين بنجاح.
+Assignment rule updated successfully.,تم تحديث قاعدة التعيين بنجاح.
+Assignment rule {0} updated successfully.,تم تحديث قاعدة التعيين {0} بنجاح.
+At least one enabled Active status is required.,"يلزم وجود حالة واحدة على الأقل من نوع ""نشط"" مفعّلة."
+At least one enabled status for <u>{0}</u> category must be enabled.,يجب تفعيل حالة واحدة على الأقل لفئة <u>{0}</u>.
+At least one feedback option must be enabled for rating {0},يجب تفعيل خيار تقييم واحد على الأقل للتقييم {0}
+At least one team is required,يلزم فريق واحد على الأقل
+Auto update status,تحديث الحالة تلقائياً
+Auto-close after (Days),الإغلاق التلقائي بعد (بالأيام)
+Auto-close tickets that remain in a status for the specified number of days.,إغلاق التذاكر تلقائياً التي تبقى في حالة معينة لعدد الأيام المحدد.
+Automatically Close Tickets when,إغلاق التذاكر تلقائياً عند
+Automatically close stale tickets,إغلاق التذاكر الراكدة تلقائياً
+Availability,التوفر
+Availability Changed On,تاريخ تغيّر التوفر
+Average First Response,متوسط أول رد
+Average First Response Time,متوسط وقت أول رد
+Average Resolution,متوسط الحل
+Average Resolution Time,متوسط وقت الحل
+Average Time Metrics,مؤشرات المتوسط الزمني
+Average feedback rating per day is around {0} stars,متوسط تقييم الملاحظات يومياً حوالي {0} نجوم
+Average response and resolution metrics not available,مؤشرات متوسط الرد والحل غير متاحة
+Average tickets per day is around {0},متوسط عدد التذاكر يومياً حوالي {0}
+Avg. Feedback Rating,متوسط تقييم الملاحظات
+Avg. Feedback Received,متوسط الملاحظات المستلمة
+Avg. First Response,متوسط أول رد
+Avg. First Response Time,متوسط وقت أول رد
+Avg. Resolution,متوسط الحل
+Avg. Resolution Time,متوسط وقت الحل
+Avg. feedback rating for tickets resolved in this period,متوسط تقييم الملاحظات للتذاكر المحلولة خلال هذه الفترة
+Avg. first response time,متوسط وقت أول رد
+Avg. resolution time,متوسط وقت الحل
+Avg. time taken to first respond to a ticket,متوسط الوقت المستغرق للرد الأول على التذكرة
+Avg. time taken to resolve a ticket,متوسط الوقت المستغرق لحل التذكرة
+Away,غير متاح مؤقتاً
+Back to Tickets,العودة إلى التذاكر
+Base Support Rotation,دورة الدعم الأساسية
+Bcc,نسخة مخفية
+Bcc:,نسخة مخفية:
+Brand name,اسم العلامة التجارية
+Branding,العلامة التجارية
+Bulk Reply,الرد الجماعي
+Bulk reply sent successfully to 1 ticket.,تم إرسال الرد الجماعي بنجاح إلى تذكرة واحدة.
+Bulk reply sent successfully to {0} tickets.,تم إرسال الرد الجماعي بنجاح إلى {0} تذاكر.
+Business Holidays,عطلات العمل
+Call Logs,سجلات المكالمات
+Call duration in seconds,مدة المكالمة بالثواني
+Caller,المتصل
+"Can invite new agents, manage tickets, create custom views and manage public views.",يمكنه دعوة وكلاء جدد وإدارة التذاكر وإنشاء عروض مخصصة وإدارة العروض العامة.
+Can manage all aspects of Helpdesk.,يمكنه إدارة جميع جوانب مكتب المساعدة.
+Can raise tickets on behalf of the org and manage the tickets they raised.,يمكنه إنشاء تذاكر باسم المؤسسة وإدارة التذاكر التي أنشأها.
+Can view all tickets raised by the org and assign other members as managers.,يمكنه عرض جميع التذاكر التي أنشأتها المؤسسة وتعيين أعضاء آخرين كمدراء.
+Can view tickets raised by all contacts of the customer.,يمكنه عرض التذاكر التي أنشأها جميع جهات اتصال العميل.
+"Can work on tickets, create custom views and manage private views.",يمكنه العمل على التذاكر وإنشاء عروض مخصصة وإدارة العروض الخاصة.
+Cancel Invitation,إلغاء الدعوة
+Cannot Sync Customers,لا يمكن مزامنة العملاء
+Cannot delete the default SLA. At least one SLA must be marked as default.,لا يمكن حذف اتفاقية مستوى الخدمة الافتراضية. يجب تحديد اتفاقية واحدة على الأقل كافتراضية.
+Cannot disable this status as it is linked in HD Settings:<br><br>,لا يمكن تعطيل هذه الحالة لأنها مرتبطة في إعدادات مكتب المساعدة:<br><br>
+Cannot disable this status as it is linked in the following SLAs:<br><br>,لا يمكن تعطيل هذه الحالة لأنها مرتبطة باتفاقيات مستوى الخدمة التالية:<br><br>
+Cannot enable rule without adding users in it,لا يمكن تفعيل القاعدة دون إضافة مستخدمين إليها
+Cannot merge General category,لا يمكن دمج فئة عام
+Cannot rename: an unrelated {0} '{1}' already exists on the other side. Resolve the conflict manually first.,لا يمكن إعادة التسمية: يوجد {0} آخر غير مرتبط باسم '{1}' في الجانب الآخر. يرجى حل التعارض يدوياً أولاً.
+Categories,الفئات
+Category '{0}' link copied to clipboard,تم نسخ رابط الفئة '{0}' إلى الحافظة
+Category is required,الفئة مطلوبة
+Category merged successfully.,تم دمج الفئة بنجاح.
+Category must have atleast one article,يجب أن تحتوي الفئة على مقالة واحدة على الأقل
+Cc:,نسخة:
+Change Photo,تغيير الصورة
+Change language of the application.,تغيير لغة التطبيق.
+Change operator ({0}),تغيير المشغّل ({0})
+Change priority,تغيير الأولوية
+Change status,تغيير الحالة
+Change team,تغيير الفريق
+Change ticket type,تغيير نوع التذكرة
+Change timezone of the application.,تغيير المنطقة الزمنية للتطبيق.
+Change your account password for security.,تغيير كلمة مرور حسابك لأمان أعلى.
+Child field,الحقل الفرعي
+Choose a field,اختيار حقل
+Choose how long this SLA policy will be active.,حدد المدة التي ستكون خلالها سياسة اتفاقية مستوى الخدمة هذه سارية.
+Choose how tickets are distributed among selected assignees.,حدد كيفية توزيع التذاكر بين المعينين المحددين.
+Choose the days of the week when this rule should be active.,حدد أيام الأسبوع التي تكون فيها هذه القاعدة سارية.
+Choose the duration of this holiday list.,حدد مدة قائمة العطلات هذه.
+Choose the email service provider you want to configure.,حدد مزود خدمة البريد الإلكتروني الذي تريد ضبطه.
+Choose which tickets are affected by this assignment rule.,حدد التذاكر التي تتأثر بقاعدة التعيين هذه.
+Choose which tickets are affected by this policy.,حدد التذاكر التي تتأثر بهذه السياسة.
+Choose which tickets are affected by this un-assignment rule.,حدد التذاكر التي تتأثر بقاعدة إلغاء التعيين هذه.
+Choose who can view and use this response.,حدد من يمكنه عرض هذا الرد واستخدامه.
+Choose who receives the tickets.,حدد من يستلم التذاكر.
+Clear Sort,إلغاء الترتيب
+Clear all,إلغاء الكل
+Click to copy,اضغط للنسخ
+Close Ticket,إغلاق التذكرة
+Comma separated emails to invite.,عناوين بريد إلكتروني مفصولة بفواصل للدعوة.
+Comma separated values,قيم مفصولة بفواصل
+Comment cannot be empty.,لا يمكن ترك التعليق فارغاً.
+Comment deleted successfully.,تم حذف التعليق بنجاح.
+Comment not found,التعليق غير موجود
+Comment updated successfully.,تم تحديث التعليق بنجاح.
+Communication ID is required,معرف التواصل مطلوب
+Configure your telephony settings.,اضبط إعدادات الاتصال الهاتفي.
+Confirm Changes,تأكيد التغييرات
+Confirm overwrite,تأكيد الاستبدال
+Connect your support email,ربط بريد الدعم الخاص بك
+Contact removed successfully,تم إزالة جهة الاتصال بنجاح
+Contact updated successfully.,تم تحديث جهة الاتصال بنجاح.
+Contact {0} has no email address,جهة الاتصال {0} لا تمتلك عنوان بريد إلكتروني
+Contacts added successfully,تمت إضافة جهات الاتصال بنجاح
+Copy ticket URL,نسخ رابط التذكرة
+Copy ticket id,نسخ معرف التذكرة
+Could not an email due to: {0},تعذر إرسال البريد الإلكتروني للسبب: {0}
+Could not migrate contacts for {0} customer(s): {1}. Fix the underlying data and re-run the patch.,تعذر ترحيل جهات الاتصال لـ {0} عميل/عملاء: {1}. يرجى تصحيح البيانات الأساسية وإعادة تشغيل الترقيع.
+Could not send an acknowledgement email due to: {0},تعذر إرسال بريد إلكتروني للتأكيد للسبب: {0}
+"Could not send feedback email,due to: {0}",تعذر إرسال بريد إلكتروني للملاحظات للسبب: {0}
+Create & invite a contact,إنشاء جهة اتصال ودعوتها
+Create Contact,إنشاء جهة اتصال
+Create View,إنشاء عرض
+Create a ticket,إنشاء تذكرة
+Create an article,إنشاء مقالة
+Create and manage teams and assign agents to specific teams.,إنشاء الفرق وإدارتها وتعيين الوكلاء لفرق محددة.
+Create new business holiday,إنشاء عطلة عمل جديدة
+Created by,أنشأه
+Creating a ticket,إنشاء تذكرة
+Custom Actions,إجراءات مخصصة
+Custom Outside Working Hours Message,رسالة مخصصة لخارج ساعات العمل
+Custom Views,عروض مخصصة
+Customer Manager,مدير العملاء
+Customer Portal,بوابة العميل
+Customer created,تم إنشاء العميل
+Customer name cannot be empty,لا يمكن ترك اسم العميل فارغاً
+Customer portal,بوابة العميل
+Customer updated,تم تحديث العميل
+Customers & Contacts,العملاء وجهات الاتصال
+Customers are in sync,العملاء متزامنون
+Customizations,التخصيصات
+Customize your email notification preferences to stay informed about important updates and activities.,خصّص تفضيلات إشعارات البريد الإلكتروني لتبقى على اطلاع بالتحديثات والأنشطة المهمة.
+Dashboard saved,تم حفظ لوحة المعلومات
+Day count for auto closing tickets cannot be negative or zero,لا يمكن أن يكون عدد أيام الإغلاق التلقائي للتذاكر سالباً أو صفراً
+Default SLA,اتفاقية مستوى الخدمة الافتراضية
+Default Views,العروض الافتراضية
+Default actions,الإجراءات الافتراضية
+Default priority,الأولوية الافتراضية
+Default template can not be deleted,لا يمكن حذف القالب الافتراضي
+Default ticket status,حالة التذكرة الافتراضية
+Default ticket type,نوع التذكرة الافتراضي
+Define who receives the tickets and how they’re distributed among agents.,حدد من يستلم التذاكر وكيفية توزيعها بين الوكلاء.
+Delete Contact,حذف جهة الاتصال
+Delete View,حذف العرض
+Delete articles,حذف المقالات
+Delete category?,حذف الفئة؟
+Delete {0} ticket(s),حذف {0} تذكرة/تذاكر
+Description Template,قالب الوصف
+Description Weight,وزن الوصف
+Detailed explanation,شرح تفصيلي
+Disable global saved replies,تعطيل الردود المحفوظة العامة
+Disable saved replies with scope 'Global',تعطيل الردود المحفوظة ذات النطاق 'عام'
+Disable signup,تعطيل التسجيل
+"Disables all email notifications for the ticket - including creation, updates, and alerts.",يعطّل جميع إشعارات البريد الإلكتروني للتذكرة - بما في ذلك الإنشاء والتحديثات والتنبيهات.
+Discard Article,تجاهل المقالة
+Discard changes?,تجاهل التغييرات؟
+Display a customizable banner message when customers raise tickets outside your working hours.,إظهار رسالة لافتة قابلة للتخصيص عند إنشاء العملاء تذاكر خارج ساعات عملك.
+Do not apply filters and restrictions to agents of this team,عدم تطبيق المرشحات والقيود على وكلاء هذا الفريق
+Do not restrict tickets without a Team,عدم تقييد التذاكر التي لا تملك فريقاً
+Do not restrict tickets without a team,عدم تقييد التذاكر التي لا تملك فريقاً
+Docs,الوثائق
+Duplicate Assignment Rule,تكرار قاعدة التعيين
+Duplicate Holiday List,تكرار قائمة العطلات
+Duplicate SLA Policy,تكرار سياسة اتفاقية مستوى الخدمة
+Duplicate Saved reply,تكرار الرد المحفوظ
+Duration is required,المدة مطلوبة
+ERPNext Customer,عميل ERPNext
+ERPNext HD Settings,إعدادات مكتب المساعدة في ERPNext
+ERPNext Integration is disabled,تكامل ERPNext معطّل
+ERPNext Integration is enabled,تكامل ERPNext مفعّل
+ERPNext app,تطبيق ERPNext
+ERPNext integration is not enabled,تكامل ERPNext غير مفعّل
+ERPNext is not installed on your site. Please install ERPNext to enable this setting,ERPNext غير مثبّت على موقعك. يرجى تثبيت ERPNext لتفعيل هذا الإعداد
+"Easily invite new agents, managers, or admins.",دعوة وكلاء أو مدراء أو مسؤولين جدد بسهولة.
+Edit Call Log,تعديل سجل المكالمة
+Edit Contact,تعديل جهة الاتصال
+Edit Customer,تعديل العميل
+Edit Domain,تعديل النطاق
+Edit Email,تعديل البريد الإلكتروني
+Edit Title,تعديل العنوان
+Edit your email account,تعديل حساب بريدك الإلكتروني
+Email Accounts,حسابات البريد الإلكتروني
+Email Content,محتوى البريد الإلكتروني
+Email Notifications,إشعارات البريد الإلكتروني
+Email account created,تم إنشاء حساب البريد الإلكتروني
+Email account name,اسم حساب البريد الإلكتروني
+Email account updated successfully,تم تحديث حساب البريد الإلكتروني بنجاح
+Email address of the primary contact,عنوان البريد الإلكتروني لجهة الاتصال الرئيسية
+Emails & Signature,الرسائل والتوقيع
+Emails pulled successfully,تم جلب الرسائل بنجاح
+Emoji,رمز تعبيري
+Empty - Choose a field to sort by,فارغ - اختر حقلاً للترتيب حسبه
+Enable ERPNext Integration,تفعيل تكامل ERPNext
+Enable comment reactions,تفعيل التفاعل مع التعليقات
+Enable feedback for Customer Portal,تفعيل الملاحظات في بوابة العميل
+Enter a name for this HD Service Holiday List.,أدخل اسماً لقائمة عطلات الخدمة هذه.
+Enter brand name,أدخل اسم العلامة التجارية
+Enter email address,أدخل عنوان البريد الإلكتروني
+Enter the new name for the team,أدخل الاسم الجديد للفريق
+Enter the primary contact's email,أدخل بريد جهة الاتصال الرئيسية
+Enter the primary contact's first name,أدخل الاسم الأول لجهة الاتصال الرئيسية
+Error moving article to category,خطأ في نقل المقالة إلى الفئة
+"Error processing email at index {0}, message: {1}",خطأ في معالجة البريد الإلكتروني عند الفهرس {0}، الرسالة: {1}
+Existing users join instantly. Others get an invite.,ينضم المستخدمون الحاليون فوراً. يحصل الآخرون على دعوة.
+Explore customer portal,استكشاف بوابة العميل
+Export All {0} Record(s),تصدير جميع سجلات {0}
+Failed SLAs,اتفاقيات مستوى الخدمة الفاشلة
+Failed to create category,فشل إنشاء الفئة
+"Failed to create email account, Invalid credentials",فشل إنشاء حساب البريد الإلكتروني، بيانات اعتماد غير صحيحة
+Failed to delete ticket.,فشل حذف التذكرة.
+Failed to load telephony agent,فشل تحميل وكيل الاتصال الهاتفي
+Failed to pull emails,فشل جلب الرسائل
+Failed to update assignment rule {0}.,فشل تحديث قاعدة التعيين {0}.
+Failed to update category.,فشل تحديث الفئة.
+"Failed to update email account, Invalid credentials",فشل تحديث حساب البريد الإلكتروني، بيانات اعتماد غير صحيحة
+Failed to update field dependency.,فشل تحديث تبعية الحقل.
+Favicon,أيقونة الموقع
+Feedback (Extra),الملاحظات (إضافية)
+Feedback (Option),الملاحظات (اختياري)
+Feedback Already Exists,الملاحظات موجودة مسبقاً
+Feedback Rating,تقييم الملاحظات
+Feedback Trend,اتجاه الملاحظات
+Feedback email has been sent to the customer,تم إرسال بريد الملاحظات إلى العميل
+Feedback from this contact will appear here once available.,ستظهر ملاحظات جهة الاتصال هذه هنا عند توفرها.
+Feedback submitted successfully.,تم إرسال الملاحظات بنجاح.
+Field Dependencies,تبعيات الحقول
+Field Dependency,تبعية الحقل
+Field Dependency created successfully,تم إنشاء تبعية الحقل بنجاح
+Field Dependency updated successfully,تم تحديث تبعية الحقل بنجاح
+Field `{0}` does not exist in Ticket,الحقل `{0}` غير موجود في التذكرة
+Field `{0}` is not allowed in Ticket Template,الحقل `{0}` غير مسموح به في قالب التذكرة
+Field dependency deleted successfully.,تم حذف تبعية الحقل بنجاح.
+Field dependency updated successfully.,تم تحديث تبعية الحقل.
+Find out all of the variables that can be used in the content,تعرف على جميع المتغيرات التي يمكن استخدامها في المحتوى
+First Response,الرد الأول
+First Response Failed By,تجاوز الرد الأول بواسطة
+From is required,حقل من مطلوب
+General category can't be deleted,لا يمكن حذف الفئة العامة
+General category name can't be changed,لا يمكن تغيير اسم الفئة العامة
+General is a reserved category name. Please use a different name to proceed.,عام اسم فئة محجوز. يرجى استخدام اسم آخر للمتابعة.
+Go to Ticket #{0},الانتقال إلى التذكرة رقم {0}
+Grant Manager Access,منح صلاحية المدير
+Great! All your tickets are within SLA,ممتاز! جميع تذاكرك ضمن اتفاقية مستوى الخدمة
+Group By Field,حقل التجميع
+Guide users to articles before tickets.,وجّه المستخدمين إلى المقالات قبل التذاكر.
+HD Agent Status,حالة وكيل مكتب المساعدة
+HD Article,مقالة مكتب المساعدة
+HD Article Category,فئة مقالة مكتب المساعدة
+HD Article Feedback,تقييم مقالة مكتب المساعدة
+HD Comment Reaction,تفاعل تعليق مكتب المساعدة
+HD Customer,عميل مكتب المساعدة
+HD Customer Manager,مدير عميل مكتب المساعدة
+HD Customer Member,عضو عميل مكتب المساعدة
+HD Email Feedback,تقييم البريد الإلكتروني لمكتب المساعدة
+HD Field Layout,تخطيط حقول مكتب المساعدة
+HD Form Script,نص نموذج مكتب المساعدة
+HD Holiday,عطلة مكتب المساعدة
+HD Notification,إشعار مكتب المساعدة
+HD Saved Reply,الرد المحفوظ لمكتب المساعدة
+HD Saved Reply Team,فريق الرد المحفوظ لمكتب المساعدة
+HD Service Day,يوم خدمة مكتب المساعدة
+HD Service Holiday List,قائمة عطلات خدمة مكتب المساعدة
+HD Service Level Priority,أولوية مستوى الخدمة لمكتب المساعدة
+HD Stopword,الكلمة المستبعدة في مكتب المساعدة
+HD Synonym,مرادف مكتب المساعدة
+HD Synonyms,مرادفات مكتب المساعدة
+HD Team Member,عضو فريق مكتب المساعدة
+HD Ticket Activity,نشاط تذكرة مكتب المساعدة
+HD Ticket Comment,تعليق تذكرة مكتب المساعدة
+HD Ticket Feedback Option,خيار تقييم تذكرة مكتب المساعدة
+HD Ticket Status,حالة تذكرة مكتب المساعدة
+HD Ticket Template,قالب تذكرة مكتب المساعدة
+HD Ticket Template Field,حقل قالب تذكرة مكتب المساعدة
+HD View,عرض مكتب المساعدة
+Headings Weight,وزن العناوين
+"Hello {{ contact }}, \\n\\nWe are sorry for the inconvenience, we will get back to you soon. \\n\\nRegards, \\n{{ full_name }}",مرحباً {{ contact }}، \\n\\nنأسف للإزعاج، سنعاود التواصل معك قريباً. \\n\\nمع التحية، \\n{{ full_name }}
+HelpDesk,مكتب المساعدة
+Hide from customer,إخفاء عن العميل
+Hide from sidebar,إخفاء من الشريط الجانبي
+Hide view from sidebar,إخفاء العرض من الشريط الجانبي
+Holiday list created successfully.,تم إنشاء قائمة العطلات.
+Holiday list deleted successfully.,تم حذف قائمة العطلات.
+Holiday list duplicated successfully.,تم تكرار قائمة العطلات.
+Holiday list updated successfully.,تم تحديث قائمة العطلات.
+"I understand, add conditions",الموافقة، إضافة الشروط
+"If enabled, anyone will be able to create tickets (without any permission). ",إذا تم التفعيل، يمكن لأي شخص إنشاء التذاكر (دون أي صلاحية).
+Ignore Restrictions,تجاهل القيود
+Image removed successfully.,تم حذف الصورة.
+Image updated successfully.,تم تحديث الصورة.
+Inbound Call,مكالمة واردة
+Install the,تثبيت
+Instantly send e-mail,إرسال فوري للبريد الإلكتروني
+Integer value,قيمة عدد صحيح
+Invalid availability,التوفر غير صالح
+Invalid email address,عنوان البريد الإلكتروني غير صالح
+"Invalid fields, check if all are filled in and values are correct.",حقول غير صالحة، تأكد من تعبئة جميعها وصحة القيم.
+Invalid notification,الإشعار غير صالح
+Invalid phone number,رقم الهاتف غير صالح
+Invalid role {0},الدور {0} غير صالح
+Invitation Expired,الدعوة منتهية الصلاحية
+Invitation cancelled successfully,تم إلغاء الدعوة
+Invitation expired. Resend to invite again.,انتهت صلاحية الدعوة. أعد الإرسال للدعوة مرة أخرى.
+Invite Agents,دعوة الوكلاء
+Invite Contact,دعوة جهة الاتصال
+Invite agent,دعوة وكيل
+Invite agents,دعوة وكلاء
+Invite sent. Waiting for the user to accept.,تم إرسال الدعوة. في انتظار قبول المستخدم.
+Invite via email,الدعوة عبر البريد الإلكتروني
+Invited by,تمت الدعوة بواسطة
+Is Customer Portal,بوابة العميل
+Is Manager,مدير
+Is applied to system,مطبّق على النظام
+Is name setup skipped,تخطي إعداد الاسم
+Is pinned,مثبّت
+Is setup complete,اكتمال الإعداد
+Jump to,الانتقال إلى
+KB,قاعدة المعرفة
+Label (customer view),التسمية (عرض العميل)
+Language & Time,اللغة والوقت
+Last 3 months,آخر 3 أشهر
+Last Agent Response,آخر رد من الوكيل
+Last Customer Response,آخر رد من العميل
+Last month,الشهر الماضي
+Last seen,آخر ظهور
+Last user assigned by this rule,آخر مستخدم عيّنته هذه القاعدة
+Last week,الأسبوع الماضي
+Learn about conditions,التعرف على الشروط
+"Let customers know they're raising a ticket outside working hours, and when they can expect a reply.",أخبر العملاء بأنهم يرسلون تذكرة خارج ساعات العمل، ومتى يمكنهم توقع الرد.
+Listen,الاستماع
+Load Default Columns,تحميل الأعمدة الافتراضية
+Log a Call,تسجيل مكالمة
+"Lower the Integer value, higher is the priority of the issue",كلما قلّت القيمة الصحيحة، زادت أولوية المشكلة
+Make Private,جعل خاصاً
+Make Public,جعل عاماً
+Make a Call,إجراء مكالمة
+Make feedback mandatory,إلزامية التقييم
+Make view private,جعل العرض خاصاً
+Manage general settings of your app.,إدارة الإعدادات العامة لتطبيقك.
+Manage pre-defined responses that can be used to respond to customer queries.,إدارة الردود الجاهزة التي يمكن استخدامها للرد على استفسارات العملاء.
+Manage your account emails and email signature for communication.,إدارة بريد حسابك وتوقيع البريد الإلكتروني للتواصل.
+Manage your email accounts and configure incoming and outgoing settings.,إدارة حسابات بريدك الإلكتروني وتهيئة إعدادات الوارد والصادر.
+Manage your personal preferences.,إدارة تفضيلاتك الشخصية.
+Manage your profile information.,إدارة معلومات ملفك الشخصي.
+Members ({0}),الأعضاء ({0})
+Merge Ticket,دمج التذكرة
+Merged With,مدموجة مع
+Mobile App Installation,تثبيت تطبيق الجوال
+Mobile no. of the primary contact,رقم جوال جهة الاتصال الأساسية
+My Dashboard,لوحة التحكم الخاصة بي
+My Organization,مؤسستي
+My Stats,إحصائياتي
+My Team,فريقي
+My Tickets,تذاكري
+Name Weight,وزن الاسم
+Name is required,الاسم مطلوب
+"Name shown on the customer portal<br> (e.g., Replied → Awaiting Response).",الاسم المعروض في بوابة العميل<br> (مثال: تم الرد ← في انتظار الرد).
+Navigation,التنقل
+Negative first,السالب أولاً
+New Article,مقالة جديدة
+New Assignment Rule,قاعدة تعيين جديدة
+New Assignment Rule Name,اسم قاعدة التعيين الجديدة
+New Business Holiday,عطلة رسمية جديدة
+New Call Log,سجل مكالمة جديد
+New Field Dependency,تبعية حقل جديدة
+New Holiday List Name,اسم قائمة العطلات الجديدة
+New SLA Policy,سياسة اتفاقية مستوى خدمة جديدة
+New SLA Policy Name,اسم سياسة اتفاقية مستوى الخدمة الجديدة
+New Saved Reply,رد محفوظ جديد
+New Saved reply Name,اسم الرد المحفوظ الجديد
+New Subject,الموضوع الجديد
+New Team,فريق جديد
+New Ticket,تذكرة جديدة
+New and old title cannot be same,لا يمكن أن يكون العنوان الجديد والقديم متطابقين
+New team,فريق جديد
+New title is required,العنوان الجديد مطلوب
+Next ticket,التذكرة التالية
+No Data Found,لا توجد بيانات
+No Email Account found for {0},لا يوجد حساب بريد إلكتروني لـ {0}
+No HD Agent record for current user,لا يوجد سجل وكيل مكتب مساعدة للمستخدم الحالي
+No Holiday list found,لم يتم العثور على قائمة عطلات
+No SLA found,لم يتم العثور على اتفاقية مستوى خدمة
+No Team,بلا فريق
+No active tickets,لا توجد تذاكر نشطة
+No additional comments,لا توجد تعليقات إضافية
+No agents found,لم يتم العثور على وكلاء
+No articles found in the following category.,لم يتم العثور على مقالات في هذه الفئة.
+No assignment rule found,لم يتم العثور على قاعدة تعيين
+No average metrics,لا توجد مقاييس متوسطة
+No categories available,لا توجد فئات متاحة
+No contacts found,لم يتم العثور على جهات اتصال
+No contacts to add,لا توجد جهات اتصال لإضافتها
+No country found,لم يتم العثور على دولة
+No email account found,لم يتم العثور على حساب بريد إلكتروني
+No feedback,لا يوجد تقييم
+No feedback yet,لا يوجد تقييم حتى الآن
+No fields found,لم يتم العثور على حقول
+No new notifications,لا توجد إشعارات جديدة
+No new tickets assigned to you in the last 7 days,لا توجد تذاكر جديدة معينة لك خلال آخر 7 أيام
+No next ticket,لا توجد تذكرة تالية
+No one,لا أحد
+No pending tickets,لا توجد تذاكر معلقة
+No previous ticket,لا توجد تذكرة سابقة
+No reason,بدون سبب
+No recently assigned tickets,لا توجد تذاكر معينة مؤخراً
+No results,لا توجد نتائج
+No reviews found,لم يتم العثور على تقييمات
+No saved replies found,لم يتم العثور على ردود محفوظة
+No tickets found,لم يتم العثور على تذاكر
+No tickets found for this view. Try adjusting your filters or creating a new view.,لم يتم العثور على تذاكر لهذا العرض. حاول تعديل عوامل التصفية أو إنشاء عرض جديد.
+No tickets found to preview.,لم يتم العثور على تذاكر للمعاينة.
+No tickets selected,لم يتم تحديد أي تذاكر
+No user linked to contact {0},لا يوجد مستخدم مرتبط بجهة الاتصال {0}
+Old Condition,الشرط القديم
+Old Conditions,الشروط القديمة
+On ticket status,عند حالة التذكرة
+Only administrators can delete tickets.,يمكن لمسؤولي النظام فقط حذف التذاكر.
+Open command palette,فتح لوحة الأوامر
+Open comment box,فتح مربع التعليق
+Open customer,فتح العميل
+Open help,فتح المساعدة
+Open in Desk,فتح في لوحة التحكم
+Open reply box,فتح مربع الرد
+Open settings,فتح الإعدادات
+Organization Dashboard,لوحة معلومات المؤسسة
+Outbound Call,مكالمة صادرة
+Outside working hours notice,تنبيه خارج ساعات العمل
+Parent field,الحقل الأصل
+"Parent field, child field, and parent-child mapping are required.",الحقل الأصل والحقل الفرعي وربط الأصل بالفرعي مطلوبة.
+Password must be at least 8 characters,يجب أن تتكون كلمة المرور من 8 أحرف على الأقل
+"Password must contain lowercase, uppercase, number, and symbol",يجب أن تحتوي كلمة المرور على حرف صغير وحرف كبير ورقم ورمز
+Passwords match,كلمتا المرور متطابقتان
+Pending Invites,الدعوات المعلقة
+Pending Tickets,التذاكر المعلقة
+Percentage of total tickets by channel,نسبة إجمالي التذاكر حسب القناة
+Percentage of total tickets by priority,نسبة إجمالي التذاكر حسب الأولوية
+Percentage of total tickets by team,نسبة إجمالي التذاكر حسب الفريق
+Percentage of total tickets by type,نسبة إجمالي التذاكر حسب النوع
+Personal mobile no,رقم الجوال الشخصي
+Pick an option,اختر خياراً
+Pin View,تثبيت العرض
+Please add this priority in the <a href='/app/hd-service-level-agreement'>required SLA documents</a>,يرجى إضافة هذه الأولوية في <a href='/app/hd-service-level-agreement'>مستندات اتفاقية مستوى الخدمة المطلوبة</a>
+Please add {0} priority in {1} SLA,يرجى إضافة أولوية {0} في اتفاقية مستوى الخدمة {1}
+Please create a new ticket to proceed with the next step.,يرجى إنشاء تذكرة جديدة للمتابعة إلى الخطوة التالية.
+Please enter a subject to continue,يرجى إدخال موضوع للمتابعة
+Please enter a valid phone number,يرجى إدخال رقم هاتف صالح
+Please enter at least one valid email to send an invite.,يرجى إدخال بريد إلكتروني صالح واحد على الأقل لإرسال الدعوة.
+Please fill all required fields,يرجى تعبئة جميع الحقول المطلوبة
+Please fill all the required fields,يرجى تعبئة جميع الحقول المطلوبة
+Please fix the errors in the form,يرجى تصحيح الأخطاء في النموذج
+Please select at least one restriction option for teams in the settings.,يرجى تحديد خيار تقييد واحد على الأقل للفرق في الإعدادات.
+Policy name,اسم السياسة
+Positive first,الإيجابي أولاً
+Prefer knowledge base,تفضيل قاعدة المعرفة
+Preferences,التفضيلات
+Preferences updated successfully.,تم تحديث التفضيلات بنجاح.
+Presets,الإعدادات المسبقة
+Previous ticket,التذكرة السابقة
+Primary contact must be one of the listed contacts,يجب أن تكون جهة الاتصال الرئيسية واحدة من جهات الاتصال المدرجة
+Primary contact updated,تم تحديث جهة الاتصال الرئيسية
+Priority <u>{0}</u> must be included in the SLA {1}.,يجب أن تكون الأولوية <u>{0}</u> مشمولة في اتفاقية مستوى الخدمة {1}.
+Private Views,العروض الخاصة
+Product Experts,خبراء المنتج
+Product experts,خبراء المنتج
+Public Views,العروض العامة
+Published articles must have content.,يجب أن تحتوي المقالات المنشورة على محتوى.
+"Pulling emails, this may take a few minutes.",جاري سحب الرسائل الإلكترونية، قد يستغرق ذلك عدة دقائق.
+Rate Your Support Experience,قيّم تجربتك مع الدعم
+Rate this ticket,قيّم هذه التذكرة
+Rating must be between 0.2 and 1.0,يجب أن يكون التقييم بين 0.2 و1.0
+Rating {0} is not allowed,التقييم {0} غير مسموح به
+Reaction,التفاعل
+Reactions,التفاعلات
+Recent,الأحدث
+Recent Tickets,التذاكر الأخيرة
+Record Calls,تسجيل المكالمات
+Recurring Holidays,العطلات المتكررة
+Recurring holidays,العطلات المتكررة
+Reference Ticket,التذكرة المرجعية
+Refresh Apps,تحديث التطبيقات
+Regenerate Search Index,إعادة إنشاء فهرس البحث
+Remove Contact,إزالة جهة الاتصال
+Remove Logo,إزالة الشعار
+Remove Photo,إزالة الصورة
+Remove filter,إزالة التصفية
+Remove primary,إزالة الأساسي
+Rename (⌘ + ⏎),إعادة التسمية (⌘ + ⏎)
+Rename team,إعادة تسمية الفريق
+Replace filter,استبدال التصفية
+Replace image,استبدال الصورة
+Reply From Agent,الرد من الوكيل
+Reply From Contact,الرد من جهة الاتصال
+Reply from agent,الرد من الوكيل
+Reply from contact,الرد من جهة الاتصال
+Reply on a ticket,الرد على تذكرة
+Resend Invite,إعادة إرسال الدعوة
+Reset Content,إعادة ضبط المحتوى
+Reset content,إعادة ضبط المحتوى
+Reset to Default,إعادة الضبط إلى الافتراضي
+Resolution Failed By,موعد فشل الحل
+Response is required,الرد مطلوب
+Restrict agent assignment to selected Team,تقييد تكليف الوكلاء بالفريق المحدد
+Restrict agent assignment to selected team,تقييد تكليف الوكلاء بالفريق المحدد
+Restrict tickets by Team,تقييد التذاكر حسب الفريق
+Restrict tickets by team,تقييد التذاكر حسب الفريق
+Restrict tickets to be viewed and managed by team members only.,تقييد عرض التذاكر وإدارتها على أعضاء الفريق فقط.
+Restrict visibility to these teams,تقييد الظهور على هذه الفرق
+Revoke Invite,إلغاء الدعوة
+Revoke Manager Access,إلغاء صلاحية الوصول كمدير
+Role updated successfully,تم تحديث الدور بنجاح
+Route Name,اسم المسار
+Run an initial sync to reconcile existing records. New ones update automatically.,شغّل مزامنة أولية لمطابقة السجلات الحالية. السجلات الجديدة تتحدث تلقائيًا.
+SLA,اتفاقية مستوى الخدمة
+SLA Alerts,تنبيهات اتفاقية مستوى الخدمة
+SLA Creation,إنشاء اتفاقية مستوى الخدمة
+SLA Mapping,ربط اتفاقية مستوى الخدمة
+SLA Status,حالة اتفاقية مستوى الخدمة
+SLA policy created successfully.,تم إنشاء سياسة اتفاقية مستوى الخدمة بنجاح.
+SLA policy deleted successfully.,تم حذف سياسة اتفاقية مستوى الخدمة بنجاح.
+SLA policy duplicated successfully.,تم تكرار سياسة اتفاقية مستوى الخدمة بنجاح.
+SLA policy status updated successfully.,تم تحديث حالة سياسة اتفاقية مستوى الخدمة بنجاح.
+SLA policy updated successfully.,تم تحديث سياسة اتفاقية مستوى الخدمة بنجاح.
+SLA set as default cannot be disabled,لا يمكن تعطيل اتفاقية مستوى الخدمة المحددة كافتراضية
+SLA set as default cannot be disabled.,لا يمكن تعطيل اتفاقية مستوى الخدمة المحددة كافتراضية.
+Save Changes,حفظ التغييرات
+Saved Replies,الردود المحفوظة
+Saved Views,العروض المحفوظة
+Saved reply deleted successfully.,تم حذف الرد المحفوظ بنجاح.
+Saved reply duplicated successfully.,تم تكرار الرد المحفوظ بنجاح.
+Saved reply saved successfully.,تم حفظ الرد المحفوظ بنجاح.
+Saved reply updated successfully.,تم تحديث الرد المحفوظ بنجاح.
+Schedule name,اسم الجدول
+Search Index Regenerated,تمت إعادة إنشاء فهرس البحث
+Search Score,درجة البحث
+Search agents...,البحث عن الوكلاء...
+Search by ID or Subject,البحث بالمعرف أو الموضوع
+Search country,البحث عن الدولة
+"Search for ""{0}""","البحث عن ""{0}"""
+Search index does not exist. Please build the index first.,فهرس البحث غير موجود. يرجى إنشاء الفهرس أولاً.
+Search index not available. Please contact administrator.,فهرس البحث غير متوفر. يرجى التواصل مع مسؤول النظام.
+Search query must be at least 2 characters,يجب أن يتكون استعلام البحث من حرفين على الأقل
+Search ticket,البحث عن تذكرة
+"Search tickets, comments, and communications...",البحث في التذاكر والتعليقات والمراسلات...
+"Search tickets, emails, comments, or #234 to navigate to ticket",البحث في التذاكر أو الرسائل الإلكترونية أو التعليقات، أو #234 للانتقال إلى التذكرة
+Searched for:,تم البحث عن:
+See all {0} tickets,عرض كل التذاكر ({0})
+Select Category,اختيار الفئة
+Select Customer,اختيار العميل
+Select Range,اختيار المدى
+Select Ticket,اختيار التذكرة
+Select Timezone,اختيار المنطقة الزمنية
+Select a rating,اختيار تقييم
+Select country,اختيار الدولة
+Select range,اختيار المدى
+Select teams,اختيار الفرق
+Select ticket to preview,اختيار تذكرة للمعاينة
+Select timezone,اختيار المنطقة الزمنية
+Select what type all tickets get by default.,اختر النوع الذي تحصل عليه جميع التذاكر افتراضيًا.
+Send Invites,إرسال الدعوات
+Send Reply,إرسال الرد
+Send feedback when,إرسال التقييم عند
+Send reset password email,إرسال بريد إعادة تعيين كلمة المرور
+Send to {0} tickets,إرسال إلى التذاكر ({0})
+Service Level Agreements (SLAs),اتفاقيات مستوى الخدمة
+Service not supported,الخدمة غير مدعومة
+Set Phone Number,تعيين رقم الهاتف
+Set Primary Contact,تعيين جهة الاتصال الأساسية
+Set Resolution Time for Priority {0} in row {1}.,عيّن وقت الحل للأولوية {0} في الصف {1}.
+Set as Primary,تعيين كأساسي
+Set as default SLA,تعيين كاتفاقية مستوى خدمة افتراضية
+Set as primary,تعيين كأساسي
+Set status,تعيين الحالة
+Set your availability so your team knows when you're reachable.,عيّن حالتك لتعرف فرقك متى يمكنها التواصل معك.
+"Set your team’s working days, hours, and holidays using a template or custom schedule.",عيّن أيام عمل فريقك وساعاته وعطلاته باستخدام قالب أو جدول مخصص.
+Settings updated,تم تحديث الإعدادات
+Setup Email,إعداد البريد الإلكتروني
+Setup SLA,إعداد اتفاقية مستوى الخدمة
+Share Feedback,مشاركة التقييم
+Share feedback,مشاركة التقييم
+Show end users a different view,إظهار عرض مختلف للمستخدمين النهائيين
+Show in sidebar,إظهار في الشريط الجانبي
+Showing {0} of {1} {2},عرض {0} من {1} {2}
+Skip e-mail workflow,تجاوز سير عمل البريد الإلكتروني
+Skip email workflow,تجاوز سير عمل البريد الإلكتروني
+Some error occurred while renaming assignment rule,حدث خطأ أثناء إعادة تسمية قاعدة التكليف
+Some error occurred while renaming holiday list,حدث خطأ أثناء إعادة تسمية قائمة العطلات
+Some error occurred while renaming saved reply,حدث خطأ أثناء إعادة تسمية الرد المحفوظ
+Some error occurred while updating assignment rule,حدث خطأ أثناء تحديث قاعدة التكليف
+Some error occurred while updating holiday list,حدث خطأ أثناء تحديث قائمة العطلات
+Sort,الترتيب
+Source and target category cannot be same,لا يمكن أن تكون فئة المصدر والهدف متطابقتين
+Source and target ticket cannot be same,لا يمكن أن تكون تذكرة المصدر والهدف متطابقتين
+Source ticket does not exist,تذكرة المصدر غير موجودة
+Split and Merge,التقسيم والدمج
+"Standard Form Scripts can't be modified, duplicate the script instead.",لا يمكن تعديل نصوص النماذج القياسية، كرر النص البرمجي بدلاً من ذلك.
+Standard Views cannot be deleted.,لا يمكن حذف العروض القياسية.
+Start Time can't be greater than or equal to End Time in row <u>{0}</u>.,لا يمكن أن يكون وقت البدء أكبر من أو يساوي وقت النهاية في الصف <u>{0}</u>.
+Status Category,فئة الحالة
+Status Order,ترتيب الحالة
+Status is required,الحالة مطلوبة
+"Status of the ticket, when a customer replies on the ticket.",حالة التذكرة عند رد العميل على التذكرة.
+"Status of the ticket, when it is created in the system.",حالة التذكرة عند إنشائها في النظام.
+Subject Weight,وزن الموضوع
+Subject is required,الموضوع مطلوب
+Sync Customers,مزامنة العملاء
+Sync all customers between ERPNext and Helpdesk? The sync runs in the background and can take a few minutes depending on the number of customers.,مزامنة جميع العملاء بين ERPNext ومكتب المساعدة؟ تعمل المزامنة في الخلفية وقد تستغرق عدة دقائق حسب عدد العملاء.
+Sync completed successfully,تمت المزامنة بنجاح
+Sync customers between Helpdesk and ERPNext.,مزامنة العملاء بين مكتب المساعدة وERPNext.
+Sync now,مزامنة الآن
+Sync started,بدأت المزامنة
+Sync your existing customers,مزامنة عملائك الحاليين
+Synonyms,المرادفات
+System types can not be deleted,لا يمكن حذف أنواع النظام
+Target ticket does not exist,التذكرة الهدف غير موجودة
+Team Name,اسم الفريق
+Team Restrictions,قيود الفريق
+Team can now access all tickets.,يمكن للفريق الآن الوصول إلى جميع التذاكر.
+Team created,تم إنشاء الفريق
+Team created successfully.,تم إنشاء الفريق بنجاح.
+Team deleted successfully.,تم حذف الفريق بنجاح.
+Team disabled successfully.,تم تعطيل الفريق بنجاح.
+Team enabled successfully.,تم تفعيل الفريق بنجاح.
+Team name,اسم الفريق
+Team renamed successfully.,تم إعادة تسمية الفريق بنجاح.
+Team will only see their own tickets.,سيرى الفريق تذاكره فقط.
+Teams,الفرق
+Telephony,الاتصال الهاتفي
+Telephony settings updated successfully.,تم تحديث إعدادات الاتصال الهاتفي بنجاح.
+Tell us more,أخبرنا بالمزيد
+Template Name,اسم القالب
+The 'Closed' status cannot be renamed.,لا يمكن إعادة تسمية حالة 'مغلق'.
+The assignment condition '{0}' is invalid: {1},شرط التكليف '{0}' غير صالح: {1}
+The contact {0} is linked to multiple customers. Please select the customer manually.,جهة الاتصال {0} مرتبطة بعدة عملاء. يرجى اختيار العميل يدويًا.
+"The feedback dialog will be shown, when a user tries to close a ticket from the customer portal.",يظهر مربع حوار التقييم عندما يحاول المستخدم إغلاق تذكرة من بوابة العميل.
+The number of days must be 1 or more,يجب أن يكون عدد الأيام 1 أو أكثر
+The selected customer {0} is not linked to the contact {1}.Please select a valid customer or update the contact's linked customers.,العميل المحدد {0} غير مرتبط بجهة الاتصال {1}. يرجى اختيار عميل صالح أو تحديث العملاء المرتبطين بجهة الاتصال.
+The status for sending feedback must be of <u>Resolved</u> category.,يجب أن تكون حالة إرسال التقييم من فئة <u>تم الحل</u>.
+The ticket status will automatically change whenever the agent respond to a ticket.,تتغير حالة التذكرة تلقائيًا عند رد الوكيل على التذكرة.
+There are no categories published at the moment.,لا توجد فئات منشورة في الوقت الحالي.
+There should be at least 1 assignment rule for ticket,يجب توفر قاعدة تكليف واحدة على الأقل للتذكرة
+They'll get access to tickets raised by everyone in the organisation.,سيحصلون على الوصول إلى التذاكر التي يرفعها جميع أفراد المؤسسة.
+They'll only see their own tickets going forward.,سيرون تذاكرهم الخاصة فقط من الآن فصاعدًا.
+This Assignment Rule is linked to the Team {0}.</br> User {1} is added in the Assignment Rule but not in the linked Team. Please add the user in the {2} to ensure proper team structure.,قاعدة التكليف هذه مرتبطة بالفريق {0}.</br> تمت إضافة المستخدم {1} في قاعدة التكليف ولكن ليس في الفريق المرتبط. يرجى إضافة المستخدم في {2} لضمان بنية فريق صحيحة.
+This action is irreversible.,هذا الإجراء لا يمكن التراجع عنه.
+This contact will become the primary point of contact and will be able to view tickets raised by all other contacts in the organisation.,ستصبح جهة الاتصال هذه نقطة الاتصال الأساسية، وستتمكن من عرض التذاكر التي ترفعها جميع جهات الاتصال الأخرى في المؤسسة.
+This ticket (#{0}) has been merged with ticket <a href = '/helpdesk/tickets/{1}'>#{1}</a>.,تم دمج هذه التذكرة (#{0}) مع التذكرة <a href = '/helpdesk/tickets/{1}'>#{1}</a>.
+This ticket has been split to a new ticket. Please follow up on ticket <a href={0}>#{1}</a>.,تم تقسيم هذه التذكرة إلى تذكرة جديدة. يرجى متابعة التذكرة <a href={0}>#{1}</a>.
+This will reset the content to the default message.,سيعيد هذا ضبط المحتوى إلى الرسالة الافتراضية.
+Ticket #{0}: We've received your request,التذكرة #{0}: استلمنا طلبك
+Ticket ID,رقم التذكرة
+Ticket Info,معلومات التذكرة
+Ticket Management,إدارة التذاكر
+Ticket Merged,تم دمج التذكرة
+Ticket Not Found,التذكرة غير موجودة
+Ticket Priority,أولوية التذكرة
+Ticket Reopen status,حالة إعادة فتح التذكرة
+Ticket Routing,توجيه التذاكر
+Ticket Settings,إعدادات التذاكر
+Ticket Split From,تم تقسيم التذكرة من
+Ticket Subject,موضوع التذكرة
+Ticket Trend,اتجاه التذاكر
+Ticket closed successfully.,تم إغلاق التذكرة بنجاح.
+Ticket deleted successfully.,تم حذف التذكرة بنجاح.
+Ticket does not exist.,التذكرة غير موجودة.
+Ticket merged successfully.,تم دمج التذكرة بنجاح.
+Ticket must be resolved with a feedback,يجب حل التذكرة مع تقييم
+Ticket not found,التذكرة غير موجودة
+Ticket not found.,التذكرة غير موجودة.
+Ticket raised outside working hours,تم رفع التذكرة خارج ساعات العمل
+Ticket split successfully.,تم تقسيم التذكرة بنجاح.
+Ticket status,حالة التذكرة
+Ticket to merged with is required,التذكرة المطلوب الدمج معها مطلوبة
+Ticket updated successfully.,تم تحديث التذكرة بنجاح.
+Ticket-Search Analysis,تحليل البحث في التذاكر
+Tickets,التذاكر
+Tickets approaching or breached SLA,تذاكر تقترب من اتفاقية مستوى الخدمة أو تخرقها
+Tickets by Channel,التذاكر حسب القناة
+Tickets by Priority,التذاكر حسب الأولوية
+Tickets by Team,التذاكر حسب الفريق
+Tickets by Type,التذاكر حسب النوع
+Tickets can only be assigned to agents,لا يمكن تكليف التذاكر إلا للوكلاء
+Tickets must meet the following conditions:,يجب أن تستوفي التذاكر الشروط التالية:
+Tickets that are awaiting your response,التذاكر التي تنتظر ردك
+Timezone,المنطقة الزمنية
+Title Slug,الرابط المختصر للعنوان
+Title is required,العنوان مطلوب
+To is required,حقل «إلى» مطلوب
+"To know more about setting up email accounts, click",لمعرفة المزيد حول إعداد حسابات البريد الإلكتروني، اضغط
+Toggle theme,تبديل السمة
+Top Result,أفضل نتيجة
+Total Ticket,إجمالي التذاكر
+Total tickets by priority,إجمالي التذاكر حسب الأولوية
+Total tickets by team,إجمالي التذاكر حسب الفريق
+Total tickets by type,إجمالي التذاكر حسب النوع
+Type a message,اكتب رسالة
+Type an email address,اكتب عنوان بريد إلكتروني
+Type is required,النوع مطلوب
+URL/Method,عنوان URL / الطريقة
+Unable to send email. Please setup default outgoing email account.,تعذّر إرسال البريد الإلكتروني. يرجى إعداد حساب البريد الصادر الافتراضي.
+Unassignment Condition,شرط إلغاء التكليف
+Unavailable,غير متاح
+Understanding ticket view,فهم عرض التذاكر
+Unpin View,إلغاء تثبيت العرض
+Unsaved,غير محفوظ
+Unsaved changes,تغييرات غير محفوظة
+Unsupported doctype '{0}' for ticket stats.,نوع المستند '{0}' غير مدعوم لإحصاءات التذاكر.
+Untitled,بلا عنوان
+Update Account,تحديث الحساب
+Update status to,تحديث الحالة إلى
+Upload Photo,رفع الصورة
+User Reviews,تقييمات المستخدمين
+User Signup,تسجيل المستخدم
+View Assignment rule,عرض قاعدة التكليف
+Was this article Helpful?,هل كانت هذه المقالة مفيدة؟
+Word,الكلمة
+Work Schedule and Holidays,جدول العمل والعطلات
+Workday added successfully.,تمت إضافة يوم العمل بنجاح.
+Workday updated successfully.,تم تحديث يوم العمل بنجاح.
+Workflow & Knowledge Base Settings,إعدادات سير العمل وقاعدة المعرفة
+Write your article here...,اكتب مقالتك هنا...
+Write your email signature here.,اكتب توقيع بريدك الإلكتروني هنا.
+Write your reply...,اكتب ردك...
+You are now offline.,أنت الآن غير متصل.
+You are now online.,أنت الآن متصل.
+You can change the default calling medium from the settings,يمكنك تغيير وسيلة الاتصال الافتراضية من الإعدادات
+You cannot disable the default SLA.,لا يمكنك تعطيل اتفاقية مستوى الخدمة الافتراضية.
+You cannot set more than one Default Priority.,لا يمكنك تعيين أكثر من أولوية افتراضية واحدة.
+You do not have permission to access Assignment Rules,لا تملك صلاحية الوصول إلى قواعد التكليف
+You do not have permission to access this resource,لا تملك صلاحية الوصول إلى هذا المورد
+You do not have permission to update contacts,لا تملك صلاحية تحديث جهات الاتصال
+"You don't have access to this ticket, or it no longer exists.",لا تملك صلاحية الوصول إلى هذه التذكرة، أو أنها غير موجودة.
+"You don't have permission to view this page, or it no longer exists.",لا تملك صلاحية عرض هذه الصفحة، أو أنها غير موجودة.
+You have already provided feedback for this ticket.,لقد قدّمت تقييمًا لهذه التذكرة مسبقًا.
+You must set one SLA as Default. Please check the Default SLA option.,يجب تعيين اتفاقية مستوى خدمة واحدة كافتراضية. يرجى تحديد خيار اتفاقية مستوى الخدمة الافتراضية.
+Your performance is,أداؤك هو
+active ticket,تذكرة نشطة
+active tickets,تذاكر نشطة
+assigned you a ticket,كلّفك بتذكرة
+back to email event list,رجوع إلى قائمة أحداث البريد
+changes from,تغييرات من
+customize {0},تخصيص {0}
+emails/ comments,رسائل البريد/التعليقات
+from this email onwards will be moved to new ticket.,من هذا البريد فصاعدًا سيتم نقله إلى تذكرة جديدة.
+has made a call,قام بإجراء مكالمة
+has reached out,تواصل معك
+has reopened the ticket,أعاد فتح التذكرة
+here,هنا
+here.,هنا.
+mentioned you in ticket,أشار إليك في تذكرة
+published by,نشرها
+stars,نجوم
+synonym,مرادف
+ticket,تذكرة
+to enable this integration.,لتفعيل هذا التكامل.
+viewed this,شاهد هذا
+{0} Customers,العملاء ({0})
+{0} is an Invalid Email Address,{0} عنوان بريد إلكتروني غير صالح
+{0} is currently away.,{0} غير متاح حاليًا.
+{0} is currently unavailable.,{0} غير متاح حاليًا.
+{0} is not an existing contact,{0} ليس جهة اتصال موجودة
+{0} is not an existing user,{0} ليس مستخدمًا موجودًا
+{0} item(s) deleted successfully,تم حذف {0} عنصر بنجاح
+{0} item(s) queued for deletion,تمت إضافة {0} عنصر إلى قائمة الحذف
+{0} matches,{0} نتيجة مطابقة
+{0} reviews,{0} تقييم
+{0} view is currently public. Changing it to private will hide it for all the users.,العرض {0} عام حاليًا. تغييره إلى خاص سيخفيه عن جميع المستخدمين.
+{0} view is currently visible in the sidebar. Hiding it will remove it from the sidebar.,العرض {0} مرئي حاليًا في الشريط الجانبي. إخفاؤه سيزيله من الشريط الجانبي.
+{0} · Last active {1},{0} · آخر نشاط {1}
+{} people reacted to your comment,{} شخصًا تفاعلوا مع تعليقك
+<table class='table table-bordered'><tr><th>{0}</th><th>{1}</th></tr>,<table class='table table-bordered'><tr><th>{0}</th><th>{1}</th></tr>
+Cleared,تمت التصفية
+Posted On,تاريخ النشر
+This method is only meant for developer mode,هذه الطريقة مخصصة لوضع المطور فقط
+% Of Applicant Portfolio,% من محفظة مقدّم الطلب
+% Of Total Portfolio,% من إجمالي المحفظة
+"<span class=""h4"">Loan Origination</span>","<span class=""h4"">إصدار القرض</span>"
+ALM Audit Report,تقرير تدقيق إدارة الأصول والخصوم
+Account Info,معلومات الحساب
+Account {0} does not belongs to company {1},الحساب {0} لا ينتمي إلى الشركة {1}
+Accrual Date,تاريخ الاستحقاق
+Accrual Details,تفاصيل الاستحقاق
+Accrual Type,نوع الاستحقاق
+Add Loan Security,إضافة ضمان القرض
+Add To First EMI,الإضافة إلى أول دفعة شهرية
+Add to First EMI,الإضافة إلى أول دفعة شهرية
+Add to first repayment,الإضافة إلى أول سداد
+Addition Interest Waiver Account is mandatory,حساب التنازل عن الفائدة الإضافية إلزامي
+Additional Interest,الفائدة الإضافية
+Additional Interest Accounts ,حسابات الفائدة الإضافية
+Additional Interest Accrued,الفائدة الإضافية المستحقة
+Additional Interest Amount,مبلغ الفائدة الإضافية
+Additional Interest Income,دخل الفائدة الإضافية
+Additional Interest Income Account is mandatory,حساب دخل الفائدة الإضافية إلزامي
+Additional Interest Receivable,الفائدة الإضافية المستحقة القبض
+Additional Interest Receivable Account is mandatory,حساب الفائدة الإضافية المستحقة القبض إلزامي
+Additional Interest Suspense,معلّق الفائدة الإضافية
+Additional Interest Suspense Entry,قيد تعليق الفائدة الإضافية
+Additional Interest Waiver,التنازل عن الفائدة الإضافية
+Additional Interest Waiver Account is mandatory,حساب التنازل عن الفائدة الإضافية إلزامي
+Address Details,تفاصيل العنوان
+Adds the option to have employee loans,يضيف خيار قروض الموظفين
+Adds unique constraints to the email and phone number fields of the Customer DocType.,يضيف قيود تفرّد إلى حقلي البريد الإلكتروني ورقم الهاتف في نوع مستند العميل.
+Adjustment Account,حساب التسوية
+Adjustment Details,تفاصيل التسوية
+Adjustment Receivable Account,حساب التسوية المستحقة القبض
+Adjustments,التسويات
+Against Account is mandatory,الحساب المقابل إلزامي
+Against Loan,مقابل القرض
+Against Loan ,مقابل القرض
+Against Loan:,مقابل القرض:
+Ageing,التقادم
+Allocated Date,تاريخ التخصيص
+Allocated Demands,المطالبات المخصصة
+Amortized Over Tenure,مستهلك على مدى فترة القرض
+Amount Paid,المبلغ المدفوع
+Amount cannot be negative,لا يمكن أن يكون المبلغ سالباً
+Amount cannot be zero,لا يمكن أن يكون المبلغ صفراً
+Amount for advance payment must be between one to two EMI amount,يجب أن يكون مبلغ الدفعة المقدمة بين دفعة شهرية واحدة واثنتين
+Amount paid cannot be greater than available security deposit,لا يمكن أن يكون المبلغ المدفوع أكبر من التأمين المتاح
+Amount paid cannot be greater than payable amount,لا يمكن أن يكون المبلغ المدفوع أكبر من المبلغ المستحق الدفع
+Amount paid cannot be less than payable amount for loan closure,لا يمكن أن يكون المبلغ المدفوع أقل من المبلغ المستحق لإقفال القرض
+Amount paid cannot be zero,لا يمكن أن يكون المبلغ المدفوع صفراً
+Another Loan Restructure is already initiated for this Loan,تمت بالفعل بدء إعادة هيكلة أخرى لهذا القرض
+Applicant ,مقدم الطلب
+Applicant Address Details,تفاصيل عنوان مقدم الطلب
+Applicant Contact Info,معلومات التواصل مع مقدم الطلب
+Applicant Details,تفاصيل مقدم الطلب
+Applicant Phone Number,رقم هاتف مقدم الطلب
+Applicant Type,نوع مقدم الطلب
+Applicant-Wise Loan Security Exposure,التعرض لضمان القرض حسب مقدم الطلب
+Applications,الطلبات
+Auto Write Off Amount ,مبلغ الشطب التلقائي
+Available Amount,المبلغ المتاح
+Available Limit,الحد المتاح
+Available Limit Amount,مبلغ الحد المتاح
+Available Security Deposit,التأمين المتاح
+Available Security Value,قيمة الضمان المتاحة
+BPI,فائدة الفترة المنقطعة
+BPI Amount Difference,فرق مبلغ فائدة الفترة المنقطعة
+BPI Difference Date,تاريخ فرق فائدة الفترة المنقطعة
+BPI Recovery Method,طريقة استرداد فائدة الفترة المنقطعة
+BPI difference entry,قيد فرق فائدة الفترة المنقطعة
+Balance Overdue Principal,رصيد أصل القرض المتأخر
+Bi-Weekly,كل أسبوعين
+Both Fixed Deposit and Corporate Guarantee,الإيداع الثابت والضمان المؤسسي كلاهما
+Branch Details,تفاصيل الفرع
+Broken Period Interest,فائدة الفترة المنقطعة
+Broken Period Interest Days,أيام فائدة الفترة المنقطعة
+Broken Period Interest Recovery Account,حساب استرداد فائدة الفترة المنقطعة
+Bulk Repayment Log,سجل السداد الجماعي
+Cancel Future Accruals and Demands ,إلغاء الاستحقاقات والمطالبات المستقبلية
+Cancel future EMI Demands,إلغاء مطالبات الدفعات الشهرية المستقبلية
+Cancellation Date,تاريخ الإلغاء
+Cannot close loan as there is an outstanding of {0},لا يمكن إقفال القرض لوجود مبلغ مستحق قدره {0}
+Cannot close this loan until full repayment,لا يمكن إقفال هذا القرض قبل السداد الكامل
+Cannot create loan until application is approved,لا يمكن إنشاء القرض قبل اعتماد الطلب
+"Cannot make Advance or Pre Payments during moratorium period. (Moratorium End Date: {}, Posting Date: {})",لا يمكن إجراء دفعات مقدمة أو مسبقة خلال فترة الإيقاف المؤقت. (تاريخ انتهاء الإيقاف المؤقت: {}، تاريخ الترحيل: {})
+Cannot un mark as NPA before watch period end date,لا يمكن إلغاء تصنيف القرض كمتعثر قبل انتهاء فترة المراقبة
+Change Date,تاريخ التغيير
+Charge,الرسم
+Charge Accounts,حسابات الرسوم
+Charge Amount,مبلغ الرسم
+Charge Code,رمز الرسم
+Charge Payment,دفع الرسم
+Charge Type,نوع الرسم
+Charges Capitalization,رسملة الرسوم
+Charges Overdue,الرسوم المتأخرة
+Charges Treatment,معالجة الرسوم
+Charges Waiver,التنازل عن الرسوم
+Classification Code,رمز التصنيف
+Classification Name,اسم التصنيف
+Classification {0} added multiple times,تمت إضافة التصنيف {0} أكثر من مرة
+Classification {0} with security type {1} added multiple times,تمت إضافة التصنيف {0} بنوع الضمان {1} أكثر من مرة
+Clear demand allocation before repost,إلغاء تخصيص المطالبة قبل إعادة الترحيل
+Closure Date,تاريخ الإقفال
+Co Lender Schedule,جدول الممول المشارك
+Co Lending,التمويل المشترك
+Co Lending Partner,شريك التمويل المشترك
+Co-Lender Schedule,جدول الممول المشارك
+Co-Lending,التمويل المشترك
+Collection Offset Sequence,تسلسل مقاصة التحصيل
+Collection Percentage,نسبة التحصيل
+Collection at partner's percentage,التحصيل بنسبة الشريك
+Company Collection Percentage,نسبة تحصيل الشركة
+Completed Tenure,المدة المنقضية من القرض
+Corporate Guarantee Only,الضمان المؤسسي فقط
+Cost center is mandatory for loans having rate of interest greater than 0,مركز التكلفة إلزامي للقروض التي يكون معدل الفائدة فيها أكبر من 0
+Credit Account is mandatory,الحساب الدائن إلزامي
+Credit Adjustment,تسوية دائنة
+Credit Adjustment Amount,مبلغ التسوية الدائنة
+Current Disbursed Amount,المبلغ المصروف الحالي
+Current Principal Amount,مبلغ أصل القرض الحالي
+Current Restructure Count,عدد مرات إعادة الهيكلة الحالي
+Customer Refund Account,حساب استرداد العميل
+Customer Refund Account is mandatory,حساب استرداد العميل إلزامي
+Cyclic Day Of the Month,اليوم الدوري من الشهر
+Days Past Due Log,سجل أيام التأخر
+Days Past Due Logs,سجلات أيام التأخر
+Days Past Due Threshold for NPA,حد أيام التأخر لتصنيف القرض كمتعثر
+Debit Adjustment,تسوية مدينة
+Debit Adjustment Amount,مبلغ التسوية المدينة
+Decentralized,غير مركزي
+Delete GL Entries,حذف قيود دفتر الأستاذ
+Delinked,غير مرتبط
+Delinquent Available Limit,الحد المتاح للمتعثر
+Delinquent In Process Limit,الحد قيد المعالجة للمتعثر
+Delinquent Limit,حد التعثر
+Delinquent Limit Amount,مبلغ حد التعثر
+Delinquent Limit Percent,نسبة حد التعثر
+Delinquent Principal Outstanding,أصل القرض المستحق للمتعثر
+Delinquent Utilized Limit,الحد المستخدم للمتعثر
+Demand Amount,مبلغ المطالبة
+Demand Date,تاريخ المطالبة
+Demand Generated,تم إصدار المطالبة
+Demand Subtype,النوع الفرعي للمطالبة
+Demand Type,نوع المطالبة
+Demands,المطالبات
+Deposit Amount,مبلغ الإيداع
+Deposit Date,تاريخ الإيداع
+Disbursed Amount,المبلغ المصروف
+Disbursed Amount cannot be greater than {0},لا يمكن أن يكون المبلغ المصروف أكبر من {0}
+Disbursed Amount: {0},المبلغ المصروف: {0}
+Disbursed amount cannot be zero,لا يمكن أن يكون المبلغ المصروف صفراً
+Disbursement,الصرف
+Disbursement Account,حساب الصرف
+Disbursement Date,تاريخ الصرف
+Disbursement Details,تفاصيل الصرف
+Disbursement References,مراجع الصرف
+Disbursement against loan:,صرف مقابل القرض:
+Disbursement amount cannot be greater than available limit amount,لا يمكن أن يكون مبلغ الصرف أكبر من مبلغ الحد المتاح
+Disbursement and Repayment,الصرف والسداد
+Disbursement date is out of approved limit dates,تاريخ الصرف خارج نطاق تواريخ الحد المعتمد
+Disbursements,عمليات الصرف
+Do you really want to close this loan,هل تريد بالتأكيد إقفال هذا القرض
+Do you really want to release this loan security assignment?,هل تريد بالتأكيد تحرير تخصيص ضمان القرض هذا؟
+EMI,الدفعة الشهرية
+EMI (Principal + Interest),الدفعة الشهرية (الأصل + الفائدة)
+EMIs Paid,الدفعات الشهرية المدفوعة
+EMIs Raised,الدفعات الشهرية المستحقة
+Effective Date,تاريخ النفاذ
+Employee Loans,قروض الموظفين
+Enable Partner Accounting,تفعيل محاسبة الشريك
+End of the current month,نهاية الشهر الحالي
+Entries To Cancel,القيود المطلوب إلغاؤها
+Entries To Repost,القيود المطلوب إعادة ترحيلها
+Excess Amount,المبلغ الزائد
+Excess Amount Acceptance Limit,حد قبول المبلغ الزائد
+Excess Amount Paid,المبلغ الزائد المدفوع
+Excess amount refund cannot be more than excess amount paid,لا يمكن أن يكون استرداد المبلغ الزائد أكبر من المبلغ الزائد المدفوع
+Excess amount repayment limit during loan closure,حد سداد المبلغ الزائد عند إقفال القرض
+FLDG,ضمان خسائر التعثر الأولى
+FLDG Account,حساب ضمان خسائر التعثر الأولى
+FLDG Corporate Guarantee Percentage,نسبة الضمان المؤسسي لضمان خسائر التعثر الأولى
+FLDG Fixed Deposit Percentage,نسبة الإيداع الثابت لضمان خسائر التعثر الأولى
+FLDG Limit Calculation Component,عنصر حساب حد ضمان خسائر التعثر الأولى
+FLDG Trigger DPD,أيام التأخر المحفزة لضمان خسائر التعثر الأولى
+FLDG Trigger Date,تاريخ تحفيز ضمان خسائر التعثر الأولى
+FLDG Triggered,تم تحفيز ضمان خسائر التعثر الأولى
+Failed Repayment,سداد فاشل
+Fixed Amount,مبلغ ثابت
+Fixed Deposit Only,الإيداع الثابت فقط
+"For backdated process loan classification, a Loan account is mandatory.",لمعالجة تصنيف القرض بتاريخ سابق، يجب تحديد حساب القرض.
+Force Update DPD in Loan,فرض تحديث أيام التأخر عن السداد في القرض
+Foreclosure Type,نوع الإغلاق المبكر
+Freeze Account,تجميد الحساب
+Freeze Date,تاريخ التجميد
+From Branch,الفرع المصدر
+Full Settlement,التسوية الكاملة
+Future Cashflow Report,تقرير التدفق النقدي المستقبلي
+Grace Period in Days,مدة فترة السماح بالأيام
+Haircut,الخصم
+Haircut %,نسبة الخصم %
+Haircut percentage is the percentage difference between market value of the Loan Security and the value ascribed to that Loan Security when used as collateral for that loan.,نسبة الخصم هي نسبة الفرق بين القيمة السوقية لضمان القرض والقيمة المعتمدة لذلك الضمان عند استخدامه كرهن لذلك القرض.
+Ignore On Cancel Amount Update,تجاهل تحديث المبلغ عند الإلغاء
+In Process Limit,حد المعاملات الجارية
+"Incorrect repayment type, please write off the loan first",نوع السداد غير صحيح، يرجى شطب القرض أولاً
+Installments Overdue,الأقساط المتأخرة
+Interest Accounts,حسابات الفائدة
+Interest Accruals,استحقاقات الفائدة
+Interest Accrued Account,حساب الفائدة المستحقة
+Interest Adjustment,تسوية الفائدة
+Interest Amount is mandatory,مبلغ الفائدة إلزامي
+Interest Capitalization,رسملة الفائدة
+Interest Carry Forward,ترحيل الفائدة
+Interest Income Account is mandatory,حساب إيراد الفائدة إلزامي
+Interest Overdue,الفائدة المتأخرة
+Interest Payable,الفائدة المستحقة الدفع
+Interest Rate (%),معدل الفائدة (%)
+Interest Receivable Account,حساب الفائدة المدينة
+Interest Receivable Account is mandatory,حساب الفائدة المدينة إلزامي
+Interest Treatment,معالجة الفائدة
+Interest Type,نوع الفائدة
+Interest Waiver,التنازل عن الفائدة
+Interest Waiver Account,حساب التنازل عن الفائدة
+Interest Waiver Account is mandatory,حساب التنازل عن الفائدة إلزامي
+Interest Waiver Amount,مبلغ التنازل عن الفائدة
+Interest Waiver Amount cannot be greater than overdue interest,لا يمكن أن يكون مبلغ التنازل عن الفائدة أكبر من الفائدة المتأخرة
+Interest accrued from {0} to {1} against loan: {2},الفائدة المستحقة من {0} إلى {1} على القرض: {2}
+Internal Foreclosure,الإغلاق المبكر الداخلي
+Invalid Loan Disbursement linked for payment,صرف القرض المرتبط بالدفعة غير صالح
+Is Backdated,بتاريخ سابق
+Is Excess Amount Refund,استرداد المبلغ الزائد
+Is Secured Loan,قرض مضمون
+Is Security Amount Refund,استرداد مبلغ الضمان
+Is Settlement Write Off,شطب التسوية
+Is Term Loan,قرض لأجل
+Is Write Off Waiver,التنازل عن الشطب
+Is Written Off,مشطوب
+Last Accrual Date,تاريخ آخر استحقاق
+Latest Price,آخر سعر
+Limit Amount,مبلغ الحد
+Limit Applicable End,نهاية سريان الحد
+Limit Applicable Start,بداية سريان الحد
+Limit Percent,نسبة الحد
+Limit Renewal,تجديد الحد
+Limits,الحدود
+Line of Credit,خط الائتمان
+Loan ,القرض
+Loan  Details,تفاصيل القرض
+Loan Account and Payment Account cannot be same,لا يمكن أن يكون حساب القرض وحساب الدفع نفس الحساب
+Loan Account is mandatory,حساب القرض إلزامي
+Loan Accounts,حسابات القرض
+Loan Accrual Frequency not set for company {0},تكرار استحقاق القرض غير محدد للشركة {0}
+Loan Accrual Frequency not set in the Company DocType.,تكرار استحقاق القرض غير محدد في نوع مستند الشركة.
+Loan Accrual Repost,إعادة ترحيل استحقاق القرض
+Loan Accrual Repost Detail,تفاصيل إعادة ترحيل استحقاق القرض
+Loan Adjustment,تسوية القرض
+Loan Adjustment Detail,تفاصيل تسوية القرض
+Loan Adjustments,تسويات القرض
+Loan Amount Details,تفاصيل مبلغ القرض
+Loan Amount Percentage,نسبة مبلغ القرض
+Loan Amount cannot exceed Maximum Loan Amount of {0},لا يمكن أن يتجاوز مبلغ القرض الحد الأقصى لمبلغ القرض البالغ {0}
+Loan Amount exceeds maximum loan amount of {0} as per proposed securities,يتجاوز مبلغ القرض الحد الأقصى لمبلغ القرض البالغ {0} وفقاً للضمانات المقترحة
+Loan Amount is mandatory,مبلغ القرض إلزامي
+Loan Application,طلب القرض
+Loan Application Document,مستند طلب القرض
+Loan Application Statuses,حالات طلب القرض
+Loan Applications,طلبات القرض
+Loan Balance Adjustment,تسوية رصيد القرض
+Loan Booking,حجز القرض
+Loan Category,فئة القرض
+Loan Category Code,رمز فئة القرض
+Loan Category Name,اسم فئة القرض
+Loan Charge Reference,مرجع رسم القرض
+Loan Charges,رسوم القرض
+Loan Classification,تصنيف القرض
+Loan Classification Details,تفاصيل تصنيف القرض
+Loan Closure,إغلاق القرض
+Loan Closure Requested,طلب إغلاق القرض
+Loan Credit Limits,حدود ائتمان القرض
+Loan Date,تاريخ القرض
+Loan Demand Details,تفاصيل مطالبة القرض
+Loan Demand Offset Detail,تفاصيل مقاصة مطالبة القرض
+Loan Demand Offset Order,ترتيب مقاصة مطالبة القرض
+Loan Demands,مطالبات القرض
+Loan Details,تفاصيل القرض
+Loan Disbursement,صرف القرض
+Loan Disbursement Charge,رسم صرف القرض
+Loan Disbursement Charges,رسوم صرف القرض
+Loan Disbursements,عمليات صرف القرض
+Loan Freeze Log,سجل تجميد القرض
+Loan Info,معلومات القرض
+Loan Interest Accrual,استحقاق فائدة القرض
+Loan Interest Accruals,استحقاقات فائدة القرض
+Loan Interest Report,تقرير فائدة القرض
+Loan Limit Change Log,سجل تغيير حد القرض
+Loan Manager,مدير القرض
+Loan NPA Log,سجل تعثر القرض
+Loan Origination Settings,إعدادات إنشاء القرض
+Loan Outstanding Report,تقرير القرض المستحق
+Loan Partner,شريك القرض
+Loan Partner Address,عنوان شريك القرض
+Loan Partner Adhoc Charges Shared,الرسوم الاستثنائية المشتركة لشريك القرض
+Loan Partner Details,تفاصيل شريك القرض
+Loan Partner Interest Rate,معدل فائدة شريك القرض
+Loan Partner Payment Ratio,نسبة دفع شريك القرض
+Loan Partner Rate Of Interest,معدل فائدة شريك القرض
+Loan Partner Repayment Schedule Type,نوع جدول سداد شريك القرض
+Loan Partner Share Details,تفاصيل حصة شريك القرض
+Loan Partner Share Percentage,نسبة حصة شريك القرض
+Loan Partner Shareable,قابل للمشاركة مع شريك القرض
+Loan Partners,شركاء القرض
+Loan Processes,عمليات القرض
+Loan Product Loan Partner,شريك القرض لمنتج القرض
+Loan Refund,استرداد القرض
+Loan Repayment Charges,رسوم سداد القرض
+Loan Repayment Detail,تفاصيل سداد القرض
+Loan Repayment Entries,قيود سداد القرض
+Loan Repayment Repost,إعادة ترحيل سداد القرض
+Loan Repayment Repost Cancel Detail,تفاصيل إلغاء إعادة ترحيل سداد القرض
+Loan Repayment Repost Detail,تفاصيل إعادة ترحيل سداد القرض
+Loan Repayment Schedule Detail,تفاصيل جدول سداد القرض
+Loan Repayment Schedules,جداول سداد القرض
+Loan Repayment Type,نوع سداد القرض
+Loan Repayment and Closure,سداد القرض وإغلاقه
+Loan Repayments,سدادات القرض
+Loan Restructure Count,عدد إعادة هيكلة القرض
+Loan Restructure Details,تفاصيل إعادة هيكلة القرض
+Loan Restructure Limit Log,سجل حد إعادة هيكلة القرض
+Loan Restructure is in process. Cannot make any loan adjustment,إعادة هيكلة القرض قيد التنفيذ. لا يمكن إجراء أي تسوية على القرض
+Loan Securities with different LTV ratio cannot be pledged against one loan,لا يمكن رهن ضمانات قروض بنسب قرض إلى قيمة مختلفة مقابل قرض واحد
+Loan Securities worth {0} needed more to book the loan,يلزم ضمانات قروض إضافية بقيمة {0} لحجز القرض
+Loan Security,ضمان القرض
+Loan Security Assignment Created : {0},تم إنشاء تخصيص ضمان القرض: {0}
+Loan Security Assignment can only be created for secured loans,لا يمكن إنشاء تخصيص ضمان القرض إلا للقروض المضمونة
+Loan Security Code,رمز ضمان القرض
+Loan Security Deposit,إيداع ضمان القرض
+Loan Security Details,تفاصيل ضمان القرض
+Loan Security Exposure,التعرض لضمان القرض
+Loan Security Name,اسم ضمان القرض
+Loan Security Price,سعر ضمان القرض
+Loan Security Price overlapping with {0},سعر ضمان القرض يتداخل مع {0}
+Loan Security Release Error,خطأ في تحرير ضمان القرض
+Loan Security Shortfall,عجز ضمان القرض
+Loan Security Status,حالة ضمان القرض
+Loan Security Type,نوع ضمان القرض
+Loan Security Value,قيمة ضمان القرض
+Loan Security Value after unpledge is {0},قيمة ضمان القرض بعد فك الرهن هي {0}
+Loan Security {0} added multiple times,تمت إضافة ضمان القرض {0} عدة مرات
+Loan To Security Value ratio must always be {0},نسبة القرض إلى قيمة الضمان يجب أن تكون دائماً {0}
+Loan To Value Ratio,نسبة القرض إلى القيمة
+Loan To Value ratio breach,مخالفة نسبة القرض إلى القيمة
+Loan Transfer Detail,تفاصيل تحويل القرض
+Loan Transfers,تحويلات القرض
+Loan Write Off will be automatically created on loan closure request if pending amount is below this limit,يتم إنشاء شطب القرض تلقائياً عند طلب إغلاق القرض إذا كان المبلغ المعلق أقل من هذا الحد
+Loan Write Offs,عمليات شطب القرض
+Loan amount cannot be greater than {0},لا يمكن أن يكون مبلغ القرض أكبر من {0}
+Loan amount is mandatory,مبلغ القرض إلزامي
+Loan is a Non Performing Asset,القرض أصل متعثر
+Loan {0} closed,تم إغلاق القرض {0}
+Manual Foreclosure,الإغلاق المبكر اليدوي
+Manual NPA,تعثر يدوي
+Manual Remarks,ملاحظات يدوية
+Maturity Date,تاريخ الاستحقاق
+Max DPD Range,الحد الأقصى لنطاق أيام التأخر عن السداد
+Maximum Limit Amount,الحد الأقصى لمبلغ الحد
+Maximum Loan Amount,الحد الأقصى لمبلغ القرض
+Maximum Loan Value,الحد الأقصى لقيمة القرض
+Min DPD Range,الحد الأدنى لنطاق أيام التأخر عن السداد
+Minimum Partner Loan Amount Percentage,الحد الأدنى لنسبة مبلغ قرض الشريك
+Monthly Repayment Amount,مبلغ السداد الشهري
+Monthly Repayment Amount cannot be greater than Loan Amount,لا يمكن أن يكون مبلغ السداد الشهري أكبر من مبلغ القرض
+Monthly as per cycle date,شهرياً وفقاً لتاريخ الدورة
+Monthly as per repayment start date,شهرياً وفقاً لتاريخ بدء السداد
+Moratorium End Date,تاريخ نهاية فترة الإمهال
+Moratorium Tenure,مدة فترة الإمهال
+Moratorium Type,نوع فترة الإمهال
+NPA,التعثر
+NPA Date,تاريخ التعثر
+NPA Logs,سجلات التعثر
+New Loan Amount,مبلغ القرض الجديد
+New Loans,القروض الجديدة
+New Monthly Repayment Amount,مبلغ السداد الشهري الجديد
+New Rate Of Interest,معدل الفائدة الجديد
+New Repayment Method,طريقة السداد الجديدة
+New Repayment Period in Months,مدة السداد الجديدة بالأشهر
+New Repayment Start Date,تاريخ بدء السداد الجديد
+New maximum limit amount cannot be lesser than the utilized limit amount,لا يمكن أن يكون الحد الأقصى الجديد للمبلغ أقل من المبلغ المستخدم من الحد
+No excess amount pending for refund,لا يوجد مبلغ زائد معلق للاسترداد
+No loans found for this applicant or branch,لم يتم العثور على قروض لهذا المتقدم أو الفرع
+No valid Loan Security Price found for {0},لم يتم العثور على سعر ضمان قرض صالح لـ {0}
+Normal Interest,الفائدة العادية
+Normal Interest Journal Entry,قيد يومية الفائدة العادية
+Normal Limit,الحد العادي
+Normal Repayment,السداد العادي
+Normal Restructure,إعادة الهيكلة العادية
+Number Of Days,عدد الأيام
+Old EMI,القسط الشهري الثابت القديم
+Old Loan Amount,مبلغ القرض القديم
+Old Rate of Interest,معدل الفائدة القديم
+Old Repayment Frequency,تكرار السداد القديم
+Old Tenure,المدة القديمة
+One Time,لمرة واحدة
+Only submitted unpledge requests can be approved,لا يمكن الموافقة إلا على طلبات فك الرهن المعتمدة
+Organization Type,نوع المؤسسة
+Original Security Value,القيمة الأصلية للضمان
+Other Charges Waiver,التنازل عن الرسوم الأخرى
+Other Charges Waiver cannot be greater than overdue charges,لا يمكن أن يكون التنازل عن الرسوم الأخرى أكبر من الرسوم المتأخرة
+Outstanding Principal,أصل القرض المستحق
+Outstanding Principal & Interest Accrued,أصل القرض المستحق والفائدة المستحقة
+Own Ratio,النسبة الذاتية
+POS reduction plus interest at partner ROI,تخفيض نقاط البيع بالإضافة إلى الفائدة بمعدل فائدة الشريك
+Partial Payment Mechanism,آلية الدفع الجزئي
+Partial Settlement,التسوية الجزئية
+Partially Disbursed,مصروف جزئياً
+Particulars,البيانات
+Partner Base Interest Rate,معدل الفائدة الأساسي للشريك
+Partner Code,رمز الشريك
+Partner Collection Percentage,نسبة تحصيل الشريك
+Partner Interest Share,حصة الشريك من الفائدة
+Partner Interest Share is mandatory,حصة الشريك من الفائدة إلزامية
+Partner Loan Amount Percentage,نسبة مبلغ قرض الشريك
+Partner Loan Share Percentage,نسبة حصة الشريك في القرض
+Partner Monthly Repayment Amount,مبلغ السداد الشهري للشريك
+Partner Name,اسم الشريك
+Partner Percentage,نسبة الشريك
+Partner Ratio,نسبة الشريك
+Partner Repayment Schedule Type,نوع جدول سداد الشريك
+Partner Share,حصة الشريك
+Partner Share Allocated,حصة الشريك المخصصة
+Past Cashflow Report,تقرير التدفق النقدي السابق
+Payable Account is mandatory,الحساب المستحق الدفع إلزامي
+Payable Amount,المبلغ المستحق الدفع
+Payable Charges,الرسوم المستحقة الدفع
+Payable Charges can only be added if Charge Payment,لا يمكن إضافة الرسوم المستحقة الدفع إلا عند دفع الرسوم
+Payable Principal Amount,مبلغ أصل القرض المستحق الدفع
+Penal Interest,الفائدة الجزائية
+Penal Interest Waiver,التنازل عن الفائدة الجزائية
+Penal Treatment,المعالجة الجزائية
+Penalty,الغرامة
+Penalty Accrued Account,حساب الغرامة المستحقة
+Penalty Amount,مبلغ الغرامة
+Penalty Capitalization,رسملة الغرامة
+Penalty Charges Accounts,حسابات رسوم الغرامة
+Penalty Charges Rate,معدل رسوم الغرامة
+Penalty Income Account,حساب إيراد الغرامة
+Penalty Income Account is mandatory,حساب إيراد الغرامة إلزامي
+Penalty Interest Rate (%),معدل فائدة الغرامة (%)
+Penalty Overdue,الغرامة المتأخرة
+Penalty Receivable Account,حساب الغرامة المدينة
+Penalty Receivable Account is mandatory,حساب الغرامة المدينة إلزامي
+Penalty Suspense Account,حساب الغرامة المعلقة
+Penalty Waiver,التنازل عن الغرامة
+Penalty Waiver Account,حساب التنازل عن الغرامة
+Penalty Waiver cannot be greater than overdue penalty interest,لا يمكن أن يكون التنازل عن الغرامة أكبر من فائدة الغرامة المتأخرة
+Pending Charge Amount,مبلغ الرسم المعلق
+Pending Principal Amount,مبلغ أصل القرض المعلق
+Pending Principal: {0},أصل القرض المعلق: {0}
+Pending principal amount for loan {0} is {1},مبلغ أصل القرض المعلق للقرض {0} هو {1}
+Please add customer refund account in Loan Product,يرجى إضافة حساب استرداد العميل في منتج القرض
+Please add partner Payable Account for Loan Partner {0},يرجى إضافة حساب الدفع المستحق للشريك لشريك القرض {0}
+Please enter Repayment Periods,يرجى إدخال عدد فترات السداد
+Please enter monthly repayment amount,يرجى إدخال مبلغ السداد الشهري
+Please enter repayment Amount,يرجى إدخال مبلغ السداد
+Please select Applicant Type first,يرجى تحديد نوع المتقدم أولاً
+Please select As on Date.,يرجى تحديد التاريخ (كما في).
+Please select Company.,يرجى تحديد الشركة.
+Please select Loan Disbursement for Line of Credit repayment,يرجى تحديد صرف القرض لسداد خط الائتمان
+Please select Loan Product for company {0},يرجى تحديد منتج القرض للشركة {0}
+Please set Additional Interest Accrued Account in Loan Product {0},يرجى تحديد حساب الفائدة الإضافية المستحقة في منتج القرض {0}
+Please set Additional Interest Income Account in Loan Product {0},يرجى تحديد حساب إيراد الفائدة الإضافية في منتج القرض {0}
+Please set Broken Period Interest Recovery Account for the Loan Product {0},يرجى تحديد حساب استرداد فائدة الفترة الجزئية لمنتج القرض {0}
+Please set Customer Refund Account in Loan Product {0},يرجى تحديد حساب استرداد العميل في منتج القرض {0}
+Please set Interest Accrued Account in Loan Product {0},يرجى تحديد حساب الفائدة المستحقة في منتج القرض {0}
+Please set Interest Income Account in Loan Product {0},يرجى تحديد حساب إيراد الفائدة في منتج القرض {0}
+Please set Payroll Payable Account in Loan Repayment,يرجى تحديد حساب الرواتب المستحقة الدفع في سداد القرض
+Please set Penalty Accrued Account in Loan Product {0},يرجى تحديد حساب الغرامة المستحقة في منتج القرض {0}
+Please set Penalty Income Account in Loan Product {0},يرجى تحديد حساب إيراد الغرامة في منتج القرض {0}
+Please set Write Off Recovery Account in Loan Product {0},يرجى تحديد حساب استرداد الشطب في منتج القرض {0}
+Please set {0} Accrual Account in Loan Product {1},يرجى تحديد حساب استحقاق {0} في منتج القرض {1}
+Please set {0} Receivable Account in Loan Product {1},يرجى تحديد حساب {0} المدين في منتج القرض {1}
+Please set {0} in either Company or Loan Product,يرجى تحديد {0} في الشركة أو في منتج القرض
+Pledge,الرهن
+Pledge Requested,طلب الرهن
+Pledge Status,حالة الرهن
+Pledge Time,وقت الرهن
+Pledged Applicant Count,عدد المتقدمين المرهونين
+Post Haircut Amount,المبلغ بعد الخصم
+Posting Date (End Date),تاريخ الترحيل (تاريخ النهاية)
+Pre Payment,الدفع المسبق
+Pre Payment Charges,رسوم الدفع المسبق
+Pre Restructure DPD,أيام التأخر عن السداد قبل إعادة الهيكلة
+Pre Restructure Details,تفاصيل ما قبل إعادة الهيكلة
+Prepayment Charges,رسوم الدفع المسبق
+Price Valid Upto,صلاحية السعر حتى
+Principal,أصل القرض
+Principal Adjustment,تسوية أصل القرض
+Principal Amount Paid,المبلغ المدفوع من أصل القرض
+Principal Capitalization,رسملة أصل القرض
+Principal Outstanding,أصل القرض المستحق
+Principal Overdue,أصل القرض المتأخر
+Pro-rated calendar months,أشهر تقويمية بالتناسب
+Process Loan Classification,معالجة تصنيف القرض
+Process Loan Demand,معالجة مطالبة القرض
+Process Loan Interest Accrual,معالجة استحقاق فائدة القرض
+Process Loan Restructure Limit,معالجة حد إعادة هيكلة القرض
+Process Loan Security Shortfall,معالجة عجز ضمان القرض
+Product Code,رمز المنتج
+Product Name,اسم المنتج
+Proposed Pledge,الرهن المقترح
+Proposed Pledges,الرهون المقترحة
+Proposed Pledges are mandatory for secured Loans,الرهون المقترحة مطلوبة للقروض المضمونة
+Provision Rate,نسبة المخصص
+Qty is mandatory for loan security!,الكمية مطلوبة لضمان القرض!
+Qty or Amount is mandatroy for loan security,الكمية أو المبلغ مطلوب لضمان القرض
+Rate Of Interest,معدل الفائدة
+Rate of Interest,معدل الفائدة
+Rate of Interest (%) / Year,معدل الفائدة (%) سنويًا
+Ratio,النسبة
+Reason For Freezing,سبب التجميد
+Reason for Restructure,سبب إعادة الهيكلة
+Refund,الاسترداد
+Refund Account,حساب الاسترداد
+Refund Amount,مبلغ الاسترداد
+Refund Date,تاريخ الاسترداد
+Refund Details,تفاصيل الاسترداد
+Refund amount,مبلغ الاسترداد
+Refund amount cannot be greater than net paid amount,لا يمكن أن يكون مبلغ الاسترداد أكبر من صافي المبلغ المدفوع
+Refund amount cannot be more than available amount,لا يمكن أن يكون مبلغ الاسترداد أكبر من المبلغ المتاح
+Release Requested,طلب الإفراج
+Release Time,وقت الإفراج
+Repay Fixed Amount per Period,سداد مبلغ ثابت لكل فترة
+Repay Over Number of Periods,السداد على عدد من الفترات
+Repayment,السداد
+Repayment Account,حساب السداد
+Repayment Amount must be greater than ,يجب أن يكون مبلغ السداد أكبر من
+Repayment Date On,تاريخ السداد في
+Repayment Frequency,تكرار السداد
+Repayment Info,معلومات السداد
+Repayment Method,طريقة السداد
+Repayment Period In Months,فترة السداد بالأشهر
+Repayment Period in Months,فترة السداد بالأشهر
+Repayment Periods,فترات السداد
+Repayment Schedule,جدول السداد
+Repayment Schedule Detail,تفاصيل جدول السداد
+Repayment Schedule Type,نوع جدول السداد
+Repayment Schedules,جداول السداد
+Repayment Start Date,تاريخ بدء السداد
+Repayment Start Date cannot be before Disbursement Date,لا يمكن أن يكون تاريخ بدء السداد قبل تاريخ الصرف
+Repayment Start Date is mandatory for term loans,تاريخ بدء السداد مطلوب للقروض لأجل
+Repayment Type,نوع السداد
+Repayment cannot be made for closed loan,لا يمكن إجراء سداد لقرض مغلق
+Repayment periods is mandatory for term loans,فترات السداد مطلوبة للقروض لأجل
+Repayment type can only be Write Off Recovery or Write Off Settlement,لا يمكن أن يكون نوع السداد إلا استرداد الشطب أو تسوية الشطب
+Repayments,السدادات
+Repost Date,تاريخ إعادة الترحيل
+Request Loan Closure,طلب إغلاق القرض
+Restructure Charges,رسوم إعادة الهيكلة
+Restructure Date,تاريخ إعادة الهيكلة
+Restructure Date cannot be before last due date {0},لا يمكن أن يكون تاريخ إعادة الهيكلة قبل آخر تاريخ استحقاق {0}
+Restructure Date {0} cannot be after Repayment Start Date {1},لا يمكن أن يكون تاريخ إعادة الهيكلة {0} بعد تاريخ بدء السداد {1}
+Restructure Type,نوع إعادة الهيكلة
+Restructure of Loans applicable,إعادة هيكلة القروض متاحة
+Round Off Account is mandatory,حساب التقريب مطلوب
+Row {0}: Loan Security {1} added multiple times,الصف {0}: تمت إضافة ضمان القرض {1} أكثر من مرة
+Row {0}: {1} of {2} is pledged against Loan {3}.,الصف {0}: {1} من {2} مرهون مقابل القرض {3}.
+Row {0}: {1} should be between 1 and 99,الصف {0}: يجب أن تكون {1} بين 1 و99
+Same as regular interest accounts,مثل حسابات الفائدة العادية
+Sanctioned Amount Limit,حد المبلغ المعتمد
+Sanctioned Amount limit crossed for {0} {1},تم تجاوز حد المبلغ المعتمد لـ {0} {1}
+Sanctioned Loan Amount,مبلغ القرض المعتمد
+Sanctioned Loan Amount already exists for {0} against company {1},مبلغ القرض المعتمد موجود مسبقًا لـ {0} مقابل الشركة {1}
+Securities,الضمانات
+Security Deposit Account,حساب الوديعة التأمينية
+Security Deposit Adjustment,تسوية الوديعة التأمينية
+Security Type,نوع الضمان
+Security Value ,قيمة الضمان
+Select whether the repayment date should be the end of the current month or start of the upcoming month,اختر ما إذا كان تاريخ السداد نهاية الشهر الحالي أو بداية الشهر القادم
+Selected employee belongs to {0}. Please select an employee from company {1}.,الموظف المحدد يتبع لـ {0}. يرجى اختيار موظف من الشركة {1}.
+Semi-Secured,شبه مضمون
+Servicer Fee,رسوم خدمة القرض
+Settlement Date,تاريخ التسوية
+Shareable Type,نوع المشاركة
+Shareable Type {0} added multiple times,نوع المشاركة {0} تمت إضافته أكثر من مرة
+Shareables,عناصر المشاركة
+Shortfall Amount,مبلغ العجز
+Shortfall Percentage,نسبة العجز
+Shortfall Time,وقت العجز
+Start of the next month,بداية الشهر القادم
+Subsidy Adjustment Account,حساب تسوية الدعم
+Subsidy Adjustments,تسويات الدعم
+Suspense Account,الحساب المعلق
+Suspense Collection Account,حساب تحصيل المعلقات
+Suspense Interest Income,دخل الفائدة المعلق
+Tenure Post Restructure,مدة القرض بعد إعادة الهيكلة
+The Loan Disbursement {0} has been closed.,تم إغلاق صرف القرض {0}.
+The amount paid cannot be greater than the payable amount for Security Deposit Adjustment repayments.,لا يمكن أن يكون المبلغ المدفوع أكبر من المبلغ المستحق لسدادات تسوية الوديعة التأمينية.
+The following disbursements do not exist or are not submitted: {},عمليات الصرف التالية غير موجودة أو غير معتمدة: {}
+The following loans do not exist: {},القروض التالية غير موجودة: {}
+There already exists a borrower with the same contact details. Do you want to fetch the borrower here?,يوجد مسبقًا مقترض بنفس بيانات الاتصال. هل تريد جلب المقترض هنا؟
+To Branch,إلى الفرع
+Total Amount Paid,إجمالي المبلغ المدفوع
+Total Charges Paid,إجمالي الرسوم المدفوعة
+Total Charges Payable,إجمالي الرسوم المستحقة
+Total Installments Overdue ,إجمالي الدفعات المتأخرة
+Total Installments Paid,إجمالي الدفعات المسددة
+Total Installments Raised,إجمالي الدفعات الصادرة
+Total Interest Paid,إجمالي الفائدة المدفوعة
+Total Interest Payable,إجمالي الفائدة المستحقة
+Total Overdue Amount,إجمالي المبلغ المتأخر
+Total Partner Interest Share,إجمالي حصة الشريك من الفائدة
+Total Partner Principal Share,إجمالي حصة الشريك من أصل القرض
+Total Payable Interest,إجمالي الفائدة المستحقة الدفع
+Total Penalty Paid,إجمالي الغرامة المدفوعة
+Total Principal Paid,إجمالي المدفوع من أصل القرض
+Total Security Value,إجمالي قيمة الضمان
+Treatment Of Interest,معاملة الفائدة
+Treatment of Interest,معاملة الفائدة
+Type of FLDG Applicable,نوع ضمان الخسارة الأولى عند التعثر المطبّق
+Unaccrued Interest,الفائدة غير المستحقة
+Unaccrued Interest Treatment,معاملة الفائدة غير المستحقة
+Unaccrued Interest Waiver,الإعفاء من الفائدة غير المستحقة
+Unaccrued Interest Waiver cannot be greater than overdue amount,لا يمكن أن يكون الإعفاء من الفائدة غير المستحقة أكبر من المبلغ المتأخر
+Unfreeze Date,تاريخ إلغاء التجميد
+Unique Customer,عميل فريد
+Unmark NPA,إلغاء تصنيف القرض كمتعثر
+Unpledge,فك الرهن
+Unpledge Time,وقت فك الرهن
+Unpledged,غير مرهون
+Unsecured,غير مضمون
+Update Time,وقت التحديث
+Valid From Time must be lesser than Valid Upto Time.,يجب أن يكون وقت البدء أقل من وقت الانتهاء.
+Validate Normal Repayment,التحقق من السداد العادي
+Waive Off Restructure Charges,التنازل عن رسوم إعادة الهيكلة
+Waiver Account,حساب الإعفاء
+Waiving of Charges applicable,إعفاء الرسوم متاح
+Watch Period End Date,تاريخ نهاية فترة المراقبة
+Withhold Security Deposit,حجز الوديعة التأمينية
+Write Off Accounts,حسابات الشطب
+Write Off Details,تفاصيل الشطب
+Write Off Recovery,استرداد الشطب
+Write Off Recovery Account,حساب استرداد الشطب
+Write Off Recovery Account is mandatory,حساب استرداد الشطب مطلوب
+Write Off Settlement,تسوية الشطب
+Write Off amount cannot be greater than pending loan amount,لا يمكن أن يكون مبلغ الشطب أكبر من المبلغ المتبقي من القرض
+Write Offs,عمليات الشطب
+Write off amount ({0}) should be equal to pending principal amount ({1}),يجب أن يساوي مبلغ الشطب ({0}) المبلغ المتبقي من أصل القرض ({1})
+Written Off,مشطوب
+Written Off Amount,المبلغ المشطوب
+You are trying to unpledge more.,أنت تحاول فك رهن أكثر من المتاح.
+with reference no. {},برقم مرجعي {}
+{0} cannot be negative,لا يمكن أن يكون {0} سالبًا
+{0} should be between 1 and 99,يجب أن تكون {0} بين 1 و99
+{} Open,{} مفتوح
+{} against loan {},{} مقابل القرض {}

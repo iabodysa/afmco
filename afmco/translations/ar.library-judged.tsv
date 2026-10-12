@@ -5494,3 +5494,3682 @@ Percentage	lending	override	R09
 Primary	lending	kept	R09
 References	lending	kept	R09
 Timestamp	lending	override	R09
+ Address	erpnext	kept	R09
+ Amount	erpnext	kept	R09
+ Name	erpnext	kept	R09
+ Skip Material Transfer	erpnext	kept	R09
+ Sub Assembly	erpnext	kept	R09
+% Billed	erpnext	kept	R09
+% Delivered	erpnext	kept	R09
+% Ordered	erpnext	kept	R09
+% Raw Material Received	erpnext	kept	R09
+% Received	erpnext	kept	R09
+% Returned	erpnext	kept	R09
+'Days Since Last Order' must be greater than or equal to zero	erpnext	kept	R09
+'Opening'	erpnext	kept	R09
+'{0}' is a reserved name and cannot be used as a line reference	erpnext	override	R26
+(C) Total Qty in Queue	erpnext	kept	R09
+(C) Total qty in queue	erpnext	kept	R09
+(Daily Yield * No of Units Produced) / 100	erpnext	kept	R09
+(Forecast)	erpnext	kept	R09
+(Total Workstation Time / Manufacturing Time) * 60	erpnext	kept	R09
+(none)	erpnext	kept	R09
+* Will be calculated in the transaction.	erpnext	kept	R09
+0-30	erpnext	kept	R09
+1 Loyalty Points = How much base currency?	erpnext	kept	R09
+1 hr	erpnext	kept	R09
+1-10	erpnext	kept	R09
+1000+	erpnext	kept	R09
+1{0}	erpnext	kept	R09
+30 mins	erpnext	kept	R09
+501-1000	erpnext	kept	R09
+51-200	erpnext	kept	R09
+6 hrs	erpnext	kept	R09
+90 Above	erpnext	kept	R09
+<0	erpnext	kept	R09
+"<div class=""text-muted text-center"">{0}</div>"	erpnext	override	R26 markup only, placeholder preserved unchanged
+"<div id=""stock-levels-placeholder""></div>"	erpnext	kept	R09
+"<div id=\""item-prices-container\""></div>"	erpnext	kept	R09
+<div>\n<h3> All dimensions in centimeter only </h3>\n</div>	erpnext	override	R26
+<li>{}</li>	erpnext	kept	R09
+"<span class=""h4""><b>Your Shortcuts\n\t\t\t\n\t\t\n\t\t\t\n\t\t\n\t\t\t\n\t\t</b></span>"	erpnext	override	R26
+A+	erpnext	kept	R09
+A-	erpnext	kept	R09
+AB+	erpnext	kept	R09
+AB-	erpnext	kept	R09
+Abbreviation is mandatory	erpnext	kept	R09
+Abbreviation: {0} must appear only once	erpnext	kept	R09
+Above	erpnext	kept	R09
+Accepted Quantity	erpnext	kept	R09
+Access Key	erpnext	kept	R09
+According to CEFACT/ICG/2010/IC013 or CEFACT/ICG/2010/IC010	erpnext	kept	R09
+Account Category	erpnext	kept	R09
+Account Category Name	erpnext	kept	R09
+Account Currency	erpnext	kept	R09
+Account Data	erpnext	kept	R09
+Account Details	erpnext	kept	R09
+Account Missing	erpnext	kept	R09
+Account Name	erpnext	kept	R09
+Account Not Found	erpnext	kept	R09
+Account Subtype	erpnext	kept	R09
+Account Type	erpnext	kept	R09
+Account Value	erpnext	kept	R09
+Account is not set for the dashboard chart {0}	erpnext	kept	R09
+Account {0} added multiple times	erpnext	kept	R09
+Account {0} cannot be converted to Group as it is already set as {1} for {2}.	erpnext	kept	R09
+Account {0} cannot be disabled as it is already set as {1} for {2}.	erpnext	kept	R09
+Account {0} does not belong to Company {1}	erpnext	override	R26
+Account {0} does not exist	erpnext	kept	R09
+Account {0} does not exists	erpnext	kept	R09
+Account {0} does not exists in the dashboard chart {1}	erpnext	kept	R09
+Account {0} does not match with Company {1} in Mode of Account: {2}	erpnext	kept	R09
+Account {0} exists in parent company {1}.	erpnext	kept	R09
+Account {0} is disabled.	erpnext	kept	R09
+Account {0} is invalid. Account Currency must be {1}	erpnext	kept	R09
+Account {0} should be of type Expense	erpnext	kept	R09
+Account {0}: Parent account {1} can not be a ledger	erpnext	kept	R09
+Account {0}: Parent account {1} does not belong to company: {2}	erpnext	kept	R09
+Account: {0} can only be updated via Stock Transactions	erpnext	kept	R09
+Accounting	erpnext	kept	R09
+Accounting Dimension	erpnext	kept	R09
+Accounting Entry for Service	erpnext	kept	R09
+Accounting Entry for Stock	erpnext	kept	R09
+Accounting Entry for {0}	erpnext	kept	R09
+Accounting entries are frozen up to this date. Only users with the specified role can create or modify entries before this date.	erpnext	kept	R09
+Accounts Frozen Till Date	erpnext	kept	R09
+Accounts Included in Report	erpnext	kept	R09
+Accounts Missing from Report	erpnext	kept	R09
+Accounts Settings	erpnext	kept	R09
+Accounts to Merge	erpnext	kept	R09
+Accumulated Monthly Budget for Account {0} against {1} {2} is {3}. It will be collectively ({4}) exceeded by {5}	erpnext	kept	R09
+Accumulated Monthly Budget for Account {0} against {1}: {2} is {3}. It will be exceeded by {4}	erpnext	kept	R09
+Accumulated Values	erpnext	kept	R09
+Action on New Invoice	erpnext	kept	R09
+Actions performed	erpnext	kept	R09
+Active Status	erpnext	kept	R09
+Activity Cost	erpnext	kept	R09
+Activity Cost exists for Employee {0} against Activity Type - {1}	erpnext	kept	R09
+Activity Cost per Employee	erpnext	kept	R09
+Activity Type	erpnext	kept	R09
+Actual	erpnext	kept	R09
+Actual Cost	erpnext	kept	R09
+Actual Date	erpnext	kept	R09
+Actual Delivery Date	erpnext	kept	R09
+Actual End Date cannot be before Actual Start Date	erpnext	kept	R09
+Actual Expense	erpnext	kept	R09
+Actual Qty	erpnext	kept	R09
+Actual Qty (at source/target)	erpnext	kept	R09
+Actual Qty in Warehouse	erpnext	kept	R09
+Actual Quantity	erpnext	kept	R09
+Actual Start Date	erpnext	kept	R09
+Actual Time	erpnext	kept	R09
+Actual Time and Cost	erpnext	kept	R09
+Add Customers	erpnext	kept	R09
+Add Discount	erpnext	kept	R09
+Add Employees	erpnext	kept	R09
+Add Multiple	erpnext	kept	R09
+Add Multiple Tasks	erpnext	kept	R09
+Add Safety Stock	erpnext	kept	R09
+Add Sales Partners	erpnext	kept	R09
+Add Schedule	erpnext	kept	R09
+Add Suppliers	erpnext	kept	R09
+Add a Note	erpnext	kept	R09
+Add or Deduct	erpnext	kept	R09
+Add/Edit Coupon Conditions	erpnext	kept	R09
+Added {1} Role to User {0}.	erpnext	kept	R09
+Additional	erpnext	kept	R09
+Additional Asset Cost	erpnext	kept	R09
+Additional Cost	erpnext	kept	R09
+Additional Costs	erpnext	kept	R09
+Additional Discount	erpnext	kept	R09
+Additional Discount Amount	erpnext	kept	R09
+Additional Discount Percentage	erpnext	kept	R09
+Additional Information updated successfully.	erpnext	kept	R09
+Additional Material Transfer	erpnext	kept	R09
+Additional Notes	erpnext	kept	R09
+Additional Transferred Qty {0}\n\t\t\t\t\tcannot be greater than {1}.\n\t\t\t\t\tTo fix this, increase the percentage value\n\t\t\t\t\tof the field 'Transfer Extra Raw Materials to WIP'\n\t\t\t\t\tin Manufacturing Settings.	erpnext	kept	R09
+Address & Contact	erpnext	kept	R09
+Address & Contacts	erpnext	kept	R09
+Address HTML	erpnext	kept	R09
+Address Name	erpnext	kept	R09
+Address and Contact	erpnext	kept	R09
+Address and Contacts	erpnext	kept	R09
+Address needs to be linked to a Company. Please add a row for Company in the Links table.	erpnext	kept	R09
+Address used to determine Tax Category in transactions	erpnext	kept	R09
+Advance Payments	erpnext	kept	R09
+Advance amount cannot be greater than {0} {1}	erpnext	kept	R09
+Advanced Filtering	erpnext	kept	R09
+Against	erpnext	kept	R09
+Against Account	erpnext	kept	R09
+Against Customer Order {0}	erpnext	kept	R09
+Against Document No	erpnext	kept	R09
+Against Pick List	erpnext	kept	R09
+Against Sales Invoice	erpnext	kept	R09
+Against Supplier Invoice {0}	erpnext	kept	R09
+Age	erpnext	kept	R09
+Agenda	erpnext	kept	R09
+Agriculture	erpnext	kept	R09
+Algorithm	erpnext	kept	R09
+All Accounts	erpnext	kept	R09
+All Activities	erpnext	kept	R09
+All Activities HTML	erpnext	kept	R09
+All Contact	erpnext	kept	R09
+All Customer Groups	erpnext	kept	R09
+All Employee (Active)	erpnext	kept	R09
+All Item Groups	erpnext	kept	R09
+All Parties	erpnext	kept	R09
+All Sales Person	erpnext	kept	R09
+All allocations have been successfully reconciled	erpnext	kept	R09
+All raw materials are already mapped to finished goods	erpnext	override	R09
+Allocate	erpnext	kept	R09
+Allocate Payment Based On Payment Terms	erpnext	kept	R09
+Allocated amount	erpnext	kept	R09
+Allocated amount cannot be greater than unadjusted amount	erpnext	kept	R09
+Allocated amount cannot be negative	erpnext	kept	R09
+Allocations	erpnext	kept	R09
+Allotted Qty	erpnext	kept	R09
+Allow In Returns	erpnext	kept	R09
+Allow Lead Duplication based on Emails	erpnext	kept	R09
+Allow Purchase	erpnext	kept	R09
+Allow Rename Attribute Value	erpnext	kept	R09
+Allow Resetting Service Level Agreement	erpnext	kept	R09
+Allow Resetting Service Level Agreement from Support Settings.	erpnext	kept	R09
+Allow Sales	erpnext	kept	R09
+Allow User to Edit Discount	erpnext	kept	R09
+Allowed Dimension	erpnext	override	R03
+Allowed Items	erpnext	kept	R09
+Already record exists for the item {0}	erpnext	kept	R09
+Alternate Item	erpnext	kept	R09
+Alternative Item Code	erpnext	kept	R09
+Alternative Item Name	erpnext	kept	R09
+Alternative item must not be same as item code	erpnext	kept	R09
+Amount (AED)	erpnext	kept	R09
+Amount (Company Currency)	erpnext	kept	R09
+Amount Delivered	erpnext	kept	R09
+Amount Difference with Purchase Invoice	erpnext	kept	R09
+Amount in transaction currency	erpnext	kept	R09
+Ampere-Hour	erpnext	kept	R09
+Ampere-Minute	erpnext	kept	R09
+Ampere-Second	erpnext	kept	R09
+Amt	erpnext	kept	R09
+An error occurred during the update process	erpnext	kept	R09
+An error occurred for certain Items while creating Material Requests based on Re-order level. Please rectify these issues :	erpnext	kept	R09
+Analysis Chart	erpnext	kept	R09
+Analyst	erpnext	kept	R09
+Annual Budget for Account {0} against {1}: {2} is {3}. It will be exceeded by {4}	erpnext	kept	R09
+Annual Expenses	erpnext	kept	R09
+Annual Income	erpnext	kept	R09
+Another Budget record '{0}' already exists against {1} '{2}' and account '{3}' with overlapping fiscal years.	erpnext	kept	R09
+Another Cost Center Allocation record {0} applicable from {1}, hence this allocation will be applicable upto {2}	erpnext	kept	R09
+Another Payment Request is already processed	erpnext	kept	R09
+Any one of following filters required: warehouse, Item Code, Item Group	erpnext	kept	R09
+Apparel & Accessories	erpnext	kept	R09
+Applicable Charges	erpnext	kept	R09
+Applicable Dimension	erpnext	override	R03
+Applicable Holiday List	erpnext	kept	R09
+Applicable Modules	erpnext	kept	R09
+Applicable On Account	erpnext	kept	R09
+Applicable To (Designation)	erpnext	kept	R09
+Applicable To (Employee)	erpnext	kept	R09
+Applicable To (Role)	erpnext	kept	R09
+Applicable To (User)	erpnext	kept	R09
+Applicable for Countries	erpnext	kept	R09
+Applicable for Users	erpnext	kept	R09
+Applicable for external driver	erpnext	kept	R09
+Applicable if the company is SpA, SApA or SRL	erpnext	kept	R09
+Applicable if the company is a limited liability company	erpnext	kept	R09
+Applicable on Cumulative Expense	erpnext	kept	R09
+Applicable on Material Request	erpnext	kept	R09
+Applicable on Purchase Order	erpnext	kept	R09
+Applied Coupon Code	erpnext	kept	R09
+Applied on each reading.	erpnext	kept	R09
+Applied putaway rules.	erpnext	kept	R09
+Applies To	erpnext	kept	R09
+Apply Additional Discount On	erpnext	kept	R09
+Apply Discount on Discounted Rate	erpnext	kept	R09
+Apply Discount on Rate	erpnext	kept	R09
+Apply On	erpnext	kept	R09
+Apply Putaway Rule	erpnext	kept	R09
+Apply Recursion Over (As Per Transaction UOM)	erpnext	kept	R09
+Apply Rule On Brand	erpnext	kept	R09
+Apply SLA for Resolution Time	erpnext	kept	R09
+Apply restriction on dimension values	erpnext	kept	R09
+Apply to Document	erpnext	kept	R09
+Appointment	erpnext	kept	R09
+Appointment Booking Settings	erpnext	kept	R09
+Appointment Confirmation	erpnext	kept	R09
+Appointment Created Successfully	erpnext	kept	R09
+Appointment Details	erpnext	kept	R09
+Appointment Scheduling Disabled	erpnext	kept	R09
+Appointment Scheduling has been disabled for this site	erpnext	kept	R09
+Appointment With	erpnext	kept	R09
+Approximately match the description/party name against parties	erpnext	kept	R09
+Are you sure you want to clear all demo data?	erpnext	kept	R09
+Are you sure you want to restart this subscription?	erpnext	kept	R09
+Are you sure you want to revise this budget? The current budget will be cancelled and a new draft will be created.	erpnext	kept	R09
+Area UOM	erpnext	kept	R09
+Arrival Quantity	erpnext	kept	R09
+Arshin	erpnext	kept	R09
+As there are reserved stock, you cannot disable {0}.	erpnext	kept	R09
+As {0} is enabled, you can not enable {1}.	erpnext	kept	R09
+Asset	erpnext	kept	R09
+Asset Account	erpnext	kept	R09
+Asset Activity	erpnext	kept	R09
+Asset Capitalization	erpnext	kept	R09
+Asset Capitalization Service Item	erpnext	kept	R09
+Asset Category	erpnext	kept	R09
+Asset Category Account	erpnext	kept	R09
+Asset Category Name	erpnext	kept	R09
+Asset ID	erpnext	kept	R09
+Asset Location	erpnext	kept	R09
+Asset Maintenance	erpnext	kept	R09
+Asset Maintenance Log	erpnext	kept	R09
+Asset Maintenance Task	erpnext	kept	R09
+Asset Maintenance Team	erpnext	kept	R09
+Asset Movement	erpnext	kept	R09
+Asset Movement Item	erpnext	kept	R09
+Asset Owner	erpnext	kept	R09
+Asset Repair	erpnext	kept	R09
+Asset Status	erpnext	kept	R09
+Asset Value Analytics	erpnext	kept	R09
+Asset out of order due to Asset Repair {0}	erpnext	kept	R09
+Asset restored after Asset Capitalization {0} was cancelled	erpnext	kept	R09
+Asset returned	erpnext	kept	R09
+Asset sold	erpnext	kept	R09
+Asset transferred to Location {0}	erpnext	kept	R09
+Asset updated after being split into Asset {0}	erpnext	kept	R09
+Asset updated due to Asset Repair {0} {1}.	erpnext	kept	R09
+Asset {0} does not belong to the location {1}	erpnext	kept	R09
+Asset {0} does not exist	erpnext	kept	R09
+Asset {0} is in {1} status and cannot be repaired.	erpnext	kept	R09
+Asset {assets_link} created for {item_code}	erpnext	kept	R09
+Asset's value adjusted after cancellation of Asset Value Adjustment {0}	erpnext	kept	R09
+Assets	erpnext	kept	R09
+Assets not created for {item_code}. You will have to create asset manually.	erpnext	kept	R09
+Assignment Conditions	erpnext	kept	R09
+At Row #{0}: The picked quantity {1} for the item {2} is greater than available stock {3} in the warehouse {4}.	erpnext	kept	R09
+At least one account with exchange gain or loss is required	erpnext	kept	R09
+At least one asset has to be selected.	erpnext	kept	R09
+At least one invoice has to be selected.	erpnext	kept	R09
+At least one of the Applicable Modules should be selected	erpnext	kept	R09
+At least one of the Selling or Buying must be selected	erpnext	kept	R09
+At least one warehouse is mandatory	erpnext	override	R03
+At row #{0}: the sequence id {1} cannot be less than previous row sequence id {2}	erpnext	kept	R09
+At row #{0}: you have selected the Difference Account {1}, which is a Cost of Goods Sold type account. Please select a different account	erpnext	kept	R09
+Attach CSV File	erpnext	kept	R09
+Attach a comma separated .csv file with two columns, one for the old name and one for the new name.	erpnext	kept	R09
+Attribute	erpnext	kept	R09
+Attribute value: {0} must appear only once	erpnext	kept	R09
+Attributes	erpnext	kept	R09
+Authorized Value	erpnext	kept	R09
+Auto Assign	erpnext	kept	R09
+Auto Create Exchange Rate Revaluation	erpnext	kept	R09
+Auto Fetch	erpnext	kept	R09
+Auto Fetch Serial Numbers	erpnext	kept	R09
+Auto Map Raw Materials to Finished Goods	erpnext	override	R15
+Auto Material Request	erpnext	kept	R09
+Auto Opt In (For all customers)	erpnext	kept	R09
+Auto Reconciliation	erpnext	kept	R09
+Auto Reconciliation of Payments has been disabled. Enable it through {0}	erpnext	kept	R09
+Auto Tax Settings Error	erpnext	kept	R09
+Auto write off precision loss while consolidation	erpnext	kept	R09
+Automotive	erpnext	kept	R09
+Available	erpnext	kept	R09
+Available Qty	erpnext	kept	R09
+Available Qty For Consumption	erpnext	kept	R09
+Available Qty at Company	erpnext	kept	R09
+Available Qty to Reserve	erpnext	kept	R09
+Available Quantity	erpnext	kept	R09
+Available Serial No	erpnext	kept	R09
+Available {0}	erpnext	kept	R09
+Average Age	erpnext	kept	R09
+Average Completion	erpnext	kept	R09
+Average Discount	erpnext	kept	R09
+Average Order Value	erpnext	kept	R09
+Average Response Time	erpnext	kept	R09
+BOM	erpnext	kept	R09
+BOM Created	erpnext	kept	R09
+BOM Creator	erpnext	kept	R09
+BOM Explorer	erpnext	kept	R09
+BOM Item	erpnext	kept	R09
+BOM Level	erpnext	kept	R09
+BOM No (For Semi-Finished Goods)	erpnext	kept	R09
+BOM Operation	erpnext	kept	R09
+BOM Update Batch	erpnext	kept	R09
+BOM Update Initiated	erpnext	kept	R09
+BOM Update Log	erpnext	kept	R09
+BOM Update Tool Log with job status maintained	erpnext	kept	R09
+BOM Updation is queued and may take a few minutes. Check {0} for progress.	erpnext	kept	R09
+BOM and Production	erpnext	kept	R09
+BOM {0} does not belong to Item {1}	erpnext	kept	R09
+BOMs Updated	erpnext	kept	R09
+BOMs created successfully	erpnext	kept	R09
+Balance (Dr - Cr)	erpnext	kept	R09
+Balance ({0})	erpnext	kept	R09
+Balance Qty	erpnext	kept	R09
+Balance Qty (Stock)	erpnext	kept	R09
+Balance Value	erpnext	kept	R09
+Balance must be	erpnext	kept	R09
+Bank Account Details	erpnext	kept	R09
+Bank Account Info	erpnext	kept	R09
+Bank Balance	erpnext	kept	R09
+Bank Charges Account	erpnext	kept	R09
+Bank Transaction {0} added as {1}	erpnext	override	R26
+Bank account cannot be named as {0}	erpnext	kept	R09
+Bank account {0} already exists and could not be created again	erpnext	kept	R09
+Bank transaction creation error	erpnext	kept	R09
+Barrel(Beer)	erpnext	kept	R09
+Base Amount	erpnext	kept	R09
+Base Cost Per Unit	erpnext	kept	R09
+Base Taxable Amount	erpnext	kept	R09
+Based On Data ( in years )	erpnext	kept	R09
+Based On Price List	erpnext	kept	R09
+Based On Value	erpnext	kept	R09
+Based on your HR Policy, select your leave allocation period's end date	erpnext	kept	R09
+Based on your HR Policy, select your leave allocation period's start date	erpnext	kept	R09
+Basic Amount	erpnext	kept	R09
+Basic Rate (Company Currency)	erpnext	kept	R09
+Beginning of the current subscription period	erpnext	kept	R09
+Bill Date	erpnext	kept	R09
+Bill No	erpnext	kept	R09
+Billing Address Details	erpnext	kept	R09
+Billing Address Name	erpnext	kept	R09
+Billing Address does not belong to the {0}	erpnext	kept	R09
+Billing City	erpnext	kept	R09
+Billing Interval in Subscription Plan must be Month to follow calendar months	erpnext	kept	R09
+Billing Rate	erpnext	kept	R09
+Billing Zipcode	erpnext	kept	R09
+Billing currency must be equal to either default company's currency or party account currency	erpnext	kept	R09
+Biot	erpnext	kept	R09
+Biotechnology	erpnext	kept	R09
+Biweekly	erpnext	kept	R09
+Black	erpnext	kept	R09
+Blood Group	erpnext	kept	R09
+Body Text	erpnext	kept	R09
+Bold Text	erpnext	kept	R09
+Bold text for emphasis (totals, major headings)	erpnext	kept	R09
+Book an appointment	erpnext	kept	R09
+Books are closed till {0} by Period Closing Voucher, remove these rows: {1}	erpnext	override	R26
+Both Trial Period Start Date and Trial Period End Date must be set	erpnext	kept	R09
+Box	erpnext	kept	R09
+Branch Code	erpnext	kept	R09
+Broadcasting	erpnext	kept	R09
+Brokerage	erpnext	kept	R09
+Browse BOM	erpnext	kept	R09
+Btu (Th)	erpnext	kept	R09
+Btu/Hour	erpnext	kept	R09
+Btu/Minutes	erpnext	kept	R09
+Btu/Seconds	erpnext	kept	R09
+Budget Account	erpnext	kept	R09
+Budget Against	erpnext	kept	R09
+Budget Amount can not be {0}.	erpnext	kept	R09
+Budget Detail	erpnext	kept	R09
+Budget Distribution	erpnext	kept	R09
+Budget Distribution Total	erpnext	kept	R09
+Budget End Date	erpnext	kept	R09
+Budget Exceeded	erpnext	kept	R09
+Budget Limit Exceeded	erpnext	kept	R09
+Budget List	erpnext	kept	R09
+Budget Start Date	erpnext	kept	R09
+Budgets	erpnext	kept	R09
+Buffered Cursor	erpnext	override	R03
+Build Tree	erpnext	kept	R09
+Buildings	erpnext	kept	R09
+Bulk Rename Jobs	erpnext	kept	R09
+Bulk Transaction Log Detail	erpnext	kept	R09
+Bushel (UK)	erpnext	kept	R09
+Business Analyst	erpnext	kept	R09
+Business Development Manager	erpnext	kept	R09
+Busy	erpnext	kept	R09
+Buy	erpnext	kept	R09
+Buyer of Goods and Services.	erpnext	kept	R09
+Buying & Selling Settings	erpnext	kept	R09
+Buying Price List	erpnext	kept	R09
+Buying Settings	erpnext	kept	R09
+Buying and Selling	erpnext	kept	R09
+CODE-39	erpnext	kept	R09
+COGS By Item Group	erpnext	kept	R09
+COGS Debit	erpnext	kept	R09
+CRM Note	erpnext	kept	R09
+CRM Settings	erpnext	kept	R09
+Caballeria	erpnext	kept	R09
+Cable Length	erpnext	kept	R09
+Cable Length (UK)	erpnext	kept	R09
+Cable Length (US)	erpnext	kept	R09
+Calculate Estimated Arrival Times	erpnext	kept	R09
+Calculate but don't show on final report	erpnext	kept	R09
+Calculate daily depreciation using total days in depreciation period	erpnext	kept	R09
+Calculated Amount	erpnext	kept	R09
+Calculated Discount Mismatch	erpnext	kept	R09
+Calculations	erpnext	kept	R09
+Calendar Event	erpnext	kept	R09
+Calibration	erpnext	kept	R09
+Calibre	erpnext	kept	R09
+Call Again	erpnext	kept	R09
+Call Details	erpnext	kept	R09
+Call Duration in seconds	erpnext	kept	R09
+Call Ended	erpnext	kept	R09
+Call Handling Schedule	erpnext	kept	R09
+Call Log	erpnext	kept	R09
+Call Receiving Device	erpnext	kept	R09
+Call Routing	erpnext	kept	R09
+Call Summary Saved	erpnext	kept	R09
+Call Type	erpnext	kept	R09
+Calorie (Food)	erpnext	kept	R09
+Calorie (Mean)	erpnext	kept	R09
+Calorie/Seconds	erpnext	kept	R09
+Campaign Efficiency	erpnext	kept	R09
+Campaign Email Schedule	erpnext	kept	R09
+Campaign Name	erpnext	kept	R09
+Campaign Schedules	erpnext	kept	R09
+Can be approved by {0}	erpnext	kept	R09
+Can refer row only if the charge type is 'On Previous Row Amount' or 'Previous Row Total'	erpnext	kept	R09
+Cancel Subscription	erpnext	kept	R09
+Cancel Subscription After Grace Period	erpnext	kept	R09
+Cancelation Date	erpnext	kept	R09
+Cannot Assign Cashier	erpnext	kept	R09
+Cannot Change Inventory Account Setting	erpnext	kept	R09
+Cannot Create Return	erpnext	kept	R09
+Cannot Merge	erpnext	kept	R09
+Cannot cancel Stock Closing Entry {0} because the later Stock Closing Entry {1} is built on it. Cancel {1} first.	erpnext	override	R26
+Cannot cancel as processing of cancelled documents is pending.	erpnext	kept	R09
+Cannot cancel transaction for Completed Work Order.	erpnext	kept	R09
+Cannot change Reference Document Type.	erpnext	kept	R09
+Cannot change company's default currency, because there are existing transactions. Transactions must be cancelled to change the default currency.	erpnext	kept	R09
+Cannot convert to Group because Account Type is selected.	erpnext	kept	R09
+Cannot create Work Orders from a stopped Material Request	erpnext	override	R01
+Cannot create accounting entries against disabled accounts: {0}	erpnext	kept	R09
+Cannot create return for consolidated invoice {0}.	erpnext	kept	R09
+Cannot create {0} from a Bank Transaction	erpnext	override	R26
+Cannot deduct when category is for 'Valuation' or 'Valuation and Total'	erpnext	kept	R09
+Cannot delete Exchange Gain/Loss row	erpnext	kept	R09
+Cannot disable Serial and Batch No for Item, as there are items with serial / batch enabled.	erpnext	override	R09
+Cannot disassemble more than produced quantity.	erpnext	kept	R09
+Cannot enable {0} as {1} is disabled in {2}	erpnext	override	R26
+Cannot merge {0} '{1}' into '{2}' as both have existing accounting entries in different currencies for company '{3}'.	erpnext	kept	R09
+Cannot reduce quantity than ordered or purchased quantity	erpnext	kept	R09
+Cannot retrieve link token for update. Check Error Log for more information	erpnext	kept	R09
+Cannot retrieve link token. Check Error Log for more information	erpnext	kept	R09
+Cannot set quantity less than delivered quantity.	erpnext	kept	R09
+Cannot set quantity less than received quantity.	erpnext	kept	R09
+Cannot set the field <b>{0}</b> for copying in variants	erpnext	kept	R09
+Cannot {0} from {1} without any negative outstanding invoice	erpnext	kept	R09
+Canonical URI	erpnext	kept	R09
+Capacity	erpnext	kept	R09
+Capacity (Stock UOM)	erpnext	kept	R09
+Capacity in Stock UOM	erpnext	kept	R09
+Capacity must be greater than 0	erpnext	kept	R09
+Capital Equipment	erpnext	kept	R09
+Capital Stock	erpnext	kept	R09
+Capitalize Asset	erpnext	kept	R09
+Capitalize Repair Cost	erpnext	kept	R09
+Carat	erpnext	kept	R09
+Carriage Paid To	erpnext	kept	R09
+Carriage and Insurance Paid to	erpnext	kept	R09
+Carrier	erpnext	kept	R09
+Carrier Service	erpnext	kept	R09
+Cash	erpnext	kept	R09
+Cash Flow	erpnext	kept	R09
+Cash Flow from Financing	erpnext	kept	R09
+Cash Flow from Operations	erpnext	kept	R09
+Cash In Hand	erpnext	kept	R09
+Cash/Bank Account	erpnext	kept	R09
+Cashier	erpnext	kept	R09
+Categorize By	erpnext	kept	R09
+Categorize by	erpnext	kept	R09
+Categorize by Account	erpnext	kept	R09
+Categorize by Supplier	erpnext	kept	R09
+Category Details	erpnext	kept	R09
+Caution: This might alter frozen accounts.	erpnext	kept	R09
+Cellphone Number	erpnext	kept	R09
+Celsius	erpnext	kept	R09
+Centiarea	erpnext	kept	R09
+Centigram/Litre	erpnext	kept	R09
+Centilitre	erpnext	kept	R09
+Centimeter	erpnext	kept	R09
+Certificate	erpnext	kept	R09
+Certificate Details	erpnext	kept	R09
+Certificate Limit	erpnext	kept	R09
+Certificate Required	erpnext	kept	R09
+Chain	erpnext	kept	R09
+Change this date manually to setup the next synchronization start date	erpnext	kept	R09
+Changed customer name to '{}' as '{}' already exists.	erpnext	kept	R09
+Changes in {0}	erpnext	kept	R09
+Changing Customer Group for the selected Customer is not allowed.	erpnext	kept	R09
+Channel Partner	erpnext	kept	R09
+Charges Incurred	erpnext	kept	R09
+Charges will be distributed proportionately based on item qty or amount, as per your selection	erpnext	kept	R09
+Chart of Cost Centers	erpnext	kept	R09
+Charts Based On	erpnext	kept	R09
+Chassis No	erpnext	kept	R09
+Check Availability in Warehouse	erpnext	kept	R09
+Checkout	erpnext	kept	R09
+Chemical	erpnext	kept	R09
+Cheque	erpnext	kept	R09
+Cheque Date	erpnext	kept	R09
+Cheque Number	erpnext	kept	R09
+Cheque Width	erpnext	kept	R09
+Cheques Required	erpnext	kept	R09
+Chief Executive Officer	erpnext	kept	R09
+Chief Financial Officer	erpnext	kept	R09
+Chief Operating Officer	erpnext	kept	R09
+Circular Reference Error	erpnext	kept	R09
+Class / Percentage	erpnext	kept	R09
+Classification of Customers by region	erpnext	kept	R09
+Clauses and Conditions	erpnext	kept	R09
+Clear Table	erpnext	kept	R09
+Clearing Demo Data...	erpnext	override	R03
+Click on the link below to verify your email and confirm the appointment	erpnext	kept	R09
+Click to add email / phone	erpnext	kept	R09
+Close Loan	erpnext	kept	R09
+Closed Period Rows Selected	erpnext	override	R01
+Closed Work Order can not be stopped or Re-opened	erpnext	kept	R09
+Closing	erpnext	kept	R09
+Closing Balance	erpnext	kept	R09
+Closing Balance as per Bank Statement	erpnext	kept	R09
+Closing Balance as per ERP	erpnext	kept	R09
+Code List	erpnext	kept	R09
+Collect Outstanding Amount	erpnext	kept	R09
+Color to highlight values (e.g., red for exceptions)	erpnext	kept	R09
+Column in Bank File	erpnext	kept	R09
+Columns are not according to template. Please compare the uploaded file with standard template	erpnext	kept	R09
+Commercial	erpnext	kept	R09
+Commission	erpnext	kept	R09
+Commission Rate	erpnext	kept	R09
+Commission on Sales	erpnext	kept	R09
+Communication Channel	erpnext	kept	R09
+Communication {0} is not on the timeline of Issue {1}	erpnext	override	R26
+Companies	erpnext	kept	R09
+Company Abbreviation	erpnext	kept	R09
+Company Abbreviation cannot have more than 5 characters	erpnext	kept	R09
+Company Account	erpnext	kept	R09
+Company Address	erpnext	kept	R09
+Company Address Display	erpnext	kept	R09
+Company Address Name	erpnext	kept	R09
+Company Address is missing. You don't have permission to update it. Please contact your System Manager.	erpnext	kept	R09
+Company Description	erpnext	kept	R09
+Company Logo	erpnext	kept	R09
+Company Not Linked	erpnext	kept	R09
+Company Shipping Address	erpnext	kept	R09
+Company field is required	erpnext	kept	R09
+Company is mandatory	erpnext	kept	R09
+Company is mandatory for company account	erpnext	kept	R09
+Company is mandatory for generating an invoice. Please set a default company in Global Defaults.	erpnext	override	R03
+Company of asset {0} and purchase document {1} doesn't matches.	erpnext	kept	R09
+Company which internal customer represents	erpnext	kept	R09
+Company which internal customer represents.	erpnext	kept	R09
+Company which internal supplier represents	erpnext	kept	R09
+Company {0} added multiple times	erpnext	kept	R09
+Company {0} does not exist	erpnext	kept	R09
+Company {0} is added more than once	erpnext	kept	R09
+Company {} does not exist yet. Taxes setup aborted.	erpnext	kept	R09
+Competitor	erpnext	kept	R09
+Competitor Detail	erpnext	kept	R09
+Competitor Name	erpnext	kept	R09
+Competitors	erpnext	kept	R09
+Complete Job	erpnext	kept	R09
+Complete Order	erpnext	kept	R09
+Completed By	erpnext	kept	R09
+Completed On	erpnext	kept	R09
+Completed Operation	erpnext	kept	R09
+Completed Projects	erpnext	kept	R09
+Completed Qty	erpnext	kept	R09
+Completed Quantity	erpnext	kept	R09
+Completed Tasks	erpnext	kept	R09
+Completed Work Orders	erpnext	kept	R09
+Component Expense Account	erpnext	kept	R09
+Component Name	erpnext	kept	R09
+Components can be returned only after Work Order {0} is Completed or Closed	erpnext	override	R26
+Comprehensive Insurance	erpnext	kept	R09
+Computer	erpnext	kept	R09
+Conditional Rule	erpnext	kept	R09
+Conditional Rule Examples	erpnext	kept	R09
+Configure Product Assembly	erpnext	kept	R09
+Confirmation Date	erpnext	kept	R09
+Consolidated	erpnext	kept	R09
+Consolidated Financial Statement	erpnext	kept	R09
+Consolidated Sales Invoice	erpnext	kept	R09
+Consolidated Trial Balance	erpnext	kept	R09
+Consolidated Trial Balance can be generated for Companies having same root Company.	erpnext	kept	R09
+Consolidated Trial balance could not be generated as Exchange Rate from {0} to {1} is not available for {2}.	erpnext	kept	R09
+Consultant	erpnext	kept	R09
+Consulting	erpnext	kept	R09
+Consumables	erpnext	kept	R09
+Consumed	erpnext	kept	R09
+Consumed Amount	erpnext	kept	R09
+Consumed Asset Total Value	erpnext	kept	R09
+Consumed Assets	erpnext	kept	R09
+Consumed Qty cannot be greater than Reserved Qty for item {0}	erpnext	kept	R09
+Consumed Quantity	erpnext	kept	R09
+Consumed Stock Total Value	erpnext	kept	R09
+Consumer Products	erpnext	kept	R09
+Consumption Rate	erpnext	kept	R09
+Contact HTML	erpnext	kept	R09
+Contact Info	erpnext	kept	R09
+Contact Information	erpnext	kept	R09
+Contact List	erpnext	kept	R09
+Contact Name	erpnext	kept	R09
+Contact Person does not belong to the {0}	erpnext	kept	R09
+Contact:	erpnext	kept	R09
+Contract	erpnext	kept	R09
+Contract Period	erpnext	kept	R09
+Contract Template	erpnext	kept	R09
+Contract Terms	erpnext	kept	R09
+Contract Terms and Conditions	erpnext	kept	R09
+Contribution (%)	erpnext	kept	R09
+Contribution Amount	erpnext	kept	R09
+Contribution Qty	erpnext	kept	R09
+Conversion Factor	erpnext	kept	R09
+Conversion factor for default Unit of Measure must be 1 in row {0}	erpnext	kept	R09
+Convert to Ledger	erpnext	kept	R09
+Copied From	erpnext	kept	R09
+Copy Fields to Variant	erpnext	kept	R09
+Corrective	erpnext	kept	R09
+Corrective Job Card	erpnext	kept	R09
+Corrective Operation	erpnext	kept	R09
+Corrective Operation Cost	erpnext	kept	R09
+Cosmetics	erpnext	kept	R09
+Cost Center Allocation	erpnext	kept	R09
+Cost Center Number	erpnext	kept	R09
+Cost Center and Budgeting	erpnext	kept	R09
+Cost Center for Item rows has been updated to {0}	erpnext	kept	R09
+Cost Center {} doesn't belong to Company {}	erpnext	kept	R09
+Cost Center: {0} does not exist	erpnext	kept	R09
+Cost Centers	erpnext	kept	R09
+Cost Per Unit	erpnext	kept	R09
+Cost and Freight	erpnext	kept	R09
+Cost of Goods Sold	erpnext	kept	R09
+Cost of Goods Sold Account in Items Table	erpnext	kept	R09
+Cost of various activities	erpnext	kept	R09
+Cost to Company (CTC)	erpnext	kept	R09
+Cost, Insurance and Freight	erpnext	kept	R09
+Costing Details	erpnext	kept	R09
+Costing Rate	erpnext	kept	R09
+Could Not Delete Demo Data	erpnext	kept	R09
+Could not auto create Customer due to the following missing mandatory field(s):	erpnext	kept	R09
+Could not detect the Company for updating Bank Accounts	erpnext	kept	R09
+Could not download the statement. Please try again.	erpnext	override	R01
+Could not find path for 	erpnext	kept	R09
+Coulomb	erpnext	kept	R09
+Country Code in File does not match with country code set up in the system	erpnext	kept	R09
+Country of Origin	erpnext	kept	R09
+Coupon Description	erpnext	kept	R09
+Coupon Name	erpnext	kept	R09
+Create Chart Of Accounts Based On	erpnext	kept	R09
+Create Employee	erpnext	kept	R09
+Create Employee records.	erpnext	kept	R09
+Create Grouped Asset	erpnext	kept	R09
+Create Invoices	erpnext	kept	R09
+Create Job Card	erpnext	kept	R09
+Create Lead	erpnext	kept	R09
+Create Ledger Entries for Change Amount	erpnext	kept	R09
+Create Link	erpnext	kept	R09
+Create Missing Party	erpnext	kept	R09
+Create Multi-level BOM	erpnext	kept	R09
+Create New Customer	erpnext	kept	R09
+Create New Lead	erpnext	kept	R09
+Create Pick List	erpnext	kept	R09
+Create Print Format	erpnext	kept	R09
+Create Purchase Order	erpnext	kept	R09
+Create Sales Invoice	erpnext	kept	R09
+Create Tax Template	erpnext	kept	R09
+Create User Permission	erpnext	kept	R09
+Create Users	erpnext	kept	R09
+Create Variant	erpnext	kept	R09
+Create Variants	erpnext	kept	R09
+Create Workstation	erpnext	kept	R09
+Create an incoming stock transaction for the Item.	erpnext	kept	R09
+Create {0} {1} ?	erpnext	kept	R09
+Creating Subcontracting Order ...	erpnext	kept	R09
+"Creation of {0} failed.\n\t\t\t\tCheck <b><a href=""/app/bulk-transaction-log"">Bulk Transaction Log</a></b>"	erpnext	override	R26
+"Creation of {0} partially successful.\n\t\t\t\tCheck <b><a href=""/app/bulk-transaction-log"">Bulk Transaction Log</a></b>"	erpnext	override	R26
+Credit Account	erpnext	kept	R09
+Credit Amount	erpnext	kept	R09
+Credit Amount in Account Currency	erpnext	kept	R09
+Credit Card	erpnext	kept	R09
+Credit Limit	erpnext	kept	R09
+Credit Limit Crossed	erpnext	kept	R09
+Credit Limit:	erpnext	kept	R09
+Credit Limits	erpnext	kept	R09
+Credit Months	erpnext	kept	R09
+Credit limit has been crossed for customer {0} ({1}/{2})	erpnext	kept	R09
+Credit limit is already defined for the Company {0}	erpnext	kept	R09
+Credit limit reached for customer {0}	erpnext	kept	R09
+Creditor Turnover Ratio	erpnext	kept	R09
+Criteria Name	erpnext	kept	R09
+Criteria Setup	erpnext	kept	R09
+Criteria weights must add up to 100%	erpnext	kept	R09
+Cron Interval should be between 1 and 59 Min	erpnext	kept	R09
+Cubic Centimeter	erpnext	kept	R09
+Cubic Decimeter	erpnext	kept	R09
+Cubic Foot	erpnext	kept	R09
+Cubic Inch	erpnext	kept	R09
+Cubic Meter	erpnext	kept	R09
+Cubic Millimeter	erpnext	kept	R09
+Cubic Yard	erpnext	kept	R09
+Cup	erpnext	kept	R09
+Currency Exchange Settings	erpnext	kept	R09
+Currency Exchange Settings Details	erpnext	kept	R09
+Currency Exchange Settings Result	erpnext	kept	R09
+Currency Exchange must be applicable for Buying or for Selling.	erpnext	kept	R09
+Currency and Price List	erpnext	kept	R09
+Currency of the Closing Account must be {0}	erpnext	kept	R09
+Currency should be same as Price List Currency: {0}	erpnext	kept	R09
+Current Address	erpnext	kept	R09
+Current Address Is	erpnext	kept	R09
+Current Amount	erpnext	kept	R09
+Current Asset	erpnext	kept	R09
+Current Assets	erpnext	kept	R09
+Current BOM	erpnext	kept	R09
+Current Exchange Rate	erpnext	kept	R09
+Current Level	erpnext	kept	R09
+Current Node	erpnext	kept	R09
+Current Qty	erpnext	kept	R09
+Current Serial No	erpnext	kept	R09
+Current State	erpnext	kept	R09
+Current Status	erpnext	kept	R09
+Curves	erpnext	kept	R09
+Custody	erpnext	kept	R09
+Custom API	erpnext	kept	R09
+Custom Remarks	erpnext	kept	R09
+Customer Address	erpnext	kept	R09
+Customer Code	erpnext	kept	R09
+Customer Contact	erpnext	kept	R09
+Customer Credit Limit	erpnext	kept	R09
+Customer Currency	erpnext	kept	R09
+Customer Details	erpnext	kept	R09
+Customer Feedback	erpnext	kept	R09
+Customer Group Item	erpnext	kept	R09
+Customer Number	erpnext	kept	R09
+Customer Number At Supplier	erpnext	kept	R09
+Customer Numbers	erpnext	kept	R09
+Customer Portal Users	erpnext	kept	R09
+Customer Primary Address	erpnext	kept	R09
+Customer Primary Contact	erpnext	kept	R09
+Customer Service	erpnext	kept	R09
+Customer Service Representative	erpnext	kept	R09
+Customer Type	erpnext	kept	R09
+Customer Warehouse (Optional)	erpnext	kept	R09
+Customer Warehouse {0} does not belong to Customer {1}.	erpnext	kept	R09
+Customer contact updated successfully.	erpnext	kept	R09
+Customer is required	erpnext	kept	R09
+Customer isn't enrolled in any Loyalty Program	erpnext	kept	R09
+Customer's Vendor	erpnext	kept	R09
+Customers	erpnext	kept	R09
+Customs Tariff Number	erpnext	kept	R09
+Cycle/Second	erpnext	kept	R09
+D - E	erpnext	kept	R09
+DFS	erpnext	kept	R09
+Daily Project Summary for {0}	erpnext	kept	R09
+Daily Time to send	erpnext	kept	R09
+Daily Yield (%)	erpnext	kept	R09
+Data Import Configuration	erpnext	kept	R09
+Data Import and Settings	erpnext	kept	R09
+Data Source	erpnext	kept	R09
+Date 	erpnext	kept	R09
+Date Of Retirement	erpnext	kept	R09
+Date Settings	erpnext	kept	R09
+Date must be between {0} and {1}	erpnext	kept	R09
+Date of Birth cannot be greater than today.	erpnext	kept	R09
+Date of Commencement	erpnext	kept	R09
+Date of Establishment	erpnext	kept	R09
+Date of Issue	erpnext	kept	R09
+Date of Transaction	erpnext	kept	R09
+Date: {0} to {1}	erpnext	kept	R09
+Dates	erpnext	kept	R09
+Day(s) after invoice date	erpnext	kept	R09
+Day(s) after the end of the invoice month	erpnext	kept	R09
+Days Until Due	erpnext	kept	R09
+DeLinked	erpnext	kept	R09
+Deal Owner	erpnext	kept	R09
+Dealer	erpnext	kept	R09
+Dear System Manager,	erpnext	kept	R09
+Debit (Transaction)	erpnext	kept	R09
+Debit ({0})	erpnext	kept	R09
+Debit Account	erpnext	kept	R09
+Debit Amount	erpnext	kept	R09
+Debit Amount in Account Currency	erpnext	kept	R09
+Debit Amount in Reporting Currency	erpnext	kept	R09
+Debit Note	erpnext	kept	R09
+Debit Note Amount	erpnext	kept	R09
+Debit-Credit mismatch	erpnext	kept	R09
+Debt Equity Ratio	erpnext	kept	R09
+Debtor Turnover Ratio	erpnext	kept	R09
+Debtor/Creditor	erpnext	kept	R09
+Debtors	erpnext	kept	R09
+Decigram/Litre	erpnext	kept	R09
+Decimeter	erpnext	kept	R09
+Deductions or Loss	erpnext	kept	R09
+Default Accounts	erpnext	kept	R09
+Default Billing Rate	erpnext	kept	R09
+Default Buying Terms	erpnext	kept	R09
+Default Cash Account	erpnext	kept	R09
+Default Common Code	erpnext	kept	R09
+Default Company	erpnext	kept	R09
+Default Cost Center	erpnext	kept	R09
+Default Cost of Goods Sold Account	erpnext	kept	R09
+Default Costing Rate	erpnext	kept	R09
+Default Currency	erpnext	kept	R09
+Default Deferred Revenue Account	erpnext	kept	R09
+Default Dimension	erpnext	kept	R09
+Default Distance Unit	erpnext	kept	R09
+Default Inventory Account	erpnext	kept	R09
+Default Manufacturer Part No	erpnext	kept	R09
+Default Operating Cost Account	erpnext	kept	R09
+Default Payment Discount Account	erpnext	kept	R09
+Default Priority	erpnext	kept	R09
+Default Provisional Account	erpnext	kept	R09
+Default Sales Contact	erpnext	kept	R09
+Default Sales Unit of Measure	erpnext	kept	R09
+Default Scrap Warehouse	erpnext	kept	R09
+Default Selling Terms	erpnext	kept	R09
+Default Service Level Agreement	erpnext	kept	R09
+Default Service Level Agreement for {0} already exists.	erpnext	kept	R09
+Default Source Warehouse	erpnext	kept	R09
+Default Supplier Group	erpnext	kept	R09
+Default Supplier for {0} not found	erpnext	override	R26
+Default Target Warehouse {0} must be a Transit warehouse when Add to Transit is enabled.	erpnext	override	R26
+Default Unit of Measure	erpnext	kept	R09
+Default Workstation	erpnext	kept	R09
+Default: 10 mins	erpnext	kept	R09
+Defense	erpnext	kept	R09
+Deferred Accounting	erpnext	kept	R09
+Deferred Accounting Settings	erpnext	kept	R09
+Deferred Expense	erpnext	kept	R09
+Deferred Revenue	erpnext	kept	R09
+Deferred Revenue Account	erpnext	kept	R09
+Deferred Revenue and Expense	erpnext	kept	R09
+Deferred accounting failed for some invoices:	erpnext	kept	R09
+Define Project type.	erpnext	kept	R09
+Dekagram/Litre	erpnext	kept	R09
+Delay (in Days)	erpnext	kept	R09
+Delay between Delivery Stops	erpnext	kept	R09
+Delay in payment (Days)	erpnext	kept	R09
+Delayed Days	erpnext	kept	R09
+Delete Leads and Addresses	erpnext	kept	R09
+Deletion in Progress!	erpnext	override	R03
+Deletion is not permitted for country {0}	erpnext	kept	R09
+Delimiter options	erpnext	kept	R09
+Delivered Amount	erpnext	kept	R09
+Delivery	erpnext	kept	R09
+Delivery Date	erpnext	kept	R09
+Delivery Details	erpnext	kept	R09
+Delivery Manager	erpnext	kept	R09
+Delivery Settings	erpnext	kept	R09
+Delivery To	erpnext	kept	R09
+Delivery Trip	erpnext	kept	R09
+Delivery User	erpnext	kept	R09
+Demand Qty	erpnext	kept	R09
+Demand vs Supply	erpnext	kept	R09
+Demo Bank Account	erpnext	kept	R09
+Demo Company	erpnext	kept	R09
+Department Stores	erpnext	kept	R09
+Departure Time	erpnext	kept	R09
+Dependent Task	erpnext	kept	R09
+Dependent Task {0} is not a Template Task	erpnext	kept	R09
+Dependent Tasks	erpnext	kept	R09
+Depends on Tasks	erpnext	kept	R09
+Deposit	erpnext	kept	R09
+Depreciation Amount	erpnext	kept	R09
+Depreciation Amount during the period	erpnext	kept	R09
+Depreciation Date	erpnext	kept	R09
+Depreciation Eliminated due to disposal of assets	erpnext	kept	R09
+Depreciation Entry Posting Status	erpnext	kept	R09
+Depreciation Entry against {0} worth {1}	erpnext	kept	R09
+Depreciation Method	erpnext	kept	R09
+Depreciation Options	erpnext	kept	R09
+Depreciation Posting Date	erpnext	kept	R09
+Depreciation Posting Date cannot be before Available-for-use Date	erpnext	kept	R09
+Depreciation Row {0}: Depreciation Posting Date cannot be before Available-for-use Date	erpnext	kept	R09
+Depreciation Row {0}: Expected value after useful life must be greater than or equal to {1}	erpnext	kept	R09
+Depreciation Schedule View	erpnext	kept	R09
+Description of Content	erpnext	kept	R09
+Designer	erpnext	kept	R09
+Detailed Reason	erpnext	kept	R09
+Diesel	erpnext	kept	R09
+Difference	erpnext	kept	R09
+Difference Account	erpnext	kept	R09
+Difference In	erpnext	kept	R09
+Difference Qty	erpnext	kept	R09
+Difference Value	erpnext	kept	R09
+Dimension Details	erpnext	kept	R09
+Dimension Name	erpnext	kept	R09
+Dimension-wise Accounts Balance Report	erpnext	kept	R09
+Dimensions	erpnext	kept	R09
+Direct Income	erpnext	kept	R09
+Disable In Words	erpnext	kept	R09
+Disable Transaction Threshold	erpnext	kept	R09
+Disable template to prevent use in reports	erpnext	kept	R09
+Disabled Account Selected	erpnext	kept	R09
+Disabled Warehouse {0} cannot be used for this transaction.	erpnext	kept	R09
+Disables auto-fetching of existing quantity	erpnext	kept	R09
+Disassembled Qty	erpnext	kept	R09
+Disburse Loan	erpnext	kept	R09
+Discount (%)	erpnext	kept	R09
+Discount (%) on Price List Rate with Margin	erpnext	kept	R09
+Discount Account	erpnext	kept	R09
+Discount Amount in Transaction	erpnext	kept	R09
+Discount Date	erpnext	kept	R09
+Discount Percentage	erpnext	kept	R09
+Discount Percentage can be applied either against a Price List or for all Price List.	erpnext	kept	R09
+Discount Percentage in Transaction	erpnext	kept	R09
+Discount Settings	erpnext	kept	R09
+Discount Type	erpnext	kept	R09
+Discount Validity	erpnext	kept	R09
+Discount Validity Based On	erpnext	kept	R09
+Discount and Margin	erpnext	kept	R09
+Discount cannot be greater than 100%	erpnext	kept	R09
+Discount cannot be greater than 100%.	erpnext	kept	R09
+Discount must be less than 100	erpnext	kept	R09
+Discount on Price List Rate (%)	erpnext	kept	R09
+Discounted Amount	erpnext	kept	R09
+Discounts	erpnext	kept	R09
+Discretionary Reason	erpnext	kept	R09
+Dispatch Address	erpnext	kept	R09
+Dispatch Address Name	erpnext	kept	R09
+Dispatch Information	erpnext	kept	R09
+Dispatch Notification	erpnext	kept	R09
+Dispatch Notification Attachment	erpnext	kept	R09
+Dispatch Notification Template	erpnext	kept	R09
+Dispatch Settings	erpnext	kept	R09
+Display Name	erpnext	kept	R09
+Distance from left edge	erpnext	kept	R09
+Distance from top edge	erpnext	kept	R09
+Distribute Additional Costs Based On 	erpnext	kept	R09
+Distribute Manually	erpnext	kept	R09
+Distributed Discount Amount	erpnext	kept	R09
+Distributor	erpnext	kept	R09
+Divorced	erpnext	kept	R09
+Do Not Contact	erpnext	kept	R09
+Do not update variants on save	erpnext	kept	R09
+Do you still want to enable immutable ledger?	erpnext	kept	R09
+Do you want to change valuation method?	erpnext	kept	R09
+Do you want to notify all the customers by email?	erpnext	kept	R09
+DocType {0} does not exist	erpnext	kept	R09
+Docs Search	erpnext	kept	R09
+Documents Processed on each trigger. Queue Size should be between 5 and 100	erpnext	kept	R09
+Don't Create Loyalty Points	erpnext	kept	R09
+Doors	erpnext	kept	R09
+Download PDF for Supplier	erpnext	kept	R09
+Download Required Materials	erpnext	kept	R09
+Downtime Reason	erpnext	kept	R09
+Dram	erpnext	kept	R09
+Driver	erpnext	kept	R09
+Driver Address	erpnext	kept	R09
+Driver Name	erpnext	kept	R09
+Driver licence class	erpnext	kept	R09
+Driving License Categories	erpnext	kept	R09
+Due Date cannot be after {0}	erpnext	kept	R09
+Due Date cannot be before {0}	erpnext	kept	R09
+Dunning Amount	erpnext	kept	R09
+Dunning Amount (Company Currency)	erpnext	kept	R09
+Dunning Fee	erpnext	kept	R09
+Duplicate Customer Group	erpnext	kept	R09
+Duplicate Entry. Please check Authorization Rule {0}	erpnext	kept	R09
+Duplicate Operating Component {0} found in Operating Components	erpnext	kept	R09
+Duplicate Project with Tasks	erpnext	kept	R09
+Duplicate Sales Invoices found	erpnext	kept	R09
+Duplicate Serial Number Error	erpnext	kept	R09
+Duplicate customer group found in the customer group table	erpnext	kept	R09
+Duplicate project has been created	erpnext	kept	R09
+Duplicate row {0} with same {1}	erpnext	kept	R09
+Duties and Taxes	erpnext	kept	R09
+Dyne	erpnext	kept	R09
+EAN	erpnext	kept	R09
+EAN-13	erpnext	kept	R09
+EAN-8	erpnext	kept	R09
+ERPNext User ID	erpnext	kept	R09
+Earliest Age	erpnext	kept	R09
+Earnest Money	erpnext	kept	R09
+Edit BOM	erpnext	kept	R09
+Edit Cart	erpnext	kept	R09
+Education	erpnext	kept	R09
+Educational Qualification	erpnext	kept	R09
+Either 'Selling' or 'Buying' must be selected	erpnext	kept	R09
+Either target qty or target amount is mandatory	erpnext	kept	R09
+Electric	erpnext	kept	R09
+Electrical	erpnext	kept	R09
+Electricity	erpnext	kept	R09
+Electricity down	erpnext	kept	R09
+Electronic Equipment	erpnext	kept	R09
+Electronics	erpnext	kept	R09
+Ells (UK)	erpnext	kept	R09
+Email Address must be unique, it is already used in {0}	erpnext	kept	R09
+Email Campaign	erpnext	kept	R09
+Email Details	erpnext	kept	R09
+Email Digest Recipient	erpnext	kept	R09
+Email Digest: {0}	erpnext	kept	R09
+Email Sent to Supplier {0}	erpnext	kept	R09
+Email or Phone/Mobile of the Contact are mandatory to continue.	erpnext	kept	R09
+Email sent successfully.	erpnext	kept	R09
+Email sent to {0}	erpnext	kept	R09
+Emergency Phone	erpnext	kept	R09
+Employee Advances	erpnext	kept	R09
+Employee Benefits Obligation	erpnext	kept	R09
+Employee Detail	erpnext	kept	R09
+Employee Education	erpnext	kept	R09
+Employee External Work History	erpnext	kept	R09
+Employee Group	erpnext	kept	R09
+Employee Group Table	erpnext	kept	R09
+Employee Internal Work History	erpnext	kept	R09
+Employee User Id	erpnext	kept	R09
+Employee {0} does not belong to the company {1}	erpnext	kept	R09
+Employee {0} is currently working on another workstation. Please assign another employee.	erpnext	kept	R09
+Empty	erpnext	kept	R09
+Ems(Pica)	erpnext	kept	R09
+Enable Allow Partial Reservation in the Stock Settings to reserve partial stock.	erpnext	kept	R09
+Enable Auto Email	erpnext	kept	R09
+Enable Auto Re-Order	erpnext	kept	R09
+Enable Common Party Accounting	erpnext	kept	R09
+Enable European Access	erpnext	kept	R09
+Enable Fuzzy Matching	erpnext	kept	R09
+Enable Immutable Ledger	erpnext	kept	R09
+Enable Item Search Index	erpnext	override	R15
+Enable Item-wise Inventory Account	erpnext	kept	R09
+Enable Perpetual Inventory	erpnext	kept	R09
+Enable to apply SLA on every {0}	erpnext	kept	R09
+Enabling this checkbox will force each Job Card Time Log to have From Time and To Time	erpnext	kept	R09
+Enabling this will allow creation of multi-currency invoices against single party account in company currency	erpnext	kept	R09
+Enabling this will change the way how cancelled transactions are handled.	erpnext	kept	R09
+End Date cannot be before Start Date.	erpnext	kept	R09
+End date cannot be before start date	erpnext	kept	R09
+End date of current invoice's period	erpnext	kept	R09
+Energy	erpnext	kept	R09
+Enforce Time Logs	erpnext	kept	R09
+Engineer	erpnext	kept	R09
+Enter API key in Google Settings.	erpnext	kept	R09
+Enter Company Details	erpnext	kept	R09
+Enter First and Last name of Employee, based on Which Full Name will be updated. IN transactions, it will be Full Name which will be fetched.	erpnext	kept	R09
+Enter Manually	erpnext	kept	R09
+Enter Serial Nos	erpnext	kept	R09
+Enter Value	erpnext	kept	R09
+Enter Visit Details	erpnext	kept	R09
+Enter a name for Routing.	erpnext	kept	R09
+Enter a name for the Operation, for example, Cutting.	erpnext	kept	R09
+Enter a name for this Holiday List.	erpnext	kept	R09
+Enter an Item Code, the name will be auto-filled the same as Item Code on clicking inside the Item Name field.	erpnext	kept	R09
+Enter customer's email	erpnext	kept	R09
+Enter customer's phone number	erpnext	kept	R09
+Enter discount percentage.	erpnext	kept	R09
+Enter each serial no in a new line	erpnext	kept	R09
+Enter the Operation, the table will fetch the Operation details like Hourly Rate, Workstation automatically.\n\n After that, set the Operation Time in minutes and the table will calculate the Operation Costs based on the Hourly Rate and Operation Time.	erpnext	kept	R09
+Enter the opening stock units.	erpnext	kept	R09
+Enter {0} amount.	erpnext	kept	R09
+Entertainment & Leisure	erpnext	kept	R09
+Entity	erpnext	kept	R09
+Erg	erpnext	kept	R09
+Error Occurred	erpnext	kept	R09
+Error evaluating the criteria formula	erpnext	kept	R09
+Error while posting depreciation entries	erpnext	kept	R09
+Error while processing deferred accounting for {0}	erpnext	kept	R09
+Errors Notification	erpnext	kept	R09
+Estimated Arrival	erpnext	kept	R09
+Estimated Cost	erpnext	kept	R09
+Estimated Time and Cost	erpnext	kept	R09
+Evaluation Period	erpnext	kept	R09
+Even if there are multiple Pricing Rules with highest priority, then following internal priorities are applied:	erpnext	kept	R09
+Ex Works	erpnext	kept	R09
+Example URL	erpnext	kept	R09
+Example of a linked document: {0}	erpnext	kept	R09
+Example: Serial No {0} reserved in {1}.	erpnext	kept	R09
+Excess Materials Consumed	erpnext	kept	R09
+Exchange Gain / Loss	erpnext	kept	R09
+Exchange Gain Or Loss	erpnext	kept	R09
+Exchange Rate Revaluation	erpnext	kept	R09
+Exchange Rate Revaluation Account	erpnext	kept	R09
+Exchange Rate Revaluation Settings	erpnext	kept	R09
+Exchange Rate must be same as {0} {1} ({2})	erpnext	kept	R09
+Excluded DocTypes	erpnext	kept	R09
+Excluded Fee	erpnext	kept	R09
+Execution	erpnext	kept	R09
+Executive Assistant	erpnext	kept	R09
+Executive Search	erpnext	kept	R09
+Exempted Role	erpnext	kept	R09
+Exhibition	erpnext	kept	R09
+Existing Customer	erpnext	kept	R09
+Expected Amount	erpnext	kept	R09
+Expected Closing Date	erpnext	kept	R09
+Expected Delivery Date	erpnext	kept	R09
+Expected Hrs	erpnext	kept	R09
+Expected Time (in hours)	erpnext	kept	R09
+Expected Time Required (In Mins)	erpnext	kept	R09
+Expense Account Missing	erpnext	kept	R09
+Expires today or already expired	erpnext	kept	R09
+Expiry Date	erpnext	kept	R09
+Expiry Date Mandatory	erpnext	kept	R09
+Expiry Duration (in days)	erpnext	kept	R09
+Export E-Invoices	erpnext	kept	R09
+Extended Bank Statement	erpnext	kept	R09
+External Work History	erpnext	kept	R09
+Extra Consumed Qty	erpnext	kept	R09
+Extra Large	erpnext	kept	R09
+Extra Material Transfer	erpnext	kept	R09
+Extra Small	erpnext	kept	R09
+Fahrenheit	erpnext	kept	R09
+Failed Entries	erpnext	kept	R09
+Failed to erase demo data, please delete the demo company manually.	erpnext	kept	R09
+Failed to install presets	erpnext	kept	R09
+Failed to parse MT940 format. Error: {0}	erpnext	kept	R09
+Failed to setup company	erpnext	kept	R09
+Failed to setup defaults	erpnext	kept	R09
+Failed to setup defaults for country {0}. Please contact support.	erpnext	kept	R09
+Failure: {0}	erpnext	kept	R09
+Family Background	erpnext	kept	R09
+Faraday	erpnext	kept	R09
+Fathom	erpnext	kept	R09
+Fees	erpnext	kept	R09
+Fetch Based On	erpnext	kept	R09
+Fetch Customers	erpnext	kept	R09
+Fetch Subscription Updates	erpnext	kept	R09
+Fetched only {0} available serial numbers.	erpnext	kept	R09
+Fetching exchange rates ...	erpnext	kept	R09
+Fetching...	erpnext	override	R03
+Fields will be copied over only at time of creation.	erpnext	kept	R09
+Filter Based On	erpnext	kept	R09
+Filter by Reference Date	erpnext	kept	R09
+Filter by invoice status	erpnext	kept	R09
+Filter on Invoice	erpnext	kept	R09
+Filter on Payment	erpnext	kept	R09
+Final BOM	erpnext	kept	R09
+Final Product	erpnext	kept	R09
+Financial Ratios	erpnext	kept	R09
+Financial Report Row	erpnext	kept	R09
+Financial Reports	erpnext	kept	R09
+Financial Services	erpnext	kept	R09
+Financial Year Begins On	erpnext	kept	R09
+Finish	erpnext	kept	R09
+Finished Good Batch No	erpnext	override	R08
+Finished Good Serial / Batch No	erpnext	override	R08
+Finished Good Serial No	erpnext	override	R08
+Finished Item {0} does not match with Work Order {1}	erpnext	kept	R09
+Finished good mapping can't be changed for a cancelled entry	erpnext	override	R16
+Finished good mapping is only allowed for Manufacture and Repack entries	erpnext	override	R01
+First Delivery Date	erpnext	kept	R09
+First Email	erpnext	kept	R09
+First Response SLA Failed by {}	erpnext	kept	R09
+First Response Time	erpnext	kept	R09
+First Response Time for Opportunity	erpnext	kept	R09
+Fiscal Year	erpnext	kept	R09
+Fiscal Year Company	erpnext	kept	R09
+Fiscal Year End Date should be one year after Fiscal Year Start Date	erpnext	kept	R09
+Fiscal Year {0} does not exist	erpnext	kept	R09
+Fiscal Year {0} is not available for Company {1}.	erpnext	kept	R09
+Fiscal Year {0} is required	erpnext	kept	R09
+Fixed	erpnext	kept	R09
+Fixed Asset	erpnext	kept	R09
+Fixed Asset Account	erpnext	kept	R09
+Fixed Asset Register	erpnext	kept	R09
+Fixed Asset Turnover Ratio	erpnext	kept	R09
+Fixed Deposit Number	erpnext	kept	R09
+Fixed Outgoing Email Account	erpnext	kept	R09
+Fluid Ounce (UK)	erpnext	kept	R09
+Fluid Ounce (US)	erpnext	kept	R09
+Following fields are mandatory to create address:	erpnext	kept	R09
+Food, Beverage & Tobacco	erpnext	kept	R09
+Foot	erpnext	kept	R09
+Foot/Minute	erpnext	kept	R09
+Foot/Second	erpnext	kept	R09
+For	erpnext	kept	R09
+For Buying	erpnext	kept	R09
+For Company	erpnext	kept	R09
+For Production	erpnext	kept	R09
+For Raw Materials	erpnext	kept	R09
+For Selling	erpnext	kept	R09
+For Supplier	erpnext	kept	R09
+For Work Order	erpnext	kept	R09
+For projected and forecast quantities, the system will consider all child warehouses under the selected parent warehouse.	erpnext	kept	R09
+For reference	erpnext	kept	R09
+For row {0}: Enter Planned Qty	erpnext	kept	R09
+For the {0}, no stock is available for the return in the warehouse {1}.	erpnext	kept	R09
+For the {0}, the quantity is required to make the return entry	erpnext	kept	R09
+Forecast	erpnext	kept	R09
+Forecast Demand	erpnext	kept	R09
+Foreign Currency Translation Reserve	erpnext	kept	R09
+Foreign Trade Details	erpnext	kept	R09
+Formula Based Criteria	erpnext	kept	R09
+Forum Activity	erpnext	kept	R09
+Forum Posts	erpnext	kept	R09
+Forum URL	erpnext	kept	R09
+From Company	erpnext	kept	R09
+From Currency	erpnext	kept	R09
+From Currency and To Currency cannot be same	erpnext	kept	R09
+From Date cannot be after As On Date	erpnext	override	R01
+From Date is mandatory	erpnext	kept	R09
+From Date: {0} cannot be greater than To date: {1}	erpnext	kept	R09
+From Datetime	erpnext	kept	R09
+From Delivery Date	erpnext	kept	R09
+From Doctype	erpnext	kept	R09
+From Due Date	erpnext	kept	R09
+From External Ecomm Platform	erpnext	kept	R09
+From Fiscal Year	erpnext	kept	R09
+From Invoice Date	erpnext	kept	R09
+From No	erpnext	kept	R09
+From Payment Date	erpnext	kept	R09
+From Reference Date	erpnext	kept	R09
+From Shareholder	erpnext	kept	R09
+From Template	erpnext	kept	R09
+From Time	erpnext	kept	R09
+From and To dates are required	erpnext	kept	R09
+Frozen	erpnext	kept	R09
+Fuel Type	erpnext	kept	R09
+Fuel UOM	erpnext	kept	R09
+Fully Paid	erpnext	kept	R09
+Furlong	erpnext	kept	R09
+Furniture and Fixtures	erpnext	kept	R09
+Future Payment Amount	erpnext	kept	R09
+Future Payments	erpnext	kept	R09
+Future date is not allowed	erpnext	kept	R09
+GS1	erpnext	kept	R09
+GTIN	erpnext	kept	R09
+GTIN-14	erpnext	kept	R09
+Gain/Loss	erpnext	kept	R09
+Gain/Loss Account on Asset Disposal	erpnext	kept	R09
+Gain/Loss accumulated in foreign currency account. Accounts with '0' balance in either Base or Account currency	erpnext	kept	R09
+Gain/Loss already booked	erpnext	kept	R09
+Gain/Loss from Revaluation	erpnext	kept	R09
+Gain/Loss on Asset Disposal	erpnext	kept	R09
+Gallon (UK)	erpnext	kept	R09
+Gallon Dry (US)	erpnext	kept	R09
+Gallon Liquid (US)	erpnext	kept	R09
+Gamma	erpnext	kept	R09
+Gantt Chart	erpnext	kept	R09
+Gantt chart of all tasks.	erpnext	kept	R09
+Gauss	erpnext	kept	R09
+General Ledger	erpnext	kept	R09
+General Settings	erpnext	kept	R09
+Generate Demand	erpnext	kept	R09
+Generate Demo Data for Exploration	erpnext	kept	R09
+Generate E-Invoice	erpnext	kept	R09
+Generate Invoice At	erpnext	kept	R09
+Generate Schedule	erpnext	kept	R09
+Generated	erpnext	kept	R09
+Get Allocations	erpnext	kept	R09
+Get Current Stock	erpnext	kept	R09
+Get Invoices	erpnext	kept	R09
+Get Supplier Group Details	erpnext	kept	R09
+Get Suppliers	erpnext	kept	R09
+Get stops from	erpnext	kept	R09
+Goals	erpnext	kept	R09
+Goods	erpnext	kept	R09
+Government	erpnext	kept	R09
+Grace Period	erpnext	kept	R09
+Grain/Gallon (UK)	erpnext	kept	R09
+Greater Than Amount	erpnext	kept	R09
+Greeting Message	erpnext	kept	R09
+Greeting Title	erpnext	kept	R09
+Grocery	erpnext	kept	R09
+Gross Margin	erpnext	kept	R09
+Gross Total	erpnext	kept	R09
+Gross Weight	erpnext	kept	R09
+Group Name	erpnext	kept	R09
+Group Node	erpnext	kept	R09
+Group Warehouses cannot be used in transactions. Please change the value of {0}	erpnext	kept	R09
+Group by Item	erpnext	kept	R09
+Group by Material Request	erpnext	kept	R09
+Group by Purchase Order	erpnext	kept	R09
+Group the report by Sales Order or by Item, not both.	erpnext	override	R01
+Groups	erpnext	kept	R09
+Growth View	erpnext	kept	R09
+HR Manager	erpnext	kept	R09
+HR User	erpnext	kept	R09
+Half-Yearly	erpnext	kept	R09
+Handle Employee Advances	erpnext	kept	R09
+Hardware	erpnext	kept	R09
+Has Operating Cost	erpnext	kept	R09
+Has Print Format	erpnext	kept	R09
+Has Priority	erpnext	kept	R09
+Has Serial No	erpnext	kept	R09
+Has Subcontracted	erpnext	kept	R09
+Has Variants	erpnext	kept	R09
+Head of Marketing and Sales	erpnext	kept	R09
+Health Care	erpnext	kept	R09
+Health Details	erpnext	kept	R09
+Hectare	erpnext	kept	R09
+Hectogram/Litre	erpnext	kept	R09
+Hectometer	erpnext	kept	R09
+Help Section	erpnext	kept	R09
+Help Text	erpnext	kept	R09
+Helps you distribute the Budget/Target across months if you have seasonality in your business.	erpnext	kept	R09
+Here are the options to proceed:	erpnext	kept	R09
+Here, you can select a senior of this Employee. Based on this, Organization Chart will be populated.	erpnext	kept	R09
+Here, your weekly offs are pre-populated based on the previous selections. You can add more rows to also add public and national holidays individually.	erpnext	kept	R09
+Hertz	erpnext	kept	R09
+Hi,	erpnext	kept	R09
+Hide Currency Symbol	erpnext	kept	R09
+Hide Images	erpnext	kept	R09
+Hide Recent Orders	erpnext	kept	R09
+Hide this line if amount is zero	erpnext	override	R03
+Higher the number, higher the priority	erpnext	kept	R09
+Holiday	erpnext	kept	R09
+Holiday Date {0} added multiple times	erpnext	kept	R09
+Holiday List	erpnext	kept	R09
+Holiday List Name	erpnext	kept	R09
+Horsepower	erpnext	kept	R09
+Horsepower-Hours	erpnext	kept	R09
+Hour	erpnext	kept	R09
+Hours Spent	erpnext	kept	R09
+How Pricing Rule is applied?	erpnext	kept	R09
+How to format and present values in the financial report (only if different from column fieldtype)	erpnext	kept	R09
+Hrs	erpnext	kept	R09
+Hundredweight (UK)	erpnext	kept	R09
+IRS 1099	erpnext	kept	R09
+ISBN	erpnext	kept	R09
+ISBN-10	erpnext	kept	R09
+ISBN-13	erpnext	kept	R09
+ISSN	erpnext	kept	R09
+Identifying Decision Makers	erpnext	kept	R09
+If <b>Enabled</b> - Reconciliation happens on the <b>Advance Payment posting date</b><br>\nIf <b>Disabled</b> - Reconciliation happens on oldest of 2 Dates: <b>Invoice Date</b> or the <b>Advance Payment posting date</b><br>\n	erpnext	override	R26
+If Auto Opt In is checked, then the customers will be automatically linked with the concerned Loyalty Program (on save)	erpnext	kept	R09
+If an operation is divided into sub operations, they can be added here.	erpnext	kept	R09
+If checked, we will create demo data for you to explore the system. This demo data can be erased later.	erpnext	kept	R09
+If different than customer address	erpnext	kept	R09
+If disable, 'In Words' field will not be visible in any transaction	erpnext	kept	R09
+If enabled, a print of this document will be attached to each email	erpnext	kept	R09
+If enabled, all files attached to this document will be attached to each email	erpnext	kept	R09
+If enabled, do not update serial / batch values in the stock transactions on creation of auto Serial \n / Batch Bundle. 	erpnext	kept	R09
+"If enabled, formula for <b>Qty to Order</b>: <br>\nRequired Qty (BOM) - <a href=""https://docs.frappe.io/erpnext/user/manual/en/projected-quantity"">Projected Qty</a>. <br> This helps avoid over-ordering."	erpnext	override	R26
+"If enabled, formula for <b>Required Qty</b>: <br>\nRequired Qty (BOM) - <a href=""https://docs.frappe.io/erpnext/user/manual/en/projected-quantity"">Projected Qty</a>. <br> This helps avoid over-ordering."	erpnext	override	R26
+If enabled, the consolidated invoices will have rounded total disabled	erpnext	kept	R09
+If enabled, the system will allow selecting UOMs in sales and purchase transactions only if the conversion rate is set in the item master.	erpnext	kept	R09
+If enabled, the system will allow users to edit the raw materials and their quantities in the Work Order. The system will not reset the quantities as per the BOM, if the user has changed them.	erpnext	kept	R09
+If enabled, the system will use the inventory account set in the Item Master or Item Group or Brand. Otherwise, it will use the inventory account set in the Warehouse.	erpnext	override	R03
+If enabled, this row's values will be displayed on financial charts	erpnext	kept	R09
+If mentioned, the system will allow only the users with this Role to create or modify any stock transaction earlier than the latest stock transaction for a specific item and warehouse. If set as blank, it allows all users to create/edit back-dated transactions.	erpnext	kept	R09
+If selected Pricing Rule is made for 'Rate', it will overwrite Price List. Pricing Rule rate is the final rate, so no further discount should be applied. Hence, in transactions like Sales Order, Purchase Order etc, it will be fetched in 'Rate' field, rather than 'Price List Rate' field.	erpnext	kept	R09
+If set, the system does not use the user's Email or the standard outgoing Email account for sending request for quotations.	erpnext	kept	R09
+If the BOM results in Scrap material, the Scrap Warehouse needs to be selected.	erpnext	kept	R09
+If the reorder check is set at the Group warehouse level, the available quantity becomes the sum of the projected quantities of all its child warehouses.	erpnext	kept	R09
+If the selected BOM has Operations mentioned in it, the system will fetch all Operations from BOM, these values can be changed.	erpnext	kept	R09
+If there is no title column, use the code column for the title.	erpnext	kept	R09
+If two or more Pricing Rules are found based on the above conditions, Priority is applied. Priority is a number between 0 to 20 while default value is zero (blank). Higher number means it will take precedence if there are multiple Pricing Rules with same conditions.	erpnext	kept	R09
+If unlimited expiry for the Loyalty Points, keep the Expiry Duration empty or 0.	erpnext	kept	R09
+If yes, then this warehouse will be used to store rejected materials	erpnext	kept	R09
+If you are maintaining stock of this Item in your Inventory, ERPNext will make a stock ledger entry for each transaction of this item.	erpnext	kept	R09
+If you need to reconcile particular transactions against each other, then please select accordingly. If not, all the transactions will be allocated in FIFO order.	erpnext	kept	R09
+If you still want to proceed, please enable {0}.	erpnext	kept	R09
+If you want to run operations in parallel, keep the same sequence ID for them.	erpnext	kept	R09
+Ignore	erpnext	kept	R09
+Ignore Closing Balance	erpnext	kept	R09
+Ignore Employee Time Overlap	erpnext	kept	R09
+Ignore Empty Stock	erpnext	kept	R09
+Ignore Pricing Rule is enabled. Cannot apply coupon code.	erpnext	kept	R09
+Ignore User Time Overlap	erpnext	kept	R09
+Ignore Workstation Time Overlap	erpnext	kept	R09
+Implementation Partner	erpnext	kept	R09
+Import Chart of Accounts from a csv file	erpnext	kept	R09
+Import Genericode File	erpnext	kept	R09
+Import Invoices	erpnext	kept	R09
+Import Successful	erpnext	kept	R09
+Import Supplier Invoice	erpnext	kept	R09
+Import Using CSV file	erpnext	kept	R09
+Import completed. {0} common codes created.	erpnext	kept	R09
+In House	erpnext	kept	R09
+In Maintenance	erpnext	kept	R09
+In the case of multi-tier program, Customers will be auto assigned to the concerned tier as per their spent	erpnext	kept	R09
+Inactive Status	erpnext	kept	R09
+Incentives	erpnext	kept	R09
+Inch	erpnext	kept	R09
+Inch Pound-Force	erpnext	kept	R09
+Inch/Minute	erpnext	kept	R09
+Inch/Second	erpnext	kept	R09
+Include Account Currency	erpnext	kept	R09
+Include Returned Invoices (Stand-alone)	erpnext	kept	R09
+Included Fee	erpnext	kept	R09
+Included fee is bigger than the withdrawal itself.	erpnext	kept	R09
+Income	erpnext	kept	R09
+Incoming Bills	erpnext	kept	R09
+Incoming Call Handling Schedule	erpnext	kept	R09
+Incoming Call Settings	erpnext	kept	R09
+Incoming Payment	erpnext	kept	R09
+Incoming call from {0}	erpnext	kept	R09
+Incompatible Setting Detected	erpnext	kept	R09
+Incorrect Component Quantity	erpnext	kept	R09
+Incorrect Date	erpnext	kept	R09
+Incorrect Invoice	erpnext	kept	R09
+Incorrect Payment Type	erpnext	kept	R09
+Incorrect Serial No Valuation	erpnext	kept	R09
+Incorrect Serial Number Consumed	erpnext	kept	R09
+Incorrect Type of Transaction	erpnext	kept	R09
+Incorrect Warehouse	erpnext	kept	R09
+Incoterm	erpnext	kept	R09
+Increase In Asset Life (Months)	erpnext	kept	R09
+Increase In Asset Life(Months)	erpnext	kept	R09
+Increment	erpnext	kept	R09
+Indent Level	erpnext	kept	R09
+Indentation level: 0 = Main heading, 1 = Sub-category, 2 = Individual accounts, etc.	erpnext	kept	R09
+Individual	erpnext	kept	R09
+Initial Email Notification Sent	erpnext	kept	R09
+Initialize Summary Table	erpnext	kept	R09
+Installation Status	erpnext	kept	R09
+Installing presets	erpnext	kept	R09
+Instruction	erpnext	kept	R09
+Insufficient Capacity	erpnext	kept	R09
+Insurance	erpnext	kept	R09
+Insurance Details	erpnext	kept	R09
+Insurance End Date	erpnext	kept	R09
+Insurance Start Date	erpnext	kept	R09
+Insurer	erpnext	kept	R09
+Integration Details	erpnext	kept	R09
+Integration ID	erpnext	kept	R09
+Inter Transfer Reference	erpnext	kept	R09
+Interest Expense	erpnext	kept	R09
+Interest and/or dunning fee	erpnext	kept	R09
+Interest on Fixed Deposits	erpnext	kept	R09
+Interested	erpnext	kept	R09
+Internal	erpnext	kept	R09
+Internal Purchase Order	erpnext	kept	R09
+Internal Sale or Delivery Reference missing.	erpnext	kept	R09
+Internal Sales Order	erpnext	kept	R09
+Internal Sales Reference Missing	erpnext	kept	R09
+Internal Transfer Reference Missing	erpnext	kept	R09
+Internal Transfers	erpnext	kept	R09
+Internal Work History	erpnext	kept	R09
+Internal transfers can only be done in company's default currency	erpnext	kept	R09
+Internet Publishing	erpnext	kept	R09
+Interval should be between 1 to 59 MInutes	erpnext	kept	R09
+Invalid Account	erpnext	kept	R09
+Invalid Allocated Amount	erpnext	kept	R09
+Invalid Amount	erpnext	kept	R09
+Invalid Auto Repeat Date	erpnext	kept	R09
+Invalid Company for Inter Company Transaction.	erpnext	kept	R09
+Invalid Cost Center	erpnext	kept	R09
+Invalid Delivery Date	erpnext	kept	R09
+Invalid Discount	erpnext	kept	R09
+Invalid Discount Amount	erpnext	kept	R09
+Invalid Document	erpnext	kept	R09
+Invalid Price List	erpnext	override	R10
+Invalid Sample Size	erpnext	override	R10
+Invalid address	erpnext	override	R10
+Invalid doctype	erpnext	override	R29
+Invalid doctype {0}	erpnext	override	R26
+Invalid document type	erpnext	override	R10
+Invalid filter	erpnext	override	R10
+Invalid line reference format: '{0}'. Must start with a letter and contain only letters, numbers and underscores	erpnext	override	R26
+Invalid name	erpnext	override	R10
+Invalid reference	erpnext	override	R10
+Invalid tax master doctype	erpnext	override	R10
+Invalid type	erpnext	override	R10
+Item Restricted for Party	erpnext	override	R10
+Items must be a list of Item codes	erpnext	override	R01
+Later Stock Closing Entry Exists	erpnext	override	R09
+Link the Serial and Batch Bundles of the raw materials and finished goods first. Serial / batch nos picked on submit can be mapped after the entry is submitted.	erpnext	override	R08
+Map Raw Materials to Finished Goods	erpnext	override	R15
+Mapping must be a dictionary of raw material entries to finished goods	erpnext	override	R08
+Mapping saved	erpnext	override	R02
+Material Request must be submitted to create Work Orders	erpnext	override	R16
+Minimum quantity should be as per Stock UOM\n\n	erpnext	override	R09
+No Matching Vouchers Found	erpnext	override	R10
+Not permitted for {0}	erpnext	override	R26
+Only users with the {0} role can repost GL entries	erpnext	override	R28
+Parent document is required to search child rows	erpnext	override	R10
+Pick the finished good serial / batch each raw material went into. The Serial No and Batch Traceability report uses this mapping.	erpnext	override	R08
+Please contact any of the following users for this transaction.	erpnext	override	R01
+Price List {0} cannot be used on a buying transaction	erpnext	override	R26
+Price List {0} cannot be used on a selling transaction	erpnext	override	R26
+Pricing Rule {0} is disabled	erpnext	override	R26
+Qty for Manufacture must be greater than the process loss of {0} to produce a finished good.	erpnext	override	R26
+Raw material {0} is already mapped and can't be changed after {1} is submitted	erpnext	override	R16
+Raw material {0} is mapped to {1}, which is not a finished good of this entry	erpnext	override	R26
+Repost GL Entries	erpnext	override	R15
+Repost Stock & GL Entries	erpnext	override	R15
+Row #{0}: Company {1} does not match with the company {2} in Serial and Batch Bundle {3}.	erpnext	override	R26
+Row #{0}: Planned Qty must be greater than 0 for Item {1}.	erpnext	override	R26
+Row #{0}: Target Warehouse {1} must be a Transit warehouse when Add to Transit is enabled.	erpnext	override	R26
+Row {0} is not a raw material serial / batch entry of {1}	erpnext	override	R26
+Row {0}: Item {1} is not allowed for {2} {3}.	erpnext	override	R26
+Sample Size must be greater than zero	erpnext	override	R01
+Select whether to get items from a Sales Order or a Material Request. For now select <b>Sales Order</b>.\n A Production Plan can also be created manually where you can select the Items to manufacture.	erpnext	override	R26
+Serial / Batch No Not Activated	erpnext	override	R01
+Serial No Not Reserved	erpnext	override	R01
+The following payment schedule(s) already exist:\n{0}	erpnext	override	R26
+These rows fall in a closed Accounting Period, remove them: {0}	erpnext	override	R18
+To Date must be after {0}, the To Date of the last Stock Closing Entry {1}	erpnext	override	R26
+Total {0} of all items is zero, charges cannot be distributed on it.	erpnext	override	R26
+Total {0} of all items is zero. Set 'Distribute Charges Based On' to {1}.	erpnext	override	R26
+\n\t\t\tThe Batch {0} of an item {1} has negative stock in the warehouse {2}{3}.\n\t\t\tPlease add a stock quantity of {4} to proceed with this entry.\n\t\t\tIf it is not possible to make an adjustment entry, please enable 'Allow Negative Stock for Batch' in the batch {0} or in the Stock Settings to proceed.\n\t\t\tHowever, enabling this setting may lead to negative stock in the system.\n\t\t\tSo please ensure the stock levels are adjusted as soon as possible to maintain the correct valuation rate.	erpnext	kept	R09
+fieldname	erpnext	override	R01
+{0} (Accounting Period {1})	erpnext	override	R18
+{0} cannot be cleared against a bank statement	erpnext	override	R26
+{0} cannot be reconciled against a Bank Transaction	erpnext	override	R26
+{0} does not hold a Serial and Batch Bundle	erpnext	override	R26
+{0} is both a finished good serial no and batch no in {1}, please specify which one	erpnext	override	R26
+{0} is not a child table	erpnext	override	R26
+{0} is not a finished good serial / batch produced by {1}	erpnext	override	R26
+{0} is not a valid reference field for {1}	erpnext	override	R26
+!=	frappe	kept	R09
+"""Team Members"" or ""Management"""	frappe	kept	R09
+#{0}	frappe	kept	R09
+${values.doctype_name} has been added to queue for optimization	frappe	kept	R09
+&copy; Frappe Technologies Pvt. Ltd. and contributors	frappe	kept	R09
+'*' is only allowed in {0} SQL function(s)	frappe	kept	R09
+'In Global Search' is not allowed for field {0} of type {1}	frappe	kept	R09
+'In Global Search' not allowed for type {0} in row {1}	frappe	kept	R09
+'In List View' is not allowed for field {0} of type {1}	frappe	kept	R09
+'In List View' not allowed for type {0} in row {1}	frappe	kept	R09
+'{0}' is not a valid IBAN	frappe	kept	R09
+(Mandatory)	frappe	kept	R09
+** Failed: {0} to {1}: {2}	frappe	kept	R09
++ Add / Remove Fields	frappe	kept	R09
+0 - too guessable: risky password.\n<br>\n1 - very guessable: protection from throttled online attacks. \n<br>\n2 - somewhat guessable: protection from unthrottled online attacks.\n<br>\n3 - safely unguessable: moderate protection from offline slow-hash scenario.\n<br>\n4 - very unguessable: strong protection from offline slow-hash scenario.	frappe	kept	R09
+0 is highest	frappe	kept	R09
+1 = True & 0 = False	frappe	kept	R09
+1 Currency = [?] Fraction\nFor e.g. 1 USD = 100 Cent	frappe	kept	R09
+1 Day	frappe	kept	R09
+1 Google Calendar Event synced.	frappe	kept	R09
+1 Report	frappe	kept	R09
+1 day ago	frappe	kept	R09
+1 hour	frappe	kept	R09
+1 hour ago	frappe	kept	R09
+1 minute ago	frappe	kept	R09
+1 of 2	frappe	kept	R09
+1 record will be exported	frappe	kept	R09
+1 row from {0}	frappe	kept	R09
+1 row to {0}	frappe	kept	R09
+1 second ago	frappe	kept	R09
+1 year ago	frappe	kept	R09
+2 hours ago	frappe	kept	R09
+2 months ago	frappe	kept	R09
+2 weeks ago	frappe	kept	R09
+3 minutes ago	frappe	kept	R09
+5 days ago	frappe	kept	R09
+<	frappe	kept	R09
+<=	frappe	kept	R09
+"<a href=""https://docs.frappe.io/framework/user/en/api/rest#1-token-based-authentication"" target=""_blank"">\n  Click here to learn about token-based authentication\n</a>"	frappe	kept	R09
+"<div class=""alert"">Please don't update it as it can mess up your form. Use the Customize Form View and Custom Fields to set properties!</div>"	frappe	kept	R09
+"<div class=""ql-editor read-mode""><p>Request a file containing your personally identifiable information (PII) that is saved on our system. The file will be in JSON format and is sent to you by email. If you would like to have your PII deleted from our system, please make a <a href=""/request-to-delete-data"" rel=""noopener noreferrer"">request to delete data</a>.</p></div>"	frappe	kept	R09
+"<div class=""ql-editor read-mode""><p>Send a request to delete your account and personally identifiable information (PII) that is stored on our system. You will receive an email to verify your request. Once the request is verified we will take care of deleting your PII. If you just want to check what PII we have stored, you can <a href=""/request-data"" rel=""noopener noreferrer"">request your data</a>.</p></div>"	frappe	kept	R09
+"<div class=""well"">\n    Edit list of Series in the box. Rules:\n    <ul>\n        <li>Each Series Prefix on a new line.</li>\n        <li>Allowed special characters are ""/"" and ""-""</li>\n        <li>\n            Optionally, set the number of digits in the series using dot (.)\n            followed by hashes (#). For example, "".####"" means that the series\n            will have four digits. Default is five digits.\n        </li>\n        <li>\n            You can also use variables in the series name by putting them\n            between (.) dots\n            <br>\n            Supported Variables:\n            <ul>\n                <li><code>.YYYY.</code> - Year in 4 digits</li>\n                <li><code>.YY.</code> - Year in 2 digits</li>\n                <li><code>.MM.</code> - Month</li>\n                <li><code>.DD.</code> - Day of month</li>\n                <li><code>.WW.</code> - Week of the year</li>\n                <li>\n                    <code>.{fieldname}.</code> - fieldname on the document e.g.\n                    <code>branch</code>\n                </li>\n                <li><code>.FY.</code> - Fiscal Year (requires ERPNext to be installed)</li>\n                <li><code>.ABBR.</code> - Company Abbreviation (requires ERPNext to be installed)</li>\n            </ul>\n        </li>\n    </ul>\n    Examples:\n    <ul>\n        <li>INV-</li>\n        <li>INV-10-</li>\n        <li>INVK-</li>\n        <li>INV-.YYYY.-.{branch}.-.MM.-.####</li>\n    </ul>\n</div>\n<br>\n"	frappe	kept	R09
+"<h3>Custom CSS Help</h3>\n\n<p>Notes:</p>\n\n<ol>\n<li>All field groups (label + value) are set attributes <code>data-fieldtype</code> and <code>data-fieldname</code></li>\n<li>All values are given class <code>value</code></li>\n<li>All Section Breaks are given class <code>section-break</code></li>\n<li>All Column Breaks are given class <code>column-break</code></li>\n</ol>\n\n<h4>Examples</h4>\n\n<p>1. Left align integers</p>\n\n<pre><code>[data-fieldtype=""Int""] .value { text-align: left; }</code></pre>\n\n<p>1. Add border to sections except the last section</p>\n\n<pre><code>.section-break { padding: 30px 0px; border-bottom: 1px solid #eee; }\n.section-break:last-child { padding-bottom: 0px; border-bottom: 0px;  }</code></pre>\n"	frappe	kept	R09
+"<h3>Print Format Help</h3>\n<hr>\n<h4>Introduction</h4>\n<p>Print Formats are rendered on the server side using the Jinja Templating Language. All forms have access to the <code>doc</code> object which contains information about the document that is being formatted. You can also access common utilities via the <code>frappe</code> module.</p>\n<p>For styling, the Boostrap CSS framework is provided and you can enjoy the full range of classes.</p>\n<hr>\n<h4>References</h4>\n<ol>\n\t<li><a href=""http://jinja.pocoo.org/docs/templates/"" target=""_blank"">Jinja Templating Language</a></li>\n\t<li><a href=""http://getbootstrap.com"" target=""_blank"">Bootstrap CSS Framework</a></li>\n</ol>\n<hr>\n<h4>Example</h4>\n<pre><code>&lt;h3&gt;{{ doc.select_print_heading or ""Invoice"" }}&lt;/h3&gt;\n&lt;div class=""row""&gt;\n\t&lt;div class=""col-md-3 text-right""&gt;Customer Name&lt;/div&gt;\n\t&lt;div class=""col-md-9""&gt;{{ doc.customer_name }}&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=""row""&gt;\n\t&lt;div class=""col-md-3 text-right""&gt;Date&lt;/div&gt;\n\t&lt;div class=""col-md-9""&gt;{{ doc.get_formatted(""invoice_date"") }}&lt;/div&gt;\n&lt;/div&gt;\n&lt;table class=""table table-bordered""&gt;\n\t&lt;tbody&gt;\n\t\t&lt;tr&gt;\n\t\t\t&lt;th&gt;Sr&lt;/th&gt;\n\t\t\t&lt;th&gt;Item Name&lt;/th&gt;\n\t\t\t&lt;th&gt;Description&lt;/th&gt;\n\t\t\t&lt;th class=""text-right""&gt;Qty&lt;/th&gt;\n\t\t\t&lt;th class=""text-right""&gt;Rate&lt;/th&gt;\n\t\t\t&lt;th class=""text-right""&gt;Amount&lt;/th&gt;\n\t\t&lt;/tr&gt;\n\t\t{%- for row in doc.items -%}\n\t\t&lt;tr&gt;\n\t\t\t&lt;td style=""width: 3%;""&gt;{{ row.idx }}&lt;/td&gt;\n\t\t\t&lt;td style=""width: 20%;""&gt;\n\t\t\t\t{{ row.item_name }}\n\t\t\t\t{% if row.item_code != row.item_name -%}\n\t\t\t\t&lt;br&gt;Item Code: {{ row.item_code}}\n\t\t\t\t{%- endif %}\n\t\t\t&lt;/td&gt;\n\t\t\t&lt;td style=""width: 37%;""&gt;\n\t\t\t\t&lt;div style=""border: 0px;""&gt;{{ row.description }}&lt;/div&gt;&lt;/td&gt;\n\t\t\t&lt;td style=""width: 10%; text-align: right;""&gt;{{ row.qty }} {{ row.uom or row.stock_uom }}&lt;/td&gt;\n\t\t\t&lt;td style=""width: 15%; text-align: right;""&gt;{{\n\t\t\t\trow.get_formatted(""rate"", doc) }}&lt;/td&gt;\n\t\t\t&lt;td style=""width: 15%; text-align: right;""&gt;{{\n\t\t\t\trow.get_formatted(""amount"", doc) }}&lt;/td&gt;\n\t\t&lt;/tr&gt;\n\t\t{%- endfor -%}\n\t&lt;/tbody&gt;\n&lt;/table&gt;</code></pre>\n<hr>\n<h4>Common Functions</h4>\n<table class=""table table-bordered"">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td style=""width: 30%;""><code>doc.get_formatted(""[fieldname]"", [parent_doc])</code></td>\n\t\t\t<td>Get document value formatted as Date, Currency, etc. Pass parent <code>doc</code> for currency type fields.</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td style=""width: 30%;""><code>frappe.db.get_value(""[doctype]"", ""[name]"", ""fieldname"")</code></td>\n\t\t\t<td>Get value from another document.</td>\n\t\t</tr>\n\t</tbody>\n</table>\n"	frappe	kept	R09
+"<h4>Default Template</h4>\n<p>Uses <a href=""http://jinja.pocoo.org/docs/templates/"">Jinja Templating</a> and all the fields of Address (including Custom Fields if any) will be available</p>\n<pre><code>{{ address_line1 }}&lt;br&gt;\n{% if address_line2 %}{{ address_line2 }}&lt;br&gt;{% endif -%}\n{{ city }}&lt;br&gt;\n{% if state %}{{ state }}&lt;br&gt;{% endif -%}\n{% if pincode %} PIN:  {{ pincode }}&lt;br&gt;{% endif -%}\n{{ country }}&lt;br&gt;\n{% if phone %}Phone: {{ phone }}&lt;br&gt;{% endif -%}\n{% if fax %}Fax: {{ fax }}&lt;br&gt;{% endif -%}\n{% if email_id %}Email: {{ email_id }}&lt;br&gt;{% endif -%}\n</code></pre>"	frappe	kept	R09
+"<h4>Email Reply Example</h4>\n\n<pre>Order Overdue\n\nTransaction {{ name }} has exceeded Due Date. Please take necessary action.\n\nDetails\n\n- Customer: {{ customer }}\n- Amount: {{ grand_total }}\n</pre>\n\n<h4>How to get fieldnames</h4>\n\n<p>The fieldnames you can use in your email template are the fields in the document from which you are sending the email. You can find out the fields of any documents via Setup &gt; Customize Form View and selecting the document type (e.g. Sales Invoice)</p>\n\n<h4>Templating</h4>\n\n<p>Templates are compiled using the Jinja Templating Language. To learn more about Jinja, <a class=""strong"" href=""http://jinja.pocoo.org/docs/dev/templates/"">read this documentation.</a></p>\n"	frappe	kept	R09
+"<h5 class=""text-muted uppercase"">Or</h5>"	frappe	kept	R09
+<h5>Message Example</h5>\n\n<pre>&lt;h3&gt;Order Overdue&lt;/h3&gt;\n\n&lt;p&gt;Transaction {{ doc.name }} has exceeded Due Date. Please take necessary action.&lt;/p&gt;\n\n&lt;!-- show last comment --&gt;\n{% if comments %}\nLast comment: {{ comments[-1].comment }} by {{ comments[-1].by }}\n{% endif %}\n\n&lt;h4&gt;Details&lt;/h4&gt;\n\n&lt;ul&gt;\n&lt;li&gt;Customer: {{ doc.customer }}\n&lt;li&gt;Amount: {{ doc.grand_total }}\n&lt;/ul&gt;\n</pre>	frappe	kept	R09
+<p>Multiple webforms can be created for a single doctype. Add filters specific to this webform to display correct record after submission.</p><p>For Example:</p>\n<p>If you create a separate webform every year to capture feedback from employees add a \n field named year in doctype and add a filter <b>year = 2023</b></p>\n	frappe	kept	R09
+"<p>Set context before rendering a template. Example:</p><p>\n</p><div><pre><code>\ncontext.project = frappe.get_doc(""Project"", frappe.form_dict.name)\n</code></pre></div>"	frappe	kept	R09
+"<p>To interact with above HTML you will have to use `root_element` as a parent selector.</p><p>For example:</p><pre class=""p-3 bg-gray-100 border-radius rounded-sm mb-0"" style=""width: fit-content;""><code>// here root_element is provided by default\nlet some_class_element = root_element.querySelector('.some-class');\nsome_class_element.textContent = ""New content"";\n</code></pre>"	frappe	kept	R09
+<pre>*  *  *  *  *\n┬  ┬  ┬  ┬  ┬\n│  │  │  │  │\n│  │  │  │  └ day of week (0 - 6) (0 is Sunday)\n│  │  │  └───── month (1 - 12)\n│  │  └────────── day of month (1 - 31)\n│  └─────────────── hour (0 - 23)\n└──────────────────── minute (0 - 59)\n\n---\n\n* - Any value\n/ - Step values\n</pre>\n	frappe	kept	R09
+<pre><code>doc.grand_total &gt; 0</code></pre>\n\n<p>Conditions should be written in simple Python. Please use properties available in the form only.</p>\n<p>Allowed functions:\n</p><ul>\n<li>frappe.db.get_value</li>\n<li>frappe.db.get_list</li>\n<li>frappe.session</li>\n<li>frappe.utils.now_datetime</li>\n<li>frappe.utils.get_datetime</li>\n<li>frappe.utils.add_to_date</li>\n<li>frappe.utils.now</li>\n</ul>\n<p>Example: </p><pre><code>doc.creation &gt; frappe.utils.add_to_date(frappe.utils.now_datetime(), days=-5, as_string=True, as_datetime=True) </code></pre><p></p>	frappe	kept	R09
+<strong>Warning:</strong> This field is system generated and may be overwritten by a future update. Modify it using {0} instead.	frappe	kept	R09
+=	frappe	kept	R09
+>	frappe	kept	R09
+>=	frappe	kept	R09
+A DocType's name should start with a letter and can only consist of letters, numbers, spaces, underscores and hyphens	frappe	kept	R09
+A Frappe Framework instance can function as an OAuth Client, Resource, or Authorization server. This DocType contains settings related to all three.	frappe	kept	R09
+A field with the name {0} already exists in {1}	frappe	kept	R09
+A new account has been created for you at {0}.	frappe	kept	R09
+A recurring {0} {1} has been created for you via Auto Repeat {2}.	frappe	kept	R09
+A symbol for this currency. For e.g. $	frappe	kept	R09
+A version identifier string for the client software.\n<br>\nThe value of the should change on any update of the client software with the same Software ID.	frappe	kept	R09
+A0	frappe	kept	R09
+A1	frappe	kept	R09
+A2	frappe	kept	R09
+A3	frappe	kept	R09
+A4	frappe	kept	R09
+A5	frappe	kept	R09
+A6	frappe	kept	R09
+A7	frappe	kept	R09
+A8	frappe	kept	R09
+A9	frappe	kept	R09
+API	frappe	kept	R09
+API Access	frappe	kept	R09
+API Endpoint Args should be valid JSON	frappe	kept	R09
+API Key	frappe	kept	R09
+API Key cannot be regenerated	frappe	kept	R09
+API Keys	frappe	kept	R09
+API Method	frappe	kept	R09
+API Request Log	frappe	kept	R09
+ASC	frappe	kept	R09
+About Us Settings	frappe	kept	R09
+About {0} minute remaining	frappe	kept	R09
+About {0} minutes remaining	frappe	kept	R09
+About {0} seconds remaining	frappe	kept	R09
+Accepted	frappe	kept	R09
+Access Log	frappe	kept	R09
+Access Token	frappe	override	R04
+Access not allowed from this IP Address	frappe	kept	R09
+Account Deletion Settings	frappe	kept	R09
+Accounts Manager	frappe	kept	R09
+Accurate count can not be fetched, click here to view all documents	frappe	kept	R09
+Action Complete	frappe	kept	R09
+Action Label	frappe	kept	R09
+Action Timeout (Seconds)	frappe	kept	R09
+Action {0} completed successfully on {1} {2}. View it {3}	frappe	kept	R09
+Active Directory	frappe	kept	R09
+Active Domains	frappe	kept	R09
+Active Sessions	frappe	kept	R09
+Activity Log	frappe	kept	R09
+Add	frappe	kept	R09
+Add / Remove Columns	frappe	kept	R09
+Add / Update	frappe	kept	R09
+Add A New Rule	frappe	kept	R09
+Add Attachment	frappe	kept	R09
+Add Background Image	frappe	kept	R09
+Add Border at Bottom	frappe	kept	R09
+Add Border at Top	frappe	kept	R09
+Add Contact	frappe	kept	R09
+Add Filters	frappe	kept	R09
+Add Group	frappe	kept	R09
+Add Indexes	frappe	kept	R09
+Add New	frappe	kept	R09
+Add New Permission Rule	frappe	kept	R09
+Add Query Parameters	frappe	kept	R09
+Add Signature	frappe	kept	R09
+Add Space at Top	frappe	kept	R09
+Add Subscribers	frappe	kept	R09
+Add Tags	frappe	kept	R09
+Add Template	frappe	kept	R09
+Add Total Row	frappe	kept	R09
+Add Translate Data	frappe	kept	R09
+Add Unsubscribe Link	frappe	kept	R09
+Add Video Conferencing	frappe	kept	R09
+Add a Filter	frappe	kept	R09
+Add a Row	frappe	kept	R09
+Add a comment	frappe	kept	R09
+Add a new section	frappe	kept	R09
+Add a row above the current row	frappe	kept	R09
+Add a row at the bottom	frappe	kept	R09
+Add a row at the top	frappe	kept	R09
+Add a row below the current row	frappe	kept	R09
+Add column	frappe	kept	R09
+Add field	frappe	kept	R09
+Add numbers or special characters.	frappe	kept	R09
+Add page break	frappe	kept	R09
+Add row	frappe	kept	R09
+Add tab	frappe	kept	R09
+Add to Desktop	frappe	kept	R09
+Add to table	frappe	kept	R09
+Add to this activity by mailing to {0}	frappe	kept	R09
+Add/Update Filter	frappe	kept	R09
+Added	frappe	kept	R09
+Added default log doctypes: {}	frappe	kept	R09
+Address Line 1	frappe	kept	R09
+Address Line 2	frappe	kept	R09
+Address Type	frappe	kept	R09
+Addresses	frappe	kept	R09
+Adds a clear (×) button to Link fields, allowing users to quickly remove the selected value.	frappe	kept	R09
+Adds a custom field to a DocType	frappe	kept	R09
+Administrator Logged In	frappe	kept	R09
+Advanced	frappe	kept	R09
+Advanced Control	frappe	kept	R09
+Advanced Search	frappe	kept	R09
+Advanced Settings	frappe	kept	R09
+After	frappe	kept	R09
+After Delete	frappe	kept	R09
+After Discard	frappe	kept	R09
+After Insert	frappe	kept	R09
+After Rename	frappe	kept	R09
+After Save	frappe	kept	R09
+Alias must be a string	frappe	kept	R09
+Align	frappe	kept	R09
+Align Labels to the Right	frappe	kept	R09
+Align Right	frappe	kept	R09
+Align Value	frappe	kept	R09
+All Records	frappe	kept	R09
+All Submissions	frappe	kept	R09
+All customizations will be removed. Please confirm.	frappe	kept	R09
+All fields are necessary to submit the comment.	frappe	kept	R09
+Allow	frappe	kept	R09
+Allow API Indexing Access	frappe	kept	R09
+Allow Clearing Link Fields	frappe	kept	R09
+Allow Consecutive Login Attempts	frappe	kept	R09
+Allow Google Calendar Access	frappe	kept	R09
+Allow Guest to View	frappe	kept	R09
+Allow Import (via Data Import Tool)	frappe	kept	R09
+Allow Login After Fail	frappe	kept	R09
+Allow Login using Mobile Number	frappe	kept	R09
+Allow Login using User Name	frappe	kept	R09
+Allow Print for Draft	frappe	kept	R09
+Allow Rename	frappe	kept	R09
+Allow Sending Usage Data for Improving Applications	frappe	kept	R09
+Allow comments	frappe	kept	R09
+Allow delete	frappe	kept	R09
+Allow document creation via Email	frappe	kept	R09
+Allow editing after submit	frappe	override	R16
+Allow editing even if the doctype has a workflow set up.\n\nDoes nothing if a workflow isn't set up.	frappe	kept	R09
+Allow incomplete forms	frappe	kept	R09
+Allow multiple responses	frappe	kept	R09
+Allow page break inside tables	frappe	kept	R09
+Allow print	frappe	kept	R09
+Allow sending usage data for improving applications	frappe	kept	R09
+Allow users to log in without a password, using a login link sent to their email	frappe	kept	R09
+Allowed File Extensions	frappe	kept	R09
+Allowed Modules	frappe	kept	R09
+Allowed Public Client Origins	frappe	kept	R09
+Allowed Roles	frappe	kept	R09
+Allowed embedding domains	frappe	kept	R09
+"Allows clients to fetch metadata from the <code>/.well-known/oauth-authorization-server</code> endpoint. Reference: <a href=""https://datatracker.ietf.org/doc/html/rfc8414"">RFC8414</a>"	frappe	kept	R09
+"Allows clients to fetch metadata from the <code>/.well-known/oauth-protected-resource</code> endpoint. Reference: <a href=""https://datatracker.ietf.org/doc/html/rfc9728#name-protected-resource-metadata"">RFC9728</a>"	frappe	kept	R09
+"Allows clients to register themselves without manual intervention. Registration creates a <b>OAuth Client</b> entry. Reference: <a href=""https://datatracker.ietf.org/doc/html/rfc7591"">RFC7591</a>"	frappe	kept	R09
+Allows clients to view this as an Authorization Server when querying the <code>/.well-known/oauth-protected-resource</code> end point.	frappe	kept	R09
+Allows enabled Social Login Key Base URL to be shown as authorization server.	frappe	kept	R09
+Allows skipping authorization if a user has active tokens.	frappe	kept	R09
+Already Registered	frappe	kept	R09
+Also adding the status dependency field {0}	frappe	kept	R09
+Always	frappe	kept	R09
+Always BCC Address	frappe	kept	R09
+Always use this email address as sender address	frappe	kept	R09
+Always use this name as sender name	frappe	kept	R09
+An email to verify your request has been sent to your email address. Please verify your request to complete the process.	frappe	kept	R09
+An error occurred while setting Session Defaults	frappe	kept	R09
+An unexpected error occurred while authorizing {}.	frappe	kept	R09
+Analytics	frappe	kept	R09
+Ancestors Of	frappe	kept	R09
+Announcement Widget	frappe	kept	R09
+Announcements	frappe	kept	R09
+Annual	frappe	kept	R09
+Anonymization Matrix	frappe	kept	R09
+Anonymous responses	frappe	kept	R09
+App	frappe	kept	R09
+App ID	frappe	kept	R09
+App Logo	frappe	kept	R09
+App Name	frappe	kept	R09
+App Name (Client Name)	frappe	kept	R09
+App not found for module: {0}	frappe	kept	R09
+App {0} is not installed	frappe	kept	R09
+Applicable Document Types	frappe	kept	R09
+Application Logo	frappe	kept	R09
+Application Name	frappe	kept	R09
+Application Version	frappe	kept	R09
+Application is not installed	frappe	kept	R09
+Applies To (DocType)	frappe	kept	R09
+Apply Filters	frappe	kept	R09
+Apply document permissions	frappe	kept	R09
+Approval Required	frappe	kept	R09
+Apps	frappe	kept	R09
+Archive	frappe	kept	R09
+Are you sure you want to cancel the invitation?	frappe	kept	R09
+Are you sure you want to delete the attachment?	frappe	kept	R09
+Are you sure you want to delete the column? All the fields in the column will be moved to the previous column.	frappe	kept	R09
+Are you sure you want to delete the section? All the columns along with fields in the section will be moved to the previous section.	frappe	kept	R09
+Are you sure you want to delete the tab? All the sections along with fields in the tab will be moved to the previous tab.	frappe	kept	R09
+Are you sure you want to delete this record?	frappe	kept	R09
+Are you sure you want to discard the changes?	frappe	kept	R09
+Are you sure you want to generate a new report?	frappe	kept	R09
+Are you sure you want to merge {0} with {1}?	frappe	kept	R09
+Are you sure you want to proceed?	frappe	kept	R09
+Are you sure you want to re-enable scheduler?	frappe	kept	R09
+Are you sure you want to reset all customizations?	frappe	kept	R09
+Are you sure you want to save this document?	frappe	kept	R09
+Are you sure you want to {0}?	frappe	kept	R09
+As per your request, your account and data on {0} associated with email {1} has been permanently deleted	frappe	kept	R09
+Asynchronous	frappe	kept	R09
+At least one column is required to show in the grid.	frappe	kept	R09
+At least one field is required in Web Form Fields Table	frappe	kept	R09
+At least one field of Parent Document Type is mandatory	frappe	kept	R09
+Attach	frappe	kept	R09
+Attach Document Print	frappe	kept	R09
+Attach Files	frappe	kept	R09
+Attach Image	frappe	kept	R09
+Attach Package	frappe	kept	R09
+Attach a web link	frappe	kept	R09
+Attached File	frappe	kept	R09
+Attachment Limit Reached	frappe	kept	R09
+Attachment Link	frappe	kept	R09
+Attachment Not Found	frappe	kept	R09
+Attachment Removed	frappe	kept	R09
+Attachment Settings	frappe	kept	R09
+Attribution	frappe	kept	R09
+Audit Trail	frappe	kept	R09
+Audits	frappe	kept	R09
+Auth URL Data	frappe	kept	R09
+Auth URL data should be valid JSON	frappe	kept	R09
+Authentication	frappe	kept	R09
+Authentication Apps you can use are:	frappe	kept	R09
+Authentication failed while receiving emails from Email Account: {0}.	frappe	kept	R09
+Authorization	frappe	kept	R09
+Authorization URI	frappe	kept	R09
+Authorization error for {}.	frappe	kept	R09
+Authorize API Access	frappe	kept	R09
+Authorize API Indexing  Access	frappe	kept	R09
+Authorized	frappe	kept	R09
+Authors	frappe	kept	R09
+Authors / Maintainers	frappe	kept	R09
+Auto Repeat	frappe	kept	R09
+Auto Repeat Day	frappe	kept	R09
+Auto Repeat Day{0} {1} has been repeated.	frappe	kept	R09
+Auto Repeat Document Creation Failed	frappe	kept	R09
+Auto Repeat Schedule	frappe	kept	R09
+Auto Repeat User	frappe	kept	R09
+Auto Repeat failed for {0}	frappe	kept	R09
+Auto Reply	frappe	kept	R09
+Auto repeat failed. Please enable auto repeat after fixing the issues.	frappe	kept	R09
+Autocomplete	frappe	kept	R09
+Autoincrement	frappe	kept	R09
+Automated Message	frappe	kept	R09
+Automatic Linking can be activated only for one Email Account.	frappe	kept	R09
+Automatic Linking can be activated only if Incoming is enabled.	frappe	kept	R09
+Automatic sending of emails is disabled via site config.	frappe	kept	R09
+Automatically delete account within (hours)	frappe	kept	R09
+Average of {0}	frappe	kept	R09
+Avoid recent years.	frappe	kept	R09
+Awaiting Password	frappe	kept	R09
+Awesome Work	frappe	kept	R09
+B0	frappe	kept	R09
+B10	frappe	kept	R09
+B2	frappe	kept	R09
+B7	frappe	kept	R09
+B8	frappe	kept	R09
+B9	frappe	kept	R09
+Background Color	frappe	kept	R09
+Background Image	frappe	kept	R09
+Background Job	frappe	kept	R09
+Backup Encryption Key	frappe	kept	R09
+Backups	frappe	kept	R09
+Backups (MB)	frappe	kept	R09
+Banker's Rounding (legacy)	frappe	kept	R09
+Bar	frappe	kept	R09
+Barcode	frappe	kept	R09
+Base URL	frappe	kept	R09
+Basic	frappe	kept	R09
+Basic Info	frappe	kept	R09
+Before	frappe	kept	R09
+Before Cancel	frappe	kept	R09
+Before Delete	frappe	kept	R09
+Before Print	frappe	kept	R09
+Before Rename	frappe	kept	R09
+Before Save	frappe	kept	R09
+Before Validate	frappe	kept	R09
+Beginner	frappe	kept	R09
+Beta	frappe	kept	R09
+Better add a few more letters or another word	frappe	kept	R09
+Between	frappe	kept	R09
+Binary Logging	frappe	kept	R09
+Bio	frappe	kept	R09
+Birth Date	frappe	kept	R09
+Bot	frappe	kept	R09
+Both login and password required	frappe	kept	R09
+Bottom	frappe	kept	R09
+Bottom Center	frappe	kept	R09
+Bottom Left	frappe	kept	R09
+Bottom Right	frappe	kept	R09
+Brand	frappe	kept	R09
+Brand HTML	frappe	kept	R09
+Brand Image	frappe	kept	R09
+Brand Logo	frappe	kept	R09
+Brand is what appears on the top-left of the toolbar. If it is an image, make sure it\nhas a transparent background and use the &lt;img /&gt; tag. Keep size as 200px x 30px	frappe	kept	R09
+Breadcrumbs	frappe	kept	R09
+Browser	frappe	kept	R09
+Browser Version	frappe	kept	R09
+Browser not supported	frappe	kept	R09
+Bufferpool Size	frappe	kept	R09
+Build your own reports, print formats, and dashboards. Create personalized workspaces for easier navigation	frappe	kept	R09
+Build {0}	frappe	kept	R09
+Built on {0}	frappe	kept	R09
+Bulk approval only support up to 500 documents.	frappe	kept	R09
+Bulk operation is enqueued in background.	frappe	override	R09
+Bulk operations only support up to 500 documents.	frappe	kept	R09
+Button	frappe	kept	R09
+Button Color	frappe	kept	R09
+Button Gradients	frappe	kept	R09
+By fieldname	frappe	kept	R09
+C5E	frappe	kept	R09
+CC	frappe	kept	R09
+CMD	frappe	kept	R09
+COLOR PICKER	frappe	kept	R09
+CSS	frappe	kept	R09
+CSS Class	frappe	kept	R09
+CSS selector for the element you want to highlight.	frappe	kept	R09
+Calendar	frappe	kept	R09
+Calendar Name	frappe	kept	R09
+Calendar View	frappe	kept	R09
+Callback Message	frappe	kept	R09
+Campaign	frappe	kept	R09
+Campaign Description (Optional)	frappe	kept	R09
+Can only list down the document types which has been linked to the User document type.	frappe	kept	R09
+Can't follow since changes are not tracked.	frappe	kept	R09
+Can't rename {0} to {1} because {0} doesn't exist.	frappe	kept	R09
+Cancel All	frappe	kept	R09
+Cancel Import	frappe	kept	R09
+Cancel Prepared Report	frappe	kept	R09
+Cannot Download Report due to insufficient permissions	frappe	kept	R09
+Cannot Fetch Values	frappe	kept	R09
+Cannot access file path {0}	frappe	kept	R09
+Cannot attach a folder to a document	frappe	kept	R09
+Cannot change docstatus from 0 (Draft) to 2 (Cancelled)	frappe	kept	R09
+Cannot change state of Cancelled Document <b>({0} State)</b>	frappe	kept	R09
+Cannot create private workspace of other users	frappe	kept	R09
+Cannot delete Desktop Icon '{0}' as it is restricted	frappe	kept	R09
+Cannot delete standard field. You can hide it if you want	frappe	kept	R09
+Cannot delete system generated field <strong>{0}</strong>. You can hide it instead.	frappe	kept	R09
+Cannot delete {0}	frappe	kept	R09
+Cannot delete {0} as it has child nodes	frappe	kept	R09
+Cannot edit Standard Dashboards	frappe	kept	R09
+Cannot edit Standard charts	frappe	kept	R09
+Cannot edit filters for standard number cards	frappe	kept	R09
+Cannot edit standard fields	frappe	kept	R09
+Cannot find file {} on disk	frappe	kept	R09
+Cannot have multiple printers mapped to a single print format.	frappe	kept	R09
+Cannot import table with more than 5000 rows.	frappe	kept	R09
+Cannot map because following condition fails:	frappe	kept	R09
+Cannot match column {0} with any field	frappe	kept	R09
+Cannot move row	frappe	kept	R09
+Cannot set Notification with event {0} on Document Type {1}	frappe	kept	R09
+Cannot update {0}	frappe	kept	R09
+Cannot use sub-query here.	frappe	kept	R09
+Cannot {0} {1}.	frappe	kept	R09
+Card	frappe	kept	R09
+Card Links	frappe	kept	R09
+Cards	frappe	kept	R09
+Category Description	frappe	kept	R09
+Change Image	frappe	kept	R09
+Change Label (via Custom Translation)	frappe	kept	R09
+Change Print Format	frappe	kept	R09
+Change the starting / current sequence number of an existing series. <br>\n\nWarning: Incorrectly updating counters can prevent documents from getting created.	frappe	kept	R09
+Changed at	frappe	kept	R09
+Changed by	frappe	kept	R09
+Changelog Feed	frappe	kept	R09
+Changes	frappe	kept	R09
+Changing any setting will reflect on all the email accounts associated with this domain.	frappe	kept	R09
+Changing rounding method on site with data can result in unexpected behaviour.	frappe	kept	R09
+Channel	frappe	kept	R09
+Chart Name	frappe	kept	R09
+Chat	frappe	kept	R09
+Check columns to select, drag to set order.	frappe	kept	R09
+Check the Error Log for more information: {0}	frappe	kept	R09
+Check this if the Update Value is a formula or expression (e.g. doc.amount * 2). Leave unchecked for plain text values.	frappe	kept	R09
+Check to display the full numeric value (e.g., 1,234,567 instead of 1.2M).	frappe	kept	R09
+Child DocTypes are not allowed	frappe	kept	R09
+Child Doctype	frappe	kept	R09
+Choose Existing Card or create New Card	frappe	kept	R09
+Choose a color	frappe	kept	R09
+Choose an icon	frappe	kept	R09
+City/Town	frappe	kept	R09
+Clear & Add Template	frappe	kept	R09
+Clear & Add template	frappe	kept	R09
+Clear Logs After (days)	frappe	kept	R09
+Clear the email message and add the template	frappe	kept	R09
+Click On Customize to add your first widget	frappe	kept	R09
+Click here	frappe	kept	R09
+Click on a file to select it.	frappe	kept	R09
+Click on the link below to approve the request	frappe	kept	R09
+Click on the link below to download your data	frappe	kept	R09
+Click on the link below to verify your request	frappe	kept	R09
+Click on {0} to edit	frappe	kept	R09
+Click to Set Dynamic Filters	frappe	kept	R09
+Click to Set Filters	frappe	kept	R09
+Click to sort by {0}	frappe	kept	R09
+Client Id	frappe	kept	R09
+Client Information	frappe	kept	R09
+Client Metadata	frappe	kept	R09
+Client URI	frappe	kept	R09
+Client URLs	frappe	kept	R09
+Cmd+Enter to add comment	frappe	kept	R09
+Code	frappe	kept	R09
+Code Editor Type	frappe	kept	R09
+Collapsible Depends On (JS)	frappe	kept	R09
+Column	frappe	kept	R09
+Column 1	frappe	kept	R09
+Column 2	frappe	kept	R09
+Column <b>{0}</b> already exist.	frappe	kept	R09
+Column Break	frappe	kept	R09
+Column Labels:	frappe	kept	R09
+Column Name	frappe	kept	R09
+Column Name cannot be empty	frappe	kept	R09
+Column Width	frappe	kept	R09
+Column width cannot be zero.	frappe	kept	R09
+Column {0}	frappe	kept	R09
+Columns / Fields	frappe	kept	R09
+Combination of Grant Type (<code>{0}</code>) and Response Type (<code>{1}</code>) not allowed	frappe	kept	R09
+Comm10E	frappe	kept	R09
+Comment can only be edited by the owner	frappe	kept	R09
+Comments cannot have links or email addresses	frappe	kept	R09
+Commercial Rounding	frappe	kept	R09
+Common names and surnames are easy to guess.	frappe	kept	R09
+Common words are easy to guess.	frappe	kept	R09
+Company Introduction	frappe	kept	R09
+Company Name	frappe	kept	R09
+Compare Versions	frappe	kept	R09
+Compilation warning	frappe	kept	R09
+Component	frappe	kept	R09
+Compressed	frappe	kept	R09
+Configure Chart	frappe	kept	R09
+Configure Columns	frappe	kept	R09
+Configure columns for {0}	frappe	kept	R09
+Configure how amended documents will be named.<br>\n\nDefault behaviour is to follow an amend counter which adds a number to the end of the original name indicating the amended version. <br>\n\nDefault Naming will make the amended document to behave same as new documents.	frappe	kept	R09
+Confirm Access	frappe	kept	R09
+Confirm Deletion of Account	frappe	kept	R09
+Confirm New Password	frappe	kept	R09
+Confirm Request	frappe	kept	R09
+Confirmed	frappe	kept	R09
+"Congratulations on completing the module setup. If you want to learn more you can refer to the documentation <a target=""_blank"" href=""{0}"">here</a>."	frappe	kept	R09
+Connected App	frappe	kept	R09
+Connected User	frappe	kept	R09
+Connection Lost	frappe	kept	R09
+Console	frappe	kept	R09
+Console Log	frappe	kept	R09
+Console Logs can not be deleted	frappe	kept	R09
+Constraints	frappe	kept	R09
+Contact Us	frappe	kept	R09
+Contact Us Settings	frappe	kept	R09
+Contains {0} security fix	frappe	kept	R09
+Contains {0} security fixes	frappe	kept	R09
+Content Hash	frappe	kept	R09
+Content data shoud be a list	frappe	kept	R09
+Content type for building the page	frappe	kept	R09
+Contribution Status	frappe	kept	R09
+Controls whether new users can sign up using this Social Login Key. If unset, Website Settings is respected.	frappe	kept	R09
+Copied {0} {1} to clipboard	frappe	kept	R09
+Copy Apps Version	frappe	kept	R09
+Copy File URL	frappe	kept	R09
+Copy to Clipboard	frappe	kept	R09
+Copy token to clipboard	frappe	kept	R09
+Correct version :	frappe	kept	R09
+Could not parse field: {0}	frappe	kept	R09
+Could not start up:	frappe	kept	R09
+Count of linked documents	frappe	kept	R09
+Counter	frappe	kept	R09
+Country Code Required	frappe	kept	R09
+Country Name	frappe	kept	R09
+County	frappe	kept	R09
+Create & Continue	frappe	kept	R09
+Create Address	frappe	kept	R09
+Create Card	frappe	kept	R09
+Create Chart	frappe	kept	R09
+Create Child Doctype	frappe	kept	R09
+Create Contacts from Incoming Emails	frappe	kept	R09
+Create Log	frappe	kept	R09
+Create New DocType	frappe	kept	R09
+Create New Kanban Board	frappe	kept	R09
+Create a New Format	frappe	kept	R09
+Create a Reminder	frappe	kept	R09
+Create or Edit Print Format	frappe	kept	R09
+Create or Edit Workflow	frappe	kept	R09
+Create your first {0}	frappe	kept	R09
+Create your workflow visually using the Workflow Builder.	frappe	kept	R09
+Created At	frappe	kept	R09
+Created By {0}	frappe	kept	R09
+Creation of this document is only permitted in developer mode.	frappe	kept	R09
+Crop	frappe	kept	R09
+Ctrl + Down	frappe	kept	R09
+Currency Name	frappe	kept	R09
+Currency Precision	frappe	kept	R09
+Currency list stores the currency value, its symbol and fraction unit	frappe	kept	R09
+Current Value	frappe	kept	R09
+Current status	frappe	kept	R09
+Custom	frappe	kept	R09
+Custom Block Name	frappe	kept	R09
+Custom Blocks	frappe	kept	R09
+Custom Delimiters	frappe	kept	R09
+Custom DocPerm	frappe	kept	R09
+Custom Documents	frappe	kept	R09
+Custom Field	frappe	kept	R09
+Custom Footer	frappe	kept	R09
+Custom Format	frappe	kept	R09
+Custom Group Search	frappe	kept	R09
+Custom Group Search if filled needs to contain the user placeholder {0}, eg uid={0},ou=users,dc=example,dc=com	frappe	kept	R09
+Custom HTML Block	frappe	kept	R09
+Custom LDAP Directoy Selected, please ensure 'LDAP Group Member attribute' and 'Group Object Class' are entered	frappe	kept	R09
+Custom Options	frappe	kept	R09
+Custom Overrides	frappe	kept	R09
+Custom Report	frappe	kept	R09
+Custom Reports	frappe	kept	R09
+Custom SCSS	frappe	kept	R09
+Custom Translation	frappe	kept	R09
+Custom field renamed to {0} successfully.	frappe	kept	R09
+Custom get_list method for {0} must return a QueryBuilder object or None, got {1}	frappe	kept	R09
+Customization	frappe	kept	R09
+Customizations Discarded	frappe	kept	R09
+Customizations for <b>{0}</b> exported to:<br>{1}	frappe	kept	R09
+Customize	frappe	kept	R09
+Customize Form - {0}	frappe	kept	R09
+DELAY	frappe	kept	R09
+DESC	frappe	kept	R09
+DLE	frappe	kept	R09
+DRAFT	frappe	kept	R09
+Daily Maintenance	frappe	kept	R09
+Dark Color	frappe	kept	R09
+Dark Theme	frappe	override	R09
+Data	frappe	kept	R09
+Data Clipped	frappe	kept	R09
+Data Export	frappe	kept	R09
+Data Import	frappe	kept	R09
+Data Import Log	frappe	kept	R09
+Data Import is not allowed for {0}. Enable 'Allow Import' in DocType settings.	frappe	kept	R09
+Data Too Long	frappe	kept	R09
+Database	frappe	kept	R09
+Database Engine	frappe	kept	R09
+Database Processes	frappe	kept	R09
+Database Row Size Utilization	frappe	kept	R09
+Database Storage Usage By Tables	frappe	kept	R09
+Database Table Row Size Limit	frappe	kept	R09
+Database Table Row Size Utilization: {0}%, this limits number of fields you can add.	frappe	kept	R09
+Database Version	frappe	kept	R09
+Date Format	frappe	kept	R09
+Date after which this security.txt should be considered stale. Expires timestamp is converted to UTC.	frappe	kept	R09
+Date {0} must be in format: {1}	frappe	kept	R09
+Dates are often easy to guess.	frappe	kept	R09
+Datetime	frappe	kept	R09
+Day	frappe	kept	R09
+Day of Week	frappe	kept	R09
+Days After	frappe	kept	R09
+Days Before	frappe	kept	R09
+Days Before or After	frappe	kept	R09
+Days Remaining	frappe	kept	R09
+Dear User,	frappe	kept	R09
+Dear {0}	frappe	kept	R09
+Debug Log	frappe	kept	R09
+Decimal Separator must be a single character	frappe	kept	R09
+Default	frappe	kept	R09
+Default App	frappe	kept	R09
+Default Email Template	frappe	kept	R09
+Default Print Language	frappe	kept	R09
+Default Redirect URI	frappe	override	R22
+Default Template For Field	frappe	kept	R09
+Default User Role	frappe	kept	R09
+ commented	helpdesk	override	R01
+% SLA Fulfilled	helpdesk	override	R28
+- Default Ticket Status<br>	helpdesk	override	R26
+- Ticket Reopen Status<br>	helpdesk	override	R26
+- {0} as Default Status<br>	helpdesk	override	R26
+- {0} as Reopen Status<br>	helpdesk	override	R26
+0 is no feedback, 1 is Like, 2 is Dislike	helpdesk	override	R30
+1 Year	helpdesk	override	R01
+1 person reacted to your comment	helpdesk	override	R01
+3 Months	helpdesk	override	R30
+6 Months	helpdesk	override	R30
+<br>Please update HD Settings to use a different status before disabling this status.	helpdesk	override	R26
+<br>Please update the SLA(s) to use a different status before disabling this status.	helpdesk	override	R28
+"<div class=""ql-editor read-mode""><p>Let us know if we solved your issue well. It’ll help us serve you better next time.</p></div>"	helpdesk	override	R26
+"<span class=""h3"" style=""""><a href=""/helpdesk"">Visit Helpdesk</a></span>"	helpdesk	override	R15
+"<span class=""h4"">Helpdesk Configuration<br></span>"	helpdesk	override	R26
+A short description	helpdesk	override	R01
+A workday with this name already exists	helpdesk	override	R01
+Access all team tickets	helpdesk	override	R10
+Access denied	helpdesk	override	R02
+Access only this team's tickets	helpdesk	override	R10
+Account Info & Security	helpdesk	override	R11
+Action Required	helpdesk	override	R01
+Active now	helpdesk	override	R01
+Active: The agent is available and working.<br>\nAway: The agent is temporarily unreachable.<br>\nUnavailable: The agent is off and unavailable.	helpdesk	override	R26
+Add Category	helpdesk	override	R15
+Add Email	helpdesk	override	R15
+Add Holiday	helpdesk	override	R15
+Add New Article	helpdesk	override	R15
+Add Phone	helpdesk	override	R15
+Add Sort	helpdesk	override	R15
+Add a comment on a ticket	helpdesk	override	R10
+Add a custom condition	helpdesk	override	R10
+Add charts to get started	helpdesk	override	R01
+Add condition group	helpdesk	override	R15
+Add holidays here to make sure they’re excluded from SLA calculations.	helpdesk	override	R28
+Add members to this team to get started.	helpdesk	override	R01
+Add one to get started.	helpdesk	override	R01
+Add recurring holidays such as weekends.	helpdesk	override	R01
+Add time targets around support milestones like first reply and resolution times.	helpdesk	override	R01
+Add to recipients	helpdesk	override	R15
+Add, manage agents and assign roles to them.	helpdesk	override	R01
+Agent Dashboard	helpdesk	override	R11
+Agent Manager	helpdesk	override	R11
+Agent Name	helpdesk	override	R11
+Agent Status	helpdesk	override	R11
+Agent name	helpdesk	override	R11
+Agents & Teams	helpdesk	override	R11
+Agents will no longer be able to view and create saved replies with global scope.	helpdesk	override	R01
+All SLAs on track	helpdesk	override	R28
+All Time	helpdesk	override	R01
+All Views	helpdesk	override	R11
+All comments and emails from both tickets will be merged into the selected ticket	helpdesk	override	R01
+All your assigned tickets have been responded to	helpdesk	override	R02
+Allow anyone to create tickets	helpdesk	override	R10
+Allow users to react to comments with emojis	helpdesk	override	R10
+Allow users to react to comments with emojis.	helpdesk	override	R25
+Anyone will be able to create tickets without any permission. e.g. from webform.	helpdesk	override	R01
+Appearance	helpdesk	override	R11
+Apply on new page	helpdesk	override	R15
+Apply outside working hours	helpdesk	override	R15
+Apply to customer portal	helpdesk	override	R15
+Are you sure you want to close this ticket?	helpdesk	override	R01
+Are you sure you want to delete these articles?	helpdesk	override	R01
+Are you sure you want to delete this contact? The contact will be permanently deleted and unlinked from any associated customers and tickets.	helpdesk	override	R01
+Are you sure you want to delete this ticket? This is an irreversible action and cannot be undone.	helpdesk	override	R01
+Are you sure you want to delete this view?	helpdesk	override	R01
+Are you sure you want to discard changes?	helpdesk	override	R01
+Are you sure you want to discard this article?	helpdesk	override	R01
+Are you sure you want to remove the logo?	helpdesk	override	R01
+Are you sure you want to remove this contact from the customer?	helpdesk	override	R01
+Are you sure you want to reset the content? Current content will be overridden.	helpdesk	override	R01
+Article	helpdesk	override	R11
+Article body cannot be set as empty.	helpdesk	override	R01
+Article created successfully.	helpdesk	override	R02
+Article deleted successfully.	helpdesk	override	R02
+Article link copied to clipboard	helpdesk	override	R02
+Article title cannot be set as empty	helpdesk	override	R01
+Article updated successfully.	helpdesk	override	R02
+Articles deleted successfully.	helpdesk	override	R02
+Articles moved successfully.	helpdesk	override	R02
+Assign a ticket to an agent	helpdesk	override	R10
+Assign ticket	helpdesk	override	R15
+Assign yourself	helpdesk	override	R15
+Assignment Condition	helpdesk	override	R11
+Assignment Schedule	helpdesk	override	R11
+Assignment rule	helpdesk	override	R11
+Assignment rule created successfully.	helpdesk	override	R02
+Assignment rule deleted successfully.	helpdesk	override	R02
+Assignment rule duplicated successfully.	helpdesk	override	R02
+Assignment rule updated successfully.	helpdesk	override	R02
+Assignment rule {0} updated successfully.	helpdesk	override	R26
+At least one enabled Active status is required.	helpdesk	override	R01
+At least one enabled status for <u>{0}</u> category must be enabled.	helpdesk	override	R26
+At least one feedback option must be enabled for rating {0}	helpdesk	override	R26
+At least one team is required	helpdesk	override	R01
+Auto update status	helpdesk	override	R15
+Auto-close after (Days)	helpdesk	override	R15
+Auto-close tickets that remain in a status for the specified number of days.	helpdesk	override	R01
+Automatically Close Tickets when	helpdesk	override	R01
+Automatically close stale tickets	helpdesk	override	R15
+Availability	helpdesk	override	R11
+Availability Changed On	helpdesk	override	R27
+Average First Response	helpdesk	override	R11
+Average First Response Time	helpdesk	override	R11
+Average Resolution	helpdesk	override	R11
+Average Resolution Time	helpdesk	override	R11
+Average Time Metrics	helpdesk	override	R11
+Average feedback rating per day is around {0} stars	helpdesk	override	R26
+Average response and resolution metrics not available	helpdesk	override	R01
+Average tickets per day is around {0}	helpdesk	override	R26
+Avg. Feedback Rating	helpdesk	override	R28
+Avg. Feedback Received	helpdesk	override	R28
+Avg. First Response	helpdesk	override	R28
+Avg. First Response Time	helpdesk	override	R28
+Avg. Resolution	helpdesk	override	R28
+Avg. Resolution Time	helpdesk	override	R28
+Avg. feedback rating for tickets resolved in this period	helpdesk	override	R28
+Avg. first response time	helpdesk	override	R28
+Avg. resolution time	helpdesk	override	R28
+Avg. time taken to first respond to a ticket	helpdesk	override	R28
+Avg. time taken to resolve a ticket	helpdesk	override	R28
+Away	helpdesk	override	R01
+Back to Tickets	helpdesk	override	R15
+Base Support Rotation	helpdesk	override	R11
+Bcc	helpdesk	override	R29
+Bcc:	helpdesk	override	R25
+Brand name	helpdesk	override	R11
+Branding	helpdesk	override	R11
+Bulk Reply	helpdesk	override	R11
+Bulk reply sent successfully to 1 ticket.	helpdesk	override	R02
+Bulk reply sent successfully to {0} tickets.	helpdesk	override	R26
+Business Holidays	helpdesk	override	R11
+Call Logs	helpdesk	override	R11
+Call duration in seconds	helpdesk	override	R01
+Caller	helpdesk	override	R11
+Can invite new agents, manage tickets, create custom views and manage public views.	helpdesk	override	R01
+Can manage all aspects of Helpdesk.	helpdesk	override	R01
+Can raise tickets on behalf of the org and manage the tickets they raised.	helpdesk	override	R01
+Can view all tickets raised by the org and assign other members as managers.	helpdesk	override	R01
+Can view tickets raised by all contacts of the customer.	helpdesk	override	R01
+Can work on tickets, create custom views and manage private views.	helpdesk	override	R01
+Cancel Invitation	helpdesk	override	R15
+Cannot Sync Customers	helpdesk	override	R01
+Cannot delete the default SLA. At least one SLA must be marked as default.	helpdesk	override	R28
+Cannot disable this status as it is linked in HD Settings:<br><br>	helpdesk	override	R26
+Cannot disable this status as it is linked in the following SLAs:<br><br>	helpdesk	override	R28
+Cannot enable rule without adding users in it	helpdesk	override	R01
+Cannot merge General category	helpdesk	override	R01
+Cannot rename: an unrelated {0} '{1}' already exists on the other side. Resolve the conflict manually first.	helpdesk	override	R26
+Categories	helpdesk	override	R11
+Category '{0}' link copied to clipboard	helpdesk	override	R26
+Category is required	helpdesk	override	R01
+Category merged successfully.	helpdesk	override	R02
+Category must have atleast one article	helpdesk	override	R01
+Cc:	helpdesk	override	R25
+Change Photo	helpdesk	override	R15
+Change language of the application.	helpdesk	override	R15
+Change operator ({0})	helpdesk	override	R26
+Change priority	helpdesk	override	R15
+Change status	helpdesk	override	R15
+Change team	helpdesk	override	R15
+Change ticket type	helpdesk	override	R15
+Change timezone of the application.	helpdesk	override	R15
+Change your account password for security.	helpdesk	override	R15
+Child field	helpdesk	override	R11
+Choose a field	helpdesk	override	R15
+Choose how long this SLA policy will be active.	helpdesk	override	R28
+Choose how tickets are distributed among selected assignees.	helpdesk	override	R01
+Choose the days of the week when this rule should be active.	helpdesk	override	R01
+Choose the duration of this holiday list.	helpdesk	override	R01
+Choose the email service provider you want to configure.	helpdesk	override	R01
+Choose which tickets are affected by this assignment rule.	helpdesk	override	R01
+Choose which tickets are affected by this policy.	helpdesk	override	R01
+Choose which tickets are affected by this un-assignment rule.	helpdesk	override	R01
+Choose who can view and use this response.	helpdesk	override	R01
+Choose who receives the tickets.	helpdesk	override	R01
+Clear Sort	helpdesk	override	R15
+Clear all	helpdesk	override	R15
+Click to copy	helpdesk	override	R01
+Close Ticket	helpdesk	override	R22
+Comma separated emails to invite.	helpdesk	override	R01
+Comma separated values	helpdesk	override	R11
+Comment cannot be empty.	helpdesk	override	R01
+Comment deleted successfully.	helpdesk	override	R02
+Comment not found	helpdesk	override	R01
+Comment updated successfully.	helpdesk	override	R02
+Communication ID is required	helpdesk	override	R01
+Configure your telephony settings.	helpdesk	override	R01
+Confirm Changes	helpdesk	override	R15
+Confirm overwrite	helpdesk	override	R15
+Connect your support email	helpdesk	override	R15
+Contact removed successfully	helpdesk	override	R02
+Contact updated successfully.	helpdesk	override	R02
+Contact {0} has no email address	helpdesk	override	R26
+Contacts added successfully	helpdesk	override	R02
+Copy ticket URL	helpdesk	override	R15
+Copy ticket id	helpdesk	override	R15
+Could not an email due to: {0}	helpdesk	override	R26
+Could not migrate contacts for {0} customer(s): {1}. Fix the underlying data and re-run the patch.	helpdesk	override	R26
+Could not send an acknowledgement email due to: {0}	helpdesk	override	R26
+Could not send feedback email,due to: {0}	helpdesk	override	R26
+Create & invite a contact	helpdesk	override	R15
+Create Contact	helpdesk	override	R15
+Create View	helpdesk	override	R15
+Create a ticket	helpdesk	override	R15
+Create an article	helpdesk	override	R15
+Create and manage teams and assign agents to specific teams.	helpdesk	override	R15
+Create new business holiday	helpdesk	override	R15
+Created by	helpdesk	override	R11
+Creating a ticket	helpdesk	override	R01
+Custom Actions	helpdesk	override	R11
+Custom Outside Working Hours Message	helpdesk	override	R11
+Custom Views	helpdesk	override	R11
+Customer Manager	helpdesk	override	R11
+Customer Portal	helpdesk	override	R11
+Customer created	helpdesk	override	R02
+Customer name cannot be empty	helpdesk	override	R01
+Customer portal	helpdesk	override	R11
+Customer updated	helpdesk	override	R02
+Customers & Contacts	helpdesk	override	R11
+Customers are in sync	helpdesk	override	R01
+Customizations	helpdesk	override	R11
+Customize your email notification preferences to stay informed about important updates and activities.	helpdesk	override	R01
+Dashboard saved	helpdesk	override	R02
+Day count for auto closing tickets cannot be negative or zero	helpdesk	override	R01
+Default SLA	helpdesk	override	R28
+Default Views	helpdesk	override	R11
+Default actions	helpdesk	override	R11
+Default priority	helpdesk	override	R11
+Default template can not be deleted	helpdesk	override	R01
+Default ticket status	helpdesk	override	R11
+Default ticket type	helpdesk	override	R11
+Define who receives the tickets and how they’re distributed among agents.	helpdesk	override	R01
+Delete Contact	helpdesk	override	R15
+Delete View	helpdesk	override	R15
+Delete articles	helpdesk	override	R15
+Delete category?	helpdesk	override	R15
+Delete {0} ticket(s)	helpdesk	override	R26
+Description Template	helpdesk	override	R11
+Description Weight	helpdesk	override	R11
+Detailed explanation	helpdesk	override	R11
+Disable global saved replies	helpdesk	override	R15
+Disable saved replies with scope 'Global'	helpdesk	override	R15
+Disable signup	helpdesk	override	R15
+Disables all email notifications for the ticket - including creation, updates, and alerts.	helpdesk	override	R01
+Discard Article	helpdesk	override	R15
+Discard changes?	helpdesk	override	R15
+Display a customizable banner message when customers raise tickets outside your working hours.	helpdesk	override	R01
+Do not apply filters and restrictions to agents of this team	helpdesk	override	R01
+Do not restrict tickets without a Team	helpdesk	override	R01
+Do not restrict tickets without a team	helpdesk	override	R01
+Docs	helpdesk	override	R11
+Duplicate Assignment Rule	helpdesk	override	R15
+Duplicate Holiday List	helpdesk	override	R15
+Duplicate SLA Policy	helpdesk	override	R28
+Duplicate Saved reply	helpdesk	override	R15
+Duration is required	helpdesk	override	R01
+ERPNext Customer	helpdesk	override	R29
+ERPNext HD Settings	helpdesk	override	R29
+ERPNext Integration is disabled	helpdesk	override	R29
+ERPNext Integration is enabled	helpdesk	override	R29
+ERPNext app	helpdesk	override	R29
+ERPNext integration is not enabled	helpdesk	override	R29
+ERPNext is not installed on your site. Please install ERPNext to enable this setting	helpdesk	override	R29
+Easily invite new agents, managers, or admins.	helpdesk	override	R01
+Edit Call Log	helpdesk	override	R15
+Edit Contact	helpdesk	override	R15
+Edit Customer	helpdesk	override	R15
+Edit Domain	helpdesk	override	R15
+Edit Email	helpdesk	override	R15
+Edit Title	helpdesk	override	R15
+Edit your email account	helpdesk	override	R15
+Email Accounts	helpdesk	override	R11
+Email Content	helpdesk	override	R11
+Email Notifications	helpdesk	override	R11
+Email account created	helpdesk	override	R02
+Email account name	helpdesk	override	R11
+Email account updated successfully	helpdesk	override	R02
+Email address of the primary contact	helpdesk	override	R11
+Emails & Signature	helpdesk	override	R11
+Emails pulled successfully	helpdesk	override	R02
+Emoji	helpdesk	override	R29
+Empty - Choose a field to sort by	helpdesk	override	R01
+Enable ERPNext Integration	helpdesk	override	R15
+Enable comment reactions	helpdesk	override	R15
+Enable feedback for Customer Portal	helpdesk	override	R15
+Enter a name for this HD Service Holiday List.	helpdesk	override	R01
+Enter brand name	helpdesk	override	R01
+Enter email address	helpdesk	override	R01
+Enter the new name for the team	helpdesk	override	R01
+Enter the primary contact's email	helpdesk	override	R01
+Enter the primary contact's first name	helpdesk	override	R01
+Error moving article to category	helpdesk	override	R01
+Error processing email at index {0}, message: {1}	helpdesk	override	R26
+Existing users join instantly. Others get an invite.	helpdesk	override	R01
+Explore customer portal	helpdesk	override	R15
+Export All {0} Record(s)	helpdesk	override	R26
+Failed SLAs	helpdesk	override	R28
+Failed to create category	helpdesk	override	R01
+Failed to create email account, Invalid credentials	helpdesk	override	R01
+Failed to delete ticket.	helpdesk	override	R01
+Failed to load telephony agent	helpdesk	override	R01
+Failed to pull emails	helpdesk	override	R01
+Failed to update assignment rule {0}.	helpdesk	override	R26
+Failed to update category.	helpdesk	override	R01
+Failed to update email account, Invalid credentials	helpdesk	override	R01
+Failed to update field dependency.	helpdesk	override	R01
+Favicon	helpdesk	override	R01
+Feedback (Extra)	helpdesk	override	R11
+Feedback (Option)	helpdesk	override	R11
+Feedback Already Exists	helpdesk	override	R01
+Feedback Rating	helpdesk	override	R11
+Feedback Trend	helpdesk	override	R11
+Feedback email has been sent to the customer	helpdesk	override	R02
+Feedback from this contact will appear here once available.	helpdesk	override	R01
+Feedback submitted successfully.	helpdesk	override	R02
+Field Dependencies	helpdesk	override	R11
+Field Dependency	helpdesk	override	R11
+Field Dependency created successfully	helpdesk	override	R02
+Field Dependency updated successfully	helpdesk	override	R02
+Field `{0}` does not exist in Ticket	helpdesk	override	R26
+Field `{0}` is not allowed in Ticket Template	helpdesk	override	R26
+Field dependency deleted successfully.	helpdesk	override	R02
+Field dependency updated successfully.	helpdesk	override	R02
+Find out all of the variables that can be used in the content	helpdesk	override	R01
+First Response	helpdesk	override	R10
+First Response Failed By	helpdesk	override	R10
+From is required	helpdesk	override	R01
+General category can't be deleted	helpdesk	override	R01
+General category name can't be changed	helpdesk	override	R01
+General is a reserved category name. Please use a different name to proceed.	helpdesk	override	R01
+Go to Ticket #{0}	helpdesk	override	R26
+Grant Manager Access	helpdesk	override	R15
+Great! All your tickets are within SLA	helpdesk	override	R28
+Group By Field	helpdesk	override	R10
+Guide users to articles before tickets.	helpdesk	override	R01
+HD Agent Status	helpdesk	override	R28
+HD Article	helpdesk	override	R28
+HD Article Category	helpdesk	override	R28
+HD Article Feedback	helpdesk	override	R28
+HD Comment Reaction	helpdesk	override	R28
+HD Customer	helpdesk	override	R28
+HD Customer Manager	helpdesk	override	R28
+HD Customer Member	helpdesk	override	R28
+HD Email Feedback	helpdesk	override	R28
+HD Field Layout	helpdesk	override	R28
+HD Form Script	helpdesk	override	R28
+HD Holiday	helpdesk	override	R28
+HD Notification	helpdesk	override	R28
+HD Saved Reply	helpdesk	override	R28
+HD Saved Reply Team	helpdesk	override	R28
+HD Service Day	helpdesk	override	R28
+HD Service Holiday List	helpdesk	override	R28
+HD Service Level Priority	helpdesk	override	R28
+HD Stopword	helpdesk	override	R28
+HD Synonym	helpdesk	override	R28
+HD Synonyms	helpdesk	override	R28
+HD Team Member	helpdesk	override	R28
+HD Ticket Activity	helpdesk	override	R28
+HD Ticket Comment	helpdesk	override	R28
+HD Ticket Feedback Option	helpdesk	override	R28
+HD Ticket Status	helpdesk	override	R28
+HD Ticket Template	helpdesk	override	R28
+HD Ticket Template Field	helpdesk	override	R28
+HD View	helpdesk	override	R28
+Headings Weight	helpdesk	override	R10
+Hello {{ contact }}, \\n\\nWe are sorry for the inconvenience, we will get back to you soon. \\n\\nRegards, \\n{{ full_name }}	helpdesk	override	R26
+HelpDesk	helpdesk	override	R01
+Hide from customer	helpdesk	override	R15
+Hide from sidebar	helpdesk	override	R15
+Hide view from sidebar	helpdesk	override	R15
+Holiday list created successfully.	helpdesk	override	R02
+Holiday list deleted successfully.	helpdesk	override	R02
+Holiday list duplicated successfully.	helpdesk	override	R02
+Holiday list updated successfully.	helpdesk	override	R02
+I understand, add conditions	helpdesk	override	R15
+If enabled, anyone will be able to create tickets (without any permission). 	helpdesk	override	R25
+Ignore Restrictions	helpdesk	override	R15
+Image removed successfully.	helpdesk	override	R02
+Image updated successfully.	helpdesk	override	R02
+Inbound Call	helpdesk	override	R10
+Install the	helpdesk	override	R01
+Instantly send e-mail	helpdesk	override	R15
+Integer value	helpdesk	override	R10
+Invalid availability	helpdesk	override	R10
+Invalid email address	helpdesk	override	R10
+Invalid fields, check if all are filled in and values are correct.	helpdesk	override	R01
+Invalid notification	helpdesk	override	R10
+Invalid phone number	helpdesk	override	R10
+Invalid role {0}	helpdesk	override	R26
+Invitation Expired	helpdesk	override	R10
+Invitation cancelled successfully	helpdesk	override	R02
+Invitation expired. Resend to invite again.	helpdesk	override	R01
+Invite Agents	helpdesk	override	R15
+Invite Contact	helpdesk	override	R15
+Invite agent	helpdesk	override	R15
+Invite agents	helpdesk	override	R15
+Invite sent. Waiting for the user to accept.	helpdesk	override	R02
+Invite via email	helpdesk	override	R15
+Invited by	helpdesk	override	R10
+Is Customer Portal	helpdesk	override	R10
+Is Manager	helpdesk	override	R10
+Is applied to system	helpdesk	override	R10
+Is name setup skipped	helpdesk	override	R10
+Is pinned	helpdesk	override	R10
+Is setup complete	helpdesk	override	R10
+Jump to	helpdesk	override	R15
+KB	helpdesk	override	R28
+Label (customer view)	helpdesk	override	R10
+Language & Time	helpdesk	override	R10
+Last 3 months	helpdesk	override	R10
+Last Agent Response	helpdesk	override	R10
+Last Customer Response	helpdesk	override	R10
+Last month	helpdesk	override	R10
+Last seen	helpdesk	override	R10
+Last user assigned by this rule	helpdesk	override	R10
+Last week	helpdesk	override	R10
+Learn about conditions	helpdesk	override	R15
+Let customers know they're raising a ticket outside working hours, and when they can expect a reply.	helpdesk	override	R01
+Listen	helpdesk	override	R15
+Load Default Columns	helpdesk	override	R15
+Log a Call	helpdesk	override	R15
+Lower the Integer value, higher is the priority of the issue	helpdesk	override	R01
+Make Private	helpdesk	override	R15
+Make Public	helpdesk	override	R15
+Make a Call	helpdesk	override	R15
+Make feedback mandatory	helpdesk	override	R10
+Make view private	helpdesk	override	R15
+Manage general settings of your app.	helpdesk	override	R15
+Manage pre-defined responses that can be used to respond to customer queries.	helpdesk	override	R01
+Manage your account emails and email signature for communication.	helpdesk	override	R01
+Manage your email accounts and configure incoming and outgoing settings.	helpdesk	override	R01
+Manage your personal preferences.	helpdesk	override	R01
+Manage your profile information.	helpdesk	override	R01
+Members ({0})	helpdesk	override	R26
+Merge Ticket	helpdesk	override	R15
+Merged With	helpdesk	override	R10
+Mobile App Installation	helpdesk	override	R10
+Mobile no. of the primary contact	helpdesk	override	R28
+My Dashboard	helpdesk	override	R09
+My Organization	helpdesk	override	R10
+My Stats	helpdesk	override	R10
+My Team	helpdesk	override	R10
+My Tickets	helpdesk	override	R10
+Name Weight	helpdesk	override	R10
+Name is required	helpdesk	override	R01
+Name shown on the customer portal<br> (e.g., Replied → Awaiting Response).	helpdesk	override	R26
+Navigation	helpdesk	override	R10
+Negative first	helpdesk	override	R10
+New Article	helpdesk	override	R15
+New Assignment Rule	helpdesk	override	R10
+New Assignment Rule Name	helpdesk	override	R10
+New Business Holiday	helpdesk	override	R10
+New Call Log	helpdesk	override	R10
+New Field Dependency	helpdesk	override	R10
+New Holiday List Name	helpdesk	override	R10
+New SLA Policy	helpdesk	override	R28
+New SLA Policy Name	helpdesk	override	R28
+New Saved Reply	helpdesk	override	R10
+New Saved reply Name	helpdesk	override	R10
+New Subject	helpdesk	override	R10
+New Team	helpdesk	override	R10
+New Ticket	helpdesk	override	R15
+New and old title cannot be same	helpdesk	override	R01
+New team	helpdesk	override	R10
+New title is required	helpdesk	override	R01
+Next ticket	helpdesk	override	R10
+No Data Found	helpdesk	override	R10
+No Email Account found for {0}	helpdesk	override	R26
+No HD Agent record for current user	helpdesk	override	R28
+No Holiday list found	helpdesk	override	R10
+No SLA found	helpdesk	override	R28
+No Team	helpdesk	override	R10
+No active tickets	helpdesk	override	R10
+No additional comments	helpdesk	override	R10
+No agents found	helpdesk	override	R10
+No articles found in the following category.	helpdesk	override	R01
+No assignment rule found	helpdesk	override	R10
+No average metrics	helpdesk	override	R10
+No categories available	helpdesk	override	R10
+No contacts found	helpdesk	override	R10
+No contacts to add	helpdesk	override	R10
+No country found	helpdesk	override	R09
+No email account found	helpdesk	override	R10
+No feedback	helpdesk	override	R10
+No feedback yet	helpdesk	override	R10
+No fields found	helpdesk	override	R10
+No new notifications	helpdesk	override	R10
+No new tickets assigned to you in the last 7 days	helpdesk	override	R10
+No next ticket	helpdesk	override	R10
+No one	helpdesk	override	R10
+No pending tickets	helpdesk	override	R10
+No previous ticket	helpdesk	override	R10
+No reason	helpdesk	override	R10
+No recently assigned tickets	helpdesk	override	R10
+No results	helpdesk	override	R10
+No reviews found	helpdesk	override	R10
+No saved replies found	helpdesk	override	R10
+No tickets found	helpdesk	override	R10
+No tickets found for this view. Try adjusting your filters or creating a new view.	helpdesk	override	R01
+No tickets found to preview.	helpdesk	override	R10
+No tickets selected	helpdesk	override	R10
+No user linked to contact {0}	helpdesk	override	R26
+Old Condition	helpdesk	override	R10
+Old Conditions	helpdesk	override	R10
+On ticket status	helpdesk	override	R10
+Only administrators can delete tickets.	helpdesk	override	R09
+Open command palette	helpdesk	override	R15
+Open comment box	helpdesk	override	R15
+Open customer	helpdesk	override	R15
+Open help	helpdesk	override	R15
+Open in Desk	helpdesk	override	R29
+Open reply box	helpdesk	override	R15
+Open settings	helpdesk	override	R15
+Organization Dashboard	helpdesk	override	R09
+Outbound Call	helpdesk	override	R10
+Outside working hours notice	helpdesk	override	R10
+Parent field	helpdesk	override	R10
+Parent field, child field, and parent-child mapping are required.	helpdesk	override	R01
+Password must be at least 8 characters	helpdesk	override	R01
+Password must contain lowercase, uppercase, number, and symbol	helpdesk	override	R01
+Passwords match	helpdesk	override	R10
+Pending Invites	helpdesk	override	R10
+Pending Tickets	helpdesk	override	R10
+Percentage of total tickets by channel	helpdesk	override	R10
+Percentage of total tickets by priority	helpdesk	override	R10
+Percentage of total tickets by team	helpdesk	override	R10
+Percentage of total tickets by type	helpdesk	override	R10
+Personal mobile no	helpdesk	override	R28
+Pick an option	helpdesk	override	R01
+Pin View	helpdesk	override	R15
+Please add this priority in the <a href='/app/hd-service-level-agreement'>required SLA documents</a>	helpdesk	override	R26
+Please add {0} priority in {1} SLA	helpdesk	override	R26
+Please create a new ticket to proceed with the next step.	helpdesk	override	R01
+Please enter a subject to continue	helpdesk	override	R01
+Please enter a valid phone number	helpdesk	override	R01
+Please enter at least one valid email to send an invite.	helpdesk	override	R01
+Please fill all required fields	helpdesk	override	R01
+Please fill all the required fields	helpdesk	override	R01
+Please fix the errors in the form	helpdesk	override	R01
+Please select at least one restriction option for teams in the settings.	helpdesk	override	R01
+Policy name	helpdesk	override	R11
+Positive first	helpdesk	override	R01
+Prefer knowledge base	helpdesk	override	R15
+Preferences	helpdesk	override	R12
+Preferences updated successfully.	helpdesk	override	R02
+Presets	helpdesk	override	R01
+Previous ticket	helpdesk	override	R11
+Primary contact must be one of the listed contacts	helpdesk	override	R01
+Primary contact updated	helpdesk	override	R02
+Priority <u>{0}</u> must be included in the SLA {1}.	helpdesk	override	R28
+Private Views	helpdesk	override	R12
+Product Experts	helpdesk	override	R01
+Product experts	helpdesk	override	R01
+Public Views	helpdesk	override	R12
+Published articles must have content.	helpdesk	override	R01
+Pulling emails, this may take a few minutes.	helpdesk	override	R01
+Rate Your Support Experience	helpdesk	override	R01
+Rate this ticket	helpdesk	override	R01
+Rating must be between 0.2 and 1.0	helpdesk	override	R30
+Rating {0} is not allowed	helpdesk	override	R26
+Reaction	helpdesk	override	R11
+Reactions	helpdesk	override	R12
+Recent	helpdesk	override	R01
+Recent Tickets	helpdesk	override	R01
+Record Calls	helpdesk	override	R15
+Recurring Holidays	helpdesk	override	R12
+Recurring holidays	helpdesk	override	R12
+Reference Ticket	helpdesk	override	R01
+Refresh Apps	helpdesk	override	R15
+Regenerate Search Index	helpdesk	override	R15
+Remove Contact	helpdesk	override	R15
+Remove Logo	helpdesk	override	R15
+Remove Photo	helpdesk	override	R15
+Remove filter	helpdesk	override	R29
+Remove primary	helpdesk	override	R01
+Rename (⌘ + ⏎)	helpdesk	override	R29
+Rename team	helpdesk	override	R15
+Replace filter	helpdesk	override	R29
+Replace image	helpdesk	override	R15
+Reply From Agent	helpdesk	override	R01
+Reply From Contact	helpdesk	override	R01
+Reply from agent	helpdesk	override	R01
+Reply from contact	helpdesk	override	R01
+Reply on a ticket	helpdesk	override	R01
+Resend Invite	helpdesk	override	R15
+Reset Content	helpdesk	override	R15
+Reset content	helpdesk	override	R15
+Reset to Default	helpdesk	override	R15
+Resolution Failed By	helpdesk	override	R01
+Response is required	helpdesk	override	R01
+Restrict agent assignment to selected Team	helpdesk	override	R01
+Restrict agent assignment to selected team	helpdesk	override	R01
+Restrict tickets by Team	helpdesk	override	R01
+Restrict tickets by team	helpdesk	override	R01
+Restrict tickets to be viewed and managed by team members only.	helpdesk	override	R01
+Restrict visibility to these teams	helpdesk	override	R01
+Revoke Invite	helpdesk	override	R15
+Revoke Manager Access	helpdesk	override	R15
+Role updated successfully	helpdesk	override	R02
+Route Name	helpdesk	override	R01
+Run an initial sync to reconcile existing records. New ones update automatically.	helpdesk	override	R01
+SLA	helpdesk	override	R28
+SLA Alerts	helpdesk	override	R28
+SLA Creation	helpdesk	override	R28
+SLA Mapping	helpdesk	override	R28
+SLA Status	helpdesk	override	R28
+SLA policy created successfully.	helpdesk	override	R02
+SLA policy deleted successfully.	helpdesk	override	R02
+SLA policy duplicated successfully.	helpdesk	override	R02
+SLA policy status updated successfully.	helpdesk	override	R02
+SLA policy updated successfully.	helpdesk	override	R02
+SLA set as default cannot be disabled	helpdesk	override	R28
+SLA set as default cannot be disabled.	helpdesk	override	R28
+Save Changes	helpdesk	override	R15
+Saved Replies	helpdesk	override	R12
+Saved Views	helpdesk	override	R12
+Saved reply deleted successfully.	helpdesk	override	R02
+Saved reply duplicated successfully.	helpdesk	override	R02
+Saved reply saved successfully.	helpdesk	override	R02
+Saved reply updated successfully.	helpdesk	override	R02
+Schedule name	helpdesk	override	R01
+Search Index Regenerated	helpdesk	override	R02
+Search Score	helpdesk	override	R01
+Search agents...	helpdesk	override	R25
+Search by ID or Subject	helpdesk	override	R01
+Search country	helpdesk	override	R09
+"Search for ""{0}"""	helpdesk	override	R26
+Search index does not exist. Please build the index first.	helpdesk	override	R01
+Search index not available. Please contact administrator.	helpdesk	override	R09
+Search query must be at least 2 characters	helpdesk	override	R30
+Search ticket	helpdesk	override	R01
+Search tickets, comments, and communications...	helpdesk	override	R01
+Search tickets, emails, comments, or #234 to navigate to ticket	helpdesk	override	R30
+Searched for:	helpdesk	override	R25
+See all {0} tickets	helpdesk	override	R26
+Select Category	helpdesk	override	R15
+Select Customer	helpdesk	override	R15
+Select Range	helpdesk	override	R15
+Select Ticket	helpdesk	override	R15
+Select Timezone	helpdesk	override	R15
+Select a rating	helpdesk	override	R15
+Select country	helpdesk	override	R15
+Select range	helpdesk	override	R15
+Select teams	helpdesk	override	R15
+Select ticket to preview	helpdesk	override	R15
+Select timezone	helpdesk	override	R15
+Select what type all tickets get by default.	helpdesk	override	R01
+Send Invites	helpdesk	override	R15
+Send Reply	helpdesk	override	R15
+Send feedback when	helpdesk	override	R01
+Send reset password email	helpdesk	override	R15
+Send to {0} tickets	helpdesk	override	R26
+Service Level Agreements (SLAs)	helpdesk	override	R28
+Service not supported	helpdesk	override	R01
+Set Phone Number	helpdesk	override	R15
+Set Primary Contact	helpdesk	override	R15
+Set Resolution Time for Priority {0} in row {1}.	helpdesk	override	R26
+Set as Primary	helpdesk	override	R15
+Set as default SLA	helpdesk	override	R28
+Set as primary	helpdesk	override	R15
+Set status	helpdesk	override	R15
+Set your availability so your team knows when you're reachable.	helpdesk	override	R01
+Set your team’s working days, hours, and holidays using a template or custom schedule.	helpdesk	override	R01
+Settings updated	helpdesk	override	R02
+Setup Email	helpdesk	override	R15
+Setup SLA	helpdesk	override	R28
+Share Feedback	helpdesk	override	R15
+Share feedback	helpdesk	override	R15
+Show end users a different view	helpdesk	override	R01
+Show in sidebar	helpdesk	override	R15
+Showing {0} of {1} {2}	helpdesk	override	R26
+Skip e-mail workflow	helpdesk	override	R15
+Skip email workflow	helpdesk	override	R15
+Some error occurred while renaming assignment rule	helpdesk	override	R01
+Some error occurred while renaming holiday list	helpdesk	override	R01
+Some error occurred while renaming saved reply	helpdesk	override	R01
+Some error occurred while updating assignment rule	helpdesk	override	R01
+Some error occurred while updating holiday list	helpdesk	override	R01
+Sort	helpdesk	override	R11
+Source and target category cannot be same	helpdesk	override	R01
+Source and target ticket cannot be same	helpdesk	override	R01
+Source ticket does not exist	helpdesk	override	R01
+Split and Merge	helpdesk	override	R01
+Standard Form Scripts can't be modified, duplicate the script instead.	helpdesk	override	R01
+Standard Views cannot be deleted.	helpdesk	override	R01
+Start Time can't be greater than or equal to End Time in row <u>{0}</u>.	helpdesk	override	R26
+Status Category	helpdesk	override	R01
+Status Order	helpdesk	override	R01
+Status is required	helpdesk	override	R01
+Status of the ticket, when a customer replies on the ticket.	helpdesk	override	R01
+Status of the ticket, when it is created in the system.	helpdesk	override	R01
+Subject Weight	helpdesk	override	R01
+Subject is required	helpdesk	override	R01
+Sync Customers	helpdesk	override	R15
+Sync all customers between ERPNext and Helpdesk? The sync runs in the background and can take a few minutes depending on the number of customers.	helpdesk	override	R29
+Sync completed successfully	helpdesk	override	R02
+Sync customers between Helpdesk and ERPNext.	helpdesk	override	R29
+Sync now	helpdesk	override	R15
+Sync started	helpdesk	override	R02
+Sync your existing customers	helpdesk	override	R15
+Synonyms	helpdesk	override	R12
+System types can not be deleted	helpdesk	override	R01
+Target ticket does not exist	helpdesk	override	R01
+Team Name	helpdesk	override	R01
+Team Restrictions	helpdesk	override	R01
+Team can now access all tickets.	helpdesk	override	R01
+Team created	helpdesk	override	R02
+Team created successfully.	helpdesk	override	R02
+Team deleted successfully.	helpdesk	override	R02
+Team disabled successfully.	helpdesk	override	R02
+Team enabled successfully.	helpdesk	override	R02
+Team name	helpdesk	override	R01
+Team renamed successfully.	helpdesk	override	R02
+Team will only see their own tickets.	helpdesk	override	R01
+Teams	helpdesk	override	R12
+Telephony	helpdesk	override	R01
+Telephony settings updated successfully.	helpdesk	override	R02
+Tell us more	helpdesk	override	R01
+Template Name	helpdesk	override	R01
+The 'Closed' status cannot be renamed.	helpdesk	override	R30
+The assignment condition '{0}' is invalid: {1}	helpdesk	override	R26
+The contact {0} is linked to multiple customers. Please select the customer manually.	helpdesk	override	R26
+The feedback dialog will be shown, when a user tries to close a ticket from the customer portal.	helpdesk	override	R01
+The number of days must be 1 or more	helpdesk	override	R30
+The selected customer {0} is not linked to the contact {1}.Please select a valid customer or update the contact's linked customers.	helpdesk	override	R26
+The status for sending feedback must be of <u>Resolved</u> category.	helpdesk	override	R26
+The ticket status will automatically change whenever the agent respond to a ticket.	helpdesk	override	R01
+There are no categories published at the moment.	helpdesk	override	R01
+There should be at least 1 assignment rule for ticket	helpdesk	override	R01
+They'll get access to tickets raised by everyone in the organisation.	helpdesk	override	R01
+They'll only see their own tickets going forward.	helpdesk	override	R01
+This Assignment Rule is linked to the Team {0}.</br> User {1} is added in the Assignment Rule but not in the linked Team. Please add the user in the {2} to ensure proper team structure.	helpdesk	override	R26
+This action is irreversible.	helpdesk	override	R01
+This contact will become the primary point of contact and will be able to view tickets raised by all other contacts in the organisation.	helpdesk	override	R01
+This ticket (#{0}) has been merged with ticket <a href = '/helpdesk/tickets/{1}'>#{1}</a>.	helpdesk	override	R26
+This ticket has been split to a new ticket. Please follow up on ticket <a href={0}>#{1}</a>.	helpdesk	override	R26
+This will reset the content to the default message.	helpdesk	override	R01
+Ticket #{0}: We've received your request	helpdesk	override	R26
+Ticket ID	helpdesk	override	R01
+Ticket Info	helpdesk	override	R01
+Ticket Management	helpdesk	override	R01
+Ticket Merged	helpdesk	override	R02
+Ticket Not Found	helpdesk	override	R01
+Ticket Priority	helpdesk	override	R01
+Ticket Reopen status	helpdesk	override	R01
+Ticket Routing	helpdesk	override	R01
+Ticket Settings	helpdesk	override	R01
+Ticket Split From	helpdesk	override	R01
+Ticket Subject	helpdesk	override	R01
+Ticket Trend	helpdesk	override	R01
+Ticket closed successfully.	helpdesk	override	R02
+Ticket deleted successfully.	helpdesk	override	R02
+Ticket does not exist.	helpdesk	override	R01
+Ticket merged successfully.	helpdesk	override	R02
+Ticket must be resolved with a feedback	helpdesk	override	R01
+Ticket not found	helpdesk	override	R01
+Ticket not found.	helpdesk	override	R01
+Ticket raised outside working hours	helpdesk	override	R01
+Ticket split successfully.	helpdesk	override	R02
+Ticket status	helpdesk	override	R01
+Ticket to merged with is required	helpdesk	override	R01
+Ticket updated successfully.	helpdesk	override	R02
+Ticket-Search Analysis	helpdesk	override	R01
+Tickets	helpdesk	override	R12
+Tickets approaching or breached SLA	helpdesk	override	R28
+Tickets by Channel	helpdesk	override	R01
+Tickets by Priority	helpdesk	override	R01
+Tickets by Team	helpdesk	override	R01
+Tickets by Type	helpdesk	override	R01
+Tickets can only be assigned to agents	helpdesk	override	R01
+Tickets must meet the following conditions:	helpdesk	override	R25
+Tickets that are awaiting your response	helpdesk	override	R01
+Timezone	helpdesk	override	R01
+Title Slug	helpdesk	override	R28
+Title is required	helpdesk	override	R01
+To is required	helpdesk	override	R01
+To know more about setting up email accounts, click	helpdesk	override	R01
+Toggle theme	helpdesk	override	R09
+Top Result	helpdesk	override	R01
+Total Ticket	helpdesk	override	R01
+Total tickets by priority	helpdesk	override	R01
+Total tickets by team	helpdesk	override	R01
+Total tickets by type	helpdesk	override	R01
+Type a message	helpdesk	override	R01
+Type an email address	helpdesk	override	R01
+Type is required	helpdesk	override	R01
+URL/Method	helpdesk	override	R29
+Unable to send email. Please setup default outgoing email account.	helpdesk	override	R01
+Unassignment Condition	helpdesk	override	R01
+Unavailable	helpdesk	override	R01
+Understanding ticket view	helpdesk	override	R01
+Unpin View	helpdesk	override	R15
+Unsaved	helpdesk	override	R01
+Unsaved changes	helpdesk	override	R01
+Unsupported doctype '{0}' for ticket stats.	helpdesk	override	R26
+Untitled	helpdesk	override	R01
+Update Account	helpdesk	override	R15
+Update status to	helpdesk	override	R01
+Upload Photo	helpdesk	override	R15
+User Reviews	helpdesk	override	R01
+User Signup	helpdesk	override	R01
+View Assignment rule	helpdesk	override	R15
+Was this article Helpful?	helpdesk	override	R01
+Word	helpdesk	override	R01
+Work Schedule and Holidays	helpdesk	override	R01
+Workday added successfully.	helpdesk	override	R02
+Workday updated successfully.	helpdesk	override	R02
+Workflow & Knowledge Base Settings	helpdesk	override	R01
+Write your article here...	helpdesk	override	R01
+Write your email signature here.	helpdesk	override	R01
+Write your reply...	helpdesk	override	R01
+You are now offline.	helpdesk	override	R01
+You are now online.	helpdesk	override	R01
+You can change the default calling medium from the settings	helpdesk	override	R09
+You cannot disable the default SLA.	helpdesk	override	R28
+You cannot set more than one Default Priority.	helpdesk	override	R01
+You do not have permission to access Assignment Rules	helpdesk	override	R01
+You do not have permission to access this resource	helpdesk	override	R01
+You do not have permission to update contacts	helpdesk	override	R01
+You don't have access to this ticket, or it no longer exists.	helpdesk	override	R01
+You don't have permission to view this page, or it no longer exists.	helpdesk	override	R01
+You have already provided feedback for this ticket.	helpdesk	override	R01
+You must set one SLA as Default. Please check the Default SLA option.	helpdesk	override	R28
+Your performance is	helpdesk	override	R01
+active ticket	helpdesk	override	R01
+active tickets	helpdesk	override	R12
+assigned you a ticket	helpdesk	override	R01
+back to email event list	helpdesk	override	R01
+changes from	helpdesk	override	R01
+customize {0}	helpdesk	override	R26
+emails/ comments	helpdesk	override	R01
+from this email onwards will be moved to new ticket.	helpdesk	override	R01
+has made a call	helpdesk	override	R01
+has reached out	helpdesk	override	R01
+has reopened the ticket	helpdesk	override	R01
+here	helpdesk	override	R01
+here.	helpdesk	override	R01
+mentioned you in ticket	helpdesk	override	R01
+published by	helpdesk	override	R01
+stars	helpdesk	override	R01
+synonym	helpdesk	override	R01
+ticket	helpdesk	override	R01
+to enable this integration.	helpdesk	override	R01
+viewed this	helpdesk	override	R01
+{0} Customers	helpdesk	override	R26
+{0} is an Invalid Email Address	helpdesk	override	R26
+{0} is currently away.	helpdesk	override	R26
+{0} is currently unavailable.	helpdesk	override	R26
+{0} is not an existing contact	helpdesk	override	R26
+{0} is not an existing user	helpdesk	override	R26
+{0} item(s) deleted successfully	helpdesk	override	R26
+{0} item(s) queued for deletion	helpdesk	override	R26
+{0} matches	helpdesk	override	R26
+{0} reviews	helpdesk	override	R26
+{0} view is currently public. Changing it to private will hide it for all the users.	helpdesk	override	R26
+{0} view is currently visible in the sidebar. Hiding it will remove it from the sidebar.	helpdesk	override	R26
+{0} · Last active {1}	helpdesk	override	R26
+{} people reacted to your comment	helpdesk	override	R26
+<table class='table table-bordered'><tr><th>{0}</th><th>{1}</th></tr>	hrms	override	R26 structural markup only, placeholders preserved
+Cleared	hrms	override	R01
+Posted On	hrms	override	R27
+This method is only meant for developer mode	hrms	override	R01
+% Of Applicant Portfolio	lending	override	R10
+% Of Total Portfolio	lending	override	R10
+"<span class=""h4"">Loan Origination</span>"	lending	override	R01
+ALM Audit Report	lending	override	R28
+Account Info	lending	override	R11
+Account {0} does not belongs to company {1}	lending	override	R26
+Accrual Date	lending	override	R27
+Accrual Details	lending	override	R11
+Accrual Type	lending	override	R11
+Add Loan Security	lending	override	R15
+Add To First EMI	lending	override	R15
+Add to First EMI	lending	override	R15
+Add to first repayment	lending	override	R19
+Addition Interest Waiver Account is mandatory	lending	override	R01
+Additional Interest	lending	override	R11
+Additional Interest Accounts 	lending	override	R11
+Additional Interest Accrued	lending	override	R11
+Additional Interest Amount	lending	override	R11
+Additional Interest Income	lending	override	R11
+Additional Interest Income Account is mandatory	lending	override	R01
+Additional Interest Receivable	lending	override	R18
+Additional Interest Receivable Account is mandatory	lending	override	R01
+Additional Interest Suspense	lending	override	R18
+Additional Interest Suspense Entry	lending	override	R08
+Additional Interest Waiver	lending	override	R11
+Additional Interest Waiver Account is mandatory	lending	override	R01
+Address Details	lending	override	R11
+Adds the option to have employee loans	lending	override	R01
+Adds unique constraints to the email and phone number fields of the Customer DocType.	lending	override	R01
+Adjustment Account	lending	override	R11
+Adjustment Details	lending	override	R11
+Adjustment Receivable Account	lending	override	R18
+Adjustments	lending	override	R11
+Against Account is mandatory	lending	override	R01
+Against Loan	lending	override	R11
+Against Loan 	lending	override	R11
+Against Loan:	lending	override	R25
+Ageing	lending	override	R11
+Allocated Date	lending	override	R27
+Allocated Demands	lending	override	R11
+Amortized Over Tenure	lending	override	R18
+Amount Paid	lending	override	R19
+Amount cannot be negative	lending	override	R01
+Amount cannot be zero	lending	override	R01
+Amount for advance payment must be between one to two EMI amount	lending	override	R19
+Amount paid cannot be greater than available security deposit	lending	override	R01
+Amount paid cannot be greater than payable amount	lending	override	R01
+Amount paid cannot be less than payable amount for loan closure	lending	override	R01
+Amount paid cannot be zero	lending	override	R01
+Another Loan Restructure is already initiated for this Loan	lending	override	R01
+Applicant 	lending	override	R11
+Applicant Address Details	lending	override	R11
+Applicant Contact Info	lending	override	R11
+Applicant Details	lending	override	R11
+Applicant Phone Number	lending	override	R11
+Applicant Type	lending	override	R11
+Applicant-Wise Loan Security Exposure	lending	override	R11
+Applications	lending	override	R11
+Auto Write Off Amount 	lending	override	R09
+Available Amount	lending	override	R11
+Available Limit	lending	override	R11
+Available Limit Amount	lending	override	R11
+Available Security Deposit	lending	override	R11
+Available Security Value	lending	override	R11
+BPI	lending	override	R28
+BPI Amount Difference	lending	override	R28
+BPI Difference Date	lending	override	R27
+BPI Recovery Method	lending	override	R28
+BPI difference entry	lending	override	R08
+Balance Overdue Principal	lending	override	R11
+Bi-Weekly	lending	override	R01
+Both Fixed Deposit and Corporate Guarantee	lending	override	R11
+Branch Details	lending	override	R09
+Broken Period Interest	lending	override	R11
+Broken Period Interest Days	lending	override	R11
+Broken Period Interest Recovery Account	lending	override	R11
+Bulk Repayment Log	lending	override	R19
+Cancel Future Accruals and Demands 	lending	override	R15
+Cancel future EMI Demands	lending	override	R15
+Cancellation Date	lending	override	R27
+Cannot close loan as there is an outstanding of {0}	lending	override	R26
+Cannot close this loan until full repayment	lending	override	R19
+Cannot create loan until application is approved	lending	override	R16
+Cannot make Advance or Pre Payments during moratorium period. (Moratorium End Date: {}, Posting Date: {})	lending	override	R26
+Cannot un mark as NPA before watch period end date	lending	override	R28
+Change Date	lending	override	R27
+Charge	lending	override	R11
+Charge Accounts	lending	override	R11
+Charge Amount	lending	override	R11
+Charge Code	lending	override	R11
+Charge Payment	lending	override	R19
+Charge Type	lending	override	R11
+Charges Capitalization	lending	override	R11
+Charges Overdue	lending	override	R11
+Charges Treatment	lending	override	R11
+Charges Waiver	lending	override	R11
+Classification Code	lending	override	R11
+Classification Name	lending	override	R11
+Classification {0} added multiple times	lending	override	R26
+Classification {0} with security type {1} added multiple times	lending	override	R26
+Clear demand allocation before repost	lending	override	R15
+Closure Date	lending	override	R27
+Co Lender Schedule	lending	override	R11
+Co Lending	lending	override	R11
+Co Lending Partner	lending	override	R11
+Co-Lender Schedule	lending	override	R11
+Co-Lending	lending	override	R11
+Collection Offset Sequence	lending	override	R11
+Collection Percentage	lending	override	R11
+Collection at partner's percentage	lending	override	R11
+Company Collection Percentage	lending	override	R11
+Completed Tenure	lending	override	R11
+Corporate Guarantee Only	lending	override	R11
+Cost center is mandatory for loans having rate of interest greater than 0	lending	override	R30
+Credit Account is mandatory	lending	override	R18
+Credit Adjustment	lending	override	R18
+Credit Adjustment Amount	lending	override	R18
+Current Disbursed Amount	lending	override	R11
+Current Principal Amount	lending	override	R11
+Current Restructure Count	lending	override	R11
+Customer Refund Account	lending	override	R11
+Customer Refund Account is mandatory	lending	override	R01
+Cyclic Day Of the Month	lending	override	R11
+Days Past Due Log	lending	override	R11
+Days Past Due Logs	lending	override	R11
+Days Past Due Threshold for NPA	lending	override	R28
+Debit Adjustment	lending	override	R18
+Debit Adjustment Amount	lending	override	R18
+Decentralized	lending	override	R01
+Delete GL Entries	lending	override	R15
+Delinked	lending	override	R01
+Delinquent Available Limit	lending	override	R11
+Delinquent In Process Limit	lending	override	R11
+Delinquent Limit	lending	override	R11
+Delinquent Limit Amount	lending	override	R11
+Delinquent Limit Percent	lending	override	R11
+Delinquent Principal Outstanding	lending	override	R11
+Delinquent Utilized Limit	lending	override	R11
+Demand Amount	lending	override	R11
+Demand Date	lending	override	R27
+Demand Generated	lending	override	R02
+Demand Subtype	lending	override	R11
+Demand Type	lending	override	R11
+Demands	lending	override	R11
+Deposit Amount	lending	override	R11
+Deposit Date	lending	override	R27
+Disbursed Amount	lending	override	R11
+Disbursed Amount cannot be greater than {0}	lending	override	R26
+Disbursed Amount: {0}	lending	override	R26
+Disbursed amount cannot be zero	lending	override	R01
+Disbursement	lending	override	R11
+Disbursement Account	lending	override	R11
+Disbursement Date	lending	override	R27
+Disbursement Details	lending	override	R11
+Disbursement References	lending	override	R11
+Disbursement against loan:	lending	override	R25
+Disbursement amount cannot be greater than available limit amount	lending	override	R01
+Disbursement and Repayment	lending	override	R19
+Disbursement date is out of approved limit dates	lending	override	R01
+Disbursements	lending	override	R11
+Do you really want to close this loan	lending	override	R01
+Do you really want to release this loan security assignment?	lending	override	R01
+EMI	lending	override	R28
+EMI (Principal + Interest)	lending	override	R28
+EMIs Paid	lending	override	R28
+EMIs Raised	lending	override	R28
+Effective Date	lending	override	R27
+Employee Loans	lending	override	R11
+Enable Partner Accounting	lending	override	R15
+End of the current month	lending	override	R01
+Entries To Cancel	lending	override	R11
+Entries To Repost	lending	override	R11
+Excess Amount	lending	override	R11
+Excess Amount Acceptance Limit	lending	override	R11
+Excess Amount Paid	lending	override	R11
+Excess amount refund cannot be more than excess amount paid	lending	override	R01
+Excess amount repayment limit during loan closure	lending	override	R19
+FLDG	lending	override	R28
+FLDG Account	lending	override	R28
+FLDG Corporate Guarantee Percentage	lending	override	R28
+FLDG Fixed Deposit Percentage	lending	override	R28
+FLDG Limit Calculation Component	lending	override	R28
+FLDG Trigger DPD	lending	override	R28
+FLDG Trigger Date	lending	override	R28
+FLDG Triggered	lending	override	R28
+Failed Repayment	lending	override	R19
+Fixed Amount	lending	override	R10
+Fixed Deposit Only	lending	override	R10
+For backdated process loan classification, a Loan account is mandatory.	lending	override	R01
+Force Update DPD in Loan	lending	override	R28
+Foreclosure Type	lending	override	R10
+Freeze Account	lending	override	R15
+Freeze Date	lending	override	R27
+From Branch	lending	override	R10
+Full Settlement	lending	override	R10
+Future Cashflow Report	lending	override	R10
+Grace Period in Days	lending	override	R10
+Haircut	lending	override	R10
+Haircut %	lending	override	R10
+Haircut percentage is the percentage difference between market value of the Loan Security and the value ascribed to that Loan Security when used as collateral for that loan.	lending	override	R01
+Ignore On Cancel Amount Update	lending	override	R10
+In Process Limit	lending	override	R10
+Incorrect repayment type, please write off the loan first	lending	override	R09
+Installments Overdue	lending	override	R12
+Interest Accounts	lending	override	R10
+Interest Accruals	lending	override	R10
+Interest Accrued Account	lending	override	R10
+Interest Adjustment	lending	override	R10
+Interest Amount is mandatory	lending	override	R01
+Interest Capitalization	lending	override	R10
+Interest Carry Forward	lending	override	R10
+Interest Income Account is mandatory	lending	override	R01
+Interest Overdue	lending	override	R10
+Interest Payable	lending	override	R18
+Interest Rate (%)	lending	override	R10
+Interest Receivable Account	lending	override	R18
+Interest Receivable Account is mandatory	lending	override	R18
+Interest Treatment	lending	override	R10
+Interest Type	lending	override	R10
+Interest Waiver	lending	override	R10
+Interest Waiver Account	lending	override	R10
+Interest Waiver Account is mandatory	lending	override	R01
+Interest Waiver Amount	lending	override	R10
+Interest Waiver Amount cannot be greater than overdue interest	lending	override	R01
+Interest accrued from {0} to {1} against loan: {2}	lending	override	R26
+Internal Foreclosure	lending	override	R10
+Invalid Loan Disbursement linked for payment	lending	override	R01
+Is Backdated	lending	override	R10
+Is Excess Amount Refund	lending	override	R10
+Is Secured Loan	lending	override	R10
+Is Security Amount Refund	lending	override	R10
+Is Settlement Write Off	lending	override	R09
+Is Term Loan	lending	override	R10
+Is Write Off Waiver	lending	override	R09
+Is Written Off	lending	override	R09
+Last Accrual Date	lending	override	R27
+Latest Price	lending	override	R10
+Limit Amount	lending	override	R10
+Limit Applicable End	lending	override	R10
+Limit Applicable Start	lending	override	R10
+Limit Percent	lending	override	R10
+Limit Renewal	lending	override	R10
+Limits	lending	override	R10
+Line of Credit	lending	override	R18
+Loan 	lending	override	R25
+Loan  Details	lending	override	R25
+Loan Account and Payment Account cannot be same	lending	override	R19
+Loan Account is mandatory	lending	override	R01
+Loan Accounts	lending	override	R10
+Loan Accrual Frequency not set for company {0}	lending	override	R26
+Loan Accrual Frequency not set in the Company DocType.	lending	override	R29
+Loan Accrual Repost	lending	override	R10
+Loan Accrual Repost Detail	lending	override	R10
+Loan Adjustment	lending	override	R10
+Loan Adjustment Detail	lending	override	R10
+Loan Adjustments	lending	override	R10
+Loan Amount Details	lending	override	R10
+Loan Amount Percentage	lending	override	R10
+Loan Amount cannot exceed Maximum Loan Amount of {0}	lending	override	R26
+Loan Amount exceeds maximum loan amount of {0} as per proposed securities	lending	override	R26
+Loan Amount is mandatory	lending	override	R01
+Loan Application	lending	override	R10
+Loan Application Document	lending	override	R10
+Loan Application Statuses	lending	override	R16
+Loan Applications	lending	override	R10
+Loan Balance Adjustment	lending	override	R10
+Loan Booking	lending	override	R10
+Loan Category	lending	override	R10
+Loan Category Code	lending	override	R10
+Loan Category Name	lending	override	R10
+Loan Charge Reference	lending	override	R10
+Loan Charges	lending	override	R10
+Loan Classification	lending	override	R10
+Loan Classification Details	lending	override	R10
+Loan Closure	lending	override	R10
+Loan Closure Requested	lending	override	R10
+Loan Credit Limits	lending	override	R10
+Loan Date	lending	override	R27
+Loan Demand Details	lending	override	R10
+Loan Demand Offset Detail	lending	override	R10
+Loan Demand Offset Order	lending	override	R10
+Loan Demands	lending	override	R10
+Loan Details	lending	override	R10
+Loan Disbursement	lending	override	R10
+Loan Disbursement Charge	lending	override	R10
+Loan Disbursement Charges	lending	override	R10
+Loan Disbursements	lending	override	R10
+Loan Freeze Log	lending	override	R10
+Loan Info	lending	override	R09
+Loan Interest Accrual	lending	override	R10
+Loan Interest Accruals	lending	override	R10
+Loan Interest Report	lending	override	R10
+Loan Limit Change Log	lending	override	R10
+Loan Manager	lending	override	R10
+Loan NPA Log	lending	override	R28
+Loan Origination Settings	lending	override	R10
+Loan Outstanding Report	lending	override	R10
+Loan Partner	lending	override	R10
+Loan Partner Address	lending	override	R10
+Loan Partner Adhoc Charges Shared	lending	override	R10
+Loan Partner Details	lending	override	R10
+Loan Partner Interest Rate	lending	override	R10
+Loan Partner Payment Ratio	lending	override	R19
+Loan Partner Rate Of Interest	lending	override	R10
+Loan Partner Repayment Schedule Type	lending	override	R19
+Loan Partner Share Details	lending	override	R10
+Loan Partner Share Percentage	lending	override	R10
+Loan Partner Shareable	lending	override	R10
+Loan Partners	lending	override	R10
+Loan Processes	lending	override	R10
+Loan Product Loan Partner	lending	override	R10
+Loan Refund	lending	override	R10
+Loan Repayment Charges	lending	override	R19
+Loan Repayment Detail	lending	override	R19
+Loan Repayment Entries	lending	override	R19
+Loan Repayment Repost	lending	override	R19
+Loan Repayment Repost Cancel Detail	lending	override	R19
+Loan Repayment Repost Detail	lending	override	R19
+Loan Repayment Schedule Detail	lending	override	R19
+Loan Repayment Schedules	lending	override	R19
+Loan Repayment Type	lending	override	R19
+Loan Repayment and Closure	lending	override	R19
+Loan Repayments	lending	override	R19
+Loan Restructure Count	lending	override	R10
+Loan Restructure Details	lending	override	R10
+Loan Restructure Limit Log	lending	override	R10
+Loan Restructure is in process. Cannot make any loan adjustment	lending	override	R01
+Loan Securities with different LTV ratio cannot be pledged against one loan	lending	override	R18
+Loan Securities worth {0} needed more to book the loan	lending	override	R26
+Loan Security	lending	override	R10
+Loan Security Assignment Created : {0}	lending	override	R26
+Loan Security Assignment can only be created for secured loans	lending	override	R01
+Loan Security Code	lending	override	R10
+Loan Security Deposit	lending	override	R10
+Loan Security Details	lending	override	R10
+Loan Security Exposure	lending	override	R10
+Loan Security Name	lending	override	R10
+Loan Security Price	lending	override	R10
+Loan Security Price overlapping with {0}	lending	override	R26
+Loan Security Release Error	lending	override	R10
+Loan Security Shortfall	lending	override	R10
+Loan Security Status	lending	override	R16
+Loan Security Type	lending	override	R10
+Loan Security Value	lending	override	R10
+Loan Security Value after unpledge is {0}	lending	override	R26
+Loan Security {0} added multiple times	lending	override	R26
+Loan To Security Value ratio must always be {0}	lending	override	R26
+Loan To Value Ratio	lending	override	R18
+Loan To Value ratio breach	lending	override	R18
+Loan Transfer Detail	lending	override	R10
+Loan Transfers	lending	override	R10
+Loan Write Off will be automatically created on loan closure request if pending amount is below this limit	lending	override	R09
+Loan Write Offs	lending	override	R09
+Loan amount cannot be greater than {0}	lending	override	R26
+Loan amount is mandatory	lending	override	R01
+Loan is a Non Performing Asset	lending	override	R28
+Loan {0} closed	lending	override	R26
+Manual Foreclosure	lending	override	R10
+Manual NPA	lending	override	R28
+Manual Remarks	lending	override	R10
+Maturity Date	lending	override	R27
+Max DPD Range	lending	override	R28
+Maximum Limit Amount	lending	override	R10
+Maximum Loan Amount	lending	override	R10
+Maximum Loan Value	lending	override	R10
+Min DPD Range	lending	override	R28
+Minimum Partner Loan Amount Percentage	lending	override	R10
+Monthly Repayment Amount	lending	override	R19
+Monthly Repayment Amount cannot be greater than Loan Amount	lending	override	R19
+Monthly as per cycle date	lending	override	R10
+Monthly as per repayment start date	lending	override	R19
+Moratorium End Date	lending	override	R27
+Moratorium Tenure	lending	override	R10
+Moratorium Type	lending	override	R10
+NPA	lending	override	R28
+NPA Date	lending	override	R27
+NPA Logs	lending	override	R28
+New Loan Amount	lending	override	R10
+New Loans	lending	override	R10
+New Monthly Repayment Amount	lending	override	R19
+New Rate Of Interest	lending	override	R10
+New Repayment Method	lending	override	R19
+New Repayment Period in Months	lending	override	R19
+New Repayment Start Date	lending	override	R27
+New maximum limit amount cannot be lesser than the utilized limit amount	lending	override	R01
+No excess amount pending for refund	lending	override	R10
+No loans found for this applicant or branch	lending	override	R10
+No valid Loan Security Price found for {0}	lending	override	R26
+Normal Interest	lending	override	R10
+Normal Interest Journal Entry	lending	override	R08
+Normal Limit	lending	override	R10
+Normal Repayment	lending	override	R19
+Normal Restructure	lending	override	R10
+Number Of Days	lending	override	R10
+Old EMI	lending	override	R28
+Old Loan Amount	lending	override	R10
+Old Rate of Interest	lending	override	R10
+Old Repayment Frequency	lending	override	R19
+Old Tenure	lending	override	R10
+One Time	lending	override	R10
+Only submitted unpledge requests can be approved	lending	override	R16
+Organization Type	lending	override	R10
+Original Security Value	lending	override	R10
+Other Charges Waiver	lending	override	R10
+Other Charges Waiver cannot be greater than overdue charges	lending	override	R01
+Outstanding Principal	lending	override	R18
+Outstanding Principal & Interest Accrued	lending	override	R18
+Own Ratio	lending	override	R10
+POS reduction plus interest at partner ROI	lending	override	R28
+Partial Payment Mechanism	lending	override	R19
+Partial Settlement	lending	override	R10
+Partially Disbursed	lending	override	R10
+Particulars	lending	override	R10
+Partner Base Interest Rate	lending	override	R10
+Partner Code	lending	override	R10
+Partner Collection Percentage	lending	override	R10
+Partner Interest Share	lending	override	R10
+Partner Interest Share is mandatory	lending	override	R01
+Partner Loan Amount Percentage	lending	override	R10
+Partner Loan Share Percentage	lending	override	R10
+Partner Monthly Repayment Amount	lending	override	R19
+Partner Name	lending	override	R10
+Partner Percentage	lending	override	R10
+Partner Ratio	lending	override	R10
+Partner Repayment Schedule Type	lending	override	R19
+Partner Share	lending	override	R10
+Partner Share Allocated	lending	override	R10
+Past Cashflow Report	lending	override	R10
+Payable Account is mandatory	lending	override	R18
+Payable Amount	lending	override	R18
+Payable Charges	lending	override	R18
+Payable Charges can only be added if Charge Payment	lending	override	R19
+Payable Principal Amount	lending	override	R18
+Penal Interest	lending	override	R10
+Penal Interest Waiver	lending	override	R10
+Penal Treatment	lending	override	R10
+Penalty	lending	override	R10
+Penalty Accrued Account	lending	override	R10
+Penalty Amount	lending	override	R10
+Penalty Capitalization	lending	override	R10
+Penalty Charges Accounts	lending	override	R10
+Penalty Charges Rate	lending	override	R10
+Penalty Income Account	lending	override	R10
+Penalty Income Account is mandatory	lending	override	R01
+Penalty Interest Rate (%)	lending	override	R10
+Penalty Overdue	lending	override	R10
+Penalty Receivable Account	lending	override	R18
+Penalty Receivable Account is mandatory	lending	override	R01
+Penalty Suspense Account	lending	override	R18
+Penalty Waiver	lending	override	R10
+Penalty Waiver Account	lending	override	R10
+Penalty Waiver cannot be greater than overdue penalty interest	lending	override	R01
+Pending Charge Amount	lending	override	R10
+Pending Principal Amount	lending	override	R18
+Pending Principal: {0}	lending	override	R26
+Pending principal amount for loan {0} is {1}	lending	override	R26
+Please add customer refund account in Loan Product	lending	override	R01
+Please add partner Payable Account for Loan Partner {0}	lending	override	R26
+Please enter Repayment Periods	lending	override	R19
+Please enter monthly repayment amount	lending	override	R19
+Please enter repayment Amount	lending	override	R19
+Please select Applicant Type first	lending	override	R01
+Please select As on Date.	lending	override	R01
+Please select Company.	lending	override	R01
+Please select Loan Disbursement for Line of Credit repayment	lending	override	R19
+Please select Loan Product for company {0}	lending	override	R26
+Please set Additional Interest Accrued Account in Loan Product {0}	lending	override	R26
+Please set Additional Interest Income Account in Loan Product {0}	lending	override	R26
+Please set Broken Period Interest Recovery Account for the Loan Product {0}	lending	override	R26
+Please set Customer Refund Account in Loan Product {0}	lending	override	R26
+Please set Interest Accrued Account in Loan Product {0}	lending	override	R26
+Please set Interest Income Account in Loan Product {0}	lending	override	R26
+Please set Payroll Payable Account in Loan Repayment	lending	override	R19
+Please set Penalty Accrued Account in Loan Product {0}	lending	override	R26
+Please set Penalty Income Account in Loan Product {0}	lending	override	R26
+Please set Write Off Recovery Account in Loan Product {0}	lending	override	R26
+Please set {0} Accrual Account in Loan Product {1}	lending	override	R26
+Please set {0} Receivable Account in Loan Product {1}	lending	override	R26
+Please set {0} in either Company or Loan Product	lending	override	R26
+Pledge	lending	override	R10
+Pledge Requested	lending	override	R10
+Pledge Status	lending	override	R16
+Pledge Time	lending	override	R01
+Pledged Applicant Count	lending	override	R01
+Post Haircut Amount	lending	override	R18
+Posting Date (End Date)	lending	override	R08
+Pre Payment	lending	override	R19
+Pre Payment Charges	lending	override	R19
+Pre Restructure DPD	lending	override	R28
+Pre Restructure Details	lending	override	R01
+Prepayment Charges	lending	override	R19
+Price Valid Upto	lending	override	R09
+Principal	lending	override	R18
+Principal Adjustment	lending	override	R01
+Principal Amount Paid	lending	override	R01
+Principal Capitalization	lending	override	R01
+Principal Outstanding	lending	override	R09
+Principal Overdue	lending	override	R01
+Pro-rated calendar months	lending	override	R01
+Process Loan Classification	lending	override	R01
+Process Loan Demand	lending	override	R01
+Process Loan Interest Accrual	lending	override	R01
+Process Loan Restructure Limit	lending	override	R01
+Process Loan Security Shortfall	lending	override	R01
+Product Code	lending	override	R01
+Product Name	lending	override	R01
+Proposed Pledge	lending	override	R01
+Proposed Pledges	lending	override	R12
+Proposed Pledges are mandatory for secured Loans	lending	override	R01
+Provision Rate	lending	override	R18
+Qty is mandatory for loan security!	lending	override	R25
+Qty or Amount is mandatroy for loan security	lending	override	R01
+Rate Of Interest	lending	override	R01
+Rate of Interest	lending	override	R01
+Rate of Interest (%) / Year	lending	override	R01
+Ratio	lending	override	R11
+Reason For Freezing	lending	override	R01
+Reason for Restructure	lending	override	R01
+Refund	lending	override	R11
+Refund Account	lending	override	R01
+Refund Amount	lending	override	R01
+Refund Date	lending	override	R27
+Refund Details	lending	override	R01
+Refund amount	lending	override	R01
+Refund amount cannot be greater than net paid amount	lending	override	R01
+Refund amount cannot be more than available amount	lending	override	R01
+Release Requested	lending	override	R01
+Release Time	lending	override	R01
+Repay Fixed Amount per Period	lending	override	R01
+Repay Over Number of Periods	lending	override	R01
+Repayment	lending	override	R19
+Repayment Account	lending	override	R01
+Repayment Amount must be greater than 	lending	override	R25
+Repayment Date On	lending	override	R01
+Repayment Frequency	lending	override	R01
+Repayment Info	lending	override	R01
+Repayment Method	lending	override	R01
+Repayment Period In Months	lending	override	R01
+Repayment Period in Months	lending	override	R01
+Repayment Periods	lending	override	R12
+Repayment Schedule	lending	override	R01
+Repayment Schedule Detail	lending	override	R01
+Repayment Schedule Type	lending	override	R01
+Repayment Schedules	lending	override	R12
+Repayment Start Date	lending	override	R27
+Repayment Start Date cannot be before Disbursement Date	lending	override	R01
+Repayment Start Date is mandatory for term loans	lending	override	R01
+Repayment Type	lending	override	R01
+Repayment cannot be made for closed loan	lending	override	R01
+Repayment periods is mandatory for term loans	lending	override	R01
+Repayment type can only be Write Off Recovery or Write Off Settlement	lending	override	R09
+Repayments	lending	override	R12
+Repost Date	lending	override	R09
+Request Loan Closure	lending	override	R15
+Restructure Charges	lending	override	R01
+Restructure Date	lending	override	R27
+Restructure Date cannot be before last due date {0}	lending	override	R26
+Restructure Date {0} cannot be after Repayment Start Date {1}	lending	override	R26
+Restructure Type	lending	override	R01
+Restructure of Loans applicable	lending	override	R01
+Round Off Account is mandatory	lending	override	R09
+Row {0}: Loan Security {1} added multiple times	lending	override	R26
+Row {0}: {1} of {2} is pledged against Loan {3}.	lending	override	R26
+Row {0}: {1} should be between 1 and 99	lending	override	R26
+Same as regular interest accounts	lending	override	R01
+Sanctioned Amount Limit	lending	override	R01
+Sanctioned Amount limit crossed for {0} {1}	lending	override	R26
+Sanctioned Loan Amount	lending	override	R01
+Sanctioned Loan Amount already exists for {0} against company {1}	lending	override	R26
+Securities	lending	override	R12
+Security Deposit Account	lending	override	R01
+Security Deposit Adjustment	lending	override	R01
+Security Type	lending	override	R01
+Security Value 	lending	override	R25
+Select whether the repayment date should be the end of the current month or start of the upcoming month	lending	override	R01
+Selected employee belongs to {0}. Please select an employee from company {1}.	lending	override	R26
+Semi-Secured	lending	override	R01
+Servicer Fee	lending	override	R01
+Settlement Date	lending	override	R27
+Shareable Type	lending	override	R01
+Shareable Type {0} added multiple times	lending	override	R26
+Shareables	lending	override	R12
+Shortfall Amount	lending	override	R01
+Shortfall Percentage	lending	override	R01
+Shortfall Time	lending	override	R01
+Start of the next month	lending	override	R01
+Subsidy Adjustment Account	lending	override	R01
+Subsidy Adjustments	lending	override	R12
+Suspense Account	lending	override	R18
+Suspense Collection Account	lending	override	R18
+Suspense Interest Income	lending	override	R18
+Tenure Post Restructure	lending	override	R01
+The Loan Disbursement {0} has been closed.	lending	override	R26
+The amount paid cannot be greater than the payable amount for Security Deposit Adjustment repayments.	lending	override	R01
+The following disbursements do not exist or are not submitted: {}	lending	override	R26
+The following loans do not exist: {}	lending	override	R26
+There already exists a borrower with the same contact details. Do you want to fetch the borrower here?	lending	override	R01
+To Branch	lending	override	R10
+Total Amount Paid	lending	override	R01
+Total Charges Paid	lending	override	R01
+Total Charges Payable	lending	override	R01
+Total Installments Overdue 	lending	override	R25
+Total Installments Paid	lending	override	R01
+Total Installments Raised	lending	override	R01
+Total Interest Paid	lending	override	R01
+Total Interest Payable	lending	override	R01
+Total Overdue Amount	lending	override	R01
+Total Partner Interest Share	lending	override	R01
+Total Partner Principal Share	lending	override	R01
+Total Payable Interest	lending	override	R01
+Total Penalty Paid	lending	override	R01
+Total Principal Paid	lending	override	R01
+Total Security Value	lending	override	R01
+Treatment Of Interest	lending	override	R01
+Treatment of Interest	lending	override	R01
+Type of FLDG Applicable	lending	override	R28
+Unaccrued Interest	lending	override	R01
+Unaccrued Interest Treatment	lending	override	R01
+Unaccrued Interest Waiver	lending	override	R01
+Unaccrued Interest Waiver cannot be greater than overdue amount	lending	override	R01
+Unfreeze Date	lending	override	R27
+Unique Customer	lending	override	R01
+Unmark NPA	lending	override	R28
+Unpledge	lending	override	R01
+Unpledge Time	lending	override	R01
+Unpledged	lending	override	R01
+Unsecured	lending	override	R01
+Update Time	lending	override	R01
+Valid From Time must be lesser than Valid Upto Time.	lending	override	R10
+Validate Normal Repayment	lending	override	R15
+Waive Off Restructure Charges	lending	override	R15
+Waiver Account	lending	override	R01
+Waiving of Charges applicable	lending	override	R01
+Watch Period End Date	lending	override	R27
+Withhold Security Deposit	lending	override	R01
+Write Off Accounts	lending	override	R09
+Write Off Details	lending	override	R09
+Write Off Recovery	lending	override	R09
+Write Off Recovery Account	lending	override	R09
+Write Off Recovery Account is mandatory	lending	override	R09
+Write Off Settlement	lending	override	R09
+Write Off amount cannot be greater than pending loan amount	lending	override	R09
+Write Offs	lending	override	R09
+Write off amount ({0}) should be equal to pending principal amount ({1})	lending	override	R26
+Written Off	lending	override	R09
+Written Off Amount	lending	override	R09
+You are trying to unpledge more.	lending	override	R01
+with reference no. {}	lending	override	R26
+{0} cannot be negative	lending	override	R26
+{0} should be between 1 and 99	lending	override	R26
+{} Open	lending	override	R26
+{} against loan {}	lending	override	R26
