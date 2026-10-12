@@ -3,6 +3,7 @@
 
 import frappe
 
+from afmco.people_and_payroll.doctype.temporary_iban.temporary_iban import get_active_temporary_ibans
 from afmco.people_and_payroll.employee import validate_not_on_hold
 
 
@@ -35,12 +36,7 @@ class AfmcoSalarySlip:
 
 	def pull_emp_details(self):
 		super().pull_emp_details()
-		temporary_iban = frappe.db.get_value(
-			"Temporary IBAN",
-			{"employee": self.employee, "docstatus": 1, "active": 1},
-			["name", "iban", "bank_name", "iban_holder_name"],
-			as_dict=True,
-		)
+		temporary_iban = get_active_temporary_ibans([self.employee]).get(self.employee)
 		self.temporary_iban = temporary_iban.name if temporary_iban else None
 		self.iban_holder_name = temporary_iban.iban_holder_name if temporary_iban else None
 		if temporary_iban:

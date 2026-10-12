@@ -27,3 +27,25 @@ class TemporaryIBAN(Document):
 		)
 		if active:
 			frappe.throw(_("Employee {0} already has active Temporary IBAN {1}").format(self.employee, active))
+
+
+def get_active_temporary_ibans(employees):
+	if not employees:
+		return {}
+	return {
+		row.employee: row
+		for row in frappe.get_all(
+			"Temporary IBAN",
+			filters={"employee": ("in", list(employees)), "docstatus": 1, "active": 1},
+			fields=["name", "employee", "iban", "bank_name", "iban_holder_name"],
+		)
+	}
+
+
+def apply_active_temporary_ibans(slips):
+	active = get_active_temporary_ibans({slip.employee for slip in slips})
+	for slip in slips:
+		if temporary_iban := active.get(slip.employee):
+			slip.bank_account_no = temporary_iban.iban
+			slip.bank_name = temporary_iban.bank_name
+			slip.iban_holder_name = temporary_iban.iban_holder_name

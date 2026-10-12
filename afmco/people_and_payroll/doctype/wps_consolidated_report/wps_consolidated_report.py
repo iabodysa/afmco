@@ -14,6 +14,8 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 
+from afmco.people_and_payroll.doctype.temporary_iban.temporary_iban import apply_active_temporary_ibans
+
 # -----------------------------------------------------------------------------
 FILE_EXTENSIONS = {"CSV": "csv", "Excel": "xlsx"}
 
@@ -176,6 +178,7 @@ class WPSConsolidatedReport(Document):
                     break
                 start += CSV_LIMIT
 
+        apply_active_temporary_ibans(results)
         return results
 
     def _group_by_labor_office(self, slips: List[dict]) -> Dict[str, List[dict]]:

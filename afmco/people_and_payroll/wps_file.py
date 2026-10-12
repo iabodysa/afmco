@@ -11,6 +11,8 @@ import frappe
 from frappe import _
 from frappe.utils import cstr, flt
 
+from afmco.people_and_payroll.doctype.temporary_iban.temporary_iban import apply_active_temporary_ibans
+
 PAGE = "wps-file"
 REGISTER_FORMAT = "Salary Register WPS"
 FILE_FORMATS = (REGISTER_FORMAT, "NCBK", "SIBC")
@@ -76,6 +78,7 @@ def get_slips(company, payroll_entry):
 			as_list=True,
 		)
 	)
+	apply_active_temporary_ibans(slips)
 	for slip in slips:
 		slip.cost_center = cost_centers.get(slip.payroll_entry) or ""
 		for field in NUMBER_FIELDS:

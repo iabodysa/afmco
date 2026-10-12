@@ -191,6 +191,8 @@ from frappe.utils import flt
 
 import erpnext
 
+from afmco.people_and_payroll.doctype.temporary_iban.temporary_iban import apply_active_temporary_ibans
+
 salary_slip = frappe.qb.DocType("Salary Slip")
 salary_detail = frappe.qb.DocType("Salary Detail")
 salary_component = frappe.qb.DocType("Salary Component")
@@ -208,6 +210,7 @@ def execute(filters=None):
 	salary_slips = get_salary_slips(filters, company_currency)
 	if not salary_slips:
 		return [], []
+	apply_active_temporary_ibans(salary_slips)
 
 	earning_types, ded_types = get_earning_and_deduction_types(salary_slips)
 	columns = get_columns(earning_types, ded_types)
