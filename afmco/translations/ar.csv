@@ -5936,6 +5936,7 @@ Future Payment Ref,مرجع الدفعة المستقبلية
 General and Payment Ledger Comparison,مقارنة دفتر الأستاذ العام ودفتر المدفوعات
 General and Payment Ledger mismatch,عدم تطابق دفتر الأستاذ العام ودفتر المدفوعات
 General Ledger remarks length,طول ملاحظات دفتر الأستاذ العام
+General Ledger Afmco,دفتر الأستاذ العام
 General Ledger Report,تقرير دفتر الأستاذ العام
 General Ledger requires {0} to be synced to DuckDB,يتطلب دفتر الأستاذ العام مزامنة {0} مع DuckDB
 Generate New Invoices Past Due Date,إنشاء فواتير جديدة بعد تاريخ الاستحقاق
@@ -15539,3 +15540,4 @@ Waived Amount,المبلغ المتنازل عنه
 Waived amount {0} cannot be greater than outstanding amount {1},لا يمكن أن يكون المبلغ المتنازل عنه {0} أكبر من المبلغ المستحق {1}
 Waived {0} amount {1} cannot be greater than overdue amount {2},لا يمكن أن يكون مبلغ {0} المتنازل عنه {1} أكبر من المبلغ المتأخر {2}
 Waiver account not set for charge {0} in Loan Product {1},حساب الإعفاء غير محدّد للرسم {0} في منتج القرض {1}
+Speed up report,تسريع التقرير

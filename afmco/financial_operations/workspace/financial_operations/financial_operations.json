@@ -48,7 +48,7 @@
   {
    "is_query_report": 1,
    "label": "General Ledger",
-   "link_to": "General Ledger",
+   "link_to": "General Ledger Afmco",
    "link_type": "Report",
    "type": "Link"
   },
@@ -80,7 +80,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-09 12:00:00.000000",
+ "modified": "2026-10-12 08:38:00.000000",
  "module": "Financial Operations",
  "name": "Financial Operations",
  "owner": "Administrator",
