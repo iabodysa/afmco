@@ -6,7 +6,7 @@ import re
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils import getdate
+from frappe.utils import format_date, getdate
 
 from afmco.people_and_payroll.iban import BANK_CODES, refresh_draft_slips
 
@@ -47,7 +47,7 @@ class IBANUpdate(Document):
 		if frappe.flags.in_install or frappe.flags.in_migrate or self.workflow_state != APPROVED:
 			return
 		deactivate_temporary_ibans(self.employee)
-		if self.account_holder == ANOTHER_PERSON:
+		if self.account_holder == ANOTHER_PERSON or self.duration == TEMPORARY:
 			self.open_temporary_iban()
 		else:
 			self.update_employee_bank_details()
@@ -70,15 +70,23 @@ class IBANUpdate(Document):
 		refresh_draft_slips(self.employee)
 
 	def open_temporary_iban(self):
+		period = self.duration == TEMPORARY
+		reason = self.note
+		if not reason and period:
+			reason = _("Temporary account from {0} to {1}").format(
+				format_date(self.valid_from), format_date(self.valid_until)
+			)
 		temporary_iban = frappe.get_doc(
 			{
 				"doctype": "Temporary IBAN",
 				"employee": self.employee,
 				"iban": self.iban,
 				"iban_holder_name": self.account_holder_name,
-				"reason": self.note,
+				"reason": reason,
 				"iban_update": self.name,
 				"active": 1,
+				"valid_from": self.valid_from if period else None,
+				"valid_until": self.valid_until if period else None,
 			}
 		)
 		temporary_iban.insert(ignore_permissions=True)

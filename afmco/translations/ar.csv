@@ -15601,3 +15601,4 @@ You type only the ID number and the new IBAN. We take the rest from the employee
 Your request could not be sent. Please try again.,تعذّر إرسال طلبك، يرجى المحاولة مرة أخرى.
 Your request {0} was received. HR reviews it before the salary moves to the new account.,وصلنا طلبك {0}، وتراجعه الموارد البشرية قبل تحويل الراتب إلى الحساب الجديد.
 salary account,حساب راتبك
+Temporary account from {0} to {1},حساب مؤقت من {0} إلى {1}

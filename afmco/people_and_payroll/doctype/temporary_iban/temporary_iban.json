@@ -10,6 +10,8 @@
   "employee",
   "employee_name",
   "active",
+  "valid_from",
+  "valid_until",
   "column_break_iban",
   "iban",
   "iban_holder_name",
@@ -55,6 +57,18 @@
    "allow_on_submit": 1,
    "in_list_view": 1,
    "in_standard_filter": 1
+  },
+  {
+   "fieldname": "valid_from",
+   "fieldtype": "Date",
+   "label": "Valid From",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "valid_until",
+   "fieldtype": "Date",
+   "label": "Valid Until",
+   "in_list_view": 1
   },
   {
    "fieldname": "column_break_iban",
@@ -118,7 +132,7 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2026-10-12 20:25:00.000000",
+ "modified": "2026-10-12 21:30:00.000000",
  "modified_by": "Administrator",
  "module": "People and Payroll",
  "name": "Temporary IBAN",
