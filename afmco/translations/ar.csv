@@ -5614,7 +5614,7 @@ Closed Documents,مستندات مغلقة
 Closing (Cr),الختامي (دائن)
 Closing (Dr),الختامي (مدين)
 Closing (Opening + Total),الختامي (الافتتاحي + الإجمالي)
-Closing [Opening + Total] ,الختامي [الافتتاحي + الإجمالي] 
+Closing [Opening + Total],الختامي [الافتتاحي + الإجمالي]
 Closing Account Head,بند حساب الإقفال
 Closing Account {0} must be of type Liability / Equity,يجب أن يكون حساب الإقفال {0} من نوع المطلوبات / حقوق الملكية
 Closing Amount,مبلغ الإقفال
@@ -5936,7 +5936,6 @@ Future Payment Ref,مرجع الدفعة المستقبلية
 General and Payment Ledger Comparison,مقارنة دفتر الأستاذ العام ودفتر المدفوعات
 General and Payment Ledger mismatch,عدم تطابق دفتر الأستاذ العام ودفتر المدفوعات
 General Ledger remarks length,طول ملاحظات دفتر الأستاذ العام
-General Ledger Afmco,دفتر الأستاذ العام
 General Ledger Report,تقرير دفتر الأستاذ العام
 General Ledger requires {0} to be synced to DuckDB,يتطلب دفتر الأستاذ العام مزامنة {0} مع DuckDB
 Generate New Invoices Past Due Date,إنشاء فواتير جديدة بعد تاريخ الاستحقاق

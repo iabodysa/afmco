@@ -208,7 +208,7 @@
 								{% if(is_second_last) { %}
 									{%= __("Total") %}
 								{% } else if(is_last) { %}
-									{%= __("Closing [Opening + Total] ") %}
+									{%= __("Closing [Opening + Total]") %}
 								{% } else { %}
 									{%= frappe.format(row.account, {fieldtype: "Link"}) || "&nbsp;" %}
 								{% } %}
