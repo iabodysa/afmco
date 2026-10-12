@@ -829,27 +829,32 @@ frappe.ui.form.on('Advance Leave Salary', {
     },
   create_sadad_pr: function(frm) {
         let VisaAmount = frm.doc.days1 === '30' ? 200 : frm.doc.days1 === '60' ? 200 : frm.doc.days1 === '90' ? 300 : frm.doc.days1 === '120' ? 400 : 0;
-        const expenseRequest = frappe.model.get_new_doc('Payment Requisition');
-        expenseRequest.tax_invoice_number = frm.doc.name;
-        expenseRequest.beneficiary_name = `${frm.doc.employee_name} ${frm.doc.employee}`;
-        expenseRequest.amount = VisaAmount;
-        expenseRequest.project = frm.doc.payroll_cost_center;
-        expenseRequest.cost_center = frm.doc.branch;
-        expenseRequest.jv_status = 'JV Not Created';
-        expenseRequest.naming_series = 'PR-.YYYY.-';
-        expenseRequest.bank_payment_date = frappe.datetime.nowdate();
-        expenseRequest.date = frappe.datetime.nowdate();
-        expenseRequest.payment_type = 'SADAD Payment';
-        expenseRequest.mode_of_payment = 'SADAD Payment';
-        expenseRequest.multiple_beneficiaries = 1;
-        expenseRequest.payment_approver = 'Human Resources - الموارد البشرية';
-        expenseRequest.remark = `Exit and return visa:
+        frappe.xcall('afmco.people_and_payroll.api.iqama_bank_file.create_payment_requisition', {
+            payment_type: 'Exit Re-entry Visa',
+            payment_requisition: {
+                doctype: 'Payment Requisition',
+                tax_invoice_number: frm.doc.name,
+                beneficiary_name: `${frm.doc.employee_name} ${frm.doc.employee}`,
+                amount: VisaAmount,
+                project: frm.doc.payroll_cost_center,
+                cost_center: frm.doc.branch,
+                jv_status: 'JV Not Created',
+                naming_series: 'PR-.YYYY.-',
+                bank_payment_date: frappe.datetime.nowdate(),
+                date: frappe.datetime.nowdate(),
+                mode_of_payment: 'SADAD Payment',
+                multiple_beneficiaries: 1,
+                payment_approver: 'Human Resources - الموارد البشرية',
+                remark: `Exit and return visa:
 - Employee Name: ${frm.doc.employee_name}
 - Employee ID: ${frm.doc.employee}
 - From Date: ${frm.doc.start}
-- Days: ${frm.doc.days1}`;
-        frappe.set_route('Form', expenseRequest.doctype, expenseRequest.name);
-        frappe.msgprint(__('A new repayment request was created', null, 'Advance Leave Salary'));
+- Days: ${frm.doc.days1}`,
+            },
+        }).then((request) => {
+            frappe.set_route('Form', 'Payment Requisition', request.name);
+            frappe.msgprint(__('A new repayment request was created', null, 'Advance Leave Salary'));
+        });
     },
   before_save: async function(frm) {
     if (!frm.doc.ticket_allowance) {

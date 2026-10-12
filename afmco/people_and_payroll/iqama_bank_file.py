@@ -14,15 +14,22 @@ WORK_PERMIT_BILLER = "050"
 DURATION_MONTHS = {"3 months": 3, "6 months": 6, "9 Months": 9, "1 year": 12}
 WORK_CARDS = "PR Created for Work Cards"
 IQAMA_RENEWAL = "PR Created for Iqama Renewal"
-REQUISITION_TYPE = {WORK_CARDS: "Work Permit Fee Payment", IQAMA_RENEWAL: "SADAD Payment"}
+EXIT_REENTRY_VISA = "Exit Re-entry Visa"
+REQUISITION_TYPE = {
+	WORK_CARDS: "Work Permit Fee Payment",
+	IQAMA_RENEWAL: "SADAD Payment",
+	EXIT_REENTRY_VISA: "SADAD Payment",
+}
 TRACKING_FIELDS = ["name", "employee", "employee_name", "renewal_duration", "sadad_invoice"]
 
 
-def create_with_bank_file(payment_requisition, payment_type, trackers):
-	rows = _trackers(frappe.parse_json(trackers))
-	file_name, content = _bank_file(payment_type, rows)
+def create_with_bank_file(payment_requisition, payment_type, trackers=None):
 	request = frappe.get_doc(frappe.parse_json(payment_requisition))
 	request.payment_type = REQUISITION_TYPE[payment_type]
+	if payment_type == EXIT_REENTRY_VISA:
+		return request.insert().as_dict()
+	rows = _trackers(frappe.parse_json(trackers))
+	file_name, content = _bank_file(payment_type, rows)
 	if payment_type == WORK_CARDS:
 		_set_bill(request, rows)
 	request.insert()
