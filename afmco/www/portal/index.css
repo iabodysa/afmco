@@ -164,7 +164,7 @@ html {
 .afm--solid .afm-header,
 .afm--menu .afm-header {
 	color: var(--afm-ink);
-	background: rgba(255, 255, 255, 0.96);
+	background: #fff;
 	border-bottom-color: rgba(17, 25, 21, 0.08);
 }
 
@@ -785,44 +785,6 @@ html:has(.afm--menu) {
 	flex: 0 0 auto;
 	width: clamp(260px, 28vw, 380px);
 	padding-inline-end: clamp(24px, 3vw, 44px);
-}
-
-.afm-band {
-	position: relative;
-	z-index: 2;
-	padding: clamp(80px, 9vw, 140px) var(--afm-gutter);
-	color: #fff;
-	background: var(--afm-ink);
-}
-
-.afm-band__img {
-	width: 100%;
-	height: auto;
-	margin-top: clamp(40px, 5vw, 72px);
-	aspect-ratio: 2 / 1;
-	object-fit: cover;
-	object-position: 50% 62%;
-	border-radius: 16px;
-}
-
-.afm-band__title {
-	font-size: clamp(38px, 6vw, 96px);
-	font-weight: 800;
-	line-height: 1.2;
-}
-
-.afm[dir="ltr"] .afm-band__title {
-	font-size: clamp(36px, 5vw, 84px);
-	line-height: 1.08;
-	letter-spacing: -0.025em;
-}
-
-.afm-band__line {
-	display: block;
-}
-
-.afm-band__line--accent {
-	color: var(--afm-mint);
 }
 
 .afm-values__list {

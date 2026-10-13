@@ -166,4 +166,5 @@ def get_hr_contacts():
 			"href": "mailto:legal@afmcoltd.com",
 		},
 		{"label": _("Office phone"), "value": "011 403 0200", "href": "tel:+966114030200"},
+		{"label": _("Unified Number"), "value": "9200 18678", "href": "tel:920018678"},
 	]
