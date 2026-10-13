@@ -988,3 +988,9 @@ async function Cancel_Request(frm) {
         });
     }
 }
+
+frappe.ui.form.on('Contract Vacation Allowance', {
+  status(frm) {
+    if (frm.doctype === 'Advance Leave Salary') frm.save();
+  },
+});

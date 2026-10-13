@@ -663,3 +663,9 @@ function fmt(num) {
         maximumFractionDigits: 2
     });
 }
+
+frappe.ui.form.on('Contract Vacation Allowance', {
+  status(frm) {
+    if (frm.doctype === 'End of Service Settlement') frm.save();
+  },
+});

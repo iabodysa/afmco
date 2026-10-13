@@ -5,6 +5,7 @@ from frappe.model.document import Document
 
 from afmco.people_and_payroll.advance_leave_salary import (
     APPROVED,
+    follow_status_switch,
     recompute_advance,
     refuse_settled_employee,
     refuse_unfinished_contract_year,
@@ -17,6 +18,7 @@ class AdvanceLeaveSalary(Document):
         if self.has_value_changed("employee"):
             refuse_settled_employee(self)
         recompute_advance(self)
+        follow_status_switch(self)
         if self.workflow_state == APPROVED and self.has_value_changed("workflow_state"):
             refuse_unfinished_contract_year(self)
 

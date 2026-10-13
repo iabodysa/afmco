@@ -213,13 +213,26 @@ def build_periods(doc):
                 "status": UNPAID,
                 "note": _("Add your notes here"),
                 "vad": cstr(vad),
-                "amount3": js_round(
-                    flt(doc.salary_per_day)
-                    * leave_days(flt(vad), start, period_end, start, year_end, unpaid)
-                ),
+                "amount3": period_amount(doc, vad, start, period_end, start, year_end, unpaid),
             }
         )
     return rows
+
+
+def period_amount(doc, vad, start, end, year_start, year_end, unpaid):
+    return js_round(
+        flt(doc.salary_per_day) * leave_days(flt(vad), start, end, year_start, year_end, unpaid)
+    )
+
+
+def row_amount(doc, row, unpaid):
+    year = contract_year_of(doc.date_1, row.contract_start_date, unpaid)
+    if not year:
+        return 0
+    k, year_start, year_end = year
+    return period_amount(
+        doc, entitlement(doc, k), row.contract_start_date, row.contract_end_date, year_start, year_end, unpaid
+    )
 
 
 def settled_names(doctype, doc, include_cancelled=True):
@@ -306,11 +319,11 @@ def leave_differences(names):
     return _("Leave differences settlement: {0}").format(names)
 
 
-def overlap_deduction(rows, rates, periods):
+def overlap_deduction(doc, periods, unpaid):
     paid = [period for period in periods if period.status != PAID]
     net = excess_days = excess_value = 0
     names = []
-    for row, rate in zip(rows, rates):
+    for row in doc.cva or []:
         covering = [period for period in paid if overlaps(row, period)]
         if not covering:
             continue
@@ -321,7 +334,9 @@ def overlap_deduction(rows, rates, periods):
         net += extra
         if extra > 0:
             excess_days += extra
-            excess_value += extra * rate
+            excess_value += extra * row_amount(doc, row, unpaid) / inclusive_days(
+                row.contract_start_date, row.contract_end_date
+            )
             names += [period.parent for period in covering if period.parent not in names]
     if net <= 0:
         return None
@@ -336,10 +351,6 @@ def overlap_deduction(rows, rates, periods):
 def fill_periods(doc):
     RECOMPUTE[doc.doctype](doc)
     rows = build_periods(doc)
-    rates = [
-        flt(row["amount3"]) / inclusive_days(row["contract_start_date"], row["contract_end_date"])
-        for row in rows
-    ]
     periods = settled_periods(doc) + [row for row in doc.cva or [] if row.status == PAID]
     clearance = None
     if doc.doctype == ADVANCE_LEAVE_SALARY:
@@ -353,10 +364,29 @@ def fill_periods(doc):
         ):
             row.update(status=PAID, amount3=None)
     doc.set("cva", rows)
+    refresh_deduction(doc, periods, unpaid_leave(doc.employee))
+    RECOMPUTE[doc.doctype](doc)
+
+
+def refresh_deduction(doc, periods, unpaid):
     prefix = leave_differences("")
     deductions = [row for row in doc.get("table_14") or [] if not cstr(row.note).startswith(prefix)]
-    line = overlap_deduction(doc.cva, rates, periods)
+    line = overlap_deduction(doc, periods, unpaid)
     doc.set("table_14", deductions + ([line] if line else []))
+
+
+def follow_status_switch(doc):
+    before = doc.get_doc_before_save()
+    if not before:
+        return
+    previous = {row.name: row.status for row in before.cva or []}
+    switched = [row for row in doc.cva or [] if row.name in previous and previous[row.name] != row.status]
+    if not switched:
+        return
+    unpaid = unpaid_leave(doc.employee)
+    for row in switched:
+        row.amount3 = None if row.status == PAID else row_amount(doc, row, unpaid)
+    refresh_deduction(doc, settled_periods(doc), unpaid)
     RECOMPUTE[doc.doctype](doc)
 
 

@@ -7,7 +7,11 @@ from frappe import _
 from frappe.model.document import Document
 
 from afmco.approver_check import ai_reading
-from afmco.people_and_payroll.advance_leave_salary import recompute_settlement, refuse_unpaid_settled_period
+from afmco.people_and_payroll.advance_leave_salary import (
+    follow_status_switch,
+    recompute_settlement,
+    refuse_unpaid_settled_period,
+)
 from afmco.people_and_payroll.service_calendar import service_span, unpaid_leave
 
 
@@ -30,6 +34,7 @@ class EndofServiceSettlement(Document):
                 _("{0} must be unique").format(_(self.meta.get_label("employee"))), frappe.UniqueValidationError
             )
         recompute_settlement(self)
+        follow_status_switch(self)
 
     def before_submit(self):
         refuse_unpaid_settled_period(self)
