@@ -42,6 +42,7 @@ def get_context(context):
 
 def set_site_context(context):
 	is_guest = frappe.session.user == "Guest"
+	is_website_user = not is_guest and frappe.session.data.user_type == "Website User"
 	remember_guest_language(is_guest)
 
 	context.page_lang = frappe.local.lang
@@ -49,7 +50,7 @@ def set_site_context(context):
 	context.show_language_switch = is_guest
 	context.home_url = HOME_URL
 	context.support_url = SUPPORT_URL
-	context.portal_link, context.portal_label = get_portal_entry(is_guest, session_is_website_user())
+	context.portal_link, context.portal_label = get_portal_entry(is_guest, is_website_user)
 	context.header_cta = {"href": context.portal_link, "label": context.portal_label}
 	context.site_links = [
 		{"href": "/careers", "label": _("Open jobs")},
@@ -57,10 +58,6 @@ def set_site_context(context):
 		{"href": APEX_URL, "label": _("Apex operations system")},
 	]
 	context.page_links = []
-
-
-def session_is_website_user():
-	return frappe.session.user != "Guest" and frappe.session.data.user_type == "Website User"
 
 
 def remember_guest_language(is_guest):
@@ -121,7 +118,6 @@ def get_holidays():
 
 
 def get_services():
-	show_desk = not session_is_website_user()
 	services = [
 		{
 			"title": _("Leave, attendance and salary slips"),
@@ -139,7 +135,7 @@ def get_services():
 			"note": _("Sign in with your work account."),
 			"href": f"{APP_URL}/desk",
 			"link_label": _("Open the system"),
-			"show": show_desk,
+			"show": True,
 		},
 		{
 			"title": _("Update your IBAN"),
@@ -155,7 +151,7 @@ def get_services():
 			"note": _("For employees without the employee app."),
 			"href": f"{APP_URL}/leave-application/new",
 			"link_label": _("Open the form"),
-			"show": show_desk,
+			"show": True,
 		},
 		{
 			"title": _("Apply for a job"),
