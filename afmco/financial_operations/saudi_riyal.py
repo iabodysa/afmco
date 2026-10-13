@@ -29,3 +29,7 @@ def font_face_style():
 
 def saudi_riyal_font_face():
 	return font_face_style()
+
+
+def currency_mark(currency):
+	return '<span class="riyal">&#x20C1;</span>' if currency == "SAR" else currency

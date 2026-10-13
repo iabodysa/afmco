@@ -16,12 +16,11 @@
 {%- set name_en = co.company_name or doc.company -%}
 {%- set addr = [ns.street, ns.postal] | select | join(" - ") -%}
 {%- set cur = co.default_currency or "SAR" -%}
-{%- set cur_mark = '<span class="riyal">&#x20C1;</span>' if cur == "SAR" else cur -%}
+{%- set cur_mark = currency_mark(cur) -%}
 {%- set trail = journal_entry_trail(doc) -%}
 {%- set words = money_words(doc.total_debit, cur) -%}
 
 {% include "afmco/templates/print/fonts.html" %}
-{{ saudi_riyal_font_face() }}
 <style>
 .print-format {
   margin-top: 30mm;

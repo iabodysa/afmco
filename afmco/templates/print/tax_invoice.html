@@ -7,7 +7,6 @@
 {% macro styles(orientation='Portrait', compact=False) -%}
 {%- set sp = '2.5mm' if orientation == 'Landscape' else '4mm' -%}
 {% include "afmco/templates/print/fonts.html" %}
-{{ saudi_riyal_font_face() }}
 <style>
 {%- if orientation == 'Landscape' %}
 .print-format { orientation: Landscape; }
@@ -206,7 +205,7 @@ body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.in
 {%- set qr = ((details.siaf.qr_image_src if details and details.siaf else none) or doc.get('ksa_einv_qr') or doc.get('custom_einvoicing_qr')) -%}
 {%- set buyer_cr = ((details.buyer_other_id if details else '') or doc.get('client_ccr_no') or '') -%}
 {%- set cur = doc.currency or '' -%}
-{%- set cur_mark = '<span class="riyal">&#x20C1;</span>' if cur == 'SAR' else cur -%}
+{%- set cur_mark = currency_mark(cur) -%}
 {%- set t = title or ('Tax Invoice', _("Tax Invoice", "ar", ctx)) -%}
 {%- set meta = [
   ('Invoice No.', _("Invoice Number", "ar", ctx), doc.name, 'b num'),

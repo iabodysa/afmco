@@ -1,3 +1,4 @@
+{{ saudi_riyal_font_face() }}
 {%- macro money(v) -%}{{ frappe.utils.fmt_money(v or 0, 2) }}{%- endmacro -%}
 {%- macro qty(v) -%}{%- set q = v or 0 -%}{{ frappe.utils.fmt_money(q, 0) if q == (q | int) else frappe.utils.fmt_money(q, 2) }}{%- endmacro -%}
 {%- macro pct(v) -%}{{ '%g' | format(frappe.utils.flt(v or 0, 2)) }}%{%- endmacro -%}
@@ -279,12 +280,12 @@
   {'k': 'desc', 'l': 'Description', 'en': 'Description', 'w': none, 't': 'text'},
   {'k': 'uom', 'l': 'UOM', 'en': 'Unit', 'w': 8, 't': 'plain', 'show': ns.uoms | length > 1},
   {'k': 'qty', 'l': 'Qty', 'en': 'Qty', 'w': 7, 't': 'qty'},
-  {'k': 'rate', 'l': 'Unit Price', 'en': 'Unit Price ' ~ cur, 'w': 10, 't': 'money'},
+  {'k': 'rate', 'l': 'Unit Price', 'en': 'Unit Price ' ~ currency_mark(cur), 'w': 10, 't': 'money'},
   {'k': 'disc', 'l': 'Discount Percentage', 'en': 'Disc. %', 'w': 8.5, 't': 'pct', 'show': false},
-  {'k': 'taxable', 'l': 'Taxable Amount', 'en': 'Taxable ' ~ cur, 'w': 13.5, 't': 'money'},
+  {'k': 'taxable', 'l': 'Taxable Amount', 'en': 'Taxable ' ~ currency_mark(cur), 'w': 13.5, 't': 'money'},
   {'k': 'pct', 'l': 'Tax Rate', 'en': 'VAT %', 'w': 9, 't': 'pct'},
-  {'k': 'tax', 'l': 'VAT Amount', 'en': 'VAT ' ~ cur, 'w': 10, 't': 'money'},
-  {'k': 'total', 'l': 'Total With VAT', 'en': 'Total ' ~ cur, 'w': 13, 't': 'money'},
+  {'k': 'tax', 'l': 'VAT Amount', 'en': 'VAT ' ~ currency_mark(cur), 'w': 10, 't': 'money'},
+  {'k': 'total', 'l': 'Total With VAT', 'en': 'Total ' ~ currency_mark(cur), 'w': 13, 't': 'money'},
 ]) }}
 
 {%- set vat_pct = (' ' ~ pct(doc.taxes[0].rate)) if doc.taxes and doc.taxes[0].rate else '' -%}
@@ -298,7 +299,7 @@
   ['Discount Amount', 'Discount', doc.discount_amount, doc.discount_amount],
   ['Total Taxable Amount', 'Total Taxable', doc.net_total],
   ['VAT Amount', 'VAT' ~ vat_pct, doc.total_taxes_and_charges],
-], ['Total With VAT', 'Total incl. VAT ' ~ cur, doc.grand_total]) }}{% endset -%}
+], ['Total With VAT', 'Total incl. VAT ' ~ currency_mark(cur), doc.grand_total]) }}{% endset -%}
 {{ band_block(qr_html, mid_html, tot_html) }}
 
 {{ notes_block(doc.remarks, doc.terms) }}
