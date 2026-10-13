@@ -75,7 +75,6 @@ Black listed,في القائمة السوداء
 Border ID,رقم الحدود
 COMMENTS,التعليقات
 COMMISSION 2,العمولة 2
-Contact us,تواصل معنا
 Calculate,احسب
 Calculated Increase,الزيادة المحسوبة
 Cannot create Payment Request for document {0} because employee {1} is not Active.,لا يمكن إنشاء طلب صرف للمستند {0} لأن الموظف {1} غير نشط.
@@ -98,7 +97,6 @@ Commissions (Months),العمولات (أشهر)
 Company Details,بيانات الشركة
 Company Name In Arabic,اسم الشركة بالعربية
 Confirm Payment,تأكيد الدفع
-Contact Message,رسالة تواصل
 Contract Duration (Months),مدة العقد (أشهر)
 Contract Start Date,تاريخ بدء العقد
 Contract status is active and in good standing.,حالة العقد نشطة وسليمة.
@@ -359,7 +357,7 @@ Month Name,اسم الشهر
 Municipal License,رخصة البلدية
 Muqeem,مقيم
 New AFMCO employees arriving at King Khalid International Airport,موظفو أفمكو الجدد عند وصولهم إلى مطار الملك خالد الدولي
-No account needed.,لا يحتاج حسابًا.
+No sign-in required.,لا يتطلب تسجيل الدخول.
 No attachments,لا توجد مرفقات
 NPA Flag,مؤشر الأصل غير العامل
 Nationality,الجنسية
@@ -522,8 +520,7 @@ SADAD Invoice Creation Date,تاريخ إنشاء فاتورة سداد
 SADAD Number,رقم سداد
 SADAD Type,نوع سداد
 SADAD number and exemption status updated successfully.,تم تحديث رقم السداد وحالة الإعفاء بنجاح.
-Send a message to the company administration.,أرسل رسالة إلى إدارة الشركة.
-Send your new bank account number for your salary. HR reviews it before it takes effect.,أرسل رقم حسابك البنكي الجديد لإيداع الراتب. تراجعه الموارد البشرية قبل اعتماده.
+Send your new IBAN so your salary is deposited into the right account.,أرسل رقم الآيبان الجديد ليُودَع راتبك في حسابك الصحيح.
 Show all {0},عرض الكل ({0})
 SIM Card Cost (Months),تكلفة شريحة الاتصال (أشهر)
 Sadad Invoice Amount,مبلغ فاتورة سداد
@@ -564,9 +561,9 @@ Station,المحطة
 Status has been changed to Awaiting Payment,تم تغيير الحالة إلى بانتظار الدفع
 Status updated to:,تم تحديث الحالة إلى:
 Sub Policy Number,رقم الوثيقة الفرعية
-Submit a leave request if you do not have an account in the employee app.,قدّم طلب إجازتك إذا لم يكن لك حساب في تطبيق الموظف.
+No employee app account? Submit your leave request here.,ليس لديك حساب في تطبيق الموظف؟ قدّم طلب إجازتك من هنا.
 Submit Salary Slips,اعتماد قسائم الرواتب
-Submit your job application and CV to AFMCO.,قدّم طلب التوظيف وسيرتك الذاتية إلى أفمكو.
+Explore open positions at AFMCO and apply online.,تعرّف على الوظائف الشاغرة في أفمكو وقدّم طلبك إلكترونيًا.
 Success Rate,نسبة النجاح
 Successfully created Payment Order:,أنشئ أمر الدفع بنجاح:
 Successfully updated {0} document(s),تم تحديث {0} مستند بنجاح
@@ -843,10 +840,10 @@ Preparing the entry...,جار تحضير القيد...
 Please set the Bank Payment Date to calculate the split across years.,يرجى تحديد تاريخ الدفع البنكي لحساب تقسيم السنوات.
 An error occurred while fetching the accounts. A preliminary entry has been created.,حدث خطأ أثناء جلب الحسابات. تم إنشاء القيد بشكل مبدئي.
 Login to Frappe HR,تسجيل الدخول إلى أفمكو
-A support ticket is the main way to get help. You can follow its progress after you open it.,تذكرة الدعم هي الطريقة الأساسية لطلب المساعدة، ويمكنك متابعة حالتها بعد فتحها.
+Our support team is ready to help. Open a ticket and follow it until it is resolved.,فريق الدعم جاهز لمساعدتك؛ افتح تذكرة وتابعها حتى تُحل.
 Close menu,إغلاق القائمة
 Continue to your account,المتابعة إلى حسابك
-For employees with system access.,للموظفين الذين لديهم صلاحية الدخول إلى النظام.
+For employees with a work account.,للموظفين الذين لديهم حساب عمل.
 Help,مساعدة
 Language,اللغة
 "Leave, attendance and salary slips",الإجازات والحضور وقسائم الرواتب
@@ -856,15 +853,15 @@ Open a support ticket,فتح تذكرة دعم
 Open menu,فتح القائمة
 Open the employee app,افتح تطبيق الموظف
 Open the system,افتح النظام
-Open the system to handle the requests and records your role allows.,افتح النظام للتعامل مع الطلبات والسجلات التي تسمح بها صلاحياتك.
-"Request leave, submit attendance requests, follow their status and view your salary slips.",اطلب إجازة، وقدّم طلبات الحضور، وتابع حالتها، واطّلع على قسائم رواتبك.
-Requires an account linked to your employee record.,يتطلب حسابًا مرتبطًا بسجلك الوظيفي.
+Handle the requests and tasks assigned to you in your department.,أنجز الطلبات والمهام المسندة إليك في إدارتك.
+"Apply for leave, submit attendance requests, track their progress and view your salary slips.",قدّم طلبات الإجازة والحضور، وتابع حالتها، واطّلع على قسائم رواتبك.
+For employees with an employee app account.,للموظفين الذين لديهم حساب في تطبيق الموظف.
 Services,الخدمات
 Sign in,تسجيل الدخول
-"Sign in to access the requests and services available to you, or open a support ticket if you need help.",سجّل الدخول للوصول إلى الطلبات والخدمات المتاحة لك، أو افتح تذكرة دعم إذا واجهتك مشكلة.
+"Sign in to manage your leave, track your requests and view your salary slips. Our support team is here whenever you need help.",سجّل دخولك لإدارة إجازاتك ومتابعة طلباتك والاطلاع على قسائم رواتبك، وفريق الدعم في خدمتك متى احتجت إليه.
 Skip to main content,انتقل إلى المحتوى الرئيسي
-What can you get done?,ماذا يمكنك إنجازه؟
-Work requests and records,طلبات العمل والسجلات
+Services available to you,الخدمات المتاحة لك
+Your daily work,أعمالك اليومية
 Contract Vacation Allowance,بدل إجازة العقد
 End of Service Settlement,تصفية نهاية الخدمة
 Location,الموقع
@@ -1641,7 +1638,7 @@ Set a default company first.,حدد الشركة الافتراضية أولًا
 Expected exactly one {0} for {1}; found {2}.,المطلوب {0} واحد فقط لـ {1}، والموجود {2}.,SADAD Bulk
 The batch needs exactly one SADAD biller code; found {0}.,الدفعة تحتاج رمز مفوتر سداد واحدًا، والموجود {0}.,SADAD Bulk
 The batch needs exactly one SADAD invoice number; found {0}.,الدفعة تحتاج رقم فاتورة سداد واحدًا، والموجود {0}.,SADAD Bulk
-Your services,خدماتك كلها
+All your services,جميع خدماتك
 in one place,في مكان واحد
 About AFMCO,عن أفمكو
 Our integrated services,خدماتنا المتكاملة

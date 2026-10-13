@@ -26,7 +26,7 @@ def get_context(context):
 	context.show_language_switch = is_guest
 	context.title = _("AFMCO Employee Portal")
 	context.description = _(
-		"Sign in to access the requests and services available to you, or open a support ticket if you need help."
+		"Sign in to manage your leave, track your requests and view your salary slips. Our support team is here whenever you need help."
 	)
 	context.support_url = SUPPORT_URL
 	context.portal_link, context.portal_label = get_portal_entry(is_guest, is_website_user)
@@ -57,43 +57,36 @@ def get_services():
 		{
 			"title": _("Leave, attendance and salary slips"),
 			"text": _(
-				"Request leave, submit attendance requests, follow their status and view your salary slips."
+				"Apply for leave, submit attendance requests, track their progress and view your salary slips."
 			),
-			"note": _("Requires an account linked to your employee record."),
+			"note": _("For employees with an employee app account."),
 			"href": f"{APP_URL}/hrms",
 			"link_label": _("Open the employee app"),
 		},
 		{
-			"title": _("Work requests and records"),
-			"text": _("Open the system to handle the requests and records your role allows."),
-			"note": _("For employees with system access."),
+			"title": _("Your daily work"),
+			"text": _("Handle the requests and tasks assigned to you in your department."),
+			"note": _("For employees with a work account."),
 			"href": f"{APP_URL}/desk",
 			"link_label": _("Open the system"),
 		},
 		{
 			"title": _("Update your IBAN"),
-			"text": _("Send your new bank account number for your salary. HR reviews it before it takes effect."),
-			"note": _("No account needed."),
+			"text": _("Send your new IBAN so your salary is deposited into the right account."),
+			"note": _("No sign-in required."),
 			"href": "/iban",
 			"link_label": _("Open the form"),
 		},
 		{
 			"title": _("Leave request"),
-			"text": _("Submit a leave request if you do not have an account in the employee app."),
-			"note": _("No account needed."),
+			"text": _("No employee app account? Submit your leave request here."),
+			"note": _("No sign-in required."),
 			"href": f"{APP_URL}/leave-application/new",
 			"link_label": _("Open the form"),
 		},
 		{
-			"title": _("Contact us"),
-			"text": _("Send a message to the company administration."),
-			"note": _("No account needed."),
-			"href": f"{APP_URL}/contact/new",
-			"link_label": _("Open the form"),
-		},
-		{
 			"title": _("Apply for a job"),
-			"text": _("Submit your job application and CV to AFMCO."),
+			"text": _("Explore open positions at AFMCO and apply online."),
 			"note": _("For applicants from outside the company."),
 			"href": "/careers",
 			"link_label": _("View open jobs"),
