@@ -3,10 +3,9 @@
 
 import frappe
 from frappe import _
-from frappe.utils.jinja_globals import is_rtl
 
 from afmco.people_and_payroll.careers import MAX_RESUME_BYTES, get_application_options, get_open_jobs
-from afmco.www.portal.index import APEX_URL, SUPPORT_URL, get_portal_entry, remember_guest_language
+from afmco.www.portal.index import set_site_context
 
 no_cache = 1
 
@@ -14,20 +13,17 @@ DEFAULT_CURRENCY = "SAR"
 
 
 def get_context(context):
-	is_guest = frappe.session.user == "Guest"
-	is_website_user = not is_guest and frappe.session.data.user_type == "Website User"
-	remember_guest_language(is_guest)
-
-	context.page_lang = frappe.local.lang
-	context.text_dir = "rtl" if is_rtl() else "ltr"
-	context.show_language_switch = is_guest
+	set_site_context(context)
 	context.title = _("Careers at AFMCO")
 	context.description = _(
 		"Browse the jobs open at AFMCO and send your application and CV in a few minutes."
 	)
-	context.support_url = SUPPORT_URL
-	context.apex_url = APEX_URL
-	context.portal_link, context.portal_label = get_portal_entry(is_guest, is_website_user)
+	context.parents = [{"route": context.home_url, "title": _("Home")}]
+	context.page_links = [
+		{"href": "#jobs", "label": _("Open jobs")},
+		{"href": "#apply", "label": _("Apply now")},
+	]
+	context.header_cta = {"href": "#apply", "label": _("Apply now")}
 	context.portal_css = frappe.read_file(frappe.get_app_path("afmco", "www", "portal", "index.css"))
 	context.portal_js = frappe.read_file(frappe.get_app_path("afmco", "www", "portal", "index.js"))
 

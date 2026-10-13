@@ -1068,3 +1068,90 @@ html:has(.afm--menu) {
 		display: none;
 	}
 }
+
+.afm-header__brand {
+	gap: 18px;
+}
+
+.afm-header__home {
+	padding-block: 6px;
+	padding-inline-start: 18px;
+	border-inline-start: 1px solid currentColor;
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.afm .breadcrumb-container {
+	position: absolute;
+	top: 64px;
+	inset-inline: 0;
+	z-index: 3;
+	max-width: none;
+	margin: 0;
+	padding: 4px var(--afm-gutter) 0;
+}
+
+.afm .breadcrumb {
+	margin: 0;
+	padding: 0;
+	background: none;
+	font-size: 13px;
+}
+
+.afm .breadcrumb-item,
+.afm .breadcrumb-item a,
+.afm .breadcrumb-item + .breadcrumb-item::before {
+	color: rgba(255, 255, 255, 0.85);
+}
+
+.afm-footer__nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 32px;
+	margin-top: clamp(48px, 6vw, 80px);
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.afm-footer__nav + .afm-footer__bar {
+	margin-top: 24px;
+}
+
+.afm-notice {
+	max-width: 48em;
+	font-size: clamp(16px, 1.2vw, 18px);
+	line-height: 1.85;
+	color: var(--afm-muted);
+}
+
+.afm-holidays__title {
+	margin-top: 32px;
+	font-size: 17px;
+	font-weight: 600;
+}
+
+.afm-holidays {
+	display: grid;
+	gap: 12px;
+	margin-top: 16px;
+}
+
+.afm-holidays li {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 24px;
+	padding-block: 14px;
+	border-bottom: 1px solid var(--afm-line);
+}
+
+.afm-holidays__date {
+	min-width: 11em;
+	font-weight: 500;
+	color: var(--afm-green);
+}
+
+@media (min-width: 1024px) {
+	.afm .breadcrumb-container {
+		top: 72px;
+	}
+}

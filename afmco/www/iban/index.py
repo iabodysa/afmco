@@ -3,30 +3,26 @@
 
 import frappe
 from frappe import _
-from frappe.utils.jinja_globals import is_rtl
 
 from afmco.people_and_payroll.iban import BANK_CODES
 from afmco.people_and_payroll.iban_request import MAX_CERTIFICATE_BYTES
-from afmco.www.portal.index import APEX_URL, SUPPORT_URL, get_portal_entry, remember_guest_language
+from afmco.www.portal.index import set_site_context
 
 no_cache = 1
 
 
 def get_context(context):
-	is_guest = frappe.session.user == "Guest"
-	is_website_user = not is_guest and frappe.session.data.user_type == "Website User"
-	remember_guest_language(is_guest)
-
-	context.page_lang = frappe.local.lang
-	context.text_dir = "rtl" if is_rtl() else "ltr"
-	context.show_language_switch = is_guest
+	set_site_context(context)
 	context.title = _("Update your salary account")
 	context.description = _(
 		"Send your new IBAN with the certificate from your bank. HR reviews every request before the salary moves to the new account."
 	)
-	context.support_url = SUPPORT_URL
-	context.apex_url = APEX_URL
-	context.portal_link, context.portal_label = get_portal_entry(is_guest, is_website_user)
+	context.parents = [{"route": context.home_url, "title": _("Home")}]
+	context.page_links = [
+		{"href": "#steps", "label": _("How it works")},
+		{"href": "#request", "label": _("Send your request")},
+	]
+	context.header_cta = {"href": "#request", "label": _("Send your request")}
 	context.portal_css = frappe.read_file(frappe.get_app_path("afmco", "www", "portal", "index.css"))
 	context.form_css = frappe.read_file(frappe.get_app_path("afmco", "www", "careers", "index.css"))
 	context.portal_js = frappe.read_file(frappe.get_app_path("afmco", "www", "portal", "index.js"))

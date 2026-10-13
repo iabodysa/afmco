@@ -1,59 +1,14 @@
-{% extends "templates/web.html" %}
-
-{%- macro arrow() -%}
-<svg class="afm-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
-{%- endmacro -%}
-
-{%- block head_include %}
-{{ super() }}
-<meta name="theme-color" content="#00824E">
-<link rel="preload" href="/assets/afmco/images/portal/afmco-logo.webp" as="image" type="image/webp">
-<link rel="stylesheet" href="/assets/afmco/css/portal-fonts.css">
-{% endblock -%}
+{% extends "afmco/templates/web/site.html" %}
+{% from "afmco/templates/web/macros.html" import arrow %}
 
 {%- block style %}
 <style>{{ portal_css }}</style>
 {{ super() }}
 {%- endblock -%}
 
-{%- block banner -%}{%- endblock -%}
-{%- block navbar -%}{%- endblock -%}
-{%- block footer -%}{%- endblock -%}
+{% block afm_class %}afm-careers{% endblock %}
 
-{% block content %}
-<div class="afm afm-careers" dir="{{ text_dir }}" lang="{{ page_lang }}">
-	<a class="afm-skip" href="#afm-main">{{ _("Skip to main content") }}</a>
-	<div class="afm-progress" aria-hidden="true"></div>
-
-	<header class="afm-header">
-		<a class="afm-header__brand" href="https://afmco.sa" aria-label="{{ _('AFMCO Employee Portal') }}">
-			<img class="afm-logo" src="/assets/afmco/images/portal/afmco-logo.webp" alt="AFMCO" width="1600" height="609">
-		</a>
-		<nav id="afm-nav" class="afm-header__nav" aria-label="{{ _('Main menu') }}">
-			<a id="afm-nav-careers" href="/careers">{{ _("Open jobs") }}</a>
-			<a id="afm-nav-iban" href="/iban">{{ _("Update your IBAN") }}</a>
-			<a id="afm-nav-apex" href="{{ apex_url }}" rel="noopener">{{ _("Apex operations system") }}</a>
-			<a href="#jobs">{{ _("Open jobs") }}</a>
-			<a href="#apply">{{ _("Apply now") }}</a>
-			<a href="https://afmco.sa">{{ _("AFMCO Employee Portal") }}</a>
-			<a class="afm-header__menu-cta" href="#apply">{{ _("Apply now") }}</a>
-		</nav>
-		<div class="afm-header__tools">
-			{% if show_language_switch %}
-			<div class="afm-lang" role="group" aria-label="{{ _('Language') }}">
-				<a href="?_lang=en" hreflang="en" lang="en"{% if page_lang == "en" %} aria-current="true"{% endif %}>EN</a>
-				<a href="?_lang=ar" hreflang="ar" lang="ar"{% if page_lang == "ar" %} aria-current="true"{% endif %}>العربية</a>
-			</div>
-			{% endif %}
-			<a class="afm-pill afm-pill--small afm-pill--primary afm-header__cta" href="#apply">{{ _("Apply now") }}</a>
-			<button type="button" class="afm-burger" aria-controls="afm-nav" aria-expanded="false"
-				aria-label="{{ _('Open menu') }}" data-label-open="{{ _('Open menu') }}" data-label-close="{{ _('Close menu') }}">
-				<span></span><span></span>
-			</button>
-		</div>
-	</header>
-
-	<main id="afm-main" tabindex="-1">
+{% block afm_main %}
 		<section id="top" class="afm-hero afm-hero--careers" aria-labelledby="afm-hero-title">
 			<img class="afm-hero__bg" src="/assets/afmco/images/portal/new-staff-1600.webp"
 				srcset="/assets/afmco/images/portal/new-staff-800.webp 800w, /assets/afmco/images/portal/new-staff-1600.webp 1600w"
@@ -198,18 +153,6 @@
 				</div>
 			</form>
 		</section>
-	</main>
-
-	<footer class="afm-footer">
-		<div class="afm-footer__bar">
-			<div class="afm-footer__brand">
-				<img class="afm-logo afm-logo--footer" src="/assets/afmco/images/portal/afmco-logo.webp" alt="AFMCO" width="1600" height="609" loading="lazy">
-				<p>&copy; {{ _("Abdullah Fahad Al-Mutairi Co. Ltd.") }}</p>
-			</div>
-			<a class="afm-link" href="{{ support_url }}">{{ _("Open a support ticket") }}{{ arrow() }}</a>
-		</div>
-	</footer>
-</div>
 {% endblock %}
 
 {%- block script %}

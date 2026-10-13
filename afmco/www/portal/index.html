@@ -1,60 +1,13 @@
-{% extends "templates/web.html" %}
-
-{%- macro arrow() -%}
-<svg class="afm-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
-{%- endmacro -%}
+{% extends "afmco/templates/web/site.html" %}
+{% from "afmco/templates/web/macros.html" import arrow %}
 
 {%- macro ring_arcs() -%}
 <path class="afm-arc" d="M1294 42.5 A262 262 0 0 0 1294 566.5" pathLength="1"/>
 <path class="afm-arc afm-arc--late" d="M1275 43.2 A262 262 0 1 1 1275 565.8" pathLength="1"/>
 {%- endmacro -%}
 
-{%- block head_include %}
-{{ super() }}
-<meta name="theme-color" content="#00824E">
-<link rel="preload" href="/assets/afmco/images/portal/afmco-logo.webp" as="image" type="image/webp">
-<link rel="stylesheet" href="/assets/afmco/css/portal-fonts.css">
-{% endblock -%}
-
-{%- block banner -%}{%- endblock -%}
-{%- block navbar -%}{%- endblock -%}
-{%- block footer -%}{%- endblock -%}
-
-
-{% block content %}
-<div class="afm" dir="{{ text_dir }}" lang="{{ page_lang }}">
-	<a class="afm-skip" href="#afm-main">{{ _("Skip to main content") }}</a>
-	<div class="afm-progress" aria-hidden="true"></div>
-
-	<header class="afm-header">
-		<a class="afm-header__brand" href="#top" aria-label="{{ _('AFMCO Employee Portal') }}">
-			<img class="afm-logo" src="/assets/afmco/images/portal/afmco-logo.webp" alt="AFMCO" width="1600" height="609">
-		</a>
-		<nav id="afm-nav" class="afm-header__nav" aria-label="{{ _('Main menu') }}">
-			<a id="afm-nav-careers" href="/careers">{{ _("Open jobs") }}</a>
-			<a id="afm-nav-iban" href="/iban">{{ _("Update your IBAN") }}</a>
-			<a id="afm-nav-apex" href="{{ apex_url }}" rel="noopener">{{ _("Apex operations system") }}</a>
-			<a href="#services">{{ _("Services") }}</a>
-			<a href="#help">{{ _("Help") }}</a>
-			<a class="afm-header__menu-cta" href="{{ portal_link }}">{{ portal_label }}</a>
-			<a class="afm-header__menu-cta" href="{{ support_url }}">{{ _("Open a support ticket") }}</a>
-		</nav>
-		<div class="afm-header__tools">
-			{% if show_language_switch %}
-			<div class="afm-lang" role="group" aria-label="{{ _('Language') }}">
-				<a href="?_lang=en" hreflang="en" lang="en"{% if page_lang == "en" %} aria-current="true"{% endif %}>EN</a>
-				<a href="?_lang=ar" hreflang="ar" lang="ar"{% if page_lang == "ar" %} aria-current="true"{% endif %}>العربية</a>
-			</div>
-			{% endif %}
-			<a class="afm-pill afm-pill--small afm-pill--primary afm-header__cta" href="{{ portal_link }}">{{ portal_label }}</a>
-			<button type="button" class="afm-burger" aria-controls="afm-nav" aria-expanded="false"
-				aria-label="{{ _('Open menu') }}" data-label-open="{{ _('Open menu') }}" data-label-close="{{ _('Close menu') }}">
-				<span></span><span></span>
-			</button>
-		</div>
-	</header>
-
-	<main id="afm-main" tabindex="-1">
+{% block afm_main %}
+		{% set kicker = namespace(n=1) %}
 		<section id="top" class="afm-hero" aria-labelledby="afm-hero-title">
 			<img class="afm-hero__bg" src="/assets/afmco/images/portal/warehouse-1600.webp"
 				srcset="/assets/afmco/images/portal/warehouse-800.webp 800w, /assets/afmco/images/portal/warehouse-1600.webp 1600w"
@@ -115,9 +68,10 @@
 		</section>
 
 		{% if news %}
+		{% set kicker.n = kicker.n + 1 %}
 		<section id="news" class="afm-section afm-section--ruled" aria-labelledby="afm-news-title">
 			<div class="afm-head">
-				<p class="afm-kicker"><span class="afm-kicker__num">02 /</span>{{ _("News") }}</p>
+				<p class="afm-kicker"><span class="afm-kicker__num">{{ "%02d" % kicker.n }} /</span>{{ _("News") }}</p>
 				<div>
 					<h2 id="afm-news-title" class="afm-title">{{ _("Company News") }}</h2>
 				</div>
@@ -142,9 +96,35 @@
 		</section>
 		{% endif %}
 
+		{% if announcement or holidays %}
+		{% set kicker.n = kicker.n + 1 %}
+		<section id="announcements" class="afm-section afm-section--ruled" aria-labelledby="afm-announcements-title">
+			<div class="afm-head">
+				<p class="afm-kicker"><span class="afm-kicker__num">{{ "%02d" % kicker.n }} /</span>{{ _("Announcements") }}</p>
+				<div>
+					<h2 id="afm-announcements-title" class="afm-title">{{ announcement.title if announcement else _("Official holidays") }}</h2>
+				</div>
+			</div>
+			{% if announcement %}
+			<div class="afm-notice" data-reveal>{{ announcement.main_section }}</div>
+			{% endif %}
+			{% if holidays %}
+			<h3 class="afm-holidays__title">{{ _("Upcoming official holidays") }}</h3>
+			<ul class="afm-holidays">
+				{% for holiday in holidays %}
+				<li data-reveal>
+					<span class="afm-holidays__date">{{ holiday.date_label }}</span>
+					<span class="afm-holidays__name">{{ holiday.description | e }}</span>
+				</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		</section>
+		{% endif %}
+
 		<section id="help" class="afm-section afm-section--ruled" aria-labelledby="afm-help-title">
 			<div class="afm-head">
-				<p class="afm-kicker"><span class="afm-kicker__num">{{ "03" if news else "02" }} /</span>{{ _("Help") }}</p>
+				<p class="afm-kicker"><span class="afm-kicker__num">{{ "%02d" % (kicker.n + 1) }} /</span>{{ _("Help") }}</p>
 				<div>
 					<h2 id="afm-help-title" class="afm-title">{{ _("Need help?") }}</h2>
 					<p class="afm-lead">{{ _("Our support team is ready to help. Open a ticket and follow it until it is resolved.") }}</p>
@@ -165,9 +145,9 @@
 				{% endfor %}
 			</ul>
 		</section>
-	</main>
+{% endblock %}
 
-	<footer class="afm-footer">
+{% block afm_footer_sign %}
 		<div class="afm-footer__sign">
 			<svg class="afm-sign" viewBox="980 0 628 609" aria-hidden="true" focusable="false" data-reveal>
 				<defs>
@@ -180,13 +160,8 @@
 				<a class="afm-pill" href="{{ support_url }}">{{ _("Open a support ticket") }}</a>
 			</div>
 		</div>
-		<div class="afm-footer__bar">
-			<div class="afm-footer__brand">
-				<img class="afm-logo afm-logo--footer" src="/assets/afmco/images/portal/afmco-logo.webp" alt="AFMCO" width="1600" height="609" loading="lazy">
-				<p>&copy; {{ _("Abdullah Fahad Al-Mutairi Co. Ltd.") }}</p>
-			</div>
+{% endblock %}
+
+{% block afm_footer_note %}
 			<p>{{ _("This portal is for AFMCO employees only.") }}</p>
-		</div>
-	</footer>
-</div>
 {% endblock %}

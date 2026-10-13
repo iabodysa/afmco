@@ -1,0 +1,75 @@
+{% extends "templates/web.html" %}
+
+{%- block head_include %}
+{{ super() }}
+<meta name="theme-color" content="#00824E">
+<link rel="preload" href="/assets/afmco/images/portal/afmco-logo.webp" as="image" type="image/webp">
+<link rel="stylesheet" href="/assets/afmco/css/portal-fonts.css">
+{% endblock -%}
+
+{%- block banner -%}{%- endblock -%}
+{%- block navbar -%}{%- endblock -%}
+{%- block footer -%}{%- endblock -%}
+
+{% block content %}
+<div class="afm {% block afm_class %}{% endblock %}" dir="{{ text_dir }}" lang="{{ page_lang }}">
+	<a class="afm-skip" href="#afm-main">{{ _("Skip to main content") }}</a>
+	<div class="afm-progress" aria-hidden="true"></div>
+
+	<header class="afm-header">
+		<div class="afm-header__brand">
+			<a href="{{ home_url }}" aria-label="{{ _('Home') }}">
+				<img class="afm-logo" src="/assets/afmco/images/portal/afmco-logo.webp" alt="AFMCO" width="1600" height="609">
+			</a>
+			<a class="afm-header__home" href="{{ home_url }}">{{ _("Home") }}</a>
+		</div>
+		<nav id="afm-nav" class="afm-header__nav" aria-label="{{ _('Main menu') }}">
+			{% for link in site_links + page_links %}
+			<a href="{{ link.href }}">{{ link.label }}</a>
+			{% endfor %}
+			{% if header_cta.href != portal_link %}
+			<a href="{{ portal_link }}">{{ portal_label }}</a>
+			{% endif %}
+			<a class="afm-header__menu-cta" href="{{ header_cta.href }}">{{ header_cta.label }}</a>
+			<a class="afm-header__menu-cta" href="{{ support_url }}">{{ _("Open a support ticket") }}</a>
+		</nav>
+		<div class="afm-header__tools">
+			{% if show_language_switch %}
+			<div class="afm-lang" role="group" aria-label="{{ _('Language') }}">
+				<a href="?_lang=en" hreflang="en" lang="en"{% if page_lang == "en" %} aria-current="true"{% endif %}>EN</a>
+				<a href="?_lang=ar" hreflang="ar" lang="ar"{% if page_lang == "ar" %} aria-current="true"{% endif %}>العربية</a>
+			</div>
+			{% endif %}
+			<a class="afm-pill afm-pill--small afm-pill--primary afm-header__cta" href="{{ header_cta.href }}">{{ header_cta.label }}</a>
+			<button type="button" class="afm-burger" aria-controls="afm-nav" aria-expanded="false"
+				aria-label="{{ _('Open menu') }}" data-label-open="{{ _('Open menu') }}" data-label-close="{{ _('Close menu') }}">
+				<span></span><span></span>
+			</button>
+		</div>
+	</header>
+
+	{% include "templates/includes/breadcrumbs.html" %}
+
+	<main id="afm-main" tabindex="-1">
+		{% block afm_main %}{% endblock %}
+	</main>
+
+	<footer class="afm-footer">
+		{% block afm_footer_sign %}{% endblock %}
+		<nav class="afm-footer__nav" aria-label="{{ _('Footer menu') }}">
+			<a href="{{ home_url }}">{{ _("Home") }}</a>
+			{% for link in site_links %}
+			<a href="{{ link.href }}">{{ link.label }}</a>
+			{% endfor %}
+			<a href="{{ support_url }}">{{ _("Open a support ticket") }}</a>
+		</nav>
+		<div class="afm-footer__bar">
+			<div class="afm-footer__brand">
+				<img class="afm-logo afm-logo--footer" src="/assets/afmco/images/portal/afmco-logo.webp" alt="AFMCO" width="1600" height="609" loading="lazy">
+				<p>&copy; {{ _("Abdullah Fahad Al-Mutairi Co. Ltd.") }}</p>
+			</div>
+			{% block afm_footer_note %}{% endblock %}
+		</div>
+	</footer>
+</div>
+{% endblock %}
