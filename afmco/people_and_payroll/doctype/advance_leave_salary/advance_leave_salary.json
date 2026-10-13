@@ -33,6 +33,7 @@
   "clearing_end_of_service_section",
   "duration_of_service",
   "dos_years",
+  "contract_year_note",
   "column_break_salary",
   "total_salary",
   "salary_per_day",
@@ -223,6 +224,12 @@
    "label": "Duration of service (years)"
   },
   {
+   "fieldname": "contract_year_note",
+   "fieldtype": "Small Text",
+   "label": "Contract Year Note",
+   "read_only": 1
+  },
+  {
    "fieldname": "column_break_salary",
    "fieldtype": "Column Break"
   },
@@ -339,7 +346,7 @@
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "modified": "2026-10-10 23:59:00.000000",
+ "modified": "2026-10-13 08:15:00.000000",
  "module": "People and Payroll",
  "name": "Advance Leave Salary",
  "naming_rule": "By \"Naming Series\" field",
