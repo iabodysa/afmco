@@ -1,0 +1,121 @@
+.afm-webform {
+	background: #f6f8f7;
+}
+
+.afm-hero--webform {
+	min-height: 56vh;
+	min-height: 56svh;
+}
+
+.afm-webform .web-form-title {
+	display: none;
+}
+
+.afm-webform__main {
+	padding: 24px var(--afm-gutter) 72px;
+	outline: none;
+}
+
+.afm-webform__main main.container {
+	max-width: 980px;
+	padding: 0;
+}
+
+.afm-webform .web-form-container {
+	padding: clamp(20px, 4vw, 44px);
+	border: 1px solid var(--afm-line);
+	border-radius: 24px;
+	background: #fff;
+	box-shadow: 0 18px 48px rgba(17, 25, 21, 0.06);
+}
+
+.afm-webform .web-form-head {
+	padding: 0 0 20px;
+	border-bottom: 1px solid var(--afm-line);
+}
+
+.afm-webform .web-form-title h1 {
+	margin: 0;
+	color: var(--afm-ink);
+	font-size: clamp(26px, 4vw, 38px);
+	font-weight: 700;
+	line-height: 1.2;
+	white-space: normal;
+}
+
+.afm-webform .web-form-body {
+	padding: 24px 0 0;
+}
+
+.afm-webform .control-label,
+.afm-webform .form-group label {
+	color: var(--afm-ink);
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.afm-webform .form-control,
+.afm-webform select.form-control,
+.afm-webform textarea.form-control {
+	min-height: 48px;
+	padding: 10px 14px;
+	border: 1px solid var(--afm-line);
+	border-radius: 12px;
+	background: #fff;
+	color: var(--afm-ink);
+	font: inherit;
+	font-size: 16px;
+}
+
+.afm-webform .form-control:focus,
+.afm-webform .form-control:focus-visible {
+	border-color: var(--afm-green);
+	outline: 2px solid var(--afm-green);
+	outline-offset: 1px;
+	box-shadow: none;
+}
+
+.afm-webform .has-error .form-control {
+	border-color: #b42318;
+}
+
+.afm-webform .web-form-footer {
+	padding: 24px 0 0;
+	border-top: 1px solid var(--afm-line);
+}
+
+.afm-webform .btn {
+	min-height: 48px;
+	padding: 0 26px;
+	border-radius: 999px;
+	font: inherit;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.afm-webform .btn-primary {
+	border-color: var(--afm-green);
+	background: var(--afm-green);
+	color: #fff;
+}
+
+.afm-webform .btn-primary:hover,
+.afm-webform .btn-primary:focus-visible {
+	border-color: #006b40;
+	background: #006b40;
+}
+
+@media (max-width: 640px) {
+	.afm-webform__main {
+		padding-block: 16px 48px;
+	}
+
+	.afm-webform .web-form-container {
+		border-radius: 18px;
+	}
+
+	.afm-webform .web-form-footer .web-form-actions,
+	.afm-webform .web-form-footer .btn {
+		width: 100%;
+	}
+}
