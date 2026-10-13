@@ -100,7 +100,6 @@ Confirm Payment,تأكيد الدفع
 Contract Duration (Months),مدة العقد (أشهر)
 Contract Start Date,تاريخ بدء العقد
 Contract status is active and in good standing.,حالة العقد نشطة وسليمة.
-Convert,تحويل
 Cost Calculation Details,تفاصيل احتساب التكلفة
 Create Bank Entry,إنشاء قيد بنكي
 Create Bulk Payment Order,إنشاء أمر دفع جماعي
@@ -116,7 +115,6 @@ Creation Date,تاريخ الإنشاء
 Current Roles and Permission,الأدوار والصلاحيات الحالية
 Customer Signature,توقيع العميل
 Data copied to clipboard.,نسخت البيانات إلى الحافظة.
-Data successfully converted and added to the field.,حوّلت البيانات وأضيفت إلى الحقل بنجاح.
 Date Of Rejoining,تاريخ العودة للعمل
 Date of Birth,تاريخ الميلاد
 Date of Joining,تاريخ المباشرة
@@ -184,7 +182,6 @@ Error creating Accrual Entry:,خطأ في إنشاء قيد الاستحقاق:
 Error creating Bank Journal Entry:,خطأ في إنشاء القيد البنكي:
 Error displaying Bank Entry settings:,خطأ في عرض إعدادات القيد البنكي:
 Error occurred while saving the card,حدث خطأ أثناء حفظ البطاقة
-Error parsing data. Please check the format.,خطأ في تحليل البيانات. يرجى التحقق من الصيغة.
 Error updating Renewal Preference for:,خطأ في تحديث رغبة التجديد لـ:
 Error updating SADAD number or exemption status for:,خطأ في تحديث رقم سداد أو حالة الإعفاء لـ:
 Error updating status for:,خطأ في تحديث الحالة لـ:
@@ -274,7 +271,6 @@ IRAC Provisioning Configuration,إعدادات مخصصات IRAC
 IT Asset,أصل تقنية المعلومات
 Image attached: {0},أرفقت الصورة: {0}
 Image data is empty.,بيانات الصورة فارغة.
-Import Excel Data,استيراد بيانات Excel
 Important,مهم
 In Process,قيد المعالجة
 Include Health Certificate,تضمين الشهادة الصحية
@@ -415,8 +411,6 @@ Passengers,الركاب
 Passport Expiry Date,تاريخ انتهاء جواز السفر
 Passport No,رقم جواز السفر
 Passport Number,رقم جواز السفر
-Paste Excel Data,لصق بيانات Excel
-"Paste data copied from Excel, the first row must contain headers.",الصق البيانات المنسوخة من Excel، ويجب أن يحتوي الصف الأول على العناوين.
 Payment Entry Series,سلسلة سندات الدفع
 Payment Order created successfully:,أنشئ أمر الدفع بنجاح:
 Payment Order is already created.,سبق إنشاء أمر الدفع.
@@ -589,7 +583,6 @@ Tax Refund provided to Tourists (AED),الضريبة المستردة للسيا
 Tax Withholding Category,فئة ضريبة الاستقطاع
 Termination Penalty Clause,بند غرامة الإنهاء
 Terms,الشروط
-The data must contain at least one header row and one data row.,يجب أن تحتوي البيانات على صف عناوين واحد وصف بيانات واحد على الأقل.
 The first Approver in the list will be set as the default Approver.,سيعيّن أول مسؤول موافقة في القائمة بوصفه مسؤول الموافقة الافتراضي.
 The following documents are missing IBAN numbers:,المستندات التالية ينقصها رقم الآيبان:
 The ticket allowance will be allocated as per your decision.,سيخصّص بدل التذاكر حسب قرارك.
@@ -1969,7 +1962,6 @@ Customer Name in Arabic,اسم العميل بالعربية
 DBAK,DBAK
 DEUT,DEUT
 DHL - دي اتش ال,دي اتش ال
-Data Overview,نظرة عامة على البيانات
 Data Records,سجلات البيانات
 Date Of Rejoing,تاريخ العودة للعمل
 Days of EOS,أيام نهاية الخدمة

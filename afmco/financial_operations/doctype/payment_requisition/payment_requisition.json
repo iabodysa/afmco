@@ -61,7 +61,6 @@
   "purchase_details_section",
   "amended_from",
   "section_purchase_references",
-  "data",
   "column_break_naming_series",
   "naming_series",
   "column_break_supplier",
@@ -494,12 +493,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "data",
-   "fieldtype": "Code",
-   "hidden": 1,
-   "label": "Data"
-  },
-  {
    "fieldname": "section_purchase_references",
    "fieldtype": "Section Break",
    "label": "Supplier and Purchase Order"
@@ -514,7 +507,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-12 22:00:00.000000",
+ "modified": "2026-10-13 14:58:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",
