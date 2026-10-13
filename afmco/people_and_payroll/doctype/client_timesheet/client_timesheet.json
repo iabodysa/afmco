@@ -1,0 +1,323 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-10-13 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "customer",
+  "project",
+  "column_break_period",
+  "from_date",
+  "to_date",
+  "section_file",
+  "timesheet_file",
+  "mail_ref",
+  "column_break_notes",
+  "notes",
+  "section_bot",
+  "bot_status",
+  "format_ok",
+  "rules_ok",
+  "totals_ok",
+  "column_break_counts",
+  "rows_read",
+  "employees_count",
+  "invoice_lines",
+  "section_results",
+  "sales_invoice",
+  "payment_requisition",
+  "salary_excel",
+  "column_break_results",
+  "missing_rules",
+  "error",
+  "section_log",
+  "bot_log",
+  "section_tracking",
+  "queued_on",
+  "queued_by",
+  "column_break_tracking",
+  "processed_on",
+  "processed_by"
+ ],
+ "fields": [
+  {
+   "default": "CTS-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "CTS-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_period",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "From Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_file",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "timesheet_file",
+   "fieldtype": "Attach",
+   "label": "Timesheet File",
+   "reqd": 1
+  },
+  {
+   "fieldname": "mail_ref",
+   "fieldtype": "Data",
+   "label": "Email Reference"
+  },
+  {
+   "fieldname": "column_break_notes",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "section_bot",
+   "fieldtype": "Section Break",
+   "label": "Payroll Bot",
+   "permlevel": 1
+  },
+  {
+   "default": "Draft",
+   "fieldname": "bot_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Bot Status",
+   "no_copy": 1,
+   "options": "Draft\nQueued\nProcessing\nNeeds Review\nDone\nFailed\nStopped",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "format_ok",
+   "fieldtype": "Check",
+   "label": "File Format Checked",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "rules_ok",
+   "fieldtype": "Check",
+   "label": "Pay Rules Found",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "totals_ok",
+   "fieldtype": "Check",
+   "label": "Totals Match",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_break_counts",
+   "fieldtype": "Column Break",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "rows_read",
+   "fieldtype": "Int",
+   "label": "Rows Read",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "employees_count",
+   "fieldtype": "Int",
+   "label": "Employees",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "invoice_lines",
+   "fieldtype": "Int",
+   "label": "Invoice Lines",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "section_results",
+   "fieldtype": "Section Break",
+   "label": "Results",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "no_copy": 1,
+   "options": "Sales Invoice",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "payment_requisition",
+   "fieldtype": "Link",
+   "label": "Payment Requisition",
+   "no_copy": 1,
+   "options": "Payment Requisition",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "salary_excel",
+   "fieldtype": "Attach",
+   "label": "Salary Sheet",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_break_results",
+   "fieldtype": "Column Break",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "missing_rules",
+   "fieldtype": "Small Text",
+   "label": "Missing Pay Rules",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "error",
+   "fieldtype": "Small Text",
+   "label": "Problem",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_log",
+   "fieldtype": "Section Break",
+   "label": "Bot Log",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "bot_log",
+   "fieldtype": "Long Text",
+   "label": "Bot Log",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_tracking",
+   "fieldtype": "Section Break",
+   "label": "Tracking",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "queued_on",
+   "fieldtype": "Datetime",
+   "label": "Sent to Bot On",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "queued_by",
+   "fieldtype": "Link",
+   "label": "Sent to Bot By",
+   "no_copy": 1,
+   "options": "User",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_break_tracking",
+   "fieldtype": "Column Break",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "processed_on",
+   "fieldtype": "Datetime",
+   "label": "Processed On",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "processed_by",
+   "fieldtype": "Link",
+   "label": "Processed By",
+   "no_copy": 1,
+   "options": "User",
+   "permlevel": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-10-13 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "People and Payroll",
+ "name": "Client Timesheet",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Client Timesheet User",
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Client Timesheet User"
+  },
+  {
+   "read": 1,
+   "role": "Payroll Bot",
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Payroll Bot",
+   "write": 1
+  }
+ ],
+ "search_fields": "customer,project",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer",
+ "track_changes": 1
+}

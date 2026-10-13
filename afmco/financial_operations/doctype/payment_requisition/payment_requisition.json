@@ -536,6 +536,12 @@
    "role": "Accountant Bot"
   },
   {
+   "create": 1,
+   "read": 1,
+   "role": "Payroll Bot",
+   "write": 1
+  },
+  {
    "read": 1,
    "role": "Accounts Manager"
   },

@@ -15606,3 +15606,30 @@ IBAN certificate from your bank,شهادة الآيبان من البنك
 "Please attach the IBAN certificate as a PDF, JPG or PNG file.",يرجى إرفاق شهادة الآيبان بصيغة PDF أو JPG أو PNG.
 The IBAN certificate file is larger than {0} MB.,حجم ملف شهادة الآيبان يتجاوز {0} ميغابايت.
 Please attach the IBAN certificate from your bank.,يرجى إرفاق شهادة الآيبان من البنك.
+Bot Log,سجل مساعد الرواتب
+Bot Status,حالة مساعد الرواتب
+CTS-.YYYY.-,CTS-.YYYY.-
+Client Timesheet,كشف دوام العميل
+Client Timesheet User,مستخدم كشوف دوام العملاء
+Email Reference,مرجع البريد
+File Format Checked,صيغة الملف سليمة
+From Date must be on or before To Date.,يجب ألا يتجاوز تاريخ البداية تاريخ النهاية.
+Invoice Lines,بنود الفاتورة
+Missing Pay Rules,قواعد الأجر الناقصة
+Needs Review,بحاجة إلى مراجعة
+Pay Rules Found,قواعد الأجر متوفرة
+Payroll Bot,مساعد الرواتب
+Processed By,تمت المعالجة بواسطة
+Processed On,تاريخ المعالجة
+Results,النتائج
+Rows Read,الصفوف المقروءة
+Salary Sheet,كشف الرواتب
+Send this timesheet to the Payroll Bot?,إرسال هذا الكشف إلى مساعد الرواتب؟
+Sent to Bot By,أرسله إلى مساعد الرواتب
+Sent to Bot On,تاريخ الإرسال إلى مساعد الرواتب
+Sent to the Payroll Bot.,تم الإرسال إلى مساعد الرواتب.
+Start Payroll Bot,تشغيل مساعد الرواتب
+The Payroll Bot is already working on this timesheet.,مساعد الرواتب يعمل على هذا الكشف حاليًا.
+Timesheet File,ملف كشف الدوام
+Totals Match,الإجماليات متطابقة
+Tracking,المتابعة
