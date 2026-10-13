@@ -1,22 +1,14 @@
 # Copyright (c) 2026, AFMCO and contributors
 # For license information, please see license.txt
 
-from collections import namedtuple
 from datetime import timedelta
 
 import frappe
 from dateutil.relativedelta import relativedelta
-from frappe.utils import cint, getdate
+from frappe.utils import getdate
 
 ONE_DAY = timedelta(days=1)
 ADVANCE_WINDOW_DAYS = 90
-ADVANCE_LEAVE_SALARY = "Advance Leave Salary"
-SETTLED_STATES = ("Approved", "Paid")
-HOME_LEAVE_TYPE = "Unpaid Annual Leave"
-LWP = "lwp"
-BEYOND_ADVANCE = "beyond_advance"
-NO_ADVANCE = "no_advance"
-UnpaidSpan = namedtuple("UnpaidSpan", "first last leave_from leave_to reason")
 
 
 def inclusive_days(start, end):
@@ -62,7 +54,10 @@ def service_value(start, last_working_day, unpaid=()):
     return service_years(*service_span(start, last_working_day, unpaid))
 
 
-def approved_leave(employee, leave_types):
+def unpaid_leave(employee):
+    types = frappe.get_all("Leave Type", filters={"is_lwp": 1}, pluck="name")
+    if not (employee and types):
+        return []
     return [
         (getdate(row.from_date), getdate(row.to_date))
         for row in frappe.get_all(
@@ -71,79 +66,11 @@ def approved_leave(employee, leave_types):
                 "employee": employee,
                 "docstatus": 1,
                 "status": "Approved",
-                "leave_type": ["in", leave_types],
+                "leave_type": ["in", types],
             },
             fields=["from_date", "to_date"],
         )
     ]
-
-
-def trips(leaves):
-    merged = []
-    for first, last in sorted(leaves):
-        if merged and first <= merged[-1][1] + ONE_DAY:
-            merged[-1][1] = max(merged[-1][1], last)
-        else:
-            merged.append([first, last])
-    return [tuple(trip) for trip in merged]
-
-
-def advance_requests(employee):
-    return frappe.get_all(
-        ADVANCE_LEAVE_SALARY,
-        filters={
-            "employee": employee,
-            "docstatus": ["<", 2],
-            "workflow_state": ["in", SETTLED_STATES],
-        },
-        fields=["date_2", "vacation_days_per_year"],
-    )
-
-
-def match_trips(home_trips, requests):
-    pairs = sorted(
-        (abs((trip[0] - getdate(request.date_2)).days), t, r)
-        for t, trip in enumerate(home_trips)
-        for r, request in enumerate(requests)
-    )
-    matched, used = {}, set()
-    for distance, t, r in pairs:
-        if distance <= ADVANCE_WINDOW_DAYS and t not in matched and r not in used:
-            matched[t] = cint(requests[r].vacation_days_per_year)
-            used.add(r)
-    return matched
-
-
-def unpaid_spans(employee):
-    if not employee:
-        return []
-    lwp_types = frappe.get_all("Leave Type", filters={"is_lwp": 1}, pluck="name")
-    spans = [
-        UnpaidSpan(first, last, first, last, LWP)
-        for first, last in (approved_leave(employee, lwp_types) if lwp_types else [])
-    ]
-    home_trips = trips(approved_leave(employee, [HOME_LEAVE_TYPE]))
-    matched = match_trips(home_trips, advance_requests(employee))
-    for t, (first, last) in enumerate(home_trips):
-        if t not in matched:
-            spans.append(UnpaidSpan(first, last, first, last, NO_ADVANCE))
-            continue
-        excess = inclusive_days(first, last) - matched[t]
-        if excess > 0:
-            spans.append(
-                UnpaidSpan(
-                    last - timedelta(days=excess - 1), last, first, last, BEYOND_ADVANCE
-                )
-            )
-    return sorted(spans)
-
-
-def span_dates(spans):
-    return [(span.first, span.last) for span in spans]
-
-
-def unpaid_leave(employee):
-    return span_dates(unpaid_spans(employee))
 
 
 def extended_end(start, nominal_end, unpaid):

@@ -15636,5 +15636,3 @@ Tracking,المتابعة
 Contract Year Note,ملاحظة سنة العقد
 Contract year {0}: from {1} to {2},سنة العقد {0}: من {1} إلى {2}
 Unpaid leave from {0} to {1}: {2} days added to the contract year,إجازة بدون راتب من {0} إلى {1}: أُضيف {2} يوم إلى سنة العقد
-"Leave from {0} to {1}: {2} days beyond the contract leave counted unpaid and added to the contract year","إجازة من {0} إلى {1}: {2} يوم زيادة على إجازة العقد احتُسبت بدون راتب وأُضيفت إلى سنة العقد"
-"Leave from {0} to {1} without Advance Leave Salary: {2} days counted unpaid and added to the contract year","إجازة من {0} إلى {1} لم يُصرف عنها راتب الإجازة المقدم: {2} يوم احتُسبت بدون راتب وأُضيفت إلى سنة العقد"

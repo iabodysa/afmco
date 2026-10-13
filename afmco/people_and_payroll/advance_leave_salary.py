@@ -16,10 +16,6 @@ from frappe.utils import (
 )
 
 from afmco.people_and_payroll.service_calendar import (
-    ADVANCE_LEAVE_SALARY,
-    BEYOND_ADVANCE,
-    LWP,
-    SETTLED_STATES,
     contract_year_of,
     contract_years,
     leave_days,
@@ -27,17 +23,17 @@ from afmco.people_and_payroll.service_calendar import (
     service_span,
     service_value,
     service_years,
-    span_dates,
     unpaid_leave,
-    unpaid_spans,
     within_advance_window,
     worked_days,
 )
 
+ADVANCE_LEAVE_SALARY = "Advance Leave Salary"
 END_OF_SERVICE = "End of Service Settlement"
 PERIOD_DOCTYPE = "Contract Vacation Allowance"
 PAYMENT_REQUISITION = "Payment Requisition"
 APPROVED = "Approved"
+SETTLED_STATES = (APPROVED, "Paid")
 PAID = "Paid"
 UNPAID = "unpaid"
 DRIFT_DAYS = 7
@@ -82,23 +78,8 @@ def daily_wage(wage):
     return money(flt(wage) / 30)
 
 
-def span_line(span, days):
-    first, last = formatdate(span.leave_from), formatdate(span.leave_to)
-    if span.reason == LWP:
-        return _("Unpaid leave from {0} to {1}: {2} days added to the contract year").format(
-            first, last, days
-        )
-    if span.reason == BEYOND_ADVANCE:
-        return _(
-            "Leave from {0} to {1}: {2} days beyond the contract leave counted unpaid and added to the contract year"
-        ).format(first, last, days)
-    return _(
-        "Leave from {0} to {1} without Advance Leave Salary: {2} days counted unpaid and added to the contract year"
-    ).format(first, last, days)
-
-
-def contract_year_note(anchor, last_day, spans):
-    year = contract_year_of(anchor, last_day, span_dates(spans))
+def contract_year_note(anchor, last_day, unpaid):
+    year = contract_year_of(anchor, last_day, unpaid)
     if not year:
         return ""
     k, start, end = year
@@ -107,10 +88,14 @@ def contract_year_note(anchor, last_day, spans):
             k, formatdate(start), formatdate(end)
         )
     ]
-    for span in spans:
-        days = overlap_days(anchor, end, span.first, span.last)
+    for first, last in sorted(unpaid):
+        days = overlap_days(anchor, end, first, last)
         if days:
-            lines.append(span_line(span, days))
+            lines.append(
+                _(
+                    "Unpaid leave from {0} to {1}: {2} days added to the contract year"
+                ).format(formatdate(first), formatdate(last), days)
+            )
     return "\n".join(lines)
 
 
@@ -141,8 +126,7 @@ def recompute_settlement(doc):
     doc.salary_per_day = daily_wage(doc.total_salary)
     if not (doc.date_1 and doc.date_2):
         return
-    spans = unpaid_spans(doc.employee)
-    unpaid = span_dates(spans)
+    unpaid = unpaid_leave(doc.employee)
     span, eos_days, total_eos = settlement_award(
         doc.end_of_service_reason,
         doc.date_1,
@@ -162,7 +146,7 @@ def recompute_settlement(doc):
     doc.total_eos = total_eos
     doc.dos_years = fixed(service_years(*span))
     doc.duration_of_service = fixed(worked_days(doc.date_1, doc.date_2, unpaid))
-    doc.contract_year_note = contract_year_note(doc.date_1, doc.date_2, spans)
+    doc.contract_year_note = contract_year_note(doc.date_1, doc.date_2, unpaid)
     if eos_days is not None:
         doc.days_of_eos = money(eos_days)
     doc.cva_total = money(allowance)
@@ -183,14 +167,13 @@ def recompute_advance(doc):
     doc.salary_per_day = daily_wage(doc.total_salary)
     if not (doc.date_1 and doc.date_2):
         return
-    spans = unpaid_spans(doc.employee)
-    leave = span_dates(spans)
+    leave = unpaid_leave(doc.employee)
     allowance = unpaid_allowance(doc)
     deducted = total_deductions(doc)
     ticket = 0 if doc.get("not") == 1 or doc.check1 == 0 else flt(doc.ticket_allowance)
     doc.dos_years = fixed(service_value(doc.date_1, doc.date_2, leave))
     doc.duration_of_service = fixed(worked_days(doc.date_1, doc.date_2, leave))
-    doc.contract_year_note = contract_year_note(doc.date_1, doc.date_2, spans)
+    doc.contract_year_note = contract_year_note(doc.date_1, doc.date_2, leave)
     doc.cva_total = money(allowance)
     doc.deductions = money(deducted)
     doc.amount = money(
