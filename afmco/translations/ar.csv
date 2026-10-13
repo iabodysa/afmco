@@ -13214,7 +13214,7 @@ SADAD Biller Code,رمز المفوتر,
 SADAD Bill Number,رقم فاتورة سداد,
 {0} must contain digits only.,يجب أن يحتوي {0} على أرقام فقط.,
 Invalid SADAD Number,رقم سداد غير صحيح,
-{0} days settled in a previous clearance were removed from this period.,حُذف من هذه الفترة {0} يوم سبق تسويتها في مخالصة سابقة.
+Leave differences settlement: {0},تسوية فروقات الإجازة: {0}
 "<span style=""font-size: 18px;""><b>Masters &amp; Reports</b></span>","<span style=""font-size: 18px;""><b>البيانات الرئيسية والتقارير</b></span>"
 Accrual Journal Entry for salaries from {0} to {1},قيد اليومية للرواتب المستحقة من {0} إلى {1}
 Actual Amount,المبلغ الفعلي

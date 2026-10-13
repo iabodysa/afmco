@@ -2,8 +2,6 @@
 # For license information, please see license.txt
 
 import math
-from datetime import timedelta
-
 import frappe
 from frappe import _
 from frappe.utils import (
@@ -13,11 +11,13 @@ from frappe.utils import (
     flt,
     formatdate,
     getdate,
+    today,
 )
 
 from afmco.people_and_payroll.service_calendar import (
     contract_year_of,
     contract_years,
+    inclusive_days,
     leave_days,
     overlap_days,
     service_span,
@@ -37,6 +37,7 @@ SETTLED_STATES = (APPROVED, "Paid")
 PAID = "Paid"
 UNPAID = "unpaid"
 DRIFT_DAYS = 7
+OTHER_CLAIM = "Other"
 
 NO_EOS_REASONS = {
     "3-Termination by the employer under Article 80",
@@ -263,7 +264,7 @@ def settled_periods(doc):
                     "parentfield": "cva",
                     "parent": ["in", names],
                 },
-                fields=["contract_start_date", "contract_end_date"],
+                fields=["parent", "contract_start_date", "contract_end_date", "status"],
             )
     return periods
 
@@ -295,57 +296,67 @@ def same_year(row, period):
     )
 
 
-def neighbour_year(row, period, rows):
-    return not same_year(row, period) and any(same_year(other, period) for other in rows)
-
-
-def trim(row, period):
-    start = getdate(row["contract_start_date"])
-    end = getdate(row["contract_end_date"])
-    days = (end - start).days + 1
-    if getdate(period.contract_end_date) < end:
-        start = getdate(period.contract_end_date) + timedelta(days=1)
-    else:
-        end = getdate(period.contract_start_date) - timedelta(days=1)
-    kept = (end - start).days + 1
-    row.update(
-        contract_start_date=start,
-        contract_end_date=end,
-        amount3=js_round(flt(row["amount3"]) * kept / days),
-        note=_("{0} days settled in a previous clearance were removed from this period.").format(
-            days - kept
-        ),
+def settled_year(row, period):
+    return overlaps(row, period) and (
+        same_year(row, period) or shared_days(row, period) > DRIFT_DAYS
     )
+
+
+def leave_differences(names):
+    return _("Leave differences settlement: {0}").format(names)
+
+
+def overlap_deduction(rows, rates, periods):
+    paid = [period for period in periods if period.status != PAID]
+    net = excess_days = excess_value = 0
+    names = []
+    for row, rate in zip(rows, rates):
+        covering = [period for period in paid if overlaps(row, period)]
+        if not covering:
+            continue
+        covered = sum(shared_days(row, period) for period in covering)
+        extra = covered
+        if row.status == PAID:
+            extra -= inclusive_days(row.contract_start_date, row.contract_end_date)
+        net += extra
+        if extra > 0:
+            excess_days += extra
+            excess_value += extra * rate
+            names += [period.parent for period in covering if period.parent not in names]
+    if net <= 0:
+        return None
+    return {
+        "claim_type": OTHER_CLAIM,
+        "date": today(),
+        "note": leave_differences(", ".join(names)),
+        "amount2": js_round(net * excess_value / excess_days),
+    }
 
 
 def fill_periods(doc):
     RECOMPUTE[doc.doctype](doc)
     rows = build_periods(doc)
+    rates = [
+        flt(row["amount3"]) / inclusive_days(row["contract_start_date"], row["contract_end_date"])
+        for row in rows
+    ]
     periods = settled_periods(doc) + [row for row in doc.cva or [] if row.status == PAID]
     clearance = None
     if doc.doctype == ADVANCE_LEAVE_SALARY:
         clearance = frappe.db.get_value(
             "Employee", doc.employee, "date_of_last_vacation_clearance"
         )
-    years = [frappe._dict(row) for row in rows]
-    for row, current in zip(rows, years):
-        matched = [
-            period
-            for period in periods
-            if overlaps(current, period) and not neighbour_year(current, period, years)
-        ]
-        twins = [period for period in matched if same_year(current, period)]
-        if twins:
-            row["status"] = PAID
-        elif any(shared_days(current, period) > DRIFT_DAYS for period in matched):
-            row["status"] = PAID
-        else:
-            for period in matched:
-                if overlaps(frappe._dict(row), period):
-                    trim(row, period)
-        if clearance and getdate(row["contract_start_date"]) <= getdate(clearance):
-            row.update(status=PAID, amount3=0)
+    for row in rows:
+        current = frappe._dict(row)
+        if any(settled_year(current, period) for period in periods) or (
+            clearance and getdate(row["contract_start_date"]) <= getdate(clearance)
+        ):
+            row.update(status=PAID, amount3=None)
     doc.set("cva", rows)
+    prefix = leave_differences("")
+    deductions = [row for row in doc.get("table_14") or [] if not cstr(row.note).startswith(prefix)]
+    line = overlap_deduction(doc.cva, rates, periods)
+    doc.set("table_14", deductions + ([line] if line else []))
     RECOMPUTE[doc.doctype](doc)
 
 
@@ -370,10 +381,7 @@ def refuse_settled_employee(doc):
 def refuse_unpaid_settled_period(doc):
     periods = settled_periods(doc)
     for row in doc.cva or []:
-        if row.status != PAID and any(
-            overlaps(row, period) and not neighbour_year(row, period, doc.cva)
-            for period in periods
-        ):
+        if row.status != PAID and any(settled_year(row, period) for period in periods):
             frappe.throw(
                 _(
                     "Row {0} of the leave allowance table overlaps a paid leave period and must be Paid before submitting."
