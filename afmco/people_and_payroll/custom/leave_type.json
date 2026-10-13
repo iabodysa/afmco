@@ -1,0 +1,17 @@
+{
+ "custom_fields": [
+  {
+   "default": "0",
+   "dt": "Leave Type",
+   "fieldname": "extends_contract_year",
+   "fieldtype": "Check",
+   "insert_after": "is_lwp",
+   "label": "Extends Contract Year",
+   "module": "People and Payroll",
+   "name": "Leave Type-extends_contract_year"
+  }
+ ],
+ "doctype": "Leave Type",
+ "property_setters": [],
+ "sync_on_migrate": 1
+}

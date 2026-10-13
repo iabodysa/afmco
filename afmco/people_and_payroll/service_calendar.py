@@ -55,7 +55,11 @@ def service_value(start, last_working_day, unpaid=()):
 
 
 def unpaid_leave(employee):
-    types = frappe.get_all("Leave Type", filters={"is_lwp": 1}, pluck="name")
+    types = frappe.get_all(
+        "Leave Type",
+        or_filters={"is_lwp": 1, "extends_contract_year": 1},
+        pluck="name",
+    )
     if not (employee and types):
         return []
     return [
