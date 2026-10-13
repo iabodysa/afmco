@@ -921,16 +921,21 @@ def _head_office_cost_center(company):
 
 
 def _invoice_number(doc, rows):
+	employees = {cstr(row.employee).strip() for row in rows}
 	numbers = {cstr(row.sadad_invoice_number).strip() for row in rows} - {""}
-	if len(numbers) == 1:
-		return numbers.pop()
-	if cint(doc.sadad_invoice_number):
-		return cstr(doc.sadad_invoice_number)
+	if len(employees) == 1:
+		number = employees.pop()
+	elif len(numbers) == 1:
+		number = numbers.pop()
+	else:
+		number = cstr(doc.sadad_invoice_number)
+	if number.isascii() and number.isdigit() and cint(number):
+		return number
 	frappe.throw(
 		_(
-			"The batch needs exactly one SADAD invoice number; found {0}.",
+			"Enter one valid SADAD invoice number for this batch before creating the payment request.",
 			context=CONTEXT,
-		).format(len(numbers))
+		)
 	)
 
 
