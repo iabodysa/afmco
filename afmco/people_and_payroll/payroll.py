@@ -3,63 +3,9 @@ from __future__ import annotations
 from collections.abc import Callable, Iterable
 
 from afmco.people_and_payroll.employee import HOLD_STATUS
-from afmco.people_and_payroll.iban import BANK_CODES
 
 
-MINIMUM_ACCOUNT_LENGTH = 6
 EMPLOYEE_DOCTYPE = "Employee"
-
-
-def bank_name_for(account_number: str | None) -> str | None:
-    if not account_number:
-        return None
-    text = str(account_number)
-    if len(text) < MINIMUM_ACCOUNT_LENGTH:
-        return None
-    return BANK_CODES.get(text[:2])
-
-
-def plan_updates(employees: Iterable[dict]) -> list[dict]:
-    updates = []
-    for employee in employees:
-        derived = bank_name_for(employee.get("bank_ac_no"))
-        if derived and derived != employee.get("bank_name"):
-            updates.append({"name": employee.get("name"), "bank_name": derived})
-    return updates
-
-
-def process_bank_updates(updates: Iterable[dict], apply: Callable[[dict], None]) -> dict[str, object]:
-    updated = 0
-    errors: list[str] = []
-    for update in updates:
-        try:
-            apply(update)
-        except Exception as error:
-            errors.append(f"{update.get('name')}: {error}")
-        else:
-            updated += 1
-    return {"updated": updated, "errors": errors}
-
-
-def update_employee_bank_names() -> dict[str, object]:
-    import frappe
-
-    employees = frappe.get_all(EMPLOYEE_DOCTYPE, fields=["name", "bank_ac_no", "bank_name"])
-
-    def apply(update: dict) -> None:
-        frappe.db.set_value(EMPLOYEE_DOCTYPE, update["name"], "bank_name", update["bank_name"])
-        document = frappe.get_doc(EMPLOYEE_DOCTYPE, update["name"])
-        document.add_comment("Comment", f"Bank name updated to {update['bank_name']}")
-
-    outcome = process_bank_updates(plan_updates(employees), apply)
-    if outcome["errors"]:
-        frappe.log_error(
-            title="Employee bank name task",
-            message="\n".join(str(error) for error in outcome["errors"]),
-        )
-    return outcome
-
-
 SALARY_SLIP_DOCTYPE = "Salary Slip"
 WINDOW_MONTHS = -3
 EXCLUDED_DEPARTMENTS = ["Remotely - عن بعد - AF"]

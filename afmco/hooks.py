@@ -205,7 +205,6 @@ scheduler_events = {
 		"afmco.people_and_payroll.doctype.end_of_service_settlement.end_of_service_settlement.mark_paid_settlements",
 	],
 	"monthly": [
-		"afmco.people_and_payroll.payroll.update_employee_bank_names",
 		"afmco.people_and_payroll.payroll.deactivate_employees_without_salary_slip",
 	],
 }
