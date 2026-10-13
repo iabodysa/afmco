@@ -295,6 +295,10 @@ def same_year(row, period):
     )
 
 
+def neighbour_year(row, period, rows):
+    return not same_year(row, period) and any(same_year(other, period) for other in rows)
+
+
 def trim(row, period):
     start = getdate(row["contract_start_date"])
     end = getdate(row["contract_end_date"])
@@ -323,16 +327,16 @@ def fill_periods(doc):
         clearance = frappe.db.get_value(
             "Employee", doc.employee, "date_of_last_vacation_clearance"
         )
-    for row in rows:
-        current = frappe._dict(row)
-        matched = [period for period in periods if overlaps(current, period)]
-        twin = next((period for period in matched if same_year(current, period)), None)
-        if twin:
-            row.update(
-                status=PAID,
-                contract_start_date=twin.contract_start_date,
-                contract_end_date=twin.contract_end_date,
-            )
+    years = [frappe._dict(row) for row in rows]
+    for row, current in zip(rows, years):
+        matched = [
+            period
+            for period in periods
+            if overlaps(current, period) and not neighbour_year(current, period, years)
+        ]
+        twins = [period for period in matched if same_year(current, period)]
+        if twins:
+            row["status"] = PAID
         elif any(shared_days(current, period) > DRIFT_DAYS for period in matched):
             row["status"] = PAID
         else:
@@ -366,7 +370,10 @@ def refuse_settled_employee(doc):
 def refuse_unpaid_settled_period(doc):
     periods = settled_periods(doc)
     for row in doc.cva or []:
-        if row.status != PAID and any(overlaps(row, period) for period in periods):
+        if row.status != PAID and any(
+            overlaps(row, period) and not neighbour_year(row, period, doc.cva)
+            for period in periods
+        ):
             frappe.throw(
                 _(
                     "Row {0} of the leave allowance table overlaps a paid leave period and must be Paid before submitting."
