@@ -1,6 +1,9 @@
 # Copyright (c) 2026, AFMCO and contributors
 # For license information, please see license.txt
 
+import html
+import re
+
 import frappe
 from frappe import _
 from frappe.utils import format_date, strip_html, today
@@ -21,6 +24,7 @@ ANNOUNCEMENTS_ROUTE = "announcements"
 HOLIDAY_LIMIT = 6
 SHOW_EMPLOYEE_APP_CARD = False
 LANGUAGE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365
+LINE_BREAK_TAGS = re.compile(r"<br\s*/?>|</(?:p|div|li|h[1-6])>", re.IGNORECASE)
 
 
 def get_context(context):
@@ -83,12 +87,20 @@ def get_news():
 
 
 def get_announcement():
-	return frappe.db.get_value(
+	announcement = frappe.db.get_value(
 		"Web Page",
 		{"route": ANNOUNCEMENTS_ROUTE, "published": 1, "content_type": "Rich Text"},
 		["title", "main_section"],
 		as_dict=True,
 	)
+	if announcement:
+		announcement.lines = get_text_lines(announcement.main_section)
+	return announcement
+
+
+def get_text_lines(rich_text):
+	text = html.unescape(strip_html(LINE_BREAK_TAGS.sub("\n", rich_text or ""))).replace("\xa0", " ")
+	return [line.strip() for line in text.splitlines() if line.strip()]
 
 
 def get_holidays():

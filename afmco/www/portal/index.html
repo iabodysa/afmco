@@ -99,11 +99,11 @@
 			<div class="afm-head">
 				<p class="afm-kicker"><span class="afm-kicker__num">{{ "%02d" % kicker.n }} /</span>{{ _("Announcements") }}</p>
 				<div>
-					<h2 id="afm-announcements-title" class="afm-title">{{ announcement.title if announcement else _("Official holidays") }}</h2>
+					<h2 id="afm-announcements-title" class="afm-title">{{ _(announcement.title) | e if announcement else _("Official holidays") }}</h2>
 				</div>
 			</div>
 			{% if announcement %}
-			<div class="afm-notice" data-reveal>{{ announcement.main_section }}</div>
+			<div class="afm-notice" data-reveal>{% for line in announcement.lines %}<p>{{ _(line) | e }}</p>{% endfor %}</div>
 			{% endif %}
 			{% if holidays %}
 			<h3 class="afm-holidays__title">{{ _("Upcoming official holidays") }}</h3>
@@ -111,7 +111,7 @@
 				{% for holiday in holidays %}
 				<li data-reveal>
 					<span class="afm-holidays__date">{{ holiday.date_label }}</span>
-					<span class="afm-holidays__name">{{ holiday.description | e }}</span>
+					<span class="afm-holidays__name">{{ _(holiday.description) | e }}</span>
 				</li>
 				{% endfor %}
 			</ul>
