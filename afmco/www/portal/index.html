@@ -189,6 +189,34 @@
 				{% endfor %}
 			</ul>
 		</section>
+
+		{% if news %}
+		<section id="news" class="afm-section afm-section--ruled" aria-labelledby="afm-news-title">
+			<div class="afm-head">
+				<p class="afm-kicker"><span class="afm-kicker__num">05 /</span>{{ _("Company news") }}</p>
+				<div>
+					<h2 id="afm-news-title" class="afm-title">{{ _("Welcome, new employees") }}</h2>
+				</div>
+			</div>
+			<div class="afm-news">
+				<ul class="afm-news__track" style="--afm-news-count: {{ news | length }}">
+					{% for copy in range(2) %}{% for item in news %}
+					<li class="afm-news__item"{% if copy %} aria-hidden="true"{% endif %}>
+						{% if item.image %}
+						<div class="afm-activity__media">
+							<img class="afm-activity__img" src="{{ item.image | e }}" alt="" loading="lazy" decoding="async">
+						</div>
+						{% endif %}
+						<h3 class="afm-activity__title">
+							{% if item.url %}<a href="{{ item.url | e }}"{% if copy %} tabindex="-1"{% endif %}>{{ item.heading | e }}</a>{% else %}{{ item.heading | e }}{% endif %}
+						</h3>
+						{% if item.description %}<p class="afm-activity__text">{{ item.description | e }}</p>{% endif %}
+					</li>
+					{% endfor %}{% endfor %}
+				</ul>
+			</div>
+		</section>
+		{% endif %}
 	</main>
 
 	<footer class="afm-footer">

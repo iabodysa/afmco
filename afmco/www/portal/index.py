@@ -13,6 +13,8 @@ SUPPORT_URL = "https://care.afmco.sa/"
 APEX_URL = "https://apex.afmco.sa"
 APP_URL = f"https://{DESK_HOST}"
 PAGE_LANGUAGES = ("en", "ar")
+NEWS_SLIDESHOW = "Portal News"
+NEWS_LIMIT = 10
 LANGUAGE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365
 
 
@@ -35,6 +37,7 @@ def get_context(context):
 	context.activities = get_activities()
 	context.company_values = get_company_values()
 	context.hr_contacts = get_hr_contacts()
+	context.news = get_news(is_guest, is_website_user)
 
 
 def remember_guest_language(is_guest):
@@ -50,6 +53,22 @@ def get_portal_entry(is_guest, is_website_user):
 	if is_website_user:
 		return f"{APP_URL}/me", _("Continue to your account")
 	return f"{APP_URL}/desk", _("Continue to your workspace")
+
+
+def get_news(is_guest, is_website_user):
+	if is_guest:
+		return []
+	if is_website_user and not frappe.db.exists(
+		"Employee", {"user_id": frappe.session.user, "status": "Active"}
+	):
+		return []
+	return frappe.get_all(
+		"Website Slideshow Item",
+		filters={"parenttype": "Website Slideshow", "parent": NEWS_SLIDESHOW},
+		fields=["image", "heading", "description", "url"],
+		order_by="idx asc",
+		limit=NEWS_LIMIT,
+	)
 
 
 def get_services():
