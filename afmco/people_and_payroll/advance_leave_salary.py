@@ -11,6 +11,7 @@ from frappe.utils import (
     cstr,
     date_diff,
     flt,
+    formatdate,
     getdate,
 )
 
@@ -77,6 +78,27 @@ def daily_wage(wage):
     return money(flt(wage) / 30)
 
 
+def contract_year_note(anchor, last_day, unpaid):
+    year = contract_year_of(anchor, last_day, unpaid)
+    if not year:
+        return ""
+    k, start, end = year
+    lines = [
+        _("Contract year {0}: from {1} to {2}").format(
+            k, formatdate(start), formatdate(end)
+        )
+    ]
+    for first, last in sorted(unpaid):
+        days = overlap_days(anchor, end, first, last)
+        if days:
+            lines.append(
+                _(
+                    "Unpaid leave from {0} to {1}: {2} days added to the contract year"
+                ).format(formatdate(first), formatdate(last), days)
+            )
+    return "\n".join(lines)
+
+
 def settlement_award(reason, start, end, per_day, stored=None, unpaid=()):
     span = service_span(start, end, unpaid)
     eos_days = settlement_days(reason, service_years(*span), stored)
@@ -124,6 +146,7 @@ def recompute_settlement(doc):
     doc.total_eos = total_eos
     doc.dos_years = fixed(service_years(*span))
     doc.duration_of_service = fixed(worked_days(doc.date_1, doc.date_2, unpaid))
+    doc.contract_year_note = contract_year_note(doc.date_1, doc.date_2, unpaid)
     if eos_days is not None:
         doc.days_of_eos = money(eos_days)
     doc.cva_total = money(allowance)
@@ -150,6 +173,7 @@ def recompute_advance(doc):
     ticket = 0 if doc.get("not") == 1 or doc.check1 == 0 else flt(doc.ticket_allowance)
     doc.dos_years = fixed(service_value(doc.date_1, doc.date_2, leave))
     doc.duration_of_service = fixed(worked_days(doc.date_1, doc.date_2, leave))
+    doc.contract_year_note = contract_year_note(doc.date_1, doc.date_2, leave)
     doc.cva_total = money(allowance)
     doc.deductions = money(deducted)
     doc.amount = money(

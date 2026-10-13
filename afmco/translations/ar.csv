@@ -15606,3 +15606,6 @@ IBAN certificate from your bank,شهادة الآيبان من البنك
 "Please attach the IBAN certificate as a PDF, JPG or PNG file.",يرجى إرفاق شهادة الآيبان بصيغة PDF أو JPG أو PNG.
 The IBAN certificate file is larger than {0} MB.,حجم ملف شهادة الآيبان يتجاوز {0} ميغابايت.
 Please attach the IBAN certificate from your bank.,يرجى إرفاق شهادة الآيبان من البنك.
+Contract Year Note,ملاحظة سنة العقد
+Contract year {0}: from {1} to {2},سنة العقد {0}: من {1} إلى {2}
+Unpaid leave from {0} to {1}: {2} days added to the contract year,إجازة بدون راتب من {0} إلى {1}: أُضيف {2} يوم إلى سنة العقد
