@@ -818,7 +818,6 @@ Abdullah Fahad Al-Mutairi Co. Ltd.,شركة عبدالله فهد المطيري
 Complaints email,بريد الشكاوى
 Continue to your workspace,المتابعة إلى مساحة عملك
 Office phone,هاتف المكتب
-Our values,قيمنا
 This portal is for AFMCO employees only.,هذه البوابة مخصصة لموظفي أفمكو فقط.
 Journal Entry Details,تفاصيل قيد اليومية
 Credit Bank Account,حساب البنك الدائن
@@ -1628,24 +1627,6 @@ Set a default company first.,حدد الشركة الافتراضية أولًا
 Expected exactly one {0} for {1}; found {2}.,المطلوب {0} واحد فقط لـ {1}، والموجود {2}.,SADAD Bulk
 All your services,جميع خدماتك
 in one place,في مكان واحد
-About AFMCO,عن أفمكو
-Our integrated services,خدماتنا المتكاملة
-"We provide integrated solutions in facility management, operations, and logistics services with international standards and a Saudi vision.",نقدم حلولاً متكاملة في إدارة المرافق والتشغيل والخدمات اللوجستية بمعايير عالمية ورؤية سعودية.
-App delivery,التوصيل عبر التطبيقات
-Integrated fleet for fast delivery services for delivery apps and e-commerce stores.,أسطول متكامل لخدمات التوصيل السريع لتطبيقات التوصيل والمتاجر الإلكترونية.
-Packaging and shipping,التغليف والشحن
-"Advanced logistics services for professional packaging and secure, fast shipping.",خدمات لوجستية متطورة للتغليف والشحن السريع والآمن.
-Warehouses and factories,المستودعات والمصانع
-Highly efficient management and operation of warehouses and factories.,إدارة وتشغيل المستودعات والمصانع بكفاءة عالية.
-Principles that drive us towards excellence,المبادئ التي تقودنا نحو التميز
-Quality and excellence,الجودة والتميز
-We are committed to providing high-quality services that exceed our clients' expectations.,نلتزم بتقديم خدمات عالية الجودة تفوق توقعات عملائنا.
-Reliability and integrity,الموثوقية والأمانة
-"We build our relationships on trust, transparency, and integrity in work.",نبني علاقاتنا على الثقة والشفافية والنزاهة في العمل.
-Commitment to deadlines,الالتزام بالمواعيد
-We respect our clients' time and are committed to delivering projects on schedule.,نحترم وقت عملائنا ونلتزم بتنفيذ المشاريع في الوقت المحدد.
-Innovation and development,الابتكار والتطوير
-We always strive to develop our services and use the latest technologies and methods.,نسعى دائماً لتطوير خدماتنا واستخدام أحدث التقنيات والأساليب.
 Employee Status Before Relieving,حالة الموظف قبل ترك العمل
 Employee Values Before Relieving,قيم الموظف قبل ترك العمل
 Acted On My Documents,مستنداتي التي اتّخذ عليها إجراء
@@ -15627,5 +15608,5 @@ Attendance Skipped (Existing),الدوام المتجاوز (موجود مسبق
 Unmatched Employees,الموظفون غير المطابقين
 Unmatched Employee List,قائمة الموظفين غير المطابقين
 Attendance Errors,أخطاء الدوام
-Company news,أخبار الشركة
 Company News,أخبار الشركة
+News,الأخبار

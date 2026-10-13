@@ -35,7 +35,6 @@
 			<a id="afm-nav-iban" href="/iban">{{ _("Update your IBAN") }}</a>
 			<a id="afm-nav-apex" href="{{ apex_url }}" rel="noopener">{{ _("Apex operations system") }}</a>
 			<a href="#services">{{ _("Services") }}</a>
-			<a href="#about">{{ _("About AFMCO") }}</a>
 			<a href="#help">{{ _("Help") }}</a>
 			<a class="afm-header__menu-cta" href="{{ portal_link }}">{{ portal_label }}</a>
 			<a class="afm-header__menu-cta" href="{{ support_url }}">{{ _("Open a support ticket") }}</a>
@@ -115,75 +114,10 @@
 			</ul>
 		</section>
 
-		<section id="about" class="afm-section afm-section--ruled" aria-labelledby="afm-about-title">
-			<div class="afm-head">
-				<p class="afm-kicker"><span class="afm-kicker__num">02 /</span>{{ _("About AFMCO") }}</p>
-				<div>
-					<h2 id="afm-about-title" class="afm-title">{{ _("Our integrated services") }}</h2>
-					<p class="afm-lead">{{ _("We provide integrated solutions in facility management, operations, and logistics services with international standards and a Saudi vision.") }}</p>
-				</div>
-			</div>
-			<ul class="afm-activities">
-				{% for activity in activities %}
-				<li class="afm-activity" data-reveal>
-					<div class="afm-activity__media">
-						<img class="afm-activity__img" src="/assets/afmco/images/portal/{{ activity.image }}-1200.webp"
-							srcset="/assets/afmco/images/portal/{{ activity.image }}-600.webp 600w, /assets/afmco/images/portal/{{ activity.image }}-1200.webp 1200w"
-							sizes="(min-width: 1024px) 30vw, 100vw" alt="" width="1200" height="673" loading="lazy" decoding="async">
-					</div>
-					<h3 class="afm-activity__title">{{ activity.title }}</h3>
-					<p class="afm-activity__text">{{ activity.text }}</p>
-				</li>
-				{% endfor %}
-			</ul>
-		</section>
-
-		<section id="values" class="afm-section afm-values" aria-labelledby="afm-values-title">
-			<div class="afm-head">
-				<p class="afm-kicker"><span class="afm-kicker__num">03 /</span>{{ _("Our values") }}</p>
-				<div>
-					<h2 id="afm-values-title" class="afm-title afm-title--compact">{{ _("Principles that drive us towards excellence") }}</h2>
-				</div>
-			</div>
-			<ol class="afm-values__list">
-				{% for value in company_values %}
-				<li class="afm-value" data-reveal>
-					<span class="afm-value__num">{{ "%02d" % loop.index }}</span>
-					<h3 class="afm-value__title">{{ value.title }}</h3>
-					<p class="afm-value__text">{{ value.text }}</p>
-				</li>
-				{% endfor %}
-			</ol>
-		</section>
-
-		<section id="help" class="afm-section afm-section--ruled" aria-labelledby="afm-help-title">
-			<div class="afm-head">
-				<p class="afm-kicker"><span class="afm-kicker__num">04 /</span>{{ _("Help") }}</p>
-				<div>
-					<h2 id="afm-help-title" class="afm-title">{{ _("Need help?") }}</h2>
-					<p class="afm-lead">{{ _("Our support team is ready to help. Open a ticket and follow it until it is resolved.") }}</p>
-					<div class="afm-help__actions">
-						<a class="afm-pill afm-pill--primary" href="{{ support_url }}">{{ _("Open a support ticket") }}{{ arrow() }}</a>
-					</div>
-				</div>
-			</div>
-			<ul class="afm-contacts">
-				{% for contact in hr_contacts %}
-				<li data-reveal>
-					<a class="afm-contact" href="{{ contact.href }}">
-						<span class="afm-contact__label">{{ contact.label }}</span>
-						<span class="afm-contact__value" dir="ltr">{{ contact.value }}</span>
-						{{ arrow() }}
-					</a>
-				</li>
-				{% endfor %}
-			</ul>
-		</section>
-
 		{% if news %}
 		<section id="news" class="afm-section afm-section--ruled" aria-labelledby="afm-news-title">
 			<div class="afm-head">
-				<p class="afm-kicker"><span class="afm-kicker__num">05 /</span>{{ _("Company news") }}</p>
+				<p class="afm-kicker"><span class="afm-kicker__num">02 /</span>{{ _("News") }}</p>
 				<div>
 					<h2 id="afm-news-title" class="afm-title">{{ _("Company News") }}</h2>
 				</div>
@@ -207,6 +141,30 @@
 			</div>
 		</section>
 		{% endif %}
+
+		<section id="help" class="afm-section afm-section--ruled" aria-labelledby="afm-help-title">
+			<div class="afm-head">
+				<p class="afm-kicker"><span class="afm-kicker__num">{{ "03" if news else "02" }} /</span>{{ _("Help") }}</p>
+				<div>
+					<h2 id="afm-help-title" class="afm-title">{{ _("Need help?") }}</h2>
+					<p class="afm-lead">{{ _("Our support team is ready to help. Open a ticket and follow it until it is resolved.") }}</p>
+					<div class="afm-help__actions">
+						<a class="afm-pill afm-pill--primary" href="{{ support_url }}">{{ _("Open a support ticket") }}{{ arrow() }}</a>
+					</div>
+				</div>
+			</div>
+			<ul class="afm-contacts">
+				{% for contact in hr_contacts %}
+				<li data-reveal>
+					<a class="afm-contact" href="{{ contact.href }}">
+						<span class="afm-contact__label">{{ contact.label }}</span>
+						<span class="afm-contact__value" dir="ltr">{{ contact.value }}</span>
+						{{ arrow() }}
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</section>
 	</main>
 
 	<footer class="afm-footer">

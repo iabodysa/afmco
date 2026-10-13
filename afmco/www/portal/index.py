@@ -34,8 +34,6 @@ def get_context(context):
 	context.portal_link, context.portal_label = get_portal_entry(is_guest, is_website_user)
 	context.apex_url = APEX_URL
 	context.services = get_services()
-	context.activities = get_activities()
-	context.company_values = get_company_values()
 	context.hr_contacts = get_hr_contacts()
 	context.news = get_news(is_guest, is_website_user)
 
@@ -109,51 +107,6 @@ def get_services():
 			"note": _("For applicants from outside the company."),
 			"href": "/careers",
 			"link_label": _("View open jobs"),
-		},
-	]
-
-
-def get_activities():
-	return [
-		{
-			"title": _("App delivery"),
-			"text": _("Integrated fleet for fast delivery services for delivery apps and e-commerce stores."),
-			"image": "delivery",
-		},
-		{
-			"title": _("Packaging and shipping"),
-			"text": _("Advanced logistics services for professional packaging and secure, fast shipping."),
-			"image": "shipping",
-		},
-		{
-			"title": _("Warehouses and factories"),
-			"text": _("Highly efficient management and operation of warehouses and factories."),
-			"image": "warehousing",
-		},
-	]
-
-
-def get_company_values():
-	return [
-		{
-			"title": _("Quality and excellence"),
-			"text": _(
-				"We are committed to providing high-quality services that exceed our clients' expectations."
-			),
-		},
-		{
-			"title": _("Reliability and integrity"),
-			"text": _("We build our relationships on trust, transparency, and integrity in work."),
-		},
-		{
-			"title": _("Commitment to deadlines"),
-			"text": _("We respect our clients' time and are committed to delivering projects on schedule."),
-		},
-		{
-			"title": _("Innovation and development"),
-			"text": _(
-				"We always strive to develop our services and use the latest technologies and methods."
-			),
 		},
 	]
 
