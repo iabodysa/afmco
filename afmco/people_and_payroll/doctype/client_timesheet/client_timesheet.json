@@ -14,7 +14,6 @@
   "to_date",
   "section_file",
   "timesheet_file",
-  "mail_ref",
   "column_break_notes",
   "notes",
   "section_bot",
@@ -107,11 +106,6 @@
    "fieldtype": "Attach",
    "label": "Timesheet File",
    "reqd": 1
-  },
-  {
-   "fieldname": "mail_ref",
-   "fieldtype": "Data",
-   "label": "Email Reference"
   },
   {
    "fieldname": "column_break_notes",
@@ -366,7 +360,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-10-13 09:51:00.000000",
+ "modified": "2026-10-13 12:06:30.996882",
  "modified_by": "Administrator",
  "module": "People and Payroll",
  "name": "Client Timesheet",
