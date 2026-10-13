@@ -15560,7 +15560,6 @@ Previous IBAN,الآيبان السابق
 Account holder's full name,الاسم الكامل لصاحب الحساب
 Bank: {0},البنك: {0}
 Employee ID number (Iqama or national ID),رقم هوية الموظف (الإقامة أو الهوية الوطنية)
-Enter the ID number and the IBAN,أدخل رقم الهوية والآيبان
 Fields marked * are required.,الحقول المعلَّمة بـ * إلزامية.
 HR reviews the request,تراجع الموارد البشرية الطلب
 How it works,كيف تتم العملية
@@ -15577,13 +15576,10 @@ Please enter the start and end dates of the period.,يرجى إدخال تاري
 Reason for paying the salary into this account,سبب تحويل الراتب إلى هذا الحساب
 Salary account,حساب الراتب
 Send request,إرسال الطلب
-Send the new IBAN for your salary in a minute. HR reviews every request before the salary moves to the new account.,أرسل رقم الآيبان الجديد لراتبك خلال دقيقة، وتراجع الموارد البشرية كل طلب قبل تحويل الراتب إلى الحساب الجديد.
 Send your request,أرسل طلبك
 The IBAN starts with SA followed by 22 digits.,يبدأ الآيبان بـ SA ويليه 22 رقمًا.
 The employee,الموظف نفسه
-The employee's Iqama or national ID number and the new IBAN.,رقم إقامة الموظف أو هويته الوطنية، ورقم الآيبان الجديد.
 The end date cannot be before the start date.,لا يمكن أن يسبق تاريخ النهاية تاريخ البداية.
-"The name and the other details come from the employee file, and the bank comes from the IBAN.",نأخذ الاسم وباقي البيانات من ملف الموظف، ونعرف البنك من رقم الآيبان.
 The salary goes to this account for a set period.,يحوَّل الراتب إلى هذا الحساب لمدة محددة.
 The salary goes to this account from now on.,يحوَّل الراتب إلى هذا الحساب من الآن فصاعدًا.
 The salary moves to the new account after HR approves the request.,يحوَّل الراتب إلى الحساب الجديد بعد اعتماد الموارد البشرية للطلب.
@@ -15592,12 +15588,21 @@ Three steps,ثلاث خطوات
 Update your,حدّث
 Update your salary account,تحديث حساب الراتب
 Valid Until,صالح حتى تاريخ
-We could not find an active employee with this ID number. Please check it or contact HR.,لم نجد موظفًا على رأس العمل بهذا الرقم، يرجى التأكد منه أو التواصل مع الموارد البشرية.
-We do not recognise the bank of this IBAN yet. Please contact HR.,لم نتعرف على بنك هذا الآيبان بعد، يرجى التواصل مع الموارد البشرية.
-We fill in the rest,نكمل الباقي
 Whose name is the account in?,باسم من الحساب؟
-You type only the ID number and the new IBAN. We take the rest from the employee file.,تكتب رقم الهوية والآيبان الجديد فقط، ونأخذ الباقي من ملف الموظف.
 Your request could not be sent. Please try again.,تعذّر إرسال طلبك، يرجى المحاولة مرة أخرى.
 Your request {0} was received. HR reviews it before the salary moves to the new account.,وصلنا طلبك {0}، وتراجعه الموارد البشرية قبل تحويل الراتب إلى الحساب الجديد.
 salary account,حساب راتبك
 Temporary account from {0} to {1},حساب مؤقت من {0} إلى {1}
+Have your ID number and the IBAN certificate from your bank ready.,جهّز رقم هويتك وشهادة الآيبان من البنك.
+Enter your ID number and new IBAN,أدخل رقم هويتك والآيبان الجديد
+"Your Iqama or national ID number, and the new IBAN as it appears on the certificate.",رقم إقامتك أو هويتك الوطنية، ورقم الآيبان الجديد كما هو في الشهادة.
+Attach your IBAN certificate,أرفق شهادة الآيبان
+A PDF or a photo of the IBAN certificate issued by your bank.,ملف PDF أو صورة لشهادة الآيبان الصادرة من بنكك.
+This bank is not available for salary payments yet. Please contact HR.,هذا البنك غير متاح لإيداع الرواتب حاليًا، يرجى التواصل مع الموارد البشرية.
+"Please check the ID number. If it is correct, please contact HR.",يرجى التأكد من رقم الهوية، وإذا كان صحيحًا فتواصل مع الموارد البشرية.
+Send your new IBAN with the certificate from your bank. HR reviews every request before the salary moves to the new account.,أرسل رقم الآيبان الجديد مع شهادته من البنك، وتراجع الموارد البشرية كل طلب قبل تحويل الراتب إلى الحساب الجديد.
+IBAN certificate from your bank,شهادة الآيبان من البنك
+"PDF, JPG or PNG, up to {0} MB.",PDF أو JPG أو PNG، بحد أقصى {0} ميغابايت.
+"Please attach the IBAN certificate as a PDF, JPG or PNG file.",يرجى إرفاق شهادة الآيبان بصيغة PDF أو JPG أو PNG.
+The IBAN certificate file is larger than {0} MB.,حجم ملف شهادة الآيبان يتجاوز {0} ميغابايت.
+Please attach the IBAN certificate from your bank.,يرجى إرفاق شهادة الآيبان من البنك.

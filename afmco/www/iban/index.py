@@ -6,6 +6,7 @@ from frappe import _
 from frappe.utils.jinja_globals import is_rtl
 
 from afmco.people_and_payroll.iban import BANK_CODES
+from afmco.people_and_payroll.iban_request import MAX_CERTIFICATE_BYTES
 from afmco.www.portal.index import APEX_URL, SUPPORT_URL, get_portal_entry, remember_guest_language
 
 no_cache = 1
@@ -21,7 +22,7 @@ def get_context(context):
 	context.show_language_switch = is_guest
 	context.title = _("Update your salary account")
 	context.description = _(
-		"Send the new IBAN for your salary in a minute. HR reviews every request before the salary moves to the new account."
+		"Send your new IBAN with the certificate from your bank. HR reviews every request before the salary moves to the new account."
 	)
 	context.support_url = SUPPORT_URL
 	context.apex_url = APEX_URL
@@ -30,3 +31,5 @@ def get_context(context):
 	context.form_css = frappe.read_file(frappe.get_app_path("afmco", "www", "careers", "index.css"))
 	context.portal_js = frappe.read_file(frappe.get_app_path("afmco", "www", "portal", "index.js"))
 	context.banks = frappe.as_json(BANK_CODES, indent=None)
+	context.max_certificate_mb = MAX_CERTIFICATE_BYTES // (1024 * 1024)
+	context.max_certificate_bytes = MAX_CERTIFICATE_BYTES

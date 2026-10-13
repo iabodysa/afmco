@@ -78,19 +78,19 @@
 				<p class="afm-kicker"><span class="afm-kicker__num">01 /</span>{{ _("How it works") }}</p>
 				<div>
 					<h2 id="afm-steps-title" class="afm-title">{{ _("Three steps") }}</h2>
-					<p class="afm-lead">{{ _("You type only the ID number and the new IBAN. We take the rest from the employee file.") }}</p>
+					<p class="afm-lead">{{ _("Have your ID number and the IBAN certificate from your bank ready.") }}</p>
 				</div>
 			</div>
 			<ol class="afm-services">
 				<li class="afm-service" data-reveal>
 					<span class="afm-service__num">01</span>
-					<h3 class="afm-service__title">{{ _("Enter the ID number and the IBAN") }}</h3>
-					<p class="afm-service__text">{{ _("The employee's Iqama or national ID number and the new IBAN.") }}</p>
+					<h3 class="afm-service__title">{{ _("Enter your ID number and new IBAN") }}</h3>
+					<p class="afm-service__text">{{ _("Your Iqama or national ID number, and the new IBAN as it appears on the certificate.") }}</p>
 				</li>
 				<li class="afm-service" data-reveal>
 					<span class="afm-service__num">02</span>
-					<h3 class="afm-service__title">{{ _("We fill in the rest") }}</h3>
-					<p class="afm-service__text">{{ _("The name and the other details come from the employee file, and the bank comes from the IBAN.") }}</p>
+					<h3 class="afm-service__title">{{ _("Attach your IBAN certificate") }}</h3>
+					<p class="afm-service__text">{{ _("A PDF or a photo of the IBAN certificate issued by your bank.") }}</p>
 				</li>
 				<li class="afm-service" data-reveal>
 					<span class="afm-service__num">03</span>
@@ -110,11 +110,13 @@
 			</div>
 
 			<form class="afm-form" method="post" action="/api/method/afmco.people_and_payroll.api.iban_request.submit"
-				novalidate data-banks="{{ banks | e }}"
+				enctype="multipart/form-data" novalidate data-banks="{{ banks | e }}" data-max-bytes="{{ max_certificate_bytes }}"
 				data-msg-bank="{{ _('Bank: {0}') }}"
-				data-msg-bank-unknown="{{ _('We do not recognise the bank of this IBAN yet. Please contact HR.') }}"
+				data-msg-bank-unknown="{{ _('This bank is not available for salary payments yet. Please contact HR.') }}"
 				data-msg-sent="{{ _('Your request {0} was received. HR reviews it before the salary moves to the new account.') }}"
 				data-msg-failed="{{ _('Your request could not be sent. Please try again.') }}"
+				data-msg-file="{{ _('Please attach the IBAN certificate as a PDF, JPG or PNG file.') }}"
+				data-msg-size="{{ _('The IBAN certificate file is larger than {0} MB.').format(max_certificate_mb) }}"
 				data-msg-required="{{ _('Please fill in all required fields.') }}">
 				<div class="afm-field">
 					<label for="afm-employee-id">{{ _("Employee ID number (Iqama or national ID)") }} *</label>
@@ -126,6 +128,12 @@
 					<input id="afm-iban" name="iban" type="text" maxlength="34" autocomplete="off" autocapitalize="characters"
 						spellcheck="false" dir="ltr" placeholder="SA00 0000 0000 0000 0000 0000" aria-describedby="afm-iban-bank" required>
 					<p id="afm-iban-bank" class="afm-field__hint afm-iban__bank" aria-live="polite"></p>
+				</div>
+				<div class="afm-field afm-field--wide">
+					<label for="afm-iban-certificate">{{ _("IBAN certificate from your bank") }} *</label>
+					<input id="afm-iban-certificate" name="iban_certificate" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+						aria-describedby="afm-iban-certificate-hint" required>
+					<p id="afm-iban-certificate-hint" class="afm-field__hint">{{ _("PDF, JPG or PNG, up to {0} MB.").format(max_certificate_mb) }}</p>
 				</div>
 
 				<fieldset class="afm-field afm-field--wide afm-choice">

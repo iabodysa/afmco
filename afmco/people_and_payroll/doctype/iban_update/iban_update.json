@@ -203,7 +203,8 @@
   {
    "fieldname": "iban_certificate",
    "fieldtype": "Attach",
-   "label": "IBAN Certificate"
+   "label": "IBAN Certificate",
+   "reqd": 1
   },
   {
    "fieldname": "amended_from",

@@ -4,7 +4,7 @@
 import frappe
 from frappe.rate_limiter import rate_limit
 
-from afmco.people_and_payroll.iban_request import create_request
+from afmco.people_and_payroll.iban_request import MAX_CERTIFICATE_BYTES, create_request
 
 REQUEST_FIELDS = (
 	"employee_id",
@@ -22,5 +22,10 @@ REQUEST_FIELDS = (
 @frappe.whitelist(allow_guest=True, methods=["POST"])
 @rate_limit(limit=5, seconds=60 * 60)
 def submit():
-	request = create_request({fieldname: frappe.form_dict.get(fieldname) for fieldname in REQUEST_FIELDS})
+	certificate = frappe.request.files.get("iban_certificate") if frappe.request else None
+	request = create_request(
+		{fieldname: frappe.form_dict.get(fieldname) for fieldname in REQUEST_FIELDS},
+		certificate.filename if certificate else None,
+		certificate.stream.read(MAX_CERTIFICATE_BYTES + 1) if certificate else None,
+	)
 	return {"name": request.name}

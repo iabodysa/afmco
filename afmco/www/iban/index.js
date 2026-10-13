@@ -5,6 +5,8 @@
 	const status = form.querySelector(".afm-form__status");
 	const submit = form.querySelector('button[type="submit"]');
 	const iban = form.querySelector('input[name="iban"]');
+	const certificate = form.querySelector('input[name="iban_certificate"]');
+	const allowed = [".pdf", ".jpg", ".jpeg", ".png"];
 	const bank = form.querySelector(".afm-iban__bank");
 	const banks = JSON.parse(form.dataset.banks || "{}");
 	const blocks = [...form.querySelectorAll("[data-show-when]")];
@@ -69,6 +71,18 @@
 		if (missing) {
 			show(status, form.dataset.msgRequired, "error");
 			missing.focus();
+			return;
+		}
+
+		const file = certificate.files[0];
+		if (!allowed.some((extension) => file.name.toLowerCase().endsWith(extension))) {
+			show(status, form.dataset.msgFile, "error");
+			certificate.focus();
+			return;
+		}
+		if (file.size > Number(form.dataset.maxBytes)) {
+			show(status, form.dataset.msgSize, "error");
+			certificate.focus();
 			return;
 		}
 
