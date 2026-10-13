@@ -5,6 +5,7 @@ from base64 import b64encode
 from functools import cache
 
 import frappe
+from frappe import _
 
 FONT_WEIGHTS = {400: "SaudiRiyal-Regular.ttf", 700: "SaudiRiyal-Bold.ttf"}
 
@@ -33,3 +34,12 @@ def saudi_riyal_font_face():
 
 def currency_mark(currency):
 	return '<span class="riyal">&#x20C1;</span>' if currency == "SAR" else currency
+
+
+def riyal_words(words, currency):
+	if currency != "SAR" or not words:
+		return words
+	for token in (currency, _(currency, context="Currency")):
+		if words.startswith(f"{token} "):
+			return currency_mark(currency) + words[len(token) :]
+	return words

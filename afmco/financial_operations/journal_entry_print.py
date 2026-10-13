@@ -13,6 +13,7 @@ from afmco.financial_operations.requisition_pack import (
 	PAYMENT_REQUISITION,
 	file_extension,
 )
+from afmco.financial_operations.saudi_riyal import riyal_words
 
 SUBMIT_CHANGE = '%["docstatus",0,1]%'
 
@@ -63,7 +64,7 @@ def money_words(amount, currency):
 	with print_language("ar"):
 		arabic = arabic_words(amount, currency)
 	with print_language("en"):
-		english = money_in_words(amount, currency)
+		english = riyal_words(money_in_words(amount, currency), currency)
 	return frappe._dict(ar=arabic, en=english)
 
 

@@ -287,7 +287,7 @@ body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.in
       <tr class="grand"><td class="lb-ar"><span class="ar">{{ _("Total Amount Due", "ar", ctx) }}</span></td><td class="lb-en"><span class="en">Total Amount Due ({{ cur_mark }})</span></td><td class="num">{{ money(doc.grand_total) }}</td></tr>
     </table>
     {%- if doc.in_words %}
-    <table class="inv-words"><tr><td dir="auto">{{ doc.get_formatted("in_words") }}</td></tr></table>
+    <table class="inv-words"><tr><td dir="auto">{{ riyal_words(doc.get_formatted("in_words"), cur) }}</td></tr></table>
     {%- endif %}
   </td>
   {%- if notes or qr_note or stamp %}
