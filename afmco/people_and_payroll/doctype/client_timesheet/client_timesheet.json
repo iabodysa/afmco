@@ -40,7 +40,18 @@
   "queued_by",
   "column_break_tracking",
   "processed_on",
-  "processed_by"
+  "processed_by",
+  "section_attendance",
+  "attendance_reviewed_by",
+  "column_break_attendance_review",
+  "attendance_ok",
+  "attendance_proposed",
+  "attendance_created",
+  "column_break_attendance_counts",
+  "attendance_skipped_existing",
+  "unmatched_employees",
+  "unmatched_list",
+  "attendance_errors"
  ],
  "fields": [
   {
@@ -278,11 +289,84 @@
    "no_copy": 1,
    "options": "User",
    "permlevel": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_attendance",
+   "fieldtype": "Section Break",
+   "label": "Attendance",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "attendance_reviewed_by",
+   "fieldtype": "Link",
+   "label": "Reviewed By",
+   "no_copy": 1,
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_attendance_review",
+   "fieldtype": "Column Break",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "attendance_ok",
+   "fieldtype": "Check",
+   "label": "Attendance Drafted OK",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "attendance_proposed",
+   "fieldtype": "Int",
+   "label": "Attendance Proposed",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "attendance_created",
+   "fieldtype": "Int",
+   "label": "Attendance Created",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_break_attendance_counts",
+   "fieldtype": "Column Break",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "attendance_skipped_existing",
+   "fieldtype": "Int",
+   "label": "Attendance Skipped (Existing)",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "unmatched_employees",
+   "fieldtype": "Int",
+   "label": "Unmatched Employees",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "unmatched_list",
+   "fieldtype": "Small Text",
+   "label": "Unmatched Employee List",
+   "no_copy": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "attendance_errors",
+   "fieldtype": "Small Text",
+   "label": "Attendance Errors",
+   "no_copy": 1,
+   "permlevel": 1
   }
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-10-13 10:00:00.000000",
+ "modified": "2026-10-13 09:51:00.000000",
  "modified_by": "Administrator",
  "module": "People and Payroll",
  "name": "Client Timesheet",
