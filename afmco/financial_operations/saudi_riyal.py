@@ -25,7 +25,12 @@ def font_face_style():
 			"\tunicode-range: U+20C1;\n"
 			"}\n"
 		)
-	return "<style>\n" + "".join(faces) + '.print-format .riyal {\n\tfont-family: "Saudi Riyal", sans-serif;\n}\n</style>'
+	return (
+		"<style>\n"
+		+ "".join(faces)
+		+ ".print-format .riyal, .print-format .afm .riyal, .print-format .afm .num .riyal {\n"
+		+ '\tfont-family: "Saudi Riyal", sans-serif !important;\n}\n</style>'
+	)
 
 
 def saudi_riyal_font_face():
