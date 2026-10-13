@@ -320,10 +320,21 @@ def leave_differences(names):
 
 
 def overlap_deduction(doc, periods, unpaid):
-    paid = [period for period in periods if period.status != PAID]
+    trusted = [
+        row
+        for row in doc.cva or []
+        if row.status != PAID and any(settled_year(row, period) for period in periods)
+    ]
+    paid = [
+        period
+        for period in periods
+        if period.status != PAID and not any(settled_year(row, period) for row in trusted)
+    ]
     net = excess_days = excess_value = 0
     names = []
     for row in doc.cva or []:
+        if any(row is choice for choice in trusted):
+            continue
         covering = [period for period in paid if overlaps(row, period)]
         if not covering:
             continue
@@ -406,17 +417,6 @@ def refuse_settled_employee(doc):
                 "Employee {0} has End of Service Settlement {1}, so no Advance Leave Salary can be created for this employee."
             ).format(doc.employee, settlement)
         )
-
-
-def refuse_unpaid_settled_period(doc):
-    periods = settled_periods(doc)
-    for row in doc.cva or []:
-        if row.status != PAID and any(settled_year(row, period) for period in periods):
-            frappe.throw(
-                _(
-                    "Row {0} of the leave allowance table overlaps a paid leave period and must be Paid before submitting."
-                ).format(row.idx)
-            )
 
 
 def refuse_unfinished_contract_year(doc):

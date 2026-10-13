@@ -13108,7 +13108,6 @@ Email Body,نص البريد الإلكتروني,WPS File
 Copy,نسخ,WPS File
 Add your notes here,اضف ملاحظاتك هنا
 "Employee {0} has End of Service Settlement {1}, so no Advance Leave Salary can be created for this employee.",للموظف {0} تصفية نهاية خدمة {1}، لذلك لا يمكن إنشاء راتب إجازة مقدم لهذا الموظف.
-Row {0} of the leave allowance table overlaps a paid leave period and must be Paid before submitting.,الصف {0} في جدول بدل الإجازة يتداخل مع فترة إجازة مدفوعة، ويجب جعله مدفوعاً قبل الاعتماد.
 "Row {0} of the leave allowance table falls in the contract year {1} to {2}, which ends more than 90 days after this request was created.",الصف {0} في جدول بدل الإجازة يقع في سنة العقد من {1} إلى {2}، وهي تنتهي بعد أكثر من 90 يوماً من تاريخ إنشاء هذا الطلب.
 Iqama Renewal Control,إدارة تجديد الإقامة
 Corporation,الشركة

@@ -10,7 +10,6 @@ from afmco.approver_check import ai_reading
 from afmco.people_and_payroll.advance_leave_salary import (
     follow_status_switch,
     recompute_settlement,
-    refuse_unpaid_settled_period,
 )
 from afmco.people_and_payroll.service_calendar import service_span, unpaid_leave
 
@@ -35,9 +34,6 @@ class EndofServiceSettlement(Document):
             )
         recompute_settlement(self)
         follow_status_switch(self)
-
-    def before_submit(self):
-        refuse_unpaid_settled_period(self)
 
     def on_update(self):
         if self.has_value_changed("workflow_state") and self.workflow_state == CANCELLED_STATE:
