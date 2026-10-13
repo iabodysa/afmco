@@ -189,7 +189,7 @@ html {
 	color: var(--afm-green);
 }
 
-.afm-header__menu-cta {
+.afm-header__menu-only {
 	display: none;
 }
 
@@ -303,15 +303,12 @@ html:has(.afm--menu) {
 	border-bottom: 1px solid var(--afm-line);
 }
 
-.afm--menu .afm-header__menu-cta {
+.afm--menu .afm-header__menu-only {
 	display: block;
-	color: var(--afm-green);
 }
 
-.afm--menu .afm-header__menu-cta + .afm-header__menu-cta {
-	color: var(--afm-ink);
-	font-size: 20px;
-	font-weight: 600;
+.afm--menu .afm-header__menu-cta {
+	color: var(--afm-green);
 }
 
 .afm-pill {
@@ -530,15 +527,6 @@ html:has(.afm--menu) {
 	animation-delay: 0.64s;
 }
 
-.afm-hero__lead {
-	max-width: 23em;
-	margin-top: clamp(16px, 2vw, 24px);
-	font-size: clamp(17px, 1.45vw, 21px);
-	line-height: 1.8;
-	color: rgba(255, 255, 255, 0.88);
-	text-wrap: pretty;
-}
-
 .afm-hero__actions {
 	display: flex;
 	flex-wrap: wrap;
@@ -587,7 +575,6 @@ html:has(.afm--menu) {
 }
 
 .afm-in--1 { animation-delay: 0.35s; }
-.afm-in--3 { animation-delay: 0.95s; }
 .afm-in--4 { animation-delay: 1.1s; }
 .afm-in--5 { animation-delay: 1.6s; animation-timing-function: ease; }
 
@@ -692,20 +679,6 @@ html:has(.afm--menu) {
 	font-size: clamp(24px, 2.1vw, 30px);
 	font-weight: 700;
 	line-height: 1.4;
-}
-
-.afm-service__text {
-	max-width: 26em;
-	font-size: 17px;
-	line-height: 1.8;
-	color: var(--afm-muted);
-}
-
-.afm-service__note {
-	margin-top: 10px;
-	font-size: 14px;
-	line-height: 1.7;
-	color: var(--afm-tag);
 }
 
 .afm-service .afm-link {

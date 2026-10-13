@@ -30,8 +30,8 @@
 			{% if header_cta.href != portal_link %}
 			<a href="{{ portal_link }}">{{ portal_label }}</a>
 			{% endif %}
-			<a class="afm-header__menu-cta" href="{{ header_cta.href }}">{{ header_cta.label }}</a>
-			<a class="afm-header__menu-cta" href="{{ support_url }}">{{ _("Open a support ticket") }}</a>
+			<a class="afm-header__menu-only afm-header__menu-cta" href="{{ header_cta.href }}">{{ header_cta.label }}</a>
+			<a class="afm-header__menu-only" href="{{ support_url }}">{{ _("Open a support ticket") }}</a>
 		</nav>
 		<div class="afm-header__tools">
 			{% if show_language_switch %}

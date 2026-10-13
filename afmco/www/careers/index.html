@@ -21,7 +21,6 @@
 						<span class="afm-line"><span class="afm-line__text">{{ _("Join") }}</span></span>
 						<span class="afm-line"><span class="afm-line__text afm-line__text--accent">{{ _("the AFMCO family") }}</span></span>
 					</h1>
-					<p class="afm-hero__lead afm-in afm-in--3">{{ description }}</p>
 					<div class="afm-hero__actions afm-in afm-in--4">
 						<a class="afm-pill afm-pill--primary" href="#jobs">{{ _("View open jobs") }}{{ arrow() }}</a>
 						<a class="afm-pill" href="#apply">{{ _("Apply now") }}</a>
@@ -35,7 +34,6 @@
 				<p class="afm-kicker"><span class="afm-kicker__num">01 /</span>{{ _("Open jobs") }}</p>
 				<div>
 					<h2 id="afm-jobs-title" class="afm-title">{{ _("Jobs open now") }}</h2>
-					<p class="afm-lead">{{ _("Choose a job to read its details, then apply with your CV.") }}</p>
 				</div>
 			</div>
 			{% if jobs %}
@@ -62,7 +60,7 @@
 				{% endfor %}
 			</ul>
 			{% else %}
-			<p class="afm-careers__empty" data-reveal>{{ _("There are no open jobs right now. You can still send a general application and we will contact you when a suitable job opens.") }}</p>
+			<p class="afm-careers__empty" data-reveal>{{ _("There are no open jobs right now.") }}</p>
 			{% endif %}
 		</section>
 
@@ -71,7 +69,7 @@
 				<p class="afm-kicker"><span class="afm-kicker__num">02 /</span>{{ _("Apply now") }}</p>
 				<div>
 					<h2 id="afm-apply-title" class="afm-title">{{ _("Send your application") }}</h2>
-					<p class="afm-lead">{{ _("Fields marked * are required. Only the AFMCO recruitment team can see your application.") }}</p>
+					<p class="afm-lead">{{ _("Fields marked * are required.") }}</p>
 				</div>
 			</div>
 

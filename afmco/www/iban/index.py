@@ -14,9 +14,6 @@ no_cache = 1
 def get_context(context):
 	set_site_context(context)
 	context.title = _("Update your salary account")
-	context.description = _(
-		"Send your new IBAN with the certificate from your bank. HR reviews every request before the salary moves to the new account."
-	)
 	context.parents = [{"route": context.home_url, "title": _("Home")}]
 	context.page_links = [
 		{"href": "#steps", "label": _("How it works")},

@@ -26,9 +26,6 @@ LANGUAGE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365
 def get_context(context):
 	set_site_context(context)
 	context.title = _("AFMCO Employee Portal")
-	context.description = _(
-		"Sign in to manage your leave, track your requests and view your salary slips. Our support team is here whenever you need help."
-	)
 	context.page_links = [
 		{"href": "#services", "label": _("Services")},
 		{"href": "#help", "label": _("Help")},
@@ -121,42 +118,30 @@ def get_services():
 	services = [
 		{
 			"title": _("Leave, attendance and salary slips"),
-			"text": _(
-				"Apply for leave, submit attendance requests, track their progress and view your salary slips."
-			),
-			"note": _("For employees with an employee app account."),
 			"href": f"{APP_URL}/hrms",
 			"link_label": _("Open the employee app"),
 			"show": SHOW_EMPLOYEE_APP_CARD,
 		},
 		{
 			"title": _("Your daily work"),
-			"text": _("See the requests and tasks waiting for you."),
-			"note": _("Sign in with your work account."),
 			"href": f"{APP_URL}/desk",
 			"link_label": _("Open the system"),
 			"show": True,
 		},
 		{
 			"title": _("Update your IBAN"),
-			"text": _("Changed your bank? Send your new IBAN so your salary reaches you."),
-			"note": _("No sign-in required."),
 			"href": "/iban",
 			"link_label": _("Open the form"),
 			"show": True,
 		},
 		{
 			"title": _("Leave request"),
-			"text": _("Request your leave online in a few steps."),
-			"note": _("For employees without the employee app."),
 			"href": f"{APP_URL}/leave-application/new",
 			"link_label": _("Open the form"),
 			"show": True,
 		},
 		{
 			"title": _("Apply for a job"),
-			"text": _("See the open jobs and apply online."),
-			"note": _("Share it with anyone looking for work."),
 			"href": "/careers",
 			"link_label": _("View open jobs"),
 			"show": True,

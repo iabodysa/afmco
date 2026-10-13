@@ -22,7 +22,6 @@
 						<span class="afm-line"><span class="afm-line__text">{{ _("Update your") }}</span></span>
 						<span class="afm-line"><span class="afm-line__text afm-line__text--accent">{{ _("salary account") }}</span></span>
 					</h1>
-					<p class="afm-hero__lead afm-in afm-in--3">{{ description }}</p>
 					<div class="afm-hero__actions afm-in afm-in--4">
 						<a class="afm-pill afm-pill--primary" href="#request">{{ _("Send your request") }}{{ arrow() }}</a>
 						<a class="afm-pill" href="#steps">{{ _("How it works") }}</a>
@@ -36,24 +35,20 @@
 				<p class="afm-kicker"><span class="afm-kicker__num">01 /</span>{{ _("How it works") }}</p>
 				<div>
 					<h2 id="afm-steps-title" class="afm-title">{{ _("Three steps") }}</h2>
-					<p class="afm-lead">{{ _("Have your ID number and the IBAN certificate from your bank ready.") }}</p>
 				</div>
 			</div>
 			<ol class="afm-services">
 				<li class="afm-service" data-reveal>
 					<span class="afm-service__num">01</span>
 					<h3 class="afm-service__title">{{ _("Enter your ID number and new IBAN") }}</h3>
-					<p class="afm-service__text">{{ _("Your Iqama or national ID number, and the new IBAN as it appears on the certificate.") }}</p>
 				</li>
 				<li class="afm-service" data-reveal>
 					<span class="afm-service__num">02</span>
 					<h3 class="afm-service__title">{{ _("Attach your IBAN certificate") }}</h3>
-					<p class="afm-service__text">{{ _("A PDF or a photo of the IBAN certificate issued by your bank.") }}</p>
 				</li>
 				<li class="afm-service" data-reveal>
 					<span class="afm-service__num">03</span>
 					<h3 class="afm-service__title">{{ _("HR reviews the request") }}</h3>
-					<p class="afm-service__text">{{ _("The salary moves to the new account after HR approves the request.") }}</p>
 				</li>
 			</ol>
 		</section>
@@ -126,12 +121,10 @@
 						<label class="afm-choice__option">
 							<input type="radio" name="duration" value="Permanent" checked>
 							<span>{{ _("Permanent") }}</span>
-							<small>{{ _("The salary goes to this account from now on.") }}</small>
 						</label>
 						<label class="afm-choice__option">
 							<input type="radio" name="duration" value="Temporary">
 							<span>{{ _("Temporary") }}</span>
-							<small>{{ _("The salary goes to this account for a set period.") }}</small>
 						</label>
 					</div>
 				</fieldset>

@@ -21,7 +21,6 @@
 						<span class="afm-line"><span class="afm-line__text">{{ _("All your services") }}</span></span>
 						<span class="afm-line"><span class="afm-line__text afm-line__text--accent">{{ _("in one place") }}</span></span>
 					</h1>
-					<p class="afm-hero__lead afm-in afm-in--3">{{ description }}</p>
 					<div class="afm-hero__actions afm-in afm-in--4">
 						<a class="afm-pill afm-pill--primary" href="{{ portal_link }}">{{ portal_label }}{{ arrow() }}</a>
 						<a class="afm-pill" href="{{ support_url }}">{{ _("Open a support ticket") }}</a>
@@ -59,8 +58,6 @@
 				<li class="afm-service" data-reveal>
 					<span class="afm-service__num">{{ "%02d" % loop.index }}</span>
 					<h3 class="afm-service__title">{{ service.title }}</h3>
-					<p class="afm-service__text">{{ service.text }}</p>
-					<p class="afm-service__note">{{ service.note }}</p>
 					<a class="afm-link" href="{{ service.href }}">{{ service.link_label }}{{ arrow() }}</a>
 				</li>
 				{% endfor %}
@@ -86,9 +83,9 @@
 						</div>
 						{% endif %}
 						<h3 class="afm-activity__title">
-							{% if item.url %}<a href="{{ item.url | e }}"{% if copy %} tabindex="-1"{% endif %}>{{ item.heading | e }}</a>{% else %}{{ item.heading | e }}{% endif %}
+							{% if item.url %}<a href="{{ item.url | e }}"{% if copy %} tabindex="-1"{% endif %}>{{ _(item.heading) | e }}</a>{% else %}{{ _(item.heading) | e }}{% endif %}
 						</h3>
-						{% if item.description %}<p class="afm-activity__text">{{ item.description | e }}</p>{% endif %}
+						{% if item.description %}<p class="afm-activity__text">{{ _(item.description) | e }}</p>{% endif %}
 					</li>
 					{% endfor %}{% endfor %}
 				</ul>
@@ -127,7 +124,6 @@
 				<p class="afm-kicker"><span class="afm-kicker__num">{{ "%02d" % (kicker.n + 1) }} /</span>{{ _("Help") }}</p>
 				<div>
 					<h2 id="afm-help-title" class="afm-title">{{ _("Need help?") }}</h2>
-					<p class="afm-lead">{{ _("Our support team is ready to help. Open a ticket and follow it until it is resolved.") }}</p>
 					<div class="afm-help__actions">
 						<a class="afm-pill afm-pill--primary" href="{{ support_url }}">{{ _("Open a support ticket") }}{{ arrow() }}</a>
 					</div>
@@ -160,8 +156,4 @@
 				<a class="afm-pill" href="{{ support_url }}">{{ _("Open a support ticket") }}</a>
 			</div>
 		</div>
-{% endblock %}
-
-{% block afm_footer_note %}
-			<p>{{ _("This portal is for AFMCO employees only.") }}</p>
 {% endblock %}

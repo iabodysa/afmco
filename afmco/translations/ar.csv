@@ -351,7 +351,6 @@ Modified By,عدّل بواسطة
 Month Name,اسم الشهر
 Municipal License,رخصة البلدية
 Muqeem,مقيم
-No sign-in required.,لا يتطلب تسجيل الدخول.
 No attachments,لا توجد مرفقات
 NPA Flag,مؤشر الأصل غير العامل
 Nationality,الجنسية
@@ -825,7 +824,6 @@ Preparing the entry...,جار تحضير القيد...
 Please set the Bank Payment Date to calculate the split across years.,يرجى تحديد تاريخ الدفع البنكي لحساب تقسيم السنوات.
 An error occurred while fetching the accounts. A preliminary entry has been created.,حدث خطأ أثناء جلب الحسابات. تم إنشاء القيد بشكل مبدئي.
 Login to Frappe HR,تسجيل الدخول إلى أفمكو
-Our support team is ready to help. Open a ticket and follow it until it is resolved.,فريق الدعم جاهز لمساعدتك؛ افتح تذكرة وتابعها حتى تُحل.
 Close menu,إغلاق القائمة
 Continue to your account,المتابعة إلى حسابك
 Help,مساعدة
@@ -837,11 +835,8 @@ Open a support ticket,فتح تذكرة دعم
 Open menu,فتح القائمة
 Open the employee app,افتح تطبيق الموظف
 Open the system,افتح النظام
-"Apply for leave, submit attendance requests, track their progress and view your salary slips.",قدّم طلبات الإجازة والحضور، وتابع حالتها، واطّلع على قسائم رواتبك.
-For employees with an employee app account.,للموظفين الذين لديهم حساب في تطبيق الموظف.
 Services,الخدمات
 Sign in,تسجيل الدخول
-"Sign in to manage your leave, track your requests and view your salary slips. Our support team is here whenever you need help.",سجّل دخولك لإدارة إجازاتك ومتابعة طلباتك والاطلاع على قسائم رواتبك، وفريق الدعم في خدمتك متى احتجت إليه.
 Skip to main content,انتقل إلى المحتوى الرئيسي
 Services available to you,الخدمات المتاحة لك
 Your daily work,أعمالك اليومية
@@ -13085,19 +13080,15 @@ Iqama Renewal Control,إدارة تجديد الإقامة
 Corporation,الشركة
 View open jobs,عرض الوظائف المتاحة
 Careers at AFMCO,وظائف أفمكو
-Browse the jobs open at AFMCO and send your application and CV in a few minutes.,تصفح الوظائف المتاحة في أفمكو وأرسل طلبك وسيرتك الذاتية خلال دقائق.
 Open jobs,الوظائف المتاحة
 Apply now,قدّم الآن
 Join,انضم إلى
 the AFMCO family,أسرة أفمكو
 Jobs open now,الوظائف المتاحة حاليًا
-"Choose a job to read its details, then apply with your CV.",اختر وظيفة للاطلاع على تفاصيلها، ثم قدّم عليها مع سيرتك الذاتية.
 Closes on {0},آخر موعد للتقديم {0}
 Job details,تفاصيل الوظيفة
 Apply for this job,قدّم على هذه الوظيفة
-There are no open jobs right now. You can still send a general application and we will contact you when a suitable job opens.,لا توجد وظائف متاحة حاليًا. يمكنك إرسال طلب عام، وسنتواصل معك عند توفر وظيفة مناسبة.
 Send your application,أرسل طلبك
-Fields marked * are required. Only the AFMCO recruitment team can see your application.,الحقول المميزة بعلامة * إلزامية. لا يطلع على طلبك إلا فريق التوظيف في أفمكو.
 Your application could not be sent. Please try again.,تعذر إرسال طلبك. يرجى المحاولة مرة أخرى.
 Please upload your CV as a PDF or Word file.,يرجى رفع السيرة الذاتية بصيغة PDF أو Word.
 Your CV file is larger than {0} MB.,حجم ملف السيرة الذاتية يتجاوز {0} ميغابايت.
@@ -15538,9 +15529,6 @@ Send your request,أرسل طلبك
 The IBAN starts with SA followed by 22 digits.,يبدأ الآيبان بـ SA ويليه 22 رقمًا.
 The employee,الموظف نفسه
 The end date cannot be before the start date.,لا يمكن أن يسبق تاريخ النهاية تاريخ البداية.
-The salary goes to this account for a set period.,يحوَّل الراتب إلى هذا الحساب لمدة محددة.
-The salary goes to this account from now on.,يحوَّل الراتب إلى هذا الحساب من الآن فصاعدًا.
-The salary moves to the new account after HR approves the request.,يحوَّل الراتب إلى الحساب الجديد بعد اعتماد الموارد البشرية للطلب.
 This IBAN is not correct. Please compare it with your IBAN certificate from the bank.,رقم الآيبان غير صحيح، يرجى مطابقته مع شهادة الآيبان من البنك.
 Three steps,ثلاث خطوات
 Update your,حدّث
@@ -15551,14 +15539,10 @@ Your request could not be sent. Please try again.,تعذّر إرسال طلبك
 Your request {0} was received. HR reviews it before the salary moves to the new account.,وصلنا طلبك {0}، وتراجعه الموارد البشرية قبل تحويل الراتب إلى الحساب الجديد.
 salary account,حساب راتبك
 Temporary account from {0} to {1},حساب مؤقت من {0} إلى {1}
-Have your ID number and the IBAN certificate from your bank ready.,جهّز رقم هويتك وشهادة الآيبان من البنك.
 Enter your ID number and new IBAN,أدخل رقم هويتك والآيبان الجديد
-"Your Iqama or national ID number, and the new IBAN as it appears on the certificate.",رقم إقامتك أو هويتك الوطنية، ورقم الآيبان الجديد كما هو في الشهادة.
 Attach your IBAN certificate,أرفق شهادة الآيبان
-A PDF or a photo of the IBAN certificate issued by your bank.,ملف PDF أو صورة لشهادة الآيبان الصادرة من بنكك.
 This bank is not available for salary payments yet. Please contact HR.,هذا البنك غير متاح لإيداع الرواتب حاليًا، يرجى التواصل مع الموارد البشرية.
 "Please check the ID number. If it is correct, please contact HR.",يرجى التأكد من رقم الهوية، وإذا كان صحيحًا فتواصل مع الموارد البشرية.
-Send your new IBAN with the certificate from your bank. HR reviews every request before the salary moves to the new account.,أرسل رقم الآيبان الجديد مع شهادته من البنك، وتراجع الموارد البشرية كل طلب قبل تحويل الراتب إلى الحساب الجديد.
 IBAN certificate from your bank,شهادة الآيبان من البنك
 "PDF, JPG or PNG, up to {0} MB.",PDF أو JPG أو PNG، بحد أقصى {0} ميغابايت.
 "Please attach the IBAN certificate as a PDF, JPG or PNG file.",يرجى إرفاق شهادة الآيبان بصيغة PDF أو JPG أو PNG.
@@ -15604,13 +15588,7 @@ Unmatched Employee List,قائمة الموظفين غير المطابقين
 Attendance Errors,أخطاء الدوام
 Company News,أخبار الشركة
 News,الأخبار
-Changed your bank? Send your new IBAN so your salary reaches you.,هل غيّرت بنكك؟ أرسل رقم الآيبان الجديد ليصل راتبك إلى حسابك.
 Footer menu,قائمة تذييل الصفحة
-For employees without the employee app.,للموظفين الذين لا يستخدمون تطبيق الموظف.
 Official holidays,الإجازات الرسمية
-Request your leave online in a few steps.,قدّم طلب إجازتك إلكترونيًا بخطوات قليلة.
-See the open jobs and apply online.,اطّلع على الوظائف المتاحة وقدّم طلبك إلكترونيًا.
-See the requests and tasks waiting for you.,اطّلع على الطلبات والمهام المسندة إليك.
-Share it with anyone looking for work.,شاركها مع من يبحث عن عمل.
-Sign in with your work account.,سجّل الدخول بحساب العمل.
 Upcoming official holidays,الإجازات الرسمية القادمة
+There are no open jobs right now.,لا توجد وظائف متاحة حاليًا.

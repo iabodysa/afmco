@@ -55,12 +55,6 @@
 	font-weight: 600;
 }
 
-.afm-choice__option small {
-	grid-column: 2;
-	color: var(--afm-muted);
-	font-size: 14px;
-}
-
 .afm-field .afm-choice__option input,
 .afm-confirm input {
 	width: 20px;

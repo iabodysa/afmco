@@ -15,9 +15,6 @@ DEFAULT_CURRENCY = "SAR"
 def get_context(context):
 	set_site_context(context)
 	context.title = _("Careers at AFMCO")
-	context.description = _(
-		"Browse the jobs open at AFMCO and send your application and CV in a few minutes."
-	)
 	context.parents = [{"route": context.home_url, "title": _("Home")}]
 	context.page_links = [
 		{"href": "#jobs", "label": _("Open jobs")},
