@@ -5,6 +5,8 @@ import frappe
 from frappe import _
 from frappe.utils import cstr, getdate
 
+from afmco.financial_operations.doctype.payment_requisition.payment_requisition import set_sadad_bill
+
 PAYMENT_REQUEST = "Payment Requisition"
 TRACKING = "Iqama Renewal Tracking"
 CONTEXT = "Iqama Renewal Tracking"
@@ -55,15 +57,10 @@ def _trackers(trackers):
 
 
 def _set_bill(request, payment_type, rows):
-	request.multiple_beneficiaries = int(len(rows) > 1)
-	if len(rows) != 1:
-		return
 	if payment_type == WORK_CARDS:
-		request.sadad_biller_code = WORK_PERMIT_BILLER
-		request.sadad_bill_number = cstr(rows[0].sadad_invoice).strip()
+		set_sadad_bill(request, WORK_PERMIT_BILLER, [cstr(row.sadad_invoice).strip() for row in rows])
 	else:
-		request.sadad_biller_code = JAWAZAT_BILLER
-		request.sadad_bill_number = cstr(rows[0].employee).strip()
+		set_sadad_bill(request, JAWAZAT_BILLER, [cstr(row.employee).strip() for row in rows])
 
 
 def _bank_file(payment_type, rows):

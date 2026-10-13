@@ -1636,8 +1636,6 @@ Batch {0} changed in another session. Reload and try again.,تغيرت الدف�
 Batch {0} is not in the state this action needs.,حالة الدفعة {0} لا تسمح بهذا الإجراء.,SADAD Bulk
 Set a default company first.,حدد الشركة الافتراضية أولًا.,SADAD Bulk
 Expected exactly one {0} for {1}; found {2}.,المطلوب {0} واحد فقط لـ {1}، والموجود {2}.,SADAD Bulk
-The batch needs exactly one SADAD biller code; found {0}.,الدفعة تحتاج رمز مفوتر سداد واحدًا، والموجود {0}.,SADAD Bulk
-Enter one valid SADAD invoice number for this batch before creating the payment request.,أدخل رقم فاتورة سداد صحيحًا واحدًا لهذه الدفعة قبل إنشاء طلب الصرف.,SADAD Bulk
 All your services,جميع خدماتك
 in one place,في مكان واحد
 About AFMCO,عن أفمكو

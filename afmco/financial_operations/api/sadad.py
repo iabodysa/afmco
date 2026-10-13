@@ -19,6 +19,8 @@ from frappe.utils import (
 	today,
 )
 
+from afmco.financial_operations.doctype.payment_requisition.payment_requisition import set_sadad_bill
+
 GROUP = "SADAD Batch"
 LINE = "SADAD Batch Item"
 SETUP = "SADAD Setup"
@@ -369,8 +371,6 @@ def create_payment_request(batch):
 			"doctype": PAYMENT_REQUEST,
 			"naming_series": PAYMENT_REQUEST_SERIES,
 			"tax_invoice_number": doc.name,
-			"sadad_biller_code": _biller_code(rows),
-			"sadad_bill_number": _invoice_number(doc, rows),
 			"beneficiary_name": BENEFICIARY,
 			"amount": _totals(doc)[1],
 			"remark": "".join(_payment_request_remark(row) for row in rows),
@@ -383,6 +383,7 @@ def create_payment_request(batch):
 			"cost_center": head_office,
 		}
 	)
+	set_sadad_bill(payment_request, cstr(rows[0].biller).strip(), sorted({cstr(row.employee).strip() for row in rows}))
 	payment_request.insert()
 	return {"name": payment_request.name, "existing": False}
 
@@ -917,37 +918,6 @@ def _head_office_cost_center(company):
 		"Cost Center",
 		{"name": ["like", f"%{HEAD_OFFICE_SUFFIX}"], "company": company, "is_group": 0},
 		HEAD_OFFICE_SUFFIX,
-	)
-
-
-def _invoice_number(doc, rows):
-	employees = {cstr(row.employee).strip() for row in rows}
-	numbers = {cstr(row.sadad_invoice_number).strip() for row in rows} - {""}
-	if len(employees) == 1:
-		number = employees.pop()
-	elif len(numbers) == 1:
-		number = numbers.pop()
-	else:
-		number = cstr(doc.sadad_invoice_number)
-	if number.isascii() and number.isdigit() and cint(number):
-		return number
-	frappe.throw(
-		_(
-			"Enter one valid SADAD invoice number for this batch before creating the payment request.",
-			context=CONTEXT,
-		)
-	)
-
-
-def _biller_code(rows):
-	billers = {cstr(row.biller).strip() for row in rows} - {""}
-	if len(billers) == 1:
-		return billers.pop()
-	frappe.throw(
-		_(
-			"The batch needs exactly one SADAD biller code; found {0}.",
-			context=CONTEXT,
-		).format(len(billers))
 	)
 
 

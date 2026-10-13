@@ -254,6 +254,13 @@ class PaymentRequisition(Document):
 			frappe.msgprint(_("EOS document has been marked as Paid"), indicator="green", alert=True)
 
 
+def set_sadad_bill(request, biller, bills):
+	request.multiple_beneficiaries = int(len(bills) > 1)
+	if len(bills) == 1:
+		request.sadad_biller_code = biller
+		request.sadad_bill_number = bills[0]
+
+
 def get_permission_query_conditions(user):
 	if "System Manager" in frappe.get_roles(user):
 		return None
