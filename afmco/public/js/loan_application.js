@@ -28,7 +28,6 @@ frappe.ui.form.on('Loan Application', {
                             paymentRequest.payment_type = 'Employee Loan';
                             paymentRequest.mode_of_payment = 'Bank Transfer';
                             paymentRequest.payment_approver = 'Payroll and Compliance - الرواتب والالتزام';
-                            paymentRequest.created_by = frappe.session.user;
                             paymentRequest.remark = `
 Loan Request Details:
 -------------------------------------

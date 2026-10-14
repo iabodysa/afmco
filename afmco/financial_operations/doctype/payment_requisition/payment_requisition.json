@@ -166,6 +166,7 @@
   {
    "fieldname": "created_by",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Created By",
    "read_only": 1
   },
@@ -507,7 +508,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-13 14:58:00.000000",
+ "modified": "2026-10-14 10:36:49.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",

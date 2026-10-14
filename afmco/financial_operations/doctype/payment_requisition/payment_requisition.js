@@ -6,9 +6,6 @@ frappe.ui.form.on('Payment Requisition', {
 		frm.set_query('payment_approver', () => ({
 			query: 'afmco.financial_operations.api.payment_approver.active_approvers',
 		}))
-		if (frm.doc.created_by == undefined) {
-			frm.set_value('created_by', frappe.session.user)
-		}
 	},
 	refresh: function (frm) {
 		if (frm.doc.docstatus == 1 && (frm.doc.jv_status === 'JV Not Created' || !frm.doc.jv_status)) {
@@ -516,20 +513,10 @@ frappe.ui.form.on('Payment Requisition', {
         stopAccountsBotStatus(frm);
     },
 
-    setup(frm) {
-        if (!frm.doc.created_by) {
-            frm.set_value('created_by', frappe.session.user);
-        }
-    },
-
     onload(frm) {
         frm.set_query('bank_account', () => ({
             filters: { account_type: ['in', ['Bank']] }
         }));
-
-        if (frm.is_new()) {
-            frm.set_value('created_by', frappe.session.user);
-        }
 
         if (frm.doc.workflow_state === 'Financial Controller' && frappe.user_roles.includes('Auditor')) {
             displayPaymentApproverPermissions(frm);
