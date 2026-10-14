@@ -195,11 +195,7 @@ class PaymentRequisition(Document):
 			after_commit=True,
 		)
 
-	def before_insert(self):
-		self.created_by = self.owner
-
 	def validate(self):
-		self.created_by = self.created_by or self.owner
 		if self.amount:
 			self.amount_in_words=money_in_words(self.amount,frappe.get_cached_value("Company", get_default_company(), "default_currency"))
 		if frappe.flags.in_install or frappe.flags.in_migrate:

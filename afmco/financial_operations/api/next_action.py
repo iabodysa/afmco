@@ -30,13 +30,27 @@ def next_action(name: str) -> list[dict]:
 	next_docstatus = {s.state: int(s.doc_status or 0) for s in workflow.states}
 	holders = role_holders({t.allowed for t in transitions})
 	steps = {}
+	failed = set()
 	for transition in transitions:
 		users = steps.setdefault(transition.allowed, {})
 		ptypes = required_ptypes(doc.docstatus, next_docstatus.get(transition.next_state, 0))
 		for user, full_name in holders.get(transition.allowed, []):
-			if user in users or not has_approval_access(user, doc, transition):
+			if user in users or user in failed or not has_approval_access(user, doc, transition):
 				continue
-			if all(frappe.has_permission(DOCTYPE, ptype, doc, user=user) for ptype in ptypes):
+			messages = len(frappe.get_message_log())
+			try:
+				permitted = all(frappe.has_permission(DOCTYPE, ptype, doc, user=user) for ptype in ptypes)
+			except Exception:
+				failed.add(user)
+				if len(frappe.get_message_log()) > messages:
+					frappe.clear_last_message()
+				frappe.log_error(
+					title=f"Next action permission check failed for {user}",
+					reference_doctype=DOCTYPE,
+					reference_name=doc.name,
+				)
+				continue
+			if permitted:
 				users[user] = full_name
 
 	return [{"role": role, "users": sorted(users.values())} for role, users in steps.items()]

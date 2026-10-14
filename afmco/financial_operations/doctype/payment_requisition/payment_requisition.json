@@ -11,8 +11,6 @@
   "role",
   "urgency_and_status_section",
   "date",
-  "column_break_created_by",
-  "created_by",
   "column_break_payment_approver",
   "payment_approver",
   "section_urgency",
@@ -162,13 +160,6 @@
   {
    "fieldname": "column_break_supplier",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "created_by",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Created By",
-   "read_only": 1
   },
   {
    "fieldname": "column_break_payment_approver",
@@ -338,10 +329,6 @@
    "label": "Reason of Urgency"
   },
   {
-   "fieldname": "column_break_created_by",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "section_urgency",
    "fieldtype": "Section Break",
    "label": "Urgency"
@@ -508,7 +495,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-14 10:36:49.000000",
+ "modified": "2026-10-14 13:30:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",
