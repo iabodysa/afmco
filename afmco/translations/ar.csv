@@ -13066,6 +13066,7 @@ Loan Officer,موظف القروض
 Loan Processor,معالج القروض
 Loan Reporter,معد تقارير القروض
 Loan Underwriter,محلل اعتماد القروض
+Request User,مقدم الطلب
 Sales Cordinator,منسق المبيعات
 Vehicle User,مستخدم المركبات
 Copy Email Body,نسخ نص البريد الإلكتروني,WPS File
@@ -15593,3 +15594,5 @@ Official holidays,الإجازات الرسمية
 Upcoming official holidays,الإجازات الرسمية القادمة
 There are no open jobs right now.,لا توجد وظائف متاحة حاليًا.
 Paid Annual Leave - 21 days,إجازة سنوية مدفوعة الراتب - 21 يوم
+Next action,الإجراء التالي
+No user holds this role,لا يوجد مستخدم بهذا الدور

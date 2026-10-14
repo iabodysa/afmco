@@ -274,6 +274,7 @@ fmt:jsonl|keys:key,caller|key:ar.csv source string whose live caller sits only i
 {"key": "AI Agent", "caller": "Role:role_name"}
 {"key": "Amazon", "caller": "Role:role_name"}
 {"key": "Bank Approval User", "caller": "Role:role_name"}
+{"key": "Request User", "caller": "Role:role_name"}
 {"key": "Bank User", "caller": "Role:role_name"}
 {"key": "Employee Self Service", "caller": "Role:role_name"}
 {"key": "Fleet User", "caller": "Role:role_name"}
