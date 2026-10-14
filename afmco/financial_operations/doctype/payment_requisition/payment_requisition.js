@@ -536,7 +536,7 @@ frappe.ui.form.on('Payment Requisition', {
 
         addPreviousRecordsButton(frm);
         addUrgentButton(frm);
-        renderNextAction(frm);
+        processCompletedWorkflowTransitions(frm);
         addCreateJVButton(frm);
         addSupportingPackButton(frm);
         addAccountsBotButton(frm);
@@ -1657,58 +1657,425 @@ function createBalanceTable(final_balance, max_limit) {
     return build_afmco_table(headers, rows);
 }
 
-function renderNextAction(frm) {
-    const $sidebar = frm.sidebar && frm.sidebar.sidebar;
-    if (!$sidebar) return;
-    $sidebar.find('.pr-next-action').remove();
-    if (frm.is_new()) return;
+// Workflow timeline and urgent actions ----------------------------------------
+function getWorkflowLogField(log, fieldname) {
+    try {
+        return log[fieldname];
+    } catch (error) {
+        return null;
+    }
+}
 
-    const name = frm.doc.name;
-    const visibleUsers = 6;
-    const esc = frappe.utils.escape_html;
-    const chip = (user, hidden) => `
-        <span class="pr-next-action-user rounded-pill${hidden ? ' hidden' : ''}" title="${esc(user.full_name)}">
-            ${frappe.avatar(user.user, 'avatar-xs', user.full_name, user.image)}
-            <span class="ellipsis">${esc(user.full_name)}</span>
-        </span>`;
-    const holders = (step) => {
-        if (step.everyone) return `<div class="pr-next-action-note">${esc(__('All users'))}</div>`;
-        if (!step.users.length) return `<div class="pr-next-action-note">${esc(__('No user holds this role'))}</div>`;
-        const hidden = step.users.length - visibleUsers;
-        const more = hidden > 0
-            ? `<a role="button" class="pr-next-action-more rounded-pill">+${hidden}</a>`
-            : '';
-        return `<div class="pr-next-action-users">${step.users.map((user, i) => chip(user, i >= visibleUsers)).join('')}${more}</div>`;
-    };
+function workflowSafeString(value) {
+    if (value === null || value === undefined) return '';
 
-    frappe.require('/assets/afmco/css/next_action.css', () =>
-        frappe.xcall('afmco.financial_operations.api.next_action.next_action', { name }).then((steps) => {
-            if (frm.doc.name !== name || !steps || !steps.length) return;
-            $sidebar.find('.pr-next-action').remove();
-            const $section = $(`
-                <div class="sidebar-section pr-next-action border-bottom">
-                    <div class="form-sidebar-items">
-                        <span class="form-sidebar-label">
-                            ${frappe.utils.icon('users')}
-                            <span class="ellipsis">${esc(__('Next Action'))}</span>
-                        </span>
-                    </div>
-                    ${steps.map((step) => `
-                        <div class="pr-next-action-role">
-                            <div class="pr-next-action-role-label">${esc(__(step.role))}</div>
-                            ${holders(step)}
-                        </div>`).join('')}
-                </div>
-            `);
-            $section.on('click', '.pr-next-action-more', (event) => {
-                const $users = $(event.currentTarget).closest('.pr-next-action-users');
-                $users.find('.pr-next-action-user.hidden').removeClass('hidden');
-                $(event.currentTarget).remove();
-            });
-            $section.insertAfter($sidebar.find('.sidebar-meta-details').first());
-            if (!$section.parent().length) $sidebar.append($section);
+    try {
+        return String(value);
+    } catch (error) {
+        return '';
+    }
+}
+
+function workflowEscapeHtml(value) {
+    try {
+        return escapeHtml(workflowSafeString(value));
+    } catch (error) {
+        return '';
+    }
+}
+
+function workflowTranslate(value) {
+    const text = workflowSafeString(value);
+    if (!text) return '';
+
+    try {
+        return typeof __ === 'function' ? workflowSafeString(__(text)) : text;
+    } catch (error) {
+        return text;
+    }
+}
+
+function normalizeWorkflowText(value) {
+    return workflowSafeString(value).trim();
+}
+
+function getWorkflowLogTimestamp(value) {
+    if (value === null || value === undefined || value === '') return null;
+    if (typeof value === 'number') return Number.isFinite(value) ? value : null;
+
+    const rawValue = normalizeWorkflowText(value);
+    if (!rawValue) return null;
+
+    let timestamp = Date.parse(rawValue);
+    if (Number.isFinite(timestamp)) return timestamp;
+
+    const normalizedValue = rawValue
+        .replace(' ', 'T')
+        .replace(/\.(\d{3})\d+/, '.$1');
+    timestamp = Date.parse(normalizedValue);
+
+    return Number.isFinite(timestamp) ? timestamp : null;
+}
+
+function getSortedWorkflowLogs(workflowLogs) {
+    if (!Array.isArray(workflowLogs)) return [];
+
+    return workflowLogs
+        .map((log, originalIndex) => ({
+            log,
+            originalIndex,
+            timestamp: log && typeof log === 'object' && !Array.isArray(log)
+                ? getWorkflowLogTimestamp(getWorkflowLogField(log, 'creation'))
+                : null
+        }))
+        .filter(entry => entry.log && typeof entry.log === 'object' && !Array.isArray(entry.log))
+        .sort((left, right) => {
+            if (left.timestamp === null && right.timestamp === null) {
+                return left.originalIndex - right.originalIndex;
+            }
+            if (left.timestamp === null) return 1;
+            if (right.timestamp === null) return -1;
+            if (left.timestamp !== right.timestamp) return left.timestamp - right.timestamp;
+            return left.originalIndex - right.originalIndex;
         })
-    );
+        .map(entry => entry.log);
+}
+
+function cleanWorkflowStateCandidate(value) {
+    return normalizeWorkflowText(value)
+        .replace(/^[\s"'`]+/, '')
+        .replace(/[\s"'`.,!?،؛؟]+$/, '')
+        .trim();
+}
+
+function getWorkflowAnalysisText(content) {
+    return normalizeWorkflowText(content)
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function getNativeWorkflowTarget(log, content) {
+    const commentType = normalizeWorkflowText(getWorkflowLogField(log, 'comment_type'));
+    if (commentType !== 'Workflow') return '';
+
+    return normalizeWorkflowText(content);
+}
+
+function parseExplicitWorkflowTransition(content) {
+    const analysisText = getWorkflowAnalysisText(content);
+
+    if (!analysisText) return null;
+
+    const patterns = [
+        /^(?:(?:workflow\s+)?state\s+changed|changed)\s+from\s+(.+?)\s+to\s+(.+?)\s*[.!?،؛؟]?$/i,
+        /^from\s+(.+?)\s+to\s+(.+?)\s*[.!?،؛؟]?$/i,
+        /^(?:تم\s+تغيير\s+حالة\s+سير\s+العمل|تغيير\s+الحالة)\s+من\s+(.+?)\s+إلى\s+(.+?)\s*[.!?،؛؟]?$/u,
+        /^من\s+(.+?)\s+إلى\s+(.+?)\s*[.!?،؛؟]?$/u,
+        /^(.+?)\s*(?:->|→|←)\s*(.+?)\s*[.!?،؛؟]?$/
+    ];
+
+    for (const pattern of patterns) {
+        const match = analysisText.match(pattern);
+        if (!match) continue;
+
+        const fromState = cleanWorkflowStateCandidate(match[1]);
+        const toState = cleanWorkflowStateCandidate(match[2]);
+        if (fromState && toState) {
+            return { fromState, toState };
+        }
+    }
+
+    return null;
+}
+
+function getWorkflowActor(log) {
+    const actorFields = ['owner', 'user', 'completed_by', 'modified_by'];
+    let actorId = '';
+
+    for (const fieldname of actorFields) {
+        actorId = normalizeWorkflowText(getWorkflowLogField(log, fieldname));
+        if (actorId) break;
+    }
+
+    if (!actorId) return workflowTranslate('Unknown User');
+
+    try {
+        if (typeof frappe !== 'undefined' && typeof frappe.user_info === 'function') {
+            const userInfo = frappe.user_info(actorId);
+            if (userInfo && typeof userInfo === 'object') {
+                const fullname = normalizeWorkflowText(userInfo.fullname || userInfo.full_name);
+                if (fullname) return fullname;
+            }
+        }
+    } catch (error) {
+        // The actor identifier remains a safe fallback when user metadata is unavailable.
+    }
+
+    return actorId;
+}
+
+function getWorkflowDateLabels(log) {
+    const creation = getWorkflowLogField(log, 'creation');
+    const rawCreation = normalizeWorkflowText(creation);
+    if (!rawCreation) return null;
+
+    let prettyDate = rawCreation;
+    let userDate = rawCreation;
+
+    try {
+        if (frappe.datetime && typeof frappe.datetime.prettyDate === 'function') {
+            prettyDate = normalizeWorkflowText(frappe.datetime.prettyDate(creation)) || rawCreation;
+        }
+    } catch (error) {
+        prettyDate = rawCreation;
+    }
+
+    try {
+        if (frappe.datetime && typeof frappe.datetime.str_to_user === 'function') {
+            userDate = normalizeWorkflowText(frappe.datetime.str_to_user(creation)) || rawCreation;
+        }
+    } catch (error) {
+        userDate = rawCreation;
+    }
+
+    return { prettyDate, userDate };
+}
+
+function getWorkflowBranchIcon() {
+    try {
+        if (frappe.utils && typeof frappe.utils.icon === 'function') {
+            return workflowSafeString(frappe.utils.icon('branch', 'sm'));
+        }
+    } catch (error) {
+        // The timeline remains readable when the icon API is unavailable.
+    }
+
+    return '';
+}
+
+function buildWorkflowCurrentPill() {
+    return `
+        <span class="indicator-pill green">
+            <span class="indicator-dot"></span>
+            ${workflowEscapeHtml(workflowTranslate('Current'))}
+        </span>
+    `;
+}
+
+function buildWorkflowTransitionHtml(event) {
+    if (event.fromState && event.toState) {
+        const arrow = isRTL ? '←' : '→';
+        const direction = isRTL ? 'rtl' : 'ltr';
+        return `
+            <div class="timeline-state-transition text-muted" dir="${direction}">
+                <span>${workflowEscapeHtml(workflowTranslate(event.fromState))}</span>
+                <span aria-hidden="true">${workflowEscapeHtml(arrow)}</span>
+                <span>${workflowEscapeHtml(workflowTranslate(event.toState))}</span>
+            </div>
+        `;
+    }
+
+    if (event.startedIn) {
+        return `
+            <div class="timeline-state-transition text-muted">
+                ${workflowEscapeHtml(workflowTranslate('Started in'))}
+                ${workflowEscapeHtml(workflowTranslate(event.startedIn))}
+            </div>
+        `;
+    }
+
+    return '';
+}
+
+function buildWorkflowTimelineItem(event, isCurrent) {
+    const action = event.action;
+    const content = event.content;
+    const title = action || content || event.targetState || workflowTranslate('Recorded action');
+    const contentHtml = action && content && content !== action
+        ? `<div class="timeline-description text-muted">${workflowEscapeHtml(content)}</div>`
+        : '';
+    const dateHtml = event.dateLabels
+        ? `<time class="timeline-date text-muted" title="${workflowEscapeHtml(event.dateLabels.userDate)}">${workflowEscapeHtml(event.dateLabels.prettyDate)}</time>`
+        : '';
+
+    return `
+        <div class="timeline-item">
+            <div class="timeline-dot">${getWorkflowBranchIcon()}</div>
+            <div class="timeline-content">
+                <div class="timeline-title">
+                    <span>${workflowEscapeHtml(workflowTranslate(title))}</span>
+                    ${isCurrent ? buildWorkflowCurrentPill() : ''}
+                </div>
+                ${contentHtml}
+                ${buildWorkflowTransitionHtml(event)}
+                <div class="timeline-performer text-muted">
+                    ${workflowEscapeHtml(workflowTranslate('Performed by'))}:
+                    ${workflowEscapeHtml(event.actor)}
+                </div>
+                ${dateHtml}
+            </div>
+        </div>
+    `;
+}
+
+function buildCurrentWorkflowFallbackItem(currentState) {
+    return `
+        <div class="timeline-item">
+            <div class="timeline-dot">${getWorkflowBranchIcon()}</div>
+            <div class="timeline-content">
+                <div class="timeline-title">
+                    <span>
+                        ${workflowEscapeHtml(workflowTranslate('Current state:'))}
+                        ${workflowEscapeHtml(workflowTranslate(currentState))}
+                    </span>
+                    ${buildWorkflowCurrentPill()}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function getWorkflowSidebar(frm) {
+    const sidebarSelectors = ['.form-sidebar', '.layout-side-section', '.sidebar-menu'];
+
+    if (frm && frm.wrapper) {
+        try {
+            const $wrapper = $(frm.wrapper);
+            for (const selector of sidebarSelectors) {
+                const $sidebar = $wrapper.find(selector).first();
+                if ($sidebar.length) return $sidebar;
+            }
+        } catch (error) {
+            // Fall through to the native sidebar reference when the wrapper is unavailable.
+        }
+    }
+
+    if (frm && frm.sidebar) {
+        const sidebarCandidates = [
+            frm.sidebar.$sidebar,
+            frm.sidebar.wrapper,
+            frm.sidebar.sidebar,
+            frm.sidebar
+        ];
+
+        for (const candidate of sidebarCandidates) {
+            if (candidate === null || candidate === undefined) continue;
+
+            try {
+                const $sidebar = $(candidate).first();
+                if ($sidebar.length) return $sidebar;
+            } catch (error) {
+                // Continue to the next native sidebar candidate.
+            }
+        }
+    }
+
+    return null;
+}
+
+function processCompletedWorkflowTransitions(frm) {
+    if (!frm || !frm.doc) return;
+
+    const $sidebar = getWorkflowSidebar(frm);
+    if (!$sidebar) return;
+
+    $sidebar.find('.workflow-history-section').remove();
+
+    if (frm.doc.__islocal) return;
+
+    const sortedWorkflowLogs = getSortedWorkflowLogs(getWorkflowLogs(frm));
+    const events = [];
+    let previousKnownState = '';
+
+    sortedWorkflowLogs.forEach((log) => {
+        const action = normalizeWorkflowText(getWorkflowLogField(log, 'action'));
+        const content = normalizeWorkflowText(getWorkflowLogField(log, 'content'));
+        const workflowState = normalizeWorkflowText(getWorkflowLogField(log, 'workflow_state'));
+        const stateFallback = normalizeWorkflowText(getWorkflowLogField(log, 'state'));
+        if (!action && !content && !workflowState && !stateFallback) return;
+
+        const fieldTargetState = workflowState || stateFallback;
+        const nativeTargetState = fieldTargetState
+            ? ''
+            : getNativeWorkflowTarget(log, content);
+        const explicitTransition = fieldTargetState || nativeTargetState
+            ? null
+            : parseExplicitWorkflowTransition(content);
+        const targetState = fieldTargetState
+            || nativeTargetState
+            || (explicitTransition ? explicitTransition.toState : '');
+        let fromState = '';
+        let toState = '';
+        let startedIn = '';
+
+        if (explicitTransition) {
+            fromState = explicitTransition.fromState;
+            toState = explicitTransition.toState;
+        } else if (targetState) {
+            if (previousKnownState && previousKnownState !== targetState) {
+                fromState = previousKnownState;
+                toState = targetState;
+            } else if (!previousKnownState) {
+                startedIn = targetState;
+            }
+        }
+
+        events.push({
+            action,
+            content,
+            actor: getWorkflowActor(log),
+            dateLabels: getWorkflowDateLabels(log),
+            targetState,
+            fromState,
+            toState,
+            startedIn
+        });
+
+        if (targetState) previousKnownState = targetState;
+    });
+
+    const currentState = normalizeWorkflowText(frm.doc.workflow_state);
+    let currentEventIndex = -1;
+    if (currentState) {
+        events.forEach((event, index) => {
+            if (event.targetState === currentState) currentEventIndex = index;
+        });
+    }
+
+    const timelineItems = events.map((event, index) => (
+        buildWorkflowTimelineItem(event, index === currentEventIndex)
+    ));
+
+    if (currentState && currentEventIndex === -1) {
+        timelineItems.push(buildCurrentWorkflowFallbackItem(currentState));
+    }
+
+    if (!timelineItems.length) return;
+
+    const sectionHtml = `
+        <div class="sidebar-section workflow-history-section">
+            <div class="sidebar-label">
+                <span class="workflow-history-icon">${getWorkflowBranchIcon()}</span>
+                <span>${workflowEscapeHtml(workflowTranslate('Workflow Transitions'))}</span>
+                <span class="workflow-history-count">${workflowEscapeHtml(timelineItems.length)}</span>
+            </div>
+            <div class="timeline">
+                ${timelineItems.join('')}
+            </div>
+        </div>
+    `;
+
+    $sidebar.append(sectionHtml);
+}
+
+function getWorkflowLogs(frm) {
+    if (typeof frappe === 'undefined' || !frappe.model || !frappe.model.docinfo) return null;
+    const docinfo = frappe.model.docinfo;
+    const doctypeKey = frm.doctype || "Payment Requisition";
+    const docKey = frm.doc.name;
+
+    return docinfo[doctypeKey]?.[docKey]?.workflow_logs || null;
 }
 
 function addUrgentButton(frm) {
