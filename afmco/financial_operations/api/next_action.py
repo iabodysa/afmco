@@ -8,8 +8,10 @@ from frappe.model.workflow import (
 	has_approval_access,
 	is_transition_condition_satisfied,
 )
+from frappe.permissions import AUTOMATIC_ROLES
 
 DOCTYPE = "Payment Requisition"
+SYSTEM_USERS = {"enabled": 1, "user_type": "System User", "name": ("not in", ["Administrator", "Guest"])}
 
 
 @frappe.whitelist()
@@ -29,12 +31,13 @@ def next_action(name: str) -> list[dict]:
 
 	next_docstatus = {s.state: int(s.doc_status or 0) for s in workflow.states}
 	holders = role_holders({t.allowed for t in transitions})
+	system_users = len(frappe.get_all("User", filters=SYSTEM_USERS, pluck="name"))
 	steps = {}
 	failed = set()
 	for transition in transitions:
 		users = steps.setdefault(transition.allowed, {})
 		ptypes = required_ptypes(doc.docstatus, next_docstatus.get(transition.next_state, 0))
-		for user, full_name in holders.get(transition.allowed, []):
+		for user, full_name, image in holders.get(transition.allowed, []):
 			if user in users or user in failed or not has_approval_access(user, doc, transition):
 				continue
 			messages = len(frappe.get_message_log())
@@ -51,9 +54,14 @@ def next_action(name: str) -> list[dict]:
 				)
 				continue
 			if permitted:
-				users[user] = full_name
+				users[user] = {"user": user, "full_name": full_name, "image": image}
 
-	return [{"role": role, "users": sorted(users.values())} for role, users in steps.items()]
+	result = []
+	for role, users in steps.items():
+		everyone = role in AUTOMATIC_ROLES or (users and len(users) >= system_users)
+		listed = [] if everyone else sorted(users.values(), key=lambda u: u["full_name"])
+		result.append({"role": role, "everyone": bool(everyone), "users": listed})
+	return result
 
 
 def required_ptypes(docstatus: int, next_docstatus: int) -> tuple[str, ...]:
@@ -64,14 +72,14 @@ def required_ptypes(docstatus: int, next_docstatus: int) -> tuple[str, ...]:
 	return ("write",)
 
 
-def role_holders(roles: set[str]) -> dict[str, list[tuple[str, str]]]:
+def role_holders(roles: set[str]) -> dict[str, list[tuple[str, str, str | None]]]:
 	has_role = frappe.qb.DocType("Has Role")
 	user = frappe.qb.DocType("User")
 	rows = (
 		frappe.qb.from_(has_role)
 		.join(user)
 		.on(user.name == has_role.parent)
-		.select(has_role.role, user.name, user.full_name)
+		.select(has_role.role, user.name, user.full_name, user.user_image)
 		.where(has_role.parenttype == "User")
 		.where(has_role.role.isin(list(roles)))
 		.where(user.enabled == 1)
@@ -81,6 +89,6 @@ def role_holders(roles: set[str]) -> dict[str, list[tuple[str, str]]]:
 		.run()
 	)
 	holders = {}
-	for role, name, full_name in rows:
-		holders.setdefault(role, []).append((name, full_name or name))
+	for role, name, full_name, image in rows:
+		holders.setdefault(role, []).append((name, full_name or name, image))
 	return holders

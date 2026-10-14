@@ -1664,22 +1664,51 @@ function renderNextAction(frm) {
     if (frm.is_new()) return;
 
     const name = frm.doc.name;
-    frappe.xcall('afmco.financial_operations.api.next_action.next_action', { name }).then((steps) => {
-        if (frm.doc.name !== name || !steps || !steps.length) return;
-        $sidebar.find('.pr-next-action').remove();
-        const rows = steps.map((step) => {
-            const users = step.users.length
-                ? `<ul class="list-unstyled mb-2">${step.users.map((user) => `<li>${escapeHtml(user)}</li>`).join('')}</ul>`
-                : `<div class="text-muted mb-2">${escapeHtml(__('No user holds this role'))}</div>`;
-            return `<div class="text-muted small">${escapeHtml(__(step.role))}</div>${users}`;
-        }).join('');
-        $sidebar.append(`
-            <div class="sidebar-section pr-next-action border-bottom">
-                <div class="form-sidebar-label">${escapeHtml(__('Next action'))}</div>
-                ${rows}
-            </div>
-        `);
-    });
+    const visibleUsers = 6;
+    const esc = frappe.utils.escape_html;
+    const chip = (user, hidden) => `
+        <span class="pr-next-action-user rounded-pill${hidden ? ' hidden' : ''}" title="${esc(user.full_name)}">
+            ${frappe.avatar(user.user, 'avatar-xs', user.full_name, user.image)}
+            <span class="ellipsis">${esc(user.full_name)}</span>
+        </span>`;
+    const holders = (step) => {
+        if (step.everyone) return `<div class="pr-next-action-note">${esc(__('All users'))}</div>`;
+        if (!step.users.length) return `<div class="pr-next-action-note">${esc(__('No user holds this role'))}</div>`;
+        const hidden = step.users.length - visibleUsers;
+        const more = hidden > 0
+            ? `<a role="button" class="pr-next-action-more rounded-pill">+${hidden}</a>`
+            : '';
+        return `<div class="pr-next-action-users">${step.users.map((user, i) => chip(user, i >= visibleUsers)).join('')}${more}</div>`;
+    };
+
+    frappe.require('/assets/afmco/css/next_action.css', () =>
+        frappe.xcall('afmco.financial_operations.api.next_action.next_action', { name }).then((steps) => {
+            if (frm.doc.name !== name || !steps || !steps.length) return;
+            $sidebar.find('.pr-next-action').remove();
+            const $section = $(`
+                <div class="sidebar-section pr-next-action border-bottom">
+                    <div class="form-sidebar-items">
+                        <span class="form-sidebar-label">
+                            ${frappe.utils.icon('users')}
+                            <span class="ellipsis">${esc(__('Next Action'))}</span>
+                        </span>
+                    </div>
+                    ${steps.map((step) => `
+                        <div class="pr-next-action-role">
+                            <div class="pr-next-action-role-label">${esc(__(step.role))}</div>
+                            ${holders(step)}
+                        </div>`).join('')}
+                </div>
+            `);
+            $section.on('click', '.pr-next-action-more', (event) => {
+                const $users = $(event.currentTarget).closest('.pr-next-action-users');
+                $users.find('.pr-next-action-user.hidden').removeClass('hidden');
+                $(event.currentTarget).remove();
+            });
+            $section.insertAfter($sidebar.find('.sidebar-meta-details').first());
+            if (!$section.parent().length) $sidebar.append($section);
+        })
+    );
 }
 
 function addUrgentButton(frm) {
