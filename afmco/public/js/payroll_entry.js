@@ -433,22 +433,10 @@ async function makeBankEntry(frm) {
             return;
         }
 
-        const employeeCount = salarySlips.filter(s => s.net_pay > 0).length;
-        
-        const defaultBankFeesAccountName = '539008 - م - رسوم بنكية - M - Bank fees - AF';
-        const defaultVatAccountName = '216003 - VAT 15% - AF';
-
-        const bankFeesAccountExists = await frappe.db.exists('Account', defaultBankFeesAccountName);
-        const vatAccountExists = await frappe.db.exists('Account', defaultVatAccountName);
-
-        if (!bankFeesAccountExists) {
-            frappe.msgprint(__(`Error: Default Bank Fees Account "${defaultBankFeesAccountName}" does not exist. Please create it or update the script.`));
-            return;
-        }
-        if (!vatAccountExists) {
-            frappe.msgprint(__(`Error: Default VAT Account "${defaultVatAccountName}" does not exist. Please create it or update the script.`));
-            return;
-        }
+        const { message: defaults } = await frappe.call({
+            method: 'afmco.people_and_payroll.api.payroll_entry.get_bank_fee_defaults',
+            args: { payroll_entry: frm.doc.name }
+        });
 
         const dialog = new frappe.ui.Dialog({
             title: __('Bank Entry Settings'),
@@ -457,7 +445,7 @@ async function makeBankEntry(frm) {
                     label: __('Apply Bank Transfer Fees'),
                     fieldname: 'apply_fees',
                     fieldtype: 'Check',
-                    default: 0,
+                    default: defaults.apply_fees,
                     onchange: function() {
                         const apply = dialog.get_value('apply_fees');
                         dialog.fields_dict.fees_per_transfer.toggle(apply);
@@ -475,8 +463,8 @@ async function makeBankEntry(frm) {
                     label: __('Fees per Transfer'),
                     fieldname: 'fees_per_transfer',
                     fieldtype: 'Currency',
-                    default: 3.5,
-                    hidden: 1,
+                    default: defaults.fees_per_transfer,
+                    hidden: !defaults.apply_fees,
                     onchange: function() {
                         calculateTotals();
                     }
@@ -486,30 +474,33 @@ async function makeBankEntry(frm) {
                     fieldname: 'employee_count',
                     fieldtype: 'Int',
                     read_only: 0,
-                    default: employeeCount
+                    default: defaults.employee_count,
+                    onchange: function() {
+                        calculateTotals();
+                    }
                 },
                 {
                     label: __('Total Fees'),
                     fieldname: 'total_fees',
                     fieldtype: 'Currency',
                     read_only: 0,
-                    hidden: 1
+                    hidden: !defaults.apply_fees
                 },
                 {
                     label: __('VAT Amount (15%)'),
                     fieldname: 'vat_amount',
                     fieldtype: 'Currency',
                     read_only: 0,
-                    hidden: 1
+                    hidden: !defaults.apply_fees
                 },
                 {
                     label: __('Bank Fees Account'),
                     fieldname: 'bank_fees_account',
                     fieldtype: 'Link',
                     options: 'Account',
-                    hidden: 1,
+                    hidden: !defaults.apply_fees,
                     reqd: 1,
-                    default: defaultBankFeesAccountName,
+                    default: defaults.bank_fees_account,
                     get_query: function() {
                         return {
                             filters: {
@@ -525,9 +516,9 @@ async function makeBankEntry(frm) {
                     fieldname: 'vat_account',
                     fieldtype: 'Link',
                     options: 'Account',
-                    hidden: 1,
+                    hidden: !defaults.apply_fees,
                     reqd: 1,
-                    default: defaultVatAccountName,
+                    default: defaults.vat_account,
                     get_query: function() {
                         return {
                             filters: {
@@ -566,6 +557,9 @@ async function makeBankEntry(frm) {
         }
 
         dialog.show();
+        if (defaults.apply_fees) {
+            calculateTotals();
+        }
 
     } catch (error) {
         frappe.msgprint(__('Error displaying Bank Entry settings: ') + error.message);

@@ -6,6 +6,7 @@ from hrms.payroll.doctype.payroll_entry import payroll_entry
 
 from afmco.people_and_payroll.employee import HOLD_STATUS
 from afmco.people_and_payroll.payroll_entry import (
+	bank_fee_defaults,
 	build_accrual_entry,
 	build_bank_entry,
 	build_employee_wise_entry,
@@ -45,6 +46,11 @@ def readable_payroll_entry(name):
 @frappe.whitelist()
 def make_accrual_entry(source_name):
 	return build_accrual_entry(readable_payroll_entry(source_name))
+
+
+@frappe.whitelist()
+def get_bank_fee_defaults(payroll_entry):
+	return bank_fee_defaults(readable_payroll_entry(payroll_entry))
 
 
 @frappe.whitelist()

@@ -15605,3 +15605,5 @@ Accounts Bot changed {0} from {1} to {2}. Source file: {3},بوت المحاسب
 {0} is not a file attached to this Payment Requisition.,{0} ليس ملفًا مرفقًا بطلب الصرف هذا.
 {0} is not a remark.,{0} ليس بيانًا صالحًا.
 Accounts Bot Question,سؤال بوت المحاسبة
+Bank transfer fees,رسوم تحويل بنكية
+VAT for bank transfer fees,ضريبة القيمة المضافة على رسوم التحويل البنكية

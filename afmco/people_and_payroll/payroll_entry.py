@@ -198,6 +198,44 @@ def build_accrual_entry(payroll_entry):
 	return journal_entry
 
 
+TRANSFER_FEES = {("AF", "122001"): ("10", 3.5), ("AF", "122003"): ("65", 7)}
+BANK_FEES_ACCOUNT_NUMBER = "520006"
+VAT_ACCOUNT_NUMBER = "216003"
+
+
+def iban_bank_code(iban):
+	return (iban or "").replace(" ", "").upper()[4:6]
+
+
+def bank_fee_defaults(payroll_entry):
+	company = payroll_entry.company
+	abbr = frappe.get_cached_value("Company", company, "abbr")
+	account_number = payroll_entry.payment_account and frappe.get_cached_value(
+		"Account", payroll_entry.payment_account, "account_number"
+	)
+	payer_bank, fees_per_transfer = TRANSFER_FEES.get((abbr, account_number), (None, 0))
+	paid = [
+		slip.employee
+		for slip in submitted_salary_slips(payroll_entry.name, ["employee", "net_pay"])
+		if (slip.net_pay or 0) > 0
+	]
+	ibans = dict(
+		frappe.get_all("Employee", filters={"name": ["in", paid]}, fields=["name", "bank_ac_no"], as_list=True)
+	)
+	transfers = sum(1 for employee in paid if iban_bank_code(ibans.get(employee)) != payer_bank)
+	return {
+		"apply_fees": int(bool(fees_per_transfer and transfers)),
+		"fees_per_transfer": fees_per_transfer,
+		"employee_count": transfers,
+		"bank_fees_account": frappe.db.get_value(
+			"Account", {"company": company, "account_number": BANK_FEES_ACCOUNT_NUMBER, "is_group": 0}
+		),
+		"vat_account": frappe.db.get_value(
+			"Account", {"company": company, "account_number": VAT_ACCOUNT_NUMBER, "is_group": 0}
+		),
+	}
+
+
 def build_bank_entry(payroll_entry, fees):
 	journal_entry = new_journal_entry(
 		payroll_entry,
@@ -265,22 +303,22 @@ def build_bank_entry(payroll_entry, fees):
 					"debit_in_account_currency": total_fees,
 					"cost_center": payroll_entry.cost_center
 					or frappe.get_cached_value("Company", payroll_entry.company, "cost_center"),
-					"user_remark": "Bank transfer fees",
+					"user_remark": _("Bank transfer fees"),
 				},
 				{
 					"account": fees.get("vat_account"),
 					"debit_in_account_currency": vat_amount,
-					"user_remark": "VAT for bank transfer fees",
+					"user_remark": _("VAT for bank transfer fees"),
 				},
 				{
 					"account": payroll_entry.payment_account,
 					"credit_in_account_currency": total_fees,
-					"user_remark": "Bank transfer fees",
+					"user_remark": _("Bank transfer fees"),
 				},
 				{
 					"account": payroll_entry.payment_account,
 					"credit_in_account_currency": vat_amount,
-					"user_remark": "VAT for bank transfer fees",
+					"user_remark": _("VAT for bank transfer fees"),
 				},
 			):
 				append_account_row(journal_entry, row)
