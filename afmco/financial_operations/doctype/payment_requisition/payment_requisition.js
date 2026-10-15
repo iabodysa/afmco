@@ -642,10 +642,8 @@ const accountsBotAnswered = new Set();
 function addAccountsBotButton(frm) {
     const sendLabel = __('Account Bot');
     const retryLabel = __('Retry Account Bot');
-    const receiptLabel = __('Read Receipt');
     frm.remove_custom_button(sendLabel);
     frm.remove_custom_button(retryLabel);
-    frm.remove_custom_button(receiptLabel);
     const onload = frm.doc.__onload || {};
     const idle = ACCOUNTS_BOT_IDLE.includes(frm.doc.accounts_bot_status);
 
@@ -654,9 +652,6 @@ function addAccountsBotButton(frm) {
     }
     if (onload.accounts_bot_viewer && frm.doc.accounts_bot_cf && frm.doc.accounts_bot_status === ACCOUNTS_BOT_STOPPED) {
         frm.add_custom_button(retryLabel, () => callAccountsBot(frm, 'retry_accounts_bot'));
-    }
-    if (onload.receipt_read_allowed && idle) {
-        frm.add_custom_button(receiptLabel, () => callAccountsBot(frm, 'request_receipt_read'));
     }
     renderAccountsBotIntro(frm);
     listenAccountsBotStatus(frm);

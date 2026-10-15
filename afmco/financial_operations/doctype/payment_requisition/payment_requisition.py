@@ -42,14 +42,16 @@ class PaymentRequisition(Document):
 		self.set_onload("accounts_bot_viewer", bool(roles.intersection(ACCOUNTS_BOT_VIEWER_ROLES)))
 		receipt_role = bool(roles.intersection(RECEIPT_READ_ROLES)) and not self.receipt_read_refusal()
 		self.set_onload("receipt_read_viewer", receipt_role)
-		self.set_onload(
-			"receipt_read_allowed", receipt_role and not self.request_pending() and self.has_attachment()
-		)
 		ai_reading.set_onload(self)
 
-	def accounts_bot_refusal(self) -> str | None:
+	def accounts_bot_state_refusal(self) -> str | None:
 		if ACCOUNTS_BOT_STATES.get(self.workflow_state) != self.docstatus:
 			return _("Only a Payment Requisition in Document Upload or Paid state can be sent to the Accounts Bot.")
+		return None
+
+	def accounts_bot_refusal(self) -> str | None:
+		if refusal := self.accounts_bot_state_refusal():
+			return refusal
 		journal_entries = frappe.get_all(
 			"Journal Entry",
 			filters={"expense_request_cf": self.name, "docstatus": ["<", 2]},
@@ -137,7 +139,7 @@ class PaymentRequisition(Document):
 		return "queued"
 
 	def fill_payment_fields(self, values: dict) -> dict:
-		if refusal := self.receipt_read_refusal():
+		if refusal := self.accounts_bot_state_refusal():
 			frappe.throw(refusal)
 		if not isinstance(values, dict):
 			frappe.throw(_("Payment fields must be sent as an object."))

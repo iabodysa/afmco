@@ -12998,7 +12998,6 @@ Retry Account Bot,إعادة الإرسال إلى بوت المحاسبة
 Accounts Bot has not picked up the request yet,البوت ما استلم الطلب للحين
 Only a stopped Accounts Bot request can be retried.,لا تعاد إلا الطلبات المتوقفة لدى بوت المحاسبة.
 {0} is not an Accounts Bot status.,{0} ليست حالة من حالات بوت المحاسبة.
-Read Receipt,قراءة الإيصال
 Receipt Read,تمت قراءة الإيصال
 Paid Amount,المبلغ المدفوع
 Beneficiary Employee,الموظف المستفيد
