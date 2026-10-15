@@ -27,7 +27,7 @@
 					<span class="afm-line"><span class="afm-line__text">{{ _("Leave Application") }}</span></span>
 				</h1>
 				<div class="afm-hero__actions afm-in afm-in--4">
-					<a class="afm-pill afm-pill--primary" href="#afm-main">{{ _("Send your request") }}{{ arrow() }}</a>
+					<a class="afm-pill afm-pill--primary" href="#request">{{ _("Send your request") }}{{ arrow() }}</a>
 				</div>
 			</div>
 		</div>
@@ -35,9 +35,20 @@
 
 	{% include "templates/includes/breadcrumbs.html" %}
 
-	<div id="afm-main" class="afm-webform__main" tabindex="-1">
-		{{ super() }}
-	</div>
+	<main id="afm-main" tabindex="-1">
+		<section id="request" class="afm-section" aria-labelledby="afm-request-title">
+			<div class="afm-head">
+				<p class="afm-kicker"><span class="afm-kicker__num">01 /</span>{{ _("Send your request") }}</p>
+				<div>
+					<h2 id="afm-request-title" class="afm-title">{{ _("Leave details") }}</h2>
+					<p class="afm-lead">{{ _("Fields marked * are required.") }}</p>
+				</div>
+			</div>
+			<div class="afm-webform__form">
+				{{ super() }}
+			</div>
+		</section>
+	</main>
 
 	<footer class="afm-footer">
 		{{ footer_nav() }}

@@ -13,3 +13,5 @@ def get_context(context):
 	if not frappe.form_dict.is_list:
 		context.template = "afmco/templates/web/web_form.html"
 	context.parents = [{"route": context.home_url, "title": _("Home")}]
+	context.page_links = [{"href": "#request", "label": _("Send your request")}]
+	context.header_cta = {"href": "#request", "label": _("Send your request")}
