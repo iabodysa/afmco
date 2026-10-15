@@ -22,7 +22,9 @@ DOCUMENT_UPLOAD = "Document Upload"
 ACCOUNTS_BOT_STATES = {DOCUMENT_UPLOAD: 0, "Paid": 1}
 PRELIMINARY_FIELD = "accounts_bot_preliminary"
 RECEIPT_READ_ROLES = ("Auditor", *ACCOUNTS_ROLES)
-RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "beneficiary_employee_cf", "bank_reference_cf")
+RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "beneficiary_employee_cf", "bank_reference_cf", "remark")
+RECEIPT_COMPARED_FIELDS = ("bank_account", "paid_amount_cf", "remark")
+RECEIPT_AMOUNT_FIELD = "receipt_amount_cf"
 SADAD_NUMBER_FIELDS = ("sadad_biller_code", "sadad_bill_number")
 
 
@@ -132,22 +134,101 @@ class PaymentRequisition(Document):
 			frappe.throw(_("Payment fields must be sent as an object."))
 		if unknown := sorted(set(values) - set(RECEIPT_FIELDS)):
 			frappe.throw(_("The Accounts Bot cannot write {0}.").format(", ".join(unknown)))
-		changes, skipped = {}, []
-		for fieldname, value in values.items():
-			if self.get(fieldname):
+		changes, sources, skipped, pending, amount_source = {}, {}, [], None, None
+		for fieldname, entry in values.items():
+			value, source = (entry.get("value"), entry.get("source")) if isinstance(entry, dict) else (entry, None)
+			current = self.get(fieldname)
+			if current and fieldname not in RECEIPT_COMPARED_FIELDS:
 				skipped.append({"field": fieldname, "reason": "not empty"})
+				continue
+			value, source = self.receipt_value(fieldname, value), self.receipt_source(source)
+			if fieldname == "paid_amount_cf":
+				amount_source = source
+				current = flt(current, self.precision(fieldname)) if current else current
+			if current == value:
+				skipped.append({"field": fieldname, "reason": "unchanged"})
+			elif current and fieldname == "bank_account" and (reason := self.bank_account_keep_reason(current)):
+				skipped.append({"field": fieldname, "reason": reason})
+			elif current and fieldname == "paid_amount_cf":
+				pending = {"field": fieldname, "value": value, "source": source}
 			else:
-				changes[fieldname] = self.receipt_value(fieldname, value)
+				changes[fieldname], sources[fieldname] = value, source
+		stale_pending = "paid_amount_cf" in values and not pending and self.get(RECEIPT_AMOUNT_FIELD)
+		if pending or stale_pending:
+			changes[RECEIPT_AMOUNT_FIELD] = pending["value"] if pending else 0
+		before = {fieldname: self.get(fieldname) for fieldname in changes}
 		if changes:
 			self.db_set(dict(changes), update_modified=True, notify=True)
 			self.save_version()
+		for fieldname, source in sources.items():
 			self.add_comment(
 				"Comment",
-				_("Filled by Accounts Bot: {0}").format(
-					", ".join(f"{_(self.meta.get_label(f))}: {escape_html(str(v))}" for f, v in changes.items())
+				_("Accounts Bot changed {0} from {1} to {2}. Source file: {3}").format(
+					_(self.meta.get_label(fieldname)),
+					*(escape_html(str(v)) if v else "-" for v in (before[fieldname], changes[fieldname], source)),
 				),
 			)
-		return {"written": list(changes), "skipped": skipped}
+		if stale_pending:
+			self.add_comment(
+				"Comment",
+				_("Accounts Bot cleared {0} from {1} because the attachment now agrees with {2}. Source file: {3}").format(
+					_(self.meta.get_label(RECEIPT_AMOUNT_FIELD)),
+					escape_html(str(before[RECEIPT_AMOUNT_FIELD])),
+					_(self.meta.get_label("paid_amount_cf")),
+					escape_html(amount_source) if amount_source else "-",
+				),
+			)
+		if pending:
+			self.add_comment(
+				"Comment",
+				_(
+					"Accounts Bot did not change {0}: the attachment shows {1} and the form shows {2}. An accountant must confirm the attachment amount. Source file: {3}"
+				).format(
+					_(self.meta.get_label("paid_amount_cf")),
+					*(escape_html(str(v)) if v else "-" for v in (pending["value"], self.paid_amount_cf, pending["source"])),
+				),
+			)
+		return {
+			"written": list(sources),
+			"skipped": skipped,
+			"pending": [{"field": pending["field"], "value": pending["value"]}] if pending else [],
+		}
+
+	def bank_account_keep_reason(self, current: str) -> str | None:
+		company = frappe.db.get_single_value("Global Defaults", "default_company")
+		operating = frappe.db.get_value(
+			"Bank Account", {"company": company, "is_company_account": 1, "is_default": 1, "disabled": 0}, "account"
+		)
+		if not operating:
+			return "operating account not set"
+		if current == operating:
+			return "operating account"
+		return None
+
+	def receipt_source(self, source) -> str | None:
+		if not source:
+			return None
+		attached = {"attached_to_doctype": self.doctype, "attached_to_name": self.name}
+		for key in ("name", "file_url", "file_name"):
+			if isinstance(source, str) and (file_name := frappe.db.get_value("File", {**attached, key: source}, "file_name")):
+				return file_name
+		frappe.throw(_("{0} is not a file attached to this Payment Requisition.").format(source))
+
+	def confirm_receipt_amount(self) -> None:
+		if refusal := self.receipt_read_refusal():
+			frappe.throw(refusal)
+		amount = self.get(RECEIPT_AMOUNT_FIELD)
+		if not amount:
+			frappe.throw(_("No attachment amount is waiting for confirmation."))
+		previous = self.paid_amount_cf
+		self.db_set({"paid_amount_cf": amount, RECEIPT_AMOUNT_FIELD: 0}, update_modified=True, notify=True)
+		self.save_version()
+		self.add_comment(
+			"Comment",
+			_("Confirmed {0} from the attachment: changed from {1} to {2}.").format(
+				_(self.meta.get_label("paid_amount_cf")), *(escape_html(str(v)) if v else "-" for v in (previous, amount))
+			),
+		)
 
 	def receipt_value(self, fieldname: str, value):
 		if fieldname == "bank_payment_date":
@@ -171,6 +252,11 @@ class PaymentRequisition(Document):
 			if not isinstance(value, str) or frappe.db.get_value("Employee", value, "status") != "Active":
 				frappe.throw(_("{0} is not an active employee.").format(value))
 			return value
+		if fieldname == "remark":
+			remark = value.strip() if isinstance(value, str) else ""
+			if not remark:
+				frappe.throw(_("{0} is not a remark.").format(value))
+			return remark
 		reference = value.strip() if isinstance(value, str) else ""
 		if not reference or len(reference) > 140:
 			frappe.throw(_("{0} is not a bank reference.").format(value))
