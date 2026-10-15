@@ -73,7 +73,6 @@ def append_account_row(journal_entry, row, party=None, employee=None):
 	row = {
 		"debit_in_account_currency": 0,
 		"credit_in_account_currency": 0,
-		"cost_center": None,
 		**row,
 	}
 	row = {
@@ -88,6 +87,7 @@ def append_account_row(journal_entry, row, party=None, employee=None):
 			or {}
 		),
 		**{key: value for key, value in row.items() if value is not None},
+		"cost_center": row.get("cost_center") or "",
 	}
 	if party:
 		row.update({"party_type": "Employee", "party": party})
