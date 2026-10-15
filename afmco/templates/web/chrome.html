@@ -2,6 +2,11 @@
 <meta name="theme-color" content="#00824E">
 <link rel="preload" href="/assets/afmco/images/portal/afmco-logo.webp" as="image" type="image/webp">
 <link rel="stylesheet" href="/assets/afmco/css/portal-fonts.css">
+<link rel="stylesheet" href="/assets/afmco/css/portal.css?v={{ asset_version }}">
+{%- endmacro -%}
+
+{%- macro site_script() -%}
+<script src="/assets/afmco/js/portal.js?v={{ asset_version }}"></script>
 {%- endmacro -%}
 
 {%- macro site_header() -%}

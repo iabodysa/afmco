@@ -1,12 +1,6 @@
 {% extends "afmco/templates/web/site.html" %}
 {% from "afmco/templates/web/macros.html" import arrow %}
 
-{%- block style %}
-<style>{{ portal_css }}</style>
-<style>{{ form_css }}</style>
-{{ super() }}
-{%- endblock -%}
-
 {% block afm_class %}afm-iban{% endblock %}
 
 {% block afm_main %}
@@ -153,7 +147,3 @@
 		</section>
 {% endblock %}
 
-{%- block script %}
-<script>{{ portal_js }}</script>
-{{ super() }}
-{%- endblock %}

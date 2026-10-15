@@ -30,6 +30,7 @@ LINE_BREAK_TAGS = re.compile(r"<br\s*/?>|</(?:p|div|li|h[1-6])>", re.IGNORECASE)
 def get_context(context):
 	set_site_context(context)
 	context.title = _("AFMCO Employee Portal")
+	context.description = _("Open jobs, salary account updates and leave requests for AFMCO employees.")
 	context.page_links = [
 		{"href": "#services", "label": _("Services")},
 		{"href": "#help", "label": _("Help")},
@@ -48,6 +49,9 @@ def set_site_context(context):
 
 	context.page_lang = frappe.local.lang
 	context.text_dir = "rtl" if is_rtl() else "ltr"
+	context.asset_version = frappe.utils.get_build_version()
+	context.favicon = "/assets/afmco/images/afmco-app-icon.svg"
+	context.image = "/assets/afmco/images/afmco-logo.png"
 	context.show_language_switch = is_guest
 	context.home_url = HOME_URL
 	context.support_url = SUPPORT_URL

@@ -1,5 +1,5 @@
 {% extends "website/doctype/web_form/templates/web_form.html" %}
-{% from "afmco/templates/web/chrome.html" import site_head, site_header, footer_nav, footer_brand with context %}
+{% from "afmco/templates/web/chrome.html" import site_head, site_script, site_header, footer_nav, footer_brand with context %}
 {% from "afmco/templates/web/macros.html" import arrow %}
 
 {%- block head_include %}
@@ -48,12 +48,7 @@
 </div>
 {% endblock %}
 
-{%- block style %}
-<style>{{ portal_css }}</style>
-{{ super() }}
-{%- endblock -%}
-
 {%- block script %}
 {{ super() }}
-<script>{{ portal_js }}</script>
+{{ site_script() }}
 {%- endblock -%}

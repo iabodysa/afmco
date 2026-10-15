@@ -15,14 +15,13 @@ DEFAULT_CURRENCY = "SAR"
 def get_context(context):
 	set_site_context(context)
 	context.title = _("Careers at AFMCO")
+	context.description = _("See open jobs at AFMCO and apply online.")
 	context.parents = [{"route": context.home_url, "title": _("Home")}]
 	context.page_links = [
 		{"href": "#jobs", "label": _("Open jobs")},
 		{"href": "#apply", "label": _("Apply now")},
 	]
 	context.header_cta = {"href": "#apply", "label": _("Apply now")}
-	context.portal_css = frappe.read_file(frappe.get_app_path("afmco", "www", "portal", "index.css"))
-	context.portal_js = frappe.read_file(frappe.get_app_path("afmco", "www", "portal", "index.js"))
 
 	context.jobs = get_open_jobs()
 	requested_job, requested_route = frappe.form_dict.job_title, frappe.form_dict.job_route

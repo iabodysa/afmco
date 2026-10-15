@@ -1,5 +1,5 @@
 {% extends "templates/web.html" %}
-{% from "afmco/templates/web/chrome.html" import site_head, site_header, footer_nav, footer_brand with context %}
+{% from "afmco/templates/web/chrome.html" import site_head, site_script, site_header, footer_nav, footer_brand with context %}
 
 {%- block head_include %}
 {{ super() }}
@@ -30,3 +30,8 @@
 	</footer>
 </div>
 {% endblock %}
+
+{%- block script %}
+{{ site_script() }}
+{{ super() }}
+{%- endblock %}

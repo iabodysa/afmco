@@ -63,7 +63,6 @@
 			</ul>
 		</section>
 
-		{% if news %}
 		<section id="news" class="afm-section afm-section--ruled" aria-labelledby="afm-news-title">
 			<div class="afm-head">
 				<p class="afm-kicker">{{ _("News") }}</p>
@@ -71,6 +70,7 @@
 					<h2 id="afm-news-title" class="afm-title">{{ _("Company News") }}</h2>
 				</div>
 			</div>
+			{% if news %}
 			<div class="afm-news">
 				<ul class="afm-news__track" style="--afm-news-count: {{ news | length }}">
 					{% for copy in range(2) %}{% for item in news %}
@@ -88,8 +88,10 @@
 					{% endfor %}{% endfor %}
 				</ul>
 			</div>
+			{% else %}
+			<p class="afm-news__empty">{{ _("No company news yet. New announcements will appear here.") }}</p>
+			{% endif %}
 		</section>
-		{% endif %}
 
 		{% if announcement or holidays %}
 		<section id="announcements" class="afm-section afm-section--ruled" aria-labelledby="afm-announcements-title">
