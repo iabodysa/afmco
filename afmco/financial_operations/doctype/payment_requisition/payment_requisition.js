@@ -635,6 +635,9 @@ const ACCOUNTS_BOT_REQUEST_SENT = 'Request Sent';
 const ACCOUNTS_BOT_RECEIPT_READ = 'Receipt Read';
 const ACCOUNTS_BOT_IDLE = [ACCOUNTS_BOT_CREATED, ACCOUNTS_BOT_RECEIPT_READ, ACCOUNTS_BOT_STOPPED, undefined, null, ''];
 const ACCOUNTS_BOT_PICKUP_MINUTES = 15;
+const ACCOUNTS_BOT_QUESTION = /^\[accounts-bot-question q=([\w.-]+) field=([\w.-]+)\]$/;
+const accountsBotPressedAt = new Map();
+const accountsBotAnswered = new Set();
 
 function addAccountsBotButton(frm) {
     const sendLabel = __('Account Bot');
@@ -660,11 +663,16 @@ function addAccountsBotButton(frm) {
 }
 
 function callAccountsBot(frm, method) {
+    const name = frm.doc.name;
     frappe.call({
         method: `afmco.financial_operations.api.accounts_bot.${method}`,
-        args: { name: frm.doc.name },
+        args: { name },
         freeze: true,
-    }).then(() => frm.reload_doc());
+    })
+        .then(() => frm.reload_doc())
+        .then(() => {
+            if (frm.doc.name === name) accountsBotPressedAt.set(name, frm.doc.accounts_bot_updated);
+        });
 }
 
 function renderAccountsBotIntro(frm) {
@@ -708,8 +716,77 @@ function listenAccountsBotStatus(frm) {
         frm.doc.accounts_bot_note = data.note;
         frm.doc.accounts_bot_updated = data.updated;
         addAccountsBotButton(frm);
+        if (data.status === ACCOUNTS_BOT_STOPPED) askAccountsBotQuestion(frm);
     };
     frappe.realtime.on('accounts_bot_status', frm.accountsBotStatusHandler);
+}
+
+function askAccountsBotQuestion(frm) {
+    const name = frm.doc.name;
+    const pressedAt = accountsBotPressedAt.get(name);
+    const onload = frm.doc.__onload || {};
+    if (!pressedAt || !onload.accounts_bot_viewer || !frm.doc.accounts_bot_cf) return;
+    frappe.call({
+        method: 'frappe.desk.form.load.get_docinfo',
+        args: { doctype: frm.doctype, name },
+    }).then(r => {
+        if (!r.docinfo || frm.doc.name !== name || frm.doc.accounts_bot_status !== ACCOUNTS_BOT_STOPPED) return;
+        const question = latestAccountsBotQuestion(r.docinfo, pressedAt);
+        if (question) showAccountsBotQuestion(frm, question);
+    });
+}
+
+function latestAccountsBotQuestion(docinfo, pressedAt) {
+    const latest = (docinfo.info_logs || [])
+        .filter(log => log.comment_type === 'Info' && log.creation >= pressedAt)
+        .map(log => ({
+            creation: log.creation,
+            lines: (log.content || '')
+                .split(/\r?\n|<br\s*\/?>/i)
+                .map(line => frappe.utils.html2text(line).trim())
+                .filter(Boolean),
+        }))
+        .filter(log => ACCOUNTS_BOT_QUESTION.test(log.lines[0] || ''))
+        .sort((a, b) => (a.creation < b.creation ? 1 : -1))[0];
+    if (!latest) return null;
+    const id = ACCOUNTS_BOT_QUESTION.exec(latest.lines[0])[1];
+    const answerTag = `[accounts-bot-answer q=${id}]`;
+    const answered =
+        accountsBotAnswered.has(id) ||
+        (docinfo.comments || []).some(comment => frappe.utils.html2text(comment.content || '').includes(answerTag));
+    const options = latest.lines.slice(2);
+    if (answered || !latest.lines[1] || options.length < 2 || options.length > 10) return null;
+    return { id, question: latest.lines[1], options };
+}
+
+function showAccountsBotQuestion(frm, { id, question, options }) {
+    const dialog = new frappe.ui.Dialog({
+        title: __('Accounts Bot Question'),
+        fields: [
+            { fieldname: 'question', fieldtype: 'HTML', options: `<p>${frappe.utils.escape_html(question)}</p>` },
+            ...options.map((option, index) => ({
+                fieldname: `option_${index}`,
+                fieldtype: 'Button',
+                label: frappe.utils.escape_html(option),
+                click: () => answerAccountsBotQuestion(frm, dialog, id, option),
+            })),
+        ],
+    });
+    dialog.show();
+}
+
+function answerAccountsBotQuestion(frm, dialog, id, option) {
+    dialog.hide();
+    frappe.xcall('frappe.desk.form.utils.add_comment', {
+        reference_doctype: frm.doctype,
+        reference_name: frm.doc.name,
+        content: `[accounts-bot-answer q=${id}] ${frappe.utils.escape_html(option)}`,
+        comment_email: frappe.session.user,
+        comment_by: frappe.session.user_fullname,
+    }).then(() => {
+        accountsBotAnswered.add(id);
+        callAccountsBot(frm, 'retry_accounts_bot');
+    });
 }
 
 function chooseSupportingPackEntry(frm) {
