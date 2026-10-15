@@ -183,6 +183,16 @@ def build_accrual_entry(payroll_entry):
 				},
 				party=slip.employee,
 			)
+		if slip.total_loan_repayment:
+			append_account_row(
+				journal_entry,
+				{
+					"account": payroll_entry.payroll_payable_account,
+					"credit_in_account_currency": slip.total_loan_repayment,
+					"user_remark": remark,
+				},
+				party=slip.employee,
+			)
 		if (slip.net_pay or 0) > 0:
 			append_account_row(
 				journal_entry,

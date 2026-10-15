@@ -323,7 +323,6 @@ Loan,القرض
 Loan Classification Range,نطاق تصنيف القروض
 Loan Classification Ranges,نطاقات تصنيف القروض
 Loan IRAC Provisioning Configuration,إعدادات مخصصات IRAC للقروض
-Loan Repayment created for {0} on {1},أنشئ سداد القرض لـ {0} في {1}
 Loan Settings,إعدادات القروض
 Localization Costs (Months),تكاليف التوطين (أشهر)
 Location Title,اسم الموقع
@@ -15606,3 +15605,4 @@ Accounts Bot changed {0} from {1} to {2}. Source file: {3},بوت المحاسب
 Accounts Bot Question,سؤال بوت المحاسبة
 Bank transfer fees,رسوم تحويل بنكية
 VAT for bank transfer fees,ضريبة القيمة المضافة على رسوم التحويل البنكية
+Employee {0} has a loan installment and a Loan Repayment deduction this period,للموظف {0} قسط قرض وخصم سداد قرض في هذه الفترة

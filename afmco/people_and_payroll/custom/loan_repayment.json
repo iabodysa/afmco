@@ -12,7 +12,7 @@
    "name": "Loan Repayment-amount",
    "non_negative": "1",
    "options": "Company:company:default_currency",
-   "reqd": "1"
+   "reqd": "0"
   },
   {
    "dt": "Loan Repayment",
@@ -23,7 +23,7 @@
    "label": "Payroll Date",
    "module": "People and Payroll",
    "name": "Loan Repayment-payroll_date",
-   "reqd": "1"
+   "reqd": "0"
   }
  ],
  "doctype": "Loan Repayment",
