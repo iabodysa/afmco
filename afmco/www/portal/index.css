@@ -498,7 +498,7 @@ html:has(.afm--menu) {
 }
 
 .afm[dir="ltr"] .afm-hero__title {
-	font-size: clamp(42px, 5vw, 86px);
+	font-size: clamp(28px, 9vw, 42px);
 	line-height: 1.08;
 	letter-spacing: -0.025em;
 }
@@ -961,6 +961,10 @@ html:has(.afm--menu) {
 
 	.afm-hero__mark {
 		max-width: min(400px, 52vh);
+	}
+
+	.afm[dir="ltr"] .afm-hero__title {
+		font-size: clamp(42px, 5vw, 86px);
 	}
 }
 
