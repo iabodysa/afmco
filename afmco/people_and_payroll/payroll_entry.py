@@ -119,6 +119,12 @@ def build_accrual_entry(payroll_entry):
 
 	for slip in slips:
 		cost_center = slip.cost_center or payroll_entry.cost_center
+		if not cost_center:
+			frappe.throw(
+				_(
+					"Cost Center is missing for Salary Slip {0} and no default Cost Center in Payroll Entry document."
+				).format(slip.name)
+			)
 		remark = slip.remark or ""
 		for earning in slip.earnings:
 			if not accounts.get(earning.salary_component):
@@ -183,12 +189,19 @@ def build_bank_entry(payroll_entry, fees):
 		payroll_entry.name, ["name", "employee", "employee_name", "net_pay", "cost_center", "remark"]
 	):
 		if (slip.net_pay or 0) > 0:
+			cost_center = slip.cost_center or payroll_entry.cost_center
+			if not cost_center:
+				frappe.throw(
+					_("Cost Center is missing for Salary Slip {0} or Payroll Entry default for Bank Entry.").format(
+						slip.name
+					)
+				)
 			append_account_row(
 				journal_entry,
 				{
 					"account": payroll_entry.payroll_clearing_account,
 					"debit_in_account_currency": slip.net_pay,
-					"cost_center": slip.cost_center or payroll_entry.cost_center,
+					"cost_center": cost_center,
 					"user_remark": slip.remark or "",
 				},
 				party=slip.employee,
@@ -200,6 +213,7 @@ def build_bank_entry(payroll_entry, fees):
 			journal_entry,
 			{
 				"account": payroll_entry.payment_account,
+				"bank_account": payroll_entry.bank_account,
 				"credit_in_account_currency": total_payment,
 				"cost_center": payroll_entry.cost_center,
 				"user_remark": f"{payroll_entry.cost_center} - {payroll_entry.month_name or ''}",

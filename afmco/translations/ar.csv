@@ -15589,3 +15589,5 @@ There are no open jobs right now.,لا توجد وظائف متاحة حاليً
 Paid Annual Leave - 21 days,إجازة سنوية مدفوعة الراتب - 21 يوم
 "Default account not found for Salary Component: ""{0}"".","لم يعثر على الحساب الافتراضي لمكون الراتب: ""{0}""."
 "Default account not found for Deduction Component: ""{0}"".","لم يعثر على الحساب الافتراضي لمكون الاستقطاع: ""{0}""."
+Cost Center is missing for Salary Slip {0} and no default Cost Center in Payroll Entry document.,مركز التكلفة غير محدد في قسيمة الراتب {0} ولا يوجد مركز تكلفة افتراضي في مسير الرواتب.
+Cost Center is missing for Salary Slip {0} or Payroll Entry default for Bank Entry.,مركز التكلفة غير محدد في قسيمة الراتب {0} ولا في مسير الرواتب لإنشاء القيد البنكي.
