@@ -13008,7 +13008,6 @@ Only a Payment Requisition in Document Upload state can be read by the Accounts 
 Attach the bank receipt before asking the Accounts Bot to read it.,أرفق إيصال البنك قبل ما تطلب من بوت المحاسبة قراءته.
 Payment fields must be sent as an object.,لازم ترسل حقول الدفع ككائن.
 The Accounts Bot cannot write {0}.,بوت المحاسبة ما يقدر يكتب {0}.
-Filled by Accounts Bot: {0},عبأها بوت المحاسبة: {0}
 {0} is not a bank payment date for this Payment Requisition.,{0} ليس تاريخ دفع بنكي لهذا الطلب.
 {0} is not a bank account of {1}.,{0} ليس حساب بنك لدى {1}.
 {0} is not a paid amount.,{0} ليس مبلغا مدفوعا.
@@ -15597,3 +15596,11 @@ Leave details,بيانات الإجازة
 "Default account not found for Deduction Component: ""{0}"".","لم يعثر على الحساب الافتراضي لمكون الاستقطاع: ""{0}""."
 Cost Center is missing for Salary Slip {0} and no default Cost Center in Payroll Entry document.,مركز التكلفة غير محدد في قسيمة الراتب {0} ولا يوجد مركز تكلفة افتراضي في مسير الرواتب.
 Cost Center is missing for Salary Slip {0} or Payroll Entry default for Bank Entry.,مركز التكلفة غير محدد في قسيمة الراتب {0} ولا في مسير الرواتب لإنشاء القيد البنكي.
+Accounts Bot changed {0} from {1} to {2}. Source file: {3},بوت المحاسبة غيّر {0} من {1} إلى {2}. ملف المصدر: {3}
+Accounts Bot did not change {0}: the attachment shows {1} and the form shows {2}. An accountant must confirm the attachment amount. Source file: {3},بوت المحاسبة ما غيّر {0}: المرفق يبيّن {1} والنموذج فيه {2}. يلزم أن يؤكد المحاسب مبلغ المرفق. ملف المصدر: {3}
+Attachment Amount to Confirm,مبلغ المرفق بانتظار التأكيد
+Confirmed {0} from the attachment: changed from {1} to {2}.,تم تأكيد {0} من المرفق: تغيّر من {1} إلى {2}.
+No attachment amount is waiting for confirmation.,لا يوجد مبلغ من المرفق بانتظار التأكيد.
+The attachment shows this amount and it differs from Paid Amount. An accountant must confirm it before it replaces Paid Amount.,المرفق يبيّن هذا المبلغ وهو يختلف عن المبلغ المدفوع. يلزم أن يؤكده المحاسب قبل أن يحل محل المبلغ المدفوع.
+{0} is not a file attached to this Payment Requisition.,{0} ليس ملفًا مرفقًا بطلب الصرف هذا.
+{0} is not a remark.,{0} ليس بيانًا صالحًا.
