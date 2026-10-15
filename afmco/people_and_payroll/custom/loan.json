@@ -33,19 +33,6 @@
    "name": "Loan-loan_repayment_schedule_tab"
   },
   {
-   "default": "0",
-   "dt": "Loan",
-   "fetch_from": "loan_product.is_term_loan",
-   "fieldname": "repay_from_salary",
-   "fieldtype": "Check",
-   "idx": "0",
-   "insert_after": "is_term_loan",
-   "label": "Repay From Salary",
-   "module": "People and Payroll",
-   "name": "Loan-repay_from_salary",
-   "read_only": "1"
-  },
-  {
    "dt": "Loan",
    "fieldname": "repayment_details",
    "fieldtype": "Table",

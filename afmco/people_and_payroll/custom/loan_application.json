@@ -11,17 +11,6 @@
    "parenttype": "DocType"
   }
  ],
- "property_setters": [
-  {
-   "doc_type": "Loan Application",
-   "doctype_or_field": "DocField",
-   "field_name": "loan_product",
-   "module": "People and Payroll",
-   "name": "Loan Application-loan_product-reqd",
-   "property": "reqd",
-   "property_type": "Check",
-   "value": "0"
-  }
- ],
+ "property_setters": [],
  "sync_on_migrate": 1
 }

@@ -1,10 +1,17 @@
 # Copyright (c) 2026, AFMCO and contributors
 # For license information, please see license.txt
 
+import math
+
 import frappe
+from frappe import _
+from frappe.utils import flt
+from hrms.payroll.doctype.salary_slip.salary_slip_loan_utils import set_loan_repayment
 
 from afmco.people_and_payroll.doctype.temporary_iban.temporary_iban import get_active_temporary_ibans
 from afmco.people_and_payroll.employee import validate_not_on_hold
+
+LOAN_REPAYMENT_COMPONENT = "Loan Repayment"
 
 
 class AfmcoSalarySlip:
@@ -13,6 +20,7 @@ class AfmcoSalarySlip:
 		validate_not_on_hold(self.employee)
 		if frappe.flags.in_install or frappe.flags.in_migrate:
 			return
+		self.validate_single_loan_deduction()
 		if self.docstatus == 0:
 			self.pull_emp_details()
 		total = (self.basic33 or 0) + (self.housing33 or 0)
@@ -34,6 +42,59 @@ class AfmcoSalarySlip:
 				{"parent": row.salary_component, "company": self.company},
 				"account",
 				cache=True,
+			)
+
+	@frappe.whitelist()
+	def get_emp_and_working_day_details(self):
+		super().get_emp_and_working_day_details()
+		if self.get("loans"):
+			self.set("loans", [])
+			set_loan_repayment(self)
+			self.set_net_pay()
+
+	def set_net_pay(self):
+		self.cap_loan_repayment()
+		super().set_net_pay()
+
+	def cap_loan_repayment(self):
+		rows = [row for row in self.get("loans", []) if flt(row.total_payment) > 0]
+		if not rows:
+			return
+		scale = 10 ** self.precision("total_loan_repayment")
+		cap = math.floor(flt(flt(self.gross_pay) / 3 * scale, 6)) / scale
+		excess = flt(sum(flt(row.total_payment) for row in rows) - cap, 6)
+		if excess <= 0:
+			return
+		posting_dates = dict(
+			frappe.get_all(
+				"Loan",
+				filters={"name": ("in", [row.loan for row in rows])},
+				fields=["name", "posting_date"],
+				as_list=True,
+			)
+		)
+		for row in sorted(rows, key=lambda row: (str(posting_dates.get(row.loan) or ""), row.loan)):
+			cut = min(flt(row.total_payment), excess)
+			row.total_payment = flt(flt(row.total_payment) - cut, row.precision("total_payment"))
+			row.interest_amount = min(flt(row.interest_amount), row.total_payment)
+			row.principal_amount = flt(
+				row.total_payment - row.interest_amount, row.precision("principal_amount")
+			)
+			excess = flt(excess - cut, 6)
+			if excess <= 0:
+				break
+		self.total_loan_repayment = sum(flt(row.total_payment) for row in self.loans)
+		self.total_interest_amount = sum(flt(row.interest_amount) for row in self.loans)
+		self.total_principal_amount = sum(flt(row.principal_amount) for row in self.loans)
+
+	def validate_single_loan_deduction(self):
+		if not any(flt(row.total_payment) for row in self.get("loans", [])):
+			return
+		if any(row.salary_component == LOAN_REPAYMENT_COMPONENT for row in self.deductions):
+			frappe.throw(
+				_("Employee {0} has a loan installment and a Loan Repayment deduction this period").format(
+					self.employee
+				)
 			)
 
 	def pull_emp_details(self):

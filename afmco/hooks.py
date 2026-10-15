@@ -73,10 +73,8 @@ doctype_js = {
 	"Employee Checkin": "public/js/employee_checkin.js",
 	"Journal Entry": "public/js/journal_entry.js",
 	"Leave Application": "public/js/leave_application.js",
-	"Loan": "public/js/loan.js",
 	"Loan Application": "public/js/loan_application.js",
 	"Payroll Entry": "public/js/payroll_entry.js",
-	"Salary Slip": "public/js/salary_slip.js",
 	"Sales Invoice": "public/js/sales_invoice_form.js",
 	"Task": "public/js/task.js",
 }
@@ -171,7 +169,6 @@ extend_doctype_class = {
 	],
 	"Leave Encashment": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Loan": "afmco.people_and_payroll.loan.AfmcoLoan",
-	"Loan Repayment": "afmco.people_and_payroll.loan_repayment.AfmcoLoanRepayment",
 	"Payroll Entry": "afmco.people_and_payroll.payroll_entry.AfmcoPayrollEntry",
 	"Retention Bonus": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Salary Slip": "afmco.people_and_payroll.salary_slip.AfmcoSalarySlip",

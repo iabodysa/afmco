@@ -291,3 +291,4 @@ fmt:jsonl|keys:key,caller|key:ar.csv source string whose live caller sits only i
 {"key": "Loan Underwriter", "caller": "Role:role_name"}
 {"key": "Sales Cordinator", "caller": "Role:role_name"}
 {"key": "Vehicle User", "caller": "Role:role_name"}
+{"key": "Repay From Salary", "caller": "Custom Field:Loan-repay_from_salary"}
