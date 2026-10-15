@@ -415,200 +415,11 @@ async function getExistingJournalEntries(payrollEntry) {
     }
 }
 
-async function get_component_account_mapping(company) {
-    const [components, accounts] = await Promise.all([
-        frappe.call({
-            method: 'frappe.client.get_list',
-            args: {
-                doctype: 'Salary Component',
-                fields: ['name', 'type'],
-                limit_page_length: 0
-            }
-        }),
-        frappe.call({
-            method: 'frappe.client.get_list',
-            args: {
-                doctype: 'Salary Component Account',
-                parent: 'Salary Component',
-                filters: { company: company },
-                fields: ['parent', 'account'],
-                limit_page_length: 0
-            }
-        })
-    ]);
-
-    if (!components.message) {
-        throw new Error('Could not fetch salary components: No message in response.');
-    }
-
-    const accountByComponent = (accounts.message || []).reduce((acc, row) => {
-        acc[row.parent] = row.account;
-        return acc;
-    }, {});
-
-    return components.message.reduce((acc, comp) => {
-        acc[comp.name] = {
-            account: accountByComponent[comp.name],
-            type: comp.type
-        };
-        return acc;
-    }, {});
-}
-
-async function makeAccrualEntry(frm) {
-   if (!frm.doc.payroll_payable_account) {
-       frappe.msgprint(__('Please set the Payroll Payable Account.'));
-       return;
-   }
-
-   frappe.show_alert({ message: __('Processing Accrual Entry...'), indicator: 'blue' });
-
-   try {
-       const componentMapping = await get_component_account_mapping(frm.doc.company);
-       const salarySlips = await getFullSalarySlips(frm.doc.name);
-
-       if (!salarySlips.length) {
-           frappe.msgprint(__('No Salary Slips found.'));
-           if (frappe.hide_alert && typeof frappe.hide_alert === 'function') {
-               frappe.hide_alert();
-           }
-           return;
-       }
-
-       const startDate = new Date(frm.doc.start_date);
-       const monthName = startDate.toLocaleString('en-US', { month: 'long' });
-       const year = startDate.getFullYear();
-
-       const journalEntryName = frappe.model.make_new_doc_and_get_name('Journal Entry');
-
-       frappe.model.set_value('Journal Entry', journalEntryName, {
-           voucher_type: 'Payroll Entry',
-           posting_date: frm.doc.posting_date,
-           company: frm.doc.company,
-           payroll_entry: frm.doc.name,
-           cheque_no: frm.doc.name,
-           cheque_date: frm.doc.posting_date,
-           user_remark: `Salary accrual for ${monthName} ${year}\nFrom: ${frm.doc.start_date} to: ${frm.doc.end_date}`
-       });
-
-       const accountsData = [];
-
-       for (const slip of salarySlips) {
-           const costCenter = slip.cost_center || frm.doc.cost_center;
-           if (!costCenter) {
-               frappe.msgprint(__(`Cost Center is missing for Salary Slip ${slip.name} and no default Cost Center in Payroll Entry document.`));
-               throw new Error(`Missing Cost Center for ${slip.name}`);
-           }
-
-           if (slip.earnings) {
-               for (const earning of slip.earnings) {
-                   const componentInfo = componentMapping[earning.salary_component];
-                   if (!componentInfo || !componentInfo.account) {
-                       frappe.msgprint(__(`Default account not found for Salary Component: "${earning.salary_component}".`));
-                       throw new Error(`Missing account for Salary Component: ${earning.salary_component}`);
-                   }
-
-                   accountsData.push({
-                       account: componentInfo.account,
-                       employee: slip.employee,
-                       debit_in_account_currency: earning.amount,
-                       cost_center: costCenter,
-                       user_remark: slip.remark || '',
-                       needs_party: false
-                   });
-               }
-           }
-
-           if (slip.deductions) {
-               for (const deduction of slip.deductions) {
-                   const componentInfo = componentMapping[deduction.salary_component];
-                   if (!componentInfo || !componentInfo.account) {
-                       frappe.msgprint(__(`Default account not found for Deduction Component: "${deduction.salary_component}".`));
-                       throw new Error(`Missing account for Deduction Component: ${deduction.salary_component}`);
-                   }
-
-                   accountsData.push({
-                       account: componentInfo.account,
-                     //  employee: slip.employee,
-                       party_type: 'Employee',
-                       party: slip.employee,
-                       credit_in_account_currency: deduction.amount,
-                   //    cost_center: costCenter,
-                       user_remark: slip.remark || '',
-                       needs_party: true
-                   });
-               }
-           }
-
-           const netPay = slip.net_pay || 0;
-           if (netPay > 0) {
-               accountsData.push({
-                   account: frm.doc.payroll_clearing_account,
-                   party_type: 'Employee',
-                   party: slip.employee,
-                   credit_in_account_currency: netPay,
-                 //  cost_center: costCenter,
-                   user_remark: slip.remark || '',
-                   needs_party: true
-               });
-           }
-       }
-
-       frappe.set_route('Form', 'Journal Entry', journalEntryName).then(() => {
-           return new Promise(resolve => {
-               const check = setInterval(() => {
-                   if (window.cur_frm && cur_frm.doc.name === journalEntryName && cur_frm.fields_dict.accounts) {
-                       clearInterval(check);
-                       resolve(cur_frm);
-                   }
-               }, 1);
-           });
-       }).then(async (newJournalFrm) => {
-           for (const rowData of accountsData) {
-               const row = newJournalFrm.add_child('accounts');
-               const needs_party = rowData.needs_party;
-               delete rowData.needs_party;
-               
-               await frappe.model.set_value(row.doctype, row.name, {
-                   account: rowData.account,
-                   debit_in_account_currency: rowData.debit_in_account_currency || 0,
-                   credit_in_account_currency: rowData.credit_in_account_currency || 0,
-                   cost_center: rowData.cost_center,
-                   user_remark: rowData.user_remark
-               });
-               
-               await new Promise(resolve => setTimeout(resolve, 100));
-               
-               if (needs_party) {
-                   await frappe.model.set_value(row.doctype, row.name, {
-                       party_type: rowData.party_type,
-                       party: rowData.party
-                   });
-               } else if (rowData.employee) {
-                   await frappe.model.set_value(row.doctype, row.name, {
-                       employee: rowData.employee
-                   });
-               }
-           }
-
-           newJournalFrm.refresh_field('accounts');
-
-           if (frappe.hide_alert && typeof frappe.hide_alert === 'function') {
-               frappe.hide_alert();
-           }
-       }).catch(error => {
-           frappe.msgprint(__('Error creating Accrual Entry: ') + error.message);
-           if (frappe.hide_alert && typeof frappe.hide_alert === 'function') {
-               frappe.hide_alert();
-           }
-       });
-
-   } catch (error) {
-       frappe.msgprint(__('Error creating Accrual Entry: ') + error.message);
-       if (frappe.hide_alert && typeof frappe.hide_alert === 'function') {
-           frappe.hide_alert();
-       }
-   }
+function makeAccrualEntry(frm) {
+    frappe.model.open_mapped_doc({
+        method: 'afmco.people_and_payroll.api.payroll_entry.make_accrual_entry',
+        frm: frm
+    });
 }
 
 async function makeBankEntry(frm) {
@@ -732,15 +543,18 @@ async function makeBankEntry(frm) {
                 }
             ],
             primary_action_label: __('Create Bank Entry'),
-            primary_action: async function(values) {
+            primary_action: function(values) {
                 if (values.apply_fees && (!values.bank_fees_account || !values.vat_account)) {
                     frappe.msgprint(__('Please select Bank Fees Account and VAT Account if applying fees.'));
                     return;
                 }
-                
+
                 dialog.hide();
-                frappe.show_alert({ message: __('Creating Journal Entry...'), indicator: 'blue' });
-                await createBankJournalEntry(frm, salarySlips, values);
+                frappe.model.open_mapped_doc({
+                    method: 'afmco.people_and_payroll.api.payroll_entry.make_bank_entry',
+                    frm: frm,
+                    args: values
+                });
             }
         });
 
@@ -758,175 +572,6 @@ async function makeBankEntry(frm) {
 
     } catch (error) {
         frappe.msgprint(__('Error displaying Bank Entry settings: ') + error.message);
-    }
-}
-
-async function createBankJournalEntry(frm, salarySlips, settings) {
-   try {
-       const journalEntryName = frappe.model.make_new_doc_and_get_name('Journal Entry');
-
-       frappe.model.set_value('Journal Entry', journalEntryName, {
-           voucher_type: 'Bank Entry',
-           posting_date: frm.doc.posting_date,
-           company: frm.doc.company,
-           payroll_entry: frm.doc.name,
-           cheque_no: frm.doc.name, 
-           cheque_date: frm.doc.posting_date,
-           user_remark: `Salary payment from ${frm.doc.start_date} to ${frm.doc.end_date}`
-       });
-
-       frappe.set_route('Form', 'Journal Entry', journalEntryName)
-           .then(() => {
-               return new Promise(resolve => {
-                   const checkFormReady = setInterval(() => {
-                       if (window.cur_frm && window.cur_frm.doctype === 'Journal Entry' && window.cur_frm.doc.name === journalEntryName && window.cur_frm.fields_dict && window.cur_frm.fields_dict.accounts) {
-                           clearInterval(checkFormReady);
-                           resolve(window.cur_frm);
-                       }
-                   }, 100); 
-               });
-           })
-           .then(async (newJournalFrm) => {
-               const accountsData = [];
-               let totalPayment = 0;
-
-               if (!frm.doc.payroll_payable_account) {
-                   frappe.msgprint('Payroll Payable Account is required in Payroll Entry document to create Bank Entry.');
-                   throw new Error('Payroll Payable Account is required in Payroll Entry document to create Bank Entry.');
-               }
-               
-               for (const slip of salarySlips) {
-                   if (slip.net_pay > 0) {
-                       const costCenter = slip.cost_center || frm.doc.cost_center;
-                       if (!costCenter) {
-                           frappe.msgprint(`Cost Center is missing for Salary Slip ${slip.name} or Payroll Entry default for Bank Entry.`);
-                           throw new Error(`Cost Center is missing for Salary Slip ${slip.name} or Payroll Entry default for Bank Entry.`);
-                       }
-
-                       accountsData.push({
-                           account: frm.doc.payroll_clearing_account,
-                           party_type: 'Employee',
-                           party: slip.employee,
-                           debit_in_account_currency: slip.net_pay,
-                           cost_center: costCenter,
-                           user_remark: slip.remark || '',
-                           needs_party: true
-                       });
-                       totalPayment += slip.net_pay;
-                   }
-               }
-
-               if (totalPayment > 0) {
-                   if (!frm.doc.payment_account) {
-                       frappe.msgprint('Payment Account is required in Payroll Entry document to create Bank Entry.');
-                       throw new Error('Payment Account is required in Payroll Entry document to create Bank Entry.');
-                   }
-                   
-                   accountsData.push({
-                       account: frm.doc.payment_account,
-                       bank_account: frm.doc.bank_account || null,
-                       credit_in_account_currency: totalPayment,
-                       cost_center: frm.doc.cost_center,
-                       user_remark: `${frm.doc.cost_center} - ${frm.doc.month_name || ''}`,
-                       needs_party: false
-                   });
-
-                   if (settings.apply_fees && settings.total_fees > 0) {
-                       if (!settings.bank_fees_account || !settings.vat_account) {
-                           frappe.msgprint('Bank Fees Account or VAT Account from dialog settings is missing.');
-                           throw new Error('Bank Fees Account or VAT Account from dialog settings is missing.');
-                       }
-
-                       accountsData.push({
-                           account: settings.bank_fees_account,
-                           debit_in_account_currency: settings.total_fees,
-                           cost_center: frm.doc.cost_center || 'الادارة رئيسي - Head Office - AF',
-                           user_remark: 'Bank transfer fees',
-                           needs_party: false
-                       });
-
-                       accountsData.push({
-                           account: settings.vat_account,
-                           debit_in_account_currency: settings.vat_amount,
-                           user_remark: 'VAT for bank transfer fees',
-                           needs_party: false
-                       });
-
-                       accountsData.push({
-                           account: frm.doc.payment_account,
-                           credit_in_account_currency: settings.total_fees,
-                           user_remark: 'Bank transfer fees',
-                           needs_party: false
-                       });
-
-                       accountsData.push({
-                           account: frm.doc.payment_account,
-                           credit_in_account_currency: settings.vat_amount,
-                           user_remark: 'VAT for bank transfer fees',
-                           needs_party: false
-                       });
-                   }
-               }
-
-               for (const rowData of accountsData) {
-                   const row = newJournalFrm.add_child('accounts');
-                   const needs_party = rowData.needs_party;
-                   delete rowData.needs_party;
-                   
-                   const basic_data = {
-                       account: rowData.account,
-                       debit_in_account_currency: rowData.debit_in_account_currency || 0,
-                       credit_in_account_currency: rowData.credit_in_account_currency || 0,
-                       cost_center: rowData.cost_center,
-                       user_remark: rowData.user_remark
-                   };
-                   
-                   if (rowData.bank_account) {
-                       basic_data.bank_account = rowData.bank_account;
-                   }
-                   
-                   await frappe.model.set_value(row.doctype, row.name, basic_data);
-                   
-                   await new Promise(resolve => setTimeout(resolve, 100));
-                   
-                   if (needs_party) {
-                       await frappe.model.set_value(row.doctype, row.name, {
-                           party_type: rowData.party_type,
-                           party: rowData.party
-                       });
-                   }
-               }
-               
-               newJournalFrm.refresh_field('accounts');
-
-               if (frappe.hide_alert && typeof frappe.hide_alert === 'function') {
-                   frappe.hide_alert();
-               }
-           })
-           .catch(error => {
-               frappe.msgprint(__('Error creating Bank Journal Entry: ') + error.message);
-               if (frappe.hide_alert && typeof frappe.hide_alert === 'function') {
-                   frappe.hide_alert();
-               }
-           });
-           
-   } catch (error) {
-       frappe.msgprint(__('Error creating Bank Journal Entry: ') + error.message);
-       
-       if (frappe.hide_alert && typeof frappe.hide_alert === 'function') {
-           frappe.hide_alert();
-       }
-   }
-}
-
-async function getFullSalarySlips(payrollEntry) {
-    const slips = await getSalarySlips(payrollEntry);
-    const promises = slips.map(slip => frappe.db.get_doc('Salary Slip', slip.name));
-    try {
-        const fullSlips = await Promise.all(promises);
-        return fullSlips;
-    } catch (error) {
-        throw error;
     }
 }
 
@@ -1035,106 +680,16 @@ async function create_employee_wise_journal_entry(frm, salary_slips) {
     try {
         frappe.show_alert({ message: `Creating Journal Entry for ${salary_slips.length} Salary Slips...`, indicator: 'orange' });
 
-        const journal_entry = {
-            doctype: 'Journal Entry',
-            voucher_type: 'Payroll Entry',
-            payroll_entry: frm.doc.name,
-            company: frm.doc.company,
-            posting_date: frm.doc.posting_date || frappe.datetime.now_date(),
-            accounts: []
-        };
-
-        let total_credit = 0;
-        let total_debit = 0;
-
-        for (let slip of salary_slips) {
-            const salary_slip_doc = await frappe.call({
-                method: 'frappe.client.get',
-                args: {
-                    doctype: 'Salary Slip',
-                    name: slip.name
-                }
-            });
-
-            if (!salary_slip_doc.message) {
-                frappe.msgprint(__('Failed to fetch Salary Slip: ' + slip.name));
-                continue;
-            }
-
-            const salary_slip_data = salary_slip_doc.message;
-            let employee_credit = 0;
-            let employee_debit = 0;
-
-
-            salary_slip_data.earnings.forEach(earning => {
-                if (earning.account && earning.amount) {
-                    journal_entry.accounts.push({
-                        account: earning.account,
-                        debit_in_account_currency: earning.amount || 0,
-                        cost_center: salary_slip_data.cost_center || frm.doc.cost_center,
-                        user_remark: salary_slip_data.remark || 'No remark',
-                        employee: salary_slip_data.employee
-                    });
-                    total_credit += earning.amount;
-                    employee_credit += earning.amount;
-                }
-            });
-
-
-            salary_slip_data.deductions.forEach(deduction => {
-                if (deduction.account && deduction.amount) {
-                    journal_entry.accounts.push({
-                        account: deduction.account,
-                        credit_in_account_currency: deduction.amount || 0,
-                        user_remark: salary_slip_data.remark || 'No remark',
-                        party_type: 'Employee',
-                        party: salary_slip_data.employee
-                    });
-                    total_debit += deduction.amount;
-                    employee_debit += deduction.amount;
-                }
-            });
-
-
-            const net_pay = employee_credit - employee_debit;
-            if (net_pay > 0) {
-                journal_entry.accounts.push({
-                    account: frm.doc.payroll_payable_account,
-                    credit_in_account_currency: net_pay,
-                    user_remark: salary_slip_data.remark || 'No remark',
-                    party_type: 'Employee',
-                    party: salary_slip_data.employee
-                });
-                total_debit += net_pay;
-            } else if (net_pay < 0) {
-                journal_entry.accounts.push({
-                    account: frm.doc.payroll_payable_account,
-                    debit_in_account_currency: Math.abs(net_pay),
-                    user_remark: salary_slip_data.remark || 'No remark',
-                    party_type: 'Employee',
-                    party: salary_slip_data.employee
-                });
-                total_credit += Math.abs(net_pay);
-            }
-        }
-
-        if (total_credit !== total_debit) {
-            frappe.msgprint(__('Total Debit must equal Total Credit. The difference is ' + (total_debit - total_credit)));
-            return;
-        }
-
-
         const insert_response = await frappe.call({
-            method: 'frappe.client.insert',
+            method: 'afmco.people_and_payroll.api.payroll_entry.make_employee_wise_journal_entry',
             args: {
-                doc: journal_entry
+                payroll_entry: frm.doc.name,
+                salary_slips: salary_slips.map(slip => slip.name)
             }
         });
 
         if (insert_response.message) {
             frappe.msgprint(__('Employee-wise Journal Entry created for Payroll Entry: ' + frm.doc.name));
-        } else {
-            frappe.msgprint(__('Failed to create Journal Entry for Payroll Entry: ' + frm.doc.name));
         }
     } catch (error) {
         frappe.msgprint(__('An error occurred while creating the Journal Entry: ' + error.message));

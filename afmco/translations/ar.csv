@@ -109,7 +109,6 @@ Create Opening Leave Allocation,إنشاء تخصيص الإجازات الاف�
 Create Payment Order,إنشاء أمر دفع
 Created By,أنشئ بواسطة
 Created By (SADAD Invoice),أنشئ بواسطة (فاتورة سداد)
-Creating Journal Entry...,جار إنشاء قيد اليومية...
 Creating payment order...,جار إنشاء أمر الدفع...
 Creation Date,تاريخ الإنشاء
 Current Roles and Permission,الأدوار والصلاحيات الحالية
@@ -178,8 +177,6 @@ End of Service (Months),مكافأة نهاية الخدمة (أشهر)
 Ending Contract (From Qiwa),العقود المنتهية (من قوى)
 Enter Renewal Preference,أدخل رغبة التجديد
 Equipment Costs,تكاليف المعدات
-Error creating Accrual Entry:,خطأ في إنشاء قيد الاستحقاق:
-Error creating Bank Journal Entry:,خطأ في إنشاء القيد البنكي:
 Error displaying Bank Entry settings:,خطأ في عرض إعدادات القيد البنكي:
 Error occurred while saving the card,حدث خطأ أثناء حفظ البطاقة
 Error updating Renewal Preference for:,خطأ في تحديث رغبة التجديد لـ:
@@ -199,8 +196,6 @@ Export Excel,تصدير Excel
 Failed documents:,المستندات التي فشلت:
 Failed to copy data to clipboard.,تعذر نسخ البيانات إلى الحافظة.
 Failed to create Expense Request: {0},تعذر إنشاء طلب المصروف: {0}
-Failed to create Journal Entry for Payroll Entry:,تعذر إنشاء قيد اليومية لمسير الرواتب:
-Failed to fetch Salary Slip:,تعذر جلب قسيمة الراتب:
 Failed to load details,تعذر تحميل التفاصيل
 Failed to load documents: {0},تعذر تحميل المستندات: {0}
 Failed to retrieve the bank account number and cost center for the applicant.,تعذر جلب رقم الحساب البنكي ومركز التكلفة لمقدم الطلب.
@@ -461,7 +456,6 @@ Please set the Payroll Payable Account.,يرجى تحديد حساب رواتب 
 Policy Info,معلومات الوثيقة
 Policy Number,رقم الوثيقة
 Posting Date,تاريخ الترحيل
-Processing Accrual Entry...,جار معالجة قيد الاستحقاق...
 Profit Margin (%),هامش الربح (%)
 Profit and Discount,الربح والخصم
 Project Branch,فرع المشروع
@@ -15593,3 +15587,5 @@ Official holidays,الإجازات الرسمية
 Upcoming official holidays,الإجازات الرسمية القادمة
 There are no open jobs right now.,لا توجد وظائف متاحة حاليًا.
 Paid Annual Leave - 21 days,إجازة سنوية مدفوعة الراتب - 21 يوم
+"Default account not found for Salary Component: ""{0}"".","لم يعثر على الحساب الافتراضي لمكون الراتب: ""{0}""."
+"Default account not found for Deduction Component: ""{0}"".","لم يعثر على الحساب الافتراضي لمكون الاستقطاع: ""{0}""."
