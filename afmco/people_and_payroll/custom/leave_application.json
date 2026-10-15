@@ -11,7 +11,7 @@
    "module": "People and Payroll",
    "name": "Leave Application-date_of_rejoing",
    "no_copy": "1",
-   "reqd": "1"
+   "reqd": "0"
   }
  ],
  "doctype": "Leave Application",
