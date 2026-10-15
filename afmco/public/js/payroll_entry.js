@@ -8,10 +8,7 @@ frappe.ui.form.on('Payroll Entry', {
     },
     add_context_buttons: function(frm) {},
     onload: function(frm) {
-        if (!frm.doc.previous_results) {
-            frappe.model.set_value(frm.doctype, frm.docname, 'previous_results', '');
-        }
-        frm.errorList = []; 
+        frm.errorList = [];
     },
     refresh: function(frm) {
         if (!frm.doc.previous_results) {
