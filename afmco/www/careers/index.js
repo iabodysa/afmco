@@ -19,9 +19,7 @@
 			const messages = JSON.parse(body._server_messages || "[]");
 			const first = messages.length ? JSON.parse(messages[0]) : null;
 			const text = first && first.message ? first.message : "";
-			const holder = document.createElement("div");
-			holder.innerHTML = text;
-			return holder.textContent.trim();
+			return new DOMParser().parseFromString(text, "text/html").body.textContent.trim();
 		} catch (error) {
 			return "";
 		}
