@@ -2,6 +2,7 @@
  "custom_fields": [
   {
    "allow_on_submit": "1",
+   "depends_on": "eval:doc.docstatus==1",
    "dt": "Leave Application",
    "fieldname": "date_of_rejoing",
    "fieldtype": "Date",
