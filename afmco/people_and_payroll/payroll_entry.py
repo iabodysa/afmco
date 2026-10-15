@@ -76,16 +76,19 @@ def append_account_row(journal_entry, row, party=None, employee=None):
 		"cost_center": None,
 		**row,
 	}
-	row.update(
-		get_account_details_and_party_type(
-			row["account"],
-			journal_entry.posting_date,
-			journal_entry.company,
-			debit=flt(row["debit_in_account_currency"]),
-			credit=flt(row["credit_in_account_currency"]),
-		)
-		or {}
-	)
+	row = {
+		**(
+			get_account_details_and_party_type(
+				row["account"],
+				journal_entry.posting_date,
+				journal_entry.company,
+				debit=flt(row["debit_in_account_currency"]),
+				credit=flt(row["credit_in_account_currency"]),
+			)
+			or {}
+		),
+		**{key: value for key, value in row.items() if value is not None},
+	}
 	if party:
 		row.update({"party_type": "Employee", "party": party})
 	elif employee:
@@ -184,10 +187,14 @@ def build_bank_entry(payroll_entry, fees):
 		f"Salary payment from {payroll_entry.start_date} to {payroll_entry.end_date}",
 	)
 
-	total_payment = 0
-	for slip in submitted_salary_slips(
+	slips = submitted_salary_slips(
 		payroll_entry.name, ["name", "employee", "employee_name", "net_pay", "cost_center", "remark"]
-	):
+	)
+	if not slips:
+		frappe.throw(_("No Salary Slips found for payment."))
+
+	total_payment = 0
+	for slip in slips:
 		if (slip.net_pay or 0) > 0:
 			cost_center = slip.cost_center or payroll_entry.cost_center
 			if not cost_center:
@@ -226,7 +233,8 @@ def build_bank_entry(payroll_entry, fees):
 				{
 					"account": fees.get("bank_fees_account"),
 					"debit_in_account_currency": total_fees,
-					"cost_center": payroll_entry.cost_center,
+					"cost_center": payroll_entry.cost_center
+					or frappe.get_cached_value("Company", payroll_entry.company, "cost_center"),
 					"user_remark": "Bank transfer fees",
 				},
 				{
