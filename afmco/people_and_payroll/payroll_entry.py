@@ -100,10 +100,24 @@ def append_account_row(journal_entry, row, party=None, employee=None):
 	)
 
 
-def build_accrual_entry(payroll_entry):
-	if not payroll_entry.payroll_payable_account:
-		frappe.throw(_("Please set the Payroll Payable Account."))
+def clearing_account(payroll_entry):
+	if payroll_entry.payroll_clearing_account:
+		return payroll_entry.payroll_clearing_account
+	default = payroll_entry.meta.get_field("payroll_clearing_account").default
+	if default and frappe.db.get_value("Account", default, "company") == payroll_entry.company:
+		return default
 
+
+def refuse_if_missing(payroll_entry, missing):
+	if missing:
+		frappe.throw(
+			list(dict.fromkeys(missing)),
+			title=_("Set these for {0} before creating the Journal Entry").format(payroll_entry.company),
+			as_list=True,
+		)
+
+
+def build_accrual_entry(payroll_entry):
 	accounts = component_accounts(payroll_entry.company)
 	slips = [
 		readable_salary_slip(slip.name)
@@ -111,6 +125,31 @@ def build_accrual_entry(payroll_entry):
 	]
 	if not slips:
 		frappe.throw(_("No Salary Slips found."))
+
+	clearing = clearing_account(payroll_entry)
+	missing = []
+	if not payroll_entry.payroll_payable_account:
+		missing.append(_("Please set the Payroll Payable Account."))
+	if not clearing:
+		missing.append(_("Please set the Payroll Clearing Account."))
+	for slip in slips:
+		if not (slip.cost_center or payroll_entry.cost_center):
+			missing.append(
+				_(
+					"Cost Center is missing for Salary Slip {0} and no default Cost Center in Payroll Entry document."
+				).format(slip.name)
+			)
+		missing.extend(
+			_('Default account not found for Salary Component: "{0}".').format(row.salary_component)
+			for row in slip.earnings
+			if not accounts.get(row.salary_component)
+		)
+		missing.extend(
+			_('Default account not found for Deduction Component: "{0}".').format(row.salary_component)
+			for row in slip.deductions
+			if not accounts.get(row.salary_component)
+		)
+	refuse_if_missing(payroll_entry, missing)
 
 	start_date = getdate(payroll_entry.start_date)
 	journal_entry = new_journal_entry(
@@ -122,18 +161,8 @@ def build_accrual_entry(payroll_entry):
 
 	for slip in slips:
 		cost_center = slip.cost_center or payroll_entry.cost_center
-		if not cost_center:
-			frappe.throw(
-				_(
-					"Cost Center is missing for Salary Slip {0} and no default Cost Center in Payroll Entry document."
-				).format(slip.name)
-			)
 		remark = slip.remark or ""
 		for earning in slip.earnings:
-			if not accounts.get(earning.salary_component):
-				frappe.throw(
-					_('Default account not found for Salary Component: "{0}".').format(earning.salary_component)
-				)
 			append_account_row(
 				journal_entry,
 				{
@@ -145,12 +174,6 @@ def build_accrual_entry(payroll_entry):
 				employee=slip.employee,
 			)
 		for deduction in slip.deductions:
-			if not accounts.get(deduction.salary_component):
-				frappe.throw(
-					_('Default account not found for Deduction Component: "{0}".').format(
-						deduction.salary_component
-					)
-				)
 			append_account_row(
 				journal_entry,
 				{
@@ -164,7 +187,7 @@ def build_accrual_entry(payroll_entry):
 			append_account_row(
 				journal_entry,
 				{
-					"account": payroll_entry.payroll_clearing_account,
+					"account": clearing,
 					"credit_in_account_currency": slip.net_pay,
 					"user_remark": remark,
 				},
@@ -176,11 +199,6 @@ def build_accrual_entry(payroll_entry):
 
 
 def build_bank_entry(payroll_entry, fees):
-	if not payroll_entry.payroll_payable_account or not payroll_entry.payment_account:
-		frappe.throw(_("Please set both Payroll Payable Account and Payment Account."))
-	if fees.get("apply_fees") and (not fees.get("bank_fees_account") or not fees.get("vat_account")):
-		frappe.throw(_("Please select Bank Fees Account and VAT Account if applying fees."))
-
 	journal_entry = new_journal_entry(
 		payroll_entry,
 		"Bank Entry",
@@ -193,22 +211,34 @@ def build_bank_entry(payroll_entry, fees):
 	if not slips:
 		frappe.throw(_("No Salary Slips found for payment."))
 
+	clearing = clearing_account(payroll_entry)
+	missing = []
+	if not payroll_entry.payroll_payable_account:
+		missing.append(_("Please set the Payroll Payable Account."))
+	if not clearing:
+		missing.append(_("Please set the Payroll Clearing Account."))
+	if not payroll_entry.payment_account:
+		missing.append(_("Please set the Payment Account."))
+	if fees.get("apply_fees") and (not fees.get("bank_fees_account") or not fees.get("vat_account")):
+		missing.append(_("Please select Bank Fees Account and VAT Account if applying fees."))
+	missing.extend(
+		_("Cost Center is missing for Salary Slip {0} or Payroll Entry default for Bank Entry.").format(
+			slip.name
+		)
+		for slip in slips
+		if (slip.net_pay or 0) > 0 and not (slip.cost_center or payroll_entry.cost_center)
+	)
+	refuse_if_missing(payroll_entry, missing)
+
 	total_payment = 0
 	for slip in slips:
 		if (slip.net_pay or 0) > 0:
-			cost_center = slip.cost_center or payroll_entry.cost_center
-			if not cost_center:
-				frappe.throw(
-					_("Cost Center is missing for Salary Slip {0} or Payroll Entry default for Bank Entry.").format(
-						slip.name
-					)
-				)
 			append_account_row(
 				journal_entry,
 				{
-					"account": payroll_entry.payroll_clearing_account,
+					"account": clearing,
 					"debit_in_account_currency": slip.net_pay,
-					"cost_center": cost_center,
+					"cost_center": slip.cost_center or payroll_entry.cost_center,
 					"user_remark": slip.remark or "",
 				},
 				party=slip.employee,

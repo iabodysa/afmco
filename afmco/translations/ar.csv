@@ -15597,3 +15597,6 @@ Leave details,بيانات الإجازة
 "Default account not found for Deduction Component: ""{0}"".","لم يعثر على الحساب الافتراضي لمكون الاستقطاع: ""{0}""."
 Cost Center is missing for Salary Slip {0} and no default Cost Center in Payroll Entry document.,مركز التكلفة غير محدد في قسيمة الراتب {0} ولا يوجد مركز تكلفة افتراضي في مسير الرواتب.
 Cost Center is missing for Salary Slip {0} or Payroll Entry default for Bank Entry.,مركز التكلفة غير محدد في قسيمة الراتب {0} ولا في مسير الرواتب لإنشاء القيد البنكي.
+Please set the Payroll Clearing Account.,يرجى تحديد حساب تسوية الرواتب.
+Please set the Payment Account.,يرجى تحديد حساب الدفع.
+Set these for {0} before creating the Journal Entry,حدد ما يلي لـ {0} قبل إنشاء قيد اليومية
