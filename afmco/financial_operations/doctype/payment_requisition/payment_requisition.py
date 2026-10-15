@@ -134,7 +134,7 @@ class PaymentRequisition(Document):
 			frappe.throw(_("Payment fields must be sent as an object."))
 		if unknown := sorted(set(values) - set(RECEIPT_FIELDS)):
 			frappe.throw(_("The Accounts Bot cannot write {0}.").format(", ".join(unknown)))
-		changes, sources, skipped, pending = {}, {}, [], None
+		changes, sources, skipped, pending, amount_source = {}, {}, [], None, None
 		for fieldname, entry in values.items():
 			value, source = (entry.get("value"), entry.get("source")) if isinstance(entry, dict) else (entry, None)
 			current = self.get(fieldname)
@@ -142,8 +142,9 @@ class PaymentRequisition(Document):
 				skipped.append({"field": fieldname, "reason": "not empty"})
 				continue
 			value, source = self.receipt_value(fieldname, value), self.receipt_source(source)
-			if fieldname == "paid_amount_cf" and current:
-				current = flt(current, self.precision(fieldname))
+			if fieldname == "paid_amount_cf":
+				amount_source = source
+				current = flt(current, self.precision(fieldname)) if current else current
 			if current == value:
 				skipped.append({"field": fieldname, "reason": "unchanged"})
 			elif current and fieldname == "bank_account" and (reason := self.bank_account_keep_reason(current)):
@@ -152,7 +153,8 @@ class PaymentRequisition(Document):
 				pending = {"field": fieldname, "value": value, "source": source}
 			else:
 				changes[fieldname], sources[fieldname] = value, source
-		if "paid_amount_cf" in values and (pending or self.get(RECEIPT_AMOUNT_FIELD)):
+		stale_pending = "paid_amount_cf" in values and not pending and self.get(RECEIPT_AMOUNT_FIELD)
+		if pending or stale_pending:
 			changes[RECEIPT_AMOUNT_FIELD] = pending["value"] if pending else 0
 		before = {fieldname: self.get(fieldname) for fieldname in changes}
 		if changes:
@@ -164,6 +166,16 @@ class PaymentRequisition(Document):
 				_("Accounts Bot changed {0} from {1} to {2}. Source file: {3}").format(
 					_(self.meta.get_label(fieldname)),
 					*(escape_html(str(v)) if v else "-" for v in (before[fieldname], changes[fieldname], source)),
+				),
+			)
+		if stale_pending:
+			self.add_comment(
+				"Comment",
+				_("Accounts Bot cleared {0} from {1} because the attachment now agrees with {2}. Source file: {3}").format(
+					_(self.meta.get_label(RECEIPT_AMOUNT_FIELD)),
+					escape_html(str(before[RECEIPT_AMOUNT_FIELD])),
+					_(self.meta.get_label("paid_amount_cf")),
+					escape_html(amount_source) if amount_source else "-",
 				),
 			)
 		if pending:
