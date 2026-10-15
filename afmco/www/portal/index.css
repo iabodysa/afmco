@@ -1010,7 +1010,7 @@ html:has(.afm--menu) {
 
 	.afm-hero__grid {
 		display: grid;
-		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+		grid-template-columns: minmax(max-content, 1.05fr) minmax(0, 1fr);
 		align-items: center;
 	}
 
