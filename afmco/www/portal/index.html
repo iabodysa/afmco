@@ -7,7 +7,6 @@
 {%- endmacro -%}
 
 {% block afm_main %}
-		{% set kicker = namespace(n=1) %}
 		<section id="top" class="afm-hero" aria-labelledby="afm-hero-title">
 			<img class="afm-hero__bg" src="/assets/afmco/images/portal/warehouse-1600.webp"
 				srcset="/assets/afmco/images/portal/warehouse-800.webp 800w, /assets/afmco/images/portal/warehouse-1600.webp 1600w"
@@ -48,7 +47,7 @@
 
 		<section id="services" class="afm-section afm-section--scoop" aria-labelledby="afm-services-title">
 			<div class="afm-head">
-				<p class="afm-kicker"><span class="afm-kicker__num">01 /</span>{{ _("Services") }}</p>
+				<p class="afm-kicker">{{ _("Services") }}</p>
 				<div>
 					<h2 id="afm-services-title" class="afm-title">{{ _("Services available to you") }}</h2>
 				</div>
@@ -65,10 +64,9 @@
 		</section>
 
 		{% if news %}
-		{% set kicker.n = kicker.n + 1 %}
 		<section id="news" class="afm-section afm-section--ruled" aria-labelledby="afm-news-title">
 			<div class="afm-head">
-				<p class="afm-kicker"><span class="afm-kicker__num">{{ "%02d" % kicker.n }} /</span>{{ _("News") }}</p>
+				<p class="afm-kicker">{{ _("News") }}</p>
 				<div>
 					<h2 id="afm-news-title" class="afm-title">{{ _("Company News") }}</h2>
 				</div>
@@ -94,10 +92,9 @@
 		{% endif %}
 
 		{% if announcement or holidays %}
-		{% set kicker.n = kicker.n + 1 %}
 		<section id="announcements" class="afm-section afm-section--ruled" aria-labelledby="afm-announcements-title">
 			<div class="afm-head">
-				<p class="afm-kicker"><span class="afm-kicker__num">{{ "%02d" % kicker.n }} /</span>{{ _("Announcements") }}</p>
+				<p class="afm-kicker">{{ _("Announcements") }}</p>
 				<div>
 					<h2 id="afm-announcements-title" class="afm-title">{{ _(announcement.title) | e if announcement else _("Official holidays") }}</h2>
 				</div>
@@ -121,7 +118,7 @@
 
 		<section id="help" class="afm-section afm-section--ruled" aria-labelledby="afm-help-title">
 			<div class="afm-head">
-				<p class="afm-kicker"><span class="afm-kicker__num">{{ "%02d" % (kicker.n + 1) }} /</span>{{ _("Help") }}</p>
+				<p class="afm-kicker">{{ _("Help") }}</p>
 				<div>
 					<h2 id="afm-help-title" class="afm-title">{{ _("Need help?") }}</h2>
 					<div class="afm-help__actions">
