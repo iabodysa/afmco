@@ -66,7 +66,7 @@ class PaymentRequisition(Document):
 		return self.accounts_bot_status not in ACCOUNTS_BOT_IDLE
 
 	def preliminary_update_due(self) -> bool:
-		return not self.request_pending() and bool(
+		return self.accounts_bot_status != STOPPED and not self.request_pending() and bool(
 			frappe.db.exists(
 				"Journal Entry", {"expense_request_cf": self.name, "docstatus": 0, PRELIMINARY_FIELD: 1}
 			)
