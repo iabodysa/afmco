@@ -13006,6 +13006,8 @@ Bank Reference,مرجع البنك
 Accounts Bot Read Receipt,قراءة الإيصال لدى بوت المحاسبة
 Only a Payment Requisition in Document Upload state can be read by the Accounts Bot.,لا يقرأ بوت المحاسبة إلا طلب صرف في مرحلة رفع المستندات.
 Attach the bank receipt before asking the Accounts Bot to read it.,أرفق إيصال البنك قبل ما تطلب من بوت المحاسبة قراءته.
+The Accounts Bot is reading the receipt of this Payment Requisition. Send it for a Journal Entry after the reading finishes.,بوت المحاسبة يقرأ إيصال طلب الصرف هذا. أرسله لقيد اليومية بعد ما تنتهي القراءة.
+The Accounts Bot is preparing the Journal Entry of this Payment Requisition. Ask it to read the receipt after it finishes.,بوت المحاسبة يجهز قيد اليومية لطلب الصرف هذا. اطلب منه قراءة الإيصال بعد ما يخلص.
 Payment fields must be sent as an object.,لازم ترسل حقول الدفع ككائن.
 The Accounts Bot cannot write {0}.,بوت المحاسبة ما يقدر يكتب {0}.
 {0} is not a bank payment date for this Payment Requisition.,{0} ليس تاريخ دفع بنكي لهذا الطلب.
@@ -15608,3 +15610,4 @@ The attachment shows this amount and it differs from Paid Amount. An accountant 
 {0} is not a file attached to this Payment Requisition.,{0} ليس ملفًا مرفقًا بطلب الصرف هذا.
 {0} is not a remark.,{0} ليس بيانًا صالحًا.
 Accounts Bot cleared {0} from {1} because the attachment now agrees with {2}. Source file: {3},بوت المحاسبة مسح {0} من {1} لأن المرفق صار يطابق {2}. ملف المصدر: {3}
+Accounts Bot Question,سؤال بوت المحاسبة
