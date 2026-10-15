@@ -35,7 +35,6 @@
 			<ul class="afm-services afm-jobs">
 				{% for job in jobs %}
 				<li class="afm-service afm-job" data-reveal>
-					<span class="afm-service__num">{{ "%02d" % loop.index }}</span>
 					<h3 class="afm-service__title">{{ job.job_title | e }}</h3>
 					<ul class="afm-job__facts">
 						{% if job.location %}<li>{{ job.location | e }}</li>{% endif %}

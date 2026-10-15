@@ -55,7 +55,6 @@
 			<ul class="afm-services">
 				{% for service in services %}
 				<li class="afm-service" data-reveal>
-					<span class="afm-service__num">{{ "%02d" % loop.index }}</span>
 					<h3 class="afm-service__title">{{ service.title }}</h3>
 					<a class="afm-link" href="{{ service.href }}">{{ service.link_label }}{{ arrow() }}</a>
 				</li>

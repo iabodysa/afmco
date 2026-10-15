@@ -612,12 +612,6 @@ html:has(.afm--menu) {
 	color: var(--afm-green);
 }
 
-.afm-kicker__num {
-	font-family: Montserrat, sans-serif;
-	font-size: 12px;
-	direction: ltr;
-	unicode-bidi: isolate;
-}
 
 .afm-title {
 	max-width: 16em;
@@ -674,12 +668,6 @@ html:has(.afm--menu) {
 	transform: scaleX(1);
 }
 
-.afm-service__num {
-	font-family: Montserrat, sans-serif;
-	font-size: 14px;
-	color: var(--afm-faint);
-	transition: color 0.5s;
-}
 
 .afm-service__title {
 	margin: 18px 0 10px;
@@ -932,9 +920,6 @@ html:has(.afm--menu) {
 	transition-delay: 0.3s;
 }
 
-.afm-service.is-visible .afm-service__num {
-	color: var(--afm-green);
-}
 
 @keyframes afm-ticker {
 	to {
