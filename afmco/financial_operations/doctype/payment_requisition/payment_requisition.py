@@ -24,7 +24,7 @@ ACCOUNTS_BOT_STATES = {DOCUMENT_UPLOAD: 0, "Paid": 1}
 PRELIMINARY_FIELD = "accounts_bot_preliminary"
 RECEIPT_READ_ROLES = ("Auditor", *ACCOUNTS_ROLES)
 RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "beneficiary_employee_cf", "bank_reference_cf", "remark")
-RECEIPT_COMPARED_FIELDS = ("bank_account", "paid_amount_cf", "remark")
+RECEIPT_COMPARED_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "remark")
 SADAD_NUMBER_FIELDS = ("sadad_biller_code", "sadad_bill_number")
 
 
@@ -153,6 +153,8 @@ class PaymentRequisition(Document):
 			value, source = self.receipt_value(fieldname, value), self.receipt_source(source)
 			if fieldname == "paid_amount_cf":
 				current = flt(current, self.precision(fieldname)) if current else current
+			elif fieldname == "bank_payment_date":
+				current = getdate(current) if current else current
 			if current == value:
 				skipped.append({"field": fieldname, "reason": "unchanged"})
 			elif current and fieldname == "bank_account" and (reason := self.bank_account_keep_reason(current)):
