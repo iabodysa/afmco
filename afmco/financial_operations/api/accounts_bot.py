@@ -59,10 +59,3 @@ def fill_payment_fields(name: str, values: dict | str) -> dict:
 	frappe.only_for(ACCOUNTS_BOT_ROLE)
 	return locked_requisition(name).fill_payment_fields(frappe.parse_json(values))
 
-
-@frappe.whitelist(methods=["POST"])
-def confirm_receipt_amount(name: str) -> None:
-	frappe.only_for(RECEIPT_READ_ROLES)
-	requisition = frappe.get_doc("Payment Requisition", name, for_update=True)
-	requisition.check_permission("write")
-	requisition.confirm_receipt_amount()
