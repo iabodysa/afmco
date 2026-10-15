@@ -46,6 +46,8 @@ class AfmcoLeaveApplication:
 		employee.status = "Active"
 		employee.date_of_rejoining = date_of_rejoining
 		employee.save()
+		self.date_of_rejoing = date_of_rejoining
+		self.save()
 		frappe.msgprint(_("Employee status has been updated to Active.", context="Leave Application"))
 		try:
 			frappe.get_doc(
