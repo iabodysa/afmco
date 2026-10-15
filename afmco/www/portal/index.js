@@ -50,6 +50,89 @@
 		if (event.matches && isOpen()) setMenu(false, false);
 	});
 
+	const news = root.querySelector(".afm-news");
+	if (news && !reduced) {
+		const track = news.querySelector(".afm-news__track");
+		const flip = Number(getComputedStyle(root).getPropertyValue("--afm-flip")) || 1;
+		const duration = (Number(track.style.getPropertyValue("--afm-news-count")) || 1) * 9000;
+		let offset = 0;
+		let last = 0;
+		let resumeAt = 0;
+		let drag = null;
+		let moved = false;
+		let hovered = false;
+		let focused = false;
+
+		const period = () => track.scrollWidth / 2;
+		const place = () => {
+			const width = period();
+			offset = ((offset % width) + width) % width;
+			track.style.setProperty("--afm-news-x", `${-offset * flip}px`);
+		};
+		const tick = (now) => {
+			const elapsed = last ? now - last : 0;
+			last = now;
+			if (!drag && !hovered && !focused && now >= resumeAt) {
+				offset += (period() / duration) * elapsed;
+				place();
+			}
+			requestAnimationFrame(tick);
+		};
+		const release = (event) => {
+			if (!drag || event.pointerId !== drag.id) return;
+			drag = null;
+			news.classList.remove("is-dragging");
+			resumeAt = performance.now() + 2500;
+		};
+
+		news.addEventListener("pointerdown", (event) => {
+			if (event.button !== 0) return;
+			drag = { id: event.pointerId, x: event.clientX, start: offset };
+			moved = false;
+		});
+		news.addEventListener("pointermove", (event) => {
+			if (!drag || event.pointerId !== drag.id) return;
+			const distance = event.clientX - drag.x;
+			if (!moved && Math.abs(distance) < 6) return;
+			if (!moved) {
+				moved = true;
+				news.setPointerCapture(event.pointerId);
+				news.classList.add("is-dragging");
+			}
+			offset = drag.start - distance * flip;
+			place();
+		});
+		news.addEventListener("pointerup", release);
+		news.addEventListener("pointercancel", release);
+		news.addEventListener(
+			"click",
+			(event) => {
+				if (!moved) return;
+				moved = false;
+				event.preventDefault();
+				event.stopPropagation();
+			},
+			true
+		);
+		news.addEventListener("dragstart", (event) => event.preventDefault());
+		news.addEventListener("pointerenter", (event) => {
+			hovered = event.pointerType === "mouse";
+		});
+		news.addEventListener("pointerleave", () => {
+			hovered = false;
+		});
+		news.addEventListener("focusin", () => {
+			focused = true;
+		});
+		news.addEventListener("focusout", () => {
+			focused = false;
+		});
+
+		news.classList.add("is-live");
+		place();
+		requestAnimationFrame(tick);
+	}
+
 	if (!observable) {
 		root.classList.add("afm--solid");
 		root.querySelectorAll("[data-reveal]").forEach((item) => item.classList.add("is-visible"));

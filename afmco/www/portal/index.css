@@ -739,6 +739,21 @@ html:has(.afm--menu) {
 	animation-play-state: paused;
 }
 
+.afm-news.is-live {
+	touch-action: pan-y;
+	cursor: grab;
+	user-select: none;
+}
+
+.afm-news.is-dragging {
+	cursor: grabbing;
+}
+
+.afm-news.is-live .afm-news__track {
+	animation: none;
+	transform: translateX(var(--afm-news-x, 0px));
+}
+
 .afm-news__item {
 	flex: 0 0 auto;
 	width: clamp(260px, 28vw, 380px);
