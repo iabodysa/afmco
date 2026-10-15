@@ -18,6 +18,7 @@ REQUEST_SENT = "Request Sent"
 JOURNAL_ENTRY_CREATED = "Journal Entry Created"
 STOPPED = "Stopped - Needs Review"
 RECEIPT_READ = "Receipt Read"
+ACCOUNTS_BOT_IDLE = (None, "", JOURNAL_ENTRY_CREATED, RECEIPT_READ, STOPPED)
 DOCUMENT_UPLOAD = "Document Upload"
 ACCOUNTS_BOT_STATES = {DOCUMENT_UPLOAD: 0, "Paid": 1}
 PRELIMINARY_FIELD = "accounts_bot_preliminary"
@@ -34,7 +35,8 @@ class PaymentRequisition(Document):
 		refusal = self.accounts_bot_refusal()
 		self.set_onload(
 			"accounts_bot_allowed",
-			(not self.accounts_bot_cf or self.preliminary_update_due())
+			not self.request_pending()
+			and (not self.accounts_bot_cf or self.preliminary_update_due())
 			and bool(roles.intersection(ACCOUNTS_ROLES))
 			and not refusal,
 		)
@@ -42,7 +44,7 @@ class PaymentRequisition(Document):
 		receipt_role = bool(roles.intersection(RECEIPT_READ_ROLES)) and not self.receipt_read_refusal()
 		self.set_onload("receipt_read_viewer", receipt_role)
 		self.set_onload(
-			"receipt_read_allowed", receipt_role and not self.receipt_read_pending() and self.has_attachment()
+			"receipt_read_allowed", receipt_role and not self.request_pending() and self.has_attachment()
 		)
 		ai_reading.set_onload(self)
 
@@ -60,14 +62,19 @@ class PaymentRequisition(Document):
 			return _("A Journal Entry already exists for this Payment Requisition.")
 		return None
 
+	def request_pending(self) -> bool:
+		return self.accounts_bot_status not in ACCOUNTS_BOT_IDLE
+
 	def preliminary_update_due(self) -> bool:
-		return self.accounts_bot_status == JOURNAL_ENTRY_CREATED and bool(
+		return not self.request_pending() and bool(
 			frappe.db.exists(
 				"Journal Entry", {"expense_request_cf": self.name, "docstatus": 0, PRELIMINARY_FIELD: 1}
 			)
 		)
 
 	def queue_for_accounts_bot(self) -> str:
+		if self.receipt_read_pending():
+			frappe.throw(_("The Accounts Bot is reading the receipt of this Payment Requisition. Send it for a Journal Entry after the reading finishes."))
 		if self.accounts_bot_cf and not self.preliminary_update_due():
 			return "already queued"
 		if refusal := self.accounts_bot_refusal():
@@ -75,6 +82,7 @@ class PaymentRequisition(Document):
 		self.db_set(
 			{
 				"accounts_bot_cf": 1,
+				"accounts_bot_read_receipt_cf": 0,
 				"accounts_bot_status": REQUEST_SENT,
 				"accounts_bot_note": None,
 				"accounts_bot_updated": now(),
@@ -88,7 +96,7 @@ class PaymentRequisition(Document):
 	def retry_accounts_bot(self) -> None:
 		if self.accounts_bot_status != STOPPED:
 			frappe.throw(_("Only a stopped Accounts Bot request can be retried."))
-		if refusal := self.accounts_bot_refusal():
+		if refusal := self.receipt_read_refusal() if self.accounts_bot_read_receipt_cf else self.accounts_bot_refusal():
 			frappe.throw(refusal)
 		self.db_set(
 			{"accounts_bot_status": REQUEST_SENT, "accounts_bot_note": None, "accounts_bot_updated": now()},
@@ -102,7 +110,7 @@ class PaymentRequisition(Document):
 		return None
 
 	def receipt_read_pending(self) -> bool:
-		return bool(self.accounts_bot_read_receipt_cf) and self.accounts_bot_status not in (RECEIPT_READ, STOPPED)
+		return bool(self.accounts_bot_read_receipt_cf) and self.request_pending()
 
 	def has_attachment(self) -> bool:
 		return bool(frappe.db.exists("File", {"attached_to_doctype": self.doctype, "attached_to_name": self.name}))
@@ -114,6 +122,8 @@ class PaymentRequisition(Document):
 			frappe.throw(_("Attach the bank receipt before asking the Accounts Bot to read it."))
 		if self.receipt_read_pending():
 			return "already queued"
+		if self.request_pending():
+			frappe.throw(_("The Accounts Bot is preparing the Journal Entry of this Payment Requisition. Ask it to read the receipt after it finishes."))
 		self.db_set(
 			{
 				"accounts_bot_read_receipt_cf": 1,
@@ -272,6 +282,8 @@ class PaymentRequisition(Document):
 			"accounts_bot_note": sanitize_html(note, always_sanitize=True) if note else None,
 			"accounts_bot_updated": now(),
 		}
+		if status == RECEIPT_READ:
+			values["accounts_bot_read_receipt_cf"] = 0
 		self.db_set(values, update_modified=False)
 		frappe.publish_realtime(
 			"accounts_bot_status",

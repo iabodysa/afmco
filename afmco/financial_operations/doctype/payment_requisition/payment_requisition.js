@@ -633,6 +633,7 @@ const ACCOUNTS_BOT_STOPPED = 'Stopped - Needs Review';
 const ACCOUNTS_BOT_CREATED = 'Journal Entry Created';
 const ACCOUNTS_BOT_REQUEST_SENT = 'Request Sent';
 const ACCOUNTS_BOT_RECEIPT_READ = 'Receipt Read';
+const ACCOUNTS_BOT_IDLE = [ACCOUNTS_BOT_CREATED, ACCOUNTS_BOT_RECEIPT_READ, ACCOUNTS_BOT_STOPPED, undefined, null, ''];
 const ACCOUNTS_BOT_PICKUP_MINUTES = 15;
 
 function addAccountsBotButton(frm) {
@@ -643,17 +644,15 @@ function addAccountsBotButton(frm) {
     frm.remove_custom_button(retryLabel);
     frm.remove_custom_button(receiptLabel);
     const onload = frm.doc.__onload || {};
+    const idle = ACCOUNTS_BOT_IDLE.includes(frm.doc.accounts_bot_status);
 
-    if (
-        onload.accounts_bot_allowed &&
-        (frm.doc.accounts_bot_cf || !frm.doc.accounts_bot_status || frm.doc.accounts_bot_read_receipt_cf)
-    ) {
+    if (onload.accounts_bot_allowed && idle) {
         frm.add_custom_button(sendLabel, () => callAccountsBot(frm, 'set_accounts_bot'));
     }
     if (onload.accounts_bot_viewer && frm.doc.accounts_bot_cf && frm.doc.accounts_bot_status === ACCOUNTS_BOT_STOPPED) {
         frm.add_custom_button(retryLabel, () => callAccountsBot(frm, 'retry_accounts_bot'));
     }
-    if (onload.receipt_read_allowed && [ACCOUNTS_BOT_RECEIPT_READ, ACCOUNTS_BOT_STOPPED, undefined, null, ''].includes(frm.doc.accounts_bot_status)) {
+    if (onload.receipt_read_allowed && idle) {
         frm.add_custom_button(receiptLabel, () => callAccountsBot(frm, 'request_receipt_read'));
     }
     renderAccountsBotIntro(frm);
