@@ -15600,11 +15600,5 @@ Please set the Payroll Clearing Account.,يرجى تحديد حساب تسوية
 Please set the Payment Account.,يرجى تحديد حساب الدفع.
 Set these for {0} before creating the Journal Entry,حدد ما يلي لـ {0} قبل إنشاء قيد اليومية
 Accounts Bot changed {0} from {1} to {2}. Source file: {3},بوت المحاسبة غيّر {0} من {1} إلى {2}. ملف المصدر: {3}
-Accounts Bot did not change {0}: the attachment shows {1} and the form shows {2}. An accountant must confirm the attachment amount. Source file: {3},بوت المحاسبة ما غيّر {0}: المرفق يبيّن {1} والنموذج فيه {2}. يلزم أن يؤكد المحاسب مبلغ المرفق. ملف المصدر: {3}
-Attachment Amount to Confirm,مبلغ المرفق بانتظار التأكيد
-Confirmed {0} from the attachment: changed from {1} to {2}.,تم تأكيد {0} من المرفق: تغيّر من {1} إلى {2}.
-No attachment amount is waiting for confirmation.,لا يوجد مبلغ من المرفق بانتظار التأكيد.
-The attachment shows this amount and it differs from Paid Amount. An accountant must confirm it before it replaces Paid Amount.,المرفق يبيّن هذا المبلغ وهو يختلف عن المبلغ المدفوع. يلزم أن يؤكده المحاسب قبل أن يحل محل المبلغ المدفوع.
 {0} is not a file attached to this Payment Requisition.,{0} ليس ملفًا مرفقًا بطلب الصرف هذا.
 {0} is not a remark.,{0} ليس بيانًا صالحًا.
-Accounts Bot cleared {0} from {1} because the attachment now agrees with {2}. Source file: {3},بوت المحاسبة مسح {0} من {1} لأن المرفق صار يطابق {2}. ملف المصدر: {3}
