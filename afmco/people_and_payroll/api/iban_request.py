@@ -21,6 +21,7 @@ REQUEST_FIELDS = (
 
 @frappe.whitelist(allow_guest=True, methods=["POST"])
 @rate_limit(limit=5, seconds=60 * 60)
+@rate_limit(key="employee_id", limit=10, seconds=24 * 60 * 60, ip_based=False)
 def submit():
 	certificate = frappe.request.files.get("iban_certificate") if frappe.request else None
 	request = create_request(

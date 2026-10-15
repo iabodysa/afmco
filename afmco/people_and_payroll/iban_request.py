@@ -53,8 +53,6 @@ def resolve_employee(employee_id):
 
 
 def validate_request(values):
-	employee = resolve_employee(clean_text(values, "employee_id"))
-
 	iban = normalise_account(values.get("iban"))
 	valid, reason = parse_saudi_iban(iban)[:2]
 	if not valid:
@@ -63,7 +61,7 @@ def validate_request(values):
 	account_holder = values.get("account_holder")
 	if account_holder not in (EMPLOYEE, ANOTHER_PERSON):
 		frappe.throw(_("Please choose whose name the account is in."), frappe.ValidationError)
-	account_holder_name, note = employee.employee_name, ""
+	account_holder_name, note = None, ""
 	if account_holder == ANOTHER_PERSON:
 		account_holder_name, note = clean_text(values, "account_holder_name"), clean_text(values, "note")
 		if not account_holder_name or not note:
@@ -84,11 +82,12 @@ def validate_request(values):
 	if not cint(values.get("declaration")):
 		frappe.throw(_("Please confirm that the information is correct."), frappe.ValidationError)
 
+	employee = resolve_employee(clean_text(values, "employee_id"))
 	return {
 		"employee": employee.name,
 		"iban": iban,
 		"account_holder": account_holder,
-		"account_holder_name": account_holder_name,
+		"account_holder_name": account_holder_name or employee.employee_name,
 		"note": note,
 		"duration": duration,
 		"valid_from": valid_from,
@@ -115,8 +114,8 @@ def validate_certificate(filename, content):
 
 
 def create_request(values, certificate_filename=None, certificate_content=None):
-	request = validate_request(values)
 	extension = validate_certificate(certificate_filename, certificate_content)
+	request = validate_request(values)
 	certificate = frappe.get_doc(
 		{
 			"doctype": "File",
