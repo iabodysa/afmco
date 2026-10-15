@@ -147,7 +147,7 @@ html {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 24px;
+	gap: 12px;
 	height: 64px;
 	padding-inline: var(--afm-gutter);
 	color: #fff;
@@ -177,6 +177,7 @@ html {
 
 .afm-header__brand {
 	display: flex;
+	flex-shrink: 0;
 	align-items: center;
 }
 
@@ -203,11 +204,12 @@ html {
 .afm-header__tools {
 	display: flex;
 	align-items: center;
-	gap: 10px;
+	gap: 8px;
 }
 
 .afm-header__tools .afm-header__cta {
-	display: none;
+	padding: 0 12px;
+	white-space: nowrap;
 }
 
 .afm-lang {
@@ -232,6 +234,7 @@ html {
 
 .afm-lang a:hover,
 .afm-lang a[aria-current="true"] {
+	display: none;
 	opacity: 1;
 }
 
@@ -423,7 +426,7 @@ html:has(.afm--menu) {
 	height: 100%;
 	max-width: none;
 	object-fit: cover;
-	object-position: 32% 55%;
+	object-position: 50% 35%;
 	transform: scale(1.04);
 }
 
@@ -438,16 +441,17 @@ html:has(.afm--menu) {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	gap: clamp(32px, 6vw, 110px);
+	justify-content: flex-start;
+	gap: clamp(24px, 5vh, 40px);
 }
 
 .afm-hero__mark {
 	order: -1;
 	align-self: center;
 	width: 100%;
-	max-width: min(300px, 46vh);
+	max-width: min(180px, 30vh);
 	padding-top: 2vh;
+	opacity: 0.5;
 }
 
 .afm-mark,
@@ -483,7 +487,7 @@ html:has(.afm--menu) {
 }
 
 .afm-eyebrow {
-	display: flex;
+	display: none;
 	align-items: center;
 	gap: 14px;
 	margin-bottom: clamp(18px, 2.4vw, 30px);
@@ -522,11 +526,8 @@ html:has(.afm--menu) {
 
 .afm-line__text {
 	display: block;
-	animation: afm-rise 1.3s var(--afm-ease) 0.5s both;
-}
-
-.afm[dir="ltr"] .afm-line__text {
 	text-wrap: balance;
+	animation: afm-rise 1.3s var(--afm-ease) 0.5s both;
 }
 
 .afm-line__text--accent {
@@ -552,6 +553,10 @@ html:has(.afm--menu) {
 	border-top: 1px solid rgba(255, 255, 255, 0.22);
 	font-size: 13px;
 	color: rgba(255, 255, 255, 0.8);
+}
+
+.afm-hero__bar > span {
+	display: none;
 }
 
 .afm-cue {
@@ -612,6 +617,14 @@ html:has(.afm--menu) {
 	color: var(--afm-green);
 }
 
+.afm-kicker::before {
+	content: "";
+	flex-shrink: 0;
+	align-self: center;
+	width: 28px;
+	height: 1px;
+	background: currentColor;
+}
 
 .afm-title {
 	max-width: 16em;
@@ -619,6 +632,10 @@ html:has(.afm--menu) {
 	font-weight: 700;
 	line-height: 1.35;
 	text-wrap: balance;
+}
+
+.afm-section--ruled .afm-title {
+	font-size: clamp(28px, 3.4vw, 52px);
 }
 
 .afm[dir="ltr"] .afm-title {
@@ -630,7 +647,7 @@ html:has(.afm--menu) {
 	max-width: 30em;
 	margin-top: 18px;
 	font-size: clamp(17px, 1.3vw, 19px);
-	line-height: 1.85;
+	line-height: 1.8;
 	color: var(--afm-muted);
 	text-wrap: pretty;
 }
@@ -672,7 +689,7 @@ html:has(.afm--menu) {
 .afm-service__title {
 	margin: 18px 0 10px;
 	font-size: clamp(24px, 2.1vw, 30px);
-	font-weight: 700;
+	font-weight: 500;
 	line-height: 1.4;
 }
 
@@ -757,7 +774,7 @@ html:has(.afm--menu) {
 	margin: 0;
 	color: var(--afm-muted);
 	font-size: 18px;
-	line-height: 1.7;
+	line-height: 1.8;
 }
 
 .afm-news__item {
@@ -835,7 +852,7 @@ html:has(.afm--menu) {
 	grid-row: 1 / span 2;
 	width: 24px;
 	height: 24px;
-	color: var(--afm-faint);
+	color: var(--afm-green);
 }
 
 .afm a.afm-contact:hover .afm-arrow {
@@ -958,6 +975,22 @@ html:has(.afm--menu) {
 }
 
 @media (min-width: 600px) {
+	.afm-header {
+		gap: 24px;
+	}
+
+	.afm-header__tools {
+		gap: 10px;
+	}
+
+	.afm-header__tools .afm-header__cta {
+		padding: 0 18px;
+	}
+
+	.afm-lang a[aria-current="true"] {
+		display: inline-flex;
+	}
+
 	.afm-section {
 		padding-bottom: clamp(88px, 10vw, 150px);
 	}
@@ -966,12 +999,26 @@ html:has(.afm--menu) {
 		padding-top: clamp(56px, 7vw, 100px);
 	}
 
-	.afm-header__tools .afm-header__cta {
-		display: inline-flex;
+	.afm-hero__bg {
+		object-position: 32% 55%;
+	}
+
+	.afm-hero__grid {
+		justify-content: space-between;
+		gap: clamp(32px, 6vw, 110px);
 	}
 
 	.afm-hero__mark {
 		max-width: min(400px, 52vh);
+		opacity: 1;
+	}
+
+	.afm-eyebrow {
+		display: flex;
+	}
+
+	.afm-hero__bar > span {
+		display: inline;
 	}
 
 	.afm[dir="ltr"] .afm-hero__title {
@@ -1077,11 +1124,18 @@ html:has(.afm--menu) {
 }
 
 .afm-header__home {
+	display: none;
 	padding-block: 6px;
 	padding-inline-start: 18px;
 	border-inline-start: 1px solid currentColor;
 	font-size: 15px;
 	font-weight: 500;
+}
+
+@media (min-width: 600px) {
+	.afm-header__home {
+		display: inline;
+	}
 }
 
 .afm .breadcrumb-container {
