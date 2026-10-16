@@ -9,6 +9,7 @@ from afmco.www.portal.index import set_site_context
 
 def get_context(context):
 	set_site_context(context)
+	context.title = _("Leave Application")
 	context.description = _("Request annual or sick leave online.")
 	if not frappe.form_dict.is_list:
 		context.template = "afmco/templates/web/web_form.html"

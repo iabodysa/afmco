@@ -20,22 +20,17 @@
 }
 
 .afm-webform .page-content-wrapper .container .page_content .web-form-container > div:not([class]),
-.afm-webform .web-form-title {
+.afm-webform .page-content-wrapper .container .page_content .web-form-header,
+.afm-webform .page-content-wrapper .container .page_content .web-form-footer .btn.discard-btn {
 	display: none;
 }
 
-.afm-webform .page-content-wrapper .container .page_content .web-form-header,
 .afm-webform .page-content-wrapper .container .page_content .web-form {
 	padding: 0;
 	border: 0;
 	border-radius: 0;
 	background: none;
 	box-shadow: none;
-}
-
-.afm-webform .page-content-wrapper .container .page_content .web-form-head {
-	padding-bottom: 0;
-	border-bottom: 0;
 }
 
 .afm-webform .web-form {
@@ -63,6 +58,10 @@
 	color: var(--afm-ink);
 	font-size: 15px;
 	font-weight: 600;
+}
+
+.afm-webform .frappe-control .control-label.reqd::after {
+	color: inherit;
 }
 
 .afm-webform .form-control,
