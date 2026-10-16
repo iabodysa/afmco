@@ -19,7 +19,7 @@ IQAMA_RENEWAL = "PR Created for Iqama Renewal"
 EXIT_REENTRY_VISA = "Exit Re-entry Visa"
 REQUISITION_TYPE = {
 	WORK_CARDS: "Work Permit Fee Payment",
-	IQAMA_RENEWAL: "SADAD Payment",
+	IQAMA_RENEWAL: "Passport Fee Payment",
 	EXIT_REENTRY_VISA: "SADAD Payment",
 }
 TRACKING_FIELDS = ["name", "employee", "employee_name", "renewal_duration", "sadad_invoice"]
