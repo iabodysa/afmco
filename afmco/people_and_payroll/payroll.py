@@ -24,7 +24,7 @@ def candidate_filters(window_start: str) -> dict[str, object]:
 
 
 def slip_filters(employee: str, window_start: str) -> dict[str, object]:
-    return {"employee": employee, "start_date": [">=", window_start]}
+    return {"employee": employee, "start_date": [">=", window_start], "docstatus": 1}
 
 
 def should_deactivate(salary_slips: list) -> bool:

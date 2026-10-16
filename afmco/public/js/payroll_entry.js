@@ -7,351 +7,84 @@ frappe.ui.form.on('Payroll Entry', {
         }));
     },
     add_context_buttons: function(frm) {},
-    onload: function(frm) {
-        frm.errorList = [];
-    },
     refresh: function(frm) {
-        if (!frm.doc.previous_results) {
-            frm.add_custom_button(__('Verify Data', null, 'Payroll Entry'), function() {
-                executeAllVerifications(frm);
-            }).addClass('btn-danger');
+        if (frm.doc.docstatus == 0 && !frm.is_new() && (frm.doc.employees || []).length) {
+            frm.add_custom_button(__('Check Employees'), () => showPayrollCheck(frm, true));
         }
-
-        if (frm.doc.previous_results) {
-            frm.add_custom_button(__('View Previous Results', null, 'Payroll Entry'), function() {
-                showPreviousResults(frm);
-            }).addClass('btn-info');
-        }
-        // new 2025
         if (frm.doc.docstatus == 1 && frm.doc.salary_slips_created == 1) {
             checkSalarySlipsAndAddButtons(frm);
         }
-
-        
+    },
+    after_save: function(frm) {
+        if (frm.doc.docstatus == 0 && (frm.doc.employees || []).length) {
+            showPayrollCheck(frm, false);
+        }
     },
     bank_entry_created: function(frm) {
         if (frm.doc.bank_entry_created) {
             frappe.msgprint(__('You cannot uncheck "Bank Entry Created" once it has been set.'));
             frm.set_value('bank_entry_created', 1);
         }
-    } // new 2025
+    }
 });
-async function executeAllVerifications(frm) {
-    frm.errorList = []; // Reinitialize the error list at the start of verification
-    const verifications = [
-        { function: checkSalaryStructureAndConflicts, progress_label: __('Checking Salary Structure and Conflicts', null, 'Payroll Entry') },
-        { function: checkExistingSalarySlips, progress_label: __('Checking Existing Salary Slips', null, 'Payroll Entry') },
-        { function: checkEmployeeInfo, progress_label: __('Verifying Employee Information', null, 'Payroll Entry') },
-        { function: checkEmployeeHolidays, progress_label: __('Checking Employee Holidays', null, 'Payroll Entry') },
-        { function: checkCostCenterMatch, progress_label: __('Checking Cost Center Match', null, 'Payroll Entry') },
-    ];
 
-    const employees = frm.doc.employees || [];
-    let allWarnings = new Set();
-    let progressDetails = [];
-    let totalSteps = employees.length * verifications.length;
-    let currentStep = 0;
-
-    for (let v = 0; v < verifications.length; v++) {
-        let warnings = [];
-        let progress_message = verifications[v].progress_label;
-
-        for (let i = 0; i < employees.length; i++) {
-            const employee = employees[i];
-            try {
-                const result = await verifications[v].function(frm, employee, frm.doc.start_date, frm.doc.end_date);
-                if (result) {
-                    allWarnings.add(result);
+function showPayrollCheck(frm, always) {
+    return frm.call('get_payroll_check').then(({ message: check }) => {
+        if (!check.blockers.length && !check.held.length && !check.info.length) {
+            if (always) {
+                frappe.show_alert({ message: __('No issues found'), indicator: 'green' });
+            }
+            return;
+        }
+        const dialog = new frappe.ui.Dialog({
+            title: __('Payroll Check'),
+            size: 'large',
+            fields: [{ fieldtype: 'HTML', fieldname: 'body' }],
+        });
+        dialog.fields_dict.body.$wrapper.html(renderPayrollCheck(check));
+        if (check.held.length) {
+            dialog.set_primary_action(__('Include in this payroll'), () => {
+                const employees = dialog.$wrapper.find('input.afmco-held:checked').map((i, input) => input.value).get();
+                if (!employees.length) {
+                    return;
                 }
-            } catch (error) {
-                const errorDetails = {
-                    employee: employee.employee,
-                    error: error.message,
-                    functionName: verifications[v].function.name,
-                    doctype: frm.doc.doctype,
-                    timestamp: frappe.datetime.now_datetime()
-                };
-                frm.errorList.push(errorDetails);
-                allWarnings.add(getLocalizedErrorMessage('Error for employee', employee, error.message));
-            }
-            currentStep++;
-            let progress_percent = (currentStep / totalSteps) * 100;
-            let current_employee_message = `${__('Please wait', null, 'Payroll Entry')} - ${__('Executing procedure', null, 'Payroll Entry')} ${progress_message} (${v + 1} ${__('out of', null, 'Payroll Entry')} ${verifications.length}), ${__('Checking employee', null, 'Payroll Entry')} (${i + 1} ${__('out of', null, 'Payroll Entry')} ${employees.length})`;
-
-            frappe.show_progress(
-                __('Verification in Progress', null, 'Payroll Entry'),
-                progress_percent,
-                100,
-                current_employee_message
-                );
+                frm.call('include_held_employees', { employees }).then(() => {
+                    dialog.hide();
+                    frm.dirty();
+                    frm.save();
+                });
+            });
         }
-    }
-
-    // Hide the progress bar after all verifications are complete
-    frappe.hide_progress(); 
-
-    frm.doc.previous_results = allWarnings.size === 0 ? __('No issues found.', null, 'Payroll Entry') : Array.from(allWarnings).map(warning => `<li>${warning}</li>`).join('');
-    await logErrors(frm, frm.errorList);
-
-    frm.remove_custom_button(__('Verify Data', null, 'Payroll Entry'));
-    if (frm.doc.previous_results) {
-        frm.add_custom_button(__('View Previous Results', null, 'Payroll Entry'), function() {
-            showPreviousResults(frm);
-        }).addClass('btn-info');
-    }
-    if (allWarnings.size === 0) {
-        frappe.show_alert({
-            message: __('Successfully completed verification with no issues.', null, 'Payroll Entry'),
-            indicator: 'green'
-        });
-    } else {
-        frappe.msgprint({
-            title: __('Verification completed with warnings', null, 'Payroll Entry'),
-            message: `<div style="padding: 10px; border: 1px solid #d9534f; background-color: #f2dede; color: #a94442; border-radius: 5px;">
-                        <strong>${__('The following warnings were found:', null, 'Payroll Entry')}</strong>
-                        <ul style="margin-top: 10px;">${frm.doc.previous_results}</ul>
-                      </div>`,
-            indicator: 'red'
-        });
-    }
-}
-async function checkSalaryStructureAndConflicts(frm, employee, start_date, end_date) {
-    try {
-        // Collect data in a single call using appropriate filters for each employee
-        const [salaryStructureAssignments, additionalSalaries] = await Promise.all([
-            getFrappeData(
-                "Salary Structure Assignment",
-                ["name", "from_date", "salary_structure"],
-                { employee: employee.employee, docstatus: 1, from_date: ["<=", start_date] }
-            ),
-            getFrappeData(
-                "Additional Salary",
-                ["name", "salary_component", "overwrite_salary_structure_amount"],
-                { employee: employee.employee, payroll_date: ["between", [start_date, end_date]], docstatus: 1 }
-            )
-        ]);
-
-        if (salaryStructureAssignments.length === 0) {
-            return getLocalizedErrorMessage('No valid salary structure assignment', employee, start_date);
-        }
-
-        const salaryStructure = salaryStructureAssignments[0].salary_structure;
-
-        // Use caching to avoid repetitive queries
-        if (!frm.salaryStructureCache) {
-            frm.salaryStructureCache = {};
-        }
-
-        let salaryStructureDoc;
-        if (frm.salaryStructureCache[salaryStructure]) {
-            salaryStructureDoc = frm.salaryStructureCache[salaryStructure];
-        } else {
-            salaryStructureDoc = await getFrappeDataByName("Salary Structure", salaryStructure);
-            frm.salaryStructureCache[salaryStructure] = salaryStructureDoc;
-        }
-
-        const earnings = salaryStructureDoc.earnings;
-        const salaryComponents = earnings.map(item => item.salary_component);
-
-        // Check for conflicts
-        const conflicts = additionalSalaries.filter(item =>
-            item.overwrite_salary_structure_amount && !salaryComponents.includes(item.salary_component)
-        );
-
-        if (conflicts.length > 0) {
-            let conflictLinks = conflicts.map(item => `<a href="${frappe.utils.get_form_link("Additional Salary", item.name)}" target="_blank">${item.salary_component}</a>`).join(', ');
-            return getLocalizedConflictMessage(employee, start_date, end_date, conflictLinks);
-        }
-
-        return null;
-    } catch (error) {
-        collectError(frm.errorList, employee.employee, error, 'checkSalaryStructureAndConflicts', frm.doctype);
-        throw error;
-    }
-}
-function getLocalizedConflictMessage(employee, startDate, endDate, conflictLinks) {
-    const employeeLink = `<a href="${frappe.utils.get_form_link("Employee", employee.employee)}" target="_blank">${employee.employee_name}</a>`;
-    return __('Salary conflicts found {0} between {1} and {2}: {3}.', [employeeLink, startDate, endDate, conflictLinks], 'Payroll Entry');
-}
-function getLocalizedErrorMessage(message, employee, details = '') {
-    const employeeLink = `<a href="${frappe.utils.get_form_link("Employee", employee.employee)}" target="_blank">${employee.employee}</a>`;
-    const args = [employeeLink, details, employee.employee_name, details[0], details[1]];
-    switch (message) {
-        case 'No valid salary structure assignment':
-            return __('No valid salary structure assignment {0} {1}', args, 'Payroll Entry');
-        case 'Error for employee':
-            return __('Error for employee {0} {1}', args, 'Payroll Entry');
-        case 'Existing salary slip found':
-            return __('Existing salary slip found {0} {1}', args, 'Payroll Entry');
-        case 'Employee is not active':
-            return __('Employee is not active {0} {1}', args, 'Payroll Entry');
-        case 'Employee joining date is after the payroll start date':
-            return __('Employee joining date is after the payroll start date {0} {1}', args, 'Payroll Entry');
-        case 'Employee has a relieving date on or before the payroll start date':
-            return __('Employee has a relieving date on or before the payroll start date {0} {1}', args, 'Payroll Entry');
-        case 'Employee is on leave on the payroll start date':
-            return __('Employee is on leave on the payroll start date {0} {1}', args, 'Payroll Entry');
-        case 'Cost center mismatch':
-            return __('Cost center mismatch {0} {1}', args, 'Payroll Entry');
-        default:
-            return `${message} ${employeeLink} ${details}`;
-    }
-}
-function showPreviousResults(frm) {
-    if (frm.doc.previous_results) {
-        frappe.msgprint({
-            title: __('Previous Verification Results', null, 'Payroll Entry'),
-            indicator: 'blue',
-            message: frm.doc.previous_results
-        });
-    } else {
-        frappe.msgprint(__('No previous results found.', null, 'Payroll Entry'));
-    }
-}
-async function checkExistingSalarySlips(frm, employee, start_date, end_date) {
-    try {
-        const response = await getFrappeData(
-            "Salary Slip", 
-            ["name", "employee", "employee_name"], 
-            { employee: employee.employee, start_date: ["<=", end_date], end_date: [">=", start_date], docstatus: ["<", 2] }
-        );
-
-        if (response.length > 0) {
-            let slip_name = response[0].name;
-            let employee_name = response[0].employee_name;
-            let link = `<a href="${frappe.utils.get_form_link("Salary Slip", slip_name)}" target="_blank">${slip_name}</a>`;
-            return getLocalizedErrorMessage('Existing salary slip found', employee, link);
-        }
-        return null;
-    } catch (error) {
-        collectError(frm.errorList, employee.employee, error, 'checkExistingSalarySlips', frm.doctype);
-        throw error;
-    }
-}
-async function getFrappeData(doctype, fields, filters) {
-    try {
-        const response = await frappe.call({
-            method: "frappe.client.get_list",
-            args: {
-                doctype: doctype,
-                fields: fields,
-                filters: filters
-            }
-        });
-        if (response.message) {
-            return response.message;
-        } else {
-            throw new Error('No data found');
-        }
-    } catch (error) {
-        throw new Error(`Error fetching data from ${doctype}: ${error.message}`);
-    }
-}
-async function getFrappeDataByName(doctype, name) {
-    try {
-        const response = await frappe.call({
-            method: "frappe.client.get",
-            args: {
-                doctype: doctype,
-                name: name
-            }
-        });
-        if (response.message) {
-            return response.message;
-        } else {
-            throw new Error(`No data found for ${name} in ${doctype}`);
-        }
-    } catch (error) {
-        throw new Error(`Error fetching data from ${doctype}: ${error.message}`);
-    }
-}
-function collectError(errorList, employee, error, functionName, docType) {
-    errorList.push({
-        employee: employee,
-        message: error.message,
-        stack: error.stack || error.message,
-        functionName: functionName,
-        docType: docType
+        dialog.show();
     });
 }
-async function logErrors(frm, errorList) {
-    if (!errorList || errorList.length === 0) return;
 
-    const errorMessages = errorList.map(error => 
-        `Error occurred in function: ${error.functionName}\nDocument Type: ${error.docType}\nEmployee: ${error.employee}\nError Message: ${error.message}\nStack Trace: ${error.stack}\nTimestamp: ${frappe.datetime.now_datetime()}\n\n`
-    ).join('\n\n');
-
-    const fullMessage = `The following errors were encountered during the verification process:\n\n${errorMessages}`;
-
-    await frappe.call({
-        method: "afmco.people_and_payroll.api.payroll_entry.log_verification_errors",
-        args: {
-            payroll_entry: frm.is_new() ? null : frm.doc.name,
-            message: fullMessage
-        }
-    });
-}
-async function checkEmployeeInfo(frm, employee, start_date) {
-    try {
-        const response = await getFrappeData(
-            "Employee",
-            ["status", "date_of_joining", "relieving_date"],
-            { name: employee.employee }
-        );
-
-        const info = response[0];
-        let warnings = [];
-        if (info.status !== 'Active') {
-            warnings.push(getLocalizedErrorMessage('Employee is not active', employee));
-        }
-        if (info.date_of_joining > start_date) {
-            warnings.push(getLocalizedErrorMessage('Employee joining date is after the payroll start date', employee));
-        }
-        if (info.relieving_date && info.relieving_date <= start_date) {
-            warnings.push(getLocalizedErrorMessage('Employee has a relieving date on or before the payroll start date', employee));
-        }
-        return warnings.length > 0 ? warnings.join('<br>') : null;
-    } catch (error) {
-        collectError(frm.errorList, employee.employee, error, 'checkEmployeeInfo', frm.doctype);
-        throw error;
+function renderPayrollCheck(check) {
+    const escape = frappe.utils.escape_html;
+    const employeeCell = (row) => row.employee
+        ? `<a href="${frappe.utils.get_form_link('Employee', row.employee)}" target="_blank">${escape(row.employee)}</a> ${escape(row.employee_name || '')}`
+        : '';
+    const issueTable = (rows) => `<table class="table table-bordered table-sm"><tbody>${rows.map((row) =>
+        `<tr><td>${employeeCell(row)}</td><td>${escape(row.reason)}</td></tr>`).join('')}</tbody></table>`;
+    const sections = [];
+    if (check.blockers.length) {
+        sections.push(`<h5 class="text-danger">${__('Must be fixed before submitting')}</h5>${issueTable(check.blockers)}`);
     }
-}
-async function checkEmployeeHolidays(frm, employee, start_date) {
-    try {
-        const response = await getFrappeData(
-            "Leave Application",
-            ["name", "from_date", "to_date"],
-            { employee: employee.employee, status: "Approved", docstatus: 1, from_date: ["<=", start_date], to_date: [">=", start_date] }
-        );
-
-        if (response.length > 0) {
-            let holiday = response[0];
-            let link = `<a href="${frappe.utils.get_form_link("Leave Application", holiday.name)}" target="_blank">${__('View Leave', null, 'Payroll Entry')}</a>`;
-            return getLocalizedErrorMessage('Employee is on leave on the payroll start date', employee, link);
-        }
-        return null;
-    } catch (error) {
-        collectError(frm.errorList, employee.employee, error, 'checkEmployeeHolidays', frm.doctype);
-        throw error;
+    if (check.held.length) {
+        const rows = check.held.map((row) => `<tr>
+            <td><input type="checkbox" class="afmco-held" value="${escape(row.employee)}" checked></td>
+            <td>${employeeCell(row)}</td>
+            <td>${escape(row.department || '')}</td>
+            <td>${escape(row.last_salary_month || __('Never paid'))}</td></tr>`).join('');
+        sections.push(`<h5>${__('On Hold for no salary in the last 3 months')}</h5>
+            <p class="text-muted">${__('Included employees return to Active when their salary slip is submitted.')}</p>
+            <table class="table table-bordered table-sm"><thead><tr><th></th><th>${__('Employee')}</th>
+            <th>${__('Department')}</th><th>${__('Last paid month')}</th></tr></thead><tbody>${rows}</tbody></table>`);
     }
-}
-async function checkCostCenterMatch(frm, employee) {
-    try {
-        const response = await getFrappeData(
-            "Employee",
-            ["payroll_cost_center"],
-            { name: employee.employee }
-        );
-
-        const employeeCostCenter = response[0].payroll_cost_center;
-        if (frm.doc.cost_center !== employeeCostCenter) {
-            return getLocalizedErrorMessage('Cost center mismatch', employee, [frm.doc.cost_center, employeeCostCenter]);
-        }
-        return null;
-    } catch (error) {
-        collectError(frm.errorList, employee.employee, error, 'checkCostCenterMatch', frm.doctype);
-        throw error;
+    if (check.info.length) {
+        sections.push(`<h5 class="text-muted">${__('For your information')}</h5>${issueTable(check.info)}`);
     }
+    return sections.join('');
 }
 
 async function checkSalarySlipsAndAddButtons(frm) {
