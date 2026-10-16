@@ -8,6 +8,7 @@ from frappe import _
 from frappe.utils import cint, getdate, strip_html
 
 from afmco.people_and_payroll.iban import BANK_CODE, CHECKSUM, normalise_account, parse_saudi_iban
+from afmco.people_and_payroll.private_upload import insert_private_file
 
 EMPLOYEE = "Employee"
 ANOTHER_PERSON = "Another person"
@@ -116,14 +117,11 @@ def validate_certificate(filename, content):
 def create_request(values, certificate_filename=None, certificate_content=None):
 	extension = validate_certificate(certificate_filename, certificate_content)
 	request = validate_request(values)
-	certificate = frappe.get_doc(
-		{
-			"doctype": "File",
-			"file_name": f"iban-certificate-{frappe.generate_hash(length=10)}{extension}",
-			"content": certificate_content,
-			"is_private": 1,
-		}
-	).insert(ignore_permissions=True)
+	certificate = insert_private_file(
+		f"iban-certificate-{frappe.generate_hash(length=10)}{extension}",
+		certificate_content,
+		_("The IBAN certificate file is damaged and cannot be opened. Please attach it again or attach a photo of it."),
+	)
 	return frappe.get_doc(
 		{"doctype": "IBAN Update", **request, "iban_certificate": certificate.file_url}
 	).insert(ignore_permissions=True)

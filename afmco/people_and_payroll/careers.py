@@ -8,6 +8,8 @@ from frappe import _
 from frappe.utils import cint, flt, fmt_money, strip_html, validate_email_address, validate_url
 from frappe.utils.html_utils import sanitize_html
 
+from afmco.people_and_payroll.private_upload import insert_private_file
+
 MAX_RESUME_BYTES = 5 * 1024 * 1024
 RESUME_SIGNATURES = {
 	".pdf": b"%PDF-",
@@ -120,14 +122,11 @@ def create_application(values, resume_filename=None, resume_content=None):
 	application = validate_application(values)
 	if resume_content is not None:
 		extension = validate_resume(resume_filename, resume_content)
-		resume = frappe.get_doc(
-			{
-				"doctype": "File",
-				"file_name": f"cv-{frappe.generate_hash(length=10)}{extension}",
-				"content": resume_content,
-				"is_private": 1,
-			}
-		).insert(ignore_permissions=True)
+		resume = insert_private_file(
+			f"cv-{frappe.generate_hash(length=10)}{extension}",
+			resume_content,
+			_("Your CV file is damaged and cannot be opened. Please save it again and upload it."),
+		)
 		application["resume_attachment"] = resume.file_url
 
 	return frappe.get_doc({"doctype": "Job Applicant", "status": "Open", **application}).insert(
