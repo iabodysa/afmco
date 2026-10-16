@@ -175,6 +175,14 @@ html {
 	border-bottom-color: rgba(17, 25, 21, 0.08);
 }
 
+@supports (animation-timeline: scroll()) {
+	.afm-js:not(.afm--solid):not(.afm--menu) .afm-header {
+		animation: afm-fade 0.9s var(--afm-ease) 0.2s backwards, afm-solid linear both;
+		animation-timeline: auto, scroll(root);
+		animation-range: normal, 0 64px;
+	}
+}
+
 .afm-header__brand {
 	display: flex;
 	flex-shrink: 0;
@@ -967,6 +975,14 @@ html:has(.afm--menu) {
 @keyframes afm-progress {
 	from { transform: scaleX(0); }
 	to { transform: scaleX(1); }
+}
+
+@keyframes afm-solid {
+	to {
+		color: var(--afm-ink);
+		background-color: #fff;
+		border-bottom-color: rgba(17, 25, 21, 0.08);
+	}
 }
 
 @keyframes afm-cue {
