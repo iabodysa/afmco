@@ -3,10 +3,22 @@
 
 import frappe
 from frappe import _
-from frappe.utils import flt, get_link_to_form
+from frappe.utils import flt, get_link_to_form, strip
+
+
+def is_b2b_customer(customer):
+	doc = frappe.get_cached_doc("Customer", customer)
+	return bool(doc.get("custom_vat_registration_number")) or any(
+		strip(row.value) for row in doc.get("custom_additional_ids") or []
+	)
 
 
 class AfmcoSalesInvoice:
+	def validate(self):
+		super().validate()
+		if self.customer and not self.customer_address and is_b2b_customer(self.customer):
+			frappe.throw(_("Choose the customer's Billing Address. B2B invoices need one."))
+
 	def on_submit(self):
 		super().on_submit()
 		if frappe.db.get_value("Company", self.company, "create_jv_on_si_submit") != 1:
