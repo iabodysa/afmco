@@ -161,6 +161,7 @@ extend_doctype_class = {
 	"Employee Tax Exemption Declaration": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Employee Tax Exemption Proof Submission": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Expense Claim": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"File": "afmco.financial_operations.file.AfmcoFile",
 	"Goal": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Journal Entry": "afmco.financial_operations.journal_entry.AfmcoJournalEntry",
 	"Leave Application": [
