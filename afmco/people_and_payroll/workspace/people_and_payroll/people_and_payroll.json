@@ -149,7 +149,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-13 08:10:00.000000",
+ "modified": "2026-10-16 18:39:00.000000",
  "module": "People and Payroll",
  "name": "People and Payroll",
  "number_cards": [
@@ -168,7 +168,7 @@
    "format": "{} JV Not Created",
    "label": "PR",
    "link_to": "Payment Requisition",
-   "stats_filter": "{\r\n    \"jv_status\": [\"IN\" , [\"JV Not Created\"]]\r\n}",
+   "stats_filter": "[[\"Payment Requisition\",\"jv_status\",\"=\",\"JV Not Created\"],[\"Payment Requisition\",\"workflow_state\",\"=\",\"Paid\"],[\"Payment Requisition\",\"creation\",\"Timespan\",\"this year\"]]",
    "type": "DocType"
   },
   {
