@@ -1,11 +1,13 @@
 # Copyright (c) 2026, AFMCO and contributors
 # For license information, please see license.txt
 
+import re
+
 import frappe
 from frappe import _
 from frappe.model.document import Document
 from erpnext import get_default_company
-from frappe.utils import escape_html, flt, getdate, money_in_words, now, today
+from frappe.utils import escape_html, flt, getdate, money_in_words, now, strip_html, today
 from frappe.utils.html_utils import sanitize_html
 
 from afmco.approver_check import ai_reading
@@ -26,6 +28,9 @@ RECEIPT_READ_ROLES = ("Auditor", *ACCOUNTS_ROLES)
 RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "beneficiary_employee_cf", "bank_reference_cf", "remark")
 RECEIPT_COMPARED_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "remark")
 SADAD_NUMBER_FIELDS = ("sadad_biller_code", "sadad_bill_number")
+STOP_QUESTION_TAG = "[accounts-bot-stop-question q="
+STOP_QUESTION = re.compile(r"^\[accounts-bot-stop-question q=([A-Za-z0-9_.-]+)\]$")
+STOP_ANSWER_LIMIT = 500
 
 
 class PaymentRequisition(Document):
@@ -104,6 +109,37 @@ class PaymentRequisition(Document):
 			update_modified=True,
 			notify=True,
 		)
+
+	def latest_stop_question(self) -> str | None:
+		for content in frappe.get_all(
+			"Comment",
+			filters={
+				"reference_doctype": self.doctype,
+				"reference_name": self.name,
+				"comment_type": "Info",
+				"content": ["like", f"%{STOP_QUESTION_TAG}%"],
+			},
+			order_by="creation desc",
+			pluck="content",
+		):
+			first_line = next(
+				(line for part in re.split(r"\r?\n|<br\s*/?>", content or "", flags=re.I) if (line := strip_html(part).strip())),
+				"",
+			)
+			if match := STOP_QUESTION.match(first_line):
+				return match.group(1)
+		return None
+
+	def answer_accounts_bot(self, question: str, answer: str) -> None:
+		if self.accounts_bot_status != STOPPED:
+			frappe.throw(_("Only a stopped Accounts Bot request can be answered."))
+		if not question or question != self.latest_stop_question():
+			frappe.throw(_("This Accounts Bot question is no longer open. Reload the form."))
+		answer = (answer or "").strip()
+		if not answer or len(answer) > STOP_ANSWER_LIMIT:
+			frappe.throw(_("Write an answer of up to {0} characters.").format(STOP_ANSWER_LIMIT))
+		self.add_comment("Info", f"[accounts-bot-stop-answer q={question}] {escape_html(answer)}")
+		self.retry_accounts_bot()
 
 	def receipt_read_refusal(self) -> str | None:
 		if self.workflow_state != DOCUMENT_UPLOAD:

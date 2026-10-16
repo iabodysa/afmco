@@ -636,6 +636,8 @@ const ACCOUNTS_BOT_RECEIPT_READ = 'Receipt Read';
 const ACCOUNTS_BOT_IDLE = [ACCOUNTS_BOT_CREATED, ACCOUNTS_BOT_RECEIPT_READ, ACCOUNTS_BOT_STOPPED, undefined, null, ''];
 const ACCOUNTS_BOT_PICKUP_MINUTES = 15;
 const ACCOUNTS_BOT_QUESTION = /^\[accounts-bot-question q=([\w.-]+) field=([\w.-]+)\]$/;
+const ACCOUNTS_BOT_STOP_QUESTION = /^\[accounts-bot-stop-question q=([A-Za-z0-9_.-]+)\]$/;
+const ACCOUNTS_BOT_STOP_ANSWER_LIMIT = 500;
 const accountsBotPressedAt = new Map();
 const accountsBotAnswered = new Set();
 const ACCOUNTS_BOT_ASKING = [ACCOUNTS_BOT_STOPPED, ACCOUNTS_BOT_CREATED];
@@ -658,11 +660,11 @@ function addAccountsBotButton(frm) {
     listenAccountsBotStatus(frm);
 }
 
-function callAccountsBot(frm, method) {
+function callAccountsBot(frm, method, args = {}) {
     const name = frm.doc.name;
     frappe.call({
         method: `afmco.financial_operations.api.accounts_bot.${method}`,
-        args: { name },
+        args: { name, ...args },
         freeze: true,
     })
         .then(() => frm.reload_doc())
@@ -695,7 +697,58 @@ function renderAccountsBotIntro(frm) {
     if (frm.doc.accounts_bot_note && color !== 'blue' && color !== 'yellow') {
         text += ` — ${frm.doc.accounts_bot_note}`;
     }
-    frm.set_intro(text, color);
+    const stopQuestion =
+        status === ACCOUNTS_BOT_STOPPED && onload.accounts_bot_viewer && frm.doc.accounts_bot_cf
+            ? pendingAccountsBotStopQuestion(frm.get_docinfo())
+            : null;
+    frm.set_intro(text, stopQuestion ? 'green' : color);
+    if (stopQuestion && frm.$intro_message) addAccountsBotStopAnswerBox(frm, stopQuestion);
+}
+
+function accountsBotLines(content) {
+    return (content || '')
+        .split(/\r?\n|<br\s*\/?>/i)
+        .map(line => frappe.utils.html2text(line).trim())
+        .filter(Boolean);
+}
+
+function pendingAccountsBotStopQuestion(docinfo) {
+    const logs = ((docinfo && docinfo.info_logs) || [])
+        .filter(log => log.comment_type === 'Info')
+        .map(log => ({ creation: log.creation, lines: accountsBotLines(log.content) }));
+    const latest = logs
+        .filter(log => ACCOUNTS_BOT_STOP_QUESTION.test(log.lines[0] || ''))
+        .sort((a, b) => (a.creation < b.creation ? 1 : -1))[0];
+    if (!latest || !latest.lines[1]) return null;
+    const id = ACCOUNTS_BOT_STOP_QUESTION.exec(latest.lines[0])[1];
+    const answerTag = `[accounts-bot-stop-answer q=${id}]`;
+    if (logs.some(log => (log.lines[0] || '').startsWith(answerTag))) return null;
+    return { id, question: latest.lines[1] };
+}
+
+function addAccountsBotStopAnswerBox(frm, { id, question }) {
+    const $box = $('<div class="mt-2"></div>').appendTo(frm.$intro_message);
+    $('<p class="mb-2"></p>').text(question).appendTo($box);
+    const $answer = $('<textarea class="form-control mb-2" rows="3"></textarea>')
+        .attr('maxlength', ACCOUNTS_BOT_STOP_ANSWER_LIMIT)
+        .appendTo($box);
+    $('<button type="button" class="btn btn-primary btn-sm"></button>')
+        .text(__('Send answer to Account Bot'))
+        .on('click', () => {
+            const answer = ($answer.val() || '').trim();
+            if (answer) callAccountsBot(frm, 'answer_accounts_bot', { q: id, answer });
+        })
+        .appendTo($box);
+}
+
+function refreshAccountsBotStopQuestion(frm) {
+    const name = frm.doc.name;
+    frappe.call({
+        method: 'frappe.desk.form.load.get_docinfo',
+        args: { doctype: frm.doctype, name },
+    }).then(() => {
+        if (frm.doc.name === name) renderAccountsBotIntro(frm);
+    });
 }
 
 function stopAccountsBotStatus(frm) {
@@ -712,6 +765,7 @@ function listenAccountsBotStatus(frm) {
         frm.doc.accounts_bot_note = data.note;
         frm.doc.accounts_bot_updated = data.updated;
         addAccountsBotButton(frm);
+        if (data.status === ACCOUNTS_BOT_STOPPED) refreshAccountsBotStopQuestion(frm);
         if (ACCOUNTS_BOT_ASKING.includes(data.status)) askAccountsBotQuestion(frm);
     };
     frappe.realtime.on('accounts_bot_status', frm.accountsBotStatusHandler);
@@ -735,13 +789,7 @@ function askAccountsBotQuestion(frm) {
 function latestAccountsBotQuestion(docinfo, pressedAt) {
     const latest = (docinfo.info_logs || [])
         .filter(log => log.comment_type === 'Info' && log.creation >= pressedAt)
-        .map(log => ({
-            creation: log.creation,
-            lines: (log.content || '')
-                .split(/\r?\n|<br\s*\/?>/i)
-                .map(line => frappe.utils.html2text(line).trim())
-                .filter(Boolean),
-        }))
+        .map(log => ({ creation: log.creation, lines: accountsBotLines(log.content) }))
         .filter(log => ACCOUNTS_BOT_QUESTION.test(log.lines[0] || ''))
         .sort((a, b) => (a.creation < b.creation ? 1 : -1))[0];
     if (!latest) return null;

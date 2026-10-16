@@ -15606,3 +15606,7 @@ The IBAN certificate file is damaged and cannot be opened. Please attach it agai
 Your CV file is damaged and cannot be opened. Please save it again and upload it.,ملف السيرة الذاتية تالف ولا يمكن فتحه. احفظه مرة أخرى ثم ارفعه.
 The Journal Entry draft uses the first option. Choose another option and the Accounts Bot redrafts it.,مسودة قيد اليومية مبنية على الخيار الأول. اختر خيارًا آخر وسيعيد بوت المحاسبة صياغتها.
 "Choose the customer's Billing Address. B2B invoices need one.",اختر عنوان الفوترة للعميل، ففواتير المنشآت (B2B) تتطلبه.
+Send answer to Account Bot,إرسال الإجابة إلى بوت المحاسبة
+Only a stopped Accounts Bot request can be answered.,لا يمكن الرد إلا على طلب بوت المحاسبة المتوقف.
+This Accounts Bot question is no longer open. Reload the form.,لم يعد سؤال بوت المحاسبة هذا مفتوحًا. أعد تحميل النموذج.
+Write an answer of up to {0} characters.,اكتب إجابة لا تتجاوز {0} حرفًا.
