@@ -15604,3 +15604,4 @@ Payroll Check,فحص مسير الرواتب
 Salary Component {0} has no account for {1},مكون الراتب {0} بلا حساب للشركة {1}
 The IBAN certificate file is damaged and cannot be opened. Please attach it again or attach a photo of it.,ملف شهادة الآيبان تالف ولا يمكن فتحه. أرفقه مرة أخرى أو أرفق صورة منه.
 Your CV file is damaged and cannot be opened. Please save it again and upload it.,ملف السيرة الذاتية تالف ولا يمكن فتحه. احفظه مرة أخرى ثم ارفعه.
+The Journal Entry draft uses the first option. Choose another option and the Accounts Bot redrafts it.,مسودة قيد اليومية مبنية على الخيار الأول. اختر خيارًا آخر وسيعيد بوت المحاسبة صياغتها.

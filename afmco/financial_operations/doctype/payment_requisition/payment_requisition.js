@@ -638,6 +638,7 @@ const ACCOUNTS_BOT_PICKUP_MINUTES = 15;
 const ACCOUNTS_BOT_QUESTION = /^\[accounts-bot-question q=([\w.-]+) field=([\w.-]+)\]$/;
 const accountsBotPressedAt = new Map();
 const accountsBotAnswered = new Set();
+const ACCOUNTS_BOT_ASKING = [ACCOUNTS_BOT_STOPPED, ACCOUNTS_BOT_CREATED];
 
 function addAccountsBotButton(frm) {
     const sendLabel = __('Account Bot');
@@ -711,7 +712,7 @@ function listenAccountsBotStatus(frm) {
         frm.doc.accounts_bot_note = data.note;
         frm.doc.accounts_bot_updated = data.updated;
         addAccountsBotButton(frm);
-        if (data.status === ACCOUNTS_BOT_STOPPED) askAccountsBotQuestion(frm);
+        if (ACCOUNTS_BOT_ASKING.includes(data.status)) askAccountsBotQuestion(frm);
     };
     frappe.realtime.on('accounts_bot_status', frm.accountsBotStatusHandler);
 }
@@ -725,7 +726,7 @@ function askAccountsBotQuestion(frm) {
         method: 'frappe.desk.form.load.get_docinfo',
         args: { doctype: frm.doctype, name },
     }).then(r => {
-        if (!r.docinfo || frm.doc.name !== name || frm.doc.accounts_bot_status !== ACCOUNTS_BOT_STOPPED) return;
+        if (!r.docinfo || frm.doc.name !== name || !ACCOUNTS_BOT_ASKING.includes(frm.doc.accounts_bot_status)) return;
         const question = latestAccountsBotQuestion(r.docinfo, pressedAt);
         if (question) showAccountsBotQuestion(frm, question);
     });
@@ -755,22 +756,29 @@ function latestAccountsBotQuestion(docinfo, pressedAt) {
 }
 
 function showAccountsBotQuestion(frm, { id, question, options }) {
+    const drafted = frm.doc.accounts_bot_status === ACCOUNTS_BOT_CREATED;
+    const intro = drafted
+        ? `<p class="text-muted">${__('The Journal Entry draft uses the first option. Choose another option and the Accounts Bot redrafts it.')}</p>`
+        : '';
     const dialog = new frappe.ui.Dialog({
         title: __('Accounts Bot Question'),
         fields: [
-            { fieldname: 'question', fieldtype: 'HTML', options: `<p>${frappe.utils.escape_html(question)}</p>` },
+            { fieldname: 'question', fieldtype: 'HTML', options: `<p>${frappe.utils.escape_html(question)}</p>${intro}` },
             ...options.map((option, index) => ({
                 fieldname: `option_${index}`,
                 fieldtype: 'Button',
                 label: frappe.utils.escape_html(option),
-                click: () => answerAccountsBotQuestion(frm, dialog, id, option),
+                click: () => {
+                    const method = !drafted ? 'retry_accounts_bot' : index ? 'set_accounts_bot' : null;
+                    answerAccountsBotQuestion(frm, dialog, id, option, method);
+                },
             })),
         ],
     });
     dialog.show();
 }
 
-function answerAccountsBotQuestion(frm, dialog, id, option) {
+function answerAccountsBotQuestion(frm, dialog, id, option, method) {
     dialog.hide();
     frappe.xcall('frappe.desk.form.utils.add_comment', {
         reference_doctype: frm.doctype,
@@ -780,7 +788,7 @@ function answerAccountsBotQuestion(frm, dialog, id, option) {
         comment_by: frappe.session.user_fullname,
     }).then(() => {
         accountsBotAnswered.add(id);
-        callAccountsBot(frm, 'retry_accounts_bot');
+        if (method) callAccountsBot(frm, method);
     });
 }
 
