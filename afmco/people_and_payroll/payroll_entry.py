@@ -7,9 +7,47 @@ from frappe import _
 from frappe.utils import flt, getdate
 
 from afmco.people_and_payroll.employee import employees_on_hold
+from afmco.people_and_payroll.payroll_check import held_employee_rows, payroll_check
 
 
 class AfmcoPayrollEntry:
+	def before_submit(self):
+		super().before_submit()
+		blockers = payroll_check(self)["blockers"]
+		if blockers:
+			frappe.throw(
+				[
+					" ".join(filter(None, (row["employee"], row["employee_name"], row["reason"])))
+					for row in blockers
+				],
+				title=_("Fix these before submitting this payroll"),
+				as_list=True,
+			)
+
+	@frappe.whitelist()
+	def get_payroll_check(self):
+		self.check_permission("read")
+		return payroll_check(self)
+
+	@frappe.whitelist()
+	def include_held_employees(self, employees):
+		self.check_permission("write")
+		if self.docstatus != 0:
+			frappe.throw(_("Employees can be added only while the payroll is a draft"))
+		employees = set(frappe.parse_json(employees))
+		rows = [row for row in held_employee_rows(self) if row.employee in employees]
+		refused = employees - {row.employee for row in rows}
+		if refused:
+			frappe.throw(
+				_("Only employees on Hold that this payroll would pay can be included: {0}").format(
+					", ".join(sorted(refused))
+				)
+			)
+		for row in rows:
+			self.append("employees", row)
+		self.number_of_employees = len(self.employees)
+		self.update_employees_with_withheld_salaries()
+
 	def fill_employee_details(self):
 		unmarked = super().fill_employee_details()
 		held = employees_on_hold(row.employee for row in self.employees)

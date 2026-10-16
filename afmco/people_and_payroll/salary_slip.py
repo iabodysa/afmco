@@ -9,15 +9,18 @@ from frappe.utils import flt
 from hrms.payroll.doctype.salary_slip.salary_slip_loan_utils import set_loan_repayment
 
 from afmco.people_and_payroll.doctype.temporary_iban.temporary_iban import get_active_temporary_ibans
-from afmco.people_and_payroll.employee import validate_not_on_hold
+from afmco.people_and_payroll.employee import HOLD_STATUS, validate_not_on_hold
 
 LOAN_REPAYMENT_COMPONENT = "Loan Repayment"
+ACTIVE_STATUS = "Active"
+RETURN_TO_ACTIVE_SAVEPOINT = "afmco_return_to_active"
 
 
 class AfmcoSalarySlip:
 	def validate(self):
 		super().validate()
-		validate_not_on_hold(self.employee)
+		if not self.is_payroll_entry_employee():
+			validate_not_on_hold(self.employee)
 		if frappe.flags.in_install or frappe.flags.in_migrate:
 			return
 		self.validate_single_loan_deduction()
@@ -43,6 +46,15 @@ class AfmcoSalarySlip:
 				"account",
 				cache=True,
 			)
+
+	def is_payroll_entry_employee(self):
+		return bool(
+			self.payroll_entry
+			and frappe.db.exists(
+				"Payroll Employee Detail",
+				{"parenttype": "Payroll Entry", "parent": self.payroll_entry, "employee": self.employee},
+			)
+		)
 
 	@frappe.whitelist()
 	def get_emp_and_working_day_details(self):
@@ -110,6 +122,7 @@ class AfmcoSalarySlip:
 
 	def on_submit(self):
 		super().on_submit()
+		self.return_held_employee_to_active()
 		if not (self.temporary_iban and self.payroll_entry):
 			return
 		temporary_iban = frappe.get_doc("Temporary IBAN", self.temporary_iban)
@@ -117,3 +130,26 @@ class AfmcoSalarySlip:
 			return
 		temporary_iban.append("wps_used", {"payroll_entry": self.payroll_entry})
 		temporary_iban.save(ignore_permissions=True)
+
+	def return_held_employee_to_active(self):
+		if frappe.db.get_value("Employee", self.employee, "status") != HOLD_STATUS:
+			return
+		frappe.db.savepoint(RETURN_TO_ACTIVE_SAVEPOINT)
+		try:
+			employee = frappe.get_doc("Employee", self.employee)
+			employee.status = ACTIVE_STATUS
+			employee.flags.ignore_mandatory = True
+			employee.flags.ignore_permissions = True
+			employee.save()
+			employee.add_comment(
+				"Comment",
+				f"Status returned to {ACTIVE_STATUS} by submitted Salary Slip {self.name}"
+				f" of Payroll Entry {self.payroll_entry} by {frappe.session.user}.",
+			)
+		except Exception:
+			frappe.db.rollback(save_point=RETURN_TO_ACTIVE_SAVEPOINT)
+			frappe.log_error(
+				title=f"Employee {self.employee} stays on {HOLD_STATUS} after Salary Slip {self.name}",
+				reference_doctype="Salary Slip",
+				reference_name=self.name,
+			)

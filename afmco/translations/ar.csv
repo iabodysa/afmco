@@ -1234,24 +1234,6 @@ Employee Name,اسم الموظف,Leave Application
 Employee ID,الرقم الوظيفي,Leave Application
 E-Invoicing Integration Requirement Violation,مخالفة متطلبات الربط والتكامل للفوترة الإلكترونية,Sales Invoice
 No,لا,Iqama Control
-No previous results found.,لم يتم العثور على نتائج سابقة.,Payroll Entry
-Previous Verification Results,نتائج التحقق السابقة,Payroll Entry
-The following warnings were found:,تم العثور على الملاحظات التالية:,Payroll Entry
-Verification completed with warnings,اكتمل التحقق مع ملاحظات,Payroll Entry
-Successfully completed verification with no issues.,اكتمل التحقق بنجاح دون مشكلات.,Payroll Entry
-View Previous Results,عرض النتائج السابقة,Payroll Entry
-Verify Data,التحقق من البيانات,Payroll Entry
-No issues found.,لا توجد مشكلات.,Payroll Entry
-Verification in Progress,جار التحقق,Payroll Entry
-out of,من,Payroll Entry
-Checking employee,جار التحقق من الموظف,Payroll Entry
-Executing procedure,جار تنفيذ الإجراء,Payroll Entry
-Please wait,الرجاء الانتظار,Payroll Entry
-Checking Cost Center Match,التحقق من تطابق مركز التكلفة,Payroll Entry
-Checking Employee Holidays,التحقق من عطلات الموظف,Payroll Entry
-Verifying Employee Information,التحقق من معلومات الموظف,Payroll Entry
-Checking Existing Salary Slips,التحقق من قسائم الرواتب الموجودة,Payroll Entry
-Checking Salary Structure and Conflicts,التحقق من هيكل الراتب والتعارضات,Payroll Entry
 Payment Request Created,تم إنشاء طلب الصرف,Iqama Renewal Tracking
 Error creating Payment Request for:,خطأ في إنشاء طلب الصرف لـ:,Iqama Renewal Tracking
 Employee is not Active.,الموظف ليس على رأس العمل.,Iqama Control
@@ -1426,16 +1408,6 @@ Monthly Salary,الراتب الشهري,Employee
 This certificate was issued at the employee's request without any liability on the company.,هذا التعريف صدر بناء على طلب الموظف دون أدنى مسؤولية على الشركة.,Employee
 Important Notice,إشعار مهم,Employee
 The employee has an outstanding debt of {0} Saudi Riyals.,الموظف عليه مديونية بقيمة {0} ريال سعودي.,Employee
-View Leave,عرض الإجازة,Payroll Entry
-No valid salary structure assignment {0} {1},لا يوجد إسناد هيكل راتب صالح {0} {1},Payroll Entry
-Error for employee {0} {1},خطأ للموظف {0}: {1},Payroll Entry
-Existing salary slip found {0} {1},تم العثور على قسيمة راتب موجودة {0} {1},Payroll Entry
-Employee is not active {0} {1},الموظف غير نشط {0} {1},Payroll Entry
-Employee joining date is after the payroll start date {0} {1},تاريخ مباشرة الموظف بعد تاريخ بدء مسير الرواتب {0} {1},Payroll Entry
-Employee has a relieving date on or before the payroll start date {0} {1},يقع تاريخ ترك العمل للموظف في تاريخ بدء مسير الرواتب أو قبله {0} {1},Payroll Entry
-Employee is on leave on the payroll start date {0} {1},الموظف في إجازة في تاريخ بدء الرواتب {0}. {1},Payroll Entry
-Cost center mismatch {0} {1},عدم تطابق مركز التكلفة {0} {1},Payroll Entry
-Salary conflicts found {0} between {1} and {2}: {3}.,تم العثور على تعارض في مكون الراتب {0} بين {1} و{2}: {3}.,Payroll Entry
 Rejoin After Leave,المباشرة بعد الإجازة,Leave Application
 Date of Rejoining,تاريخ العودة,Leave Application
 The rejoining date must be the day after the leave end date. Please adjust the rejoining date.,يجب أن يكون تاريخ العودة هو اليوم التالي لتاريخ نهاية الإجازة. يرجى تعديل تاريخ العودة.,Leave Application
@@ -15606,3 +15578,27 @@ Accounts Bot Question,سؤال بوت المحاسبة
 Bank transfer fees,رسوم تحويل بنكية
 VAT for bank transfer fees,ضريبة القيمة المضافة على رسوم التحويل البنكية
 Employee {0} has a loan installment and a Loan Repayment deduction this period,للموظف {0} قسط قرض وخصم سداد قرض في هذه الفترة
+Already has salary slip {0} in this period,لديه قسيمة راتب {0} في هذه الفترة
+Check Employees,فحص الموظفين
+Date of Joining is missing,تاريخ المباشرة غير مسجل
+Employee ID {0} has a character a salary slip name cannot hold,رقم الموظف {0} فيه رمز لا يقبله اسم قسيمة الراتب
+Employees can be added only while the payroll is a draft,لا تمكن إضافة الموظفين إلا والمسير مسودة
+Fix these before submitting this payroll,صحّح ما يلي قبل اعتماد مسير الرواتب
+For your information,للعلم
+Inactive employee,موظف غير نشط
+Include in this payroll,ضمّهم إلى هذا المسير
+Included employees return to Active when their salary slip is submitted.,يعود الموظف المضموم على رأس العمل عند اعتماد قسيمة راتبه.
+Joins after this payroll period,يباشر بعد فترة هذا المسير
+Last paid month,آخر شهر صُرف فيه الراتب
+Left before this payroll period,ترك العمل قبل فترة هذا المسير
+More than one Additional Salary overwrites {0} in this period,أكثر من راتب إضافي يستبدل {0} في هذه الفترة
+Must be fixed before submitting,يجب تصحيحه قبل الاعتماد
+Never paid,لم يُصرف له راتب
+No holiday list covers this payroll period,لا توجد قائمة عطلات تغطي فترة هذا المسير
+No issues found,لا توجد ملاحظات
+"No payroll cost center, books to {0}","لا يوجد مركز تكلفة رواتب، يُقيَّد على {0}"
+No salary structure assignment from {0} or earlier,لا يوجد إسناد هيكل راتب يبدأ في {0} أو قبله
+On Hold for no salary in the last 3 months,معلّقون لعدم صرف رواتبهم خلال آخر 3 أشهر
+Only employees on Hold that this payroll would pay can be included: {0},لا يُضم إلا الموظفون المعلّقون الذين يشملهم هذا المسير: {0}
+Payroll Check,فحص مسير الرواتب
+Salary Component {0} has no account for {1},مكون الراتب {0} بلا حساب للشركة {1}
