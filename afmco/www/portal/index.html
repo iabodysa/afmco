@@ -6,44 +6,119 @@
 <path class="afm-arc afm-arc--late" d="M1275 43.2 A262 262 0 1 1 1275 565.8" pathLength="1"/>
 {%- endmacro -%}
 
+{%- macro news_heading(item, tag) -%}
+<{{ tag }} class="afm-news-title">{% if item.url %}<a href="{{ item.url | e }}">{{ _(item.heading) | e }}</a>{% else %}{{ _(item.heading) | e }}{% endif %}</{{ tag }}>
+{%- endmacro -%}
+
+{% block afm_class %}afm-cinema{% endblock %}
+
 {% block afm_main %}
-		<section id="top" class="afm-hero" aria-labelledby="afm-hero-title">
-			<img class="afm-hero__bg" src="/assets/afmco/images/portal/warehouse-1600.webp"
-				srcset="/assets/afmco/images/portal/warehouse-800.webp 800w, /assets/afmco/images/portal/warehouse-1600.webp 1600w"
-				sizes="100vw" alt="" width="1600" height="897" fetchpriority="high">
-			<div class="afm-hero__shade" aria-hidden="true"></div>
-
-			<div class="afm-hero__grid">
-				<div class="afm-hero__copy">
-					<p class="afm-eyebrow afm-in afm-in--1"><span class="afm-eyebrow__rule"></span>{{ _("AFMCO Employee Portal") }}</p>
-					<h1 id="afm-hero-title" class="afm-hero__title">
-						<span class="afm-line"><span class="afm-line__text">{{ _("All your services") }}</span></span>
-						<span class="afm-line"><span class="afm-line__text afm-line__text--accent">{{ _("in one place") }}</span></span>
-					</h1>
-					<div class="afm-hero__actions afm-in afm-in--4">
-						<a class="afm-pill afm-pill--primary" href="{{ portal_link }}">{{ portal_label }}{{ arrow() }}</a>
-						<a class="afm-pill" href="{{ support_url }}">{{ _("Open a support ticket") }}</a>
+		<div id="top" class="afm-cine">
+			{% if news %}
+			<section class="afm-stage" aria-roledescription="carousel" aria-labelledby="afm-stage-kicker"
+				data-label-pause="{{ _('Pause auto-advance') }}" data-label-play="{{ _('Resume auto-advance') }}">
+				<div class="afm-stage__media" aria-hidden="true">
+					{% for item in news %}
+					<picture class="afm-stage__pic{% if loop.first %} is-current{% endif %}" data-slide>
+						{% if item.custom_phone_image %}<source media="(orientation: portrait) and (max-width: 1023px)" srcset="{{ item.custom_phone_image | e }}">{% endif %}
+						<img src="{{ (item.image or hero_image) | e }}" alt="" decoding="async"{% if loop.first %} fetchpriority="high"{% endif %}>
+					</picture>
+					{% endfor %}
+				</div>
+				<div class="afm-stage__shade" aria-hidden="true"></div>
+				<div class="afm-stage__inner">
+					<div class="afm-stage__copy">
+						<p class="afm-eyebrow" id="afm-stage-kicker"><span class="afm-eyebrow__rule"></span>{{ _("Company News") }}</p>
+						<div class="afm-stage__titles" aria-live="polite">
+							{% for item in news %}
+							<div class="afm-stage__headline{% if loop.first %} is-current{% endif %}" data-slide{% if not loop.first %} hidden{% endif %}>
+								{{ news_heading(item, "h2") }}
+								{% if item.description %}<p class="afm-stage__text">{{ _(item.description) | e }}</p>{% endif %}
+							</div>
+							{% endfor %}
+						</div>
+						{% if news | length > 1 %}
+						<div class="afm-stage__controls" hidden>
+							<button type="button" class="afm-ctrl afm-ctrl--dir" data-step="-1" aria-label="{{ _('Previous news') }}"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 6l-6 6 6 6"/></svg></button>
+							<span class="afm-count" dir="ltr"><b data-count>01</b> / {{ "%02d" | format(news | length) }}</span>
+							<button type="button" class="afm-ctrl afm-ctrl--dir" data-step="1" aria-label="{{ _('Next news') }}"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6"/></svg></button>
+							<span class="afm-timer" aria-hidden="true"><i></i></span>
+							<button type="button" class="afm-ctrl" data-pause aria-label="{{ _('Pause auto-advance') }}"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6v12M15 6v12"/></svg></button>
+						</div>
+						{% endif %}
 					</div>
+					{% if news | length > 1 %}
+					<nav class="afm-thumbs" aria-label="{{ _('Company News') }}" hidden>
+						<ul>
+							{% for item in news %}
+							<li>
+								<button type="button" class="afm-thumb" data-go="{{ loop.index0 }}" aria-current="{{ 'true' if loop.first else 'false' }}">
+									<img src="{{ (item.image or hero_image) | e }}" alt="" loading="lazy" decoding="async">
+									<span><small dir="ltr">{{ "%02d" | format(loop.index) }}</small>{{ _(item.heading) | e }}</span>
+								</button>
+							</li>
+							{% endfor %}
+						</ul>
+					</nav>
+					{% endif %}
 				</div>
-				<div class="afm-hero__mark" aria-hidden="true">
-					<svg class="afm-mark" viewBox="0 0 1600 609" focusable="false">
-						<defs>
-							<mask id="afm-ring-hero" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="609">{{ ring_arcs() }}</mask>
-							<clipPath id="afm-word-top"><rect x="0" y="0" width="968" height="262"/></clipPath>
-							<clipPath id="afm-word-bottom"><rect x="0" y="262" width="968" height="347"/></clipPath>
-						</defs>
-						<image href="/assets/afmco/images/portal/afmco-logo.webp" width="1600" height="609" mask="url(#afm-ring-hero)"/>
-						<g clip-path="url(#afm-word-top)"><g class="afm-word"><image href="/assets/afmco/images/portal/afmco-logo.webp" width="1600" height="609"/></g></g>
-						<g clip-path="url(#afm-word-bottom)"><g class="afm-word afm-word--late"><image href="/assets/afmco/images/portal/afmco-logo.webp" width="1600" height="609"/></g></g>
-					</svg>
+			</section>
+			{% else %}
+			<div class="afm-stage afm-stage--still" aria-hidden="true">
+				<div class="afm-stage__media">
+					<picture class="afm-stage__pic is-current">
+						<img src="{{ hero_image }}" srcset="/assets/afmco/images/portal/warehouse-800.webp 800w, {{ hero_image }} 1600w"
+							sizes="100vw" alt="" width="1600" height="897" fetchpriority="high">
+					</picture>
 				</div>
+				<div class="afm-stage__shade"></div>
 			</div>
+			{% endif %}
 
-			<div class="afm-hero__bar afm-in afm-in--5">
-				<span>{{ _("This portal is for AFMCO employees only.") }}</span>
-				<a class="afm-cue" href="#services">{{ _("Services") }}<span class="afm-cue__line" aria-hidden="true"></span></a>
+			<section class="afm-intro" aria-labelledby="afm-hero-title">
+				<svg class="afm-intro__ring" viewBox="980 0 628 609" aria-hidden="true" focusable="false">
+					<defs>
+						<mask id="afm-ring-intro" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="609">{{ ring_arcs() }}</mask>
+					</defs>
+					<image href="/assets/afmco/images/portal/afmco-logo.webp" width="1600" height="609" mask="url(#afm-ring-intro)"/>
+				</svg>
+				<div class="afm-intro__head">
+					<p class="afm-eyebrow"><span class="afm-eyebrow__rule"></span>{{ _("AFMCO Employee Portal") }}</p>
+					<h1 id="afm-hero-title" class="afm-intro__title">
+						<span>{{ _("All your services") }}</span>
+						<em>{{ _("in one place") }}</em>
+					</h1>
+				</div>
+				<div class="afm-intro__actions">
+					<a class="afm-pill afm-pill--primary" href="{{ portal_link }}">{{ portal_label }}{{ arrow() }}</a>
+					<a class="afm-pill afm-pill--ghost" href="{{ support_url }}">{{ _("Open a support ticket") }}</a>
+				</div>
+				<p class="afm-intro__note">{{ _("This portal is for AFMCO employees only.") }}</p>
+			</section>
+		</div>
+
+		{% if news %}
+		<section id="news" class="afm-reel" aria-labelledby="afm-news-title">
+			<div class="afm-head">
+				<p class="afm-kicker">{{ _("News") }}</p>
+				<div>
+					<h2 id="afm-news-title" class="afm-title">{{ _("Company News") }}</h2>
+				</div>
 			</div>
+			<ul class="afm-reel__track" aria-roledescription="carousel" aria-labelledby="afm-news-title">
+				{% for item in news %}
+				<li class="afm-card" aria-label="{{ loop.index }} / {{ news | length }}">
+					<picture>
+						<source media="(orientation: landscape)" srcset="{{ (item.image or hero_image) | e }}">
+						<img src="{{ (item.custom_phone_image or item.image or hero_image) | e }}" alt="" loading="lazy" decoding="async">
+					</picture>
+					<div class="afm-card__copy">{{ news_heading(item, "h3") }}</div>
+				</li>
+				{% endfor %}
+			</ul>
+			<div class="afm-reel__dots" aria-hidden="true"></div>
 		</section>
+		{% endif %}
 
 		<section id="services" class="afm-section afm-section--scoop" aria-labelledby="afm-services-title">
 			<div class="afm-head">
@@ -60,36 +135,6 @@
 				</li>
 				{% endfor %}
 			</ul>
-		</section>
-
-		<section id="news" class="afm-section afm-section--ruled" aria-labelledby="afm-news-title">
-			<div class="afm-head">
-				<p class="afm-kicker">{{ _("News") }}</p>
-				<div>
-					<h2 id="afm-news-title" class="afm-title">{{ _("Company News") }}</h2>
-				</div>
-			</div>
-			{% if news %}
-			<div class="afm-news">
-				<ul class="afm-news__track" style="--afm-news-count: {{ news | length }}">
-					{% for copy in range(2) %}{% for item in news %}
-					<li class="afm-news__item"{% if copy %} aria-hidden="true"{% endif %}>
-						{% if item.image %}
-						<div class="afm-activity__media">
-							<img class="afm-activity__img" src="{{ item.image | e }}" alt="" loading="lazy" decoding="async">
-						</div>
-						{% endif %}
-						<h3 class="afm-activity__title">
-							{% if item.url %}<a href="{{ item.url | e }}"{% if copy %} tabindex="-1"{% endif %}>{{ _(item.heading) | e }}</a>{% else %}{{ _(item.heading) | e }}{% endif %}
-						</h3>
-						{% if item.description %}<p class="afm-activity__text">{{ _(item.description) | e }}</p>{% endif %}
-					</li>
-					{% endfor %}{% endfor %}
-				</ul>
-			</div>
-			{% else %}
-			<p class="afm-news__empty">{{ _("No company news yet. New announcements will appear here.") }}</p>
-			{% endif %}
 		</section>
 
 		{% if announcement or holidays %}
@@ -139,6 +184,11 @@
 				{% endfor %}
 			</ul>
 		</section>
+
+		<div class="afm-mbar" role="region" aria-label="{{ _('Quick access') }}">
+			<a class="afm-pill afm-pill--primary" href="{{ portal_link }}">{{ portal_label }}</a>
+			<a class="afm-pill afm-pill--ghost" href="#help">{{ _("Help") }}</a>
+		</div>
 {% endblock %}
 
 {% block afm_footer_sign %}

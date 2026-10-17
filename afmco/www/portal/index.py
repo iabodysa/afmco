@@ -23,6 +23,8 @@ NEWS_LIMIT = 10
 ANNOUNCEMENTS_ROUTE = "announcements"
 HOLIDAY_LIMIT = 6
 SHOW_EMPLOYEE_APP_CARD = False
+HERO_IMAGE = "/assets/afmco/images/portal/warehouse-1600.webp"
+HEADER_LOGO = {"src": "/assets/afmco/images/portal/afmco-logo-full-white.svg", "width": 983, "height": 424}
 LANGUAGE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365
 LINE_BREAK_TAGS = re.compile(r"<br\s*/?>|</(?:p|div|li|h[1-6])>", re.IGNORECASE)
 
@@ -40,6 +42,8 @@ def get_context(context):
 	context.announcement = get_announcement()
 	context.holidays = get_holidays()
 	context.hr_contacts = get_hr_contacts()
+	context.header_logo = HEADER_LOGO
+	context.hero_image = HERO_IMAGE
 
 
 def set_site_context(context):
@@ -84,7 +88,7 @@ def get_news():
 	return frappe.get_all(
 		"Website Slideshow Item",
 		filters={"parenttype": "Website Slideshow", "parent": NEWS_SLIDESHOW},
-		fields=["image", "heading", "description", "url"],
+		fields=["image", "custom_phone_image", "heading", "description", "url"],
 		order_by="idx asc",
 		limit=NEWS_LIMIT,
 	)
