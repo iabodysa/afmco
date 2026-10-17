@@ -15610,3 +15610,4 @@ Send answer to Account Bot,إرسال الإجابة إلى بوت المحاس�
 Only a stopped Accounts Bot request can be answered.,لا يمكن الرد إلا على طلب بوت المحاسبة المتوقف.
 This Accounts Bot question is no longer open. Reload the form.,لم يعد سؤال بوت المحاسبة هذا مفتوحًا. أعد تحميل النموذج.
 Write an answer of up to {0} characters.,اكتب إجابة لا تتجاوز {0} حرفًا.
+Payment Date: {0},تاريخ الدفع: {0}
