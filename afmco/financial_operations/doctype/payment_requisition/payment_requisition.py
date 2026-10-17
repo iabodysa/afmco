@@ -23,6 +23,7 @@ RECEIPT_READ = "Receipt Read"
 ACCOUNTS_BOT_IDLE = (None, "", JOURNAL_ENTRY_CREATED, RECEIPT_READ, STOPPED)
 DOCUMENT_UPLOAD = "Document Upload"
 ACCOUNTS_BOT_STATES = {DOCUMENT_UPLOAD: 0, "Paid": 1}
+PAYMENT_DATE_STATES = (DOCUMENT_UPLOAD, "Paid")
 PRELIMINARY_FIELD = "accounts_bot_preliminary"
 RECEIPT_READ_ROLES = ("Auditor", *ACCOUNTS_ROLES)
 RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "beneficiary_employee_cf", "bank_reference_cf", "remark")
@@ -51,7 +52,7 @@ class PaymentRequisition(Document):
 		ai_reading.set_onload(self)
 
 	def payment_dates(self) -> list:
-		if self.workflow_state != DOCUMENT_UPLOAD:
+		if self.workflow_state not in PAYMENT_DATE_STATES:
 			return []
 		journal_entries = frappe.get_all(
 			"Journal Entry",
