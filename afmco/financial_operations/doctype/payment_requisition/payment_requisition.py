@@ -53,12 +53,13 @@ class PaymentRequisition(Document):
 	def payment_dates(self) -> list:
 		if self.workflow_state != DOCUMENT_UPLOAD:
 			return []
-		return frappe.get_all(
+		journal_entries = frappe.get_all(
 			"Journal Entry",
-			filters={"expense_request_cf": self.name, "docstatus": 1},
-			pluck="posting_date",
+			filters={"expense_request_cf": self.name, "docstatus": ["<", 2]},
+			fields=["posting_date", "docstatus", PRELIMINARY_FIELD],
 			order_by="posting_date asc",
 		)
+		return [row.posting_date for row in journal_entries if row.docstatus or not row.get(PRELIMINARY_FIELD)]
 
 	def accounts_bot_state_refusal(self) -> str | None:
 		if ACCOUNTS_BOT_STATES.get(self.workflow_state) != self.docstatus:

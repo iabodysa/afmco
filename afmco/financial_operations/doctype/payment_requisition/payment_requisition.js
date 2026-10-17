@@ -545,6 +545,10 @@ frappe.ui.form.on('Payment Requisition', {
         frappe.require(["/assets/afmco/js/attachment_check.js", "/assets/afmco/css/attachment_check.css"], () => afmco.attachment_check.render(frm));
     },
 
+    after_workflow_action(frm) {
+        frm.reload_doc();
+    },
+
     remark(frm) {
         renderRemarkExcelDashboard(frm);
     },
