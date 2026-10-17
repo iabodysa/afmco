@@ -612,10 +612,11 @@ function showAmountInWords(frm, words) {
 }
 
 function showPaymentDates(frm) {
+    (frm.payment_date_indicators || []).forEach(($indicator) => $indicator.remove());
     const dates = (frm.doc.__onload || {}).payment_dates || [];
-    dates.forEach((date) => {
-        frm.dashboard.add_indicator(__('Payment Date: {0}', [frappe.datetime.str_to_user(date)]), 'blue');
-    });
+    frm.payment_date_indicators = dates.map((date) =>
+        frm.dashboard.add_indicator(__('Payment Date: {0}', [frappe.datetime.str_to_user(date)]), 'blue')
+    );
 }
 
 // Journal Entry creation -------------------------------------------------------
