@@ -584,214 +584,11 @@ function copy_to_clipboard_as_markdown(docs) {
     window.getSelection().removeAllRanges(); // Deselect the text
 }
 
-function ensure_dashboard_style_loaded() {
-    if ($('#custom-dashboard-style').length === 0) {
-        $('<style id="custom-dashboard-style">').html(`
-            .list-dashboard {
-                display: flex;
-                gap: 16px;
-                margin-bottom: 20px;
-                flex-wrap: wrap;
-                padding: 20px;
-                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-                border-radius: var(--border-radius-lg);
-                box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
-            }
-            
-            .dashboard-item {
-                flex: 1;
-                background: white;
-                padding: 20px;
-                border-radius: var(--border-radius-md);
-                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-                min-width: 180px;
-                border-top: 4px solid transparent;
-                text-align: center;
-                cursor: pointer;
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                position: relative;
-                overflow: hidden;
-            }
-            
-            .dashboard-item::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 4px;
-                background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
-                transform: scaleX(0);
-                transform-origin: left;
-                transition: transform 0.3s ease;
-            }
-            
-            .dashboard-item:hover::before {
-                transform: scaleX(1);
-            }
-            
-            .dashboard-item:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-                background: linear-gradient(135deg, white 0%, var(--gray-50) 100%);
-            }
-            
-            .dashboard-item .icon-wrapper {
-                width: 48px;
-                height: 48px;
-                margin: 0 auto 12px;
-                background: var(--gray-100);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.3s ease;
-            }
-            
-            .dashboard-item:hover .icon-wrapper {
-                background: var(--primary-100);
-                transform: scale(1.1);
-            }
-            
-            .dashboard-item .icon-wrapper i {
-                font-size: 24px;
-                color: var(--gray-600);
-                transition: color 0.3s ease;
-            }
-            
-            .dashboard-item:hover .icon-wrapper i {
-                color: var(--primary);
-            }
-            
-            .dashboard-item .title {
-                font-size: var(--text-sm);
-                color: var(--text-muted);
-                margin-bottom: 8px;
-                font-weight: 500;
-                letter-spacing: 0.3px;
-                transition: color 0.3s ease;
-            }
-            
-            .dashboard-item:hover .title {
-                color: var(--primary-dark);
-            }
-            
-            .dashboard-item .count {
-                font-size: 28px;
-                font-weight: 700;
-                color: var(--gray-900);
-                transition: all 0.3s ease;
-                display: flex;
-                align-items: baseline;
-                justify-content: center;
-                gap: 4px;
-            }
-            
-            .dashboard-item:hover .count {
-                color: var(--primary);
-                transform: scale(1.05);
-            }
-            
-            .dashboard-item .count-suffix {
-                font-size: var(--text-md);
-                font-weight: 400;
-                color: var(--text-muted);
-            }
-            
-            .dashboard-item.danger {
-                border-top-color: var(--danger);
-            }
-            
-            .dashboard-item.danger::before {
-                background: linear-gradient(90deg, var(--danger) 0%, #c82333 100%);
-            }
-            
-            .dashboard-item.danger:hover .icon-wrapper {
-                background: rgba(220, 53, 69, 0.1);
-            }
-            
-            .dashboard-item.danger:hover .icon-wrapper i,
-            .dashboard-item.danger:hover .count {
-                color: var(--danger);
-            }
-            
-            .dashboard-item.warning {
-                border-top-color: var(--warning);
-            }
-            
-            .dashboard-item.warning::before {
-                background: linear-gradient(90deg, var(--warning) 0%, #e0a800 100%);
-            }
-            
-            .dashboard-item.warning:hover .icon-wrapper {
-                background: rgba(255, 193, 7, 0.1);
-            }
-            
-            .dashboard-item.warning:hover .icon-wrapper i,
-            .dashboard-item.warning:hover .count {
-                color: var(--warning);
-            }
-            
-            .dashboard-item.info {
-                border-top-color: var(--info);
-            }
-            
-            .dashboard-item.info::before {
-                background: linear-gradient(90deg, var(--info) 0%, #117a8b 100%);
-            }
-            
-            .dashboard-item.info:hover .icon-wrapper {
-                background: rgba(23, 162, 184, 0.1);
-            }
-            
-            .dashboard-item.info:hover .icon-wrapper i,
-            .dashboard-item.info:hover .count {
-                color: var(--info);
-            }
-            
-            .dashboard-item.loading {
-                pointer-events: none;
-                opacity: 0.6;
-            }
-            
-            .dashboard-item.loading .count {
-                color: var(--gray-400);
-            }
-            
-            @media (max-width: 768px) {
-                .list-dashboard {
-                    gap: 12px;
-                    padding: 16px;
-                }
-                
-                .dashboard-item {
-                    min-width: calc(50% - 6px);
-                    padding: 16px;
-                }
-                
-                .dashboard-item .icon-wrapper {
-                    width: 40px;
-                    height: 40px;
-                    margin-bottom: 8px;
-                }
-                
-                .dashboard-item .icon-wrapper i {
-                    font-size: 20px;
-                }
-                
-                .dashboard-item .count {
-                    font-size: 24px;
-                }
-            }
-        `).appendTo('head');
-    }
-}
-
 async function add_dashboard(listview) {
-    ensure_dashboard_style_loaded();
+    frappe.require('iqama_renewal_tracking_dashboard.bundle.css');
 
     if (!listview.dashboard_area) {
-        listview.dashboard_area = $('<div class="list-dashboard"></div>')
+        listview.dashboard_area = $('<div class="iqama-dashboard"></div>')
             .prependTo(listview.page.main);
     } else {
         listview.dashboard_area.empty();
@@ -811,8 +608,8 @@ async function add_dashboard(listview) {
 
     results.forEach((result, index) => {
         const stat = stats_config[index];
-        const item = listview.dashboard_area.find(`.dashboard-item:eq(${index})`);
-        
+        const item = listview.dashboard_area.find(`.iqama-stat:eq(${index})`);
+
         if (result.status === 'fulfilled') {
             update_dashboard_item_count(item, result.value);
         } else {
@@ -824,18 +621,22 @@ async function add_dashboard(listview) {
 
 function render_dashboard_item(listview, stat, count) {
     const isLoading = count === null;
-    const displayCount = isLoading ? '...' : count;
-    
+    const displayCount = isLoading ? '<span class="iqama-stat-skeleton"></span>' : count;
+
     const item = $(`
-        <div class="dashboard-item ${stat.type} ${isLoading ? 'loading' : ''}" 
-             title="${__('Click to view list for')} ${__(stat.label)}"
+        <div class="widget number-widget-box iqama-stat ${stat.type} ${isLoading ? 'loading' : ''}"
+             title="${__('Click to view list for')} ${stat.label}"
              data-stat-index="${listview.dashboard_area.children().length}">
-            <div class="icon-wrapper">
-                <i class="fa ${stat.icon}"></i>
+            <div class="widget-head">
+                <div class="widget-label">
+                    <div class="widget-title">${stat.label}</div>
+                </div>
+                <span class="iqama-stat-icon">${frappe.utils.icon(stat.icon, 'sm')}</span>
             </div>
-            <div class="title ellipsis">${__(stat.label)}</div>
-            <div class="count">
-                ${displayCount}
+            <div class="widget-body">
+                <div class="widget-content">
+                    <div class="number">${displayCount}</div>
+                </div>
             </div>
         </div>
     `).appendTo(listview.dashboard_area);
@@ -855,12 +656,12 @@ function render_dashboard_item(listview, stat, count) {
 
 function update_dashboard_item_count(item, count) {
     item.removeClass('loading');
-    item.find('.count').html(count);
-    
+    item.find('.number').html(count);
+
     const index = parseInt(item.attr('data-stat-index'));
     const stats_config = get_full_stat_config();
     const stat = stats_config[index];
-    
+
     item.off('click').on('click', function() {
         const filterObj = {};
         stat.filters.forEach(filter => {
@@ -877,63 +678,63 @@ function update_dashboard_item_count(item, count) {
 }
 
 function update_dashboard_item_error(item) {
-    item.removeClass('loading').addClass('danger');
-    item.find('.count').html('<i class="fa fa-exclamation-triangle"></i> Error');
-    item.find('.icon-wrapper i').removeClass().addClass('fa fa-exclamation-triangle');
+    item.removeClass('loading warning info').addClass('danger has-error');
+    item.find('.number').html(__('Error'));
+    item.find('.iqama-stat-icon').html(frappe.utils.icon('triangle-alert', 'sm'));
 }
 
 function get_full_stat_config() {
     const today = frappe.datetime.get_today();
     const get_date = frappe.datetime.add_days;
-    
+
     return [
         {
-            label: 'Expired Iqamas',
+            label: __('Expired Iqamas'),
             doctype: 'Employee',
             filters: [
                 ['iqama_expired', '=', 1],
                 ['status', '=', 'Active'],
             ],
-            icon: 'fa-exclamation-circle',
+            icon: 'circle-alert',
             type: 'danger'
         },
         {
-            label: 'Expiration Tomorrow',
+            label: __('Expiration Tomorrow'),
             doctype: 'Iqama Renewal Tracking',
             filters: [
                 ['iqama_expiration_date', '=', get_date(today, 1)],
                 ['status', '!=', 'Renewed']
             ],
-            icon: 'fa-clock',
+            icon: 'clock',
             type: 'danger'
         },
         {
-            label: 'Expiration This Week',
+            label: __('Expiration This Week'),
             doctype: 'Iqama Renewal Tracking',
             filters: [
                 ['iqama_expiration_date', 'between', [today, get_date(today, 7)]],
                 ['status', '!=', 'Renewed']
             ],
-            icon: 'fa-calendar-week',
+            icon: 'calendar-clock',
             type: 'warning'
         },
         {
-            label: 'Expiration Next Week',
+            label: __('Expiration Next Week'),
             doctype: 'Iqama Renewal Tracking',
             filters: [
                 ['iqama_expiration_date', 'between', [get_date(today, 7), get_date(today, 14)]],
                 ['status', '!=', 'Renewed']
             ],
-            icon: 'fa-calendar-alt',
+            icon: 'calendar-range',
             type: 'info'
         },
         {
-            label: 'Awaiting Operations Approval',
+            label: __('Awaiting Operations Approval'),
             doctype: 'Iqama Renewal Tracking',
             filters: [
                 ['status', '=', 'Awaiting Operations Approval']
             ],
-            icon: 'fa-user-check',
+            icon: 'user-check',
             type: 'info'
         }
     ];
