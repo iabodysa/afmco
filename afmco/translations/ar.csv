@@ -15614,7 +15614,7 @@ Expiration Tomorrow,تنتهي غدًا
 Expiration This Week,تنتهي هذا الأسبوع
 Expiration Next Week,تنتهي الأسبوع القادم
 Awaiting Operations Approval,بانتظار موافقة العمليات
-Payment Date: {0},تاريخ الدفع: {0}
+Posting Date: {0},تاريخ الإدخال: {0}
 Next news,الخبر التالي
 Previous news,الخبر السابق
 Pause auto-advance,إيقاف التنقل التلقائي

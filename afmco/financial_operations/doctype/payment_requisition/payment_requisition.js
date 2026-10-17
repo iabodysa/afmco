@@ -615,7 +615,7 @@ function showPaymentDates(frm) {
     (frm.payment_date_indicators || []).forEach(($indicator) => $indicator.remove());
     const dates = (frm.doc.__onload || {}).payment_dates || [];
     frm.payment_date_indicators = dates.map((date) =>
-        frm.dashboard.add_indicator(__('Payment Date: {0}', [frappe.datetime.str_to_user(date)]), 'blue')
+        frm.dashboard.add_indicator(__('Posting Date: {0}', [frappe.datetime.str_to_user(date)]), 'blue')
     );
 }
 
