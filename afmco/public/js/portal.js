@@ -124,7 +124,7 @@
 
 	const reel = root.querySelector(".afm-reel__track");
 	const dots = root.querySelector(".afm-reel__dots");
-	if (reel && dots && !(window.CSS && CSS.supports("selector(::scroll-marker)"))) {
+	if (reel && dots) {
 		const cards = [...reel.children];
 		cards.forEach(() => dots.append(document.createElement("span")));
 		const sync = () => {
