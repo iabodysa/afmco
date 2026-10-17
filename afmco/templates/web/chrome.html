@@ -16,7 +16,8 @@
 <header class="afm-header">
 	<div class="afm-header__brand">
 		<a href="{{ home_url }}" aria-label="{{ _('Home') }}">
-			<img class="afm-logo" src="/assets/afmco/images/portal/afmco-logo.webp" alt="AFMCO" width="1600" height="609">
+			{% set logo = header_logo or {"src": "/assets/afmco/images/portal/afmco-logo.webp", "width": 1600, "height": 609} %}
+			<img class="afm-logo" src="{{ logo.src }}" alt="AFMCO" width="{{ logo.width }}" height="{{ logo.height }}">
 		</a>
 		<a class="afm-header__home" href="{{ home_url }}">{{ _("Home") }}</a>
 	</div>

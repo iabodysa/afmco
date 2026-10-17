@@ -50,87 +50,90 @@
 		if (event.matches && isOpen()) setMenu(false, false);
 	});
 
-	const news = root.querySelector(".afm-news");
-	if (news && !reduced) {
-		const track = news.querySelector(".afm-news__track");
-		const flip = Number(getComputedStyle(root).getPropertyValue("--afm-flip")) || 1;
-		const duration = (Number(track.style.getPropertyValue("--afm-news-count")) || 1) * 9000;
-		let offset = 0;
-		let last = 0;
-		let resumeAt = 0;
-		let drag = null;
-		let moved = false;
-		let hovered = false;
-		let focused = false;
+	const stage = root.querySelector(".afm-stage[aria-roledescription]");
+	const controls = stage && stage.querySelector(".afm-stage__controls");
+	if (controls) {
+		const pics = stage.querySelectorAll(".afm-stage__pic");
+		const headlines = stage.querySelectorAll(".afm-stage__headline");
+		const thumbs = stage.querySelectorAll(".afm-thumb");
+		const count = stage.querySelector("[data-count]");
+		const timer = stage.querySelector(".afm-timer");
+		const pause = stage.querySelector("[data-pause]");
+		const rtl = root.dir === "rtl";
+		const total = pics.length;
+		let current = 0;
 
-		const period = () => track.scrollWidth / 2;
-		const place = () => {
-			const width = period();
-			offset = ((offset % width) + width) % width;
-			track.style.setProperty("--afm-news-x", `${-offset * flip}px`);
+		const render = (index) => {
+			current = index;
+			pics.forEach((pic, i) => pic.classList.toggle("is-current", i === index));
+			headlines.forEach((headline, i) => {
+				headline.classList.toggle("is-current", i === index);
+				headline.hidden = i !== index;
+			});
+			thumbs.forEach((thumb, i) => thumb.setAttribute("aria-current", String(i === index)));
+			count.textContent = String(index + 1).padStart(2, "0");
 		};
-		const tick = (now) => {
-			const elapsed = last ? now - last : 0;
-			last = now;
-			if (!drag && !hovered && !focused && now >= resumeAt) {
-				offset += (period() / duration) * elapsed;
-				place();
-			}
-			requestAnimationFrame(tick);
+		const restart = () => {
+			timer.classList.remove("is-running");
+			if (reduced) return;
+			void timer.offsetWidth;
+			timer.classList.add("is-running");
 		};
-		const release = (event) => {
-			if (!drag || event.pointerId !== drag.id) return;
-			drag = null;
-			news.classList.remove("is-dragging");
-			resumeAt = performance.now() + 2500;
+		const go = (index, back) => {
+			const next = (index + total) % total;
+			if (next === current) return;
+			document.documentElement.dataset.afmVt = back ? "back" : "next";
+			if (document.startViewTransition && !reduced) document.startViewTransition(() => render(next));
+			else render(next);
+			restart();
 		};
+		const hold = (on) => stage.classList.toggle("is-holding", on);
 
-		news.addEventListener("pointerdown", (event) => {
-			if (event.button !== 0) return;
-			drag = { id: event.pointerId, x: event.clientX, start: offset };
-			moved = false;
+		timer.addEventListener("animationend", () => go(current + 1, false));
+		stage.querySelectorAll("[data-step]").forEach((button) => {
+			const step = Number(button.dataset.step);
+			button.addEventListener("click", () => go(current + step, step < 0));
 		});
-		news.addEventListener("pointermove", (event) => {
-			if (!drag || event.pointerId !== drag.id) return;
-			const distance = event.clientX - drag.x;
-			if (!moved && Math.abs(distance) < 6) return;
-			if (!moved) {
-				moved = true;
-				news.setPointerCapture(event.pointerId);
-				news.classList.add("is-dragging");
-			}
-			offset = drag.start - distance * flip;
-			place();
+		thumbs.forEach((thumb, i) => thumb.addEventListener("click", () => go(i, i < current)));
+		pause.addEventListener("click", () => {
+			const paused = stage.classList.toggle("is-paused");
+			pause.setAttribute("aria-label", paused ? stage.dataset.labelPlay : stage.dataset.labelPause);
+			pause.querySelector("path").setAttribute("d", paused ? "M8 5l11 7-11 7z" : "M9 6v12M15 6v12");
 		});
-		news.addEventListener("pointerup", release);
-		news.addEventListener("pointercancel", release);
-		news.addEventListener(
-			"click",
-			(event) => {
-				if (!moved) return;
-				moved = false;
-				event.preventDefault();
-				event.stopPropagation();
-			},
-			true
-		);
-		news.addEventListener("dragstart", (event) => event.preventDefault());
-		news.addEventListener("pointerenter", (event) => {
-			hovered = event.pointerType === "mouse";
+		stage.addEventListener("pointerenter", (event) => hold(event.pointerType === "mouse"));
+		stage.addEventListener("pointerleave", () => hold(false));
+		stage.addEventListener("focusin", () => hold(true));
+		stage.addEventListener("focusout", (event) => {
+			if (!stage.contains(event.relatedTarget)) hold(false);
 		});
-		news.addEventListener("pointerleave", () => {
-			hovered = false;
+		stage.addEventListener("keydown", (event) => {
+			if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+			const forward = (event.key === "ArrowLeft") === rtl;
+			go(current + (forward ? 1 : -1), !forward);
 		});
-		news.addEventListener("focusin", () => {
-			focused = true;
-		});
-		news.addEventListener("focusout", () => {
-			focused = false;
+		document.addEventListener("visibilitychange", () => {
+			stage.classList.toggle("is-away", document.visibilityState !== "visible");
 		});
 
-		news.classList.add("is-live");
-		place();
-		requestAnimationFrame(tick);
+		timer.hidden = reduced;
+		pause.hidden = reduced;
+		controls.hidden = false;
+		stage.querySelector(".afm-thumbs").hidden = false;
+		restart();
+	}
+
+	const reel = root.querySelector(".afm-reel__track");
+	const dots = root.querySelector(".afm-reel__dots");
+	if (reel && dots && !(window.CSS && CSS.supports("selector(::scroll-marker)"))) {
+		const cards = [...reel.children];
+		cards.forEach(() => dots.append(document.createElement("span")));
+		const sync = () => {
+			const step = cards[0].offsetWidth + (parseFloat(getComputedStyle(reel).columnGap) || 0);
+			const index = Math.min(cards.length - 1, Math.round(Math.abs(reel.scrollLeft) / step));
+			[...dots.children].forEach((dot, i) => dot.setAttribute("aria-current", String(i === index)));
+		};
+		reel.addEventListener("scroll", sync, { passive: true });
+		sync();
 	}
 
 	if (!observable) {
@@ -139,10 +142,12 @@
 		return;
 	}
 
-	new IntersectionObserver(
-		([entry]) => root.classList.toggle("afm--solid", !entry.isIntersecting),
-		{ rootMargin: "-72px 0px 0px 0px" }
-	).observe(hero);
+	if (hero) {
+		new IntersectionObserver(
+			([entry]) => root.classList.toggle("afm--solid", !entry.isIntersecting),
+			{ rootMargin: "-72px 0px 0px 0px" }
+		).observe(hero);
+	}
 
 	const items = root.querySelectorAll("[data-reveal]");
 	if (reduced) {
