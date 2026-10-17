@@ -47,7 +47,18 @@ class PaymentRequisition(Document):
 		self.set_onload("accounts_bot_viewer", bool(roles.intersection(ACCOUNTS_BOT_VIEWER_ROLES)))
 		receipt_role = bool(roles.intersection(RECEIPT_READ_ROLES)) and not self.receipt_read_refusal()
 		self.set_onload("receipt_read_viewer", receipt_role)
+		self.set_onload("payment_dates", self.payment_dates())
 		ai_reading.set_onload(self)
+
+	def payment_dates(self) -> list:
+		if self.workflow_state != DOCUMENT_UPLOAD:
+			return []
+		return frappe.get_all(
+			"Journal Entry",
+			filters={"expense_request_cf": self.name, "docstatus": 1},
+			pluck="posting_date",
+			order_by="posting_date asc",
+		)
 
 	def accounts_bot_state_refusal(self) -> str | None:
 		if ACCOUNTS_BOT_STATES.get(self.workflow_state) != self.docstatus:

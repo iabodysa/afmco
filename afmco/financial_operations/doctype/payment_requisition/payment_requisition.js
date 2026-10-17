@@ -541,6 +541,7 @@ frappe.ui.form.on('Payment Requisition', {
         addSupportingPackButton(frm);
         addAccountsBotButton(frm);
         showAmountInWords(frm, frm.doc.amount_in_words);
+        showPaymentDates(frm);
         frappe.require(["/assets/afmco/js/attachment_check.js", "/assets/afmco/css/attachment_check.css"], () => afmco.attachment_check.render(frm));
     },
 
@@ -604,6 +605,13 @@ frappe.ui.form.on('Payment Requisition', {
 
 function showAmountInWords(frm, words) {
     frm.set_df_property('amount', 'description', words ? frappe.utils.escape_html(words) : '');
+}
+
+function showPaymentDates(frm) {
+    const dates = (frm.doc.__onload || {}).payment_dates || [];
+    dates.forEach((date) => {
+        frm.dashboard.add_indicator(__('Payment Date: {0}', [frappe.datetime.str_to_user(date)]), 'blue');
+    });
 }
 
 // Journal Entry creation -------------------------------------------------------
