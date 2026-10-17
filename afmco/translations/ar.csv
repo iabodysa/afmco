@@ -2106,7 +2106,6 @@ The Journal Entry was not created: {0},لم ينشأ قيد اليومية: {0}
 The account audit returned an invalid response.,أعاد تدقيق الحساب استجابة غير صالحة.
 The document changes history could not be loaded. Please try again.,تعذر تحميل سجل تغييرات المستند. يرجى المحاولة مرة أخرى.
 The request has been marked as urgent. An email notification has been sent to all concerned parties.,تم تحديد الطلب كعاجل، وأرسل إشعار بالبريد الإلكتروني إلى جميع الأطراف المعنية.
-This request is already marked as urgent with reason: {0},هذا الطلب محدد مسبقاً كعاجل بالسبب: {0}
 This transaction has been documented as settled. Please ensure all necessary approvals and authorizations are verified before proceeding.,تم توثيق هذه العملية كمسددة. يرجى التأكد من استكمال جميع الموافقات والصلاحيات اللازمة قبل المتابعة.
 Ticket Allowance,بدل التذاكر
 Ticket allowance,بدل التذاكر

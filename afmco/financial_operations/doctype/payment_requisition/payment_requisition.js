@@ -2223,13 +2223,7 @@ function addUrgentButton(frm) {
     frm.remove_custom_button(buttonLabel);
     frm.remove_custom_button(buttonLabel, __('Actions'));
 
-    if (frm.doc.if_it__urgent === 1) {
-        frappe.show_alert({
-            message: __('This request is already marked as urgent with reason: {0}', [escapeHtml(frm.doc.reason_of_urgency)]),
-            indicator: 'blue'
-        }, 5);
-        return;
-    }
+    if (frm.doc.if_it__urgent === 1) return;
 
     const btn = frm.add_custom_button(
         buttonLabel,
