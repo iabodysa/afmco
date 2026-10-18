@@ -410,6 +410,7 @@ Payment Request Details,تفاصيل طلب الصرف
 Payment Request already created for document {0} for employee {1}.,سبق إنشاء طلب صرف للمستند {0} للموظف {1}.
 Payroll Clearing Account,حساب تسوية الرواتب
 Payroll Cost Center,مركز تكلفة الرواتب
+Payroll Manager,مدير الرواتب
 Payroll User,مستخدم الرواتب
 Performance,الأداء
 Period Unit,وحدة الفترة
