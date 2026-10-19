@@ -1,0 +1,101 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2023-12-27 03:13:18.274093",
+  "name": "Cancelled",
+  "style": "Danger",
+  "workflow_state_name": "Cancelled"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2023-12-27 03:15:07.414346",
+  "name": "Document Upload",
+  "style": "Info",
+  "workflow_state_name": "Document Upload"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2023-12-27 03:16:51.846439",
+  "name": "Financial Controller",
+  "style": "Primary",
+  "workflow_state_name": "Financial Controller"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2023-01-18 12:00:50.259978",
+  "name": "First Approval for Bank",
+  "style": "",
+  "workflow_state_name": "First Approval for Bank"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2023-12-27 03:12:06.322401",
+  "name": "Paid",
+  "style": "Success",
+  "workflow_state_name": "Paid"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "question-sign",
+  "modified": "2023-12-27 03:12:25.680632",
+  "name": "Pending",
+  "style": "Inverse",
+  "workflow_state_name": "Pending"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "remove",
+  "modified": "2022-12-13 15:53:28.423554",
+  "name": "Rejected",
+  "style": "Danger",
+  "workflow_state_name": "Rejected"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2023-12-27 03:14:41.779199",
+  "name": "Waiting",
+  "style": "Warning",
+  "workflow_state_name": "Waiting"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2023-01-18 12:02:02.481464",
+  "name": "Waiting Bank Entry",
+  "style": "",
+  "workflow_state_name": "Waiting Bank Entry"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-01-07 16:08:26.678788",
+  "name": "Waiting Manager Approval",
+  "style": "Danger",
+  "workflow_state_name": "Waiting Manager Approval"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2023-01-18 12:04:05.365876",
+  "name": "Waiting P.M Approval",
+  "style": "",
+  "workflow_state_name": "Waiting P.M Approval"
+ }
+]
