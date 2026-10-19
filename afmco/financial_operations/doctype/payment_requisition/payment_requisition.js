@@ -714,8 +714,16 @@ function renderAccountsBotIntro(frm) {
         status === ACCOUNTS_BOT_STOPPED && onload.accounts_bot_viewer && frm.doc.accounts_bot_cf
             ? pendingAccountsBotStopQuestion(frm.get_docinfo())
             : null;
-    frm.set_intro(text, stopQuestion ? 'green' : color);
+    const choice = onload.accounts_bot_viewer ? onload.accounts_bot_choice : null;
+    frm.set_intro(text, stopQuestion || choice ? 'green' : color);
     if (stopQuestion && frm.$intro_message) addAccountsBotStopAnswerBox(frm, stopQuestion);
+    if (choice && frm.$intro_message) addAccountsBotChoice(frm, choice);
+}
+
+function addAccountsBotChoice(frm, choice) {
+    const $box = $('<div class="mt-2"></div>').appendTo(frm.$intro_message);
+    $('<p class="mb-2 font-weight-bold"></p>').text(choice.title).appendTo($box);
+    afmco.accounts_bot_choice.render($box, choice);
 }
 
 function accountsBotLines(content) {

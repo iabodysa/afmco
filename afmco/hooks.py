@@ -33,7 +33,7 @@ page_renderer = [
 # include js, css files in header of desk.html
 app_include_css = "afmco_form_grid.bundle.css"
 
-# app_include_js = "/assets/afmco/js/afmco.js"
+app_include_js = "accounts_bot_choice.bundle.js"
 
 # include js, css files in header of web template
 web_include_css = "/assets/afmco/css/login.css"
@@ -149,6 +149,7 @@ extend_doctype_class = {
 	"Appraisal": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Attendance": "afmco.people_and_payroll.attendance.AfmcoAttendance",
 	"Attendance Request": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
+	"Comment": "afmco.financial_operations.comment.AfmcoComment",
 	"Compensatory Leave Request": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Employee": "afmco.people_and_payroll.employee.AfmcoEmployee",
 	"Employee Advance": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
@@ -188,6 +189,11 @@ extend_doctype_class = {
 # Each entry replaces a database-owned Server Script of the same cadence. The frequency is the one
 # the production record carried, never a fresh choice.
 scheduler_events = {
+	"cron": {
+		"* * * * *": [
+			"afmco.financial_operations.accounts_bot_choice.republish_open_choices",
+		],
+	},
 	"daily": [
 		"afmco.people_and_payroll.doctype.iqama_renewal_tracking.iqama_renewal_tracking.reschedule_due_trackings",
 		"afmco.people_and_payroll.doctype.end_of_service_settlement.end_of_service_settlement.update_employee_status_for_settlements",

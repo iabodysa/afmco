@@ -39,6 +39,12 @@ def answer_accounts_bot(name: str, q: str, answer: str) -> None:
 
 
 @frappe.whitelist(methods=["POST"])
+def answer_accounts_bot_choice(name: str, q: str, id: str) -> None:
+	frappe.only_for(ACCOUNTS_BOT_VIEWER_ROLES)
+	locked_requisition(name).answer_accounts_bot_choice(q, id)
+
+
+@frappe.whitelist(methods=["POST"])
 def set_accounts_bot_status(name: str, status: str, note: str | None = None) -> None:
 	frappe.only_for(ACCOUNTS_BOT_ROLE)
 	locked_requisition(name).set_accounts_bot_status(status, note)

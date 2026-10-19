@@ -11,6 +11,7 @@ from frappe.utils import escape_html, flt, getdate, money_in_words, now, strip_h
 from frappe.utils.html_utils import sanitize_html
 
 from afmco.approver_check import ai_reading
+from afmco.financial_operations import accounts_bot_choice
 from afmco.people_and_payroll.doctype.end_of_service_settlement.end_of_service_settlement import mark_settlement_paid
 
 ACCOUNTS_ROLES = ("Accounts User", "Accounts Manager")
@@ -46,6 +47,8 @@ class PaymentRequisition(Document):
 			and not refusal,
 		)
 		self.set_onload("accounts_bot_viewer", bool(roles.intersection(ACCOUNTS_BOT_VIEWER_ROLES)))
+		if roles.intersection(ACCOUNTS_BOT_VIEWER_ROLES):
+			self.set_onload("accounts_bot_choice", accounts_bot_choice.open_choice(self.name))
 		receipt_role = bool(roles.intersection(RECEIPT_READ_ROLES)) and not self.receipt_read_refusal()
 		self.set_onload("receipt_read_viewer", receipt_role)
 		self.set_onload("payment_dates", self.payment_dates())
@@ -122,6 +125,7 @@ class PaymentRequisition(Document):
 			update_modified=True,
 			notify=True,
 		)
+		self.save_version()
 
 	def latest_stop_question(self) -> str | None:
 		for content in frappe.get_all(
@@ -153,6 +157,22 @@ class PaymentRequisition(Document):
 			frappe.throw(_("Write an answer of up to {0} characters.").format(STOP_ANSWER_LIMIT))
 		self.add_comment("Info", f"[accounts-bot-stop-answer q={question}] {escape_html(answer)}")
 		self.retry_accounts_bot()
+
+	def answer_accounts_bot_choice(self, question: str, button: str) -> None:
+		choice = accounts_bot_choice.open_choice(self.name)
+		if not question or not choice or choice["q"] != question:
+			frappe.throw(_("This Accounts Bot question is no longer open. Reload the form."))
+		if button not in {entry["id"] for entry in choice["buttons"]}:
+			frappe.throw(_("{0} is not a choice of this Accounts Bot question.").format(escape_html(str(button))))
+		if self.request_pending():
+			frappe.throw(_("The Accounts Bot is still working on this Payment Requisition. Choose again after it finishes."))
+		asker = accounts_bot_choice.presser(self.name)
+		self.add_comment("Info", f"{accounts_bot_choice.ANSWER_TAG.format(question)} {button}")
+		if self.accounts_bot_status == STOPPED:
+			self.retry_accounts_bot()
+		elif self.queue_for_accounts_bot() != "queued":
+			frappe.throw(_("The Accounts Bot could not take this answer. Reload the form."))
+		accounts_bot_choice.publish_close(self.name, question, asker)
 
 	def receipt_read_refusal(self) -> str | None:
 		if self.workflow_state != DOCUMENT_UPLOAD:
