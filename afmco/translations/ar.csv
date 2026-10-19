@@ -810,13 +810,6 @@ Office phone,هاتف المكتب
 This portal is for AFMCO employees only.,هذه البوابة مخصصة لموظفي أفمكو فقط.
 Journal Entry Details,تفاصيل قيد اليومية
 Credit Bank Account,حساب البنك الدائن
-Employee Classification (for Accounting Routing),تصنيف الموظف (للتوجيه المحاسبي)
-Projects Employee,موظف مشاريع
-Administration Employee,موظف إداري
-Create the Entry,إنشاء القيد
-Preparing the entry...,جار تحضير القيد...
-Please set the Bank Payment Date to calculate the split across years.,يرجى تحديد تاريخ الدفع البنكي لحساب تقسيم السنوات.
-An error occurred while fetching the accounts. A preliminary entry has been created.,حدث خطأ أثناء جلب الحسابات. تم إنشاء القيد بشكل مبدئي.
 Login to Frappe HR,تسجيل الدخول إلى أفمكو
 Close menu,إغلاق القائمة
 Continue to your account,المتابعة إلى حسابك
@@ -1851,7 +1844,6 @@ BMUS,BMUS
 BNPA,BNPA
 BSFR,BSFR
 Balance Loan Amount,رصيد القرض المتبقي
-Bank Payment Date is invalid.,تاريخ الدفع البنكي غير صالح.
 Bank Transfer,تحويل بنكي
 Bank cheque,شيك بنكي
 Barn Café Al Amjad - بارن كافيه الامجاد,بارن كافيه الأمجاد
@@ -1954,12 +1946,7 @@ JV Not Created,لم ينشأ قيد اليومية
 Jarir - جرير,جرير
 Journal Entry Dialog Failed,فشل فتح نافذة قيد اليومية
 Journal Entry Employees Draft,مسودات قيود اليومية للموظفين
-Journal Entry Not Created,لم ينشأ قيد اليومية
-Journal Entry contains a row without an account.,يحتوي قيد اليومية على صف بلا حساب.
-Journal Entry contains an invalid amount.,يحتوي قيد اليومية على مبلغ غير صالح.
 Journal Entry creation is not configured for payment type: {0},إنشاء قيد اليومية غير معدّ لنوع الدفع: {0}
-"Journal Entry is not balanced. Debit: {0}, Credit: {1}",قيد اليومية غير متوازن. المدين: {0}، الدائن: {1}
-Journal Entry must contain both debit and credit amounts.,يجب أن يحتوي قيد اليومية على مبالغ مدينة ودائنة.
 Justifications for the request,مبررات الطلب
 Kayan RUH - كيان الرياض,كيان الرياض
 Kun Sports - كون للرياضة,كون للرياضة
@@ -2002,7 +1989,6 @@ No previous transaction totals,لا توجد إجماليات لحركات سا�
 No previous transfers found for this account.,لا توجد تحويلات سابقة لهذا الحساب.
 No reason provided,لم يذكر سبب
 No structured SADAD rows with Type and Amount were found in the remark.,لم يعثر في الملاحظة على صفوف سداد منظمة تحتوي على النوع والمبلغ.
-No valid Journal Entry rows were generated.,لم ينشأ أي صف صالح لقيد اليومية.
 Non-Muslim,غير مسلم
 Noon Jed - نون جدة,نون جدة
 Noon RUH - نون الرياض,نون الرياض
@@ -2037,8 +2023,6 @@ Petty Cash Description,وصف العهدة النقدية
 Petty Cash Information,معلومات العهدة النقدية
 Please note that this document is pending approval from the {0}. Ensure all required verifications are completed before proceeding.,يرجى العلم أن هذا المستند بانتظار موافقة {0}. تأكد من استكمال جميع التحققات المطلوبة قبل المتابعة.
 "Please print the form, sign the employee and attach it",يرجى طباعة النموذج وتوقيع الموظف عليه ثم إرفاقه
-Please review the request data and try again.,يرجى مراجعة بيانات الطلب والمحاولة مرة أخرى.
-Please select a valid mode of payment from the dropdown list.,يرجى اختيار طريقة دفع صحيحة من القائمة.
 Please select a valid payment type from the dropdown list.,يرجى اختيار نوع دفع صحيح من القائمة.
 Please verify the Bank Payment Date for year allocation.,يرجى التحقق من تاريخ الدفع البنكي لتوزيع المبلغ على السنوات.
 Please verify the accuracy of the IBAN to avoid errors during banking transactions.,يرجى التحقق من صحة رقم الآيبان لتجنب الأخطاء أثناء العمليات البنكية.
@@ -2076,7 +2060,6 @@ Reward,المكافأة
 SABB,SABB
 SADAD Payment,دفعة سداد
 SADAD Setup,إعداد سداد
-SADAD amount must be a valid positive number.,يجب أن يكون مبلغ سداد رقماً موجباً صحيحاً.
 SADAD service type is not configured: {0},نوع خدمة سداد غير معدّ: {0}
 SADAD-B-.YYYY.-,SADAD-B-.YYYY.-
 SAIB Bank,البنك السعودي للاستثمار
@@ -2102,7 +2085,6 @@ TCZB,TCZB
 TIBAN-.YYYY.-,TIBAN-.YYYY.-
 Termination type,نوع إنهاء الخدمة
 The Journal Entry dialog could not be opened. Please try again.,تعذر فتح نافذة قيد اليومية. يرجى المحاولة مرة أخرى.
-The Journal Entry was not created: {0},لم ينشأ قيد اليومية: {0}
 "The account audit could not be loaded. Please verify your permission and connection, then try again.",تعذر تحميل تدقيق الحساب. يرجى التحقق من صلاحياتك والاتصال ثم المحاولة مرة أخرى.
 The account audit returned an invalid response.,أعاد تدقيق الحساب استجابة غير صالحة.
 The document changes history could not be loaded. Please try again.,تعذر تحميل سجل تغييرات المستند. يرجى المحاولة مرة أخرى.
@@ -2120,7 +2102,6 @@ Trinsportation,النقل
 Type (Arabic),النوع (بالعربية)
 Unified National Number,الرقم الوطني الموحد
 Unified Number,الرقم الموحد
-Unknown Account,حساب غير معروف
 Updating List...,جار تحديث القائمة...
 Urgent purchases.,مشتريات عاجلة.
 VA-.YYYY.-,VA-.YYYY.-
@@ -15614,7 +15595,6 @@ Expiration Tomorrow,تنتهي غدًا
 Expiration This Week,تنتهي هذا الأسبوع
 Expiration Next Week,تنتهي الأسبوع القادم
 Awaiting Operations Approval,بانتظار موافقة العمليات
-Posting Date: {0},تاريخ الإدخال: {0}
 Next news,الخبر التالي
 Previous news,الخبر السابق
 Pause auto-advance,إيقاف التنقل التلقائي
@@ -15630,3 +15610,7 @@ Open Payment Requisition {0},فتح طلب الصرف {0}
 "Attach the client timesheet file and save, then press Start Payroll Bot.",أرفق ملف كشف دوام العميل واحفظه، ثم اضغط تشغيل مساعد الرواتب.
 Not created yet,لم يُنشأ بعد
 Show Bot Log,عرض سجل مساعد الرواتب
+Enter the reason of urgency.,أدخل سبب الاستعجال.
+Journal Entry date {0}: {1},تاريخ قيد اليومية {0}: {1}
+Next Action,الإجراء التالي
+No users,لا يوجد مستخدمون
