@@ -20,6 +20,7 @@
 				<div class="afm-stage__media" aria-hidden="true">
 					{% for item in news %}
 					<picture class="afm-stage__pic{% if loop.first %} is-current{% endif %}" data-slide>
+						{% if item.desktop_image %}<source media="(min-width: 1024px)" srcset="{{ item.desktop_image | e }}">{% endif %}
 						{% if item.custom_phone_image %}<source media="(orientation: portrait) and (max-width: 1023px)" srcset="{{ item.custom_phone_image | e }}">{% endif %}
 						<img src="{{ (item.image or hero_image) | e }}" alt="" decoding="async"{% if loop.first %} fetchpriority="high"{% endif %}>
 					</picture>
@@ -67,6 +68,7 @@
 			<div class="afm-stage afm-stage--still" aria-hidden="true">
 				<div class="afm-stage__media">
 					<picture class="afm-stage__pic is-current">
+						{% if hero_desktop_image %}<source media="(min-width: 1024px)" srcset="{{ hero_desktop_image }}">{% endif %}
 						<img src="{{ hero_image }}" srcset="/assets/afmco/images/portal/warehouse-800.webp 800w, {{ hero_image }} 1600w"
 							sizes="100vw" alt="" width="1600" height="897" fetchpriority="high">
 					</picture>

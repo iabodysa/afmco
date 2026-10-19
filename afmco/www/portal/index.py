@@ -2,6 +2,7 @@
 # For license information, please see license.txt
 
 import html
+import os
 import re
 
 import frappe
@@ -23,7 +24,8 @@ NEWS_LIMIT = 10
 ANNOUNCEMENTS_ROUTE = "announcements"
 HOLIDAY_LIMIT = 6
 SHOW_EMPLOYEE_APP_CARD = False
-HERO_IMAGE = "/assets/afmco/images/portal/warehouse-1600.webp"
+PORTAL_IMAGES = "/assets/afmco/images/portal/"
+HERO_IMAGE = f"{PORTAL_IMAGES}warehouse-1600.webp"
 HEADER_LOGO = {"src": "/assets/afmco/images/portal/afmco-logo-full-white.svg", "width": 983, "height": 424}
 LANGUAGE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365
 LINE_BREAK_TAGS = re.compile(r"<br\s*/?>|</(?:p|div|li|h[1-6])>", re.IGNORECASE)
@@ -44,6 +46,7 @@ def get_context(context):
 	context.hr_contacts = get_hr_contacts()
 	context.header_logo = HEADER_LOGO
 	context.hero_image = HERO_IMAGE
+	context.hero_desktop_image = get_desktop_image(HERO_IMAGE)
 
 
 def set_site_context(context):
@@ -85,13 +88,22 @@ def get_portal_entry(is_guest, is_website_user):
 
 
 def get_news():
-	return frappe.get_all(
+	news = frappe.get_all(
 		"Website Slideshow Item",
 		filters={"parenttype": "Website Slideshow", "parent": NEWS_SLIDESHOW},
 		fields=["image", "custom_phone_image", "heading", "description", "url"],
 		order_by="idx asc",
 		limit=NEWS_LIMIT,
 	)
+	for item in news:
+		item.desktop_image = get_desktop_image(item.image or HERO_IMAGE)
+	return news
+
+
+def get_desktop_image(image):
+	name = f"{os.path.splitext(os.path.basename(image))[0]}-desktop.webp"
+	if os.path.isfile(frappe.get_app_path("afmco", "public", "images", "portal", name)):
+		return f"{PORTAL_IMAGES}{name}"
 
 
 def get_announcement():
