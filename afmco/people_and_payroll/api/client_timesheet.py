@@ -5,7 +5,16 @@ import frappe
 from frappe import _
 from frappe.utils import now_datetime
 
-BOT_BUSY_STATUSES = ("Queued", "Processing")
+BOT_BUSY_STATUSES = (
+	"Queued",
+	"Reading File",
+	"File Read",
+	"Checking Rules",
+	"Building Invoice",
+	"Building Salary",
+	"Comparing",
+	"Drafts Created",
+)
 
 
 @frappe.whitelist(methods=["POST"])

@@ -1,17 +1,27 @@
 // Copyright (c) 2026, AFMCO and contributors
 // For license information, please see license.txt
 
-const BOT_BUSY_STATUSES = ['Queued', 'Processing'];
-const BOT_FINAL_STATUSES = ['Needs Review', 'Done', 'Failed', 'Stopped'];
+const BOT_BUSY_STATUSES = [
+    'Queued',
+    'Reading File',
+    'File Read',
+    'Checking Rules',
+    'Building Invoice',
+    'Building Salary',
+    'Comparing',
+    'Drafts Created',
+];
+const BOT_HALT_STATUSES = ['Blocked', 'Failed', 'Stopped'];
 const BOT_STATUS_COLORS = {
     Draft: 'gray',
     Queued: 'blue',
-    Processing: 'orange',
     'Needs Review': 'yellow',
-    Done: 'green',
+    Blocked: 'red',
     Failed: 'red',
+    Done: 'green',
     Stopped: 'gray',
 };
+const statusColor = (status) => BOT_STATUS_COLORS[status] || (BOT_BUSY_STATUSES.includes(status) ? 'orange' : 'gray');
 
 frappe.ui.form.on('Client Timesheet', {
     refresh(frm) {
@@ -45,7 +55,16 @@ function renderBotPanel(frm) {
     body.closest('.form-dashboard-section').addClass('cts-dash-section');
     body.on('click', '.cts-log-link', () => showBotLog(frm));
     frm.dashboard.show();
+    centerCurrentStage(body);
     loadResultDetails(frm, body);
+}
+
+function centerCurrentStage(body) {
+    const box = body.find('.cts-stepper-box')[0];
+    const now = box && box.querySelector('.cts-step-now');
+    if (!now || box.scrollWidth <= box.clientWidth) return;
+    const target = now.offsetLeft - (box.clientWidth - now.offsetWidth) / 2;
+    box.scrollLeft = getComputedStyle(box).direction === 'rtl' ? target - (box.scrollWidth - box.clientWidth) : target;
 }
 
 const esc = (value) => frappe.utils.escape_html(String(value ?? ''));
@@ -53,8 +72,8 @@ const ltr = (value) => `<span dir="ltr">${esc(value)}</span>`;
 const userName = (user) => esc(frappe.user_info(user).fullname || user);
 
 function pill(status) {
-    const color = BOT_STATUS_COLORS[status] || 'gray';
-    const dot = status === 'Processing' ? '<span class="cts-dot"></span>' : '';
+    const color = statusColor(status);
+    const dot = BOT_BUSY_STATUSES.includes(status) ? '<span class="cts-dot"></span>' : '';
     return `<span class="indicator-pill whitespace-nowrap ${color}">${dot}<span>${esc(__(status))}</span></span>`;
 }
 
@@ -70,15 +89,38 @@ function chip(label, ok, busy) {
     return `<span class="cts-chip cts-chip-${state}" title="${esc(title)}"><b>${mark}</b> ${esc(label)}</span>`;
 }
 
-function stepper(status) {
-    const finalLabel = BOT_FINAL_STATUSES.includes(status) ? __(status) : __('Result');
-    const current = BOT_FINAL_STATUSES.includes(status) ? 3 : Math.max(['Draft', 'Queued', 'Processing'].indexOf(status), 0);
-    const steps = [__('Draft'), __('Queued'), __('Processing'), finalLabel].map((label, index) => {
-        let state = index < current ? 'done' : index === current ? `now ${BOT_STATUS_COLORS[status] || 'gray'}` : 'next';
-        if (status === 'Done') state = 'done';
-        return `<li class="cts-step cts-step-${state}"><span>${esc(label)}</span></li>`;
+function haltedStage(frm, status) {
+    for (const version of frm.get_docinfo()?.versions || []) {
+        const change = (JSON.parse(version.data || '{}').changed || []).find(
+            ([field, , value]) => field === 'bot_status' && value === status
+        );
+        if (change) return change[1];
+    }
+    return null;
+}
+
+function stepper(frm, status) {
+    const stages = [...BOT_BUSY_STATUSES, status === 'Needs Review' ? status : 'Done'];
+    const halted = BOT_HALT_STATUSES.includes(status);
+    let current = stages.indexOf(status);
+    if (halted) {
+        const at = stages.indexOf(haltedStage(frm, status));
+        current = at >= 0 ? at : stages.length - 1;
+    }
+    if (status === 'Done') current = stages.length;
+    const noteAt = Math.min(current, stages.length - 1);
+    const items = stages.map((stage, index) => {
+        const state = index < current ? 'done' : index === current ? `now ${statusColor(status)}` : 'next';
+        const live = index === current && BOT_BUSY_STATUSES.includes(status) ? ' cts-live' : '';
+        const mark = index < current ? '✓' : index === current && halted ? '!' : index + 1;
+        return `<li class="cts-step cts-step-${state}${live}"><span class="cts-step-mark">${mark}</span><span class="cts-step-label">${esc(__(stage))}</span></li>`;
     });
-    return `<ol class="cts-stepper">${steps.join('')}</ol>`;
+    if (frm.doc.bot_note && current >= 0) {
+        const from = Math.max(noteAt, 1);
+        const to = Math.min(noteAt + 3, stages.length + 1);
+        items.push(`<li class="cts-step-note" style="grid-row: 2; grid-column: ${from} / ${to}">${esc(frm.doc.bot_note)}</li>`);
+    }
+    return `<div class="cts-stepper-box"><ol class="cts-stepper">${items.join('')}</ol></div>`;
 }
 
 function trackLine(label, user, when) {
@@ -99,12 +141,13 @@ function buildBotPanelHtml(frm) {
     const parts = [];
 
     parts.push(`<div class="cts-head">
-        <div class="cts-head-main">${pill(status)}${stepper(status)}</div>
+        <div class="cts-head-main">${pill(status)}</div>
         <div class="cts-track">
             ${trackLine(__('Sent to Bot By'), doc.queued_by, doc.queued_on)}
             ${trackLine(__('Processed By'), doc.processed_by, doc.processed_on)}
         </div>
     </div>`);
+    parts.push(stepper(frm, status));
 
     if (status === 'Draft' && !doc.queued_on) {
         parts.push(`<div class="cts-hint">${esc(__('Attach the client timesheet file and save, then press Start Payroll Bot.'))}</div>`);
@@ -216,19 +259,26 @@ function panelStyle() {
         .cts-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: currentColor; margin-inline-end: 6px; animation: cts-pulse 1.2s ease-in-out infinite; }
         @keyframes cts-pulse { 50% { opacity: .3; } }
         @media (prefers-reduced-motion: reduce) { .cts-dot { animation: none; } }
-        .cts-stepper { display: flex; list-style: none; margin: 0; padding: 0; overflow-x: auto; max-width: 100%; }
-        .cts-step { position: relative; display: flex; align-items: center; white-space: nowrap; font-size: var(--text-xs); }
-        .cts-step + .cts-step::before { content: ""; display: inline-block; width: 16px; height: 2px; margin-inline: 4px; background: var(--border-color); }
-        .cts-step span { padding: 2px 10px; border-radius: var(--border-radius-lg); }
-        .cts-step-done span { background: var(--bg-green); color: var(--text-on-green); }
-        .cts-step-next span { background: var(--bg-gray); color: var(--text-muted); }
-        .cts-step-now span { font-weight: var(--weight-semibold); }
-        .cts-step-now.gray span { background: var(--bg-gray); color: var(--text-on-gray); }
-        .cts-step-now.blue span { background: var(--bg-blue); color: var(--text-on-blue); }
-        .cts-step-now.orange span { background: var(--bg-orange); color: var(--text-on-orange); }
-        .cts-step-now.yellow span { background: var(--bg-yellow); color: var(--text-on-yellow); }
-        .cts-step-now.green span { background: var(--bg-green); color: var(--text-on-green); }
-        .cts-step-now.red span { background: var(--bg-red); color: var(--text-on-red); }
+        .cts-stepper-box { position: relative; width: 100%; max-width: 100%; overflow-x: auto; padding-block: 4px; }
+        .cts-stepper { display: grid; grid-template-columns: repeat(${BOT_BUSY_STATUSES.length + 1}, minmax(84px, 1fr)); row-gap: 6px; list-style: none; margin: 0; padding: 0; }
+        .cts-step { grid-row: 1; position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; padding-inline: 4px; text-align: center; font-size: var(--text-xs); color: var(--text-muted); }
+        .cts-step + .cts-step::before { content: ""; position: absolute; top: 13px; inset-inline-start: calc(-50% + 14px); inset-inline-end: calc(50% + 14px); height: 2px; background: var(--border-color); }
+        .cts-step.cts-step-done::before, .cts-step.cts-step-now::before { background: var(--green-500); }
+        .cts-step-mark { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--border-color); background: var(--fg-color); font-weight: var(--weight-semibold); }
+        .cts-step-label { line-height: 1.3; overflow-wrap: anywhere; }
+        .cts-step-done .cts-step-mark { background: var(--green-500); border-color: var(--green-500); color: var(--white); }
+        .cts-step-now { --cts-accent: var(--gray-500); color: var(--text-color); }
+        .cts-step-now.blue { --cts-accent: var(--blue-500); }
+        .cts-step-now.orange { --cts-accent: var(--orange-500); }
+        .cts-step-now.yellow { --cts-accent: var(--yellow-500); }
+        .cts-step-now.green { --cts-accent: var(--green-500); }
+        .cts-step-now.red { --cts-accent: var(--red-500); }
+        .cts-step-now .cts-step-mark { background: var(--cts-accent); border-color: var(--cts-accent); color: var(--white); }
+        .cts-step-now .cts-step-label { font-weight: var(--weight-semibold); }
+        .cts-live .cts-step-mark { animation: cts-ring 1.4s ease-out infinite; }
+        @keyframes cts-ring { from { box-shadow: 0 0 0 0 var(--cts-accent); } to { box-shadow: 0 0 0 8px transparent; } }
+        @media (prefers-reduced-motion: reduce) { .cts-live .cts-step-mark { animation: none; } }
+        .cts-step-note { list-style: none; padding: 6px 10px; border-radius: var(--border-radius-md); background: var(--control-bg); color: var(--text-color); font-size: var(--text-xs); text-align: center; overflow-wrap: anywhere; }
         .cts-hint, .cts-muted { color: var(--text-muted); font-size: var(--text-sm); }
         .cts-alert { padding: 8px 12px; border-radius: var(--border-radius-md); font-size: var(--text-sm); }
         .cts-alert-red { background: var(--bg-red); color: var(--text-on-red); }

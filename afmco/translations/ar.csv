@@ -15681,3 +15681,12 @@ An error occurred while updating your session defaults.,حدث خطأ أثناء
 Set default values for the current session. Values set here will be autofilled in forms and reports.,تحديد القيم الافتراضية للجلسة الحالية. تعبأ القيم المحددة هنا تلقائياً في النماذج والتقارير.
 No session defaults configured.,لا توجد قيم افتراضية للجلسة.
 Get around the system quickly with keyboard shortcuts.,التنقل في النظام بسرعة باستخدام اختصارات لوحة المفاتيح.
+Reading File,قراءة الملف
+File Read,تمت قراءة الملف
+Checking Rules,فحص القواعد
+Building Invoice,إعداد الفاتورة
+Building Salary,إعداد الرواتب
+Comparing,المطابقة
+Drafts Created,تم إنشاء المسودات
+Blocked,معلّق
+Bot Note,ملاحظة مساعد الرواتب
