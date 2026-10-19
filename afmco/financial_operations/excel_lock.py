@@ -8,6 +8,7 @@ import frappe
 from openpyxl import load_workbook
 from openpyxl.utils.exceptions import InvalidFileException
 from openpyxl.chartsheet.protection import ChartsheetProtection
+from openpyxl.workbook.protection import WorkbookProtection
 
 SITE_CONFIG_KEY = "afmco_excel_lock_password"
 
@@ -36,6 +37,7 @@ def lock(content: bytes, password: str | None) -> bytes | None:
 		if password:
 			protection.password = password
 		chartsheet.sheetProtection = protection
+	workbook.security = workbook.security or WorkbookProtection()
 	workbook.security.lockStructure = True
 	if password:
 		workbook.security.set_workbook_password(password)
