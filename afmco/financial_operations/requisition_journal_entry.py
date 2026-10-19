@@ -28,6 +28,7 @@ EOS_VACATION = (
 	rf"Vacation Allowance:\s*{NUMBER}",
 )
 EOS_AMOUNT = (rf"EOS:\s*{NUMBER}",)
+EOS_ROUNDING_LIMIT = 1
 LEAVE_TICKET = (rf"Total Ticket\|\s*{NUMBER}", rf"Ticket Allowance:\s*{NUMBER}")
 
 
@@ -55,9 +56,13 @@ def build(requisition: Document, bank_account: str, administration: bool) -> Doc
 			row.project = requisition.project
 
 	if requisition.payment_type == "EOS":
-		add_row(ticket_account, remark_amount(remark, EOS_TICKET))
-		add_row(vacation_account, remark_amount(remark, EOS_VACATION))
-		add_row(eos_account, flt(remark_amount(remark, EOS_AMOUNT), frappe.get_precision("End of Service Settlement", "total_eos")))
+		ticket = flt(remark_amount(remark, EOS_TICKET), precision)
+		vacation = flt(remark_amount(remark, EOS_VACATION), precision)
+		eos = flt(remark_amount(remark, EOS_AMOUNT), precision)
+		rounding = flt(amount - ticket - vacation - eos, precision)
+		add_row(ticket_account, ticket)
+		add_row(vacation_account, vacation)
+		add_row(eos_account, eos + rounding if abs(rounding) <= EOS_ROUNDING_LIMIT else eos)
 	elif requisition.payment_type == "Advance Leave Salary":
 		ticket = flt(min(remark_amount(remark, LEAVE_TICKET), amount), precision)
 		add_row(ticket_account, ticket)
