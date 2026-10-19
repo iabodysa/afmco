@@ -136,6 +136,17 @@
 		sync();
 	}
 
+	const fitWhole = (img) => {
+		const frame = img.parentElement;
+		const whole = img.naturalHeight > img.naturalWidth && img.clientWidth * img.naturalHeight > img.clientHeight * img.naturalWidth;
+		frame.classList.toggle("is-whole", whole);
+		frame.style.setProperty("--afm-fill", whole ? `url(${JSON.stringify(img.currentSrc)})` : "");
+	};
+	const newsImages = root.querySelectorAll(".afm-stage__pic[data-slide] img, .afm-thumb img, .afm-card img");
+	newsImages.forEach((img) => img.addEventListener("load", () => fitWhole(img)));
+	window.addEventListener("resize", () => newsImages.forEach((img) => img.complete && fitWhole(img)), { passive: true });
+	newsImages.forEach((img) => img.complete && fitWhole(img));
+
 	if (!observable) {
 		root.classList.add("afm--solid");
 		root.querySelectorAll("[data-reveal]").forEach((item) => item.classList.add("is-visible"));
