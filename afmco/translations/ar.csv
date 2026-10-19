@@ -15621,3 +15621,4 @@ Pause auto-advance,إيقاف التنقل التلقائي
 Resume auto-advance,تشغيل التنقل التلقائي
 Quick access,وصول سريع
 Phone Image,صورة الجوال
+Journal Entry cannot be submitted until Payment Requisition {0} is Paid.,لا يمكن اعتماد قيد اليومية قبل أن تصبح حالة طلب الصرف {0} مدفوع.

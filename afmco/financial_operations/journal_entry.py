@@ -34,6 +34,15 @@ class AfmcoJournalEntry:
 		super().before_submit()
 		if frappe.flags.in_install or frappe.flags.in_migrate:
 			return
+		if (
+			self.expense_request_cf
+			and frappe.db.get_value("Payment Requisition", self.expense_request_cf, "workflow_state") != "Paid"
+		):
+			frappe.throw(
+				_("Journal Entry cannot be submitted until Payment Requisition {0} is Paid.").format(
+					frappe.bold(self.expense_request_cf)
+				)
+			)
 		attachments = frappe.get_all(
 			"File",
 			filters={
