@@ -494,7 +494,6 @@ Object.assign(IqamaControl.prototype, {
 		const request = Object.assign({ doctype: IC_EXPENSE_DOCTYPE }, IC_PR_DEFAULTS, {
 			beneficiary_name: config.beneficiary,
 			amount: flt(total, 2),
-			date: today,
 			bank_payment_date: today,
 			remark: eligible.map((row) => this._remark_block(row, config)).join("\n"),
 		});

@@ -66,7 +66,6 @@ frappe.ui.form.on('End of Service Settlement', {
         expenseRequest.cost_center = frm.doc.branch;
         expenseRequest.jv_status = 'JV Not Created';
         expenseRequest.naming_series = 'PR-.YYYY.-';
-        expenseRequest.date = frappe.datetime.nowdate();
         expenseRequest.bank_payment_date = frappe.datetime.nowdate();
         expenseRequest.payment_type = 'EOS';
         expenseRequest.remark = `End of Service Benefits:

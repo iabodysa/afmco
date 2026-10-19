@@ -10,7 +10,7 @@
  "field_order": [
   "role",
   "urgency_and_status_section",
-  "date",
+  "naming_series",
   "column_break_payment_approver",
   "payment_approver",
   "section_urgency",
@@ -58,15 +58,6 @@
   "open_reference_document",
   "purchase_details_section",
   "amended_from",
-  "section_purchase_references",
-  "column_break_naming_series",
-  "naming_series",
-  "column_break_supplier",
-  "supplier_name",
-  "column_break_purchase_order",
-  "purchase_order",
-  "section_assignment",
-  "assign_to_employee",
   "section_workflow"
  ],
  "fields": [
@@ -86,15 +77,6 @@
    "hidden": 1,
    "label": "naming_series",
    "options": "PR-.YYYY.-",
-   "reqd": 1
-  },
-  {
-   "default": "Today",
-   "fieldname": "date",
-   "fieldtype": "Date",
-   "label": "Creation Date",
-   "no_copy": 1,
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -159,10 +141,6 @@
    "label": "Amount in Words"
   },
   {
-   "fieldname": "column_break_supplier",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "column_break_payment_approver",
    "fieldtype": "Column Break"
   },
@@ -177,15 +155,6 @@
    "in_list_view": 1,
    "label": "Amount",
    "reqd": 1
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "assign_to_employee",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Assign To Employee",
-   "options": "User",
-   "permlevel": 1
   },
   {
    "allow_on_submit": 1,
@@ -353,10 +322,6 @@
    "options": "--- Choose from List ---\nLocal Bank Transfer\nIntra-NCB Transfer\nInternational Transfer\nCash Payment\nSADAD Payment\nBank cheque\nBank Transfer"
   },
   {
-   "fieldname": "column_break_purchase_order",
-   "fieldtype": "Column Break"
-  },
-  {
    "allow_in_quick_entry": 1,
    "fieldname": "payment_approver",
    "fieldtype": "Link",
@@ -382,11 +347,6 @@
    "fieldname": "payment_details_section",
    "fieldtype": "Section Break",
    "label": "Payment Details"
-  },
-  {
-   "fieldname": "section_assignment",
-   "fieldtype": "Section Break",
-   "label": "Assignment"
   },
   {
    "fieldname": "cost_center",
@@ -447,10 +407,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "column_break_naming_series",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "tax_invoice_number",
    "fieldtype": "Data",
    "label": "Reference",
@@ -466,27 +422,6 @@
    "fieldtype": "Section Break",
    "hidden": 1,
    "label": "Purchase Details"
-  },
-  {
-   "fieldname": "supplier_name",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Supplier Name",
-   "options": "Supplier",
-   "read_only": 1
-  },
-  {
-   "fieldname": "purchase_order",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Purchase Order",
-   "options": "Purchase Order",
-   "read_only": 1
-  },
-  {
-   "fieldname": "section_purchase_references",
-   "fieldtype": "Section Break",
-   "label": "Supplier and Purchase Order"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -498,7 +433,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-19 20:51:00.000000",
+ "modified": "2026-10-19 20:54:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",

@@ -7,7 +7,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 from erpnext import get_default_company
-from frappe.utils import escape_html, flt, getdate, money_in_words, now, strip_html, today
+from frappe.utils import add_days, escape_html, flt, getdate, money_in_words, now, strip_html, today
 from frappe.utils.html_utils import sanitize_html
 
 from afmco.approver_check import ai_reading
@@ -275,7 +275,7 @@ class PaymentRequisition(Document):
 	def receipt_value(self, fieldname: str, value):
 		if fieldname == "bank_payment_date":
 			paid_on = getdate(value) if isinstance(value, str) and value else None
-			if not paid_on or paid_on > getdate(today()) or (self.date and paid_on < getdate(self.date)):
+			if not paid_on or paid_on > getdate(today()) or paid_on < getdate(self.creation):
 				frappe.throw(_("{0} is not a bank payment date for this Payment Requisition.").format(value))
 			return paid_on
 		if fieldname == "bank_account":
@@ -397,5 +397,5 @@ def get_permission_query_conditions(user):
 	company = frappe.db.get_single_value("Global Defaults", "default_company")
 	frozen_date = company and frappe.db.get_value("Company", company, "accounts_frozen_till_date")
 	if frozen_date and frappe.defaults.get_user_default("show_archive_preference", user) != "1":
-		return f"`tabPayment Requisition`.`date` > '{frozen_date}'"
+		return f"`tabPayment Requisition`.`creation` >= '{add_days(frozen_date, 1)}'"
 	return None
