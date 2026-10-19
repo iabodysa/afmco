@@ -7,242 +7,6 @@ frappe.ui.form.on('Payment Requisition', {
 			query: 'afmco.financial_operations.api.payment_approver.active_approvers',
 		}))
 	},
-	refresh: function (frm) {
-		if (frm.doc.docstatus == 1 && (frm.doc.jv_status === 'JV Not Created' || !frm.doc.jv_status)) {
-			frm.add_custom_button(__("Create JV"), function () {
-
-			    let d = new frappe.ui.Dialog({
-                    title: __("Journal Entry Details"),
-                    fields: [
-                        {
-                            label: __("Credit Bank Account"),
-                            fieldname: 'bank_account',
-                            fieldtype: 'Link',
-                            options: 'Account',
-                            reqd: 1,
-                            get_query: function() {
-                                return { filters: { is_group: 0, account_type: 'Bank' } };
-                            }
-                        },
-                        {
-                            label: __("Employee Classification (for Accounting Routing)"),
-                            fieldname: 'employee_type',
-                            fieldtype: 'Select',
-                            options: [__("Projects Employee"), __("Administration Employee")],
-                            default: __("Projects Employee"),
-                            reqd: 1,
-                            hidden: !["EOS", "Advance Leave Salary", "SADAD Payment"].includes(frm.doc.payment_type)
-                        }
-                    ],
-                    primary_action_label: __("Create the Entry"),
-                    primary_action(values) {
-                        d.hide();
-
-                        let is_admin = values.employee_type === __("Administration Employee");
-
-                        // Fetch accounts dynamically based on selection
-                        let account_numbers = [];
-                        if (is_admin) {
-                            account_numbers = ['531002', '531003', '531004']; // EOS, Vac, Ticket
-                        } else {
-                            account_numbers = ['212004', '212002', '212001']; // EOS, Vac, Ticket
-                        }
-
-                        frappe.show_alert({message: __("Preparing the entry..."), indicator: 'orange'});
-
-                        frappe.model.with_doctype('Journal Entry', () => {
-                        frappe.model.with_doctype('Journal Entry Account', () => {
-                            Promise.all([
-                            frappe.db.get_list('Account', {filters: {account_number: account_numbers[0]}, fields: ['name']}),
-                            frappe.db.get_list('Account', {filters: {account_number: account_numbers[1]}, fields: ['name']}),
-                                frappe.db.get_list('Account', {filters: {account_number: account_numbers[2]}, fields: ['name']}),
-                                frappe.db.get_list('Employee', {filters: {bank_ac_no: frm.doc.account_no}, fields: ['name']}),
-                                frappe.db.get_list('Account', {
-                                    filters: {account_number: ['in', ['532005', '532006', '532007', '532011', '512004', '512005', '512006', '512009', '126004', '126006']]},
-                                    fields: ['name', 'account_number']
-                                })
-                            ]).then(results => {
-                                let sadad_accounts = {};
-                                if (results[4]) {
-                                    results[4].forEach(acc => {
-                                        sadad_accounts[acc.account_number] = acc.name;
-                                    });
-                                }
-                                let eos_acc = results[0] && results[0].length > 0 ? results[0][0].name : "";
-                            let vac_acc = results[1] && results[1].length > 0 ? results[1][0].name : "";
-                            let ticket_acc = results[2] && results[2].length > 0 ? results[2][0].name : "";
-                            let emp = results[3] && results[3].length > 0 ? results[3][0] : null;
-                            let employee_id = emp ? emp.name : "";
-
-                            const remark = frm.doc.remark || "";
-                            // Fallback parsing for employee ID
-                            let empMatch = remark.match(/Employee ID:\s*(\d+)/i) || remark.match(/Employee:\s*(\d+)/i);
-                            if (empMatch) employee_id = empMatch[1];
-
-                            let journal_entry = frappe.model.get_new_doc("Journal Entry");
-							journal_entry.expense_request_cf = frm.doc.name;
-							journal_entry.user_remark = remark || ("Expense Request: " + frm.doc.name);
-
-							let add_row = (account, debit, credit, party_type, party, copy_cost_center = false) => {
-                                let row = frappe.model.get_new_doc("Journal Entry Account", journal_entry, "accounts");
-                                if (!journal_entry.accounts) journal_entry.accounts = [];
-                                journal_entry.accounts.push(row);
-                                if (account) row.account = account;
-                                row.debit_in_account_currency = debit;
-                                row.credit_in_account_currency = credit;
-                                if (party_type && party) {
-                                    row.party_type = party_type;
-                                    row.party = party;
-                                }
-                                if (copy_cost_center) {
-                                    if (frm.doc.cost_center) row.cost_center = frm.doc.cost_center;
-                                    if (frm.doc.project) row.project = frm.doc.project;
-                                }
-                                return row;
-                            };
-
-                            try {
-								if (frm.doc.payment_type === "EOS") {
-									let ticket = parseFloat((remark.match(/Ticket Allowance:\s*([\d\.]+)/i) || [0,0])[1]);
-									let vacation = parseFloat((remark.match(/Total Advance Leave Salary:\s*([\d\.]+)/i) || remark.match(/Total Vacation Allowance:\s*([\d\.]+)/i) || remark.match(/Vacation Allowance:\s*([\d\.]+)/i) || [0,0])[1]);
-									let eos = parseFloat((remark.match(/EOS:\s*([\d\.]+)/i) || [0,0])[1]);
-
-									if(ticket > 0) add_row(ticket_acc, ticket, 0, null, null, is_admin);
-									if(vacation > 0) add_row(vac_acc, vacation, 0, null, null, is_admin);
-									if(eos > 0) add_row(eos_acc, eos, 0, null, null, is_admin);
-
-									add_row(values.bank_account, 0, frm.doc.amount || 0, null, null, false);
-
-								} else if (frm.doc.payment_type === "Advance Leave Salary") {
-									let total_ticket = parseFloat((remark.match(/Total Ticket\|\s*([\d\.]+)/i) || remark.match(/Ticket Allowance:\s*([\d\.]+)/i) || [0,0])[1]);
-									let total_amount = frm.doc.amount || 0;
-									let ticket = Math.min(total_ticket, total_amount);
-									let vacation = total_amount - ticket;
-
-									if(ticket > 0) add_row(ticket_acc, ticket, 0, null, null, is_admin);
-									if(vacation > 0) add_row(vac_acc, vacation, 0, null, null, is_admin);
-
-									add_row(values.bank_account, 0, total_amount, null, null, false);
-
-								} else if (frm.doc.payment_type === "SADAD Payment") {
-									let start_date = frm.doc.bank_payment_date;
-									if (!start_date) {
-										frappe.msgprint(__("Please set the Bank Payment Date to calculate the split across years."));
-										throw new Error("Missing date");
-									}
-
-									let currentYear = new Date(start_date).getFullYear();
-									let blocks = remark.split('------------------------');
-
-									blocks.forEach(block => {
-										if (!block.trim()) return;
-
-										let emp_match = block.match(/Employee:\s*([^\n]+)/i);
-										let type_match = block.match(/Type:\s*([^\n]+)/i);
-										let period_match = block.match(/Period:\s*([\d]+)/i);
-										let amt_match = block.match(/Amount:\s*([\d\.]+)/i);
-
-										if (emp_match && type_match && amt_match) {
-											let employee_id = emp_match[1].trim();
-											let type = type_match[1].trim();
-											let period = period_match ? parseInt(period_match[1]) : 0;
-											let amount = parseFloat(amt_match[1]);
-
-                                            let get_expense_acc_no = (t, is_admin) => {
-                                              const ho = ['532005', '532006', '532007', '532011']; // 0:Prof, 1:Passport, 2:Exit, 3:Sponsor
-                                              const oth = ['512004', '512005', '512006', '512009']; // 0:Passport, 1:Prof, 2:Exit, 3:Sponsor
-
-                                              if (t === 'Issue or renew residence permit') return is_admin ? ho[1] : oth[0];
-                                              if (t === 'Transfer of sponsorship') return is_admin ? ho[3] : oth[3];
-                                              if (t === 'Change of profession') return is_admin ? ho[0] : oth[1];
-                                              if (t === 'Exit and Return Visa' || t === 'Extend exit and re-entry visa (1) month') return is_admin ? ho[2] : oth[2];
-                                              return null;
-                                            };
-
-                                            let get_prepaid_acc_no = (t) => {
-                                                if (t === 'Transfer of sponsorship') return '126006';
-                                                return '126004';
-                                            };
-
-                                            let exp_acc_no = get_expense_acc_no(type, is_admin);
-                                            let prep_acc_no = get_prepaid_acc_no(type);
-
-                                            let expense_acc = exp_acc_no ? sadad_accounts[exp_acc_no] : "";
-                                            let prepaid_acc = prep_acc_no ? sadad_accounts[prep_acc_no] : "";
-
-                                            if (period > 0) {
-                                                let startDate = new Date(start_date);
-                                                let endDate = new Date(start_date);
-                                                endDate.setMonth(endDate.getMonth() + period);
-
-                                                let diffDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
-
-                                                if (endDate.getFullYear() === currentYear) {
-                                                    add_row(expense_acc, amount, 0, null, null, is_admin);
-                                                } else {
-                                                let currentMonth = startDate.getMonth(); // 0-11
-                                                let currentYearFraction = (12 - currentMonth) / 12;
-
-                                                let currentYearAmount = amount * currentYearFraction;
-                                                let nextYearAmount = amount - currentYearAmount;
-
-                                                if (currentYearAmount > 0) add_row(expense_acc, currentYearAmount, 0, null, null, is_admin);
-                                                if (nextYearAmount > 0) add_row(prepaid_acc, nextYearAmount, 0, null, null, is_admin);
-                                                }
-                                            } else {
-                                                add_row(expense_acc, amount, 0, null, null, is_admin);
-                                            }
-										}
-									});
-
-									add_row(values.bank_account, 0, frm.doc.amount || 0, null, null, false);
-
-								} else {
-									add_row("", frm.doc.amount || 0, 0, null, null, true);
-									add_row(values.bank_account, 0, frm.doc.amount || 0, null, null, false);
-								}
-							} catch (e) {
-								console.error("Error creating rows:", e);
-								if (journal_entry.accounts) journal_entry.accounts = [];
-								add_row("", frm.doc.amount || 0, 0, null, null, true);
-								add_row(values.bank_account, 0, frm.doc.amount || 0, null, null, false);
-							}
-
-							frappe.set_route("Form", journal_entry.doctype, journal_entry.name);
-                        }).catch(e => {
-                            console.error("Fetch failed:", e);
-                            frappe.msgprint(__("An error occurred while fetching the accounts. A preliminary entry has been created."));
-                            let journal_entry = frappe.model.get_new_doc("Journal Entry");
-							journal_entry.expense_request_cf = frm.doc.name;
-							if (!journal_entry.accounts) journal_entry.accounts = [];
-
-							let r1 = frappe.model.get_new_doc("Journal Entry Account", journal_entry, "accounts");
-							journal_entry.accounts.push(r1);
-							r1.debit_in_account_currency = frm.doc.amount || 0;
-							if (frm.doc.cost_center) r1.cost_center = frm.doc.cost_center;
-
-							let r2 = frappe.model.get_new_doc("Journal Entry Account", journal_entry, "accounts");
-							journal_entry.accounts.push(r2);
-							r2.credit_in_account_currency = frm.doc.amount || 0;
-							r2.account = values.bank_account;
-							frappe.set_route("Form", journal_entry.doctype, journal_entry.name);
-                        });
-                        });
-                        });
-                    }
-                });
-
-                // Pre-fetch default bank account '122001' before showing the dialog
-                frappe.db.get_list('Account', {filters: {account_number: '122001'}, fields: ['name']}).then(res => {
-                    if (res && res.length > 0) {
-                        d.set_value('bank_account', res[0].name);
-                    }
-                    d.show();
-                });
-
-			}).addClass('btn-primary');
-		}
-	}
 });
 
 /** Client script for Payment Requisition. */
@@ -514,10 +278,6 @@ frappe.ui.form.on('Payment Requisition', {
     },
 
     onload(frm) {
-        frm.set_query('bank_account', () => ({
-            filters: { account_type: ['in', ['Bank']] }
-        }));
-
         if (frm.doc.workflow_state === 'Financial Controller' && frappe.user_roles.includes('Auditor')) {
             displayPaymentApproverPermissions(frm);
         }
@@ -525,24 +285,24 @@ frappe.ui.form.on('Payment Requisition', {
 
     refresh(frm) {
         bindAfmcoDashboardEvents();
-        cleanupExistingAlerts(frm);
         renderRemarkExcelDashboard(frm);
         addSystemManagerButtons(frm);
 
-        handleUrgentRequest(frm);
-        handlePaymentVerification(frm);
+        frappe.require(['/assets/afmco/js/stepper.js', '/assets/afmco/css/stepper.css'], () => renderRequestCards(frm));
         validateAndDisplayBankAccountAlert(frm);
         handleFinancialControllerPermissions(frm);
 
         addPreviousRecordsButton(frm);
         addUrgentButton(frm);
-        processCompletedWorkflowTransitions(frm);
+        addAlreadyPaidButton(frm);
+        renderNextAction(frm);
         addCreateJVButton(frm);
         addSupportingPackButton(frm);
         addAccountsBotButton(frm);
         showAmountInWords(frm, frm.doc.amount_in_words);
         showPaymentDates(frm);
         frappe.require(["/assets/afmco/js/attachment_check.js", "/assets/afmco/css/attachment_check.css"], () => afmco.attachment_check.render(frm));
+        frappe.require("/assets/afmco/css/payment_requisition.css");
     },
 
     after_workflow_action(frm) {
@@ -573,26 +333,14 @@ frappe.ui.form.on('Payment Requisition', {
             });
             frappe.validated = false;
         }
-
-        if (frm.doc.mode_of_payment && frm.doc.mode_of_payment.startsWith('-')) {
-            frappe.msgprint({
-                title: __('Error'),
-                indicator: 'red',
-                message: __('Please select a valid mode of payment from the dropdown list.')
-            });
-            frappe.validated = false;
-        }
     },
 
     account_no(frm) {
         validateAndDisplayBankAccountAlert(frm);
     },
 
-    mode_of_payment(frm) {
-        validateAndDisplayBankAccountAlert(frm);
-    },
-
     payment_type(frm) {
+        validateAndDisplayBankAccountAlert(frm);
         if (frm.doc.payment_type === 'Payroll (Salary)' && !frm.doc.multiple_beneficiaries) {
             frm.set_value('multiple_beneficiaries', 1);
         }
@@ -614,8 +362,11 @@ function showAmountInWords(frm, words) {
 function showPaymentDates(frm) {
     (frm.payment_date_indicators || []).forEach(($indicator) => $indicator.remove());
     const dates = (frm.doc.__onload || {}).payment_dates || [];
-    frm.payment_date_indicators = dates.map((date) =>
-        frm.dashboard.add_indicator(__('Posting Date: {0}', [frappe.datetime.str_to_user(date)]), 'blue')
+    frm.payment_date_indicators = dates.map(([journalEntry, date]) =>
+        frm.dashboard.add_indicator(
+            __('Journal Entry date {0}: {1}', [journalEntry, frappe.datetime.str_to_user(date)]),
+            'blue'
+        )
     );
 }
 
@@ -938,7 +689,7 @@ function openCreateJVDialog(frm) {
         primary_action_label: __('Create JV'),
         primary_action(values) {
             dialog.hide();
-            processJournalEntryCreation(frm, values);
+            createJournalEntryDraft(frm, values);
         }
     });
 
@@ -967,350 +718,27 @@ function openCreateJVDialog(frm) {
         });
 }
 
-function allocateSadadAmountByYear(amount, startDate, periodMonths) {
-    const normalizedAmount = Number(amount);
-    const normalizedPeriod = Number.parseInt(periodMonths, 10);
-    const dateMatch = String(startDate || '').match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
-
-    if (!Number.isFinite(normalizedAmount) || normalizedAmount < 0) {
-        throw new Error(__('SADAD amount must be a valid positive number.'));
-    }
-    if (!dateMatch) {
-        throw new Error(__('Bank Payment Date is invalid.'));
-    }
-
-    const startMonth = Number(dateMatch[2]) - 1;
-    if (startMonth < 0 || startMonth > 11) {
-        throw new Error(__('Bank Payment Date is invalid.'));
-    }
-
-    if (!Number.isFinite(normalizedPeriod) || normalizedPeriod <= 0) {
-        return {
-            currentYearAmount: Number(normalizedAmount.toFixed(2)),
-            futureAmount: 0,
-            monthsInCurrentYear: 0
-        };
-    }
-
-    const monthsInCurrentYear = Math.min(normalizedPeriod, 12 - startMonth);
-    const currentYearAmount = Number((normalizedAmount * monthsInCurrentYear / normalizedPeriod).toFixed(2));
-    const futureAmount = Number((normalizedAmount - currentYearAmount).toFixed(2));
-
-    return { currentYearAmount, futureAmount, monthsInCurrentYear };
-}
-
-function validateJournalEntryRows(rows) {
-    if (!Array.isArray(rows) || rows.length === 0) {
-        throw new Error(__('No valid Journal Entry rows were generated.'));
-    }
-
-    let totalDebit = 0;
-    let totalCredit = 0;
-
-    rows.forEach(row => {
-        const debit = Number(row.debit_in_account_currency || 0);
-        const credit = Number(row.credit_in_account_currency || 0);
-
-        if (!Number.isFinite(debit) || !Number.isFinite(credit) || debit < 0 || credit < 0) {
-            throw new Error(__('Journal Entry contains an invalid amount.'));
-        }
-        if ((debit > 0 || credit > 0) && !row.account) {
-            throw new Error(__('Journal Entry contains a row without an account.'));
-        }
-
-        totalDebit += debit;
-        totalCredit += credit;
+function createJournalEntryDraft(frm, values) {
+    return frappe.call({
+        method: 'afmco.financial_operations.api.journal_entry.make_requisition_entry',
+        args: {
+            name: frm.doc.name,
+            bank_account: values.bank_account,
+            administration: values.employee_type === 'Administration Employee (Administration)' ? 1 : 0
+        },
+        freeze: true,
+        freeze_message: __('Preparing Journal Entry...')
+    }).then((r) => {
+        frappe.model.sync(r.message);
+        frappe.set_route('Form', r.message.doctype, r.message.name);
     });
-
-    totalDebit = Number(totalDebit.toFixed(2));
-    totalCredit = Number(totalCredit.toFixed(2));
-
-    if (totalDebit <= 0 || totalCredit <= 0) {
-        throw new Error(__('Journal Entry must contain both debit and credit amounts.'));
-    }
-    if (Math.round(totalDebit * 100) !== Math.round(totalCredit * 100)) {
-        throw new Error(__('Journal Entry is not balanced. Debit: {0}, Credit: {1}', [totalDebit, totalCredit]));
-    }
-
-    return { totalDebit, totalCredit };
-}
-
-function extractRemarkAmount(remark, patterns) {
-    for (const pattern of patterns) {
-        const match = remark.match(pattern);
-        if (match) {
-            const amount = Number(String(match[1]).replace(/,/g, ''));
-            if (Number.isFinite(amount)) return amount;
-        }
-    }
-    return 0;
-}
-
-function getSadadExpenseAccountNumber(type, isAdmin) {
-    const administration = ['532005', '532006', '532007', '532011'];
-    const projects = ['512004', '512005', '512006', '512009'];
-
-    if (type === 'Issue or renew residence permit') return isAdmin ? administration[1] : projects[0];
-    if (type === 'Transfer of sponsorship') return isAdmin ? administration[3] : projects[3];
-    if (type === 'Change of profession') return isAdmin ? administration[0] : projects[1];
-    if (type === 'Exit and Return Visa' || type === 'Extend exit and re-entry visa (1) month') {
-        return isAdmin ? administration[2] : projects[2];
-    }
-    return null;
-}
-
-function getSadadPrepaidAccountNumber(type) {
-    return type === 'Transfer of sponsorship' ? '126006' : '126004';
-}
-
-function showJournalEntryError(error, journalEntry) {
-    if (journalEntry && journalEntry.accounts) {
-        frappe.model.clear_table(journalEntry, 'accounts');
-    }
-
-    console.error('Journal Entry creation stopped:', error);
-    const detail = error && error.message ? error.message : __('Please review the request data and try again.');
-    frappe.msgprint({
-        title: __('Journal Entry Not Created'),
-        indicator: 'red',
-        message: __('The Journal Entry was not created: {0}', [escapeHtml(detail)])
-    });
-}
-
-function processJournalEntryCreation(frm, values) {
-    const isAdmin = values.employee_type === 'Administration Employee (Administration)';
-    const accountNumbers = isAdmin
-        ? ['531002', '531003', '531004']
-        : ['212004', '212002', '212001'];
-    const allAccountNumbers = [
-        ...accountNumbers,
-        '532005', '532006', '532007', '532011',
-        '512004', '512005', '512006', '512009',
-        '126004', '126006'
-    ];
-    let journalEntry = null;
-
-    frappe.show_alert({ message: __('Preparing Journal Entry...'), indicator: 'orange' });
-
-    return frappe.model.with_doctype('Journal Entry')
-        .then(() => frappe.model.with_doctype('Journal Entry Account'))
-        .then(() => fetchListRecords('Account', {
-            filters: { account_number: ['in', allAccountNumbers] },
-            fields: ['name', 'account_number'],
-            limit: allAccountNumbers.length
-        }))
-        .then(accounts => {
-            const accountsMap = {};
-            (accounts || []).forEach(account => {
-                accountsMap[account.account_number] = account.name;
-            });
-
-            const remark = frm.doc.remark || '';
-            journalEntry = frappe.model.get_new_doc('Journal Entry');
-            journalEntry.expense_request_cf = frm.doc.name;
-            journalEntry.user_remark = remark || `Expense Request: ${frm.doc.name}`;
-
-            const addRow = (account, debit, credit, copyCostCenter, accountLabel) => {
-                const normalizedDebit = Number(debit || 0);
-                const normalizedCredit = Number(credit || 0);
-                if (normalizedDebit <= 0 && normalizedCredit <= 0) return null;
-                if (!account) {
-                    throw new Error(__('Required account is missing: {0}', [accountLabel || __('Unknown Account')]));
-                }
-
-                const row = frappe.model.get_new_doc('Journal Entry Account', journalEntry, 'accounts');
-                row.account = account;
-                row.debit_in_account_currency = normalizedDebit;
-                row.credit_in_account_currency = normalizedCredit;
-
-                if (copyCostCenter) {
-                    if (frm.doc.cost_center) row.cost_center = frm.doc.cost_center;
-                    if (frm.doc.project) row.project = frm.doc.project;
-                }
-                return row;
-            };
-
-            if (frm.doc.payment_type === 'EOS') {
-                const ticket = extractRemarkAmount(remark, [/Ticket Allowance:\s*([\d,]+(?:\.\d+)?)/i]);
-                const vacation = extractRemarkAmount(remark, [
-                    /Total Advance Leave Salary:\s*([\d,]+(?:\.\d+)?)/i,
-                    /Total Vacation Allowance:\s*([\d,]+(?:\.\d+)?)/i,
-                    /Vacation Allowance:\s*([\d,]+(?:\.\d+)?)/i
-                ]);
-                const eos = extractRemarkAmount(remark, [/EOS:\s*([\d,]+(?:\.\d+)?)/i]);
-
-                addRow(accountsMap[accountNumbers[2]], ticket, 0, isAdmin, accountNumbers[2]);
-                addRow(accountsMap[accountNumbers[1]], vacation, 0, isAdmin, accountNumbers[1]);
-                addRow(accountsMap[accountNumbers[0]], eos, 0, isAdmin, accountNumbers[0]);
-                addRow(values.bank_account, 0, frm.doc.amount, false, __('Credit Bank Account'));
-            } else if (frm.doc.payment_type === 'Advance Leave Salary') {
-                const totalTicket = extractRemarkAmount(remark, [
-                    /Total Ticket\|\s*([\d,]+(?:\.\d+)?)/i,
-                    /Ticket Allowance:\s*([\d,]+(?:\.\d+)?)/i
-                ]);
-                const totalAmount = Number(frm.doc.amount || 0);
-                const ticket = Math.min(totalTicket, totalAmount);
-                const vacation = Number((totalAmount - ticket).toFixed(2));
-
-                addRow(accountsMap[accountNumbers[2]], ticket, 0, isAdmin, accountNumbers[2]);
-                addRow(accountsMap[accountNumbers[1]], vacation, 0, isAdmin, accountNumbers[1]);
-                addRow(values.bank_account, 0, totalAmount, false, __('Credit Bank Account'));
-            } else if (frm.doc.payment_type === 'SADAD Payment') {
-                const startDate = frm.doc.bank_payment_date;
-                if (!startDate) {
-                    throw new Error(__('Please verify the Bank Payment Date for year allocation.'));
-                }
-
-                let parsedBlocks = 0;
-                remark.split('------------------------').forEach(block => {
-                    if (!block.trim()) return;
-
-                    const typeMatch = block.match(/Type:\s*([^\n\r]+)/i);
-                    const periodMatch = block.match(/Period:\s*(\d+)/i);
-                    const amountMatch = block.match(/Amount:\s*([\d,]+(?:\.\d+)?)/i);
-                    if (!typeMatch || !amountMatch) return;
-
-                    const type = typeMatch[1].trim();
-                    const period = periodMatch ? Number.parseInt(periodMatch[1], 10) : 0;
-                    const amount = Number(amountMatch[1].replace(/,/g, ''));
-                    const expenseAccountNumber = getSadadExpenseAccountNumber(type, isAdmin);
-                    if (!expenseAccountNumber) {
-                        throw new Error(__('SADAD service type is not configured: {0}', [type]));
-                    }
-
-                    const allocation = allocateSadadAmountByYear(amount, startDate, period);
-                    addRow(
-                        accountsMap[expenseAccountNumber],
-                        allocation.currentYearAmount,
-                        0,
-                        isAdmin,
-                        expenseAccountNumber
-                    );
-
-                    if (allocation.futureAmount > 0) {
-                        const prepaidAccountNumber = getSadadPrepaidAccountNumber(type);
-                        addRow(
-                            accountsMap[prepaidAccountNumber],
-                            allocation.futureAmount,
-                            0,
-                            isAdmin,
-                            prepaidAccountNumber
-                        );
-                    }
-                    parsedBlocks += 1;
-                });
-
-                if (parsedBlocks === 0) {
-                    throw new Error(__('No structured SADAD rows with Type and Amount were found in the remark.'));
-                }
-                addRow(values.bank_account, 0, frm.doc.amount, false, __('Credit Bank Account'));
-            } else {
-                throw new Error(__('Journal Entry creation is not configured for payment type: {0}', [frm.doc.payment_type || '-']));
-            }
-
-            validateJournalEntryRows(journalEntry.accounts || []);
-            frappe.set_route('Form', journalEntry.doctype, journalEntry.name);
-            return journalEntry;
-        })
-        .catch(error => {
-            showJournalEntryError(error, journalEntry);
-            return null;
-        });
 }
 
 // Alerts and bank-account validation ------------------------------------------
-function cleanupExistingAlerts(frm) {
-    const $dashboard = getAfmcoDashboardContainer(frm);
-    if (!$dashboard || typeof $dashboard.find !== 'function') return;
-    $dashboard.find('#afmco-alerts-container').remove();
-}
-
-function createAlert(type, icon, title, message, onClick) {
-    const safeType = escapeHtml(type);
-    const safeIcon = escapeHtml(icon);
-    const safeTitle = escapeHtml(title);
-    const safeMessage = escapeHtmlWithLineBreaks(message);
-    const alertElement = $(`
-        <div class="alert alert-${safeType} alert-dismissible form-message d-flex align-items-center mb-3">
-            <i class="${safeIcon} mx-2 text-${safeType}"></i>
-            <div>
-                <strong>${safeTitle}</strong>: ${safeMessage}
-            </div>
-        </div>
-    `);
-
-    if (onClick) {
-        alertElement.css('cursor', 'pointer').click(onClick);
-    }
-
-    return alertElement;
-}
-
-function addAlertToDashboard(alertElement, frm) {
-    const $container = getAfmcoDashboardContainer(frm);
-    if (!$container || typeof $container.find !== 'function') return null;
-
-    let $alertsContainer = $container.find('#afmco-alerts-container').first();
-    if (!$alertsContainer.length) {
-        $alertsContainer = $('<div id="afmco-alerts-container" class="custom"></div>');
-        $container.prepend($alertsContainer);
-    }
-    $alertsContainer.append(alertElement);
-    if (frm && frm.dashboard && typeof frm.dashboard.show === 'function') {
-        frm.dashboard.show();
-    } else {
-        $container.addClass('visible-section').removeClass('empty-section hidden');
-    }
-    return $alertsContainer;
-}
-
-function handleUrgentRequest(frm) {
-    if (frm.doc.if_it__urgent !== 1) return;
-
-    const alertText = frm.doc.reason_of_urgency || __('No reason provided');
-    const alertElement = createAlert(
-        'danger',
-        'fa fa-exclamation-triangle',
-        __('Urgent'),
-        alertText,
-        () => {
-            frm.set_df_property('if_it__urgent', 'hidden', 0);
-            frm.set_df_property('reason_of_urgency', 'hidden', 0);
-        }
-    );
-
-    alertElement.addClass('alert-urgent-request');
-    addAlertToDashboard(alertElement, frm);
-
-    frm.set_df_property('if_it__urgent', 'hidden', 1);
-    frm.set_df_property('reason_of_urgency', 'hidden', 1);
-}
-
-function handlePaymentVerification(frm) {
-    if (frm.doc.verify_payment !== 1) return;
-
-    const alertElement = createAlert(
-        'info',
-        'fa fa-check-circle',
-        __('Paid'),
-        __('This transaction has been documented as settled. Please ensure all necessary approvals and authorizations are verified before proceeding.'),
-        () => {
-            frm.set_df_property('verify_payment', 'hidden', 0);
-        }
-    );
-
-    alertElement.addClass('alert-payment-verified');
-    addAlertToDashboard(alertElement, frm);
-
-    frm.set_df_property('verify_payment', 'hidden', 1);
-}
-
 function validateAndDisplayBankAccountAlert(frm) {
     const fieldWrapper = frm.get_field('account_no')?.$wrapper;
 
-    if (frm.doc.payment_type === 'SADAD Payment' ||
-        frm.doc.mode_of_payment === 'SADAD Payment' ||
-        frm.doc.mode_of_payment === '--- Choose from List ---') {
+    if (frm.doc.payment_type === 'SADAD Payment') {
         frm.set_df_property('account_no', 'description', '');
         if (fieldWrapper) {
             fieldWrapper.removeClass('has-error has-success');
@@ -1805,425 +1233,113 @@ function createBalanceTable(final_balance, max_limit) {
     return build_afmco_table(headers, rows);
 }
 
-// Workflow timeline and urgent actions ----------------------------------------
-function getWorkflowLogField(log, fieldname) {
-    try {
-        return log[fieldname];
-    } catch (error) {
-        return null;
+function renderRequestCards(frm) {
+    frm.dashboard.parent.find('.afmco-pr-card').remove();
+    const cards = [];
+    if (frm.doc.if_it__urgent) {
+        const reason = frm.doc.reason_of_urgency || __('No reason provided');
+        cards.push([
+            `<p class="text-danger">${escapeHtmlWithLineBreaks(__('This request is already marked as urgent with reason: {0}', [reason]))}</p>`,
+            __('Urgent')
+        ]);
     }
+    if (frm.doc.verify_payment) {
+        cards.push([
+            `<p>${escapeHtml(__('This transaction has been documented as settled. Please ensure all necessary approvals and authorizations are verified before proceeding.'))}</p>`,
+            __('Already paid')
+        ]);
+    }
+    const stepper = workflowStepper(frm);
+    if (stepper) cards.push([stepper, __('Workflow')]);
+
+    cards.forEach(([html, label]) => {
+        const body = frm.dashboard.add_section(html, label);
+        body.closest('.form-dashboard-section').addClass('afmco-pr-card');
+        afmco.stepper.center(body);
+    });
+    if (cards.length) frm.dashboard.show();
 }
 
-function workflowSafeString(value) {
-    if (value === null || value === undefined) return '';
+function workflowStepper(frm) {
+    const state = frm.doc.workflow_state;
+    if (frm.is_new() || !state) return '';
+    frappe.workflow.setup(frm.doctype);
+    const workflow = frappe.workflow.workflows[frm.doctype];
+    if (!workflow) return '';
 
-    try {
-        return String(value);
-    } catch (error) {
+    const halts = new Set(workflow.states.filter((row) => cint(row.doc_status) === 2).map((row) => row.state));
+    workflow.transitions.filter((row) => row.action === 'Reject').forEach((row) => halts.add(row.next_state));
+    const reached = new Set(workflow.transitions.map((row) => row.next_state));
+    const stages = [...new Set(workflow.states.map((row) => row.state))]
+        .filter((stage, index) => !halts.has(stage) && (index === 0 || reached.has(stage)));
+
+    const halted = halts.has(state);
+    let current = stages.indexOf(state);
+    if (halted) {
+        const at = stages.indexOf(afmco.stepper.value_before(frm, 'workflow_state', state));
+        current = at >= 0 ? at : stages.length - 1;
+    } else if (current < 0) {
         return '';
+    } else if (current === stages.length - 1 && frm.doc.docstatus === 1) {
+        current = stages.length;
+    }
+    return afmco.stepper.html({ stages, current, color: halted ? 'red' : 'blue', halted });
+}
+
+function addAlreadyPaidButton(frm) {
+    const buttonLabel = __('Already paid');
+    frm.remove_custom_button(buttonLabel);
+
+    if (frm.is_new() && !frm.doc.verify_payment) {
+        frm.add_custom_button(buttonLabel, () => frm.set_value('verify_payment', 1).then(() => frm.refresh()));
     }
 }
 
-function workflowEscapeHtml(value) {
-    try {
-        return escapeHtml(workflowSafeString(value));
-    } catch (error) {
-        return '';
-    }
-}
+function renderNextAction(frm) {
+    const $sidebar = $(frm.wrapper).find('.form-sidebar').first();
+    $sidebar.find('.afmco-next-action').remove();
+    if (frm.is_new() || !frm.doc.workflow_state) return;
 
-function workflowTranslate(value) {
-    const text = workflowSafeString(value);
-    if (!text) return '';
-
-    try {
-        return typeof __ === 'function' ? workflowSafeString(__(text)) : text;
-    } catch (error) {
-        return text;
-    }
-}
-
-function normalizeWorkflowText(value) {
-    return workflowSafeString(value).trim();
-}
-
-function getWorkflowLogTimestamp(value) {
-    if (value === null || value === undefined || value === '') return null;
-    if (typeof value === 'number') return Number.isFinite(value) ? value : null;
-
-    const rawValue = normalizeWorkflowText(value);
-    if (!rawValue) return null;
-
-    let timestamp = Date.parse(rawValue);
-    if (Number.isFinite(timestamp)) return timestamp;
-
-    const normalizedValue = rawValue
-        .replace(' ', 'T')
-        .replace(/\.(\d{3})\d+/, '.$1');
-    timestamp = Date.parse(normalizedValue);
-
-    return Number.isFinite(timestamp) ? timestamp : null;
-}
-
-function getSortedWorkflowLogs(workflowLogs) {
-    if (!Array.isArray(workflowLogs)) return [];
-
-    return workflowLogs
-        .map((log, originalIndex) => ({
-            log,
-            originalIndex,
-            timestamp: log && typeof log === 'object' && !Array.isArray(log)
-                ? getWorkflowLogTimestamp(getWorkflowLogField(log, 'creation'))
-                : null
-        }))
-        .filter(entry => entry.log && typeof entry.log === 'object' && !Array.isArray(entry.log))
-        .sort((left, right) => {
-            if (left.timestamp === null && right.timestamp === null) {
-                return left.originalIndex - right.originalIndex;
-            }
-            if (left.timestamp === null) return 1;
-            if (right.timestamp === null) return -1;
-            if (left.timestamp !== right.timestamp) return left.timestamp - right.timestamp;
-            return left.originalIndex - right.originalIndex;
-        })
-        .map(entry => entry.log);
-}
-
-function cleanWorkflowStateCandidate(value) {
-    return normalizeWorkflowText(value)
-        .replace(/^[\s"'`]+/, '')
-        .replace(/[\s"'`.,!?،؛؟]+$/, '')
-        .trim();
-}
-
-function getWorkflowAnalysisText(content) {
-    return normalizeWorkflowText(content)
-        .replace(/<[^>]*>/g, ' ')
-        .replace(/\s+/g, ' ')
-        .trim();
-}
-
-function getNativeWorkflowTarget(log, content) {
-    const commentType = normalizeWorkflowText(getWorkflowLogField(log, 'comment_type'));
-    if (commentType !== 'Workflow') return '';
-
-    return normalizeWorkflowText(content);
-}
-
-function parseExplicitWorkflowTransition(content) {
-    const analysisText = getWorkflowAnalysisText(content);
-
-    if (!analysisText) return null;
-
-    const patterns = [
-        /^(?:(?:workflow\s+)?state\s+changed|changed)\s+from\s+(.+?)\s+to\s+(.+?)\s*[.!?،؛؟]?$/i,
-        /^from\s+(.+?)\s+to\s+(.+?)\s*[.!?،؛؟]?$/i,
-        /^(?:تم\s+تغيير\s+حالة\s+سير\s+العمل|تغيير\s+الحالة)\s+من\s+(.+?)\s+إلى\s+(.+?)\s*[.!?،؛؟]?$/u,
-        /^من\s+(.+?)\s+إلى\s+(.+?)\s*[.!?،؛؟]?$/u,
-        /^(.+?)\s*(?:->|→|←)\s*(.+?)\s*[.!?،؛؟]?$/
-    ];
-
-    for (const pattern of patterns) {
-        const match = analysisText.match(pattern);
-        if (!match) continue;
-
-        const fromState = cleanWorkflowStateCandidate(match[1]);
-        const toState = cleanWorkflowStateCandidate(match[2]);
-        if (fromState && toState) {
-            return { fromState, toState };
-        }
+    if (frm.doc.workflow_state === 'Pending') {
+        renderNextActionCard($sidebar, [{ role: '', users: [{ user: frm.doc.owner, full_name: frappe.user.full_name(frm.doc.owner) }] }]);
+        return;
     }
 
-    return null;
+    const docname = frm.doc.name;
+    frappe.call({
+        method: 'afmco.financial_operations.api.next_action.get_next_action_users',
+        args: { doctype: frm.doctype, name: docname }
+    }).then((r) => {
+        if (frm.doc.name === docname) renderNextActionCard($sidebar, r.message);
+    });
 }
 
-function getWorkflowActor(log) {
-    const actorFields = ['owner', 'user', 'completed_by', 'modified_by'];
-    let actorId = '';
+function renderNextActionCard($sidebar, rows) {
+    $sidebar.find('.afmco-next-action').remove();
+    if (!Array.isArray(rows) || !rows.length) return;
 
-    for (const fieldname of actorFields) {
-        actorId = normalizeWorkflowText(getWorkflowLogField(log, fieldname));
-        if (actorId) break;
-    }
-
-    if (!actorId) return workflowTranslate('Unknown User');
-
-    try {
-        if (typeof frappe !== 'undefined' && typeof frappe.user_info === 'function') {
-            const userInfo = frappe.user_info(actorId);
-            if (userInfo && typeof userInfo === 'object') {
-                const fullname = normalizeWorkflowText(userInfo.fullname || userInfo.full_name);
-                if (fullname) return fullname;
-            }
-        }
-    } catch (error) {
-        // The actor identifier remains a safe fallback when user metadata is unavailable.
-    }
-
-    return actorId;
-}
-
-function getWorkflowDateLabels(log) {
-    const creation = getWorkflowLogField(log, 'creation');
-    const rawCreation = normalizeWorkflowText(creation);
-    if (!rawCreation) return null;
-
-    let prettyDate = rawCreation;
-    let userDate = rawCreation;
-
-    try {
-        if (frappe.datetime && typeof frappe.datetime.prettyDate === 'function') {
-            prettyDate = normalizeWorkflowText(frappe.datetime.prettyDate(creation)) || rawCreation;
-        }
-    } catch (error) {
-        prettyDate = rawCreation;
-    }
-
-    try {
-        if (frappe.datetime && typeof frappe.datetime.str_to_user === 'function') {
-            userDate = normalizeWorkflowText(frappe.datetime.str_to_user(creation)) || rawCreation;
-        }
-    } catch (error) {
-        userDate = rawCreation;
-    }
-
-    return { prettyDate, userDate };
-}
-
-function getWorkflowBranchIcon() {
-    try {
-        if (frappe.utils && typeof frappe.utils.icon === 'function') {
-            return workflowSafeString(frappe.utils.icon('branch', 'sm'));
-        }
-    } catch (error) {
-        // The timeline remains readable when the icon API is unavailable.
-    }
-
-    return '';
-}
-
-function buildWorkflowCurrentPill() {
-    return `
-        <span class="indicator-pill green">
-            <span class="indicator-dot"></span>
-            ${workflowEscapeHtml(workflowTranslate('Current'))}
-        </span>
-    `;
-}
-
-function buildWorkflowTransitionHtml(event) {
-    if (event.fromState && event.toState) {
-        const arrow = isRTL ? '←' : '→';
-        const direction = isRTL ? 'rtl' : 'ltr';
-        return `
-            <div class="timeline-state-transition text-muted" dir="${direction}">
-                <span>${workflowEscapeHtml(workflowTranslate(event.fromState))}</span>
-                <span aria-hidden="true">${workflowEscapeHtml(arrow)}</span>
-                <span>${workflowEscapeHtml(workflowTranslate(event.toState))}</span>
-            </div>
-        `;
-    }
-
-    if (event.startedIn) {
-        return `
-            <div class="timeline-state-transition text-muted">
-                ${workflowEscapeHtml(workflowTranslate('Started in'))}
-                ${workflowEscapeHtml(workflowTranslate(event.startedIn))}
-            </div>
-        `;
-    }
-
-    return '';
-}
-
-function buildWorkflowTimelineItem(event, isCurrent) {
-    const action = event.action;
-    const content = event.content;
-    const title = action || content || event.targetState || workflowTranslate('Recorded action');
-    const contentHtml = action && content && content !== action
-        ? `<div class="timeline-description text-muted">${workflowEscapeHtml(content)}</div>`
-        : '';
-    const dateHtml = event.dateLabels
-        ? `<time class="timeline-date text-muted" title="${workflowEscapeHtml(event.dateLabels.userDate)}">${workflowEscapeHtml(event.dateLabels.prettyDate)}</time>`
-        : '';
-
-    return `
-        <div class="timeline-item">
-            <div class="timeline-dot">${getWorkflowBranchIcon()}</div>
-            <div class="timeline-content">
-                <div class="timeline-title">
-                    <span>${workflowEscapeHtml(workflowTranslate(title))}</span>
-                    ${isCurrent ? buildWorkflowCurrentPill() : ''}
-                </div>
-                ${contentHtml}
-                ${buildWorkflowTransitionHtml(event)}
-                <div class="timeline-performer text-muted">
-                    ${workflowEscapeHtml(workflowTranslate('Performed by'))}:
-                    ${workflowEscapeHtml(event.actor)}
-                </div>
-                ${dateHtml}
-            </div>
-        </div>
-    `;
-}
-
-function buildCurrentWorkflowFallbackItem(currentState) {
-    return `
-        <div class="timeline-item">
-            <div class="timeline-dot">${getWorkflowBranchIcon()}</div>
-            <div class="timeline-content">
-                <div class="timeline-title">
-                    <span>
-                        ${workflowEscapeHtml(workflowTranslate('Current state:'))}
-                        ${workflowEscapeHtml(workflowTranslate(currentState))}
-                    </span>
-                    ${buildWorkflowCurrentPill()}
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function getWorkflowSidebar(frm) {
-    const sidebarSelectors = ['.form-sidebar', '.layout-side-section', '.sidebar-menu'];
-
-    if (frm && frm.wrapper) {
-        try {
-            const $wrapper = $(frm.wrapper);
-            for (const selector of sidebarSelectors) {
-                const $sidebar = $wrapper.find(selector).first();
-                if ($sidebar.length) return $sidebar;
-            }
-        } catch (error) {
-            // Fall through to the native sidebar reference when the wrapper is unavailable.
-        }
-    }
-
-    if (frm && frm.sidebar) {
-        const sidebarCandidates = [
-            frm.sidebar.$sidebar,
-            frm.sidebar.wrapper,
-            frm.sidebar.sidebar,
-            frm.sidebar
-        ];
-
-        for (const candidate of sidebarCandidates) {
-            if (candidate === null || candidate === undefined) continue;
-
-            try {
-                const $sidebar = $(candidate).first();
-                if ($sidebar.length) return $sidebar;
-            } catch (error) {
-                // Continue to the next native sidebar candidate.
-            }
-        }
-    }
-
-    return null;
-}
-
-function processCompletedWorkflowTransitions(frm) {
-    if (!frm || !frm.doc) return;
-
-    const $sidebar = getWorkflowSidebar(frm);
-    if (!$sidebar) return;
-
-    $sidebar.find('.workflow-history-section').remove();
-
-    if (frm.doc.__islocal) return;
-
-    const sortedWorkflowLogs = getSortedWorkflowLogs(getWorkflowLogs(frm));
-    const events = [];
-    let previousKnownState = '';
-
-    sortedWorkflowLogs.forEach((log) => {
-        const action = normalizeWorkflowText(getWorkflowLogField(log, 'action'));
-        const content = normalizeWorkflowText(getWorkflowLogField(log, 'content'));
-        const workflowState = normalizeWorkflowText(getWorkflowLogField(log, 'workflow_state'));
-        const stateFallback = normalizeWorkflowText(getWorkflowLogField(log, 'state'));
-        if (!action && !content && !workflowState && !stateFallback) return;
-
-        const fieldTargetState = workflowState || stateFallback;
-        const nativeTargetState = fieldTargetState
-            ? ''
-            : getNativeWorkflowTarget(log, content);
-        const explicitTransition = fieldTargetState || nativeTargetState
-            ? null
-            : parseExplicitWorkflowTransition(content);
-        const targetState = fieldTargetState
-            || nativeTargetState
-            || (explicitTransition ? explicitTransition.toState : '');
-        let fromState = '';
-        let toState = '';
-        let startedIn = '';
-
-        if (explicitTransition) {
-            fromState = explicitTransition.fromState;
-            toState = explicitTransition.toState;
-        } else if (targetState) {
-            if (previousKnownState && previousKnownState !== targetState) {
-                fromState = previousKnownState;
-                toState = targetState;
-            } else if (!previousKnownState) {
-                startedIn = targetState;
-            }
-        }
-
-        events.push({
-            action,
-            content,
-            actor: getWorkflowActor(log),
-            dateLabels: getWorkflowDateLabels(log),
-            targetState,
-            fromState,
-            toState,
-            startedIn
-        });
-
-        if (targetState) previousKnownState = targetState;
+    const groups = new Map();
+    rows.forEach((row) => {
+        if (!groups.has(row.role)) groups.set(row.role, new Map());
+        (row.users || []).forEach((user) => groups.get(row.role).set(user.user, user));
     });
 
-    const currentState = normalizeWorkflowText(frm.doc.workflow_state);
-    let currentEventIndex = -1;
-    if (currentState) {
-        events.forEach((event, index) => {
-            if (event.targetState === currentState) currentEventIndex = index;
-        });
-    }
+    const body = [...groups].map(([role, users]) => {
+        const head = role ? `<div class="afmco-next-action-role">${escapeHtml(__(role))}</div>` : '';
+        const inner = users.size
+            ? `<div class="afmco-next-action-chips">${[...users.values()].map(nextActionChip).join('')}</div>`
+            : `<div class="afmco-next-action-note">${escapeHtml(__('No users'))}</div>`;
+        return `<div class="afmco-next-action-group">${head}${inner}</div>`;
+    }).join('');
 
-    const timelineItems = events.map((event, index) => (
-        buildWorkflowTimelineItem(event, index === currentEventIndex)
-    ));
-
-    if (currentState && currentEventIndex === -1) {
-        timelineItems.push(buildCurrentWorkflowFallbackItem(currentState));
-    }
-
-    if (!timelineItems.length) return;
-
-    const sectionHtml = `
-        <div class="sidebar-section workflow-history-section">
-            <div class="sidebar-label">
-                <span class="workflow-history-icon">${getWorkflowBranchIcon()}</span>
-                <span>${workflowEscapeHtml(workflowTranslate('Workflow Transitions'))}</span>
-                <span class="workflow-history-count">${workflowEscapeHtml(timelineItems.length)}</span>
-            </div>
-            <div class="timeline">
-                ${timelineItems.join('')}
-            </div>
-        </div>
-    `;
-
-    $sidebar.append(sectionHtml);
+    $sidebar.append(
+        `<div class="sidebar-section afmco-next-action"><div class="sidebar-label">${escapeHtml(__('Next Action'))}</div>${body}</div>`
+    );
 }
 
-function getWorkflowLogs(frm) {
-    if (typeof frappe === 'undefined' || !frappe.model || !frappe.model.docinfo) return null;
-    const docinfo = frappe.model.docinfo;
-    const doctypeKey = frm.doctype || "Payment Requisition";
-    const docKey = frm.doc.name;
-
-    return docinfo[doctypeKey]?.[docKey]?.workflow_logs || null;
+function nextActionChip({ user, full_name }) {
+    const name = String(full_name || user || '').replace(/[\s.]+$/, '').trim() || user;
+    return `<span class="afmco-next-action-chip" title="${escapeHtml(name)}">${frappe.avatar(user, 'avatar-xs')}<span class="afmco-next-action-name">${escapeHtml(name)}</span></span>`;
 }
 
 function addUrgentButton(frm) {

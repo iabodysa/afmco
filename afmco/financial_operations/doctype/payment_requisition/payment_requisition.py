@@ -30,6 +30,9 @@ RECEIPT_READ_ROLES = ("Auditor", *ACCOUNTS_ROLES)
 RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "beneficiary_employee_cf", "bank_reference_cf", "remark")
 RECEIPT_COMPARED_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "remark")
 SADAD_NUMBER_FIELDS = ("sadad_biller_code", "sadad_bill_number")
+SADAD_PAYMENT = "SADAD Payment"
+BANK_TRANSFER = "Bank Transfer"
+SAUDI_IBAN = re.compile(r"SA\d{22}")
 STOP_QUESTION_TAG = "[accounts-bot-stop-question q="
 STOP_QUESTION = re.compile(r"^\[accounts-bot-stop-question q=([A-Za-z0-9_.-]+)\]$")
 STOP_ANSWER_LIMIT = 500
@@ -54,16 +57,18 @@ class PaymentRequisition(Document):
 		self.set_onload("payment_dates", self.payment_dates())
 		ai_reading.set_onload(self)
 
-	def payment_dates(self) -> list:
+	def payment_dates(self) -> list[tuple[str, str]]:
 		if self.workflow_state not in PAYMENT_DATE_STATES:
 			return []
 		journal_entries = frappe.get_all(
 			"Journal Entry",
 			filters={"expense_request_cf": self.name, "docstatus": ["<", 2]},
-			fields=["posting_date", "docstatus", PRELIMINARY_FIELD],
+			fields=["name", "posting_date", "docstatus", PRELIMINARY_FIELD],
 			order_by="posting_date asc",
 		)
-		return [row.posting_date for row in journal_entries if row.docstatus or not row.get(PRELIMINARY_FIELD)]
+		return [
+			(row.name, row.posting_date) for row in journal_entries if row.docstatus or not row.get(PRELIMINARY_FIELD)
+		]
 
 	def accounts_bot_state_refusal(self) -> str | None:
 		if ACCOUNTS_BOT_STATES.get(self.workflow_state) != self.docstatus:
@@ -329,6 +334,9 @@ class PaymentRequisition(Document):
 		if frappe.flags.in_install or frappe.flags.in_migrate:
 			return
 		self.apply_multiple_beneficiaries()
+		self.set_mode_of_payment()
+		self.validate_urgency_reason()
+		self.validate_iban()
 		self.validate_sadad_numbers()
 		self.sync_workflow_state_to_jv()
 		self.sync_paid_eos_settlement()
@@ -339,6 +347,24 @@ class PaymentRequisition(Document):
 		self.account_no = None
 		for fieldname in SADAD_NUMBER_FIELDS:
 			self.set(fieldname, None)
+
+	def set_mode_of_payment(self):
+		if self.is_new() or self.has_value_changed("payment_type"):
+			self.mode_of_payment = SADAD_PAYMENT if self.payment_type == SADAD_PAYMENT else BANK_TRANSFER
+
+	def validate_urgency_reason(self):
+		changed = self.has_value_changed("if_it__urgent") or self.has_value_changed("reason_of_urgency")
+		if self.if_it__urgent and changed and not (self.reason_of_urgency or "").strip():
+			frappe.throw(_("Enter the reason of urgency."), title=_("Urgent"))
+
+	def validate_iban(self):
+		if not self.account_no or self.payment_type == SADAD_PAYMENT or not self.has_value_changed("account_no"):
+			return
+		if not SAUDI_IBAN.fullmatch(self.account_no):
+			frappe.throw(
+				_("Please verify the accuracy of the IBAN to avoid errors during banking transactions."),
+				title=_("Invalid IBAN"),
+			)
 
 	def validate_sadad_numbers(self):
 		for fieldname in SADAD_NUMBER_FIELDS:
