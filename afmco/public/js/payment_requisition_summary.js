@@ -276,9 +276,9 @@ frappe.provide("afmco.pr_summary");
 			.replace(/(^|\s)(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d{3,}(?:\.\d+)?)(?=$|\s|[،,.؛:)](?:\s|$))/gm, '$1<span class="prc-hl">$2</span>');
 	}
 
-	function cellHtml(value, meta) {
+	function cellHtml(value) {
 		if (isBlank(value)) return dash;
-		return meta && (meta.num || meta.id) ? `<span>${esc(value)}</span>` : esc(value);
+		return `<span>${esc(value)}</span>`;
 	}
 
 	function tableHtml(cols, rows, meta, opts = {}) {
@@ -290,7 +290,7 @@ frappe.provide("afmco.pr_summary");
 				const cells = cols
 					.map(
 						(c, i) =>
-							`<td class="${meta[i]?.id ? "is-id" : meta[i]?.num ? "is-num" : ""}" data-label="${esc(c)}">${cellHtml(r[i], meta[i])}</td>`,
+							`<td class="${meta[i]?.id ? "is-id" : meta[i]?.num ? "is-num" : ""}" data-label="${esc(c)}">${cellHtml(r[i])}</td>`,
 					)
 					.join("");
 				return `<tr${big && ri >= PAGE ? " hidden data-extra" : ""}>${idx(`<td class="is-idx">${ri + 1}</td>`)}${cells}</tr>`;

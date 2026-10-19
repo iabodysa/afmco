@@ -182,8 +182,8 @@
 .afmco-pr-summary .prc-tsearch:focus-visible,.afmco-pr-summary .prc-more:focus-visible,.afmco-pr-summary .prc-seg button:focus-visible{outline:2px solid var(--prc-accent);outline-offset:1px}
 .afmco-pr-summary .prc-common{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
 .afmco-pr-summary .prc-common .prc-chip{white-space:normal;max-width:100%;overflow-wrap:break-word;font-weight:500}
-.afmco-pr-summary .prc-common .prc-chip bdi{white-space:nowrap}
 .afmco-pr-summary .prc-common .prc-chip b{font-weight:700;color:var(--prc-ink)}
+.afmco-pr-summary .prc-common .prc-chip > bdi{white-space:nowrap}
 .afmco-pr-summary .prc-tablewrap{overflow-x:auto;border:1px solid var(--prc-line);border-radius:12px;max-width:100%;background:
   linear-gradient(to right,var(--prc-card) 30%,transparent) left/40px 100% no-repeat local,
   linear-gradient(to left,var(--prc-card) 30%,transparent) right/40px 100% no-repeat local,
@@ -205,8 +205,10 @@
 .afmco-pr-summary .prc-table--cards,.afmco-pr-summary .prc-table--cards tbody,.afmco-pr-summary .prc-table--cards tfoot,.afmco-pr-summary .prc-table--cards tr,.afmco-pr-summary .prc-table--cards td{display:block;width:100%}
 .afmco-pr-summary .prc-table--cards tr{border:1px solid var(--prc-line);border-radius:12px;padding:6px 10px;margin-bottom:8px;background:var(--prc-card)}
 .afmco-pr-summary .prc-table--cards tbody tr:nth-child(even) td{background:none}
-.afmco-pr-summary .prc-table--cards td{border:0;padding:3px 0;display:grid;grid-template-columns:minmax(90px,38%) minmax(0,1fr);gap:8px;text-align:start!important;white-space:normal;min-width:0}
-.afmco-pr-summary .prc-table--cards td::before{content:attr(data-label);color:var(--prc-muted);font-size:12px;direction:rtl}
+.afmco-pr-summary .prc-table--cards td{border:0;padding:3px 0;display:grid;grid-template-columns:minmax(0,1fr);gap:0;text-align:start!important;white-space:normal;min-width:0;unicode-bidi:normal}
+.afmco-pr-summary .prc-table--cards td > span{unicode-bidi:plaintext;overflow-wrap:break-word;text-wrap:balance}
+.afmco-pr-summary .prc-table--cards td::before{content:attr(data-label);color:var(--prc-muted);font-size:11.5px;line-height:1.4;unicode-bidi:plaintext}
+.afmco-pr-summary:dir(rtl) .prc-table--cards td{text-align:right!important}
 .afmco-pr-summary .prc-table--cards td.is-idx{display:none}
 .afmco-pr-summary .prc-table--cards td.is-num,.afmco-pr-summary .prc-table--cards td.is-id{direction:rtl}
 .afmco-pr-summary .prc-table--cards td.is-num > span,.afmco-pr-summary .prc-table--cards td.is-id > span{direction:ltr;unicode-bidi:isolate;text-align:end}
@@ -257,4 +259,7 @@
 .afmco-pr-summary .prc-flow .afmco-stepper-box{padding-bottom:6px}
 .afmco-pr-summary .prc-acts-box{margin-top:12px}
 .afmco-pr-summary .prc-acts-box .prc-acts{margin-top:4px}
-.afmco-pr-summary .afmco-next-action:empty{display:none}
+.afmco-pr-summary .afmco-next-action:empty,.afmco-pr-summary .prc-next:has(.afmco-next-action:empty){display:none}
+.afmco-pr-summary .prc__aside .prc-card:not(:has(.prc-acts-box,.prc-goform,.afmco-next-action:not(:empty))){display:none}
+.afmco-pr-summary:dir(rtl) :is(.ch-name,.prc-p,.prc-raw,.prc-list li,.prc-table td:not(.is-num,.is-id,.is-idx),.prc-table--kv th){text-align:right}
+.afmco-pr-summary:dir(ltr) :is(.ch-name,.prc-p,.prc-raw,.prc-list li,.prc-table td:not(.is-num,.is-id,.is-idx),.prc-table--kv th){text-align:left}
