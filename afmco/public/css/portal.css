@@ -1864,7 +1864,24 @@ html:has(.afm--menu) {
 	}
 
 	.afm-stage {
-		height: clamp(440px, 64vh, 820px);
+		height: auto;
+		aspect-ratio: 16 / 9;
+	}
+
+	.afm-stage__pic[data-slide]::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: var(--afm-fill) center / cover no-repeat;
+		filter: blur(28px) brightness(0.5);
+		transform: scale(1.1);
+	}
+
+	.afm-stage__pic[data-slide] img {
+		position: relative;
+		top: calc(6% / 1.12);
+		height: calc(100% / 1.12);
+		object-fit: contain;
 	}
 
 	.afm-stage__inner {

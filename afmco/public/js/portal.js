@@ -58,7 +58,7 @@
 			.filter((top) => top > scope.top);
 		const whole = img.naturalHeight > img.naturalWidth && img.clientWidth * img.naturalHeight > img.offsetHeight * img.naturalWidth;
 		frame.classList.toggle("is-whole", whole);
-		frame.style.setProperty("--afm-fill", whole ? `url(${JSON.stringify(img.currentSrc)})` : "");
+		frame.style.setProperty("--afm-fill", whole || frame.matches(".afm-stage__pic") ? `url(${JSON.stringify(img.currentSrc)})` : "");
 		frame.style.setProperty("--afm-clear", whole && tops.length ? `${scope.bottom - Math.min(...tops)}px` : "");
 	};
 	const newsImages = root.querySelectorAll(".afm-stage__pic[data-slide] img, .afm-thumb img, .afm-card img");
