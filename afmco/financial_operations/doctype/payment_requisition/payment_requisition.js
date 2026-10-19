@@ -614,8 +614,11 @@ function showAmountInWords(frm, words) {
 function showPaymentDates(frm) {
     (frm.payment_date_indicators || []).forEach(($indicator) => $indicator.remove());
     const dates = (frm.doc.__onload || {}).payment_dates || [];
-    frm.payment_date_indicators = dates.map((date) =>
-        frm.dashboard.add_indicator(__('Posting Date: {0}', [frappe.datetime.str_to_user(date)]), 'blue')
+    frm.payment_date_indicators = dates.map(([journalEntry, date]) =>
+        frm.dashboard.add_indicator(
+            __('Journal Entry date {0}: {1}', [journalEntry, frappe.datetime.str_to_user(date)]),
+            'blue'
+        )
     );
 }
 

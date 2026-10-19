@@ -54,16 +54,18 @@ class PaymentRequisition(Document):
 		self.set_onload("payment_dates", self.payment_dates())
 		ai_reading.set_onload(self)
 
-	def payment_dates(self) -> list:
+	def payment_dates(self) -> list[tuple[str, str]]:
 		if self.workflow_state not in PAYMENT_DATE_STATES:
 			return []
 		journal_entries = frappe.get_all(
 			"Journal Entry",
 			filters={"expense_request_cf": self.name, "docstatus": ["<", 2]},
-			fields=["posting_date", "docstatus", PRELIMINARY_FIELD],
+			fields=["name", "posting_date", "docstatus", PRELIMINARY_FIELD],
 			order_by="posting_date asc",
 		)
-		return [row.posting_date for row in journal_entries if row.docstatus or not row.get(PRELIMINARY_FIELD)]
+		return [
+			(row.name, row.posting_date) for row in journal_entries if row.docstatus or not row.get(PRELIMINARY_FIELD)
+		]
 
 	def accounts_bot_state_refusal(self) -> str | None:
 		if ACCOUNTS_BOT_STATES.get(self.workflow_state) != self.docstatus:
