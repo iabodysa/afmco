@@ -1865,6 +1865,7 @@ html:has(.afm--menu) {
 
 	.afm-stage {
 		height: auto;
+		max-height: calc(100svh - 72px);
 		aspect-ratio: 16 / 9;
 	}
 
