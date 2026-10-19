@@ -48,17 +48,9 @@ frappe.listview_settings['Payment Requisition'] = {
         }
     },
 
-    refresh: function(listview) {
-        // Native row styling using Frappe CSS variables
-        listview.data.forEach(function(doc) {
-            try {
-                const row = $(`[data-name="${doc.name}"]`).closest('.list-row-container');
-                if (row.length && doc.if_it__urgent == 1) {
-                    row.find('a').css('color', 'var(--text-color-danger, #e64942)');
-                }
-            } catch (e) {
-                console.error("Error styling list row", e);
-            }
-        });
+    formatters: {
+        if_it__urgent(value) {
+            return value ? `<span class="indicator-pill red">${__('Urgent')}</span>` : '';
+        }
     }
 };
