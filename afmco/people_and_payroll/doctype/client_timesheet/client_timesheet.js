@@ -25,7 +25,7 @@ const statusColor = (status) => BOT_STATUS_COLORS[status] || (BOT_BUSY_STATUSES.
 
 frappe.ui.form.on('Client Timesheet', {
     refresh(frm) {
-        renderBotPanel(frm);
+        frappe.require(["/assets/afmco/js/stepper.js", "/assets/afmco/css/stepper.css"], () => renderBotPanel(frm));
         if (frm.is_new() || !frm.perm[0]?.write || BOT_BUSY_STATUSES.includes(frm.doc.bot_status)) {
             return;
         }
@@ -55,16 +55,8 @@ function renderBotPanel(frm) {
     body.closest('.form-dashboard-section').addClass('cts-dash-section');
     body.on('click', '.cts-log-link', () => showBotLog(frm));
     frm.dashboard.show();
-    centerCurrentStage(body);
+    afmco.stepper.center(body);
     loadResultDetails(frm, body);
-}
-
-function centerCurrentStage(body) {
-    const box = body.find('.cts-stepper-box')[0];
-    const now = box && box.querySelector('.cts-step-now');
-    if (!now || box.scrollWidth <= box.clientWidth) return;
-    const target = now.offsetLeft - (box.clientWidth - now.offsetWidth) / 2;
-    box.scrollLeft = getComputedStyle(box).direction === 'rtl' ? target - (box.scrollWidth - box.clientWidth) : target;
 }
 
 const esc = (value) => frappe.utils.escape_html(String(value ?? ''));
@@ -89,38 +81,23 @@ function chip(label, ok, busy) {
     return `<span class="cts-chip cts-chip-${state}" title="${esc(title)}"><b>${mark}</b> ${esc(label)}</span>`;
 }
 
-function haltedStage(frm, status) {
-    for (const version of frm.get_docinfo()?.versions || []) {
-        const change = (JSON.parse(version.data || '{}').changed || []).find(
-            ([field, , value]) => field === 'bot_status' && value === status
-        );
-        if (change) return change[1];
-    }
-    return null;
-}
-
 function stepper(frm, status) {
     const stages = [...BOT_BUSY_STATUSES, status === 'Needs Review' ? status : 'Done'];
     const halted = BOT_HALT_STATUSES.includes(status);
     let current = stages.indexOf(status);
     if (halted) {
-        const at = stages.indexOf(haltedStage(frm, status));
+        const at = stages.indexOf(afmco.stepper.value_before(frm, 'bot_status', status));
         current = at >= 0 ? at : stages.length - 1;
     }
     if (status === 'Done') current = stages.length;
-    const noteAt = Math.min(current, stages.length - 1);
-    const items = stages.map((stage, index) => {
-        const state = index < current ? 'done' : index === current ? `now ${statusColor(status)}` : 'next';
-        const live = index === current && BOT_BUSY_STATUSES.includes(status) ? ' cts-live' : '';
-        const mark = index < current ? '✓' : index === current && halted ? '!' : index + 1;
-        return `<li class="cts-step cts-step-${state}${live}"><span class="cts-step-mark">${mark}</span><span class="cts-step-label">${esc(__(stage))}</span></li>`;
+    return afmco.stepper.html({
+        stages,
+        current,
+        color: statusColor(status),
+        halted,
+        live: BOT_BUSY_STATUSES.includes(status),
+        note: frm.doc.bot_note,
     });
-    if (frm.doc.bot_note && current >= 0) {
-        const from = Math.max(noteAt, 1);
-        const to = Math.min(noteAt + 3, stages.length + 1);
-        items.push(`<li class="cts-step-note" style="grid-row: 2; grid-column: ${from} / ${to}">${esc(frm.doc.bot_note)}</li>`);
-    }
-    return `<div class="cts-stepper-box"><ol class="cts-stepper">${items.join('')}</ol></div>`;
 }
 
 function trackLine(label, user, when) {
@@ -259,26 +236,6 @@ function panelStyle() {
         .cts-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: currentColor; margin-inline-end: 6px; animation: cts-pulse 1.2s ease-in-out infinite; }
         @keyframes cts-pulse { 50% { opacity: .3; } }
         @media (prefers-reduced-motion: reduce) { .cts-dot { animation: none; } }
-        .cts-stepper-box { position: relative; width: 100%; max-width: 100%; overflow-x: auto; padding-block: 4px; }
-        .cts-stepper { display: grid; grid-template-columns: repeat(${BOT_BUSY_STATUSES.length + 1}, minmax(84px, 1fr)); row-gap: 6px; list-style: none; margin: 0; padding: 0; }
-        .cts-step { grid-row: 1; position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; padding-inline: 4px; text-align: center; font-size: var(--text-xs); color: var(--text-muted); }
-        .cts-step + .cts-step::before { content: ""; position: absolute; top: 13px; inset-inline-start: calc(-50% + 14px); inset-inline-end: calc(50% + 14px); height: 2px; background: var(--border-color); }
-        .cts-step.cts-step-done::before, .cts-step.cts-step-now::before { background: var(--green-500); }
-        .cts-step-mark { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--border-color); background: var(--fg-color); font-weight: var(--weight-semibold); }
-        .cts-step-label { line-height: 1.3; overflow-wrap: anywhere; }
-        .cts-step-done .cts-step-mark { background: var(--green-500); border-color: var(--green-500); color: var(--white); }
-        .cts-step-now { --cts-accent: var(--gray-500); color: var(--text-color); }
-        .cts-step-now.blue { --cts-accent: var(--blue-500); }
-        .cts-step-now.orange { --cts-accent: var(--orange-500); }
-        .cts-step-now.yellow { --cts-accent: var(--yellow-500); }
-        .cts-step-now.green { --cts-accent: var(--green-500); }
-        .cts-step-now.red { --cts-accent: var(--red-500); }
-        .cts-step-now .cts-step-mark { background: var(--cts-accent); border-color: var(--cts-accent); color: var(--white); }
-        .cts-step-now .cts-step-label { font-weight: var(--weight-semibold); }
-        .cts-live .cts-step-mark { animation: cts-ring 1.4s ease-out infinite; }
-        @keyframes cts-ring { from { box-shadow: 0 0 0 0 var(--cts-accent); } to { box-shadow: 0 0 0 8px transparent; } }
-        @media (prefers-reduced-motion: reduce) { .cts-live .cts-step-mark { animation: none; } }
-        .cts-step-note { list-style: none; padding: 6px 10px; border-radius: var(--border-radius-md); background: var(--control-bg); color: var(--text-color); font-size: var(--text-xs); text-align: center; overflow-wrap: anywhere; }
         .cts-hint, .cts-muted { color: var(--text-muted); font-size: var(--text-sm); }
         .cts-alert { padding: 8px 12px; border-radius: var(--border-radius-md); font-size: var(--text-sm); }
         .cts-alert-red { background: var(--bg-red); color: var(--text-on-red); }

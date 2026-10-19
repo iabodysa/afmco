@@ -429,7 +429,6 @@ frappe.listview_settings['Iqama Renewal Tracking'] = {
                             paymentRequest.cost_center = 'الادارة رئيسي - Head Office - AF';
                             paymentRequest.jv_status = 'JV Not Created';
                             paymentRequest.naming_series = 'PR-.YYYY.-';
-                            paymentRequest.date = frappe.datetime.nowdate();
                             paymentRequest.bank_payment_date = frappe.datetime.nowdate();
                             paymentRequest.mode_of_payment = 'SADAD Payment';
                             paymentRequest.remark = remarks;

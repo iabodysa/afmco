@@ -65,7 +65,7 @@ EOS_RECORD_FIELDS = [
 VACATION_FIELDS = ["name", "date_1", "date_2", "amount", "workflow_state"]
 LEAVE_FIELDS = ["leave_type", "leaves", "to_date", "is_expired"]
 LEDGER_FIELDS = ["account", "debit", "credit", "party_type", "party", "is_cancelled"]
-REQUISITION_FIELDS = ["name", "date", "amount", "workflow_state", "account_no"]
+REQUISITION_FIELDS = ["name", "creation", "amount", "workflow_state", "account_no"]
 SOURCE_FIELDS = [
 	"name",
 	"date_of_joining",
@@ -387,8 +387,8 @@ def requisitions_section(source, offset):
 		rows = frappe.get_list(
 			"Payment Requisition",
 			filters={"name": ["in", names], "docstatus": ["<", 2]},
-			fields=["name", "date", "amount", "workflow_state"],
-			order_by="date desc",
+			fields=["name", "creation", "amount", "workflow_state"],
+			order_by="creation desc",
 			**page_window(offset),
 		)
 	out = page(rows, offset)

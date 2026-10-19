@@ -2,8 +2,18 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe.utils import cint
+
+from afmco.financial_operations import requisition_journal_entry
 
 PAYMENT_REQUISITION = "Payment Requisition"
+
+
+@frappe.whitelist()
+def make_requisition_entry(name: str, bank_account: str, administration: int = 0) -> dict:
+	requisition = frappe.get_doc(PAYMENT_REQUISITION, name)
+	requisition.check_permission("read")
+	return requisition_journal_entry.build(requisition, bank_account, bool(cint(administration))).as_dict()
 
 
 @frappe.whitelist()

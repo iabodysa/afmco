@@ -377,7 +377,6 @@ def create_payment_request(batch):
 			"mode_of_payment": SADAD_PAYMENT,
 			"payment_type": SADAD_PAYMENT,
 			"jv_status": JV_NOT_CREATED,
-			"date": today(),
 			"bank_payment_date": today(),
 			"project": head_office,
 			"cost_center": head_office,
@@ -539,7 +538,7 @@ def overview():
 				filters={
 					"payment_type": SADAD_PAYMENT,
 					"workflow_state": PAID_STATE,
-					"date": [
+					"creation": [
 						"between",
 						[get_first_day(today()), get_last_day(today())],
 					],
