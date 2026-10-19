@@ -15627,3 +15627,6 @@ The Accounts Bot is still working on this Payment Requisition. Choose again afte
 The Accounts Bot could not take this answer. Reload the form.,بوت المحاسبة ما قدر يستلم هذي الإجابة. أعد تحميل النموذج.
 Current draft,المسودة الحالية
 Open Payment Requisition {0},فتح طلب الصرف {0}
+"Attach the client timesheet file and save, then press Start Payroll Bot.",أرفق ملف كشف دوام العميل واحفظه، ثم اضغط تشغيل مساعد الرواتب.
+Not created yet,لم يُنشأ بعد
+Show Bot Log,عرض سجل مساعد الرواتب
