@@ -50,6 +50,22 @@
 		if (event.matches && isOpen()) setMenu(false, false);
 	});
 
+	const fitWhole = (img) => {
+		const frame = img.parentElement;
+		const scope = img.closest(".afm-card, .afm-stage").getBoundingClientRect();
+		const tops = [...img.closest(".afm-card, .afm-stage").querySelectorAll(".afm-card__copy, .afm-eyebrow, .afm-thumbs")]
+			.map((overlay) => overlay.getBoundingClientRect().top)
+			.filter((top) => top > scope.top);
+		const whole = img.naturalHeight > img.naturalWidth && img.clientWidth * img.naturalHeight > img.offsetHeight * img.naturalWidth;
+		frame.classList.toggle("is-whole", whole);
+		frame.style.setProperty("--afm-fill", whole ? `url(${JSON.stringify(img.currentSrc)})` : "");
+		frame.style.setProperty("--afm-clear", whole && tops.length ? `${scope.bottom - Math.min(...tops)}px` : "");
+	};
+	const newsImages = root.querySelectorAll(".afm-stage__pic[data-slide] img, .afm-thumb img, .afm-card img");
+	const refit = () => newsImages.forEach((img) => img.complete && fitWhole(img));
+	newsImages.forEach((img) => img.addEventListener("load", () => fitWhole(img)));
+	window.addEventListener("resize", refit, { passive: true });
+
 	const stage = root.querySelector(".afm-stage[aria-roledescription]");
 	const controls = stage && stage.querySelector(".afm-stage__controls");
 	if (controls) {
@@ -72,6 +88,7 @@
 			});
 			thumbs.forEach((thumb, i) => thumb.setAttribute("aria-current", String(i === index)));
 			count.textContent = String(index + 1).padStart(2, "0");
+			refit();
 		};
 		const restart = () => {
 			timer.classList.remove("is-running");
@@ -135,6 +152,8 @@
 		reel.addEventListener("scroll", sync, { passive: true });
 		sync();
 	}
+
+	refit();
 
 	if (!observable) {
 		root.classList.add("afm--solid");

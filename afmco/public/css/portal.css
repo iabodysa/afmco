@@ -1423,6 +1423,38 @@ html:has(.afm--menu) {
 	object-fit: cover;
 }
 
+.afm-stage__pic.is-whole::before,
+.afm-card picture.is-whole::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: var(--afm-fill) center / cover no-repeat;
+	filter: blur(28px) brightness(0.5);
+	transform: scale(1.1);
+}
+
+.afm-stage__pic.is-whole img {
+	position: relative;
+	top: calc(6% / 1.12 + 16px);
+	height: calc(100% / 1.12 - var(--afm-clear, 0px) - 32px);
+}
+
+.afm-card .is-whole img {
+	z-index: 0;
+	top: 16px;
+	height: calc(100% - var(--afm-clear, 0px) - 32px);
+}
+
+.afm-stage__pic.is-whole img,
+.afm-card .is-whole img {
+	object-fit: contain;
+}
+
+.afm-stage:has(.afm-stage__pic.is-current.is-whole) .afm-stage__shade,
+.afm-card:has(.is-whole)::after {
+	opacity: 0;
+}
+
 .afm-stage__shade {
 	position: absolute;
 	inset: 0;
@@ -1612,6 +1644,11 @@ html:has(.afm--menu) {
 	aspect-ratio: 4 / 3;
 	object-fit: cover;
 	border-radius: 8px;
+}
+
+.afm-thumb.is-whole img {
+	object-fit: contain;
+	background: rgba(241, 246, 242, 0.08);
 }
 
 .afm-thumb span {

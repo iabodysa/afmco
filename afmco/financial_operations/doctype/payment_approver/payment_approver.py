@@ -53,12 +53,3 @@ def grant_user_permission(approver, user):
 	add_user_permission(
 		"Payment Approver", approver, user, ignore_permissions=True, applicable_for=RESTRICTED_DOCTYPE
 	)
-
-
-def restore_user_permissions():
-	for approver in frappe.get_all(
-		"Payment Approver",
-		filters={"active": 1, "create_user_permission": 1, "user": ("is", "set")},
-		fields=["name", "user"],
-	):
-		grant_user_permission(approver.name, approver.user)
