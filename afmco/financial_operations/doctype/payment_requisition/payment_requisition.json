@@ -58,7 +58,10 @@
   "open_reference_document",
   "purchase_details_section",
   "amended_from",
-  "section_workflow"
+  "section_workflow",
+  "summary_tab",
+  "summary_html",
+  "summary_end_section"
  ],
  "fields": [
   {
@@ -428,6 +431,20 @@
    "fieldtype": "Section Break",
    "hidden": 1,
    "label": "Purchase Details"
+  },
+  {
+   "fieldname": "summary_tab",
+   "fieldtype": "Tab Break",
+   "label": "Summary"
+  },
+  {
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "summary_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "summary_end_section",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,

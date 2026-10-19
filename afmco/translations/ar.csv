@@ -15679,3 +15679,59 @@ Waiting Manager Approval,انتظار موافقة المدير
 Waiting Bank Entry,انتظار إدخال البنك
 Document Upload,انتظار تحميل الإيصالات
 Waiting,قيد الانتظار
+Account number,رقم الحساب
+Additional details,بيانات إضافية
+Available actions,الإجراءات المتاحة
+Awaiting Journal Entry,بانتظار إنشاء القيد
+Awaiting entry,بانتظار الإدخال
+Bank account and payment date are locked after the bank stage.,الحساب البنكي وتاريخ الدفع مقفلان بعد مرحلة البنك.
+Bank payment,الدفع البنكي
+Beneficiary accounts,الحسابات
+Biller code,رمز المفوتر
+Collapse remark,طي الملاحظة
+Detail,تفصيل
+Differs from the request amount by {0},يختلف عن مبلغ الطلب بـ {0}
+Edit the fields in the Details tab,تعديل الحقول في تبويب التفاصيل
+Filter fields,حقول التصفية
+For the accountant,للمحاسب
+Formatted,منسق
+"IBAN is not valid, check it with the requester",رقم الآيبان غير صحيح، راجعه مع مقدم الطلب
+IBAN is valid,رقم الآيبان صحيح
+ID or Iqama numbers,أرقام هوية أو إقامة
+Last modified,آخر تعديل
+Matches the request amount,يطابق مبلغ الطلب
+Multiple beneficiaries,عدة مستفيدين
+"Multiple beneficiaries, accounts are in the remark table",عدة مستفيدين، الحسابات في جدول الملاحظات
+No remark,لا توجد ملاحظات
+Not entered,غير مدخل
+Original text,النص الأصلي
+Paid before,مدفوع من قبل
+Paid through SADAD with empty bill details,الدفع عبر سداد، وبيانات الفاتورة فارغة
+Path complete,اكتمل المسار
+Pay to the order of,ادفعوا لأمر
+Payment order,أمر صرف
+Reference numbers,أرقام مرجعية
+Request cancelled,أُلغي الطلب
+Request date,تاريخ الطلب
+Request path,مسار الطلب
+Request rejected,رُفض الطلب
+Riyals,ريال
+SADAD bill number,رقم فاتورة سداد
+Search in table,بحث في الجدول
+Sent to Accounts Bot,أُرسل إلى بوت الحسابات
+Show all,عرض الكل
+Show all rows ({0}),عرض كل الصفوف ({0})
+Show first {0} rows,عرض أول {0} صفا
+Show full remark,عرض الملاحظة كاملة
+Statement,البيان
+Step {0} of {1},الخطوة {0} من {1}
+Total ({0}),المجموع ({0})
+Total {0},مجموع {0}
+Total: {0},المجموع: {0}
+Value is not an IBAN,القيمة ليست رقم آيبان
+Value taken from the account number field of an old record,القيمة من حقل رقم الحساب في سجل قديم
+Values shared by all rows,قيم مشتركة لكل الصفوف
+Written in the account field:,مكتوب في حقل الحساب:
+{0} lines,{0} سطر
+{0} rows,{0} صف
+Copy,نسخ

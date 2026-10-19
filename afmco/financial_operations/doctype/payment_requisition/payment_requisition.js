@@ -303,6 +303,7 @@ frappe.ui.form.on('Payment Requisition', {
         showPaymentDates(frm);
         frappe.require(["/assets/afmco/js/attachment_check.js", "/assets/afmco/css/attachment_check.css"], () => afmco.attachment_check.render(frm));
         frappe.require("/assets/afmco/css/payment_requisition.css");
+        renderSummary(frm);
     },
 
     after_workflow_action(frm) {
@@ -354,6 +355,22 @@ frappe.ui.form.on('Payment Requisition', {
         frappe.set_route('Form', doctype, frm.doc.tax_invoice_number);
     }
 });
+
+frappe.ui.form.on('Payment Requisition', Object.fromEntries([
+    'amount', 'remark', 'account_no', 'payment_type', 'beneficiary_name', 'multiple_beneficiaries',
+    'sadad_biller_code', 'sadad_bill_number', 'cost_center', 'project', 'payment_approver', 'if_it__urgent',
+    'verify_payment', 'reason_of_urgency', 'bank_account', 'bank_payment_date', 'bank_reference_cf', 'jv_status',
+    'tax_invoice_number'
+].map((event) => [event, renderSummary])));
+
+function renderSummary(frm) {
+    frappe.require([
+        '/assets/afmco/js/stepper.js',
+        '/assets/afmco/css/stepper.css',
+        '/assets/afmco/js/payment_requisition_summary.js',
+        '/assets/afmco/css/payment_requisition_summary.css'
+    ], () => afmco.pr_summary.render(frm));
+}
 
 function showAmountInWords(frm, words) {
     frm.set_df_property('amount', 'description', words ? frappe.utils.escape_html(words) : '');
