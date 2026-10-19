@@ -5,9 +5,11 @@ frappe.provide("afmco.pr_summary");
 
 (() => {
 	const esc = (value) => frappe.utils.escape_html(String(value ?? ""));
-	const isBlank = (value) => value === null || value === undefined || String(value).trim() === "";
+	const isBlank = (value) => value === null || value === undefined || ["", "None", "null"].includes(String(value).trim());
 	const dash = '<span class="prc-empty">—</span>';
 	const amount = (value) => format_number(flt(value), null, 2);
+	const riyal = () => `<span class="prc-riyal" role="img" aria-label="${esc(__("Riyals"))}">\u20C1</span>`;
+	const money = (value) => `<span class="prc-money prc-num">${riyal()}${amount(value)}</span>`;
 	const day = (value) => (isBlank(value) ? "" : frappe.datetime.str_to_user(value, false, true));
 	const stamp = (value) => (isBlank(value) ? "" : frappe.datetime.str_to_user(value));
 	const ltr = (value, cls = "") => `<span class="prc-ltr ${cls}">${esc(value)}</span>`;
@@ -69,7 +71,7 @@ frappe.provide("afmco.pr_summary");
 	}
 
 	function kvSplit(text) {
-		const match = text.match(/^([^:|：]{1,48}?)\s*[:|：]\s*(.*)$/);
+		const match = text.match(/^([^:|：]{1,48}?)\s*[:|：](?!\/\/)\s*(.*)$/);
 		if (!match) return null;
 		const k = match[1].trim();
 		const v = match[2].trim();
@@ -266,8 +268,10 @@ frappe.provide("afmco.pr_summary");
 		return blocks.filter((b, i) => !drop.has(i));
 	}
 
+	const urls = (html) => html.replace(/(https?:\/\/\S+)/g, '<bdi class="prc-url" dir="ltr">$1</bdi>');
+
 	function hlText(text) {
-		return esc(text)
+		return urls(esc(text))
 			.replace(/(SA\d{2}[\d*]{10,30})/g, '<span class="prc-hl prc-mono">$1</span>')
 			.replace(/(^|\s)(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d{3,}(?:\.\d+)?)(?=$|\s|[،,.؛:)](?:\s|$))/gm, '$1<span class="prc-hl">$2</span>');
 	}
@@ -297,7 +301,7 @@ frappe.provide("afmco.pr_summary");
 			const cells = cols
 				.map((c, i) => {
 					if (opts.totals[i] !== null)
-						return `<td class="is-num" data-label="${esc(__("Total: {0}", [c]))}"><span>${amount(opts.totals[i])}</span></td>`;
+						return `<td class="is-num" data-label="${esc(__("Total: {0}", [c]))}">${money(opts.totals[i])}</td>`;
 					return i === 0 ? `<td data-label="">${esc(__("Total ({0})", [rows.length]))}</td>` : '<td data-label="" class="prc-empty"></td>';
 				})
 				.join("");
@@ -314,7 +318,7 @@ frappe.provide("afmco.pr_summary");
 		const diff = Math.round((total - requested) * 100) / 100;
 		return diff === 0
 			? `<span class="prc-chip prc-chip--green">${esc(__("Matches the request amount"))}</span>`
-			: `<span class="prc-chip prc-chip--amber">${__("Differs from the request amount by {0}", [ltr(amount(Math.abs(diff)), "prc-num")])}</span>`;
+			: `<span class="prc-chip prc-chip--amber">${__("Differs from the request amount by {0}", [money(Math.abs(diff))])}</span>`;
 	}
 
 	const rowsChip = (n) => `<span class="prc-chip prc-chip--blue">${esc(__("{0} rows", [n]))}</span>`;
@@ -337,11 +341,11 @@ frappe.provide("afmco.pr_summary");
 			}
 		}
 		const commonHtml = common.length
-			? `<div class="prc-common"><span class="prc-chip prc-chip--plain">${esc(__("Values shared by all rows"))}</span>${common.map((k) => `<span class="prc-chip prc-chip--plain">${esc(k)}: <b>${esc(recs[0][k])}</b></span>`).join("")}</div>`
+			? `<div class="prc-common"><span class="prc-chip prc-chip--plain">${esc(__("Values shared by all rows"))}</span>${common.map((k) => `<span class="prc-chip prc-chip--plain"><bdi>${esc(k)}</bdi>: <b><bdi>${esc(recs[0][k])}</bdi></b></span>`).join("")}</div>`
 			: "";
 		const totalHtml =
 			total !== null
-				? `<span class="prc-chip prc-chip--plain">${esc(__("Total {0}", [totalKey]))}: <b class="prc-ltr prc-num">${amount(total)}</b></span>${matchChip(total, requested)}`
+				? `<span class="prc-chip prc-chip--plain">${esc(__("Total {0}", [totalKey]))}: <b>${money(total)}</b></span>${matchChip(total, requested)}`
 				: "";
 		const table = cols.length
 			? tableHtml(cols, rows, colMeta(rows, cols.length), {
@@ -361,7 +365,8 @@ frappe.provide("afmco.pr_summary");
 		const rows = block.rows
 			.map(([k, v], i) => {
 				const num = NUM_ONLY.test(v) || /^SA[\d*]{10,}/.test(v);
-				return `<tr class="${i === last ? "is-total" : ""}"><th scope="row">${esc(k)}</th><td class="${num ? "is-num" : ""}">${num ? `<span>${esc(v)}</span>` : esc(v)}</td></tr>`;
+				const shown = i === last ? money(parseNum(v)) : num ? `<span>${esc(v)}</span>` : urls(esc(v));
+				return `<tr class="${i === last ? "is-total" : ""}"><th scope="row">${esc(k)}</th><td class="${num ? "is-num" : ""}">${shown}</td></tr>`;
 			})
 			.join("");
 		const chip = last >= 0 ? matchChip(parseNum(block.rows[last][1]), requested) : "";
@@ -412,14 +417,14 @@ frappe.provide("afmco.pr_summary");
 	function remarkTags(parsed) {
 		const kinds = new Set(parsed.blocks.map((b) => b.t));
 		return [
-			["records", "Records table"],
-			["table", "Table"],
-			["kv", "Items and values"],
-			["ids", "Number list"],
-			["list", "List"],
+			["records", __("Records table")],
+			["table", __("Table")],
+			["kv", __("Items and values")],
+			["ids", __("Number list")],
+			["list", __("List")],
 		]
 			.filter(([kind]) => kinds.has(kind))
-			.map(([, label]) => __(label));
+			.map(([, label]) => label);
 	}
 
 	function ibanValid(iban) {
@@ -493,9 +498,11 @@ frappe.provide("afmco.pr_summary");
 				: __("Request rejected")
 			: path.current >= path.stages.length
 				? __("Path complete")
-				: __("Step {0} of {1}", [path.current + 1 - path.skipped.length, path.stages.length - path.skipped.length]);
+				: __("Step {0} of {1}", [path.current + 1, path.stages.length]);
 		const stepper = afmco.stepper.html({ ...path, color: path.halted ? "red" : "green" });
-		return `<section class="prc-flow" aria-label="${esc(__("Request path"))}"><div class="prc-flow__head"><b>${esc(__("Request path"))}</b><span>${esc(head)}</span>${path.halted ? chip("red", __(state)) : ""}</div>${stepper}</section>`;
+		const now = path.stages[path.current];
+		const nowHtml = now ? `<div class="prc-flow__now">${esc(__(now))}</div>` : "";
+		return `<section class="prc-flow" aria-label="${esc(__("Request path"))}"><div class="prc-flow__head"><b>${esc(__("Request path"))}</b><span>${esc(head)}</span>${path.halted ? chip("red", __(state)) : ""}</div>${stepper}${nowHtml}</section>`;
 	}
 
 	function flagsHtml(doc) {
@@ -515,7 +522,7 @@ frappe.provide("afmco.pr_summary");
 		const tone = STATE_TONE[state];
 		const words = doc.__unsaved
 			? ""
-			: String(doc.amount_in_words || "")
+			: String((doc.__onload || {}).amount_in_words || doc.amount_in_words || "")
 					.replace(/^SAR\s*/, "")
 					.trim();
 		const sadad = doc.payment_type === SADAD ? sadadValues(doc) : null;
@@ -523,7 +530,7 @@ frappe.provide("afmco.pr_summary");
 			? ""
 			: sadad
 				? sadad.bill || sadad.biller || ""
-				: String(doc.account_no || "").replace(/\s+/g, "");
+				: String(doc.account_no || "").replace(/[^A-Za-z0-9]/g, "");
 		const payee = isBlank(doc.beneficiary_name)
 			? doc.multiple_beneficiaries
 				? esc(__("Multiple beneficiaries"))
@@ -536,13 +543,12 @@ frappe.provide("afmco.pr_summary");
 			`<div class="prc-dt"><span class="prc-label">${esc(label)}</span><b class="prc-ltr prc-num">${esc(value) || "—"}</b></div>`;
 		return `<section class="prc-cheque" aria-label="${esc(__("Payment order"))}">
 			<div class="ch-head"><div class="ch-kind">${esc(__("Payment order"))} <span class="prc-mono ch-ref">${esc(doc.name)}</span></div>${state ? `<div class="ch-chips">${chip(tone || "plain", __(state))}</div>` : ""}</div>
-			<div class="ch-top"><div class="ch-pay"><span class="ch-k">${esc(__("Pay to the order of"))}</span><div class="ch-name">${payee}</div></div><div class="ch-amt"><b class="prc-num">${amount(doc.amount)}</b><span>${esc(__("Riyals"))}</span></div></div>
+			<div class="ch-top"><div class="ch-pay"><span class="ch-k">${esc(__("Pay to the order of"))}</span><div class="ch-name">${payee}</div></div><div class="ch-amt"><b>${money(doc.amount)}</b></div></div>
 			${words ? `<div class="ch-words"><bdi dir="auto">${esc(words)}</bdi></div>` : ""}
 			${accountStrip(doc)}
-			<div class="ch-grid">${cell(__("Project"), doc.cost_center)}${cell(__("Cost Center"), doc.project)}</div>
-			<div class="prc-cheque__dates">${date(__("Request date"), day(doc.creation))}${showBankDate ? date(__("Bank Payment Date"), day(doc.bank_payment_date)) : ""}</div>
-			<div class="ch-foot"><span>${esc(__("Payment Approver"))}: <b>${mixed(doc.payment_approver) || dash}</b></span></div>
-			<div class="ch-micr" aria-hidden="true">⑆ ${esc(doc.name)} ⑆ ${esc(micr)} ⑈ ${amount(doc.amount)} ⑈</div>
+			<div class="ch-grid">${cell(__("Project"), doc.cost_center)}${cell(__("Cost Center"), doc.project)}<div class="prc-cheque__dates">${date(__("Request date"), day(doc.creation))}${showBankDate ? date(__("Bank Payment Date"), day(doc.bank_payment_date)) : ""}</div></div>
+			<div class="ch-foot"><span><span>${esc(__("Payment Approver"))}:</span> <b>${mixed(doc.payment_approver) || dash}</b></span></div>
+			<div class="ch-micr" aria-hidden="true">⑆ ${esc(doc.name)} ⑆ ${micr ? `<span class="ch-micr__acct">${esc(micr)} ⑈ </span>` : ""}${amount(doc.amount)} ⑈</div>
 		</section>`;
 	}
 
@@ -571,11 +577,10 @@ frappe.provide("afmco.pr_summary");
 
 	function asideHtml(frm, path) {
 		const editable = frm.doc.docstatus === 0 && !frappe.workflow.is_read_only(frm.doctype, frm.docname);
-		const acts = (path ? path.actions : [])
-			.map(
-				(a) =>
-					`<span class="prc-act ${["Reject", "Cancel"].includes(a) ? "is-bad" : ["Approve", "Paid"].includes(a) ? "is-pri" : ""}">${esc(__(a))}</span>`,
-			)
+		const actions = path ? path.actions : [];
+		const primary = actions.find((a) => ["Approve", "Paid"].includes(a));
+		const acts = actions
+			.map((a) => `<span class="prc-act ${["Reject", "Cancel"].includes(a) ? "is-bad" : a === primary ? "is-pri" : ""}">${esc(__(a))}</span>`)
 			.join("");
 		return `<section class="prc-card" aria-label="${esc(__("Next Action"))}"><div class="prc-card__body">
 			<div class="prc-next"><div class="prc-label">${esc(__("Next Action"))}</div><div class="afmco-next-action" data-next-action></div></div>
@@ -601,7 +606,7 @@ frappe.provide("afmco.pr_summary");
 			const banner = locked
 				? `<div class="prc-banner">${esc(__("Bank account and payment date are locked after the bank stage."))}</div>`
 				: "";
-			const paid = flt(doc.paid_amount_cf) ? ltr(amount(doc.paid_amount_cf), "prc-num") : "";
+			const paid = flt(doc.paid_amount_cf) ? money(doc.paid_amount_cf) : "";
 			cards.push(`<section class="prc-card"><div class="prc-card__head"><h3 class="prc-card__title">${no()}${esc(__("Bank payment"))}</h3>${badge}</div><div class="prc-card__body">${banner}
 				<div class="prc-grid prc-grid--2">${field(__("Bank Account"), val(doc.bank_account), locked)}${field(__("Bank Payment Date"), isBlank(doc.bank_payment_date) ? "" : ltr(day(doc.bank_payment_date), "prc-num"), locked)}</div>
 				<div class="prc-grid prc-grid--2">${field(__("Bank Reference"), val(doc.bank_reference_cf))}${field(__("Paid Amount"), paid, true)}</div>

@@ -1,5 +1,8 @@
 /* Copyright (c) 2026, AFMCO and contributors */
 
+@font-face{font-family:"Saudi Riyal";src:url(/assets/afmco/fonts/SaudiRiyal-Regular.ttf) format("truetype");font-weight:400;font-display:swap;unicode-range:U+20C1}
+@font-face{font-family:"Saudi Riyal";src:url(/assets/afmco/fonts/SaudiRiyal-Bold.ttf) format("truetype");font-weight:700;font-display:swap;unicode-range:U+20C1}
+
 .afmco-pr-summary{
   --prc-card:var(--card-bg); --prc-ink:var(--text-color); --prc-muted:var(--text-muted); --prc-faint:var(--text-light);
   --prc-line:var(--border-color); --prc-soft:var(--control-bg); --prc-sunk:var(--subtle-fg);
@@ -12,8 +15,7 @@
   --prc-shadow:var(--shadow-xs); --prc-drop:color-mix(in srgb,var(--text-color) 9%,transparent);
   --prc-radius:var(--radius-xl); --prc-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   container:afmco-pr-summary / inline-size; width:100%; min-width:0;
-  color:var(--prc-ink); font-size:var(--text-base); line-height:1.6; padding-block:4px}
-@media (min-width:992px){.afmco-pr-summary .prc-next{display:none}}
+  color:var(--prc-ink); font-size:var(--text-base); line-height:1.6; padding-block:4px; text-align:start}
 .afmco-pr-summary *,.afmco-pr-summary *::before,.afmco-pr-summary *::after{box-sizing:border-box}
 .afmco-pr-summary .prc__layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-areas:"flow flow" "top aside" "doc aside" "sections aside";gap:18px;align-items:start}
 .afmco-pr-summary .prc__layout.no-top{grid-template-areas:"flow flow" "doc aside" "sections aside"}
@@ -33,7 +35,10 @@
 .afmco-pr-summary .prc-tear{position:relative;height:24px;background:radial-gradient(circle at 0 50%,transparent 11px,var(--prc-card) 11.5px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent 11px,var(--prc-card) 11.5px) right/51% 100% no-repeat}
 .afmco-pr-summary .prc-tear::before{content:"";position:absolute;inset-inline:22px;top:50%;border-top:2px dashed var(--prc-line)}
 .afmco-pr-summary .prc-tear span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--prc-card);padding:0 10px;font-size:11px;color:var(--prc-faint);white-space:nowrap}
-.afmco-pr-summary .prc-ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.afmco-pr-summary .prc-ltr{direction:ltr;unicode-bidi:isolate;display:inline-block;white-space:nowrap}
+.afmco-pr-summary .prc-money{direction:ltr;unicode-bidi:isolate;display:inline-block;white-space:nowrap}
+.afmco-pr-summary .prc-riyal{font-family:"Saudi Riyal",var(--font-stack);font-size:1em;font-weight:inherit;line-height:1;vertical-align:baseline;margin-inline-end:.2em}
+.afmco-pr-summary .prc-url{overflow-wrap:anywhere}
 .afmco-pr-summary .prc-mono{font-family:var(--prc-mono);font-size:.92em;letter-spacing:.01em}
 .afmco-pr-summary .prc-num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 .afmco-pr-summary .prc-empty{color:var(--prc-faint)}
@@ -61,39 +66,42 @@
 .afmco-pr-summary .ch-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
 .afmco-pr-summary .ch-pay{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1 1 240px}
 .afmco-pr-summary .ch-k{font-size:12px;color:var(--prc-muted);font-weight:600}
-.afmco-pr-summary .ch-name{font-size:20px;font-weight:700;line-height:1.35;border-bottom:1px dashed color-mix(in srgb,var(--prc-ink) 30%,transparent);padding-bottom:4px;overflow-wrap:anywhere;unicode-bidi:plaintext}
+.afmco-pr-summary .ch-name{font-size:20px;font-weight:700;line-height:1.35;border-bottom:1px dashed color-mix(in srgb,var(--prc-ink) 30%,transparent);padding-bottom:4px;overflow-wrap:break-word;text-wrap:balance;unicode-bidi:plaintext}
 .afmco-pr-summary .ch-amt{flex:none;border:1.5px solid var(--prc-ink);border-radius:8px;padding:6px 14px;background:var(--prc-card);text-align:center;max-width:100%}
 .afmco-pr-summary .ch-amt b{display:block;font-size:23px;line-height:1.25;direction:ltr;white-space:nowrap}
-.afmco-pr-summary .ch-amt span{font-size:12px;color:var(--prc-muted)}
-.afmco-pr-summary .ch-words{font-size:14px;color:var(--prc-muted);border-bottom:1px dashed color-mix(in srgb,var(--prc-ink) 20%,transparent);padding-bottom:6px;overflow-wrap:anywhere}
-.afmco-pr-summary .ch-acct{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-start;padding:10px 12px;border:1px solid var(--prc-line);border-radius:10px;background:color-mix(in srgb,var(--prc-card) 88%,transparent)}
+.afmco-pr-summary .ch-words{font-size:14px;color:var(--prc-muted);border-bottom:1px dashed color-mix(in srgb,var(--prc-ink) 20%,transparent);padding-bottom:6px;overflow-wrap:break-word;text-wrap:pretty}
+.afmco-pr-summary .ch-acct{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:flex-end;padding:8px 12px;border:1px solid var(--prc-line);border-radius:10px;background:color-mix(in srgb,var(--prc-card) 88%,transparent)}
 .afmco-pr-summary .ch-acct__seg{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1 1 220px}
 .afmco-pr-summary .ch-acct__seg--narrow{flex:0 1 140px}
 .afmco-pr-summary .ch-acct[data-kind="sadad"]{column-gap:36px}
 .afmco-pr-summary .ch-acct[data-kind="sadad"] .ch-acct__seg{flex:0 1 auto;min-width:140px}
 .afmco-pr-summary .ch-acct__val{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
-.afmco-pr-summary .ch-iban{font-family:var(--prc-mono);font-size:16.5px;font-weight:500;letter-spacing:.03em;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere;min-width:0}
+.afmco-pr-summary .ch-iban{font-family:var(--prc-mono);font-size:16.5px;font-weight:500;letter-spacing:.03em;direction:ltr;unicode-bidi:isolate;white-space:nowrap;font-variant-numeric:tabular-nums;min-width:0}
 .afmco-pr-summary .ch-text{font-weight:600;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
 .afmco-pr-summary .ch-copy{appearance:none;font:inherit;font-size:12px;font-weight:600;border:1px solid var(--prc-line);background:var(--prc-card);color:var(--prc-accent-ink);border-radius:8px;padding:2px 10px;cursor:pointer;min-height:28px}
 .afmco-pr-summary .ch-copy:focus-visible{outline:2px solid var(--prc-accent);outline-offset:1px}
 .afmco-pr-summary .ch-copy.is-done{background:var(--prc-accent-soft)}
-.afmco-pr-summary .ch-acct__meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;flex:1 1 100%;font-size:12.5px;color:var(--prc-muted)}
+.afmco-pr-summary .ch-acct__meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;flex:0 1 auto;margin-inline-start:auto;padding-bottom:3px;font-size:12.5px;color:var(--prc-muted)}
+.afmco-pr-summary .ch-acct__meta > span{white-space:nowrap}
 .afmco-pr-summary .ch-acct__meta .prc-chip{white-space:normal}
 .afmco-pr-summary .ch-tag{font-size:11px;font-weight:700;color:var(--prc-accent-ink);background:var(--prc-accent-soft);border-radius:6px;padding:0 7px;margin-inline-start:6px}
-.afmco-pr-summary .ch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.afmco-pr-summary .ch-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:10px 16px;align-items:start}
+.afmco-pr-summary .ch-grid .prc-cheque__dates{justify-content:flex-end}
 .afmco-pr-summary .ch-cell{display:flex;flex-direction:column;gap:1px;min-width:0}
-.afmco-pr-summary .ch-cell b{font-size:14px;font-weight:600;overflow-wrap:anywhere}
+.afmco-pr-summary .ch-cell b{font-size:14px;font-weight:600;line-height:1.45;overflow-wrap:break-word;text-wrap:balance}
 .afmco-pr-summary .ch-foot{display:flex;justify-content:space-between;gap:6px 10px;flex-wrap:wrap;font-size:12.5px;color:var(--prc-muted)}
-.afmco-pr-summary .ch-foot b{color:var(--prc-ink);font-weight:600}
+.afmco-pr-summary .ch-foot b{color:var(--prc-ink);font-weight:600;text-wrap:balance}
 .afmco-pr-summary .ch-micr{font-family:var(--prc-mono);font-size:12px;letter-spacing:.14em;color:var(--prc-faint);direction:ltr;text-align:center;border-top:1px dashed var(--prc-line);padding:8px 0 4px;overflow-wrap:anywhere}
 .afmco-pr-summary .prc-cheque .prc-cheque__dates{padding:0}
 @container afmco-pr-summary (max-width:560px){
 .afmco-pr-summary .prc-cheque{padding:14px 14px 16px}
-.afmco-pr-summary .ch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.afmco-pr-summary .ch-grid .ch-cell:first-child{grid-column:1/-1}
+.afmco-pr-summary .ch-grid{grid-template-columns:minmax(0,1fr)}
+.afmco-pr-summary .ch-grid .prc-cheque__dates{justify-content:flex-start}
+.afmco-pr-summary .ch-foot > span{display:flex;flex-direction:column;gap:1px}
 .afmco-pr-summary .ch-name{font-size:18px}
-.afmco-pr-summary .ch-amt{flex:1 1 100%;display:flex;justify-content:space-between;align-items:baseline;text-align:start}
-.afmco-pr-summary .ch-iban{font-size:15px}
+.afmco-pr-summary .ch-amt{flex:1 1 100%;text-align:start}
+.afmco-pr-summary .ch-iban{font-size:clamp(12px,3.9cqi,15px);letter-spacing:0}
+.afmco-pr-summary .ch-acct__meta{flex:1 1 100%;margin-inline-start:0}
 .afmco-pr-summary .ch-micr{font-size:11px;letter-spacing:.05em}
 .afmco-pr-summary .prc__top{grid-template-columns:repeat(auto-fit,minmax(104px,1fr))!important}
 .afmco-pr-summary .prc-flag{padding:8px 10px;gap:8px}
@@ -102,7 +110,7 @@
 .afmco-pr-summary .prc-cheque__dates{display:flex;flex-wrap:wrap;gap:8px}
 .afmco-pr-summary .prc-dt{display:flex;flex-direction:column;gap:1px;padding:6px 12px;border-radius:10px;background:var(--prc-soft);min-width:0;max-width:100%}
 .afmco-pr-summary .prc-dt .prc-label{margin:0;overflow-wrap:anywhere}
-.afmco-pr-summary .prc-dt b{font-weight:600;font-size:13.5px}
+.afmco-pr-summary .prc-dt b{font-weight:600;font-size:13.5px;white-space:nowrap}
 .afmco-pr-summary .prc-dt--je{background:var(--prc-accent-soft)}
 .afmco-pr-summary .prc-dt--je .prc-label{color:var(--prc-accent-ink)}
 @container afmco-pr-summary (max-width:640px){
@@ -143,7 +151,7 @@
 .afmco-pr-summary .prc-field__val{min-height:34px;padding:6px 2px 5px;border-bottom:1.5px dotted color-mix(in srgb,var(--prc-faint) 70%,transparent);font-weight:500;overflow-wrap:anywhere}
 .afmco-pr-summary .prc-field.is-locked .prc-field__val{color:var(--prc-muted);border-bottom-style:dashed}
 .afmco-pr-summary .prc-banner{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;font-size:13px;margin-bottom:12px}
-.afmco-pr-summary .prc-next__role{font-size:18px;font-weight:700;line-height:1.4}
+.afmco-pr-summary .prc-next .afmco-next-action-role{font-size:18px;font-weight:700;line-height:1.4;color:var(--prc-ink)}
 .afmco-pr-summary .prc-remark{background:var(--prc-card);border:1px solid var(--prc-line);border-radius:var(--prc-radius);box-shadow:var(--prc-shadow);overflow:hidden}
 .afmco-pr-summary .prc-remark__head{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--prc-line);background:linear-gradient(var(--prc-soft),var(--prc-card))}
 .afmco-pr-summary .prc-remark__meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -159,26 +167,31 @@
 .afmco-pr-summary .prc-remark__foot[hidden]{display:none}
 .afmco-pr-summary .prc-raw{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--prc-mono);font-size:12.5px;line-height:1.75;background:var(--prc-soft);border-radius:12px;padding:12px 14px;unicode-bidi:plaintext}
 .afmco-pr-summary .prc-rb + .prc-rb{margin-top:12px}
-.afmco-pr-summary .prc-p{margin:0;white-space:pre-line;overflow-wrap:anywhere;unicode-bidi:plaintext;font-size:14.5px;line-height:1.85}
+.afmco-pr-summary .prc-p{margin:0;white-space:pre-line;overflow-wrap:break-word;unicode-bidi:plaintext;font-size:14.5px;line-height:1.85}
 .afmco-pr-summary .prc-p .prc-hl{font-variant-numeric:tabular-nums;font-weight:600;color:var(--prc-ink);background:var(--prc-sunk);padding:0 4px;border-radius:5px;direction:ltr;unicode-bidi:isolate}
 .afmco-pr-summary .prc-h{margin:0;font-size:15px;font-weight:700;display:flex;gap:8px;align-items:center}
 .afmco-pr-summary .prc-h::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--prc-accent)}
 .afmco-pr-summary .prc-hr{border:0;border-top:1px dashed var(--prc-line);margin:14px 0}
 .afmco-pr-summary .prc-formula{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 12px;border-radius:12px;background:var(--prc-accent-soft);color:var(--prc-accent-ink);font-weight:600;direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
-.afmco-pr-summary .prc-table--kv th{position:static;white-space:normal;width:42%;font-size:13px;border-bottom:0;border-top:1px solid var(--prc-line);overflow-wrap:anywhere;unicode-bidi:plaintext}
-.afmco-pr-summary .prc-table--kv td{min-width:0}
+.afmco-pr-summary .prc-table--kv th{position:static;white-space:normal;width:42%;font-size:13px;border-bottom:0;border-top:1px solid var(--prc-line);overflow-wrap:break-word;unicode-bidi:plaintext}
+.afmco-pr-summary .prc-table--kv td{min-width:0;white-space:normal}
 .afmco-pr-summary .prc-table--kv tr:first-child th,.afmco-pr-summary .prc-table--kv tr:first-child td{border-top:0}
 .afmco-pr-summary .prc-table--kv tr.is-total th,.afmco-pr-summary .prc-table--kv tr.is-total td{background:var(--prc-accent-soft);color:var(--prc-accent-ink);font-weight:700}
 .afmco-pr-summary .prc-ttools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:8px}
 .afmco-pr-summary .prc-tsearch{font:inherit;font-size:13px;flex:1 1 160px;max-width:280px;min-width:0;padding:6px 10px;border:1px solid var(--prc-line);border-radius:9px;background:var(--prc-card);color:var(--prc-ink)}
 .afmco-pr-summary .prc-tsearch:focus-visible,.afmco-pr-summary .prc-more:focus-visible,.afmco-pr-summary .prc-seg button:focus-visible{outline:2px solid var(--prc-accent);outline-offset:1px}
 .afmco-pr-summary .prc-common{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
-.afmco-pr-summary .prc-common .prc-chip{white-space:normal;max-width:100%;overflow-wrap:anywhere;font-weight:500}
+.afmco-pr-summary .prc-common .prc-chip{white-space:normal;max-width:100%;overflow-wrap:break-word;font-weight:500}
+.afmco-pr-summary .prc-common .prc-chip bdi{white-space:nowrap}
 .afmco-pr-summary .prc-common .prc-chip b{font-weight:700;color:var(--prc-ink)}
-.afmco-pr-summary .prc-tablewrap{overflow-x:auto;border:1px solid var(--prc-line);border-radius:12px;max-width:100%}
+.afmco-pr-summary .prc-tablewrap{overflow-x:auto;border:1px solid var(--prc-line);border-radius:12px;max-width:100%;background:
+  linear-gradient(to right,var(--prc-card) 30%,transparent) left/40px 100% no-repeat local,
+  linear-gradient(to left,var(--prc-card) 30%,transparent) right/40px 100% no-repeat local,
+  radial-gradient(farthest-side at 0 50%,color-mix(in srgb,var(--prc-ink) 22%,transparent),transparent) left/16px 100% no-repeat scroll,
+  radial-gradient(farthest-side at 100% 50%,color-mix(in srgb,var(--prc-ink) 22%,transparent),transparent) right/16px 100% no-repeat scroll,var(--prc-card)}
 .afmco-pr-summary .prc-table{width:100%;border-collapse:collapse;font-size:13px}
 .afmco-pr-summary .prc-table th{position:sticky;top:0;background:var(--prc-soft);color:var(--prc-muted);font-weight:600;font-size:12px;text-align:start;padding:8px 10px;border-bottom:1px solid var(--prc-line);white-space:nowrap}
-.afmco-pr-summary .prc-table td{padding:8px 10px;border-top:1px solid var(--prc-line);vertical-align:top;overflow-wrap:anywhere;unicode-bidi:plaintext;min-width:70px}
+.afmco-pr-summary .prc-table td{padding:8px 10px;border-top:1px solid var(--prc-line);vertical-align:top;white-space:nowrap;unicode-bidi:plaintext;min-width:70px}
 .afmco-pr-summary .prc-table tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--prc-soft) 55%,transparent)}
 .afmco-pr-summary .prc-table td.is-num,.afmco-pr-summary .prc-table th.is-num{text-align:end;font-variant-numeric:tabular-nums;white-space:nowrap;direction:ltr}
 .afmco-pr-summary .prc-table td.is-id{font-family:var(--prc-mono);font-size:12px;white-space:nowrap;direction:ltr;text-align:end}
@@ -204,9 +217,13 @@
 .afmco-pr-summary .prc-ids span{font-family:var(--prc-mono);font-size:12.5px;padding:5px 8px;border-radius:8px;background:var(--prc-soft);direction:ltr;text-align:center;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 .afmco-pr-summary .prc-ids-head{display:flex;gap:6px;align-items:center;margin-bottom:8px;font-size:12.5px;color:var(--prc-muted)}
 .afmco-pr-summary .prc-list{margin:0;padding-inline-start:22px;display:grid;gap:4px}
-.afmco-pr-summary .prc-list li{overflow-wrap:anywhere;unicode-bidi:plaintext}
+.afmco-pr-summary .prc-list li{overflow-wrap:break-word;unicode-bidi:plaintext}
 .afmco-pr-summary .prc-flow{grid-area:flow;min-width:0;background:var(--prc-card);border:1px solid var(--prc-line);border-radius:14px;padding:12px 14px 8px;box-shadow:var(--prc-shadow)}
-.afmco-pr-summary .prc-flow__head{display:flex;justify-content:space-between;align-items:center;gap:6px 10px;flex-wrap:wrap;font-size:12.5px;color:var(--prc-muted);margin-bottom:8px}
+.afmco-pr-summary .prc-flow__head{display:flex;justify-content:flex-start;align-items:center;gap:6px 10px;flex-wrap:wrap;font-size:12.5px;color:var(--prc-muted);margin-bottom:8px}
+.afmco-pr-summary .prc-flow__head > *{white-space:nowrap}
+.afmco-pr-summary .prc-flow__head > :last-child{margin-inline-start:auto}
+.afmco-pr-summary .afmco-stepper{grid-template-columns:repeat(var(--afmco-steps),minmax(max-content,1fr))}
+.afmco-pr-summary .afmco-step-label{white-space:nowrap;overflow-wrap:normal}
 .afmco-pr-summary .prc-flow__head b{color:var(--prc-ink);font-size:13.5px}
 .afmco-pr-summary .prc-acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .afmco-pr-summary .prc-act{font-size:12px;font-weight:600;border:1px solid var(--prc-line);border-radius:8px;padding:3px 10px;color:var(--prc-ink)}
@@ -218,6 +235,13 @@
 .afmco-pr-summary .prc-goform:focus-visible{outline:2px solid var(--prc-accent);outline-offset:2px;border-radius:4px}
 @container afmco-pr-summary (max-width:420px){
 .afmco-pr-summary .ch-micr{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px;letter-spacing:0}
+.afmco-pr-summary .ch-micr__acct{display:none}
+}
+.afmco-pr-summary .prc-flow__now{display:none}
+@container afmco-pr-summary (max-width:560px){
+.afmco-pr-summary .afmco-stepper{grid-template-columns:repeat(var(--afmco-steps),minmax(0,1fr))}
+.afmco-pr-summary .afmco-step-label{display:none}
+.afmco-pr-summary .prc-flow__now{display:block;padding:2px 0 4px;font-size:13px;font-weight:600;color:var(--prc-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 }
 
 .afmco-pr-summary .prc-flag--urgent{border-color:var(--prc-red-line);background:var(--prc-red-soft)}

@@ -59,6 +59,9 @@ class PaymentRequisition(Document):
 			self.set_onload("accounts_bot_expected_finish", accounts_bot_run.expected_finish(self.name, self.payment_type))
 		self.set_onload("payment_dates", self.payment_dates())
 		self.set_onload("workflow_states_seen", self.workflow_states_seen())
+		if self.amount:
+			currency = frappe.get_cached_value("Company", get_default_company(), "default_currency")
+			self.set_onload("amount_in_words", money_in_words(self.amount, currency))
 		ai_reading.set_onload(self)
 
 	def workflow_states_seen(self) -> list[str]:

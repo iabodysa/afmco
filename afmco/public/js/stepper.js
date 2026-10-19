@@ -46,18 +46,19 @@ afmco.stepper = {
 
 		const halted = halts.has(state);
 		let current = stages.indexOf(state);
+		const seen = new Set((frm.doc.__onload || {}).workflow_states_seen || []);
 		let known = true;
 		if (halted) {
-			const at = stages.indexOf(afmco.stepper.value_before(frm, "workflow_state", state));
-			known = at >= 0;
-			current = known ? at : stages.length - 1;
+			const before = stages.indexOf(afmco.stepper.value_before(frm, "workflow_state", state));
+			const furthest = Math.max(-1, ...stages.map((stage, index) => (seen.has(stage) ? index : -1)));
+			current = before >= 0 ? before : furthest;
+			known = current >= 0;
 		} else if (current < 0) {
 			return null;
 		} else if (current === stages.length - 1 && frm.doc.docstatus === 1) {
 			current = stages.length;
 		}
 
-		const seen = new Set((frm.doc.__onload || {}).workflow_states_seen || []);
 		const bypassed = new Set();
 		workflow.transitions.forEach((row) => {
 			const from = stages.indexOf(row.state);
