@@ -15622,3 +15622,8 @@ Resume auto-advance,تشغيل التنقل التلقائي
 Quick access,وصول سريع
 Phone Image,صورة الجوال
 Journal Entry cannot be submitted until Payment Requisition {0} is Paid.,لا يمكن اعتماد قيد اليومية قبل أن تصبح حالة طلب الصرف {0} مدفوع.
+{0} is not a choice of this Accounts Bot question.,{0} ليس من خيارات سؤال بوت المحاسبة.
+The Accounts Bot is still working on this Payment Requisition. Choose again after it finishes.,بوت المحاسبة يشتغل على طلب الصرف هذا. اختر مرة ثانية بعد ما يخلص.
+The Accounts Bot could not take this answer. Reload the form.,بوت المحاسبة ما قدر يستلم هذي الإجابة. أعد تحميل النموذج.
+Current draft,المسودة الحالية
+Open Payment Requisition {0},فتح طلب الصرف {0}
