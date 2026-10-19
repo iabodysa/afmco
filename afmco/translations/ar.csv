@@ -15674,3 +15674,10 @@ Enter the reason of urgency.,أدخل سبب الاستعجال.
 Journal Entry date {0}: {1},تاريخ قيد اليومية {0}: {1}
 Next Action,الإجراء التالي
 No users,لا يوجد مستخدمون
+This request is already marked as urgent with reason: {0},هذا الطلب محدد مسبقاً كعاجل بالسبب: {0}
+Financial Controller,المراقب المالي
+Waiting P.M Approval,انتظار موافقة مدير المشاريع
+Waiting Manager Approval,انتظار موافقة المدير
+Waiting Bank Entry,انتظار إدخال البنك
+Document Upload,انتظار تحميل الإيصالات
+Waiting,قيد الانتظار
