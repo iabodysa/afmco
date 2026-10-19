@@ -916,8 +916,8 @@ async function fetchAllAccountTransfers(frm, pageSize = 500) {
                 ['workflow_state', '!=', 'Rejected'],
                 ['name', '!=', documentName]
             ],
-            fields: ['name', 'date', 'amount'],
-            order_by: 'date desc, name desc',
+            fields: ['name', 'creation', 'amount'],
+            order_by: 'creation desc, name desc',
             limit: pageSize,
             start
         });
@@ -1086,7 +1086,7 @@ function processTransferRecords(records) {
     let grand_total = 0;
 
     const tableRows = records.map(d => {
-        const parsedYear = d.date ? new Date(d.date).getFullYear() : null;
+        const parsedYear = d.creation ? new Date(d.creation).getFullYear() : null;
         const fallbackYear = String(d.name || '').match(/\d{4}/)?.[0];
         const year = Number.isFinite(parsedYear) ? parsedYear : fallbackYear;
         const parsedAmount = Number(d.amount || 0);
@@ -1097,7 +1097,7 @@ function processTransferRecords(records) {
         }
         grand_total += amount;
 
-        return { name: d.name, date: d.date, amount: amount };
+        return { name: d.name, date: frappe.datetime.str_to_user(d.creation, false, true), amount: amount };
     });
 
     return { tableRows, yearlySummary: yearly_totals, grandTotal: grand_total };

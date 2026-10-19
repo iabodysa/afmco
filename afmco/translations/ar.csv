@@ -837,7 +837,6 @@ Dependents,التابعون
 Update Log,سجل التحديثات
 Note,ملاحظة
 Urgency,درجة الاستعجال
-Supplier and Purchase Order,المورد وأمر الشراء
 Workflow,سير العمل
 Vehicle,المركبة
 Payment Details,تفاصيل الدفع
@@ -1656,7 +1655,6 @@ Open SADAD Batches Amount,مبالغ دفعات سداد المفتوحة
 Payment Requisitions Rejected This Month,طلبات الصرف المرفوضة هذا الشهر
 Monthly Payment Requisition Count,عدد طلبات الصرف الشهرية
 Monthly EOS Payment Requisitions Count,عدد طلبات صرف مكافأة نهاية الخدمة الشهرية
-Assign To Employee,إسناد إلى موظف
 Bank Payment Date,تاريخ الدفع البنكي
 Dependent Fees,رسوم المرافقين
 Expense Request,طلب المصروف

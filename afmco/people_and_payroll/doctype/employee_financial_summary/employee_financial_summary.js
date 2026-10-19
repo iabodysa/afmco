@@ -71,7 +71,7 @@ frappe.ui.form.on("Employee Financial Summary", {
 			},
 			requisitions: {
 				heads: [[__("Document")], [__("Date")], [__("State")], [__("Amount"), 1]],
-				cells: (r) => [link("Payment Requisition", r.name), day(r.date), esc(__(r.workflow_state)), money(r.amount)],
+				cells: (r) => [link("Payment Requisition", r.name), frappe.datetime.str_to_user(r.creation, false, true), esc(__(r.workflow_state)), money(r.amount)],
 			},
 		};
 

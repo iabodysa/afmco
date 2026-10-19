@@ -37,7 +37,6 @@ frappe.ui.form.on('Petty Cash', {
             const expenseRequestData = {
                 tax_invoice_number: name,
                 bank_payment_date : frappe.datetime.nowdate(),
-                date : frappe.datetime.nowdate(),
                 jv_status: 'JV Not Created',
                 naming_series: 'PR-.YYYY.-',
                 cost_center: cost_center,
