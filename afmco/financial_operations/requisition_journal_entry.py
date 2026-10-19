@@ -38,14 +38,17 @@ def build(requisition: Document, bank_account: str, administration: bool) -> Doc
 	journal_entry.expense_request_cf = requisition.name
 	journal_entry.user_remark = remark or f"Expense Request: {requisition.name}"
 	names = account_names()
+	precision = frappe.get_precision("Journal Entry Account", "debit_in_account_currency")
+	amount = flt(requisition.amount, precision)
 
 	def add_row(account_number, debit):
-		if flt(debit) <= 0:
+		debit = flt(debit, precision)
+		if debit <= 0:
 			return
 		account = names.get(account_number)
 		if not account:
 			frappe.throw(_("Required account is missing: {0}").format(account_number))
-		row = journal_entry.append("accounts", {"account": account, "debit_in_account_currency": flt(debit)})
+		row = journal_entry.append("accounts", {"account": account, "debit_in_account_currency": debit})
 		if administration and requisition.cost_center:
 			row.cost_center = requisition.cost_center
 		if administration and requisition.project:
@@ -54,11 +57,11 @@ def build(requisition: Document, bank_account: str, administration: bool) -> Doc
 	if requisition.payment_type == "EOS":
 		add_row(ticket_account, remark_amount(remark, EOS_TICKET))
 		add_row(vacation_account, remark_amount(remark, EOS_VACATION))
-		add_row(eos_account, remark_amount(remark, EOS_AMOUNT))
+		add_row(eos_account, flt(remark_amount(remark, EOS_AMOUNT), frappe.get_precision("End of Service Settlement", "total_eos")))
 	elif requisition.payment_type == "Advance Leave Salary":
-		ticket = min(remark_amount(remark, LEAVE_TICKET), flt(requisition.amount))
+		ticket = flt(min(remark_amount(remark, LEAVE_TICKET), amount), precision)
 		add_row(ticket_account, ticket)
-		add_row(vacation_account, flt(flt(requisition.amount) - ticket, 2))
+		add_row(vacation_account, amount - ticket)
 	elif requisition.payment_type == "SADAD Payment":
 		add_sadad_rows(requisition, remark, administration, add_row)
 	else:
@@ -66,8 +69,8 @@ def build(requisition: Document, bank_account: str, administration: bool) -> Doc
 			_("Journal Entry creation is not configured for payment type: {0}").format(requisition.payment_type or "-")
 		)
 
-	if flt(requisition.amount) > 0:
-		journal_entry.append("accounts", {"account": bank_account, "credit_in_account_currency": flt(requisition.amount)})
+	if amount > 0:
+		journal_entry.append("accounts", {"account": bank_account, "credit_in_account_currency": amount})
 	return journal_entry
 
 
