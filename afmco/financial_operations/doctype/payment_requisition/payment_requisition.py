@@ -1,6 +1,7 @@
 # Copyright (c) 2026, AFMCO and contributors
 # For license information, please see license.txt
 
+import json
 import re
 
 import frappe
@@ -55,7 +56,21 @@ class PaymentRequisition(Document):
 		receipt_role = bool(roles.intersection(RECEIPT_READ_ROLES)) and not self.receipt_read_refusal()
 		self.set_onload("receipt_read_viewer", receipt_role)
 		self.set_onload("payment_dates", self.payment_dates())
+		self.set_onload("workflow_states_seen", self.workflow_states_seen())
 		ai_reading.set_onload(self)
+
+	def workflow_states_seen(self) -> list[str]:
+		seen = set()
+		versions = frappe.get_all(
+			"Version",
+			filters={"ref_doctype": self.doctype, "docname": self.name, "data": ["like", '%"workflow_state"%']},
+			pluck="data",
+		)
+		for data in versions:
+			for fieldname, old, new in json.loads(data or "{}").get("changed") or []:
+				if fieldname == "workflow_state":
+					seen.update(value for value in (old, new) if value)
+		return sorted(seen)
 
 	def payment_dates(self) -> list[tuple[str, str]]:
 		if self.workflow_state not in PAYMENT_DATE_STATES:

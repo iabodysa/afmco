@@ -20,3 +20,7 @@
 @keyframes afmco-step-ring { from { box-shadow: 0 0 0 0 var(--afmco-step-accent); } to { box-shadow: 0 0 0 8px transparent; } }
 @media (prefers-reduced-motion: reduce) { .afmco-step-live .afmco-step-mark { animation: none; } }
 .afmco-step-note { list-style: none; padding: 6px 10px; border-radius: var(--border-radius-md); background: var(--control-bg); color: var(--text-color); font-size: var(--text-xs); text-align: center; overflow-wrap: anywhere; }
+.afmco-step-skipped { opacity: 0.6; }
+.afmco-step-skipped .afmco-step-mark { border-style: dashed; background: var(--fg-color); color: var(--text-muted); }
+.afmco-step-skipped .afmco-step-label { text-decoration: line-through; }
+.afmco-step.afmco-step-skipped::before { background: var(--border-color); }

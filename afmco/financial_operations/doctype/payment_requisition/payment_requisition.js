@@ -1261,29 +1261,9 @@ function renderRequestCards(frm) {
 }
 
 function workflowStepper(frm) {
-    const state = frm.doc.workflow_state;
-    if (frm.is_new() || !state) return '';
-    frappe.workflow.setup(frm.doctype);
-    const workflow = frappe.workflow.workflows[frm.doctype];
-    if (!workflow) return '';
-
-    const halts = new Set(workflow.states.filter((row) => cint(row.doc_status) === 2).map((row) => row.state));
-    workflow.transitions.filter((row) => row.action === 'Reject').forEach((row) => halts.add(row.next_state));
-    const reached = new Set(workflow.transitions.map((row) => row.next_state));
-    const stages = [...new Set(workflow.states.map((row) => row.state))]
-        .filter((stage, index) => !halts.has(stage) && (index === 0 || reached.has(stage)));
-
-    const halted = halts.has(state);
-    let current = stages.indexOf(state);
-    if (halted) {
-        const at = stages.indexOf(afmco.stepper.value_before(frm, 'workflow_state', state));
-        current = at >= 0 ? at : stages.length - 1;
-    } else if (current < 0) {
-        return '';
-    } else if (current === stages.length - 1 && frm.doc.docstatus === 1) {
-        current = stages.length;
-    }
-    return afmco.stepper.html({ stages, current, color: halted ? 'red' : 'blue', halted });
+    const path = afmco.stepper.workflow(frm);
+    if (!path) return '';
+    return afmco.stepper.html({ ...path, color: path.halted ? 'red' : 'blue' });
 }
 
 function addAlreadyPaidButton(frm) {
