@@ -6,6 +6,7 @@ from frappe import _
 
 from afmco.approver_check import ai_reading
 from afmco.approver_check.registry import APPROVER_STATES, PAYMENT_REQUISITION
+from afmco.financial_operations import accounts_bot_run
 from afmco.financial_operations.doctype.payment_requisition.payment_requisition import (
 	ACCOUNTS_BOT_ROLE,
 	ACCOUNTS_BOT_VIEWER_ROLES,
@@ -23,13 +24,20 @@ def locked_requisition(name: str):
 @frappe.whitelist(methods=["POST"])
 def set_accounts_bot(name: str) -> str:
 	frappe.only_for(ACCOUNTS_ROLES)
-	return locked_requisition(name).queue_for_accounts_bot()
+	requisition = locked_requisition(name)
+	result = requisition.queue_for_accounts_bot()
+	if result == "queued":
+		accounts_bot_run.announce_expected_finish(requisition)
+	return result
 
 
 @frappe.whitelist(methods=["POST"])
 def retry_accounts_bot(name: str) -> None:
 	frappe.only_for(ACCOUNTS_BOT_VIEWER_ROLES)
-	locked_requisition(name).retry_accounts_bot()
+	requisition = locked_requisition(name)
+	requisition.retry_accounts_bot()
+	if not requisition.accounts_bot_read_receipt_cf:
+		accounts_bot_run.announce_expected_finish(requisition)
 
 
 @frappe.whitelist(methods=["POST"])

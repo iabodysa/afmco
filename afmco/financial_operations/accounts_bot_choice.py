@@ -22,6 +22,9 @@ ATTEMPTS = 3
 ATTEMPT_MINUTES = 5
 SENT_KEY = "afmco:accounts_bot_choice_sent:{0}"
 REQUEST_SENT = "Request Sent"
+JOURNAL_ENTRY_CREATED = "Journal Entry Created"
+STOPPED = "Stopped - Needs Review"
+FINISHED = (JOURNAL_ENTRY_CREATED, STOPPED)
 
 
 def content_lines(content: str | None) -> list[str]:
@@ -129,10 +132,14 @@ def last_press(name: str):
 		order_by="creation desc",
 		limit=20,
 	):
-		changed = (frappe.parse_json(row.data) or {}).get("changed") or []
-		if any(change[0] == "accounts_bot_status" and change[2] == REQUEST_SENT for change in changed):
+		if is_press(row):
 			return row
 	return None
+
+
+def is_press(version) -> bool:
+	changed = (frappe.parse_json(version.data) or {}).get("changed") or []
+	return any(change[0] == "accounts_bot_status" and change[2] == REQUEST_SENT for change in changed)
 
 
 def presser(name: str) -> str | None:
@@ -157,17 +164,32 @@ def publish_close(name: str, q: str, user: str | None) -> None:
 	frappe.cache.delete_value(SENT_KEY.format(q))
 
 
+def is_finished(name: str) -> bool:
+	return frappe.db.get_value(PAYMENT_REQUISITION, name, "accounts_bot_status") in FINISHED
+
+
 def republish_open_choices() -> None:
 	since = add_to_date(now_datetime(), minutes=-(ATTEMPTS * ATTEMPT_MINUTES + 1))
-	seen = set()
-	for row in choice_comments(None, since):
-		if row.reference_name in seen:
+	names = {row.reference_name for row in choice_comments(None, since)}
+	names.update(
+		frappe.get_all(
+			PAYMENT_REQUISITION,
+			filters={"accounts_bot_status": ["in", FINISHED], "accounts_bot_updated": [">=", since]},
+			pluck="name",
+		)
+	)
+	if not names:
+		return
+	for row in frappe.get_all(
+		PAYMENT_REQUISITION,
+		filters={"name": ["in", list(names)], "accounts_bot_status": ["in", FINISHED]},
+		fields=["name", "accounts_bot_updated"],
+	):
+		choice = open_choice(row.name)
+		if not choice:
 			continue
-		seen.add(row.reference_name)
-		choice = open_choice(row.reference_name)
-		if not choice or choice["creation"] != row.creation:
-			continue
-		elapsed = (now_datetime() - get_datetime(row.creation)).total_seconds() // 60
+		shown = max(get_datetime(choice["creation"]), get_datetime(row.accounts_bot_updated))
+		elapsed = (now_datetime() - shown).total_seconds() // 60
 		if elapsed >= ATTEMPTS * ATTEMPT_MINUTES:
 			continue
 		due = min(ATTEMPTS, 1 + int(elapsed // ATTEMPT_MINUTES))
