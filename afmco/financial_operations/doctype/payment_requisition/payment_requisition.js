@@ -288,7 +288,7 @@ frappe.ui.form.on('Payment Requisition', {
         renderRemarkExcelDashboard(frm);
         addSystemManagerButtons(frm);
 
-        renderRequestCards(frm);
+        frappe.require(['/assets/afmco/js/stepper.js', '/assets/afmco/css/stepper.css'], () => renderRequestCards(frm));
         validateAndDisplayBankAccountAlert(frm);
         handleFinancialControllerPermissions(frm);
 
@@ -1234,21 +1234,56 @@ function createBalanceTable(final_balance, max_limit) {
 }
 
 function renderRequestCards(frm) {
+    frm.dashboard.parent.find('.afmco-pr-card').remove();
+    const cards = [];
     if (frm.doc.if_it__urgent) {
-        frm.dashboard.add_section(
-            `<p class="text-danger">${escapeHtmlWithLineBreaks(frm.doc.reason_of_urgency || __('No reason provided'))}</p>`,
+        const reason = frm.doc.reason_of_urgency || __('No reason provided');
+        cards.push([
+            `<p class="text-danger">${escapeHtmlWithLineBreaks(__('This request is already marked as urgent with reason: {0}', [reason]))}</p>`,
             __('Urgent')
-        );
+        ]);
     }
     if (frm.doc.verify_payment) {
-        frm.dashboard.add_section(
+        cards.push([
             `<p>${escapeHtml(__('This transaction has been documented as settled. Please ensure all necessary approvals and authorizations are verified before proceeding.'))}</p>`,
             __('Already paid')
-        );
+        ]);
     }
-    if (frm.doc.if_it__urgent || frm.doc.verify_payment) {
-        frm.dashboard.show();
+    const stepper = workflowStepper(frm);
+    if (stepper) cards.push([stepper, __('Workflow')]);
+
+    cards.forEach(([html, label]) => {
+        const body = frm.dashboard.add_section(html, label);
+        body.closest('.form-dashboard-section').addClass('afmco-pr-card');
+        afmco.stepper.center(body);
+    });
+    if (cards.length) frm.dashboard.show();
+}
+
+function workflowStepper(frm) {
+    const state = frm.doc.workflow_state;
+    if (frm.is_new() || !state) return '';
+    frappe.workflow.setup(frm.doctype);
+    const workflow = frappe.workflow.workflows[frm.doctype];
+    if (!workflow) return '';
+
+    const halts = new Set(workflow.states.filter((row) => cint(row.doc_status) === 2).map((row) => row.state));
+    workflow.transitions.filter((row) => row.action === 'Reject').forEach((row) => halts.add(row.next_state));
+    const reached = new Set(workflow.transitions.map((row) => row.next_state));
+    const stages = [...new Set(workflow.states.map((row) => row.state))]
+        .filter((stage, index) => !halts.has(stage) && (index === 0 || reached.has(stage)));
+
+    const halted = halts.has(state);
+    let current = stages.indexOf(state);
+    if (halted) {
+        const at = stages.indexOf(afmco.stepper.value_before(frm, 'workflow_state', state));
+        current = at >= 0 ? at : stages.length - 1;
+    } else if (current < 0) {
+        return '';
+    } else if (current === stages.length - 1 && frm.doc.docstatus === 1) {
+        current = stages.length;
     }
+    return afmco.stepper.html({ stages, current, color: halted ? 'red' : 'blue', halted });
 }
 
 function addAlreadyPaidButton(frm) {
