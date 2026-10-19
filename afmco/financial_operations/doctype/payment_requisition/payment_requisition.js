@@ -475,6 +475,22 @@ function renderAccountsBotIntro(frm) {
         color = 'yellow';
         text += ` — ${__('Accounts Bot has not picked up the request yet')}`;
     }
+    const expected = ACCOUNTS_BOT_IDLE.includes(status) ? null : onload.accounts_bot_expected_finish;
+    clearTimeout(frm.accountsBotOverdueTimer);
+    if (expected) {
+        const finish = frappe.datetime.str_to_obj(expected);
+        const time = moment(finish).format('HH:mm');
+        if (moment().isAfter(finish)) {
+            color = 'yellow';
+            text += ` — ${__('Past the expected finish time {0}', [time])}`;
+        } else {
+            text += ` — ${__('Expected finish {0}', [time])}`;
+            const name = frm.doc.name;
+            frm.accountsBotOverdueTimer = setTimeout(() => {
+                if (frm.doc.name === name) renderAccountsBotIntro(frm);
+            }, moment(finish).diff(moment()) + 1000);
+        }
+    }
     if (frm.doc.accounts_bot_note && color !== 'blue' && color !== 'yellow') {
         text += ` — ${frm.doc.accounts_bot_note}`;
     }

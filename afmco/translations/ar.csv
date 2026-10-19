@@ -15735,3 +15735,11 @@ Written in the account field:,مكتوب في حقل الحساب:
 {0} lines,{0} سطر
 {0} rows,{0} صف
 Copy,نسخ
+The Accounts Bot expects to finish by {0}.,يتوقع بوت المحاسبة أن ينتهي الساعة {0}.
+Expected finish {0},الانتهاء المتوقع {0}
+Past the expected finish time {0},تجاوز وقت الانتهاء المتوقع {0}
+Accounts Bot finished,بوت المحاسبة انتهى
+Accounts Bot stopped,بوت المحاسبة توقف
+The Accounts Bot created the Journal Entry for Payment Requisition {0}.,أنشأ بوت المحاسبة قيد اليومية لطلب الصرف {0}.
+The Accounts Bot stopped on Payment Requisition {0} and needs your review.,توقف بوت المحاسبة عند طلب الصرف {0} ويحتاج مراجعتك.
+Open Journal Entry {0},فتح قيد اليومية {0}

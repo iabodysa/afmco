@@ -12,7 +12,7 @@ from frappe.utils import add_days, escape_html, flt, getdate, money_in_words, no
 from frappe.utils.html_utils import sanitize_html
 
 from afmco.approver_check import ai_reading
-from afmco.financial_operations import accounts_bot_choice
+from afmco.financial_operations import accounts_bot_choice, accounts_bot_run
 from afmco.people_and_payroll.doctype.end_of_service_settlement.end_of_service_settlement import mark_settlement_paid
 
 ACCOUNTS_ROLES = ("Accounts User", "Accounts Manager")
@@ -55,6 +55,8 @@ class PaymentRequisition(Document):
 			self.set_onload("accounts_bot_choice", accounts_bot_choice.open_choice(self.name))
 		receipt_role = bool(roles.intersection(RECEIPT_READ_ROLES)) and not self.receipt_read_refusal()
 		self.set_onload("receipt_read_viewer", receipt_role)
+		if self.request_pending() and not self.accounts_bot_read_receipt_cf and roles.intersection(ACCOUNTS_BOT_VIEWER_ROLES):
+			self.set_onload("accounts_bot_expected_finish", accounts_bot_run.expected_finish(self.name, self.payment_type))
 		self.set_onload("payment_dates", self.payment_dates())
 		self.set_onload("workflow_states_seen", self.workflow_states_seen())
 		ai_reading.set_onload(self)
@@ -327,6 +329,7 @@ class PaymentRequisition(Document):
 			frappe.throw(_("{0} is not an Accounts Bot status.").format(status))
 		if self.accounts_bot_status == JOURNAL_ENTRY_CREATED and status != JOURNAL_ENTRY_CREATED:
 			frappe.throw(_("The Accounts Bot already created the Journal Entry for this Payment Requisition."))
+		previous = self.accounts_bot_status
 		values = {
 			"accounts_bot_status": status,
 			"accounts_bot_note": sanitize_html(note, always_sanitize=True) if note else None,
@@ -342,6 +345,10 @@ class PaymentRequisition(Document):
 			docname=self.name,
 			after_commit=True,
 		)
+		if status in accounts_bot_choice.FINISHED and status != previous:
+			if choice := accounts_bot_choice.open_choice(self.name):
+				accounts_bot_choice.publish_choice(choice, 1)
+			accounts_bot_run.announce_finish(self.name, status)
 
 	def validate(self):
 		if self.amount:
