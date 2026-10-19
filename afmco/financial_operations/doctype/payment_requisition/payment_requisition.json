@@ -408,13 +408,15 @@
    "fieldname": "bank_account",
    "fieldtype": "Link",
    "label": "Bank Account",
-   "options": "Account"
+   "options": "Account",
+   "read_only_depends_on": "eval:['Document Upload', 'Waiting', 'Paid', 'Cancelled'].includes(doc.workflow_state)"
   },
   {
    "fieldname": "bank_payment_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Bank Payment Date"
+   "label": "Bank Payment Date",
+   "read_only_depends_on": "eval:['Document Upload', 'Waiting', 'Paid', 'Cancelled'].includes(doc.workflow_state)"
   },
   {
    "allow_on_submit": 1,
@@ -496,7 +498,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-19 12:00:00.000000",
+ "modified": "2026-10-19 20:51:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",
