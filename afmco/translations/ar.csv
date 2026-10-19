@@ -15630,3 +15630,54 @@ Open Payment Requisition {0},فتح طلب الصرف {0}
 "Attach the client timesheet file and save, then press Start Payroll Bot.",أرفق ملف كشف دوام العميل واحفظه، ثم اضغط تشغيل مساعد الرواتب.
 Not created yet,لم يُنشأ بعد
 Show Bot Log,عرض سجل مساعد الرواتب
+Failed to load settings,لم يتم تحميل الإعدادات
+Refresh to see changes,أعد تحميل الصفحة لعرض التغييرات
+Failed to save,لم يتم الحفظ
+Manage your profile information and display picture.,إدارة بيانات ملفك التعريفي وصورة العرض.
+Configure your email settings.,ضبط إعدادات بريدك الإلكتروني.
+Send notifications for email threads,إرسال إشعارات لسلاسل الرسائل
+Get notified when there's a new reply in an email thread you're part of.,تلقي إشعار عند وصول رد جديد في سلسلة رسائل أنت مشارك فيها.
+Send me a copy of outgoing emails,إرسال نسخة لي من الرسائل الصادرة
+Receive a copy of every email you send in your inbox.,استلام نسخة من كل رسالة ترسلها في صندوق الوارد.
+Request read receipts for outgoing emails,طلب إشعار القراءة للرسائل الصادرة
+Get notified when a recipient opens an email you send.,تلقي إشعار عند فتح المستلم رسالة أرسلتها.
+Theme and layout preferences.,تفضيلات السمة والتخطيط.
+"Switch between light, dark, or system theme.",التبديل بين السمة الفاتحة أو الداكنة أو سمة النظام.
+Choose whether forms should be displayed in compact or full width.,اختيار عرض النماذج بشكل مضغوط أو بالعرض الكامل.
+"Keep the app dock beside the sidebar, or let it slide in from the left edge.",إبقاء شريط الإرساء بجانب الشريط الجانبي، أو جعله ينزلق من الحافة اليسرى.
+Compact,المضغوط
+"Language, timezone and notification preferences.",تفضيلات اللغة والمنطقة الزمنية والإشعارات.
+Allow notifications,السماح بالإشعارات
+Show desktop and in-app notifications for activity on your account.,إظهار إشعارات سطح المكتب وإشعارات النظام للنشاط على حسابك.
+Show search bar,إظهار شريط البحث
+Display the search bar in the navigation area for quick access.,عرض شريط البحث في منطقة التنقل للوصول السريع.
+Add a link to your own private workspaces in the user menu.,إضافة رابط لمساحات العمل الخاصة بك في قائمة المستخدم.
+Mute sounds,كتم الأصوات
+Disable all notification and alert sounds across the application.,تعطيل جميع أصوات الإشعارات والتنبيهات في النظام.
+Locale,الإعدادات الإقليمية
+Change Language,تغيير اللغة
+Change Time Zone,تغيير المنطقة الزمنية
+Lists,القوائم
+Configure list view behaviour.,ضبط سلوك عرض القوائم.
+Display the filter and group-by sidebar in list views.,عرض الشريط الجانبي للتصفية والتجميع في عروض القوائم.
+Allow bulk actions,السماح بالإجراءات الجماعية
+Enable checkboxes to select multiple records and perform bulk operations.,تفعيل مربعات الاختيار لتحديد عدة سجلات وتنفيذ عمليات جماعية.
+Show view switcher,إظهار مبدل طرق العرض
+"Allow switching between list, kanban, report, and other views from the toolbar",السماح بالتبديل بين عرض القائمة ولوحة المهام والتقرير وغيرها من شريط الأدوات
+Forms,النماذج
+Configure form view behaviour.,ضبط سلوك عرض النماذج.
+"Display a sidebar in forms with attachments, preview image, tags, and other details.",عرض شريط جانبي في النماذج يضم المرفقات وصورة المعاينة والوسوم وتفاصيل أخرى.
+Show timeline,إظهار المخطط الزمني
+"Show the activity timeline with comments, emails, and version history.",إظهار المخطط الزمني للنشاط مع التعليقات والرسائل وسجل التعديلات.
+Show dashboard,إظهار لوحة الملخص
+"Show a summary dashboard with charts and statistics, where available, at the top of forms.",إظهار لوحة ملخص بالرسوم البيانية والإحصاءات أعلى النماذج عند توفرها.
+Show absolute datetime in timeline,إظهار التاريخ والوقت الفعليين في المخطط الزمني
+Display exact timestamps instead of relative time in the activity timeline.,عرض التاريخ والوقت بدقة بدلاً من الوقت النسبي في المخطط الزمني للنشاط.
+Show navigation buttons to view the previous and next record in the form toolbar.,إظهار أزرار التنقل لعرض السجل السابق والتالي في شريط أدوات النموذج.
+Configure report view behaviour.,ضبط سلوك عرض التقارير.
+Split view,العرض المقسم
+Open a linked document in a side panel instead of navigating away from the report. Not available on mobile.,فتح المستند المرتبط في لوحة جانبية بدلاً من مغادرة التقرير. غير متاح على الجوال.
+An error occurred while updating your session defaults.,حدث خطأ أثناء تحديث القيم الافتراضية للجلسة.
+Set default values for the current session. Values set here will be autofilled in forms and reports.,تحديد القيم الافتراضية للجلسة الحالية. تعبأ القيم المحددة هنا تلقائياً في النماذج والتقارير.
+No session defaults configured.,لا توجد قيم افتراضية للجلسة.
+Get around the system quickly with keyboard shortcuts.,التنقل في النظام بسرعة باستخدام اختصارات لوحة المفاتيح.
