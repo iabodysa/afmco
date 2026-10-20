@@ -263,7 +263,7 @@ class PaymentRequisition(Document):
 			self.save_version()
 		for fieldname, source in sources.items():
 			self.add_comment(
-				"Comment",
+				"Info",
 				_("Accounts Bot changed {0} from {1} to {2}. Source file: {3}").format(
 					_(self.meta.get_label(fieldname)),
 					*(escape_html(str(v)) if v else "-" for v in (before[fieldname], changes[fieldname], source)),
