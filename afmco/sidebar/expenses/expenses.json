@@ -295,8 +295,8 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-12 08:38:00.000000",
- "module": "HR",
+ "modified": "2026-10-20 10:06:00.000000",
+ "module": "Expenses",
  "name": "Expenses",
  "standard": 1,
  "title": "Expenses"
