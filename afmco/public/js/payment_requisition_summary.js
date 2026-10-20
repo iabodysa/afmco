@@ -445,7 +445,7 @@ frappe.provide("afmco.pr_summary");
 		if (iban) {
 			const bank = BANKS[compact.slice(4, 6)];
 			const valid = ibanValid(compact);
-			meta = `${bank ? `<span>${esc(__("Bank"))}: <b>${esc(__(bank))}</b></span>` : ""}${valid ? chip("green", __("IBAN is valid")) : chip("red", __("IBAN is not valid, check it with the requester"))}`;
+			meta = `${bank ? `<span>${esc(__("Bank"))}: <b>${esc(__(bank))}</b></span>` : ""}${valid ? chip("green", __("IBAN is valid")) : chip("red", __("IBAN is not valid"))}`;
 		}
 		const shown = iban ? compact.replace(/(.{4})/g, "$1 ").trim() : account;
 		return `<div class="ch-acct" data-kind="account"><div class="ch-acct__seg"><span class="ch-k">${esc(iban ? __("IBAN") : __("Account number"))}</span><div class="ch-acct__val"><b class="${iban ? "ch-iban" : "ch-text"}">${esc(shown)}</b>${copyBtn(iban ? compact : account)}</div></div><div class="ch-acct__meta">${meta}</div></div>`;
