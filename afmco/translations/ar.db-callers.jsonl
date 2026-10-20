@@ -299,3 +299,6 @@ fmt:jsonl|keys:key,caller|key:ar.csv source string whose live caller sits only i
 {"key": "Waiting Manager Approval", "caller": "Workflow:states.state"}
 {"key": "Waiting P.M Approval", "caller": "Workflow:states.state"}
 {"key": "Beneficiary Information", "caller": "Print Format:html"}
+{"key": "End of Service Benefits", "caller": "Payment Requisition:remark"}
+{"key": "Daily Salary", "caller": "Payment Requisition:remark"}
+{"key": "Total Vacation Allowance", "caller": "Payment Requisition:remark"}

@@ -66,8 +66,7 @@ afmco.stepper = {
 			for (let index = from + 1; from >= 0 && index < to; index++) bypassed.add(index);
 		});
 		const skipped = known && seen.size ? [...bypassed].filter((index) => index < current && !seen.has(stages[index])) : [];
-		const actions = [...new Set(workflow.transitions.filter((row) => row.state === state).map((row) => row.action))];
-		return { stages, current, halted, skipped, actions };
+		return { stages, current, halted, skipped };
 	},
 
 	value_before(frm, fieldname, value) {
