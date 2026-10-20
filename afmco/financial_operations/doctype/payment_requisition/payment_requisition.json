@@ -33,7 +33,6 @@
   "column_break_payment_approver",
   "payment_approver",
   "section_beneficiary_employee",
-  "beneficiary_employee_cf",
   "naming_series",
   "amount_in_words",
   "paid_amount_cf",
@@ -234,14 +233,6 @@
    "fieldname": "section_beneficiary_employee",
    "fieldtype": "Section Break",
    "hide_border": 1
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "beneficiary_employee_cf",
-   "fieldtype": "Link",
-   "label": "Beneficiary Employee",
-   "no_copy": 1,
-   "options": "Employee"
   },
   {
    "default": "PR-.YYYY.-",
@@ -504,7 +495,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-20 18:00:00.000000",
+ "modified": "2026-10-20 19:22:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",

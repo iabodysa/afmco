@@ -28,7 +28,7 @@ ACCOUNTS_BOT_STATES = {DOCUMENT_UPLOAD: 0, "Paid": 1}
 PAYMENT_DATE_STATES = (DOCUMENT_UPLOAD, "Paid")
 PRELIMINARY_FIELD = "accounts_bot_preliminary"
 RECEIPT_READ_ROLES = ("Auditor", *ACCOUNTS_ROLES)
-RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "beneficiary_employee_cf", "bank_reference_cf", "remark")
+RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "bank_reference_cf", "remark")
 RECEIPT_COMPARED_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "remark")
 SADAD_NUMBER_FIELDS = ("sadad_biller_code", "sadad_bill_number")
 SADAD_PAYMENT = "SADAD Payment"
@@ -313,10 +313,6 @@ class PaymentRequisition(Document):
 			if isinstance(value, bool) or not isinstance(value, (int, float, str)) or flt(value) <= 0:
 				frappe.throw(_("{0} is not a paid amount.").format(value))
 			return flt(value, self.precision(fieldname))
-		if fieldname == "beneficiary_employee_cf":
-			if not isinstance(value, str) or frappe.db.get_value("Employee", value, "status") != "Active":
-				frappe.throw(_("{0} is not an active employee.").format(value))
-			return value
 		if fieldname == "remark":
 			remark = value.strip() if isinstance(value, str) else ""
 			if not remark:

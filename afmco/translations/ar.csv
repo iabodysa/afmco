@@ -12949,7 +12949,6 @@ Only a stopped Accounts Bot request can be retried.,لا تعاد إلا الط�
 {0} is not an Accounts Bot status.,{0} ليست حالة من حالات بوت المحاسبة.
 Receipt Read,تمت قراءة الإيصال
 Paid Amount,المبلغ المدفوع
-Beneficiary Employee,الموظف المستفيد
 Bank Reference,مرجع البنك
 Accounts Bot Read Receipt,قراءة الإيصال لدى بوت المحاسبة
 Only a Payment Requisition in Document Upload state can be read by the Accounts Bot.,لا يقرأ بوت المحاسبة إلا طلب صرف في مرحلة رفع المستندات.
@@ -12961,7 +12960,6 @@ The Accounts Bot cannot write {0}.,بوت المحاسبة ما يقدر يكت�
 {0} is not a bank payment date for this Payment Requisition.,{0} ليس تاريخ دفع بنكي لهذا الطلب.
 {0} is not a bank account of {1}.,{0} ليس حساب بنك لدى {1}.
 {0} is not a paid amount.,{0} ليس مبلغا مدفوعا.
-{0} is not an active employee.,{0} ليس موظفا على رأس العمل.
 {0} is not a bank reference.,{0} ليس مرجع بنك.
 The Accounts Bot already created the Journal Entry for this Payment Requisition.,أنشأ بوت المحاسبة قيد اليومية لطلب الصرف هذا مسبقًا.
 Accounts Bot Status,حالة بوت المحاسبة

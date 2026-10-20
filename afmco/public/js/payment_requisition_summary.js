@@ -582,8 +582,7 @@ frappe.provide("afmco.pr_summary");
 		const acts = actions
 			.map((a) => `<span class="prc-act ${["Reject", "Cancel"].includes(a) ? "is-bad" : a === primary ? "is-pri" : ""}">${esc(__(a))}</span>`)
 			.join("");
-		return `<section class="prc-card" aria-label="${esc(__("Next Action"))}"><div class="prc-card__body">
-			<div class="prc-next"><div class="prc-label">${esc(__("Next Action"))}</div><div class="afmco-next-action" data-next-action></div></div>
+		return `<section class="prc-card" aria-label="${esc(__("Available actions"))}"><div class="prc-card__body">
 			${acts ? `<div class="prc-acts-box"><div class="prc-label">${esc(__("Available actions"))}</div><div class="prc-acts">${acts}</div></div>` : ""}
 			${editable ? `<button type="button" class="prc-goform" data-goform>${esc(__("Edit the fields in the Details tab"))}</button>` : ""}
 		</div></section>`;
@@ -723,48 +722,7 @@ frappe.provide("afmco.pr_summary");
 				</div>
 			</div>`);
 			bind(frm, $wrapper);
-			loadNextAction(frm, $wrapper.find("[data-next-action]"));
 			requestAnimationFrame(() => settle($wrapper[0]));
 		},
 	};
-
-	function loadNextAction(frm, $target) {
-		if (!frm.doc.workflow_state) return;
-		if (frm.doc.workflow_state === "Pending") {
-			nextAction($target, [{ role: "", users: [{ user: frm.doc.owner, full_name: frappe.user.full_name(frm.doc.owner) }] }]);
-			return;
-		}
-		const docname = frm.doc.name;
-		frappe
-			.call({ method: "afmco.financial_operations.api.next_action.get_next_action_users", args: { doctype: frm.doctype, name: docname } })
-			.then((r) => frm.doc.name === docname && nextAction($target, r.message));
-	}
-
-	function nextAction($target, rows) {
-		$target.empty();
-		if (!Array.isArray(rows) || !rows.length) return;
-		const groups = new Map();
-		rows.forEach((row) => {
-			if (!groups.has(row.role)) groups.set(row.role, new Map());
-			(row.users || []).forEach((user) => groups.get(row.role).set(user.user, user));
-		});
-		const chipOf = ({ user, full_name }) => {
-			const name =
-				String(full_name || user || "")
-					.replace(/[\s.]+$/, "")
-					.trim() || user;
-			return `<span class="afmco-next-action-chip" title="${esc(name)}">${frappe.avatar(user, "avatar-xs")}<span class="afmco-next-action-name">${esc(name)}</span></span>`;
-		};
-		$target.html(
-			[...groups]
-				.map(([role, users]) => {
-					const head = role ? `<div class="afmco-next-action-role">${esc(__(role))}</div>` : "";
-					const inner = users.size
-						? `<div class="afmco-next-action-chips">${[...users.values()].map(chipOf).join("")}</div>`
-						: `<div class="afmco-next-action-note">${esc(__("No users"))}</div>`;
-					return `<div class="afmco-next-action-group">${head}${inner}</div>`;
-				})
-				.join(""),
-		);
-	}
 })();

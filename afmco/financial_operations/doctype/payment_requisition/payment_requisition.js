@@ -295,6 +295,7 @@ frappe.ui.form.on('Payment Requisition', {
         addPreviousRecordsButton(frm);
         addUrgentButton(frm);
         addAlreadyPaidButton(frm);
+        renderNextAction(frm);
         addOpenReferenceButton(frm);
         addCreateJVButton(frm);
         addSupportingPackButton(frm);
@@ -1298,6 +1299,53 @@ function addAlreadyPaidButton(frm) {
     if (frm.is_new() && !frm.doc.verify_payment) {
         frm.add_custom_button(buttonLabel, () => frm.set_value('verify_payment', 1).then(() => frm.refresh()));
     }
+}
+
+function renderNextAction(frm) {
+    const $sidebar = $(frm.wrapper).find('.form-sidebar').first();
+    $sidebar.find('.afmco-next-action').remove();
+    if (frm.is_new() || !frm.doc.workflow_state) return;
+
+    if (frm.doc.workflow_state === 'Pending') {
+        renderNextActionCard($sidebar, [{ role: '', users: [{ user: frm.doc.owner, full_name: frappe.user.full_name(frm.doc.owner) }] }]);
+        return;
+    }
+
+    const docname = frm.doc.name;
+    frappe.call({
+        method: 'afmco.financial_operations.api.next_action.get_next_action_users',
+        args: { doctype: frm.doctype, name: docname }
+    }).then((r) => {
+        if (frm.doc.name === docname) renderNextActionCard($sidebar, r.message);
+    });
+}
+
+function renderNextActionCard($sidebar, rows) {
+    $sidebar.find('.afmco-next-action').remove();
+    if (!Array.isArray(rows) || !rows.length) return;
+
+    const groups = new Map();
+    rows.forEach((row) => {
+        if (!groups.has(row.role)) groups.set(row.role, new Map());
+        (row.users || []).forEach((user) => groups.get(row.role).set(user.user, user));
+    });
+
+    const body = [...groups].map(([role, users]) => {
+        const head = role ? `<div class="afmco-next-action-role">${escapeHtml(__(role))}</div>` : '';
+        const inner = users.size
+            ? `<div class="afmco-next-action-chips">${[...users.values()].map(nextActionChip).join('')}</div>`
+            : `<div class="afmco-next-action-note">${escapeHtml(__('No users'))}</div>`;
+        return `<div class="afmco-next-action-group">${head}${inner}</div>`;
+    }).join('');
+
+    $sidebar.append(
+        `<div class="sidebar-section afmco-next-action"><div class="sidebar-label">${escapeHtml(__('Next Action'))}</div>${body}</div>`
+    );
+}
+
+function nextActionChip({ user, full_name }) {
+    const name = String(full_name || user || '').replace(/[\s.]+$/, '').trim() || user;
+    return `<span class="afmco-next-action-chip" title="${escapeHtml(name)}">${frappe.avatar(user, 'avatar-xs')}<span class="afmco-next-action-name">${escapeHtml(name)}</span></span>`;
 }
 
 function addOpenReferenceButton(frm) {

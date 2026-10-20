@@ -151,7 +151,6 @@
 .afmco-pr-summary .prc-field__val{min-height:34px;padding:6px 2px 5px;border-bottom:1.5px dotted color-mix(in srgb,var(--prc-faint) 70%,transparent);font-weight:500;overflow-wrap:anywhere}
 .afmco-pr-summary .prc-field.is-locked .prc-field__val{color:var(--prc-muted);border-bottom-style:dashed}
 .afmco-pr-summary .prc-banner{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;font-size:13px;margin-bottom:12px}
-.afmco-pr-summary .prc-next .afmco-next-action-role{font-size:18px;font-weight:700;line-height:1.4;color:var(--prc-ink)}
 .afmco-pr-summary .prc-remark{background:var(--prc-card);border:1px solid var(--prc-line);border-radius:var(--prc-radius);box-shadow:var(--prc-shadow);overflow:hidden}
 .afmco-pr-summary .prc-remark__head{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--prc-line);background:linear-gradient(var(--prc-soft),var(--prc-card))}
 .afmco-pr-summary .prc-remark__meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -259,7 +258,6 @@
 .afmco-pr-summary .prc-flow .afmco-stepper-box{padding-bottom:6px}
 .afmco-pr-summary .prc-acts-box{margin-top:12px}
 .afmco-pr-summary .prc-acts-box .prc-acts{margin-top:4px}
-.afmco-pr-summary .afmco-next-action:empty,.afmco-pr-summary .prc-next:has(.afmco-next-action:empty){display:none}
-.afmco-pr-summary .prc__aside .prc-card:not(:has(.prc-acts-box,.prc-goform,.afmco-next-action:not(:empty))){display:none}
+.afmco-pr-summary .prc__aside .prc-card:not(:has(.prc-acts-box,.prc-goform)){display:none}
 .afmco-pr-summary:dir(rtl) :is(.ch-name,.prc-p,.prc-raw,.prc-list li,.prc-table td:not(.is-num,.is-id,.is-idx),.prc-table--kv th){text-align:right}
 .afmco-pr-summary:dir(ltr) :is(.ch-name,.prc-p,.prc-raw,.prc-list li,.prc-table td:not(.is-num,.is-id,.is-idx),.prc-table--kv th){text-align:left}
