@@ -38,6 +38,7 @@
   "section_tracking",
   "queued_on",
   "queued_by",
+  "queued_lang",
   "column_break_tracking",
   "processed_on",
   "processed_by",
@@ -301,6 +302,16 @@
    "permlevel": 1
   },
   {
+   "fieldname": "queued_lang",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Sent to Bot Language",
+   "no_copy": 1,
+   "options": "Language",
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
    "fieldname": "column_break_tracking",
    "fieldtype": "Column Break",
    "permlevel": 1
@@ -406,7 +417,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-10-19 19:56:00.000000",
+ "modified": "2026-10-20 23:53:00.000000",
  "modified_by": "Administrator",
  "module": "People and Payroll",
  "name": "Client Timesheet",

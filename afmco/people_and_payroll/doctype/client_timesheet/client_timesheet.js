@@ -33,8 +33,13 @@ const FRIDAY = 5;
 const statusColor = (status) => BOT_STATUS_COLORS[status] || (BOT_BUSY_STATUSES.includes(status) ? 'orange' : 'gray');
 
 frappe.ui.form.on('Client Timesheet', {
+    on_hide(frm) {
+        stopPayrollBotStatus(frm);
+    },
+
     refresh(frm) {
         renderBotPanel(frm);
+        listenPayrollBotStatus(frm);
         if (frm.is_new() || !frm.perm[0]?.write || BOT_BUSY_STATUSES.includes(frm.doc.bot_status)) {
             return;
         }
@@ -55,6 +60,27 @@ frappe.ui.form.on('Client Timesheet', {
     },
     ...Object.fromEntries(['customer', 'project', 'from_date', 'to_date', 'timesheet_file', 'notes'].map((event) => [event, renderBotPanel])),
 });
+
+function stopPayrollBotStatus(frm) {
+    if (frm.payrollBotStatusHandler) {
+        frappe.realtime.off('payroll_bot_status', frm.payrollBotStatusHandler);
+    }
+}
+
+function listenPayrollBotStatus(frm) {
+    stopPayrollBotStatus(frm);
+    frm.payrollBotStatusHandler = (data) => {
+        if (!data || data.name !== frm.doc.name) return;
+        if (frm.is_dirty()) {
+            frm.doc.bot_status = data.status;
+            frm.doc.bot_note = data.note;
+            renderBotPanel(frm);
+            return;
+        }
+        frm.debounced_reload_doc();
+    };
+    frappe.realtime.on('payroll_bot_status', frm.payrollBotStatusHandler);
+}
 
 function renderBotPanel(frm) {
     frappe.require(SHEET_ASSETS, () => {
