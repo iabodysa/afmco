@@ -101,7 +101,6 @@ function stepper(frm, status) {
             color: statusColor(status),
             halted,
             live: BOT_BUSY_STATUSES.includes(status),
-            note: frm.doc.bot_note,
         }),
     };
 }
@@ -124,7 +123,6 @@ function flowHtml(frm, status) {
     const step = !halted && flow.current >= 0 && flow.current < flow.stages.length
         ? `<span>${esc(__('Step {0} of {1}', [flow.current + 1, flow.stages.length]))}</span>`
         : '';
-    const now = halted ? status : flow.stages[flow.current];
     let hint = '';
     if (status === 'Draft' && !frm.doc.queued_on) {
         hint = __('Attach the client timesheet file and save, then press Start Payroll Bot.');
@@ -134,7 +132,7 @@ function flowHtml(frm, status) {
     return `<section class="prc-flow" aria-label="${esc(__('Payroll Bot'))}">
         <div class="prc-flow__head"><b>${esc(__('Payroll Bot'))}</b>${step}${chip(status)}</div>
         ${flow.html}
-        ${now ? `<div class="prc-flow__now">${esc(__(now))}</div>` : ''}
+        ${frm.doc.bot_note ? `<div class="cts-note" dir="auto">${esc(frm.doc.bot_note)}</div>` : ''}
         ${hint ? `<div class="cts-hint">${esc(hint)}</div>` : ''}
     </section>`;
 }

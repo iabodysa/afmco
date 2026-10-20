@@ -4,7 +4,7 @@
 frappe.provide("afmco.stepper");
 
 afmco.stepper = {
-	html({ stages, current, color = "gray", halted = false, live = false, note = "", skipped = [] }) {
+	html({ stages, current, color = "gray", halted = false, live = false, skipped = [] }) {
 		const esc = (value) => frappe.utils.escape_html(String(value ?? ""));
 		const items = stages.map((stage, index) => {
 			const skip = index < current && skipped.includes(index);
@@ -13,12 +13,6 @@ afmco.stepper = {
 			const mark = index < current && !skip ? "✓" : index === current && halted ? "!" : index + 1;
 			return `<li class="afmco-step afmco-step-${state}${pulse}"><span class="afmco-step-mark">${mark}</span><span class="afmco-step-label">${esc(__(stage))}</span></li>`;
 		});
-		if (note && current >= 0) {
-			const at = Math.min(current, stages.length - 1);
-			const from = Math.max(at, 1);
-			const to = Math.min(at + 3, stages.length + 1);
-			items.push(`<li class="afmco-step-note" style="grid-row: 2; grid-column: ${from} / ${to}">${esc(note)}</li>`);
-		}
 		return `<div class="afmco-stepper-box"><ol class="afmco-stepper" style="--afmco-steps: ${stages.length}">${items.join("")}</ol></div>`;
 	},
 
