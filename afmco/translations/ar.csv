@@ -831,7 +831,6 @@ Contract Vacation Allowance,بدل إجازة العقد
 End of Service Settlement,تصفية نهاية الخدمة
 Location,الموقع
 Timesheet Details,تفاصيل سجل ساعات العمل
-Request Details,بيانات الطلب
 Basic Information,المعلومات الأساسية
 Dependents,التابعون
 Update Log,سجل التحديثات
@@ -15747,3 +15746,4 @@ Items and values,بنود وقيم
 Records table,جدول سجلات
 Number list,قائمة أرقام
 List,قائمة
+Audit and Bot,التدقيق وبوت المحاسبة
