@@ -557,19 +557,6 @@ frappe.provide("afmco.pr_summary");
 		</section>`;
 	}
 
-	function asideHtml(frm, path) {
-		const editable = frm.doc.docstatus === 0 && !frappe.workflow.is_read_only(frm.doctype, frm.docname);
-		const actions = path ? path.actions : [];
-		const primary = actions.find((a) => ["Approve", "Paid"].includes(a));
-		const acts = actions
-			.map((a) => `<span class="prc-act ${["Reject", "Cancel"].includes(a) ? "is-bad" : a === primary ? "is-pri" : ""}">${esc(__(a))}</span>`)
-			.join("");
-		return `<section class="prc-card" aria-label="${esc(__("Available actions"))}"><div class="prc-card__body">
-			${acts ? `<div class="prc-acts-box"><div class="prc-label">${esc(__("Available actions"))}</div><div class="prc-acts">${acts}</div></div>` : ""}
-			${editable ? `<button type="button" class="prc-goform" data-goform>${esc(__("Edit the fields in the Details tab"))}</button>` : ""}
-		</div></section>`;
-	}
-
 	function field(label, value, locked) {
 		const lock = locked ? `<span class="prc-lock"> · ${esc(__("Locked"))}</span>` : "";
 		return `<div class="prc-field ${locked ? "is-locked" : ""}"><div class="prc-label">${esc(label)}${lock}</div><div class="prc-field__val">${isBlank(value) ? dash : value}</div></div>`;
@@ -596,11 +583,6 @@ frappe.provide("afmco.pr_summary");
 		const note = isBlank(doc.accounts_bot_note)
 			? ""
 			: `<div class="prc-grid prc-grid--1">${field(__("Accounts Bot Note"), clamp(`<bdi dir="auto">${esc(doc.accounts_bot_note)}</bdi>`, 3))}</div>`;
-		cards.push(`<details class="prc-card" data-extra-info><summary class="prc-card__head"><h3 class="prc-card__title">${no()}${esc(__("Additional details"))}</h3>${chip("plain", __("For reference"))}</summary><div class="prc-card__body">
-			<div class="prc-grid prc-grid--2">${field(__("Reference"), isBlank(doc.tax_invoice_number) ? "" : clamp(esc(doc.tax_invoice_number), 2))}${field(__("Last modified"), ltr(stamp(doc.modified), "prc-num"))}</div>
-			<div class="prc-grid prc-grid--3">${field(__("Accounts Bot Status"), isBlank(doc.accounts_bot_status) ? "" : esc(__(doc.accounts_bot_status)))}${field(__("Accounts Bot Updated"), isBlank(doc.accounts_bot_updated) ? "" : ltr(stamp(doc.accounts_bot_updated), "prc-num"))}${field(__("Sent to Accounts Bot"), esc(doc.accounts_bot_cf ? __("Yes") : __("No")))}</div>
-			${note}
-		</div></details>`);
 		const je = jeShown(frm);
 		const dates = je
 			? paymentDates(frm)
@@ -610,9 +592,12 @@ frappe.provide("afmco.pr_summary");
 					)
 					.join("")
 			: "";
-		cards.push(`<section class="prc-card" data-filter-fields><div class="prc-card__head"><h3 class="prc-card__title">${no()}${esc(__("Filter fields"))}</h3>${chip("plain", __("For the accountant"))}</div><div class="prc-card__body">
+		cards.push(`<section class="prc-card"><div class="prc-card__head"><h3 class="prc-card__title">${no()}${esc(__("Additional details"))}</h3></div><div class="prc-card__body">
 			<div class="prc-grid prc-grid--2">${field(__("Payment Type"), isBlank(doc.payment_type) ? "" : esc(__(doc.payment_type)))}${je ? field(__("JV Status"), isBlank(doc.jv_status) ? "" : esc(doc.jv_status === "JV Not Created" ? __("Awaiting Journal Entry") : __(doc.jv_status))) : ""}</div>
 			${dates ? `<div class="prc-jedates">${dates}</div>` : ""}
+			<div class="prc-grid prc-grid--2">${field(__("Reference"), isBlank(doc.tax_invoice_number) ? "" : clamp(esc(doc.tax_invoice_number), 2))}${field(__("Last modified"), ltr(stamp(doc.modified), "prc-num"))}</div>
+			<div class="prc-grid prc-grid--3">${field(__("Accounts Bot Status"), isBlank(doc.accounts_bot_status) ? "" : esc(__(doc.accounts_bot_status)))}${field(__("Accounts Bot Updated"), isBlank(doc.accounts_bot_updated) ? "" : ltr(stamp(doc.accounts_bot_updated), "prc-num"))}${field(__("Sent to Accounts Bot"), esc(doc.accounts_bot_cf ? __("Yes") : __("No")))}</div>
+			${note}
 		</div></section>`);
 		return cards.join("");
 	}
@@ -657,10 +642,6 @@ frappe.provide("afmco.pr_summary");
 			root.querySelector("[data-rbody]").classList.toggle("is-open");
 			measure(root);
 		});
-		$wrapper.on("click.prc", "[data-goform]", () => {
-			frm.layout.tabs[0]?.set_active();
-			frappe.utils.scroll_to(0);
-		});
 		$wrapper.on("click.prc", "[data-tall]", (e) => {
 			const box = e.currentTarget.closest("[data-tbl]");
 			const all = box.dataset.all !== "1";
@@ -699,7 +680,6 @@ frappe.provide("afmco.pr_summary");
 					${flowHtml(frm, path)}
 					${flags ? `<div class="prc__top">${flags}</div>` : ""}
 					<div class="prc__doc">${chequeHtml(frm)}<div class="prc-tear" aria-hidden="true"><span>${esc(__("Remark"))}</span></div>${remarkHtml(frm, frm.prc_remark_mode || "smart")}</div>
-					<aside class="prc__aside">${asideHtml(frm, path)}</aside>
 					<div class="prc__sections">${sectionsHtml(frm)}</div>
 				</div>
 			</div>`);

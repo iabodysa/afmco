@@ -15672,13 +15672,15 @@ No users,لا يوجد مستخدمون
 This request is already marked as urgent with reason: {0},هذا الطلب محدد مسبقاً كعاجل بالسبب: {0}
 Financial Controller,المراقب المالي
 Waiting P.M Approval,انتظار موافقة مدير المشاريع
+End of Service Benefits,مستحقات نهاية الخدمة
+Daily Salary,الراتب اليومي
+Total Vacation Allowance,إجمالي بدل الإجازة
 Waiting Manager Approval,انتظار موافقة المدير
 Waiting Bank Entry,انتظار إدخال البنك
 Document Upload,انتظار تحميل الإيصالات
 Waiting,قيد الانتظار
 Account number,رقم الحساب
 Additional details,بيانات إضافية
-Available actions,الإجراءات المتاحة
 Awaiting Journal Entry,بانتظار إنشاء القيد
 Awaiting entry,بانتظار الإدخال
 Bank account and payment date are locked after the bank stage.,الحساب البنكي وتاريخ الدفع مقفلان بعد مرحلة البنك.
@@ -15688,9 +15690,6 @@ Biller code,رمز المفوتر
 Collapse remark,طي الملاحظة
 Detail,تفصيل
 Differs from the request amount by {0},يختلف عن مبلغ الطلب بـ {0}
-Edit the fields in the Details tab,تعديل الحقول في تبويب التفاصيل
-Filter fields,حقول التصفية
-For the accountant,للمحاسب
 Formatted,منسق
 "IBAN is not valid, check it with the requester",رقم الآيبان غير صحيح، راجعه مع مقدم الطلب
 IBAN is valid,رقم الآيبان صحيح

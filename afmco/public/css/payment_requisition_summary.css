@@ -17,17 +17,11 @@
   container:afmco-pr-summary / inline-size; width:100%; min-width:0;
   color:var(--prc-ink); font-size:var(--text-base); line-height:1.6; padding-block:4px; text-align:start}
 .afmco-pr-summary *,.afmco-pr-summary *::before,.afmco-pr-summary *::after{box-sizing:border-box}
-.afmco-pr-summary .prc__layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-areas:"flow flow" "top aside" "doc aside" "sections aside";gap:18px;align-items:start}
-.afmco-pr-summary .prc__layout.no-top{grid-template-areas:"flow flow" "doc aside" "sections aside"}
+.afmco-pr-summary .prc__layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"flow" "top" "doc" "sections";gap:18px;align-items:start}
+.afmco-pr-summary .prc__layout.no-top{grid-template-areas:"flow" "doc" "sections"}
 .afmco-pr-summary .prc__top{grid-area:top}
 .afmco-pr-summary .prc__doc{grid-area:doc;min-width:0;filter:drop-shadow(0 6px 16px var(--prc-drop))}
-.afmco-pr-summary .prc__aside{grid-area:aside;position:sticky;top:calc(env(safe-area-inset-top,0px) + 110px);display:grid;gap:14px;min-width:0}
 .afmco-pr-summary .prc__sections{grid-area:sections;display:grid;gap:14px;min-width:0}
-@container afmco-pr-summary (max-width:920px){
-.afmco-pr-summary .prc__layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"flow" "top" "doc" "aside" "sections"}
-.afmco-pr-summary .prc__layout.no-top{grid-template-areas:"flow" "doc" "aside" "sections"}
-.afmco-pr-summary .prc__aside{position:static}
-}
 .afmco-pr-summary [hidden]{display:none!important}
 .afmco-pr-summary .prc__doc .prc-cheque,.afmco-pr-summary .prc__doc .prc-remark{box-shadow:none}
 .afmco-pr-summary .prc__doc .prc-cheque{border-radius:var(--prc-radius) var(--prc-radius) 0 0;border-bottom:0}
@@ -131,13 +125,8 @@
 .afmco-pr-summary .prc-card__no{font-family:var(--prc-mono);font-size:11.5px;font-weight:500;color:var(--prc-accent-ink);background:var(--prc-accent-soft);border-radius:6px;padding:1px 7px;letter-spacing:.06em}
 .afmco-pr-summary .prc-card__title{font-size:14.5px;font-weight:700;margin:0;display:flex;gap:8px;align-items:center}
 .afmco-pr-summary .prc-card__body{padding:14px 18px 16px}
-.afmco-pr-summary details.prc-card > summary{list-style:none;cursor:pointer}
-.afmco-pr-summary details.prc-card > summary::-webkit-details-marker{display:none}
-.afmco-pr-summary details.prc-card > summary .prc-card__title::after{content:"⌄";font-size:16px;color:var(--prc-faint);transition:transform .15s}
-.afmco-pr-summary details.prc-card[open] > summary .prc-card__title::after{transform:rotate(180deg)}
-.afmco-pr-summary details.prc-card:not([open]) > summary{border-bottom:0}
 .afmco-pr-summary .prc-grid{display:grid;gap:12px 16px}
-.afmco-pr-summary .prc-grid + .prc-grid{margin-top:12px;padding-top:12px;border-top:1px solid var(--prc-line)}
+.afmco-pr-summary .prc-grid + .prc-grid,.afmco-pr-summary .prc-jedates + .prc-grid{margin-top:12px;padding-top:12px;border-top:1px solid var(--prc-line)}
 .afmco-pr-summary .prc-grid--1{grid-template-columns:minmax(0,1fr)}
 .afmco-pr-summary .prc-grid--2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .afmco-pr-summary .prc-grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -226,14 +215,8 @@
 .afmco-pr-summary .afmco-stepper{grid-template-columns:repeat(var(--afmco-steps),minmax(max-content,1fr))}
 .afmco-pr-summary .afmco-step-label{white-space:nowrap;overflow-wrap:normal}
 .afmco-pr-summary .prc-flow__head b{color:var(--prc-ink);font-size:13.5px}
-.afmco-pr-summary .prc-acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.afmco-pr-summary .prc-act{font-size:12px;font-weight:600;border:1px solid var(--prc-line);border-radius:8px;padding:3px 10px;color:var(--prc-ink)}
-.afmco-pr-summary .prc-act.is-pri{background:var(--prc-accent);border-color:var(--prc-accent);color:var(--prc-on-accent)}
-.afmco-pr-summary .prc-act.is-bad{color:var(--prc-red);border-color:color-mix(in srgb,var(--prc-red) 40%,transparent)}
 .afmco-pr-summary .prc-jedates{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px}
 .afmco-pr-summary .prc-table td.is-idx,.afmco-pr-summary .prc-table th.is-idx{white-space:nowrap;min-width:2.5ch}
-.afmco-pr-summary .prc-goform{display:block;appearance:none;border:0;background:none;padding:0;margin-top:12px;font:inherit;font-size:12.5px;font-weight:600;color:var(--prc-accent-ink);cursor:pointer;text-align:start}
-.afmco-pr-summary .prc-goform:focus-visible{outline:2px solid var(--prc-accent);outline-offset:2px;border-radius:4px}
 @container afmco-pr-summary (max-width:420px){
 .afmco-pr-summary .ch-micr{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px;letter-spacing:0}
 .afmco-pr-summary .ch-micr__acct{display:none}
@@ -256,8 +239,5 @@
 .afmco-pr-summary .prc-lock{color:var(--prc-faint);font-weight:400}
 .afmco-pr-summary .ch-ref{color:var(--prc-muted);font-weight:500;direction:ltr;unicode-bidi:isolate}
 .afmco-pr-summary .prc-flow .afmco-stepper-box{padding-bottom:6px}
-.afmco-pr-summary .prc-acts-box{margin-top:12px}
-.afmco-pr-summary .prc-acts-box .prc-acts{margin-top:4px}
-.afmco-pr-summary .prc__aside .prc-card:not(:has(.prc-acts-box,.prc-goform)){display:none}
 .afmco-pr-summary:dir(rtl) :is(.ch-name,.prc-p,.prc-raw,.prc-list li,.prc-table td:not(.is-num,.is-id,.is-idx),.prc-table--kv th){text-align:right}
 .afmco-pr-summary:dir(ltr) :is(.ch-name,.prc-p,.prc-raw,.prc-list li,.prc-table td:not(.is-num,.is-id,.is-idx),.prc-table--kv th){text-align:left}
