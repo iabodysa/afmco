@@ -303,7 +303,7 @@ frappe.ui.form.on('Payment Requisition', {
         addCreateJVButton(frm);
         addSupportingPackButton(frm);
         addAccountsBotButton(frm);
-        showAmountInWords(frm, frm.doc.amount_in_words);
+        showAmountInWords(frm, (frm.doc.__onload || {}).amount_in_words || frm.doc.amount_in_words);
         showPaymentDates(frm);
         frappe.require(["/assets/afmco/js/attachment_check.js", "/assets/afmco/css/attachment_check.css"], () => afmco.attachment_check.render(frm));
         frappe.require("/assets/afmco/css/payment_requisition.css");
@@ -319,7 +319,8 @@ frappe.ui.form.on('Payment Requisition', {
     },
 
     amount(frm) {
-        showAmountInWords(frm, '');
+        if (!frm.doc.amount) return showAmountInWords(frm, '');
+        frappe.xcall('afmco.financial_operations.api.expense_request.amount_in_words', { amount: frm.doc.amount }).then((words) => showAmountInWords(frm, words));
     },
 
     validate(frm) {

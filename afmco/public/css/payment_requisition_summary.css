@@ -138,8 +138,6 @@
 }
 .afmco-pr-summary .prc-field{min-width:0}
 .afmco-pr-summary .prc-field__val{min-height:34px;padding:6px 2px 5px;border-bottom:1.5px dotted color-mix(in srgb,var(--prc-faint) 70%,transparent);font-weight:500;overflow-wrap:anywhere}
-.afmco-pr-summary .prc-field.is-locked .prc-field__val{color:var(--prc-muted);border-bottom-style:dashed}
-.afmco-pr-summary .prc-banner{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;font-size:13px;margin-bottom:12px}
 .afmco-pr-summary .prc-remark{background:var(--prc-card);border:1px solid var(--prc-line);border-radius:var(--prc-radius);box-shadow:var(--prc-shadow);overflow:hidden}
 .afmco-pr-summary .prc-remark__head{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--prc-line);background:linear-gradient(var(--prc-soft),var(--prc-card))}
 .afmco-pr-summary .prc-remark__meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -235,8 +233,6 @@
 .afmco-pr-summary .prc-flag--multi{border-color:var(--prc-blue-line);background:var(--prc-blue-soft)}
 .afmco-pr-summary .prc-flag--multi .prc-flag__icon{background:var(--prc-blue-solid);color:var(--prc-on-accent)}
 .afmco-pr-summary .prc-flag__title{display:block}
-.afmco-pr-summary .prc-banner{background:var(--prc-sunk);color:var(--prc-muted)}
-.afmco-pr-summary .prc-lock{color:var(--prc-faint);font-weight:400}
 .afmco-pr-summary .ch-ref{color:var(--prc-muted);font-weight:500;direction:ltr;unicode-bidi:isolate}
 .afmco-pr-summary .prc-flow .afmco-stepper-box{padding-bottom:6px}
 .afmco-pr-summary:dir(rtl) :is(.ch-name,.prc-p,.prc-raw,.prc-list li,.prc-table td:not(.is-num,.is-id,.is-idx),.prc-table--kv th){text-align:right}

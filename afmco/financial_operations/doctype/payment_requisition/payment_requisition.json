@@ -137,11 +137,11 @@
   },
   {
    "allow_in_quick_entry": 1,
-   "depends_on": "eval:!doc.multiple_beneficiaries && doc.payment_type!=='SADAD Payment'",
+   "depends_on": "eval:!doc.multiple_beneficiaries && !['SADAD Payment', 'Work Permit Fee Payment', 'Passport Fee Payment'].includes(doc.payment_type)",
    "fieldname": "account_no",
    "fieldtype": "Data",
    "label": "Account No",
-   "mandatory_depends_on": "eval:!doc.multiple_beneficiaries && doc.payment_type!=='SADAD Payment'"
+   "mandatory_depends_on": "eval:!doc.multiple_beneficiaries && !['SADAD Payment', 'Work Permit Fee Payment', 'Passport Fee Payment'].includes(doc.payment_type)"
   },
   {
    "fieldname": "payment_details_section",
@@ -267,7 +267,7 @@
   },
   {
    "allow_in_quick_entry": 1,
-   "depends_on": "eval:!doc.multiple_beneficiaries && (doc.payment_type==='SADAD Payment' || (doc.mode_of_payment==='SADAD Payment' && (doc.sadad_biller_code || doc.sadad_bill_number)))",
+   "depends_on": "eval:!doc.multiple_beneficiaries && (['SADAD Payment', 'Work Permit Fee Payment', 'Passport Fee Payment'].includes(doc.payment_type) || (doc.mode_of_payment==='SADAD Payment' && (doc.sadad_biller_code || doc.sadad_bill_number)))",
    "fieldname": "sadad_biller_code",
    "fieldtype": "Data",
    "label": "SADAD Biller Code",
@@ -279,7 +279,7 @@
   },
   {
    "allow_in_quick_entry": 1,
-   "depends_on": "eval:!doc.multiple_beneficiaries && (doc.payment_type==='SADAD Payment' || (doc.mode_of_payment==='SADAD Payment' && (doc.sadad_biller_code || doc.sadad_bill_number)))",
+   "depends_on": "eval:!doc.multiple_beneficiaries && (['SADAD Payment', 'Work Permit Fee Payment', 'Passport Fee Payment'].includes(doc.payment_type) || (doc.mode_of_payment==='SADAD Payment' && (doc.sadad_biller_code || doc.sadad_bill_number)))",
    "fieldname": "sadad_bill_number",
    "fieldtype": "Data",
    "label": "SADAD Bill Number",
@@ -495,7 +495,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-20 21:22:00.000000",
+ "modified": "2026-10-20 23:25:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",

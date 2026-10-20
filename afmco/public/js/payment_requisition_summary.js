@@ -6,7 +6,6 @@ frappe.provide("afmco.pr_summary");
 (() => {
 	const esc = (value) => frappe.utils.escape_html(String(value ?? ""));
 	const isBlank = (value) => value === null || value === undefined || ["", "None", "null"].includes(String(value).trim());
-	const dash = '<span class="prc-empty">—</span>';
 	const amount = (value) => format_number(flt(value), null, 2);
 	const riyal = () => `<span class="prc-riyal" role="img" aria-label="${esc(__("Riyals"))}">\u20C1</span>`;
 	const money = (value) => `<span class="prc-money prc-num">${riyal()}${amount(value)}</span>`;
@@ -21,7 +20,7 @@ frappe.provide("afmco.pr_summary");
 	const clamp = (html, lines = 2) =>
 		`<div class="prc-clamp prc-clamp--${lines}">${html}</div><button type="button" class="prc-more" hidden data-more>${esc(__("Show all"))}</button>`;
 
-	const SADAD = "SADAD Payment";
+	const SADAD = ["SADAD Payment", "Work Permit Fee Payment", "Passport Fee Payment"];
 	const BANK_LOCKED = ["Document Upload", "Waiting", "Paid", "Cancelled"];
 	const BANK_ENTRY = ["Waiting Bank Entry", "First Approval for Bank"];
 	const JE_STATES = ["Document Upload", "Paid"];
@@ -277,7 +276,7 @@ frappe.provide("afmco.pr_summary");
 	}
 
 	function cellHtml(value) {
-		if (isBlank(value)) return dash;
+		if (isBlank(value)) return "";
 		return `<span>${esc(value)}</span>`;
 	}
 
@@ -313,15 +312,7 @@ frappe.provide("afmco.pr_summary");
 		return `<div class="prc-tbl" data-tbl>${tools}<div class="prc-tablewrap"><table class="prc-table ${opts.cards ? "prc-table--cards" : ""}"><thead>${head}</thead><tbody>${body}</tbody>${foot}</table></div></div>`;
 	}
 
-	function matchChip(total, requested) {
-		if (total === null || !requested) return "";
-		const diff = Math.round((total - requested) * 100) / 100;
-		return diff === 0
-			? `<span class="prc-chip prc-chip--green">${esc(__("Matches the request amount"))}</span>`
-			: `<span class="prc-chip prc-chip--amber">${__("Differs from the request amount by {0}", [money(Math.abs(diff))])}</span>`;
-	}
-
-	function renderRecords(recs, requested) {
+	function renderRecords(recs) {
 		const keys = [];
 		recs.forEach((r) => Object.keys(r).forEach((k) => keys.includes(k) || keys.push(k)));
 		const common = keys.filter((k) => recs.every((r) => r[k] !== undefined && r[k] === recs[0][k]));
@@ -343,7 +334,7 @@ frappe.provide("afmco.pr_summary");
 			: "";
 		const totalHtml =
 			total !== null
-				? `<span class="prc-chip prc-chip--plain">${esc(__("Total {0}", [totalKey]))}: <b>${money(total)}</b></span>${matchChip(total, requested)}`
+				? `<span class="prc-chip prc-chip--plain">${esc(__("Total {0}", [totalKey]))}: <b>${money(total)}</b></span>`
 				: "";
 		const table = cols.length
 			? tableHtml(cols, rows, colMeta(rows, cols.length), {
@@ -355,7 +346,7 @@ frappe.provide("afmco.pr_summary");
 		return `${commonHtml}${table}${totalHtml ? `<div class="prc-tsum">${totalHtml}</div>` : ""}`;
 	}
 
-	function renderKv(block, requested) {
+	function renderKv(block) {
 		let last = -1;
 		block.rows.forEach(([k, v], i) => {
 			if (TOTAL_KEY.test(k) && parseNum(v) !== null) last = i;
@@ -367,26 +358,22 @@ frappe.provide("afmco.pr_summary");
 				return `<tr class="${i === last ? "is-total" : ""}"><th scope="row">${esc(k)}</th><td class="${num ? "is-num" : ""}">${shown}</td></tr>`;
 			})
 			.join("");
-		const chip = last >= 0 ? matchChip(parseNum(block.rows[last][1]), requested) : "";
-		return `<div class="prc-rb"><div class="prc-tablewrap"><table class="prc-table prc-table--kv"><tbody>${rows}</tbody></table></div>${chip ? `<div class="prc-tsum">${chip}</div>` : ""}</div>`;
+		return `<div class="prc-rb"><div class="prc-tablewrap"><table class="prc-table prc-table--kv"><tbody>${rows}</tbody></table></div></div>`;
 	}
 
-	function renderTable(block, requested) {
+	function renderTable(block) {
 		const totals = block.cols.map(() => null);
-		let total = null;
 		for (const ci of block.amountCols || []) {
 			const vals = block.rows.map((r) => parseNum(r[ci] ?? ""));
 			if (vals.every((v) => v !== null)) {
 				totals[ci] = vals.reduce((a, c) => a + c, 0);
-				total = total ?? totals[ci];
 			}
 		}
 		const table = tableHtml(block.cols, block.rows, block.meta, { numbered: block.numbered, totals, cards: block.cols.length > 2 });
-		const chip = matchChip(total, requested);
-		return `<div class="prc-rb">${table}${chip ? `<div class="prc-tsum">${chip}</div>` : ""}</div>`;
+		return `<div class="prc-rb">${table}</div>`;
 	}
 
-	function renderBlocks(parsed, requested) {
+	function renderBlocks(parsed) {
 		return parsed.blocks
 			.map((b) => {
 				if (b.t === "sep") return '<hr class="prc-hr">';
@@ -396,7 +383,7 @@ frappe.provide("afmco.pr_summary");
 					const text = b.kvLine ? `<b>${esc(b.kvLine.k)}:</b> ${hlText(b.kvLine.v)}` : hlText(b.text);
 					return `<p class="prc-p prc-rb">${text}</p>`;
 				}
-				if (b.t === "kv") return renderKv(b, requested);
+				if (b.t === "kv") return renderKv(b);
 				if (b.t === "ids") {
 					const idLike = b.ids.every((x) => /^[12]\d{9}$/.test(x));
 					const label = idLike ? __("ID or Iqama numbers") : __("Reference numbers");
@@ -406,8 +393,8 @@ frappe.provide("afmco.pr_summary");
 					const tag = b.ordered ? "ol" : "ul";
 					return `<${tag} class="prc-list prc-rb">${b.items.map((x) => `<li>${hlText(x)}</li>`).join("")}</${tag}>`;
 				}
-				if (b.t === "table") return renderTable(b, requested);
-				if (b.t === "records") return `<div class="prc-rb">${renderRecords(b.recs, requested)}</div>`;
+				if (b.t === "table") return renderTable(b);
+				if (b.t === "records") return `<div class="prc-rb">${renderRecords(b.recs)}</div>`;
 				return "";
 			})
 			.join("");
@@ -425,44 +412,33 @@ frappe.provide("afmco.pr_summary");
 	const copyBtn = (raw) => `<button type="button" class="ch-copy" data-copy="${esc(raw)}">${esc(__("Copy"))}</button>`;
 
 	function sadadValues(doc) {
+		if (!SADAD.includes(doc.payment_type)) return null;
 		let biller = doc.sadad_biller_code;
 		let bill = doc.sadad_bill_number;
-		let legacy = false;
-		let note = "";
 		const account = String(doc.account_no || "").trim();
-		if (isBlank(biller) && isBlank(bill) && account) {
-			if (/^\d{2,4}$/.test(account)) [biller, legacy] = [account, true];
-			else if (/^\d{5,}$/.test(account)) [bill, legacy] = [account, true];
-			else note = account;
+		if (isBlank(biller) && isBlank(bill)) {
+			if (/^SA\d{22}$/.test(account.replace(/\s+/g, "").toUpperCase())) return null;
+			if (/^\d{2,4}$/.test(account)) biller = account;
+			else bill = account;
 		}
-		return { biller, bill, legacy, note };
+		return { biller, bill };
 	}
 
 	const chip = (tone, text) => `<span class="prc-chip prc-chip--${tone}">${esc(text)}</span>`;
 
 	function accountStrip(doc) {
-		if (doc.multiple_beneficiaries) {
-			return `<div class="ch-acct"><div class="ch-acct__seg"><span class="ch-k">${esc(__("Beneficiary accounts"))}</span><b>${esc(__("Multiple beneficiaries, accounts are in the remark table"))}</b></div></div>`;
-		}
-		const notEntered = `<b class="prc-empty">${esc(__("Not entered"))}</b>`;
-		if (doc.payment_type === SADAD) {
-			const v = sadadValues(doc);
+		if (doc.multiple_beneficiaries) return "";
+		const v = sadadValues(doc);
+		if (v) {
 			const seg = (label, value, narrow) =>
-				`<div class="ch-acct__seg ${narrow ? "ch-acct__seg--narrow" : ""}"><span class="ch-k">${label}</span>${isBlank(value) ? notEntered : `<div class="ch-acct__val"><b class="ch-iban">${esc(value)}</b>${copyBtn(String(value).trim())}</div>`}</div>`;
-			const meta = v.legacy
-				? chip("amber", __("Value taken from the account number field of an old record"))
-				: v.note
-					? `<span>${esc(__("Written in the account field:"))}</span><span class="ch-text">${esc(v.note)}</span>`
-					: isBlank(v.biller) && isBlank(v.bill)
-						? chip("amber", __("Paid through SADAD with empty bill details"))
-						: "";
-			const billerLabel = `${esc(__("Biller code"))}<span class="ch-tag">${esc(__("SADAD"))}</span>`;
-			return `<div class="ch-acct" data-kind="sadad">${seg(billerLabel, v.biller, true)}${seg(esc(__("SADAD bill number")), v.bill)}${meta ? `<div class="ch-acct__meta">${meta}</div>` : ""}</div>`;
+				isBlank(value)
+					? ""
+					: `<div class="ch-acct__seg ${narrow ? "ch-acct__seg--narrow" : ""}"><span class="ch-k">${label}</span><div class="ch-acct__val"><b class="${/^[\d\s-]+$/.test(value) ? "ch-iban" : "ch-text"}">${esc(value)}</b>${copyBtn(String(value).trim())}</div></div>`;
+			const segs = seg(`${esc(__("Biller code"))}<span class="ch-tag">${esc(__("SADAD"))}</span>`, v.biller, true) + seg(esc(__("SADAD bill number")), v.bill);
+			return segs ? `<div class="ch-acct" data-kind="sadad">${segs}</div>` : "";
 		}
 		const account = String(doc.account_no || "").trim();
-		if (!account) {
-			return `<div class="ch-acct"><div class="ch-acct__seg"><span class="ch-k">${esc(__("Account number"))}</span>${notEntered}</div></div>`;
-		}
+		if (!account) return "";
 		const compact = account.replace(/\s+/g, "").toUpperCase();
 		const iban = /^SA\d{22}$/.test(compact);
 		let meta = chip("amber", __("Value is not an IBAN"));
@@ -511,7 +487,7 @@ frappe.provide("afmco.pr_summary");
 			: String((doc.__onload || {}).amount_in_words || doc.amount_in_words || "")
 					.replace(/^SAR\s*/, "")
 					.trim();
-		const sadad = doc.payment_type === SADAD ? sadadValues(doc) : null;
+		const sadad = sadadValues(doc);
 		const micr = doc.multiple_beneficiaries
 			? ""
 			: sadad
@@ -520,20 +496,20 @@ frappe.provide("afmco.pr_summary");
 		const payee = isBlank(doc.beneficiary_name)
 			? doc.multiple_beneficiaries
 				? esc(__("Multiple beneficiaries"))
-				: dash
+				: ""
 			: clamp(esc(doc.beneficiary_name), 2);
 		const cell = (label, value) =>
-			`<div class="ch-cell"><span class="ch-k">${esc(label)}</span><b>${isBlank(value) ? dash : clamp(mixed(value), 2)}</b></div>`;
+			isBlank(value) ? "" : `<div class="ch-cell"><span class="ch-k">${esc(label)}</span><b>${clamp(mixed(value), 2)}</b></div>`;
 		const showBankDate = !isBlank(doc.bank_payment_date) && (BANK_LOCKED.includes(state) || !isBlank(doc.bank_reference_cf));
 		const date = (label, value) =>
-			`<div class="prc-dt"><span class="prc-label">${esc(label)}</span><b class="prc-ltr prc-num">${esc(value) || "—"}</b></div>`;
+			isBlank(value) ? "" : `<div class="prc-dt"><span class="prc-label">${esc(label)}</span><b class="prc-ltr prc-num">${esc(value)}</b></div>`;
 		return `<section class="prc-cheque" aria-label="${esc(__("Payment order"))}">
 			<div class="ch-head"><div class="ch-kind">${esc(__("Payment order"))} <span class="prc-mono ch-ref">${esc(doc.name)}</span></div>${state ? `<div class="ch-chips">${chip(tone || "plain", __(state))}</div>` : ""}</div>
-			<div class="ch-top"><div class="ch-pay"><span class="ch-k">${esc(__("Pay to the order of"))}</span><div class="ch-name">${payee}</div></div><div class="ch-amt"><b>${money(doc.amount)}</b></div></div>
+			<div class="ch-top">${payee ? `<div class="ch-pay"><span class="ch-k">${esc(__("Pay to the order of"))}</span><div class="ch-name">${payee}</div></div>` : ""}<div class="ch-amt"><b>${money(doc.amount)}</b></div></div>
 			${words ? `<div class="ch-words"><bdi dir="auto">${esc(words)}</bdi></div>` : ""}
 			${accountStrip(doc)}
 			<div class="ch-grid">${cell(__("Project"), doc.cost_center)}${cell(__("Cost Center"), doc.project)}<div class="prc-cheque__dates">${date(__("Request date"), day(doc.creation))}${showBankDate ? date(__("Bank Payment Date"), day(doc.bank_payment_date)) : ""}</div></div>
-			<div class="ch-foot"><span><span>${esc(__("Payment Approver"))}:</span> <b>${mixed(doc.payment_approver) || dash}</b></span></div>
+			${isBlank(doc.payment_approver) ? "" : `<div class="ch-foot"><span><span>${esc(__("Payment Approver"))}:</span> <b>${mixed(doc.payment_approver)}</b></span></div>`}
 			<div class="ch-micr" aria-hidden="true">⑆ ${esc(doc.name)} ⑆ ${micr ? `<span class="ch-micr__acct">${esc(micr)} ⑈ </span>` : ""}${amount(doc.amount)} ⑈</div>
 		</section>`;
 	}
@@ -541,26 +517,24 @@ frappe.provide("afmco.pr_summary");
 	function remarkHtml(frm, mode) {
 		const parsed = parseRemark(frm.doc.remark);
 		const raw = parsed.lines.join("\n");
-		const has = raw.trim().length > 0;
-		const seg = has
-			? `<div class="prc-seg" role="group"><button type="button" data-rmode="smart" aria-pressed="${mode === "smart"}">${esc(__("Formatted"))}</button><button type="button" data-rmode="raw" aria-pressed="${mode === "raw"}">${esc(__("Original text"))}</button></div>`
-			: "";
-		const body = !has
-			? `<p class="prc-p prc-empty">${esc(__("No remark"))}</p>`
-			: mode === "raw"
-				? `<pre class="prc-raw">${esc(raw)}</pre>`
-				: renderBlocks(parsed, flt(frm.doc.amount));
-		return `<section class="prc-remark" aria-label="${esc(__("Remark"))}">
+		if (!raw.trim()) return "";
+		const seg = `<div class="prc-seg" role="group"><button type="button" data-rmode="smart" aria-pressed="${mode === "smart"}">${esc(__("Formatted"))}</button><button type="button" data-rmode="raw" aria-pressed="${mode === "raw"}">${esc(__("Original text"))}</button></div>`;
+		const body = mode === "raw" ? `<pre class="prc-raw">${esc(raw)}</pre>` : renderBlocks(parsed);
+		return `<div class="prc-tear" aria-hidden="true"><span>${esc(__("Remark"))}</span></div><section class="prc-remark" aria-label="${esc(__("Remark"))}">
 			<div class="prc-remark__head"><div class="prc-remark__meta"><h3 class="prc-card__title">${esc(__("Remark"))}</h3></div>${seg}</div>
 			<div class="prc-remark__body" data-rbody>${body}</div>
 			<div class="prc-remark__foot" hidden><button type="button" class="prc-more" data-rexpand>${esc(__("Show full remark"))}</button></div>
 		</section>`;
 	}
 
-	function field(label, value, locked) {
-		const lock = locked ? `<span class="prc-lock"> · ${esc(__("Locked"))}</span>` : "";
-		return `<div class="prc-field ${locked ? "is-locked" : ""}"><div class="prc-label">${esc(label)}${lock}</div><div class="prc-field__val">${isBlank(value) ? dash : value}</div></div>`;
+	function field(label, value) {
+		return isBlank(value) ? "" : `<div class="prc-field"><div class="prc-label">${esc(label)}</div><div class="prc-field__val">${value}</div></div>`;
 	}
+
+	const grid = (cols, ...fields) => {
+		const html = fields.join("");
+		return html ? `<div class="prc-grid prc-grid--${cols}">${html}</div>` : "";
+	};
 
 	function sectionsHtml(frm) {
 		const doc = frm.doc;
@@ -569,34 +543,27 @@ frappe.provide("afmco.pr_summary");
 		const no = () => `<span class="prc-card__no prc-num">${String(cards.length + 1).padStart(2, "0")}</span>`;
 		const val = (v) => (isBlank(v) ? "" : esc(v));
 		if (BANK_ENTRY.includes(state) || BANK_LOCKED.includes(state) || !isBlank(doc.bank_reference_cf)) {
-			const locked = !doc.verify_payment && BANK_LOCKED.includes(state);
-			const badge = locked ? chip("plain", __("Locked")) : BANK_ENTRY.includes(state) ? chip("amber", __("Awaiting entry")) : "";
-			const banner = locked
-				? `<div class="prc-banner">${esc(__("Bank account and payment date are locked after the bank stage."))}</div>`
-				: "";
 			const paid = flt(doc.paid_amount_cf) ? money(doc.paid_amount_cf) : "";
-			cards.push(`<section class="prc-card"><div class="prc-card__head"><h3 class="prc-card__title">${no()}${esc(__("Bank payment"))}</h3>${badge}</div><div class="prc-card__body">${banner}
-				<div class="prc-grid prc-grid--2">${field(__("Bank Account"), val(doc.bank_account), locked)}${field(__("Bank Payment Date"), isBlank(doc.bank_payment_date) ? "" : ltr(day(doc.bank_payment_date), "prc-num"), locked)}</div>
-				<div class="prc-grid prc-grid--2">${field(__("Bank Reference"), val(doc.bank_reference_cf))}${field(__("Paid Amount"), paid, true)}</div>
-			</div></section>`);
+			const rows =
+				grid(2, field(__("Bank Account"), val(doc.bank_account)), field(__("Bank Payment Date"), isBlank(doc.bank_payment_date) ? "" : ltr(day(doc.bank_payment_date), "prc-num"))) +
+				grid(2, field(__("Bank Reference"), val(doc.bank_reference_cf)), field(__("Paid Amount"), paid));
+			if (rows) cards.push(`<section class="prc-card"><div class="prc-card__head"><h3 class="prc-card__title">${no()}${esc(__("Bank payment"))}</h3></div><div class="prc-card__body">${rows}</div></section>`);
 		}
-		const note = isBlank(doc.accounts_bot_note)
-			? ""
-			: `<div class="prc-grid prc-grid--1">${field(__("Accounts Bot Note"), clamp(`<bdi dir="auto">${esc(doc.accounts_bot_note)}</bdi>`, 3))}</div>`;
+		const note = grid(1, field(__("Accounts Bot Note"), isBlank(doc.accounts_bot_note) ? "" : clamp(`<bdi dir="auto">${frappe.format(doc.accounts_bot_note, { fieldtype: "Small Text" })}</bdi>`, 3)));
 		const je = jeShown(frm);
 		const dates = je
 			? paymentDates(frm)
 					.map(
 						([entry, posted]) =>
-							`<div class="prc-dt prc-dt--je"><span class="prc-label">${esc(__("Journal Entry"))} <span class="prc-ltr prc-mono">${esc(entry)}</span></span><b class="prc-ltr prc-num">${esc(day(posted)) || "—"}</b></div>`,
+							`<div class="prc-dt prc-dt--je"><span class="prc-label">${esc(__("Journal Entry"))} <span class="prc-ltr prc-mono">${esc(entry)}</span></span><b class="prc-ltr prc-num">${esc(day(posted))}</b></div>`,
 					)
 					.join("")
 			: "";
 		cards.push(`<section class="prc-card"><div class="prc-card__head"><h3 class="prc-card__title">${no()}${esc(__("Additional details"))}</h3></div><div class="prc-card__body">
-			<div class="prc-grid prc-grid--2">${field(__("Payment Type"), isBlank(doc.payment_type) ? "" : esc(__(doc.payment_type)))}${je ? field(__("JV Status"), isBlank(doc.jv_status) ? "" : esc(doc.jv_status === "JV Not Created" ? __("Awaiting Journal Entry") : __(doc.jv_status))) : ""}</div>
+			${grid(2, field(__("Payment Type"), isBlank(doc.payment_type) ? "" : esc(__(doc.payment_type))), je ? field(__("JV Status"), isBlank(doc.jv_status) ? "" : esc(doc.jv_status === "JV Not Created" ? __("Awaiting Journal Entry") : __(doc.jv_status))) : "")}
 			${dates ? `<div class="prc-jedates">${dates}</div>` : ""}
-			<div class="prc-grid prc-grid--2">${field(__("Reference"), isBlank(doc.tax_invoice_number) ? "" : clamp(esc(doc.tax_invoice_number), 2))}${field(__("Last modified"), ltr(stamp(doc.modified), "prc-num"))}</div>
-			<div class="prc-grid prc-grid--3">${field(__("Accounts Bot Status"), isBlank(doc.accounts_bot_status) ? "" : esc(__(doc.accounts_bot_status)))}${field(__("Accounts Bot Updated"), isBlank(doc.accounts_bot_updated) ? "" : ltr(stamp(doc.accounts_bot_updated), "prc-num"))}${field(__("Sent to Accounts Bot"), esc(doc.accounts_bot_cf ? __("Yes") : __("No")))}</div>
+			${grid(2, field(__("Reference"), isBlank(doc.tax_invoice_number) ? "" : clamp(esc(doc.tax_invoice_number), 2)), field(__("Last modified"), isBlank(doc.modified) ? "" : ltr(stamp(doc.modified), "prc-num")))}
+			${grid(3, field(__("Accounts Bot Status"), isBlank(doc.accounts_bot_status) ? "" : esc(__(doc.accounts_bot_status))), field(__("Accounts Bot Updated"), isBlank(doc.accounts_bot_updated) ? "" : ltr(stamp(doc.accounts_bot_updated), "prc-num")), field(__("Sent to Accounts Bot"), esc(doc.accounts_bot_cf ? __("Yes") : __("No"))))}
 			${note}
 		</div></section>`);
 		return cards.join("");
@@ -679,7 +646,7 @@ frappe.provide("afmco.pr_summary");
 				<div class="prc__layout ${flags ? "" : "no-top"}">
 					${flowHtml(frm, path)}
 					${flags ? `<div class="prc__top">${flags}</div>` : ""}
-					<div class="prc__doc">${chequeHtml(frm)}<div class="prc-tear" aria-hidden="true"><span>${esc(__("Remark"))}</span></div>${remarkHtml(frm, frm.prc_remark_mode || "smart")}</div>
+					<div class="prc__doc">${chequeHtml(frm)}${remarkHtml(frm, frm.prc_remark_mode || "smart")}</div>
 					<div class="prc__sections">${sectionsHtml(frm)}</div>
 				</div>
 			</div>`);

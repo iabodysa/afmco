@@ -15682,27 +15682,18 @@ Waiting,قيد الانتظار
 Account number,رقم الحساب
 Additional details,بيانات إضافية
 Awaiting Journal Entry,بانتظار إنشاء القيد
-Awaiting entry,بانتظار الإدخال
-Bank account and payment date are locked after the bank stage.,الحساب البنكي وتاريخ الدفع مقفلان بعد مرحلة البنك.
 Bank payment,الدفع البنكي
-Beneficiary accounts,الحسابات
 Biller code,رمز المفوتر
 Collapse remark,طي الملاحظة
 Detail,تفصيل
-Differs from the request amount by {0},يختلف عن مبلغ الطلب بـ {0}
 Formatted,منسق
 "IBAN is not valid, check it with the requester",رقم الآيبان غير صحيح، راجعه مع مقدم الطلب
 IBAN is valid,رقم الآيبان صحيح
 ID or Iqama numbers,أرقام هوية أو إقامة
 Last modified,آخر تعديل
-Matches the request amount,يطابق مبلغ الطلب
 Multiple beneficiaries,عدة مستفيدين
-"Multiple beneficiaries, accounts are in the remark table",عدة مستفيدين، الحسابات في جدول الملاحظات
-No remark,لا توجد ملاحظات
-Not entered,غير مدخل
 Original text,النص الأصلي
 Paid before,مدفوع من قبل
-Paid through SADAD with empty bill details,الدفع عبر سداد، وبيانات الفاتورة فارغة
 Path complete,اكتمل المسار
 Pay to the order of,ادفعوا لأمر
 Payment order,أمر صرف
@@ -15725,9 +15716,7 @@ Total ({0}),المجموع ({0})
 Total {0},مجموع {0}
 Total: {0},المجموع: {0}
 Value is not an IBAN,القيمة ليست رقم آيبان
-Value taken from the account number field of an old record,القيمة من حقل رقم الحساب في سجل قديم
 Values shared by all rows,قيم مشتركة لكل الصفوف
-Written in the account field:,مكتوب في حقل الحساب:
 {0} rows,{0} صف
 Copy,نسخ
 The Accounts Bot expects to finish by {0}.,يتوقع بوت المحاسبة أن ينتهي الساعة {0}.
