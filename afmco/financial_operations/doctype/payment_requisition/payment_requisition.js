@@ -283,6 +283,10 @@ frappe.ui.form.on('Payment Requisition', {
         }
     },
 
+    open_reference_document(frm) {
+        if (frm.reference_doctype) frappe.set_route('Form', frm.reference_doctype, frm.doc.tax_invoice_number);
+    },
+
     refresh(frm) {
         bindAfmcoDashboardEvents();
         renderRemarkExcelDashboard(frm);
@@ -294,9 +298,8 @@ frappe.ui.form.on('Payment Requisition', {
 
         addPreviousRecordsButton(frm);
         addUrgentButton(frm);
-        addAlreadyPaidButton(frm);
         renderNextAction(frm);
-        addOpenReferenceButton(frm);
+        showReferenceButton(frm);
         addCreateJVButton(frm);
         addSupportingPackButton(frm);
         addAccountsBotButton(frm);
@@ -1262,14 +1265,14 @@ function createBalanceTable(final_balance, max_limit) {
 function renderRequestCards(frm) {
     frm.dashboard.parent.find('.afmco-pr-card').remove();
     const cards = [];
-    if (frm.doc.if_it__urgent) {
+    if (!frm.is_new() && frm.doc.if_it__urgent) {
         const reason = frm.doc.reason_of_urgency || __('No reason provided');
         cards.push([
             `<p class="text-danger">${escapeHtmlWithLineBreaks(__('This request is already marked as urgent with reason: {0}', [reason]))}</p>`,
             __('Urgent')
         ]);
     }
-    if (frm.doc.verify_payment) {
+    if (!frm.is_new() && frm.doc.verify_payment) {
         cards.push([
             `<p>${escapeHtml(__('This transaction has been documented as settled. Please ensure all necessary approvals and authorizations are verified before proceeding.'))}</p>`,
             __('Already paid')
@@ -1290,15 +1293,6 @@ function workflowStepper(frm) {
     const path = afmco.stepper.workflow(frm);
     if (!path) return '';
     return afmco.stepper.html({ ...path, color: path.halted ? 'red' : 'blue' });
-}
-
-function addAlreadyPaidButton(frm) {
-    const buttonLabel = __('Already paid');
-    frm.remove_custom_button(buttonLabel);
-
-    if (frm.is_new() && !frm.doc.verify_payment) {
-        frm.add_custom_button(buttonLabel, () => frm.set_value('verify_payment', 1).then(() => frm.refresh()));
-    }
 }
 
 function renderNextAction(frm) {
@@ -1348,15 +1342,30 @@ function nextActionChip({ user, full_name }) {
     return `<span class="afmco-next-action-chip" title="${escapeHtml(name)}">${frappe.avatar(user, 'avatar-xs')}<span class="afmco-next-action-name">${escapeHtml(name)}</span></span>`;
 }
 
-function addOpenReferenceButton(frm) {
-    const buttonLabel = __('Open Reference Document');
-    frm.remove_custom_button(buttonLabel);
-    if (frm.is_new() || !frm.doc.tax_invoice_number) return;
+const REFERENCE_DOCTYPES = {
+    'EOS': ['End of Service Settlement'],
+    'Vacation Allowance': ['Advance Leave Salary'],
+    'Advance Leave Salary': ['Advance Leave Salary'],
+    'Exit Re-entry Visa': ['Advance Leave Salary'],
+    'SADAD Payment': ['SADAD Batch', 'Advance Leave Salary'],
+    'Employee Loan': ['Loan Application'],
+    'Petty Cash': ['Petty Cash'],
+    'Payroll (Salary)': ['Payroll Entry']
+};
 
-    frm.add_custom_button(buttonLabel, () => {
-        const doctype = frm.doc.payment_type === 'Payroll (Salary)' ? 'payroll-entry' : frm.doc.payment_type;
-        frappe.set_route('Form', doctype, frm.doc.tax_invoice_number);
-    });
+async function showReferenceButton(frm) {
+    frm.reference_doctype = null;
+    frm.toggle_display('open_reference_document', false);
+    const reference = frm.doc.tax_invoice_number;
+    const candidates = REFERENCE_DOCTYPES[frm.doc.payment_type] || [];
+    if (frm.is_new() || !reference) return;
+    for (const doctype of candidates) {
+        if (!frappe.model.can_read(doctype) || !(await frappe.db.exists(doctype, reference))) continue;
+        if (frm.doc.tax_invoice_number !== reference) return;
+        frm.reference_doctype = doctype;
+        frm.toggle_display('open_reference_document', true);
+        return;
+    }
 }
 
 function addUrgentButton(frm) {
@@ -1364,7 +1373,7 @@ function addUrgentButton(frm) {
     frm.remove_custom_button(buttonLabel);
     frm.remove_custom_button(buttonLabel, __('Actions'));
 
-    if (frm.doc.if_it__urgent === 1) return;
+    if (frm.is_new() || frm.doc.if_it__urgent === 1) return;
 
     const btn = frm.add_custom_button(
         buttonLabel,

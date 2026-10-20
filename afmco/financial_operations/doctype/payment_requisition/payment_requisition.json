@@ -87,20 +87,18 @@
   },
   {
    "default": "0",
-   "depends_on": "eval:(doc.__islocal || doc.verify_payment)",
+   "depends_on": "eval:doc.__islocal",
    "fieldname": "verify_payment",
    "fieldtype": "Check",
-   "hidden": 1,
    "in_standard_filter": 1,
    "label": "Already paid"
   },
   {
    "allow_in_quick_entry": 1,
    "default": "0",
-   "depends_on": "eval:(doc.__islocal || doc.if_it__urgent)",
+   "depends_on": "eval:doc.__islocal",
    "fieldname": "if_it__urgent",
    "fieldtype": "Check",
-   "hidden": 1,
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Urgent"
@@ -115,11 +113,11 @@
   },
   {
    "allow_in_quick_entry": 1,
-   "depends_on": "eval: doc.if_it__urgent",
+   "depends_on": "eval:doc.__islocal && doc.if_it__urgent",
    "fieldname": "reason_of_urgency",
    "fieldtype": "Small Text",
-   "hidden": 1,
-   "label": "Reason of Urgency"
+   "label": "Reason of Urgency",
+   "mandatory_depends_on": "eval:doc.if_it__urgent"
   },
   {
    "fieldname": "beneficiary_information_section",
@@ -171,12 +169,11 @@
   },
   {
    "allow_in_quick_entry": 1,
-   "depends_on": "eval:!doc.__islocal && doc.mode_of_payment",
    "fieldname": "mode_of_payment",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Mode of Payment",
-   "options": "--- Choose from List ---\nLocal Bank Transfer\nIntra-NCB Transfer\nInternational Transfer\nCash Payment\nSADAD Payment\nBank cheque\nBank Transfer",
-   "read_only": 1
+   "options": "--- Choose from List ---\nLocal Bank Transfer\nIntra-NCB Transfer\nInternational Transfer\nCash Payment\nSADAD Payment\nBank cheque\nBank Transfer"
   },
   {
    "fieldname": "column_break_payment_type",
@@ -189,9 +186,9 @@
    "search_index": 1
   },
   {
+   "depends_on": "eval:!doc.__islocal && doc.tax_invoice_number",
    "fieldname": "open_reference_document",
    "fieldtype": "Button",
-   "hidden": 1,
    "label": "Open Reference Document"
   },
   {
@@ -498,7 +495,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-20 19:32:00.000000",
+ "modified": "2026-10-20 21:22:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",

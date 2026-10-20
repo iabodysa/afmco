@@ -321,8 +321,6 @@ frappe.provide("afmco.pr_summary");
 			: `<span class="prc-chip prc-chip--amber">${__("Differs from the request amount by {0}", [money(Math.abs(diff))])}</span>`;
 	}
 
-	const rowsChip = (n) => `<span class="prc-chip prc-chip--blue">${esc(__("{0} rows", [n]))}</span>`;
-
 	function renderRecords(recs, requested) {
 		const keys = [];
 		recs.forEach((r) => Object.keys(r).forEach((k) => keys.includes(k) || keys.push(k)));
@@ -354,7 +352,7 @@ frappe.provide("afmco.pr_summary");
 					cards: true,
 				})
 			: "";
-		return `${commonHtml}${table}<div class="prc-tsum">${rowsChip(recs.length)}${totalHtml}</div>`;
+		return `${commonHtml}${table}${totalHtml ? `<div class="prc-tsum">${totalHtml}</div>` : ""}`;
 	}
 
 	function renderKv(block, requested) {
@@ -384,7 +382,8 @@ frappe.provide("afmco.pr_summary");
 			}
 		}
 		const table = tableHtml(block.cols, block.rows, block.meta, { numbered: block.numbered, totals, cards: block.cols.length > 2 });
-		return `<div class="prc-rb">${table}<div class="prc-tsum">${rowsChip(block.rows.length)}${matchChip(total, requested)}</div></div>`;
+		const chip = matchChip(total, requested);
+		return `<div class="prc-rb">${table}${chip ? `<div class="prc-tsum">${chip}</div>` : ""}</div>`;
 	}
 
 	function renderBlocks(parsed, requested) {
@@ -412,19 +411,6 @@ frappe.provide("afmco.pr_summary");
 				return "";
 			})
 			.join("");
-	}
-
-	function remarkTags(parsed) {
-		const kinds = new Set(parsed.blocks.map((b) => b.t));
-		return [
-			["records", __("Records table")],
-			["table", __("Table")],
-			["kv", __("Items and values")],
-			["ids", __("Number list")],
-			["list", __("List")],
-		]
-			.filter(([kind]) => kinds.has(kind))
-			.map(([, label]) => label);
 	}
 
 	function ibanValid(iban) {
@@ -556,10 +542,6 @@ frappe.provide("afmco.pr_summary");
 		const parsed = parseRemark(frm.doc.remark);
 		const raw = parsed.lines.join("\n");
 		const has = raw.trim().length > 0;
-		const tags = remarkTags(parsed)
-			.map((t) => chip("accent", t))
-			.join("");
-		const count = has ? `<span class="prc-chip prc-chip--plain">${esc(__("{0} lines", [parsed.lines.filter(Boolean).length]))}</span>` : "";
 		const seg = has
 			? `<div class="prc-seg" role="group"><button type="button" data-rmode="smart" aria-pressed="${mode === "smart"}">${esc(__("Formatted"))}</button><button type="button" data-rmode="raw" aria-pressed="${mode === "raw"}">${esc(__("Original text"))}</button></div>`
 			: "";
@@ -569,7 +551,7 @@ frappe.provide("afmco.pr_summary");
 				? `<pre class="prc-raw">${esc(raw)}</pre>`
 				: renderBlocks(parsed, flt(frm.doc.amount));
 		return `<section class="prc-remark" aria-label="${esc(__("Remark"))}">
-			<div class="prc-remark__head"><div class="prc-remark__meta"><h3 class="prc-card__title">${esc(__("Remark"))}</h3>${count}${tags}</div>${seg}</div>
+			<div class="prc-remark__head"><div class="prc-remark__meta"><h3 class="prc-card__title">${esc(__("Remark"))}</h3></div>${seg}</div>
 			<div class="prc-remark__body" data-rbody>${body}</div>
 			<div class="prc-remark__foot" hidden><button type="button" class="prc-more" data-rexpand>${esc(__("Show full remark"))}</button></div>
 		</section>`;

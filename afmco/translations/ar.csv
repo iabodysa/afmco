@@ -15729,7 +15729,6 @@ Value is not an IBAN,القيمة ليست رقم آيبان
 Value taken from the account number field of an old record,القيمة من حقل رقم الحساب في سجل قديم
 Values shared by all rows,قيم مشتركة لكل الصفوف
 Written in the account field:,مكتوب في حقل الحساب:
-{0} lines,{0} سطر
 {0} rows,{0} صف
 Copy,نسخ
 The Accounts Bot expects to finish by {0}.,يتوقع بوت المحاسبة أن ينتهي الساعة {0}.
@@ -15740,8 +15739,5 @@ Accounts Bot stopped,بوت المحاسبة توقف
 The Accounts Bot created the Journal Entry for Payment Requisition {0}.,أنشأ بوت المحاسبة قيد اليومية لطلب الصرف {0}.
 The Accounts Bot stopped on Payment Requisition {0} and needs your review.,توقف بوت المحاسبة عند طلب الصرف {0} ويحتاج مراجعتك.
 Open Journal Entry {0},فتح قيد اليومية {0}
-Items and values,بنود وقيم
-Records table,جدول سجلات
-Number list,قائمة أرقام
 List,قائمة
 Audit and Bot,التدقيق وبوت المحاسبة
