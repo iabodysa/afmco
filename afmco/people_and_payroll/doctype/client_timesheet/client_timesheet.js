@@ -21,11 +21,20 @@ const BOT_STATUS_COLORS = {
     Done: 'green',
     Stopped: 'gray',
 };
+const CHIP_TONES = { gray: 'plain', blue: 'blue', yellow: 'amber', orange: 'amber', red: 'red', green: 'green' };
+const SHEET_ASSETS = [
+    '/assets/afmco/js/stepper.js',
+    '/assets/afmco/css/stepper.css',
+    '/assets/afmco/css/payment_requisition_summary.css',
+    '/assets/afmco/css/client_timesheet.css',
+];
+const MAX_GRID_DAYS = 62;
+const FRIDAY = 5;
 const statusColor = (status) => BOT_STATUS_COLORS[status] || (BOT_BUSY_STATUSES.includes(status) ? 'orange' : 'gray');
 
 frappe.ui.form.on('Client Timesheet', {
     refresh(frm) {
-        frappe.require(["/assets/afmco/js/stepper.js", "/assets/afmco/css/stepper.css"], () => renderBotPanel(frm));
+        renderBotPanel(frm);
         if (frm.is_new() || !frm.perm[0]?.write || BOT_BUSY_STATUSES.includes(frm.doc.bot_status)) {
             return;
         }
@@ -44,41 +53,34 @@ frappe.ui.form.on('Client Timesheet', {
             });
         }).addClass('btn-primary');
     },
+    ...Object.fromEntries(['customer', 'project', 'from_date', 'to_date', 'timesheet_file', 'notes'].map((event) => [event, renderBotPanel])),
 });
 
 function renderBotPanel(frm) {
-    frm.dashboard.parent.find('.cts-dash-section').remove();
-    if (frm.is_new()) {
-        return;
-    }
-    const body = frm.dashboard.add_section(buildBotPanelHtml(frm), __('Payroll Bot'));
-    body.closest('.form-dashboard-section').addClass('cts-dash-section');
-    body.on('click', '.cts-log-link', () => showBotLog(frm));
-    frm.dashboard.show();
-    afmco.stepper.center(body);
-    loadResultDetails(frm, body);
+    frappe.require(SHEET_ASSETS, () => {
+        frm.dashboard.parent.find('.cts-dash-section').remove();
+        if (frm.is_new()) {
+            return;
+        }
+        const body = frm.dashboard.add_section(buildBotPanelHtml(frm), __('Client Timesheet'));
+        body.closest('.form-dashboard-section').addClass('cts-dash-section');
+        body.on('click', '.cts-log-link', () => showBotLog(frm));
+        frm.dashboard.show();
+        afmco.stepper.center(body);
+        loadResultDetails(frm, body);
+    });
 }
 
 const esc = (value) => frappe.utils.escape_html(String(value ?? ''));
-const ltr = (value) => `<span dir="ltr">${esc(value)}</span>`;
+const ltr = (value, cls = '') => `<span class="prc-ltr prc-num ${cls}">${esc(value)}</span>`;
 const userName = (user) => esc(frappe.user_info(user).fullname || user);
+const dash = '<span class="prc-empty">—</span>';
+const count = (value) => (cint(value) ? ltr(format_number(cint(value), null, 0)) : dash);
 
-function pill(status) {
-    const color = statusColor(status);
-    const dot = BOT_BUSY_STATUSES.includes(status) ? '<span class="cts-dot"></span>' : '';
-    return `<span class="indicator-pill whitespace-nowrap ${color}">${dot}<span>${esc(__(status))}</span></span>`;
-}
-
-function tile(label, value, alert) {
-    return `<div class="cts-tile${alert ? ' cts-tile-alert' : ''}">
-        <div class="cts-tile-value">${ltr(format_number(cint(value), null, 0))}</div>
-        <div class="cts-tile-label">${esc(label)}</div>
-    </div>`;
-}
-
-function chip(label, ok, busy) {
-    const [state, mark, title] = ok ? ['ok', '✓', __('Yes')] : busy ? ['wait', '…', __('Pending')] : ['bad', '✕', __('No')];
-    return `<span class="cts-chip cts-chip-${state}" title="${esc(title)}"><b>${mark}</b> ${esc(label)}</span>`;
+function chip(status) {
+    const tone = CHIP_TONES[statusColor(status)];
+    const live = BOT_BUSY_STATUSES.includes(status) ? ' cts-live' : '';
+    return `<span class="prc-chip prc-chip--${tone}${live}">${esc(__(status))}</span>`;
 }
 
 function stepper(frm, status) {
@@ -90,111 +92,189 @@ function stepper(frm, status) {
         current = at >= 0 ? at : stages.length - 1;
     }
     if (status === 'Done') current = stages.length;
-    return afmco.stepper.html({
+    return {
         stages,
         current,
-        color: statusColor(status),
-        halted,
-        live: BOT_BUSY_STATUSES.includes(status),
-        note: frm.doc.bot_note,
-    });
+        html: afmco.stepper.html({
+            stages,
+            current,
+            color: statusColor(status),
+            halted,
+            live: BOT_BUSY_STATUSES.includes(status),
+            note: frm.doc.bot_note,
+        }),
+    };
 }
 
-function trackLine(label, user, when) {
-    if (!user && !when) return '';
-    const parts = [user ? userName(user) : '', when ? ltr(frappe.datetime.str_to_user(when)) : ''].filter(Boolean);
-    return `<div>${esc(label)}: ${parts.join(' · ')}</div>`;
+function periodDays(doc) {
+    if (!doc.from_date || !doc.to_date) return [];
+    const from = frappe.datetime.str_to_obj(doc.from_date);
+    const to = frappe.datetime.str_to_obj(doc.to_date);
+    const days = [];
+    for (const day = new Date(from); day <= to && days.length <= MAX_GRID_DAYS; day.setDate(day.getDate() + 1)) {
+        days.push(new Date(day));
+    }
+    return days;
 }
 
-function details(label, text) {
-    if (!text) return '';
-    return `<details class="cts-details"><summary>${esc(label)}</summary><div class="cts-pre">${esc(text)}</div></details>`;
+function flowHtml(frm, status) {
+    const flow = stepper(frm, status);
+    const busy = BOT_BUSY_STATUSES.includes(status);
+    const halted = BOT_HALT_STATUSES.includes(status);
+    const step = !halted && flow.current >= 0 && flow.current < flow.stages.length
+        ? `<span>${esc(__('Step {0} of {1}', [flow.current + 1, flow.stages.length]))}</span>`
+        : '';
+    const now = halted ? status : flow.stages[flow.current];
+    let hint = '';
+    if (status === 'Draft' && !frm.doc.queued_on) {
+        hint = __('Attach the client timesheet file and save, then press Start Payroll Bot.');
+    } else if (busy) {
+        hint = __('The Payroll Bot is already working on this timesheet.');
+    }
+    return `<section class="prc-flow" aria-label="${esc(__('Payroll Bot'))}">
+        <div class="prc-flow__head"><b>${esc(__('Payroll Bot'))}</b>${step}${chip(status)}</div>
+        ${flow.html}
+        ${now ? `<div class="prc-flow__now">${esc(__(now))}</div>` : ''}
+        ${hint ? `<div class="cts-hint">${esc(hint)}</div>` : ''}
+    </section>`;
+}
+
+function dayGridHtml(days) {
+    if (!days.length || days.length > MAX_GRID_DAYS) return '';
+    const weekday = new Intl.DateTimeFormat(frappe.boot.lang || 'en', { weekday: 'narrow' });
+    const cells = days
+        .map((day) => {
+            const off = day.getDay() === FRIDAY ? ' is-off' : '';
+            const first = day.getDate() === 1 ? ' is-month' : '';
+            return `<li class="cts-day${off}${first}"><small>${esc(weekday.format(day))}</small><b>${day.getDate()}</b></li>`;
+        })
+        .join('');
+    return `<div class="cts-days">
+        <ol class="cts-daygrid" aria-label="${esc(__('Period'))}">${cells}</ol>
+        <div class="cts-legend"><span class="cts-swatch"></span>${esc(__('Friday'))}</div>
+    </div>`;
+}
+
+function checksHtml(doc, status) {
+    if (status === 'Draft') return '';
+    const busy = BOT_BUSY_STATUSES.includes(status);
+    const box = (label, ok) => {
+        const [state, mark] = ok ? ['ok', '✓'] : busy ? ['wait', ''] : ['bad', '✕'];
+        return `<span class="cts-check cts-check--${state}"><span class="cts-box" aria-hidden="true">${mark}</span>${esc(label)}</span>`;
+    };
+    return `<div class="cts-checks"><span class="prc-label">${esc(__('Payroll Bot checks'))}</span>
+        ${box(__('File Format Checked'), doc.format_ok)}
+        ${box(__('Pay Rules Found'), doc.rules_ok)}
+        ${box(__('Totals Match'), doc.totals_ok)}
+    </div>`;
+}
+
+function signHtml(label, user, when) {
+    const stamp = when ? `<div class="cts-sign__when">${ltr(frappe.datetime.str_to_user(when))}</div>` : '';
+    return `<div class="cts-sign__box"><div class="prc-label">${esc(label)}</div><div class="cts-sign__name">${user ? userName(user) : dash}</div>${stamp}</div>`;
+}
+
+function sheetHtml(frm, status) {
+    const doc = frm.doc;
+    const days = periodDays(doc);
+    const dayCount = doc.from_date && doc.to_date ? Math.max(frappe.datetime.get_day_diff(doc.to_date, doc.from_date) + 1, 0) : 0;
+    const date = (value) => (value ? ltr(frappe.datetime.str_to_user(value)) : dash);
+    const file = doc.timesheet_file
+        ? `<a href="${esc(doc.timesheet_file)}" target="_blank" rel="noopener" class="prc-ltr">${esc(doc.timesheet_file.split('/').pop())}</a>`
+        : dash;
+    const notes = doc.notes ? `<div class="cts-notes"><span class="prc-label">${esc(__('Notes'))}</span><bdi dir="auto">${esc(doc.notes)}</bdi></div>` : '';
+    return `<section class="cts-sheet" aria-label="${esc(__('Client Timesheet'))}">
+        <div class="cts-sheet__head">
+            <div class="cts-who">
+                <div class="cts-kind">${esc(__('Client Timesheet'))} <span class="prc-mono">${esc(doc.name)}</span></div>
+                <div class="cts-customer"><bdi dir="auto">${esc(doc.customer || '')}</bdi></div>
+                <div class="cts-project"><span class="prc-label">${esc(__('Project'))}</span> <bdi dir="auto">${esc(doc.project || '')}</bdi></div>
+            </div>
+            <div class="cts-period">
+                <span class="prc-label">${esc(__('Period'))}</span>
+                <b>${dayCount ? esc(__('{0} days', [dayCount])) : '—'}</b>
+                <div class="cts-period__range"><span>${esc(__('From Date'))}</span> ${date(doc.from_date)}</div>
+                <div class="cts-period__range"><span>${esc(__('To Date'))}</span> ${date(doc.to_date)}</div>
+            </div>
+        </div>
+        ${dayGridHtml(days)}
+        <div class="cts-totals">
+            <div class="cts-total"><span>${esc(__('Employees'))}</span><b>${count(doc.employees_count)}</b></div>
+            <div class="cts-total"><span>${esc(__('Rows Read'))}</span><b>${count(doc.rows_read)}</b></div>
+            <div class="cts-total"><span>${esc(__('Invoice Lines'))}</span><b>${count(doc.invoice_lines)}</b></div>
+            <div class="cts-total"><span>${esc(__('Days'))}</span><b>${count(dayCount)}</b></div>
+        </div>
+        ${checksHtml(doc, status)}
+        <div class="cts-meta"><div><span class="prc-label">${esc(__('Timesheet File'))}</span> ${file}</div>${notes}</div>
+        <div class="cts-sign">
+            ${signHtml(__('Sent to Bot By'), doc.queued_by, doc.queued_on)}
+            ${signHtml(__('Processed By'), doc.processed_by, doc.processed_on)}
+            ${signHtml(__('Reviewed By'), doc.attendance_reviewed_by)}
+        </div>
+    </section>`;
+}
+
+function alertsHtml(doc) {
+    const alert = (tone, title, text) =>
+        text ? `<div class="cts-alert cts-alert--${tone}"><div class="cts-alert__title">${esc(title)}</div><div class="cts-pre">${esc(text)}</div></div>` : '';
+    return alert('red', __('Problem'), doc.error) + alert('amber', __('Missing Pay Rules'), doc.missing_rules);
+}
+
+function card(title, body, badge = '') {
+    return `<section class="prc-card"><div class="prc-card__head"><h3 class="prc-card__title">${esc(title)}</h3>${badge}</div><div class="prc-card__body">${body}</div></section>`;
+}
+
+function resultsHtml(doc, status) {
+    const shown = ['Needs Review', 'Done'].includes(status) || doc.sales_invoice || doc.payment_requisition || doc.salary_excel;
+    const log = doc.bot_log ? `<button type="button" class="prc-goform cts-log-link">${esc(__('Show Bot Log'))}</button>` : '';
+    if (!shown && !log) return '';
+    const empty = `<span class="prc-empty">${esc(__('Not created yet'))}</span>`;
+    const row = (label, value) => `<div class="cts-out__row"><span class="prc-label">${esc(label)}</span><div class="cts-out__val">${value}</div></div>`;
+    const si = doc.sales_invoice
+        ? `${frappe.utils.get_form_link('Sales Invoice', doc.sales_invoice, true)}<div class="cts-out__meta cts-si-meta"></div>`
+        : empty;
+    const pr = doc.payment_requisition
+        ? `${frappe.utils.get_form_link('Payment Requisition', doc.payment_requisition, true)}<div class="cts-out__meta cts-pr-meta"></div>`
+        : empty;
+    const sheet = doc.salary_excel ? `<a href="${esc(doc.salary_excel)}" target="_blank" rel="noopener">${esc(__('Download'))}</a>` : empty;
+    const rows = shown
+        ? `<div class="cts-out">${row(__('Sales Invoice'), si)}${row(__('Payment Requisition'), pr)}${row(__('Salary Sheet'), sheet)}</div>`
+        : '';
+    return card(__('Results'), rows + log);
+}
+
+function attendanceHtml(doc) {
+    const counts = [doc.attendance_proposed, doc.attendance_created, doc.attendance_skipped_existing, doc.unmatched_employees];
+    if (!(doc.attendance_ok || counts.some((n) => cint(n) > 0) || doc.unmatched_list || doc.attendance_errors || doc.attendance_reviewed_by)) {
+        return '';
+    }
+    const tile = (label, value, alert) =>
+        `<div class="cts-tile${alert ? ' is-alert' : ''}"><b>${ltr(format_number(cint(value), null, 0))}</b><span>${esc(label)}</span></div>`;
+    const details = (label, text) =>
+        text ? `<details class="cts-details"><summary>${esc(label)}</summary><div class="cts-pre">${esc(text)}</div></details>` : '';
+    const badge = `<span class="prc-chip prc-chip--${doc.attendance_ok ? 'green' : 'red'}">${esc(__('Attendance Drafted OK'))}: ${esc(doc.attendance_ok ? __('Yes') : __('No'))}</span>`;
+    const body = `<div class="cts-tiles">
+            ${tile(__('Attendance Proposed'), doc.attendance_proposed)}
+            ${tile(__('Attendance Created'), doc.attendance_created)}
+            ${tile(__('Attendance Skipped (Existing)'), doc.attendance_skipped_existing)}
+            ${tile(__('Unmatched Employees'), doc.unmatched_employees, cint(doc.unmatched_employees) > 0)}
+        </div>
+        ${details(__('Unmatched Employee List'), doc.unmatched_list)}
+        ${details(__('Attendance Errors'), doc.attendance_errors)}`;
+    return card(__('Attendance'), body, badge);
 }
 
 function buildBotPanelHtml(frm) {
     const doc = frm.doc;
     const status = doc.bot_status || 'Draft';
-    const busy = BOT_BUSY_STATUSES.includes(status);
-    const parts = [];
-
-    parts.push(`<div class="cts-head">
-        <div class="cts-head-main">${pill(status)}</div>
-        <div class="cts-track">
-            ${trackLine(__('Sent to Bot By'), doc.queued_by, doc.queued_on)}
-            ${trackLine(__('Processed By'), doc.processed_by, doc.processed_on)}
+    const aside = resultsHtml(doc, status) + attendanceHtml(doc);
+    return `<div class="afmco-pr-summary afmco-cts">
+        <div class="cts-layout${aside ? '' : ' no-aside'}">
+            ${flowHtml(frm, status)}
+            <div class="cts-main">${alertsHtml(doc)}${sheetHtml(frm, status)}</div>
+            ${aside ? `<aside class="cts-aside">${aside}</aside>` : ''}
         </div>
-    </div>`);
-    parts.push(stepper(frm, status));
-
-    if (status === 'Draft' && !doc.queued_on) {
-        parts.push(`<div class="cts-hint">${esc(__('Attach the client timesheet file and save, then press Start Payroll Bot.'))}</div>`);
-    } else if (busy) {
-        parts.push(`<div class="cts-hint">${esc(__('The Payroll Bot is already working on this timesheet.'))}</div>`);
-    }
-
-    if (doc.error) {
-        parts.push(`<div class="cts-alert cts-alert-red"><div class="cts-alert-title">${esc(__('Problem'))}</div><div class="cts-pre">${esc(doc.error)}</div></div>`);
-    }
-    if (doc.missing_rules) {
-        parts.push(`<div class="cts-alert cts-alert-yellow"><div class="cts-alert-title">${esc(__('Missing Pay Rules'))}</div><div class="cts-pre">${esc(doc.missing_rules)}</div></div>`);
-    }
-
-    if (status !== 'Draft') {
-        parts.push(`<div class="cts-chips">
-            ${chip(__('File Format Checked'), doc.format_ok, busy)}
-            ${chip(__('Pay Rules Found'), doc.rules_ok, busy)}
-            ${chip(__('Totals Match'), doc.totals_ok, busy)}
-        </div>`);
-    }
-
-    if (doc.rows_read || doc.employees_count || doc.invoice_lines) {
-        parts.push(`<div class="cts-grid">
-            ${tile(__('Rows Read'), doc.rows_read)}
-            ${tile(__('Employees'), doc.employees_count)}
-            ${tile(__('Invoice Lines'), doc.invoice_lines)}
-        </div>`);
-    }
-
-    if (['Needs Review', 'Done'].includes(status) || doc.sales_invoice || doc.payment_requisition || doc.salary_excel) {
-        const empty = `<div class="cts-muted">${esc(__('Not created yet'))}</div>`;
-        const si = doc.sales_invoice
-            ? `${frappe.utils.get_form_link('Sales Invoice', doc.sales_invoice, true)}<div class="cts-muted cts-si-meta"></div>`
-            : empty;
-        const pr = doc.payment_requisition
-            ? `${frappe.utils.get_form_link('Payment Requisition', doc.payment_requisition, true)}<div class="cts-muted cts-pr-meta"></div>`
-            : empty;
-        const sheet = doc.salary_excel
-            ? `<a href="${esc(doc.salary_excel)}" target="_blank" rel="noopener">${esc(__('Download'))}</a>`
-            : empty;
-        parts.push(`<div class="cts-grid">
-            <div class="cts-card"><div class="cts-card-label">${esc(__('Sales Invoice'))}</div>${si}</div>
-            <div class="cts-card"><div class="cts-card-label">${esc(__('Payment Requisition'))}</div>${pr}</div>
-            <div class="cts-card"><div class="cts-card-label">${esc(__('Salary Sheet'))}</div>${sheet}</div>
-        </div>`);
-    }
-
-    const attendanceCounts = [doc.attendance_proposed, doc.attendance_created, doc.attendance_skipped_existing, doc.unmatched_employees];
-    if (doc.attendance_ok || attendanceCounts.some((n) => cint(n) > 0) || doc.unmatched_list || doc.attendance_errors || doc.attendance_reviewed_by) {
-        const badge = `<span class="indicator-pill ${doc.attendance_ok ? 'green' : 'red'}"><span>${esc(__('Attendance Drafted OK'))}: ${esc(doc.attendance_ok ? __('Yes') : __('No'))}</span></span>`;
-        const reviewed = doc.attendance_reviewed_by ? `<span class="cts-muted">${esc(__('Reviewed By'))}: ${userName(doc.attendance_reviewed_by)}</span>` : '';
-        parts.push(`<div class="cts-block">
-            <div class="cts-block-head"><span class="cts-block-title">${esc(__('Attendance'))}</span>${badge}${reviewed}</div>
-            <div class="cts-grid">
-                ${tile(__('Attendance Proposed'), doc.attendance_proposed)}
-                ${tile(__('Attendance Created'), doc.attendance_created)}
-                ${tile(__('Attendance Skipped (Existing)'), doc.attendance_skipped_existing)}
-                ${tile(__('Unmatched Employees'), doc.unmatched_employees, cint(doc.unmatched_employees) > 0)}
-            </div>
-            ${details(__('Unmatched Employee List'), doc.unmatched_list)}
-            ${details(__('Attendance Errors'), doc.attendance_errors)}
-        </div>`);
-    }
-
-    if (doc.bot_log) {
-        parts.push(`<div><button type="button" class="btn btn-link btn-xs cts-log-link">${esc(__('Show Bot Log'))}</button></div>`);
-    }
-
-    return `<div class="cts-panel">${panelStyle()}${parts.join('')}</div>`;
+    </div>`;
 }
 
 function loadResultDetails(frm, body) {
@@ -222,42 +302,7 @@ function loadResultDetails(frm, body) {
 function showBotLog(frm) {
     frappe.msgprint({
         title: __('Bot Log'),
-        message: `<pre dir="ltr" style="max-height:60vh;overflow:auto;white-space:pre-wrap">${esc(frm.doc.bot_log)}</pre>`,
+        message: `<pre dir="ltr" class="cts-log">${esc(frm.doc.bot_log)}</pre>`,
         wide: true,
     });
-}
-
-function panelStyle() {
-    return `<style>
-        .cts-panel { display: flex; flex-direction: column; gap: 12px; padding-block: 4px; }
-        .cts-head { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: flex-start; }
-        .cts-head-main { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; min-width: 0; }
-        .cts-track { font-size: var(--text-xs); color: var(--text-muted); text-align: start; }
-        .cts-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: currentColor; margin-inline-end: 6px; animation: cts-pulse 1.2s ease-in-out infinite; }
-        @keyframes cts-pulse { 50% { opacity: .3; } }
-        @media (prefers-reduced-motion: reduce) { .cts-dot { animation: none; } }
-        .cts-hint, .cts-muted { color: var(--text-muted); font-size: var(--text-sm); }
-        .cts-alert { padding: 8px 12px; border-radius: var(--border-radius-md); font-size: var(--text-sm); }
-        .cts-alert-red { background: var(--bg-red); color: var(--text-on-red); }
-        .cts-alert-yellow { background: var(--bg-yellow); color: var(--text-on-yellow); }
-        .cts-alert-title { font-weight: var(--weight-semibold); margin-bottom: 4px; }
-        .cts-pre { white-space: pre-wrap; overflow-wrap: anywhere; }
-        .cts-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-        .cts-chip { padding: 2px 10px; border-radius: var(--border-radius-lg); font-size: var(--text-xs); }
-        .cts-chip-ok { background: var(--bg-green); color: var(--text-on-green); }
-        .cts-chip-bad { background: var(--bg-red); color: var(--text-on-red); }
-        .cts-chip-wait { background: var(--bg-gray); color: var(--text-muted); }
-        .cts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
-        .cts-tile, .cts-card { background: var(--control-bg); border-radius: var(--border-radius-md); padding: 10px 12px; text-align: start; min-width: 0; overflow-wrap: anywhere; }
-        .cts-tile-alert { background: var(--bg-red); color: var(--text-on-red); }
-        .cts-tile-value { font-size: var(--text-2xl); font-weight: var(--weight-semibold); color: var(--heading-color); }
-        .cts-tile-alert .cts-tile-value { color: inherit; }
-        .cts-tile-label, .cts-card-label { font-size: var(--text-xs); color: var(--text-muted); }
-        .cts-tile-alert .cts-tile-label { color: inherit; }
-        .cts-block { display: flex; flex-direction: column; gap: 8px; }
-        .cts-block-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-        .cts-block-title { font-weight: var(--weight-semibold); color: var(--heading-color); }
-        .cts-details summary { cursor: pointer; font-size: var(--text-sm); }
-        .cts-details .cts-pre { padding-block: 6px; font-size: var(--text-sm); }
-    </style>`;
 }
