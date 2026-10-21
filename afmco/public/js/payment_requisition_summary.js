@@ -23,7 +23,7 @@ frappe.provide("afmco.pr_summary");
 	const SADAD = ["SADAD Payment", "Work Permit Fee Payment", "Passport Fee Payment"];
 	const BANK_LOCKED = ["Document Upload", "Waiting", "Paid", "Cancelled"];
 	const BANK_ENTRY = ["Waiting Bank Entry", "First Approval for Bank"];
-	const BANK_DATE_STATES = [...BANK_ENTRY, "Document Upload", "Waiting", "Paid"];
+	const BANK_DATE_STATES = [...BANK_ENTRY, "Document Upload", "Waiting", "Paid", "Cancelled"];
 	const JE_STATES = ["Document Upload", "Paid"];
 	const STATE_TONE = {
 		"Financial Controller": "blue",
