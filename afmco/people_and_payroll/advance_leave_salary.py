@@ -434,3 +434,35 @@ def refuse_unfinished_contract_year(doc):
                     "Row {0} of the leave allowance table falls in the contract year {1} to {2}, which ends more than 90 days after this request was created."
                 ).format(row.idx, year_start.isoformat(), year_end.isoformat())
             )
+
+
+def refuse_unearned_rows(doc):
+    if not doc.date_1:
+        return
+    unpaid = unpaid_leave(doc.employee)
+    for row in doc.cva or []:
+        if row.status == PAID or not (row.contract_start_date and row.contract_end_date):
+            continue
+        year = contract_year_of(doc.date_1, row.contract_start_date, unpaid)
+        if not year:
+            continue
+        k, year_start, year_end = year
+        start, end = getdate(row.contract_start_date), getdate(row.contract_end_date)
+        earned = flt(
+            leave_days(flt(entitlement(doc, k)), start, min(end, year_end), year_start, year_end, unpaid), 2
+        )
+        if end > year_end or flt(row.vad) > earned:
+            frappe.throw(
+                _(
+                    "Leave allowance row {0} asks for {1} days from {2} to {3}, but contract year {4} runs from {5} to {6} and this period earns {7} days. Match the row dates to the contract year."
+                ).format(
+                    row.idx,
+                    f"{flt(row.vad):g}",
+                    formatdate(start),
+                    formatdate(end),
+                    k,
+                    formatdate(year_start),
+                    formatdate(year_end),
+                    f"{earned:g}",
+                )
+            )

@@ -8,6 +8,7 @@ from afmco.people_and_payroll.advance_leave_salary import (
     follow_status_switch,
     recompute_advance,
     refuse_settled_employee,
+    refuse_unearned_rows,
     refuse_unfinished_contract_year,
 )
 
@@ -18,5 +19,6 @@ class AdvanceLeaveSalary(Document):
             refuse_settled_employee(self)
         recompute_advance(self)
         follow_status_switch(self)
+        refuse_unearned_rows(self)
         if self.workflow_state == APPROVED and self.has_value_changed("workflow_state"):
             refuse_unfinished_contract_year(self)
