@@ -15734,3 +15734,16 @@ Payroll Bot checks,فحوصات مساعد الرواتب
 {0} days,{0} يوم
 A submitted Journal Entry exists for this Payment Requisition. {0} cannot be changed.,يوجد قيد يومية معتمد لطلب الصرف هذا. لا يمكن تغيير {0}.
 "Leave allowance row {0} asks for {1} days from {2} to {3}, but contract year {4} runs from {5} to {6} and this period earns {7} days. Match the row dates to the contract year.",صف بدل الإجازة {0} يطلب {1} يوماً من {2} إلى {3}، لكن سنة العقد {4} تمتد من {5} إلى {6} والمستحق عن هذه الفترة {7} يوماً. عدّل تواريخ الصف لتطابق سنة العقد.
+"Good evening, {0}",مساء الخير، {0}
+{0} of {1} steps done,{0} من {1} خطوات مكتملة
+Get to know Frappe HR,تعرف على Frappe HR
+Add your employees,أضف موظفيك
+Hire your first employee,وظّف أول موظف لديك
+"Open a job, add an applicant and make them an offer.",افتح وظيفة شاغرة، أضف متقدمًا، وقدّم له عرضًا
+Welcome and see off employees,استقبل الموظفين ودّعهم
+Track attendance and shifts,تابع الحضور والورديات
+Manage time off,أدر الإجازات
+Settle employee expenses,سوِّ مصروفات الموظفين
+Run your first payroll,نفّذ أول مسير رواتب
+Deduct the right tax,اخصم الضريبة الصحيحة
+Review performance,راجع الأداء
