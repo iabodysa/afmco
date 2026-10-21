@@ -15746,3 +15746,867 @@ Settle employee expenses,سوِّ مصروفات الموظفين
 Run your first payroll,نفّذ أول مسير رواتب
 Deduct the right tax,اخصم الضريبة الصحيحة
 Review performance,راجع الأداء
+"# Account Settings
+
+In ERPNext, Accounting features are configurable as per your business needs. Accounts Settings is the place to define some of your accounting preferences like:
+
+ - Credit Limit and over billing settings
+ - Taxation preferences
+ - Deferred accounting preferences","# إعدادات الحسابات
+
+في ERPNext، يمكنك ضبط خصائص المحاسبة حسب احتياجات عملك. إعدادات الحسابات هي المكان الذي تحدد فيه بعض تفضيلاتك المحاسبية، مثل:
+
+ - حد الائتمان وإعدادات الفوترة الزائدة
+ - تفضيلات الضرائب
+ - تفضيلات المحاسبة المؤجلة"
+"# Account Settings
+
+This is a crucial piece of configuration. There are various account settings in ERPNext to restrict and configure actions in the Accounting module.
+
+The following settings are avaialble for you to configure
+
+1. Account Freezing 
+2. Credit and Overbilling
+3. Invoicing and Tax Automations
+4. Balance Sheet configurations
+
+There's much more, you can check it all out in this step","# إعدادات الحسابات
+
+هذا إعداد أساسي. يوفر ERPNext عدة إعدادات للحسابات لتقييد الإجراءات وضبطها في وحدة المحاسبة.
+
+يمكنك ضبط الإعدادات التالية
+
+1. تجميد الحسابات 
+2. الائتمان والفوترة الزائدة
+3. أتمتة الفوترة والضرائب
+4. إعدادات قائمة المركز المالي
+
+وهناك المزيد، يمكنك الاطلاع عليه كله في هذه الخطوة"
+"# Add an Existing Asset
+
+If you are just starting with ERPNext, you will need to enter Assets you already possess. You can add them as existing fixed assets in ERPNext. Please note that you will have to make a Journal Entry separately updating the opening balance in the fixed asset account.","# إضافة أصل موجود
+
+إذا كنت تبدأ استخدام ERPNext للتو، فستحتاج إلى إدخال الأصول التي تملكها بالفعل. يمكنك إضافتها كأصول ثابتة موجودة في ERPNext. لاحظ أنك ستحتاج إلى إنشاء قيد اليومية بشكل منفصل لتحديث الرصيد الافتتاحي في حساب الأصول الثابتة."
+"# All about sales invoice
+
+A Sales Invoice is a bill that you send to your Customers against which the Customer makes the payment. Sales Invoice is an accounting transaction. On submission of Sales Invoice, the system updates the receivable and books income against a Customer Account.","# كل ما يخص فاتورة مبيعات
+
+فاتورة مبيعات هي الفاتورة التي ترسلها إلى عملائك ليسددوا قيمتها، وهي معاملة محاسبية. وعند اعتمادها يحدّث النظام الذمم المدينة ويقيّد الإيراد على حساب العميل."
+"# Asset Category
+
+An Asset Category classifies different assets of a Company.
+
+You can create an Asset Category based on the type of assets. For example, all your desktops and laptops can be part of an Asset Category named ""Electronic Equipments"". Create a separate category for furniture. Also, you can update default properties for each category, like:
+ - Depreciation type and duration
+ - Fixed asset account
+ - Depreciation account","# فئة الأصول
+
+تصنّف فئة الأصول أصول الشركة المختلفة.
+
+يمكنك إنشاء فئة الأصول حسب نوع الأصول. مثلًا، يمكن أن تندرج جميع أجهزة الحاسب المكتبية والمحمولة تحت فئة أصول باسم ""الأجهزة الإلكترونية"". وأنشئ فئة منفصلة للأثاث. ويمكنك أيضًا تحديث الخصائص الافتراضية لكل فئة، مثل:
+ - نوع الإهلاك ومدته
+ - حساب الأصل الثابت
+ - حساب الإهلاك"
+"# Asset Item
+
+Asset items are created based on Asset Category. You can create one or multiple items against once Asset Category. The sales and purchase transaction for Asset is done via Asset Item.","# صنف الأصل
+
+تُنشأ أصناف الأصول بناءً على فئة الأصول. يمكنك إنشاء صنف واحد أو أكثر تحت فئة الأصول الواحدة. وتتم معاملات بيع الأصل وشرائه عبر صنف الأصل."
+"# Buying Settings
+
+
+Buying module’s features are highly configurable as per your business needs. Buying Settings is the place where you can set your preferences for:
+
+- Supplier naming and default values
+- Billing and shipping preference in buying transactions","# إعدادات الشراء
+
+
+يمكن ضبط ميزات إدارة المشتريات بدرجة عالية حسب احتياجات عملك. وإعدادات الشراء هي المكان الذي تحدد فيه تفضيلاتك لما يلي:
+
+- تسمية الموردين والقيم الافتراضية
+- تفضيلات الفوترة والشحن في معاملات الشراء"
+"# CRM Settings
+
+CRM module’s features are configurable as per your business needs. CRM Settings is the place where you can set your preferences for:
+- Campaign
+- Lead
+- Opportunity
+- Quotation","# إعدادات إدارة علاقات العملاء
+
+يمكنك ضبط خصائص إدارة علاقات العملاء حسب احتياج عملك. من إعدادات إدارة علاقات العملاء تحدد تفضيلاتك لما يلي:
+- حملة
+- عميل محتمل
+- فرصة
+- عرض سعر"
+"# Check Stock Reports
+Based on the various stock transactions, you can get a host of one-click Stock Reports in ERPNext like Stock Ledger, Stock Balance, Projected Quantity, and Ageing analysis.","# راجع تقارير المخزون
+بناءً على حركات المخزون المختلفة، يوفّر لك ERPNext بنقرة واحدة مجموعة من تقارير المخزون، مثل دفتر أستاذ المخزون ورصيد المخزون والكمية المتوقعة وتحليل التقادم."
+"# Cost Centers for Budgeting and Analysis
+
+While your Books of Accounts are framed to fulfill statutory requirements, you can set up Cost Center and Accounting Dimensions to address your companies reporting and budgeting requirements.
+
+Click here to learn more about how  <b>[Cost Center](https://docs.erpnext.com/docs/v13/user/manual/en/accounts/cost-center)</b> and <b> [Dimensions](https://docs.erpnext.com/docs/v13/user/manual/en/accounts/accounting-dimensions)</b> allow you to get advanced financial analytics reports from ERPNext.","# مراكز التكلفة للموازنة والتحليل
+
+تُعَدّ دفاترك المحاسبية لتلبية المتطلبات النظامية، ويمكنك أيضًا إعداد مراكز التكلفة والأبعاد المحاسبية لتلبية احتياجات شركتك في التقارير والموازنات.
+
+اطّلع على كيفية استخدام <b>[مركز التكلفة](https://docs.erpnext.com/docs/v13/user/manual/en/accounts/cost-center)</b> و<b> [الأبعاد المحاسبية](https://docs.erpnext.com/docs/v13/user/manual/en/accounts/accounting-dimensions)</b> للحصول على تقارير تحليلات مالية متقدمة من ERPNext."
+"# Create a Customer
+
+The Customer master is at the heart of your sales transactions. Customers are linked in Quotations, Sales Orders, Invoices, and Payments. Customers can be either numbered or identified by name (you would typically do this based on the number of customers you have).
+
+Through Customer’s master, you can effectively track essentials like:
+ - Customer’s multiple address and contacts
+ - Account Receivables
+ - Credit Limit and Credit Period","# أضف عميلًا
+
+سجل العميل هو محور معاملات البيع. ويُربط العملاء بعروض الأسعار وأوامر البيع والفواتير والمدفوعات. ويمكن ترقيم العملاء أو تعريفهم بالاسم (ويعتمد ذلك عادةً على عدد عملائك).
+
+من خلال سجل العميل، يمكنك متابعة الأساسيات بكفاءة، مثل:
+ - عناوين العميل وجهات الاتصال المتعددة
+ - الذمم المدينة
+ - حد الائتمان وفترة الائتمان"
+"# Create a Letter Head
+
+A Letter Head contains your organization's name, logo, address, etc which appears at the header and footer portion in documents. You can learn more about Setting up Letter Head in ERPNext here.","# أنشئ رأس الرسالة
+
+يحتوي رأس الرسالة على اسم منشأتك وشعارها وعنوانها وغير ذلك، ويظهر في أعلى المستندات وأسفلها. يمكنك معرفة المزيد عن إعداد رأس الرسالة في ERPNext هنا."
+"# Create a Quotation
+
+Let’s get started with business transactions by creating your first Quotation. You can create a Quotation for an existing customer or a prospect. It will be an approved document, with items you sell and the proposed price + taxes applied. After completing the instructions, you will get a Quotation in a ready to share print format.","# أنشئ عرض سعر
+
+لنبدأ المعاملات التجارية بإنشاء أول عرض سعر لك. يمكنك إنشاء عرض سعر لعميل حالي أو لعميل محتمل. وسيكون مستندًا معتمدًا يتضمن الأصناف التي تبيعها والسعر المقترح + الضرائب المطبقة. وبعد إكمال التعليمات، ستحصل على عرض سعر بتنسيق طباعة جاهز للمشاركة."
+"# Create a Supplier
+
+Also known as Vendor, is a master at the center of your purchase transactions. Suppliers are linked in Request for Quotation, Purchase Orders, Receipts, and Payments. Suppliers can be either numbered or identified by name.
+
+Through Supplier’s master, you can effectively track essentials like:
+ - Supplier’s multiple address and contacts
+ - Account Receivables
+ - Credit Limit and Credit Period","# أنشئ مورداً
+
+المورد، ويُعرف أيضاً بالبائع، سجل رئيسي تدور حوله معاملات الشراء. يرتبط المورد بطلب عرض سعر وأوامر الشراء وسندات الاستلام والمدفوعات. ويمكن ترقيم الموردين أو تمييزهم بالاسم.
+
+من سجل المورد تتابع بسهولة أموراً أساسية مثل:
+ - عناوين المورد وجهات الاتصال المتعددة
+ - الذمم المدينة
+ - حد الائتمان وفترة الائتمان"
+"# Create an Item
+
+Item is a product, of a or service offered by your company, or something you buy as a part of your supplies or raw materials.
+
+Items are integral to everything you do in ERPNext - from billing, purchasing to managing inventory. Everything you buy or sell, whether it is a physical product or a service is an Item. Items can be stock, non-stock, variants, serialized, batched, assets etc.","# أنشئ صنفًا
+
+الصنف منتج أو خدمة تقدمها شركتك، أو شيء تشتريه ضمن مستلزماتك أو موادك الخام.
+
+الأصناف أساس كل ما تقوم به في ERPNext، من الفوترة والشراء إلى إدارة المخزون. فكل ما تشتريه أو تبيعه، سواء كان منتجًا ماديًا أو خدمة، هو صنف. ويمكن أن تكون الأصناف مخزنية أو غير مخزنية، أو متغيرات، أو بأرقام تسلسلية، أو بدفعات، أو أصولًا، وغير ذلك."
+"# Create first Purchase Order
+
+Purchase Order is at the heart of your buying transactions. In ERPNext, Purchase Order can can be created against a Purchase Material Request (indent) and Supplier Quotation as well.  Purchase Orders is also linked to Purchase Receipt and Purchase Invoices, allowing you to keep a birds-eye view on your purchase deals.","# أنشئ أول أمر شراء
+
+أمر الشراء هو محور معاملات الشراء. وفي ERPNext، يمكن إنشاء أمر الشراء بناءً على طلب مواد للشراء وعلى عرض سعر مورد أيضًا. ويرتبط أمر الشراء كذلك بسند استلام المشتريات وفواتير المشتريات، مما يمنحك نظرة شاملة على صفقات الشراء."
+"# Financial Statements
+
+In ERPNext, you can get crucial financial reports like [Balance Sheet] and [Profit and Loss] statements with a click of a button. You can run in the report for a different period and plot analytics charts premised on statement data. For more reports, check sections like Financial Statements, General Ledger, and Profitability reports.
+
+<b>[Check Accounting reports](https://docs.erpnext.com/docs/v13/user/manual/en/accounts/accounting-reports)</b>","# القوائم المالية
+
+في ERPNext تحصل على التقارير المالية الأساسية مثل [قائمة المركز المالي] و[قائمة الربح أو الخسارة] بضغطة زر. يمكنك تشغيل التقرير لفترة مختلفة ورسم مخططات تحليلية من بيانات القائمة. ولمزيد من التقارير، راجع أقساماً مثل القوائم المالية ودفتر الأستاذ العام وتقارير الربحية.
+
+<b>[اطّلع على التقارير المحاسبية](https://docs.erpnext.com/docs/v13/user/manual/en/accounts/accounting-reports)</b>"
+"# Fixed Asset Accounts
+
+With the company, a host of fixed asset accounts are pre-configured. To ensure your asset transactions are leading to correct accounting entries, you can review and set up following asset accounts as per your business  requirements.
+ - Fixed asset accounts (Asset account)
+ - Accumulated depreciation
+ - Capital Work in progress (CWIP) account
+ - Asset Depreciation account (Expense account)","# حسابات الأصول الثابتة
+
+تُهيّأ مع الشركة مجموعة من حسابات الأصول الثابتة مسبقًا. ولضمان أن تنتج معاملات الأصول قيودًا محاسبية صحيحة، يمكنك مراجعة حسابات الأصول التالية وإعدادها حسب متطلبات عملك.
+ - حسابات الأصول الثابتة (حساب الأصل)
+ - الإهلاك المتراكم
+ - حساب الأعمال الرأسمالية تحت التنفيذ (CWIP)
+ - حساب إهلاك الأصول (حساب مصروف)"
+"# How Production Planning Works
+
+Production Plan helps in production and material planning for the Items planned for manufacturing. These production items can be committed via Sales Order (to Customers) or Material Requests (internally).","# كيف يعمل تخطيط الإنتاج
+
+تساعدك خطة الإنتاج في تخطيط الإنتاج والمواد للأصناف المخطط تصنيعها. ويمكن الالتزام بهذه الأصناف عبر أمر البيع (للعملاء) أو طلب مواد (داخلياً)."
+"# Import Data from Spreadsheet
+
+In ERPNext, you can easily migrate your historical data using spreadsheets. You can use it for migrating not just masters (like Customer, Supplier, Items), but also for transactions like (outstanding invoices, opening stock and accounting entries, etc).","# استورد البيانات من جدول بيانات
+
+في ERPNext، يمكنك نقل بياناتك السابقة بسهولة باستخدام جداول البيانات. ولا يقتصر ذلك على السجلات الرئيسية (مثل العميل والمورد والأصناف)، بل يشمل المعاملات أيضًا (مثل الفواتير المستحقة ومخزون أول المدة والقيود المحاسبية وغيرها)."
+"# Introduction to Stock Entry
+This video will give a quick introduction to [**Stock Entry**](https://docs.erpnext.com/docs/user/manual/en/stock/stock-entry).","# مقدمة في حركة مخزون
+يقدّم هذا الفيديو تعريفًا سريعًا بـ[**حركة مخزون**](https://docs.erpnext.com/docs/user/manual/en/stock/stock-entry)."
+"# Manage Stock Movements
+Stock entry allows you to register the movement of stock for various purposes like transfer, received, issues, repacked, etc. To address issues related to theft and pilferages,  you can always ensure that the movement of goods happens against a document reference Stock Entry in ERPNext.
+
+Let’s get a quick walk-through on the various scenarios covered in Stock Entry by watching [*this video*](https://www.youtube.com/watch?v=Njt107hlY3I).","# إدارة حركات المخزون
+تتيح لك حركة مخزون تسجيل حركة البضاعة لأغراض مختلفة مثل التحويل والاستلام والصرف وإعادة التعبئة وغيرها. وللحد من السرقة والفقد، تأكد دائمًا من أن حركة البضاعة تتم بموجب مستند حركة مخزون في ERPNext.
+
+للتعرّف سريعًا على الحالات المختلفة التي تغطيها حركة مخزون، شاهد [*هذا الفيديو*](https://www.youtube.com/watch?v=Njt107hlY3I)."
+"# Navigation in ERPNext
+
+Ease of navigating and browsing around the ERPNext is one of our core strengths. In the following video, you will learn how to reach a specific feature in ERPNext via module page or AwesomeBar.","# التنقل في ERPNext
+
+سهولة التنقل والتصفح في ERPNext من أهم نقاط قوتنا. ستتعرف في الفيديو التالي على طريقة الوصول إلى ميزة معيّنة في ERPNext من صفحة الوحدة أو من شريط AwesomeBar."
+"# Purchase an Asset
+
+Assets purchases process if done following the standard Purchase cycle. If capital work in progress is enabled in Asset Category, Asset will be created as soon as Purchase Receipt is created for it. You can quickly create a Purchase Receipt for Asset and see its impact on books of accounts.","# شراء أصل
+
+تتم عملية شراء الأصول وفق دورة الشراء المعتادة. إذا كانت الأعمال الرأسمالية تحت التنفيذ مفعّلة في فئة الأصول، يُنشأ الأصل فور إنشاء سند استلام المشتريات الخاص به. يمكنك إنشاء سند استلام المشتريات للأصل بسرعة ومتابعة أثره على الدفاتر المحاسبية."
+"# Review Stock Settings
+
+In ERPNext, the Stock module’s features are configurable as per your business needs. Stock Settings is the place where you can set your preferences for:
+- Default values for Item and Pricing
+- Default valuation method for inventory valuation
+- Set preference for serialization and batching of item
+- Set tolerance for over-receipt and delivery of items","# راجع إعدادات المخزون
+
+في ERPNext يمكنك ضبط خصائص إدارة المستودعات حسب احتياج عملك. من إعدادات المخزون تحدد تفضيلاتك لما يلي:
+- القيم الافتراضية للصنف والتسعير
+- طريقة التقييم الافتراضية لتقييم المخزون
+- تفضيلات الترقيم التسلسلي والدفعات للأصناف
+- نسبة السماح بالاستلام والتسليم الزائد للأصناف"
+"# Sales Order
+
+A Sales Order is a confirmation of an order from your customer. It is also referred to as Proforma Invoice.
+
+Sales Order at the heart of your sales and purchase transactions. Sales Orders are linked in Delivery Note, Sales Invoices, Material Request, and Maintenance transactions. Through Sales Order, you can track fulfillment of the overall deal towards the customer.","# أمر البيع
+
+أمر البيع تأكيد لطلب من عميلك، ويُسمى أيضًا الفاتورة المبدئية.
+
+أمر البيع هو محور معاملات البيع والشراء. ترتبط أوامر البيع بسند تسليم وفواتير المبيعات وطلب مواد ومعاملات الصيانة. ومن خلال أمر البيع، يمكنك متابعة تنفيذ الصفقة كاملة مع العميل."
+"# Set Up a Company
+
+A company is a legal entity for which you will set up your books of account and create accounting transactions. In ERPNext, you can create multiple companies, and establish relationships (group/subsidiary) among them.
+
+Within the company master, you can capture various default accounts for that Company and set crucial settings related to the accounting methodology followed for a company.","# إعداد شركة
+
+الشركة كيان قانوني تُعدّ له دفاترك المحاسبية وتُنشئ له القيود المحاسبية. في ERPNext، يمكنك إنشاء عدة شركات وتحديد العلاقات بينها (مجموعة/تابعة).
+
+في سجل الشركة، يمكنك تحديد الحسابات الافتراضية لتلك الشركة وضبط الإعدادات الأساسية المتعلقة بالمنهجية المحاسبية التي تتبعها الشركة."
+"# Setting up Taxes
+
+Any sophisticated accounting system, including ERPNext will have automatic tax calculations for your transactions. These calculations are based on user defined rules in compliance to local rules and regulations.
+
+ERPNext allows this via *Tax Templates*. These templates can be used in Sales Orders and Sales Invoices. Other types of charges that may apply to your invoices (like shipping, insurance etc.) can also be configured as taxes.
+
+For Tax Accounts that you want to use in the tax templates, go to:
+
+`> Accounting > Taxes > Sales Taxes and Charges Template`
+
+You can read more about these templates in our documentation [here](https://docs.erpnext.com/docs/user/manual/en/selling/sales-taxes-and-charges-template)","# إعداد الضرائب
+
+أي نظام محاسبي متطور، ومنه ERPNext، يحتسب الضرائب تلقائيًا على معاملاتك. وتستند هذه الحسابات إلى قواعد يحددها المستخدم وفق الأنظمة واللوائح المحلية.
+
+يتيح ERPNext ذلك من خلال *قوالب الضرائب*. ويمكن استخدام هذه القوالب في أوامر البيع وفواتير المبيعات. ويمكن أيضًا ضبط الرسوم الأخرى التي قد تنطبق على فواتيرك (مثل الشحن والتأمين وغيرها) كضرائب.
+
+لتحديد حسابات الضرائب التي تريد استخدامها في قوالب الضرائب، انتقل إلى:
+
+`> Accounting > Taxes > Sales Taxes and Charges Template`
+
+يمكنك قراءة المزيد عن هذه القوالب في التوثيق [هنا](https://docs.erpnext.com/docs/user/manual/en/selling/sales-taxes-and-charges-template)"
+"# Setup Routing
+
+A Routing stores all Operations along with the description, hourly rate, operation time, batch size, etc. Click below to learn how the Routing template can be created, for quick selection in the BOM.","# أعدّ التوجيه
+
+يحفظ التوجيه جميع العمليات مع وصفها وتكلفة الساعة ومدة العملية وحجم الدفعة وغيرها. اضغط أدناه لتعرف كيف تنشئ قالب التوجيه لاختياره بسرعة في جدول المواد."
+"# Setup a Warehouse
+The warehouse can be your location/godown/store where you maintain the item's inventory, and receive/deliver them to various parties.
+
+In ERPNext, you can maintain a Warehouse in the tree structure, so that location and sub-location of an item can be tracked. Also, you can link a Warehouse to a specific Accounting ledger, where the real-time stock value of that warehouse’s item will be reflected.","# إعداد المستودع
+المستودع هو الموقع أو المخزن أو المتجر الذي تحفظ فيه مخزون الأصناف، وتستلمها منه أو تسلّمها لمختلف الأطراف.
+
+في ERPNext، يمكنك تنظيم المستودعات في هيكل شجري، لتتبع موقع الصنف والمواقع الفرعية له. ويمكنك أيضًا ربط المستودع بحساب محاسبي محدد، تظهر فيه القيمة الفورية لمخزون أصناف ذلك المستودع."
+"# Track Material Request
+
+
+Also known as Purchase Request or an Indent, is a document identifying a requirement of a set of items (products or services) for various purposes like procurement, transfer, issue, or manufacturing. Once the Material Request is validated, a purchase manager can take the next actions for purchasing items like requesting RFQ from a supplier or directly placing an order with an identified Supplier.","# تتبّع طلب مواد
+
+
+طلب المواد، ويُعرف أيضًا بطلب الشراء، مستند يحدد الحاجة إلى مجموعة من الأصناف (منتجات أو خدمات) لأغراض مختلفة مثل الشراء أو التحويل أو الصرف أو التصنيع. وبعد اعتماد طلب المواد، يستطيع مدير المشتريات اتخاذ الخطوات التالية لشراء الأصناف، مثل طلب عرض سعر من مورد أو إصدار أمر شراء مباشرة لمورد محدد."
+"# Update Stock Opening Balance
+It’s an entry to update the stock balance of an item, in a warehouse, on a date and time you are going live on ERPNext.
+
+Once opening stocks are updated, you can create transactions like manufacturing and stock deliveries, where this opening stock will be consumed.","# حدّث الرصيد الافتتاحي للمخزون
+هو قيد لتحديث رصيد مخزون الصنف في مستودع معيّن، بتاريخ ووقت بدء تشغيلك على ERPNext.
+
+وبعد تحديث المخزون الافتتاحي، يمكنك إنشاء معاملات مثل التصنيع وتسليم البضاعة، ويُستهلك فيها هذا المخزون الافتتاحي."
+"# Updating Opening Balances
+
+Once you close the financial statement in previous accounting software, you can update the same as opening in your ERPNext's Balance Sheet accounts. This will allow you to get complete financial statements from ERPNext in the coming years, and discontinue the parallel accounting system right away.","# تحديث الأرصدة الافتتاحية
+
+بعد إقفال القوائم المالية في نظامك المحاسبي السابق، يمكنك إدخالها كأرصدة افتتاحية في حسابات قائمة المركز المالي في ERPNext. يتيح لك ذلك الحصول على قوائم مالية كاملة من ERPNext في السنوات القادمة، وإيقاف النظام المحاسبي الموازي فورًا."
+"# View Warehouse
+In ERPNext the term 'warehouse' can be thought of as a storage location.
+
+Warehouses are arranged in ERPNext in a tree like structure, where multiple sub-warehouses can be grouped under a single warehouse.
+
+In this step we will view the [**Warehouse Tree**](https://docs.erpnext.com/docs/user/manual/en/stock/warehouse#21-tree-view) to view the [**Warehouses**](https://docs.erpnext.com/docs/user/manual/en/stock/warehouse) that are set by default.","# عرض المستودع
+في ERPNext، يُقصد بمصطلح 'المستودع' موقع التخزين.
+
+تُرتّب المستودعات في ERPNext في هيكل شجري، حيث يمكن تجميع عدة مستودعات فرعية تحت مستودع واحد.
+
+في هذه الخطوة سنعرض [**شجرة المستودعات**](https://docs.erpnext.com/docs/user/manual/en/stock/warehouse#21-tree-view) لعرض [**المستودعات**](https://docs.erpnext.com/docs/user/manual/en/stock/warehouse) المعدّة افتراضيًا."
+"# What's a Purchase Invoice?
+
+A Purchase Invoice is a bill you receive from your Suppliers against which you need to make the payment.
+Purchase Invoice is the exact opposite of your Sales Invoice. Here you accrue expenses to your Supplier. 
+
+The following is what a typical purchase cycle looks like, however you can create a purchase invoice directly as well.
+
+![Purchase Flow](https://docs.erpnext.com/docs/assets/img/accounts/pi-flow.png)","# ما هي فاتورة المشتريات؟
+
+فاتورة المشتريات هي الفاتورة التي تستلمها من المورد ويلزمك سدادها.
+وهي عكس فاتورة المبيعات تماماً، وفيها تُقيّد المصروفات المستحقة للمورد.
+
+فيما يلي الشكل المعتاد لدورة الشراء، ويمكنك أيضاً إنشاء فاتورة مشتريات مباشرة.
+
+![دورة الشراء](https://docs.erpnext.com/docs/assets/img/accounts/pi-flow.png)"
+"## Products and Services
+
+Depending on the nature of your business, you might be selling products or services to your clients or even both. 
+ERPNext is optimized for itemized management of your sales and purchase.
+
+The **Item Master**  is where you can add all your sales items. If you are in services, you can create an Item for each service that you offer. If you run a manufacturing business, the same master is used for keeping a record of raw materials, sub-assemblies etc.
+
+Completing the Item Master is very essential for the successful implementation of ERPNext. We have a brief video introducing the item master for you, you can watch it in the next step.","## المنتجات والخدمات
+
+حسب طبيعة عملك، قد تبيع لعملائك منتجات أو خدمات أو كليهما.
+صُمّم ERPNext لإدارة المبيعات والمشتريات على مستوى الصنف.
+
+في **سجل الأصناف** تضيف جميع أصناف المبيعات. إذا كان نشاطك خدمياً، فأنشئ صنفاً لكل خدمة تقدمها. وإذا كنت تدير نشاطاً صناعياً، فالسجل نفسه يحفظ المواد الخام والتجميعات الفرعية وغيرها.
+
+إكمال سجل الأصناف أساسي لنجاح تطبيق ERPNext. أعددنا لك فيديو قصيراً يعرّفك بسجل الأصناف، وتشاهده في الخطوة التالية."
+"<h3>HR Settings</h3>
+
+Hr Settings consists of major settings related to Employee Lifecycle, Leave Management, etc. Click on Explore, to explore Hr Settings.","<h3>إعدادات الموارد البشرية</h3>
+
+تضم إعدادات الموارد البشرية أهم الإعدادات المتعلقة بدورة حياة الموظف وإدارة الإجازات وغيرها. انقر على استكشاف لاستعراض إعدادات الموارد البشرية."
+"A DocType (Document Type) is used to insert forms in ERPNext. Forms such as Customer, Orders, and Invoices are Doctypes in the backend. You can also create new DocTypes to create new forms in ERPNext as per your business needs.",يُستخدم نوع المستند (DocType) لإضافة النماذج في ERPNext. فالنماذج مثل العميل والطلبات والفواتير هي أنواع مستندات في النظام. ويمكنك أيضًا إنشاء أنواع مستندات جديدة لإضافة نماذج جديدة في ERPNext حسب احتياجات عملك.
+"A Sales Order is a confirmation of an order from your customer. It is also referred to as Proforma Invoice.
+
+Sales Order at the heart of your sales and purchase transactions. Sales Orders are linked in Delivery Note, Sales Invoices, Material Request, and Maintenance transactions. Through Sales Order, you can track fulfillment of the overall deal towards the customer.","أمر البيع تأكيد لطلب من عميلك، ويُسمى أيضًا الفاتورة المبدئية.
+
+أمر البيع هو محور معاملات البيع والشراء. ترتبط أوامر البيع بسند تسليم وفواتير المبيعات وطلب مواد ومعاملات الصيانة. ومن خلال أمر البيع، يمكنك متابعة تنفيذ الصفقة كاملة مع العميل."
+"A bonus, arrear or deduction for one payroll period. See [Additional Salary](https://docs.frappe.io/hr/additional-salary).",مكافأة أو فروقات أو استقطاع لفترة رواتب واحدة. راجع [راتب إضافي](https://docs.frappe.io/hr/additional-salary).
+A business or person you buy from. See [Supplier](https://docs.frappe.io/erpnext/user/manual/en/supplier).,منشأة أو شخص تشتري منه. راجع [المورد](https://docs.frappe.io/erpnext/user/manual/en/supplier).
+A business or person you sell to. See [Customer](https://docs.frappe.io/erpnext/user/manual/en/customer).,جهة أو شخص تبيع له. راجع [عميل](https://docs.frappe.io/erpnext/user/manual/en/customer).
+"A course you run for employees, with its trainer and what it covers. See [Training Program](https://docs.frappe.io/hr/training-program).",دورة تقدمها للموظفين، مع مدربها ومحتواها. راجع [برنامج تدريب](https://docs.frappe.io/hr/training-program).
+"A kind of leave, such as casual or sick, and its rules. See [Leave Type](https://docs.frappe.io/hr/leave-type).",نوع من الإجازات، مثل الإجازة العارضة أو المرضية، وقواعده. راجع [نوع الإجازة](https://docs.frappe.io/hr/leave-type).
+"A measurable target for an employee, tracked against a KRA. See [Goal](https://docs.frappe.io/hr/goal).",هدف قابل للقياس لموظف، يُتابَع مقابل مجال النتائج الرئيسي. راجع [الهدف](https://docs.frappe.io/hr/goal).
+A product or a service you sell. See [Item](https://docs.frappe.io/erpnext/user/manual/en/item).,منتج أو خدمة تبيعها. راجع [الصنف](https://docs.frappe.io/erpnext/user/manual/en/item).
+A punch from a biometric device or the mobile app. Auto attendance turns these into attendance. See [Employee Checkin](https://docs.frappe.io/hr/employee-checkin).,بصمة من جهاز البصمة أو من تطبيق الجوال، ويحوّلها الحضور التلقائي إلى سجلات حضور. راجع [تسجيل حضور وانصراف](https://docs.frappe.io/hr/employee-checkin).
+A reviewer's ratings and comments on an employee for the cycle. See [Employee Performance Feedback](https://docs.frappe.io/hr/employee-performance-feedback).,تقييمات المراجع وملاحظاته على الموظف خلال الدورة. راجع [ملاحظات أداء الموظف](https://docs.frappe.io/hr/employee-performance-feedback).
+"A role you are hiring for, which you can publish on your job portal. See [Job Opening](https://docs.frappe.io/hr/job-opening).",وظيفة تريد التوظيف لها، ويمكنك نشرها في بوابة الوظائف. راجع [وظيفة شاغرة](https://docs.frappe.io/hr/job-opening).
+A session of a training program and the employees attending it. See [Training Event](https://docs.frappe.io/hr/training-event).,جلسة من برنامج تدريب والموظفون الحاضرون لها. راجع [حدث تدريب](https://docs.frappe.io/hr/training-event).
+A shift's working hours and the rules for marking attendance from check-ins. See [Shift Type](https://docs.frappe.io/hr/shift-type).,ساعات عمل الوردية وقواعد احتساب الحضور من تسجيل الحضور والانصراف. راجع [نوع الوردية](https://docs.frappe.io/hr/shift-type).
+"Accounts, Invoices, Taxation, and more.",الحسابات والفواتير والضرائب والمزيد.
+Add Asset,أضف أصلًا
+Add Bank Account,أضف حسابًا مصرفيًا
+Add Blog Category,أضف فئة مدونة
+Add Checkin,أضف تسجيل حضور
+Add Customer,أضف عميلًا
+Add Employee,أضف موظفًا
+Add Job Applicant,أضف طلب وظيفة
+Add Supplier,أضف مورداً
+Add User,أضف مستخدمًا
+Add a customer,أضف عميلًا
+Add a key result area,أضف مجال نتائج رئيسيًا
+Add a leave type,أضف نوع إجازة
+Add a product you make,أضف منتجًا تصنعه
+Add a raw material,أضف مادة خام
+Add a salary component,أضف مكون راتب
+Add a supplier,أضف موردًا
+"Add a supplier, order from them and pay their bill.",أضف مورداً، واطلب منه، وادفع فاتورته.
+Add an Existing Asset,أضف أصلاً قائماً
+Add an applicant,أضف متقدمًا
+Add an asset item,أضف صنف أصل
+Add an existing Asset,أضف أصلاً قائماً
+"Add an item and a customer, bill them and collect the payment.",أضف صنفًا وعميلًا، ثم أصدر الفاتورة وحصّل المبلغ.
+Add an item you buy,أضف صنفًا تشتريه
+Add an item you sell,أضف صنفًا تبيعه
+Add an item you stock,أضف صنفًا تخزّنه
+Add income tax slabs,أضف شرائح ضريبة الدخل
+Add the bank account you use,أضف الحساب المصرفي الذي تستخدمه
+Add the people you work with and choose what they can see.,أضف من تعمل معهم واختر ما يمكنهم رؤيته.
+"An area an employee is measured on, such as quality or delivery. See [Appraisal Template](https://docs.frappe.io/hr/appraisal-template).",مجال يُقاس عليه أداء الموظف، مثل الجودة أو التسليم. راجع [قالب تقييم الأداء](https://docs.frappe.io/hr/appraisal-template).
+"An earning or deduction on the salary slip, such as Basic or Provident Fund. See [Salary Component](https://docs.frappe.io/hr/salary-component).",استحقاق أو استقطاع في قسيمة الراتب، مثل الراتب الأساسي أو صندوق الادخار. راجع [مكون الراتب](https://docs.frappe.io/hr/salary-component).
+An employee's claim for money they spent on work. The expense approver approves and submits it. See [Expense Claim](https://docs.frappe.io/hr/expense-claim).,مطالبة الموظف بمبلغ أنفقه على العمل. يوافق عليها مسؤول الموافقة على المصروفات ويعتمدها. راجع [مطالبة مصروف](https://docs.frappe.io/hr/expense-claim).
+An employee's request for time off. Their leave approver approves and submits it. See [Leave Application](https://docs.frappe.io/hr/leave-application).,طلب الموظف للحصول على إجازة. يوافق عليه معتمد إجازاته ثم يعتمده. راجع [طلب إجازة](https://docs.frappe.io/hr/leave-application).
+An employee's request to be marked present for days on duty or working from home. See [Attendance Request](https://docs.frappe.io/hr/attendance-request).,طلب يقدّمه الموظف لاحتسابه حاضرًا في أيام المهام الرسمية أو العمل من المنزل. راجع [طلب حضور وانصراف](https://docs.frappe.io/hr/attendance-request).
+An interview round with the applicant and the people interviewing them. See [Interview](https://docs.frappe.io/hr/interview).,جولة مقابلة تجمع المتقدم بمن يجرون المقابلة معه. راجع [مقابلة](https://docs.frappe.io/hr/interview).
+"Anything with a start and an end: a client job, an installation, an internal initiative. See [Project](https://docs.frappe.io/erpnext/user/manual/en/project).",كل عمل له بداية ونهاية: مهمة لعميل، أو تركيب، أو مبادرة داخلية. راجع [المشروع](https://docs.frappe.io/erpnext/user/manual/en/project).
+Anything you keep on shelves and count. See [Item](https://docs.frappe.io/erpnext/user/manual/en/item).,كل ما تحفظه على الرفوف وتجرده. راجع [الصنف](https://docs.frappe.io/erpnext/user/manual/en/item).
+Apply for Leave,قدّم طلب إجازة
+Appraise an employee,قيّم موظفًا
+Approval and funding for a work trip before it happens. See [Travel Request](https://docs.frappe.io/hr/travel-request).,اعتماد رحلة العمل وتمويلها قبل موعدها. راجع [طلب السفر](https://docs.frappe.io/hr/travel-request).
+Approve a leave request,اعتمد طلب إجازة
+Approve an expense claim,اعتمد مطالبة مصروف
+Approve an expense claim and pay the employee back.,اعتمد مطالبة مصروف وردّ للموظف ما دفعه.
+Approved claims that have not been paid back yet.,المطالبات المعتمدة التي لم تُصرف بعد.
+"Assets, Depreciations, Repairs, and more.",الأصول والإهلاك والإصلاحات وغيرها.
+"Assets, liabilities and equity on any date, straight from your ledger. See [Balance Sheet](https://docs.frappe.io/erpnext/user/manual/en/balance-sheet).",الأصول والالتزامات وحقوق الملكية في أي تاريخ، مباشرة من دفتر الأستاذ. راجع [قائمة المركز المالي](https://docs.frappe.io/erpnext/user/manual/en/balance-sheet).
+Assign Salary Structure,عيّن هيكل الراتب
+Assign a shift,عيّن وردية
+Assign it to an employee,عيّنه لموظف
+"Bill your customer for the item. Submit it, then use **Print** to see it on paper or send it as a PDF. See [Sales Invoice](https://docs.frappe.io/erpnext/user/manual/en/sales-invoice).",أصدر فاتورة لعميلك بالصنف. اعتمدها، ثم استخدم **طباعة** لعرضها ورقياً أو إرسالها بصيغة PDF. راجع [فاتورة مبيعات](https://docs.frappe.io/erpnext/user/manual/en/sales-invoice).
+"Blogs, Website View Tracking, and more.",المدونات وتتبع زيارات الموقع الإلكتروني والمزيد.
+Break a project into tasks and log the time your team spends.,قسّم المشروع إلى مهام وسجّل الوقت الذي يقضيه فريقك.
+Break it into tasks,قسّمه إلى مهام
+Build a salary structure,جهّز هيكل الراتب
+"Build a salary structure, assign it and run payroll.",أنشئ هيكل الراتب، وعيّنه، ثم نفّذ مسير الرواتب.
+Build an appraisal template,جهّز قالب تقييم الأداء
+Bundle leave types into a policy,اجمع أنواع الإجازات في سياسة
+Check Stock Ledger,راجع دفتر أستاذ المخزون
+Check Stock Projected Qty,راجع الكمية المتوقعة للمخزون
+Check each employee's tax,راجع ضريبة كل موظف
+Check help to setup Routing,راجع التعليمات لإعداد التوجيه
+Check its depreciation,راجع إهلاكه
+Check leave balances,راجع أرصدة الإجازات
+Check the month's attendance,راجع حضور الشهر
+Check what you owe,راجع المبالغ المستحقة عليك
+"Check your chart of accounts and taxes, and add the bank account you use.",راجع دليل الحسابات والضرائب، وأضف الحساب المصرفي الذي تستخدمه.
+Check your profit,راجع أرباحك
+Check your stock levels,راجع مستويات المخزون
+Choose flexible benefits,اختر المزايا المرنة
+Compare scores across a cycle,قارن الدرجات خلال الدورة
+"Compare the results against the goal, and decide what to change. See [Quality Management](https://docs.frappe.io/erpnext/user/manual/en/quality-management).",قارن النتائج بالهدف، وقرّر ما يجب تغييره. راجع [إدارة الجودة](https://docs.frappe.io/erpnext/user/manual/en/quality-management).
+"Computers, vehicles, furniture: how each kind depreciates, and which accounts it posts to. See [Asset Category](https://docs.frappe.io/erpnext/user/manual/en/asset-category).",الحواسيب والمركبات والأثاث: كيف يُهلك كل نوع، وإلى أي حسابات يُرحَّل. راجع [فئة الأصول](https://docs.frappe.io/erpnext/user/manual/en/asset-category).
+Configure Account Settings,اضبط إعدادات الحسابات
+Configure Buying Settings.,اضبط إعدادات الشراء.
+Configure Selling Settings.,اضبط إعدادات البيع.
+Confirm a sales order,أكّد أمر البيع
+Confirm what the customer ordered and when it is due. Deliver and invoice from the order itself. See [Sales Order](https://docs.frappe.io/erpnext/user/manual/en/sales-order).,أكّد ما طلبه العميل وموعد استحقاقه، ثم سلّم وأصدر الفاتورة من الأمر نفسه. راجع [أمر البيع](https://docs.frappe.io/erpnext/user/manual/en/sales-order).
+Cost Centers for Budgeting and Analysis,مراكز التكلفة للميزانية والتحليل
+Create & Assign Salary Structure,أنشئ هيكل الراتب وعيّنه
+Create Appointment Letter,أنشئ رسالة التعيين
+Create Appraisal,أنشئ تقييمًا
+Create Appraisal Cycle,أنشئ دورة تقييم الأداء
+Create Appraisal Template,أنشئ قالب تقييم الأداء
+Create Asset Maintenance,أنشئ صيانة الأصول
+Create Asset Movement,أنشئ حركة الأصول
+Create Attendance Request,أنشئ طلب حضور وانصراف
+Create BOM,أنشئ جدول المواد
+Create Benefit Application,أنشئ طلب مزايا
+Create Blogger,أنشئ مدوّنًا
+Create Custom Fields,أنشئ حقولاً مخصصة
+Create Declaration,أنشئ إقرارًا
+Create Department,أنشئ قسماً
+Create Designation,أنشئ المسمى الوظيفي
+Create Employee Advance,أنشئ سلفة الموظف
+Create Expense Claim,أنشئ مطالبة مصروف
+Create Goal,أنشئ هدفاً
+Create Gratuity Rule,أنشئ قاعدة مكافأة نهاية الخدمة
+Create Healthcare Practitioner,أضف ممارسًا صحيًا
+Create Holiday List,أنشئ قائمة العطلات
+Create Income Tax Slab,أنشئ شرائح ضريبة الدخل
+Create Job Offer,أنشئ عرض عمل
+Create KRA,أنشئ مجال النتائج الرئيسي
+Create Leave Policy,أنشئ سياسة الإجازة
+Create Leave Type,أنشئ نوع الإجازة
+Create Maintenance Schedule,أنشئ جدول الصيانة
+Create Non Conformance,سجّل عدم المطابقة
+Create Patient,أنشئ سجل مريض
+Create Payroll Entry,أنشئ إدخال الرواتب
+Create Payroll Period,أنشئ فترة الرواتب
+Create Practitioner Schedule,أنشئ جدول الممارس الصحي
+Create Production Plan,أنشئ خطة الإنتاج
+Create Project Template,أنشئ قالب المشروع
+Create Quality Goal,أنشئ هدف الجودة
+Create Quality Inspection,أنشئ فحص الجودة
+Create Quality Inspection Template,أنشئ قالب فحص الجودة
+Create Quality Procedure,أنشئ إجراء الجودة
+Create Quality Review,أنشئ مراجعة الجودة
+Create Salary Component,أنشئ مكون الراتب
+Create Salary Structure,أنشئ هيكل الراتب
+Create Shift Type,أنشئ نوع الوردية
+Create Stock Reconciliation,أنشئ تسوية المخزون
+Create Template,أنشئ قالبًا
+Create Training Event,أنشئ حدث تدريب
+Create Training Program,أنشئ برنامج تدريب
+Create Travel Request,أنشئ طلب السفر
+Create Your First Purchase Invoice,أنشئ أول فاتورة مشتريات
+Create Your First Sales Invoice,أنشئ أول فاتورة مبيعات
+Create a BOM (Bill of Material),أنشئ جدول المواد (BOM)
+Create a Course,أنشئ مقررًا دراسيًا
+Create a Customer,أنشئ عميلًا
+Create a Finished Good,أنشئ منتجًا تامًا
+Create a Fixed Asset Item,أنشئ صنف أصل ثابت
+Create a Material Transfer Entry,أنشئ حركة تحويل مواد
+Create a Operation,أنشئ العمليات الإنتاجية
+Create a Program,أنشئ برنامجًا
+Create a Sales Item,أنشئ صنف مبيعات
+Create a Sales Order,أنشئ أمر بيع
+Create a Student,أضف طالبًا
+Create a Supplier,أضف موردًا
+Create a Topic,أنشئ موضوعًا
+Create a Warehouse,أنشئ مستودعاً
+Create a Work Order,أنشئ أمر عمل
+Create a Workstation / Machine,أنشئ محطة عمل / آلة
+Create a new Item,أنشئ صنفًا جديدًا
+Create an Asset,أنشئ أصلًا
+Create an Asset Category,أنشئ فئة الأصول
+Create an Asset Item,أنشئ صنف أصل
+Create an Instructor,أضف مدرّسًا
+Create an Item,أنشئ صنفًا
+Create and Send Quotation,أنشئ عرض سعر وأرسله
+Create first Purchase Order,أنشئ أول أمر شراء
+Create your first Quotation,أنشئ أول عرض سعر
+Create your first Sales Order,أنشئ أول أمر بيع
+Creates salary slips for everyone in a period and books the salary. See [Payroll Entry](https://docs.frappe.io/hr/payroll-entry).,ينشئ قسائم الرواتب لجميع الموظفين خلال الفترة ويقيّد الرواتب. راجع [إدخال الرواتب](https://docs.frappe.io/hr/payroll-entry).
+Custom Document Types,أنواع المستندات المخصصة
+"Custom Field, Custom Doctype, Naming Series, Role Permission, Workflow, Print Formats, Reports",حقل مخصص، نوع مستند مخصص، سلسلة الترقيم، صلاحيات الأدوار، سير العمل، تنسيقات الطباعة، التقارير
+Customization onboarding is all done!,اكتمل إعداد التخصيص!
+Customize Print Formats,خصّص تنسيقات الطباعة
+Decide how many to make. The raw materials you need are worked out from the BOM. See [Work Order](https://docs.frappe.io/erpnext/user/manual/en/work-order).,حدّد الكمية المطلوب تصنيعها. وتُحتسب المواد الخام اللازمة من جدول المواد. راجع [أمر العمل](https://docs.frappe.io/erpnext/user/manual/en/work-order).
+Decide what to check,حدّد ما يجب فحصه
+Declare tax exemptions,قدّم إقرار الإعفاءات الضريبية
+Define Asset Category,حدّد فئة الأصول
+Define a shift,حدّد وردية
+"Define a shift, put an employee on it and mark their attendance.",عرّف وردية، وعيّن موظفاً عليها، وسجّل حضوره.
+"Depreciation is posted on schedule, asset by asset, without a journal entry from you. See [Depreciation](https://docs.frappe.io/erpnext/user/manual/en/asset-depreciation).",يُسجَّل الإهلاك في موعده لكل أصل على حدة، دون أن تُدخل قيد اليومية بنفسك. راجع [الإهلاك](https://docs.frappe.io/erpnext/user/manual/en/asset-depreciation).
+Done: {0},مكتمل: {0}
+"Each document created in ERPNext can have a unique ID generated for it, using a prefix defined for it. Though each document has some prefix pre-configured, you can further customize it using tools like Naming Series Tool and Document Naming Rule.",يمكن توليد معرّف فريد لكل مستند يُنشأ في ERPNext باستخدام بادئة محددة له. ورغم أن لكل مستند بادئة معدّة مسبقاً، يمكنك تخصيصها أكثر بأدوات مثل أداة سلسلة الترقيم وقاعدة ترقيم المستندات.
+Each employee's attendance for every day of the month.,حضور كل موظف في كل يوم من الشهر.
+"Each employee's goal, feedback and self appraisal scores in a cycle.",درجات الأهداف والملاحظات والتقييم الذاتي لكل موظف في الدورة.
+"Employee, Leaves, and more.",الموظف والاجازات والمزيد.
+"Employees by branch, department, designation or grade.",الموظفون حسب الفرع أو القسم أو المسمى الوظيفي أو الدرجة.
+Enable Website Tracking,فعّل تتبع الموقع الإلكتروني
+Enroll a Student in a Program,سجّل طالبًا في برنامج
+Enter a supplier's bill,أدخل فاتورة مورد
+Enter the stock you have today,أدخل المخزون المتوفر لديك اليوم
+Enter their bill,أدخل فاتورة المورد
+"Every form in ERPNext has a standard set of fields. If you need to capture some information, but there is no standard Field available for it, you can insert Custom Field for it.
+
+Once custom fields are added, you can use them for reports and analytics charts as well.","كل نموذج في ERPNext يحتوي على مجموعة قياسية من الحقول. وإذا احتجت إلى تسجيل معلومة لا يوجد لها حقل قياسي، يمكنك إضافة حقل مخصص لها.
+
+وبعد إضافة الحقول المخصصة، يمكنك استخدامها أيضًا في التقارير والرسوم البيانية التحليلية."
+"Every movement of every item, in and out, with the balance after each. See [Stock Ledger](https://docs.frappe.io/erpnext/user/manual/en/stock-ledger).",كل حركة دخول وخروج لكل صنف، مع الرصيد بعد كل حركة. راجع [دفتر أستاذ المخزون](https://docs.frappe.io/erpnext/user/manual/en/stock-ledger).
+"Every posting from your invoices and payments, with its debit and credit. See [General Ledger](https://docs.frappe.io/erpnext/user/manual/en/general-ledger).",كل قيد من فواتيرك ومدفوعاتك بمدينه ودائنه. راجع [دفتر الأستاذ العام](https://docs.frappe.io/erpnext/user/manual/en/general-ledger).
+"Every salary slip in a period, component by component.",جميع قسائم الرواتب في الفترة، مفصّلة حسب كل مكوّن.
+"Every work order, how far along it is, and what is running late. See [Work Order Summary](https://docs.frappe.io/erpnext/user/manual/en/work-order-summary).",كل أوامر العمل، ومدى تقدّم كل منها، والمتأخر منها. راجع [ملخص أوامر العمل](https://docs.frappe.io/erpnext/user/manual/en/work-order-summary).
+Explore,استكشف
+Explore Clinical Procedure Templates,استكشف قوالب الإجراءات السريرية
+Explore Healthcare Settings,استكشف إعدادات الرعاية الصحية
+Explore Manufacturing Settings,استكشف إعدادات التصنيع
+Finish making it,أكمل تصنيعه
+Follow every movement,تابع كل حركة
+Follow up on unpaid invoices,تابع الفواتير غير المسددة
+"For anything that isn't an invoice or a payment: accruals, depreciation, or fixing a mistake. See [Journal Entry](https://docs.frappe.io/erpnext/user/manual/en/journal-entry).",لكل ما ليس فاتورة أو دفعة: المستحقات، والإهلاك، وتصحيح الأخطاء. راجع [قيد اليومية](https://docs.frappe.io/erpnext/user/manual/en/journal-entry).
+"From the store to the shop floor, or between branches. See [Stock Entry](https://docs.frappe.io/erpnext/user/manual/en/stock-entry).",من المخزن إلى صالة الإنتاج، أو بين الفروع. راجع [حركة مخزون](https://docs.frappe.io/erpnext/user/manual/en/stock-entry).
+Generate Custom Reports,أنشئ تقارير مخصصة
+Get paid,حصّل مستحقاتك
+Get to know ERPNext,تعرف على ERPNext
+Get your books ready,جهّز دفاترك المحاسبية
+Give Feedback,قدّم ملاحظاتك
+Give an employee an advance,اصرف سلفة لموظف
+Give an employee leave,خصّص إجازة لموظف
+Give feedback,قدّم ملاحظاتك
+Good afternoon,مساء الخير
+"Good afternoon, {0}",مساء الخير، {0}
+Good evening,مساء الخير
+Good morning,صباح الخير
+"Good morning, {0}",صباح الخير، {0}
+Goods or services you buy from suppliers. See [Item](https://docs.frappe.io/erpnext/user/manual/en/item).,السلع أو الخدمات التي تشتريها من الموردين. راجع [الصنف](https://docs.frappe.io/erpnext/user/manual/en/item).
+Hand it to a person or place,سلّمه لشخص أو موقع
+Handle an exit,تابع مغادرة موظف
+How an employee splits their flexible benefit amount across components. See [Employee Benefit Application](https://docs.frappe.io/hr/employee-benefit-application).,طريقة توزيع الموظف لمبلغ مزاياه المرنة على المكونات. راجع [طلب مزايا الموظف](https://docs.frappe.io/hr/employee-benefit-application).
+How gratuity is calculated from years of service. See [Gratuity Rule](https://docs.frappe.io/hr/gratuity-rule).,طريقة احتساب مكافأة نهاية الخدمة حسب سنوات الخدمة. راجع [قاعدة مكافأة نهاية الخدمة](https://docs.frappe.io/hr/gratuity-rule).
+How many days of each leave type an employee gets in a year. See [Leave Policy](https://docs.frappe.io/hr/leave-policy).,عدد أيام كل نوع إجازة يستحقها الموظف في السنة. راجع [سياسة الإجازة](https://docs.frappe.io/hr/leave-policy).
+"How much of each item is on your shelves, and what it is worth. From here, every receipt and delivery keeps it up to date. See [Stock Reconciliation](https://docs.frappe.io/erpnext/user/manual/en/stock-reconciliation).",كمية كل صنف على رفوفك وقيمته. ومن هنا يبقى محدّثًا مع كل استلام وتسليم. راجع [تسوية المخزون](https://docs.frappe.io/erpnext/user/manual/en/stock-reconciliation).
+How much of each leave type every employee has left.,الرصيد المتبقي لكل موظف من كل نوع إجازة.
+How to Navigate in ERPNext,طريقة التنقل في ERPNext
+Import Data from Spreadsheet,استورد البيانات من جدول بيانات
+"Import a statement from your bank and pair each line with a payment, so your books agree with it. See [Bank Reconciliation](https://docs.frappe.io/erpnext/user/manual/en/bank-reconciliation).",استورد كشف حسابك من البنك وطابق كل سطر فيه مع دفعة، لتتطابق دفاترك معه. راجع [التسوية البنكية](https://docs.frappe.io/erpnext/user/manual/en/bank-reconciliation).
+"In ERPNext, you can add your Employees as Users, and give them restricted access. Tools like Role Permission and User Permission allow you to define rules which give restricted access to the user to masters and transactions.",في ERPNext، يمكنك إضافة موظفيك كمستخدمين، ومنحهم صلاحيات محدودة. وتتيح لك أدوات مثل صلاحيات الأدوار وصلاحية المستخدم تحديد قواعد تقيّد وصول المستخدم إلى السجلات الرئيسية والمعاملات.
+"In each module, you will find a host of single-click reports, ranging from financial statements to sales and purchase analytics and stock tracking reports. If a required new report is not available out-of-the-box, you can create custom reports in ERPNext by pulling values from the same multiple ERPNext tables.",ستجد في كل وحدة مجموعة من التقارير الجاهزة بنقرة واحدة، من القوائم المالية إلى تحليلات المبيعات والمشتريات وتقارير تتبع المخزون. وإذا لم يتوفر التقرير الذي تحتاجه، يمكنك إنشاء تقارير مخصصة في ERPNext بسحب القيم من عدة جداول فيه.
+"Income against expenses for any period, built from every invoice and payment you have recorded.",الإيرادات مقابل المصروفات لأي فترة، محسوبة من كل فاتورة ودفعة سجلتها.
+Inspect goods coming in or going out,افحص البضائع الواردة والصادرة
+Introduction to Assets,مقدمة عن الأصول
+Introduction to CRM,مقدمة في إدارة علاقات العملاء
+Introduction to Healthcare Practitioner,مقدمة عن الممارس الصحي
+Introduction to Program and Courses,مقدمة في البرامج والمقررات
+Introduction to Selling,مقدمة عن إدارة المبيعات
+Introduction to Stock Entry,مقدمة عن حركة مخزون
+Introduction to Student Attendance,مقدمة عن حضور الطلاب
+Introduction to Student Group,مقدمة عن مجموعة الطلاب
+Introduction to Website,مقدمة عن الموقع الإلكتروني
+"Inventory, Warehouses, Analysis, and more.",المخزون والمستودعات والتحليلات وغيرها.
+Invite your team,ادعُ فريقك
+It clears their bill and takes the money out of your bank or cash account. See [Payment Entry](https://docs.frappe.io/erpnext/user/manual/en/payment-entry).,يسدّد فاتورة المورد ويخصم المبلغ من حسابك المصرفي أو النقدي. راجع [سندات القبض والدفع](https://docs.frappe.io/erpnext/user/manual/en/payment-entry).
+"It posts the expense, and what you owe the supplier, to your ledger. See [Purchase Invoice](https://docs.frappe.io/erpnext/user/manual/en/purchase-invoice).",يسجّل المصروف والمبلغ المستحق للمورد في دفاترك. راجع [فاتورة مشتريات](https://docs.frappe.io/erpnext/user/manual/en/purchase-invoice).
+"Item, Customer, Supplier and Quotation",الصنف والعميل والمورد وعرض السعر
+Keep quality in check,راقب الجودة
+Keep track of your stock,تابع مخزونك
+Know what you own and owe,اعرف ما لك وما عليك
+"Lead, Opportunity, Customer, and more.",عميل محتمل وفرصة وعميل وغيرها.
+Learn about  Navigation options,تعرّف على خيارات التنقل
+Learn about Standard and Custom Print Formats,تعرّف على تنسيقات الطباعة القياسية والمخصصة
+Learn about Web Pages,تعرّف على صفحات الويب
+Learn how to add Custom Fields,تعلّم كيفية إضافة الحقول المخصصة
+Learn how to update opening balances,تعرّف على طريقة تحديث الأرصدة الافتتاحية
+Learn more about Production Planning,اعرف المزيد عن تخطيط الإنتاج
+Learn more about Report Builders,تعرّف أكثر على منشئ التقارير
+Learn more about creating new DocTypes,اعرف المزيد عن إنشاء أنواع مستندات جديدة
+Learn more about data migration,اعرف المزيد عن ترحيل البيانات
+Let's Set Up Your Accounts and Taxes.,لنبدأ إعداد حساباتك وضرائبك.
+Let's Set Up Your CRM.,لنبدأ إعداد إدارة علاقات العملاء.
+Let's Set Up Your Website.,لنبدأ إعداد موقعك الإلكتروني.
+Let's Set Up the Assets Module.,لنبدأ إعداد الأصول.
+Let's Set Up the Buying Module.,لنبدأ إعداد وحدة إدارة المشتريات.
+Let's Set Up the Education Module.,لنبدأ إعداد وحدة التعليم.
+Let's Set Up the Healthcare Module.,لنبدأ إعداد وحدة الرعاية الصحية.
+Let's Set Up the Human Resource Module.,لنبدأ إعداد وحدة الموارد البشرية.
+Let's Set Up the Manufacturing Module.,لنبدأ إعداد إدارة التصنيع.
+Let's Set Up the Payroll Module.,لنبدأ إعداد وحدة مسير الرواتب.
+Let's Set Up the Selling Module.,لنبدأ إعداد وحدة إدارة المبيعات.
+Let's Set Up the Stock Module.,لنبدأ إعداد إدارة المستودعات.
+Let's begin your journey with ERPNext,لنبدأ رحلتك مع ERPNext
+Let's create a Purchase Receipt,لننشئ سند استلام المشتريات
+Let's create a new Asset item,لننشئ صنف أصل جديد
+Let's review existing Asset Category,لنراجع فئة الأصول الحالية
+Let's review your Company,لنراجع شركتك
+Let's walk-through Chart of Accounts to review setup,لنستعرض دليل الحسابات لمراجعة الإعداد
+Lets create a Tax Template for Sales,لننشئ قالب ضريبة للمبيعات
+Let’s convert your first Sales Order against a Quotation,لنحوّل أول عرض سعر لديك إلى أمر بيع
+Let’s create a stock opening entry,لننشئ قيد افتتاح المخزون
+Let’s create your first  warehouse,لننشئ أول مستودع لك
+Let’s create your first Customer,لننشئ أول عميل لك
+Let’s create your first Material Request,لننشئ أول طلب مواد لك
+Let’s create your first Purchase Order,لننشئ أول أمر شراء لك
+Let’s create your first Quotation,لننشئ أول عرض سعر لك
+Let’s create your first Supplier,لننشئ أول مورد لك
+Let’s setup your first Letter Head,لنُعدّ رأس الرسالة الأول لك
+Let’s walk-through few Buying Settings,لنستعرض بعض إعدادات الشراء
+Log a problem,سجّل مشكلة
+Log time against it,سجّل ساعات العمل عليه
+Look at your workforce,اطّلع على القوى العاملة لديك
+Make a Sales Tax Template,أنشئ قالب ضريبة مبيعات
+Make an offer,قدّم عرض عمل
+Make your first sale,سجّل أول عملية بيع
+Manage Stock Movements,أدر حركات المخزون
+Manufacturing module is all set up!,اكتمل إعداد وحدة إدارة التصنيع!
+Mark attendance,سجّل الحضور
+Match your bank statement,طابق كشف حسابك البنكي
+"Money paid before the expense, settled later against the claim. See [Employee Advance](https://docs.frappe.io/hr/employee-advance).",مبلغ يُصرف قبل المصروف، ويُسوّى لاحقًا مقابل المطالبة. راجع [سلفة الموظف](https://docs.frappe.io/hr/employee-advance).
+Move stock between warehouses,انقل المخزون بين المستودعات
+"Note down a price a supplier offered, so you can compare suppliers before you order. See [Supplier Quotation](https://docs.frappe.io/erpnext/user/manual/en/supplier-quotation).",سجّل السعر الذي عرضه المورد، لتقارن بين الموردين قبل الطلب. راجع [عرض سعر مورد](https://docs.frappe.io/erpnext/user/manual/en/supplier-quotation).
+Onboard a new hire,هيّئ موظفًا جديدًا
+"Once the customer agrees, turn it into a sales order or an invoice from the quotation itself. See [Quotation](https://docs.frappe.io/erpnext/user/manual/en/quotation).",عند موافقة العميل، حوّله إلى أمر بيع أو فاتورة من عرض السعر نفسه. راجع [عرض سعر](https://docs.frappe.io/erpnext/user/manual/en/quotation).
+One employee's ratings for a cycle. The cycle can create these for everyone in it. See [Appraisal](https://docs.frappe.io/hr/appraisal).,تقييمات موظف واحد خلال دورة التقييم، ويمكن للدورة إنشاؤها لجميع المشمولين فيها. راجع [تقييم](https://docs.frappe.io/hr/appraisal).
+Open Accounts,افتح إدارة الحسابات
+Open Accounts Payable,افتح الذمم الدائنة
+Open Accounts Receivable,افتح الذمم المدينة
+Open Appraisal Overview,افتح نظرة عامة على تقييم الأداء
+Open Asset Depreciation Ledger,افتح دفتر أستاذ إهلاك الأصول
+Open Assets,افتح الأصول
+Open Balance Sheet,افتح قائمة المركز المالي
+Open Banking,افتح الخدمات البنكية
+Open Buying,افتح إدارة المشتريات
+Open Chart of Accounts,افتح دليل الحسابات
+Open Delayed Tasks Summary,افتح ملخص المهام المتأخرة
+Open Employee Analytics,افتح تحليلات الموظفين
+Open Employee Leave Balance,افتح رصيد إجازات الموظف
+Open Expenses,افتح المصروفات
+Open Fixed Asset Register,افتح سجل الأصول الثابتة
+Open Income Tax Computation,افتح احتساب ضريبة الدخل
+Open Leaves,افتح الإجازات
+Open Manufacturing,افتح إدارة التصنيع
+Open Monthly Attendance Sheet,افتح كشف الحضور الشهري
+Open Payroll,افتح مسير الرواتب
+Open Performance,افتح الأداء
+Open Profit and Loss,افتح الربح أو الخسارة
+Open Project Summary,افتح ملخص المشروع
+Open Purchase Order Analysis,افتح تحليل أوامر الشراء
+Open Quality,افتح الجودة
+Open Recruitment,افتح التوظيف
+Open Recruitment Analytics,افتح تحليلات التوظيف
+Open Salary Register,افتح تقرير الرواتب الشهرية
+Open Sales Analytics,افتح تحليلات المبيعات
+Open Sales Taxes and Charges Template,افتح قالب الضرائب على المبيعات
+Open Selling,افتح إدارة المبيعات
+Open Shift & Attendance,افتح الدوام والحضور
+Open Stock,افتح إدارة المستودعات
+Open Stock Balance,افتح رصيد المخزون
+Open Stock Ledger,افتح دفتر أستاذ المخزون
+Open Tax & Benefits,افتح الضرائب والمزايا
+Open Tenure,افتح مدة الخدمة
+Open Unpaid Claims,افتح المطالبات غير المدفوعة
+Open Unpaid Expense Claim,افتح مطالبة المصروفات غير المدفوعة
+Open Warehouse,افتح المستودع
+Open Work Order Summary,افتح ملخص أوامر العمل
+Open a job,افتح وظيفة شاغرة
+"Openings, applicants and offers for each designation in a staffing plan.",الوظائف الشاغرة والمتقدمون والعروض لكل مسمى وظيفي في خطة التوظيف.
+Optional,اختياري
+"Order from the supplier. When the goods arrive, receive them and record the bill from the order itself. See [Purchase Order](https://docs.frappe.io/erpnext/user/manual/en/purchase-order).",اطلب من المورد، وعند وصول البضاعة استلمها وسجّل الفاتورة من الأمر نفسه. راجع [أمر الشراء](https://docs.frappe.io/erpnext/user/manual/en/purchase-order).
+Order from your suppliers,اطلب من مورديك
+"Patients, Practitioner Schedules, Settings, and more.",المرضى وجداول الممارسين والإعدادات وغيرها.
+Pay a one-off amount,اصرف مبلغًا لمرة واحدة
+Pay the employee back,ردّ المبلغ للموظف
+Pay your supplier,ادفع للمورد
+Pick an approved claim from the list this opens and use Create > Payment on it. The payment is then linked to the claim and marks it paid. See [Expense Claim](https://docs.frappe.io/hr/expense-claim#payment-for-expense-claim).,اختر مطالبة معتمدة من القائمة التي تفتح، ثم استخدم إنشاء > دفعة عليها. ترتبط الدفعة بالمطالبة وتصبح المطالبة مدفوعة. راجع [مطالبة مصروف](https://docs.frappe.io/hr/expense-claim#payment-for-expense-claim).
+Place a purchase order,أصدر أمر الشراء
+Plan a training program,خطّط لبرنامج تدريبي
+Plan a work order,خطط لأمر عمل
+Plan a work trip,خطط لرحلة عمل
+Plan and deliver projects,خطط لمشاريعك ونفّذها
+Plan and run production,خطّط للإنتاج ونفّذه
+Plan maintenance visits,خطّط زيارات الصيانة
+Plan production from your orders,خطط للإنتاج بناءً على أوامر البيع
+Play video,شغّل الفيديو
+Post a journal entry,رحّل قيد يومية
+Print Formats allow you can define looks for documents when printed or converted to PDF. You can also create a custom Print Format using drag-and-drop tools.,تتيح لك تنسيقات الطباعة تحديد شكل المستندات عند طباعتها أو تحويلها إلى PDF. ويمكنك أيضًا إنشاء تنسيق طباعة مخصص بأدوات السحب والإفلات.
+Production Planning,تخطيط الإنتاج
+"Products, Purchases, Analysis, and more.",المنتجات والمشتريات والتحليلات والمزيد.
+"Products, Raw Materials, BOM, Work Order, and more.",المنتجات والمواد الخام وجدول المواد وأمر العمل وغيرها.
+"Products, Sales, Analysis, and more.",المنتجات والمبيعات والتحليلات والمزيد.
+"Progress, hours and costs for every project.",التقدم والساعات والتكاليف لكل مشروع.
+"Proof of what was declared, so the exemption counts in the final tax. See [Employee Tax Exemption Proof Submission](https://docs.frappe.io/hr/employee-tax-exemption-proof-submission).",إثبات ما صُرّح به ليُحتسب الإعفاء في الضريبة النهائية. راجع [إقرار الإعفاء من ضريبة الموظف](https://docs.frappe.io/hr/employee-tax-exemption-proof-submission).
+"Pull in open sales orders and work out what to make, and what to buy, to fill them.",اجلب أوامر البيع المفتوحة وحدّد ما تصنعه وما تشتريه لتلبيتها.
+Purchase an Asset,اشترِ أصلًا
+Purchase an Asset Item,اشترِ صنف أصل
+Puts an employee on a salary structure with their base pay from a date. See [Salary Structure Assignment](https://docs.frappe.io/hr/salary-structure-assignment).,يربط الموظف بهيكل راتب وراتبه الأساسي ابتداءً من تاريخ محدد. راجع [تعيين هيكل الراتب](https://docs.frappe.io/hr/salary-structure-assignment).
+Puts an employee on a shift from a date. See [Shift Assignment](https://docs.frappe.io/hr/shift-assignment).,يعيّن موظفاً على وردية ابتداءً من تاريخ محدد. راجع [تعيين الوردية](https://docs.frappe.io/hr/shift-assignment).
+Quote a price,قدّم عرض سعر
+"Raw materials come out of stock and the finished products go in. From the work order, **Finish** fills this in for you. See [Stock Entry](https://docs.frappe.io/erpnext/user/manual/en/stock-entry).",تخرج المواد الخام من المخزون وتدخل المنتجات التامة. ومن أمر العمل، يعبّئ زر **إنهاء** هذا لك. راجع [حركة مخزون](https://docs.frappe.io/erpnext/user/manual/en/stock-entry).
+Receive goods from a supplier,استلم بضاعة من مورد
+Record a check-in,سجّل حضوراً
+Record a supplier's quote,سجّل عرض سعر مورد
+Record an asset and see what it's worth year by year.,سجّل أصلًا وتابع قيمته سنة بعد سنة.
+Record an asset you already own,سجّل أصلًا تملكه حاليًا
+Record the hours spent on tasks. Bill them to the customer or use them to cost the project. See [Timesheet](https://docs.frappe.io/erpnext/user/manual/en/timesheets).,سجّل الساعات المصروفة على المهام. أصدر بها فاتورة للعميل أو استخدمها في حساب تكلفة المشروع. راجع [سجل ساعات العمل](https://docs.frappe.io/erpnext/user/manual/en/timesheets).
+"Record the results against a receipt or a delivery, and accept or reject the goods. See [Quality Inspection](https://docs.frappe.io/erpnext/user/manual/en/quality-inspection).",سجّل النتائج مقابل الاستلام أو التسليم، واقبل البضاعة أو ارفضها. راجع [فحص الجودة](https://docs.frappe.io/erpnext/user/manual/en/quality-inspection).
+"Record who has it and where it is, so you always know. See [Asset Movement](https://docs.frappe.io/erpnext/user/manual/en/asset-movement).",سجّل من يحتفظ بالأصل وأين يوجد، لتعرف ذلك دائمًا. راجع [حركة الأصول](https://docs.frappe.io/erpnext/user/manual/en/asset-movement).
+"Regular service visits for equipment you sold, planned ahead for the whole contract. See [Maintenance Schedule](https://docs.frappe.io/erpnext/user/manual/en/maintenance-schedule).",زيارات صيانة دورية للمعدات التي بعتها، مخطط لها مسبقًا طوال مدة العقد. راجع [جدول الصيانة](https://docs.frappe.io/erpnext/user/manual/en/maintenance-schedule).
+Request attendance,اطلب تسجيل الحضور
+Reuse it as a template,أعد استخدامه كقالب
+Review Fixed Asset Accounts,راجع حسابات الأصول الثابتة
+Review Payroll Settings,راجع إعدادات دفع الرواتب
+Review how a goal is going,راجع تقدّم الهدف
+Review the salary register,راجع تقرير الرواتب الشهرية
+Review your chart of accounts,راجع دليل الحسابات
+Review your taxes,راجع ضرائبك
+Review your warehouses,راجع مستودعاتك
+Run payroll,نفّذ مسير الرواتب
+"Salary, Compensation, and more.",الراتب والتعويضات وغيرها.
+"Sales by customer, item or territory, over any period. See [Sales Analytics](https://docs.frappe.io/erpnext/user/manual/en/sales-analytics).",المبيعات حسب العميل أو الصنف أو المنطقة، لأي فترة. راجع [تحليلات المبيعات](https://docs.frappe.io/erpnext/user/manual/en/sales-analytics).
+"Save the tasks you repeat on every job, and start the next project from them.",احفظ المهام التي تكررها في كل عمل، وابدأ مشروعك التالي منها.
+Schedule Interview,حدّد موعد مقابلة
+Schedule a training,حدّد موعد تدريب
+Schedule an interview,حدّد موعد مقابلة
+Schedule its upkeep,جدوِل صيانته
+See everything you own,اطّلع على كل ما تملكه
+See how production is going,تابع سير الإنتاج
+See what is still owed,اطّلع على المبالغ غير المسددة
+Send an appointment letter,أرسل رسالة التعيين
+Send your first invoice,أرسل أول فاتورة لك
+"Servicing, inspections and calibration, with reminders to the team doing it. See [Asset Maintenance](https://docs.frappe.io/erpnext/user/manual/en/asset-maintenance).",الخدمة والفحوصات والمعايرة، مع تذكير الفريق المسؤول عنها. راجع [صيانة الأصول](https://docs.frappe.io/erpnext/user/manual/en/asset-maintenance).
+Set Up a Company,أعدّ شركتك
+Set a goal,حدّد هدفاً
+Set a quality goal,حدّد هدف الجودة
+"Set the payroll period and tax slabs, and record what employees declare.",حدّد فترة الرواتب وشرائح الضريبة، وسجّل إقرارات الموظفين.
+Set up a gratuity rule,أعدّ قاعدة مكافأة نهاية الخدمة
+Set up an asset category,أعدّ فئة أصول
+Set up an inspection and record your first check.,جهّز الفحص وسجّل أول فحص لديك.
+Set up what employees are measured on and run an appraisal cycle.,حدّد معايير قياس أداء الموظفين، ونفّذ دورة تقييم الأداء.
+Set up your Warehouse,أعدّ المستودع
+Set up your warehouses and enter the stock you have today.,جهّز مستودعاتك وأدخل المخزون الموجود لديك اليوم.
+Set your holidays,حدّد العطلات
+"Set your holidays and leave types, give leave and approve a request.",حدّد العطلات وأنواع الإجازات، وخصّص الإجازات، واعتمد طلباً.
+Set your payroll period,حدّد فترة الرواتب
+Setup Approval Workflows,أعدّ سير عمل الموافقات
+Setup Limited Access for a User,امنح مستخدماً صلاحيات محدودة
+Setup Naming Series,أعدّ سلسلة الترقيم
+Setup Your Letterhead,أعدّ رأس الرسالة
+Setup a Warehouse,جهّز مستودعًا
+Ship to a customer,اشحن إلى عميل
+Someone who applied for a job opening. Applications from the job portal arrive here. See [Job Applicant](https://docs.frappe.io/hr/job-applicant).,شخص تقدّم إلى وظيفة شاغرة، وتصل إلى هنا الطلبات المقدّمة من بوابة التوظيف. راجع [طلب وظيفة](https://docs.frappe.io/hr/job-applicant).
+"Something you bought before using ERPNext, with what you paid, where it is, and how much has already depreciated. See [Asset](https://docs.frappe.io/erpnext/user/manual/en/asset).",أصل اشتريته قبل استخدام ERPNext، مع تكلفته وموقعه ومقدار ما أُهلك منه. راجع [الأصول](https://docs.frappe.io/erpnext/user/manual/en/asset).
+"Something you use to make your products, kept in the Raw Material group. See [Item](https://docs.frappe.io/erpnext/user/manual/en/item).",مادة تستخدمها في صنع منتجاتك، وتُحفظ ضمن مجموعة المواد الخام. راجع [الصنف](https://docs.frappe.io/erpnext/user/manual/en/item).
+"Something you want to measure and improve, like on-time delivery or returns, reviewed on a schedule you choose. See [Quality Management](https://docs.frappe.io/erpnext/user/manual/en/quality-management).",أمر تريد قياسه وتحسينه، مثل التسليم في الموعد أو المرتجعات، وتراجعه وفق جدول تختاره. راجع [إدارة الجودة](https://docs.frappe.io/erpnext/user/manual/en/quality-management).
+Spot delayed tasks,اكتشف المهام المتأخرة
+Spot your best sellers,اكتشف أكثر أصنافك مبيعًا
+Start Onboarding,ابدأ التهيئة
+Start Separation,ابدأ إنهاء الخدمة
+Start a project,ابدأ مشروعًا
+Start an appraisal cycle,ابدأ دورة تقييم أداء
+"Stock goes down as the goods leave, and the invoice can be made from the delivery. See [Delivery Note](https://docs.frappe.io/erpnext/user/manual/en/delivery-note).",ينخفض المخزون عند خروج البضاعة، ويمكن إصدار الفاتورة من التسليم نفسه. راجع [سند تسليم](https://docs.frappe.io/erpnext/user/manual/en/delivery-note).
+"Stock goes up in the warehouse you receive into, and the bill can be made from the receipt. See [Purchase Receipt](https://docs.frappe.io/erpnext/user/manual/en/purchase-receipt).",يزيد المخزون في المستودع الذي تستلم فيه، ويمكن إنشاء الفاتورة من سند الاستلام. راجع [سند استلام المشتريات](https://docs.frappe.io/erpnext/user/manual/en/purchase-receipt).
+"Students, Instructors, Programs and more.",الطلاب والمدرسون والبرامج وغيرها.
+Submit it to finish this step.,اعتمده لإنهاء هذه الخطوة.
+Submit proof of exemptions,قدّم إثبات الإعفاءات
+Take a quick walk-through of Accounts Settings,خذ جولة سريعة في إعدادات الحسابات
+Take a walk through Stock Settings,تجوّل في إعدادات المخزون
+"Tasks past their due date, and how late each one is.",المهام المتأخرة عن موعدها، ومدة تأخر كل منها.
+"Taxable income, exemptions and tax for each employee in a payroll period.",الدخل الخاضع للضريبة والإعفاءات والضريبة لكل موظف في فترة الرواتب.
+The Accounts Module is all set up!,اكتمل إعداد وحدة إدارة الحسابات!
+The Assets Module is all set up!,اكتمل إعداد وحدة الأصول!
+The Buying Module is all set up!,اكتمل إعداد إدارة المشتريات!
+The CRM Module is all set up!,اكتمل إعداد إدارة علاقات العملاء!
+The Education Module is all set up!,اكتمل إعداد وحدة التعليم!
+The Healthcare Module is all set up!,اكتمل إعداد وحدة الرعاية الصحية!
+The Human Resource Module is all set up!,اكتمل إعداد وحدة الموارد البشرية!
+"The KRAs and rating criteria for a role, with their weightage. See [Appraisal Template](https://docs.frappe.io/hr/appraisal-template).",مجالات النتائج الرئيسية ومعايير التقييم لكل دور، مع وزن كل منها. راجع [قالب تقييم الأداء](https://docs.frappe.io/hr/appraisal-template).
+The Payroll Module is all set up!,اكتمل إعداد وحدة الرواتب!
+The Selling Module is all set up!,اكتمل إعداد إدارة المبيعات!
+The Stock Module is all set up!,اكتمل إعداد إدارة المستودعات!
+"The account your customers pay into and you pay from, linked to its account in your chart of accounts. See [Bank Account](https://docs.frappe.io/erpnext/user/manual/en/bank-account).",الحساب الذي يدفع إليه عملاؤك وتدفع منه، ومرتبط بحسابه في دليل الحسابات. راجع [حساب مصرفي](https://docs.frappe.io/erpnext/user/manual/en/bank-account).
+"The bill your supplier sent, so you know what you owe and when it is due. See [Purchase Invoice](https://docs.frappe.io/erpnext/user/manual/en/purchase-invoice).",الفاتورة التي أرسلها المورد، لتعرف المبلغ المستحق عليك وموعد سداده. راجع [فاتورة مشتريات](https://docs.frappe.io/erpnext/user/manual/en/purchase-invoice).
+The days an employee can take of a leave type in a period. See [Leave Allocation](https://docs.frappe.io/hr/leave-allocation).,عدد الأيام التي يحق للموظف أخذها من نوع إجازة معيّن خلال فترة محددة. راجع [تخصيص إجازة](https://docs.frappe.io/hr/leave-allocation).
+"The earnings and deductions that make up a salary, and how each is calculated. See [Salary Structure](https://docs.frappe.io/hr/salary-structure).",الاستحقاقات والاستقطاعات التي يتكون منها الراتب، وطريقة احتساب كل منها. راجع [هيكل الراتب](https://docs.frappe.io/hr/salary-structure).
+The financial year that tax is calculated over. See [Payroll Period](https://docs.frappe.io/hr/payroll-period).,السنة المالية التي تُحسب عليها الضريبة. راجع [فترة الرواتب](https://docs.frappe.io/hr/payroll-period).
+The formal letter that confirms the role and its terms. See [Appointment Letter](https://docs.frappe.io/hr/appointment-letter).,الخطاب الرسمي الذي يؤكد الوظيفة وشروطها. راجع [رسالة التعيين](https://docs.frappe.io/hr/appointment-letter).
+The investments and expenses an employee plans to claim against tax. See [Employee Tax Exemption Declaration](https://docs.frappe.io/hr/employee-tax-exemption-declaration).,الاستثمارات والمصروفات التي ينوي الموظف خصمها من الضريبة. راجع [إعلان الإعفاء من ضريبة الموظف](https://docs.frappe.io/hr/employee-tax-exemption-declaration).
+"The kind of thing you own, marked as a fixed asset. See [Item](https://docs.frappe.io/erpnext/user/manual/en/item).",الصنف الذي يمثّل ما تملكه، مع تحديده كأصل ثابت. راجع [الصنف](https://docs.frappe.io/erpnext/user/manual/en/item).
+"The parameters to inspect and what counts as a pass, reused on every inspection. See [Quality Inspection Template](https://docs.frappe.io/erpnext/user/manual/en/quality-inspection-template).",المعايير التي تُفحص وشروط النجاح، وتُستخدم في كل فحص. راجع [قالب فحص الجودة](https://docs.frappe.io/erpnext/user/manual/en/quality-inspection-template).
+"The people you manage, with their joining date, department and reporting manager. See [Employee](https://docs.frappe.io/hr/employee).",الأشخاص الذين تديرهم، مع تاريخ التحاقهم وقسمهم ومديرهم المباشر. راجع [الموظف](https://docs.frappe.io/hr/employee).
+"The raw materials, and how much of each, that go into one unit of your product. Submit it to use it in production. See [BOM](https://docs.frappe.io/erpnext/user/manual/en/bill-of-materials).
+
+Sending some of the work to a supplier? See [Subcontracting](https://docs.frappe.io/erpnext/user/manual/en/subcontracting).","المواد الخام وكمية كل منها اللازمة لإنتاج وحدة واحدة من منتجك. اعتمده لتستخدمه في الإنتاج. راجع [جدول المواد](https://docs.frappe.io/erpnext/user/manual/en/bill-of-materials).
+
+تُسند جزءًا من العمل إلى مورد؟ راجع [تعاقد بالباطن](https://docs.frappe.io/erpnext/user/manual/en/subcontracting)."
+"The review period, and the employees and templates in it. See [Appraisal Cycle](https://docs.frappe.io/hr/appraisal-cycle).",فترة التقييم، والموظفون والقوالب المشمولة فيها. راجع [دورة تقييم الأداء](https://docs.frappe.io/hr/appraisal-cycle).
+"The steps your team follows, so it is done the same way every time. See [Quality Management](https://docs.frappe.io/erpnext/user/manual/en/quality-management).",الخطوات التي يتبعها فريقك لينجز العمل بالطريقة نفسها في كل مرة. راجع [إدارة الجودة](https://docs.frappe.io/erpnext/user/manual/en/quality-management).
+"The tasks to finish when someone joins, reused for every new hire. See [Employee Onboarding](https://docs.frappe.io/hr/employee-onboarding).",المهام التي يجب إنجازها عند انضمام موظف، وتُستخدم لكل موظف جديد. راجع [إعداد الموظف](https://docs.frappe.io/hr/employee-onboarding).
+The tax rate for each range of income. See [Income Tax Slab](https://docs.frappe.io/hr/income-tax-slab).,نسبة الضريبة لكل شريحة دخل. راجع [شرائح ضريبة الدخل](https://docs.frappe.io/hr/income-tax-slab).
+The taxes that fill in on every invoice. We added your country's where we had them; check the rates match what you charge. Purchase taxes live in [Purchase Taxes and Charges Template](/desk/purchase-taxes-and-charges-template). See [Setting Up Taxes](https://docs.frappe.io/erpnext/user/manual/en/setting-up-taxes).,الضرائب التي تُعبّأ تلقائيًا في كل فاتورة. أضفنا ضرائب بلدك متى توفرت لدينا؛ فتحقق من أن النسب تطابق ما تحتسبه. وتجد ضرائب المشتريات في [قالب الضرائب على المشتريات](/desk/purchase-taxes-and-charges-template). راجع [إعداد الضرائب](https://docs.frappe.io/erpnext/user/manual/en/setting-up-taxes).
+The terms you offer the applicant. Submit it once they accept. See [Job Offer](https://docs.frappe.io/hr/job-offer).,الشروط التي تعرضها على المتقدم. اعتمده بعد موافقته. راجع [عرض عمل](https://docs.frappe.io/hr/job-offer).
+The weekly offs and public holidays your employees get. See [Holiday List](https://docs.frappe.io/hr/holiday-list).,أيام الراحة الأسبوعية والعطلات الرسمية لموظفيك. راجع [قائمة العطلات](https://docs.frappe.io/hr/holiday-list).
+Trace every posting,تتبّع كل قيد
+Track Material Request,تابع طلب مواد
+Track hiring against your plan,تابع التوظيف مقابل خطتك
+Track progress and costs,تابع الإنجاز والتكاليف
+Track the joining tasks for a new hire and the exit tasks when someone leaves.,تابع مهام مباشرة الموظف الجديد ومهام إخلاء الطرف عند مغادرة أي موظف.
+Track what your business owns,تابع ما تملكه منشأتك
+Track your orders,تابع طلباتك
+Tracks the exit tasks when an employee leaves. Submit it once they are done. See [Employee Separation](https://docs.frappe.io/hr/employee-separation).,يتابع مهام إخلاء الطرف عند مغادرة الموظف. اعتمده بعد إنجازها. راجع [إنهاء خدمة الموظف](https://docs.frappe.io/hr/employee-separation).
+Tracks the joining tasks for one new employee. Submit it once they are done. See [Employee Onboarding](https://docs.frappe.io/hr/employee-onboarding).,يتابع مهام الالتحاق لموظف جديد واحد. اعتمده بعد إنجازها. راجع [إعداد الموظف](https://docs.frappe.io/hr/employee-onboarding).
+Update Stock Opening Balance,حدّث الرصيد الافتتاحي للمخزون
+Updating Opening Balances,تحديث الأرصدة الافتتاحية
+View Cost Center Tree,اعرض شجرة مراكز التكلفة
+View Warehouses,اعرض المستودعات
+"We created a few to start with. Rename them, or add the places you actually keep stock. See [Warehouse](https://docs.frappe.io/erpnext/user/manual/en/warehouse).",أنشأنا بعضها للبدء. أعد تسميتها، أو أضف الأماكن التي تحفظ فيها مخزونك فعلًا. راجع [المستودع](https://docs.frappe.io/erpnext/user/manual/en/warehouse).
+"We set up a standard chart of accounts for your country. See how your accounts are grouped, and rename or add any to match how you report. See [Chart of Accounts](https://docs.frappe.io/erpnext/user/manual/en/chart-of-accounts).",أعددنا دليل حسابات قياسيًا لبلدك. اطّلع على طريقة تجميع حساباتك، وأعد تسمية أي حساب أو أضف حسابات جديدة بما يناسب تقاريرك. راجع [دليل الحسابات](https://docs.frappe.io/erpnext/user/manual/en/chart-of-accounts).
+"What comes out at the end of production, kept in the Products group. See [Item](https://docs.frappe.io/erpnext/user/manual/en/item).",ما ينتج في نهاية التصنيع، ويُحفظ ضمن مجموعة المنتجات. راجع [الصنف](https://docs.frappe.io/erpnext/user/manual/en/item).
+"What you have in each warehouse, and what it is worth.",ما لديك في كل مستودع، وكم قيمته.
+"What you ordered, what has arrived, and what is still to come.",ما طلبته، وما وصل، وما لم يصل بعد.
+"What you own, where it is, and what it is worth today.",ما تملكه، وأين يوجد، وكم قيمته اليوم.
+"When something falls short of the procedure, note what happened, the cause, and what you will do about it. See [Non Conformance](https://docs.frappe.io/erpnext/user/manual/en/non-conformance).",عندما لا يطابق العمل الإجراء، سجّل ما حدث وسببه وما ستفعله لمعالجته. راجع [عدم المطابقة](https://docs.frappe.io/erpnext/user/manual/en/non-conformance).
+"When your customer pays, record it here. It is matched against their invoice, so you can see what is still owed. See [Payment Entry](https://docs.frappe.io/erpnext/user/manual/en/payment-entry).",عندما يدفع عميلك، سجّل الدفعة هنا. تُطابَق الدفعة مع فاتورته، لترى المبلغ المتبقي. راجع [سندات القبض والدفع](https://docs.frappe.io/erpnext/user/manual/en/payment-entry).
+"Whether an employee was present, absent or on leave on a day. See [Attendance](https://docs.frappe.io/hr/attendance).",حالة الموظف في يوم معين: حاضر أو غائب أو في إجازة. راجع [الحضور](https://docs.frappe.io/hr/attendance).
+"Who does what, by when. Tasks roll up into the project's progress. See [Task](https://docs.frappe.io/erpnext/user/manual/en/task).",من ينفّذ ماذا، ومتى. تُحتسب المهام ضمن نسبة إنجاز المشروع. راجع [المهمة](https://docs.frappe.io/erpnext/user/manual/en/task).
+"Who owes you, how much, and for how long. See [Accounts Receivable](https://docs.frappe.io/erpnext/user/manual/en/accounts-receivable).",من يدين لك، وبكم، ومنذ متى. راجع [الذمم المدينة](https://docs.frappe.io/erpnext/user/manual/en/accounts-receivable).
+"Who you owe, how much, and when each bill is due.",لمن تدين، وبكم، ومتى تستحق كل فاتورة.
+Workflows allow you to define custom rules for the approval process of a particular document in ERPNext. You can also set complex Workflow Rules and set approval conditions.,يتيح لك سير العمل تحديد قواعد مخصصة لإجراءات اعتماد مستند معيّن في ERPNext. ويمكنك أيضًا وضع قواعد سير عمل متقدمة وتحديد شروط الاعتماد.
+Write an onboarding checklist,اكتب قائمة مهام إعداد الموظف
+Write down how the work is done,دوّن طريقة تنفيذ العمل
+Write down what goes into a product and make it with a work order.,دوّن ما يدخل في المنتج، ثم صنّعه بأمر العمل.
+Write its bill of materials,اكتب جدول المواد الخاص به
+You're all set.,كل شيء جاهز.
+You're ready to start your journey with ERPNext,أنت جاهز لبدء رحلتك مع ERPNext
+YouTube video player,مشغل فيديو YouTube
+Your website is all set up!,اكتمل إعداد موقعك الإلكتروني!
+{0} of {1} done · {2} skipped,اكتمل {0} من {1} · تم تخطي {2}
