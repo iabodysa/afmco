@@ -34,6 +34,7 @@ LINE_BREAK_TAGS = re.compile(r"<br\s*/?>|</(?:p|div|li|h[1-6])>", re.IGNORECASE)
 def get_context(context):
 	set_site_context(context)
 	context.title = _("AFMCO Employee Portal")
+	context.title_prefix = None
 	context.description = _("Open jobs, salary account updates and leave requests for AFMCO employees.")
 	context.page_links = [
 		{"href": "#services", "label": _("Services")},
@@ -46,7 +47,7 @@ def get_context(context):
 	context.hr_contacts = get_hr_contacts()
 	context.header_logo = HEADER_LOGO
 	context.hero_image = HERO_IMAGE
-	context.hero_desktop_image = get_desktop_image(HERO_IMAGE)
+	context.hero_desktop_image = get_portal_image(HERO_IMAGE, "desktop")
 
 
 def set_site_context(context):
@@ -96,12 +97,14 @@ def get_news():
 		limit=NEWS_LIMIT,
 	)
 	for item in news:
-		item.desktop_image = get_desktop_image(item.image or HERO_IMAGE)
+		image = item.image or HERO_IMAGE
+		item.desktop_image = get_portal_image(image, "desktop")
+		item.thumb_image = get_portal_image(image, "thumb") or image
 	return news
 
 
-def get_desktop_image(image):
-	name = f"{os.path.splitext(os.path.basename(image))[0]}-desktop.webp"
+def get_portal_image(image, size):
+	name = f"{os.path.splitext(os.path.basename(image))[0]}-{size}.webp"
 	if os.path.isfile(frappe.get_app_path("afmco", "public", "images", "portal", name)):
 		return f"{PORTAL_IMAGES}{name}"
 
@@ -152,30 +155,35 @@ def get_services():
 			"title": _("Leave, attendance and salary slips"),
 			"href": f"{APP_URL}/hrms",
 			"link_label": _("Open the employee app"),
+			"icon": "people-and-payroll",
 			"show": SHOW_EMPLOYEE_APP_CARD,
 		},
 		{
 			"title": _("Your daily work"),
 			"href": f"{APP_URL}/desk",
 			"link_label": _("Open the system"),
+			"icon": "my-tasks",
 			"show": True,
 		},
 		{
 			"title": _("Update your IBAN"),
 			"href": "/iban",
 			"link_label": _("Open the form"),
+			"icon": "financial-operations",
 			"show": True,
 		},
 		{
 			"title": _("Leave request"),
 			"href": f"{APP_URL}/leave-application/new",
 			"link_label": _("Open the form"),
+			"icon": "people-and-payroll",
 			"show": True,
 		},
 		{
 			"title": _("Apply for a job"),
 			"href": "/careers",
 			"link_label": _("View open jobs"),
+			"icon": "afmco",
 			"show": True,
 		},
 	]

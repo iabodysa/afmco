@@ -95,6 +95,15 @@ html {
 	}
 }
 
+.afm-sr {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
 .afm .afm-skip {
 	position: fixed;
 	top: 12px;
@@ -344,10 +353,6 @@ html:has(.afm--menu) {
 
 .afm--menu .afm-header__menu-only {
 	display: block;
-}
-
-.afm--menu .afm-header__menu-cta {
-	color: var(--afm-green);
 }
 
 .afm-pill {
@@ -693,14 +698,16 @@ html:has(.afm--menu) {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	padding-top: 26px;
-	border-top: 1px solid var(--afm-line);
+	overflow: hidden;
+	padding: 26px 24px 24px;
+	border: 1px solid var(--afm-line);
+	border-radius: 16px;
 }
 
 .afm-service::before {
 	content: "";
 	position: absolute;
-	top: -1px;
+	top: 0;
 	inset-inline: 0;
 	height: 2px;
 	background: var(--afm-green);
@@ -712,6 +719,29 @@ html:has(.afm--menu) {
 .afm-service:hover::before,
 .afm-service:focus-within::before {
 	transform: scaleX(1);
+}
+
+.afm-service__icon {
+	width: 44px;
+	height: 44px;
+	background: var(--afm-green);
+	mask: var(--afm-icon) center / contain no-repeat;
+}
+
+.afm-service__icon--my-tasks {
+	--afm-icon: url("/assets/afmco/icons/desktop_icons/subtle/my_tasks.svg");
+}
+
+.afm-service__icon--financial-operations {
+	--afm-icon: url("/assets/afmco/icons/desktop_icons/subtle/financial_operations.svg");
+}
+
+.afm-service__icon--people-and-payroll {
+	--afm-icon: url("/assets/afmco/icons/desktop_icons/subtle/people_and_payroll.svg");
+}
+
+.afm-service__icon--afmco {
+	--afm-icon: url("/assets/afmco/icons/desktop_icons/subtle/afmco.svg");
 }
 
 .afm-service__title {
@@ -760,15 +790,10 @@ html:has(.afm--menu) {
 	padding-top: 40px;
 	border-top: 1px solid var(--afm-line);
 }
-.afm-help__actions,
 .afm-footer__actions {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 12px 20px;
-}
-
-.afm-help__actions {
-	margin-top: 28px;
 }
 
 .afm-contacts {
@@ -900,6 +925,28 @@ html:has(.afm--menu) {
 .afm-js [data-reveal].is-visible {
 	opacity: 1;
 	transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.afm-js .afm-service[data-reveal] {
+		transition: none;
+	}
+
+	.afm-js .afm-service[data-reveal].is-visible {
+		animation: afm-reveal 0.8s var(--afm-ease) forwards;
+	}
+}
+
+@keyframes afm-reveal {
+	from {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
 }
 
 .afm-js .afm-sign[data-reveal] {
@@ -1763,8 +1810,7 @@ html:has(.afm--menu) {
 	color: var(--afm-on-ink);
 }
 
-.afm-reel,
-.afm-mbar {
+.afm-reel {
 	display: none;
 }
 
@@ -2124,10 +2170,6 @@ html:has(.afm--menu) {
 }
 
 @media (max-width: 599px) {
-	.afm-cinema .afm-header__tools .afm-header__cta {
-		display: none;
-	}
-
 	.afm-cinema .afm-stage {
 		display: none;
 	}
@@ -2252,26 +2294,5 @@ html:has(.afm--menu) {
 	.afm-reel__dots span[aria-current="true"] {
 		width: 24px;
 		background: var(--afm-green);
-	}
-
-	.afm-cinema .afm-footer::after {
-		content: "";
-		display: block;
-		height: calc(76px + env(safe-area-inset-bottom, 0px));
-	}
-
-	.afm-mbar {
-		position: fixed;
-		inset-inline: 0;
-		bottom: 0;
-		z-index: 70;
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 10px;
-		padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
-		border-top: 1px solid rgba(241, 246, 242, 0.1);
-		background: rgba(17, 25, 21, 0.9);
-		-webkit-backdrop-filter: blur(16px);
-		backdrop-filter: blur(16px);
 	}
 }
