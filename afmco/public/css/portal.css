@@ -1616,17 +1616,25 @@ html:has(.afm--menu) {
 
 .afm-thumbs ul {
 	display: grid;
-	grid-auto-columns: minmax(0, 1fr);
+	grid-auto-columns: max-content;
 	grid-auto-flow: column;
 	gap: 10px;
+	margin: -8px;
+	padding: 8px;
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+	scroll-padding-inline: 8px;
+	scroll-snap-type: x proximity;
+	scrollbar-color: rgba(241, 246, 242, 0.35) transparent;
+	scrollbar-width: thin;
 }
 
 .afm-thumb {
 	display: grid;
-	grid-template-columns: 72px minmax(0, 1fr);
+	grid-template-columns: 72px 144px;
 	align-items: center;
 	gap: 12px;
-	width: 100%;
+	overflow: hidden;
 	padding: 8px;
 	border: 1px solid rgba(241, 246, 242, 0.12);
 	border-radius: 14px;
@@ -1635,11 +1643,12 @@ html:has(.afm--menu) {
 	backdrop-filter: blur(10px);
 	text-align: start;
 	cursor: pointer;
+	scroll-snap-align: start;
 	transition: border-color 0.25s, background-color 0.25s;
 }
 
 .afm-thumb img {
-	width: 72px;
+	width: 100%;
 	height: auto;
 	aspect-ratio: 4 / 3;
 	object-fit: cover;
@@ -1677,12 +1686,8 @@ html:has(.afm--menu) {
 
 @container (max-width: 520px) {
 	.afm-thumb {
-		grid-template-columns: minmax(0, 1fr);
+		grid-template-columns: 72px;
 		padding: 6px;
-	}
-
-	.afm-thumb img {
-		width: 100%;
 	}
 
 	.afm-thumb span {
