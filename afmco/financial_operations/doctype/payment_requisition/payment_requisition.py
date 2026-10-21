@@ -369,10 +369,6 @@ class PaymentRequisition(Document):
 				accounts_bot_choice.publish_choice(choice, 1)
 			accounts_bot_run.announce_finish(self.name, status)
 
-	def before_insert(self):
-		if not self.verify_payment:
-			self.bank_payment_date = None
-
 	def validate(self):
 		if self.amount:
 			self.amount_in_words=money_in_words(self.amount,frappe.get_cached_value("Company", get_default_company(), "default_currency"))
