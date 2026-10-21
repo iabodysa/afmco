@@ -774,7 +774,6 @@ frappe.ui.form.on('Advance Leave Salary', {
         expenseRequest.cost_center = frm.doc.branch;
         expenseRequest.jv_status = 'JV Not Created';
         expenseRequest.naming_series = 'PR-.YYYY.-';
-        expenseRequest.bank_payment_date = frappe.datetime.nowdate();
         expenseRequest.payment_type = 'Advance Leave Salary';
         expenseRequest.mode_of_payment = 'Bank Transfer';
         expenseRequest.payment_approver ='Human Resources - الموارد البشرية';
@@ -839,7 +838,6 @@ frappe.ui.form.on('Advance Leave Salary', {
                 cost_center: frm.doc.branch,
                 jv_status: 'JV Not Created',
                 naming_series: 'PR-.YYYY.-',
-                bank_payment_date: frappe.datetime.nowdate(),
                 mode_of_payment: 'SADAD Payment',
                 multiple_beneficiaries: 1,
                 payment_approver: 'Human Resources - الموارد البشرية',

@@ -15732,3 +15732,4 @@ List,قائمة
 Audit and Bot,التدقيق وبوت المحاسبة
 Payroll Bot checks,فحوصات مساعد الرواتب
 {0} days,{0} يوم
+A submitted Journal Entry exists for this Payment Requisition. {0} cannot be changed.,يوجد قيد يومية معتمد لطلب الصرف هذا. لا يمكن تغيير {0}.

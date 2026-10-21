@@ -30,6 +30,7 @@ PRELIMINARY_FIELD = "accounts_bot_preliminary"
 RECEIPT_READ_ROLES = ("Auditor", *ACCOUNTS_ROLES)
 RECEIPT_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "bank_reference_cf", "remark")
 RECEIPT_COMPARED_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf", "remark")
+JOURNAL_ENTRY_LOCKED_FIELDS = ("bank_payment_date", "bank_account", "bank_reference_cf", "paid_amount_cf")
 SADAD_NUMBER_FIELDS = ("sadad_biller_code", "sadad_bill_number")
 SADAD_PAYMENT = "SADAD Payment"
 BANK_TRANSFER = "Bank Transfer"
@@ -58,6 +59,7 @@ class PaymentRequisition(Document):
 		if self.request_pending() and not self.accounts_bot_read_receipt_cf and roles.intersection(ACCOUNTS_BOT_VIEWER_ROLES):
 			self.set_onload("accounts_bot_expected_finish", accounts_bot_run.expected_finish(self.name, self.payment_type))
 		self.set_onload("payment_dates", self.payment_dates())
+		self.set_onload("journal_entry_locked", self.journal_entry_submitted())
 		self.set_onload("workflow_states_seen", self.workflow_states_seen())
 		if self.amount:
 			currency = frappe.get_cached_value("Company", get_default_company(), "default_currency")
@@ -76,6 +78,23 @@ class PaymentRequisition(Document):
 				if fieldname == "workflow_state":
 					seen.update(value for value in (old, new) if value)
 		return sorted(seen)
+
+	def journal_entry_submitted(self) -> bool:
+		return bool(frappe.db.exists("Journal Entry", {"expense_request_cf": self.name, "docstatus": 1}))
+
+	def refuse_journal_entry_locked(self, fieldnames) -> None:
+		locked = [fieldname for fieldname in fieldnames if fieldname in JOURNAL_ENTRY_LOCKED_FIELDS]
+		if locked and self.journal_entry_submitted():
+			frappe.throw(
+				_("A submitted Journal Entry exists for this Payment Requisition. {0} cannot be changed.").format(
+					", ".join(_(self.meta.get_label(fieldname)) for fieldname in locked)
+				)
+			)
+
+	def before_update_after_submit(self):
+		self.refuse_journal_entry_locked(
+			[fieldname for fieldname in JOURNAL_ENTRY_LOCKED_FIELDS if self.has_value_changed(fieldname)]
+		)
 
 	def payment_dates(self) -> list[tuple[str, str]]:
 		if self.workflow_state not in PAYMENT_DATE_STATES:
@@ -257,6 +276,7 @@ class PaymentRequisition(Document):
 				skipped.append({"field": fieldname, "reason": reason})
 			else:
 				changes[fieldname], sources[fieldname] = value, source
+		self.refuse_journal_entry_locked(changes)
 		before = {fieldname: self.get(fieldname) for fieldname in changes}
 		if changes:
 			self.db_set(dict(changes), update_modified=True, notify=True)

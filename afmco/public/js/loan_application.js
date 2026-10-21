@@ -23,7 +23,6 @@ frappe.ui.form.on('Loan Application', {
                             paymentRequest.project = employee_cost_center;  
                             paymentRequest.jv_status = 'JV Not Created';
                             paymentRequest.naming_series = 'PR-.YYYY.-';
-                            paymentRequest.bank_payment_date = frappe.datetime.nowdate();
                             paymentRequest.payment_type = 'Employee Loan';
                             paymentRequest.mode_of_payment = 'Bank Transfer';
                             paymentRequest.payment_approver = 'Payroll and Compliance - الرواتب والالتزام';

@@ -489,12 +489,10 @@ Object.assign(IqamaControl.prototype, {
 
 	_insert_pr(payment_type, config, eligible) {
 		this._creating = true;
-		const today = frappe.datetime.nowdate();
 		const total = this._type_amount(eligible, payment_type);
 		const request = Object.assign({ doctype: IC_EXPENSE_DOCTYPE }, IC_PR_DEFAULTS, {
 			beneficiary_name: config.beneficiary,
 			amount: flt(total, 2),
-			bank_payment_date: today,
 			remark: eligible.map((row) => this._remark_block(row, config)).join("\n"),
 		});
 

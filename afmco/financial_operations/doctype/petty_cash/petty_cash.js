@@ -32,11 +32,10 @@ frappe.ui.form.on('Petty Cash', {
 
     createpr: function(frm) {
         try {
-            const { name, bank_ac_no, employee_name, petty_cash_amount, bank_payment_date, date, jv_status, naming_series, cost_center, project, petty_cash_description,} = frm.doc;
+            const { name, bank_ac_no, employee_name, petty_cash_amount, date, jv_status, naming_series, cost_center, project, petty_cash_description,} = frm.doc;
 
             const expenseRequestData = {
                 tax_invoice_number: name,
-                bank_payment_date : frappe.datetime.nowdate(),
                 jv_status: 'JV Not Created',
                 naming_series: 'PR-.YYYY.-',
                 cost_center: cost_center,

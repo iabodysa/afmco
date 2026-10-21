@@ -23,6 +23,7 @@ frappe.provide("afmco.pr_summary");
 	const SADAD = ["SADAD Payment", "Work Permit Fee Payment", "Passport Fee Payment"];
 	const BANK_LOCKED = ["Document Upload", "Waiting", "Paid", "Cancelled"];
 	const BANK_ENTRY = ["Waiting Bank Entry", "First Approval for Bank"];
+	const BANK_DATE_STATES = [...BANK_ENTRY, "Document Upload", "Waiting", "Paid"];
 	const JE_STATES = ["Document Upload", "Paid"];
 	const STATE_TONE = {
 		"Financial Controller": "blue",
@@ -500,7 +501,7 @@ frappe.provide("afmco.pr_summary");
 			: clamp(esc(doc.beneficiary_name), 2);
 		const cell = (label, value) =>
 			isBlank(value) ? "" : `<div class="ch-cell"><span class="ch-k">${esc(label)}</span><b>${clamp(mixed(value), 2)}</b></div>`;
-		const showBankDate = !isBlank(doc.bank_payment_date) && (BANK_LOCKED.includes(state) || !isBlank(doc.bank_reference_cf));
+		const showBankDate = !isBlank(doc.bank_payment_date) && (doc.verify_payment || BANK_DATE_STATES.includes(state));
 		const date = (label, value) =>
 			isBlank(value) ? "" : `<div class="prc-dt"><span class="prc-label">${esc(label)}</span><b class="prc-ltr prc-num">${esc(value)}</b></div>`;
 		return `<section class="prc-cheque" aria-label="${esc(__("Payment order"))}">

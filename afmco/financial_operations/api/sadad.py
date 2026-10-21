@@ -377,7 +377,6 @@ def create_payment_request(batch):
 			"mode_of_payment": SADAD_PAYMENT,
 			"payment_type": SADAD_PAYMENT,
 			"jv_status": JV_NOT_CREATED,
-			"bank_payment_date": today(),
 			"project": head_office,
 			"cost_center": head_office,
 		}
