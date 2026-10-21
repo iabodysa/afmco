@@ -1684,7 +1684,7 @@ html:has(.afm--menu) {
 	background: rgba(17, 25, 21, 0.7);
 }
 
-@container (max-width: 520px) {
+@container (max-width: 245px) {
 	.afm-thumb {
 		grid-template-columns: 72px;
 		padding: 6px;
