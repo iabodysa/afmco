@@ -15,6 +15,7 @@ from frappe.utils import (
 )
 
 from afmco.people_and_payroll.service_calendar import (
+    ONE_DAY,
     contract_year_of,
     contract_years,
     inclusive_days,
@@ -23,6 +24,7 @@ from afmco.people_and_payroll.service_calendar import (
     service_span,
     service_value,
     service_years,
+    unpaid_days,
     unpaid_leave,
     within_advance_window,
     worked_days,
@@ -230,8 +232,9 @@ def row_amount(doc, row, unpaid):
     if not year:
         return 0
     k, year_start, year_end = year
+    end = min(getdate(row.contract_end_date), year_end)
     return period_amount(
-        doc, entitlement(doc, k), row.contract_start_date, row.contract_end_date, year_start, year_end, unpaid
+        doc, entitlement(doc, k), row.contract_start_date, end, year_start, year_end, unpaid
     )
 
 
@@ -422,9 +425,9 @@ def refuse_settled_employee(doc):
 def refuse_unfinished_contract_year(doc):
     unpaid = unpaid_leave(doc.employee)
     for row in doc.cva or []:
-        if row.status == PAID or not row.contract_end_date:
+        if row.status == PAID or not (row.contract_start_date and row.contract_end_date):
             continue
-        year = contract_year_of(doc.date_1, row.contract_end_date, unpaid)
+        year = contract_year_of(doc.date_1, row.contract_start_date, unpaid)
         if not year:
             continue
         _k, year_start, year_end = year
@@ -448,10 +451,11 @@ def refuse_unearned_rows(doc):
             continue
         k, year_start, year_end = year
         start, end = getdate(row.contract_start_date), getdate(row.contract_end_date)
+        last_day = year_end if unpaid_days(year_start, year_end, unpaid) else year_end + ONE_DAY
         earned = flt(
-            leave_days(flt(entitlement(doc, k)), start, min(end, year_end), year_start, year_end, unpaid), 2
+            leave_days(flt(entitlement(doc, k)), year_start, min(end, year_end), year_start, year_end, unpaid), 2
         )
-        if end > year_end or flt(row.vad) > earned:
+        if end > last_day or flt(row.vad) > earned:
             frappe.throw(
                 _(
                     "Leave allowance row {0} asks for {1} days from {2} to {3}, but contract year {4} runs from {5} to {6} and this period earns {7} days. Match the row dates to the contract year."
