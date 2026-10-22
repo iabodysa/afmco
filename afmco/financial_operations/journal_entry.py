@@ -51,7 +51,9 @@ class AfmcoJournalEntry:
 			},
 			limit=1,
 		)
-		if not attachments:
+		if not attachments and not any(
+			row.reference_type == "Payroll Entry" and row.reference_name for row in self.accounts
+		):
 			frappe.throw(_("The document cannot be approved before the required documents are attached."))
 
 	def validate(self):
