@@ -3,15 +3,6 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2023-12-27 03:13:18.274093",
-  "name": "Cancelled",
-  "style": "Danger",
-  "workflow_state_name": "Cancelled"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
   "modified": "2023-12-27 03:15:07.414346",
   "name": "Document Upload",
   "style": "Info",
@@ -34,15 +25,6 @@
   "name": "First Approval for Bank",
   "style": "",
   "workflow_state_name": "First Approval for Bank"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2023-12-27 03:12:06.322401",
-  "name": "Paid",
-  "style": "Success",
-  "workflow_state_name": "Paid"
  },
  {
   "docstatus": 0,

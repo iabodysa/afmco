@@ -157,7 +157,6 @@
    "read_only": 1
   },
   {
-   "fetch_from": "employee.iqama_expiration_date",
    "fieldname": "iqama_expiration",
    "fieldtype": "Date",
    "label": "iQama Expiration"
@@ -206,7 +205,6 @@
    "read_only": 1
   },
   {
-   "fetch_from": "employee.basic_wage",
    "fieldname": "total_salary",
    "fieldtype": "Currency",
    "label": "Total salary"
@@ -223,7 +221,6 @@
   },
   {
    "default": "0",
-   "fetch_from": "employee.number_of_vacation_days_per_year",
    "fieldname": "vacation_days_per_year",
    "fieldtype": "Data",
    "label": "vacation days per year"
@@ -245,7 +242,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "employee.ticket_allowance",
    "fieldname": "ticket_allowance",
    "fieldtype": "Currency",
    "label": "Ticket allowance"

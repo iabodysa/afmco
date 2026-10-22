@@ -233,7 +233,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "employee.basic_wage",
    "fieldname": "total_salary",
    "fieldtype": "Currency",
    "label": "Total salary"
@@ -248,7 +247,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "employee.number_of_vacation_days_per_year",
    "fieldname": "vacation_days_per_year",
    "fieldtype": "Data",
    "label": "vacation days per year"

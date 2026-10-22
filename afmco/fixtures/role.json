@@ -6,5 +6,45 @@
   "modified": "2026-10-18 12:00:00.000000",
   "name": "Payroll Manager",
   "role_name": "Payroll Manager"
+ },
+ {
+  "desk_access": 1,
+  "docstatus": 0,
+  "doctype": "Role",
+  "modified": "2026-10-23 00:00:00.000000",
+  "name": "Accountant Bot",
+  "role_name": "Accountant Bot"
+ },
+ {
+  "desk_access": 1,
+  "docstatus": 0,
+  "doctype": "Role",
+  "modified": "2026-10-23 00:00:00.000000",
+  "name": "Payroll Bot",
+  "role_name": "Payroll Bot"
+ },
+ {
+  "desk_access": 1,
+  "docstatus": 0,
+  "doctype": "Role",
+  "modified": "2026-10-23 00:00:00.000000",
+  "name": "Bank User",
+  "role_name": "Bank User"
+ },
+ {
+  "desk_access": 1,
+  "docstatus": 0,
+  "doctype": "Role",
+  "modified": "2026-10-23 00:00:00.000000",
+  "name": "General Manager",
+  "role_name": "General Manager"
+ },
+ {
+  "desk_access": 1,
+  "docstatus": 0,
+  "doctype": "Role",
+  "modified": "2026-10-23 00:00:00.000000",
+  "name": "Bank Approval User",
+  "role_name": "Bank Approval User"
  }
 ]
