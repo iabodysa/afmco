@@ -502,3 +502,4 @@ fmt:jsonl|keys:key,caller|key:ar.csv source string whose live caller sits only i
 {"key": "Workflows allow you to define custom rules for the approval process of a particular document in ERPNext. You can also set complex Workflow Rules and set approval conditions.", "caller": "Onboarding Step:description"}
 {"key": "You're ready to start your journey with ERPNext", "caller": "Module Onboarding:success_message"}
 {"key": "Your website is all set up!", "caller": "Module Onboarding:success_message"}
+{"key": "Amount Due from Employee", "caller": "Print Format:html"}
