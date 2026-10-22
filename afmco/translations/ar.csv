@@ -13062,7 +13062,7 @@ Pass,تم التحقق,Approver Check
 Blocking,يمنع الاعتماد
 Pending,قيد الانتظار,Approver Check
 Retry,إعادة المحاولة,Approver Check
-No salary slip in the last 3 months,لم يُصرف لهم راتب خلال آخر 3 أشهر
+No salary slip in the last {0} months,لم يُصرف لهم راتب خلال آخر {0} أشهر
 Employees: {0},عدد الموظفين: {0}
 Last Salary Month,آخر شهر صُرف فيه راتب
 No salary slip,لا يوجد راتب
@@ -13070,7 +13070,7 @@ Open Employee List,فتح قائمة الموظفين
 Hold,معلّق,Employee
 Employees on Hold,الموظفون المعلّقون
 Could not be put on Hold: {0},تعذّر تحويلهم إلى معلّق: {0}
-Employees on Hold for no salary slip in the last 3 months,موظفون معلّقون لعدم صرف رواتبهم خلال آخر 3 أشهر
+Employees on Hold for no salary slip in the last {0} months,موظفون معلّقون لعدم صرف رواتبهم خلال آخر {0} أشهر
 Transactions cannot be created for an Employee on Hold {0}.,لا يمكن إنشاء معاملات لموظف معلّق {0}.
 Auditor,مدقق الحسابات
 Apex operations system,نظام التشغيل Apex
@@ -15572,7 +15572,7 @@ No holiday list covers this payroll period,لا توجد قائمة عطلات �
 No issues found,لا توجد ملاحظات
 "No payroll cost center, books to {0}","لا يوجد مركز تكلفة رواتب، يُقيَّد على {0}"
 No salary structure assignment from {0} or earlier,لا يوجد إسناد هيكل راتب يبدأ في {0} أو قبله
-On Hold for no salary in the last 3 months,معلّقون لعدم صرف رواتبهم خلال آخر 3 أشهر
+On Hold for no salary in the last {0} months,معلّقون لعدم صرف رواتبهم خلال آخر {0} أشهر
 Only employees on Hold that this payroll would pay can be included: {0},لا يُضم إلا الموظفون المعلّقون الذين يشملهم هذا المسير: {0}
 Payroll Check,فحص مسير الرواتب
 Salary Component {0} has no account for {1},مكون الراتب {0} بلا حساب للشركة {1}
@@ -16609,3 +16609,4 @@ YouTube video player,مشغل فيديو YouTube
 Your website is all set up!,اكتمل إعداد موقعك الإلكتروني!
 {0} of {1} done · {2} skipped,اكتمل {0} من {1} · تم تخطي {2}
 Amount Due from Employee,المبلغ المستحق على الموظف
+Hold After Months Without Salary Slip,أشهر بلا قسيمة راتب قبل التعليق

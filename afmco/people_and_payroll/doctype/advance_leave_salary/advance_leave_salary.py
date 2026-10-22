@@ -11,10 +11,12 @@ from afmco.people_and_payroll.advance_leave_salary import (
     refuse_unearned_rows,
     refuse_unfinished_contract_year,
 )
+from afmco.people_and_payroll.employee import validate_not_on_hold
 
 
 class AdvanceLeaveSalary(Document):
     def validate(self):
+        validate_not_on_hold(self.employee)
         if self.has_value_changed("employee"):
             refuse_settled_employee(self)
         recompute_advance(self)

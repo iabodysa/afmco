@@ -11,7 +11,7 @@ from hrms.payroll.doctype.payroll_entry.payroll_entry import get_employee_list
 from hrms.utils.holiday_list import get_holiday_list_ranges_for_employees
 
 from afmco.people_and_payroll.employee import employees_on_hold
-from afmco.people_and_payroll.payroll import last_salary_month
+from afmco.people_and_payroll.payroll import hold_after_months, last_salary_month
 
 INACTIVE_STATUS = "Inactive"
 
@@ -55,7 +55,7 @@ def payroll_check(doc) -> dict:
 		}
 		for row in held_employee_rows(doc)
 	]
-	return {"blockers": blockers, "held": held, "info": info}
+	return {"blockers": blockers, "held": held, "held_months": hold_after_months(), "info": info}
 
 
 def issue(employee, reason) -> dict:

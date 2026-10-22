@@ -11,6 +11,7 @@ from afmco.people_and_payroll.advance_leave_salary import (
     follow_status_switch,
     recompute_settlement,
 )
+from afmco.people_and_payroll.employee import validate_not_on_hold
 from afmco.people_and_payroll.service_calendar import service_span, unpaid_leave
 
 
@@ -32,6 +33,7 @@ class EndofServiceSettlement(Document):
             frappe.throw(
                 _("{0} must be unique").format(_(self.meta.get_label("employee"))), frappe.UniqueValidationError
             )
+        validate_not_on_hold(self.employee)
         recompute_settlement(self)
         follow_status_switch(self)
 

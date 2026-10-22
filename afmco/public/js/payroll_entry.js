@@ -76,7 +76,7 @@ function renderPayrollCheck(check) {
             <td>${employeeCell(row)}</td>
             <td>${escape(row.department || '')}</td>
             <td>${escape(row.last_salary_month || __('Never paid'))}</td></tr>`).join('');
-        sections.push(`<h5>${__('On Hold for no salary in the last 3 months')}</h5>
+        sections.push(`<h5>${__('On Hold for no salary in the last {0} months', [check.held_months])}</h5>
             <p class="text-muted">${__('Included employees return to Active when their salary slip is submitted.')}</p>
             <table class="table table-bordered table-sm"><thead><tr><th></th><th>${__('Employee')}</th>
             <th>${__('Department')}</th><th>${__('Last paid month')}</th></tr></thead><tbody>${rows}</tbody></table>`);

@@ -7,9 +7,9 @@ from afmco.people_and_payroll.employee import HOLD_STATUS
 
 EMPLOYEE_DOCTYPE = "Employee"
 SALARY_SLIP_DOCTYPE = "Salary Slip"
-WINDOW_MONTHS = -3
+PAYROLL_SETTINGS = "Payroll Settings"
+HOLD_MONTHS_FIELD = "hold_after_months"
 EXCLUDED_DEPARTMENTS = ["Remotely - عن بعد - AF"]
-REASON = "no salary slip in the last 3 months"
 DEACTIVATION_SAVEPOINT = "afmco_employee_deactivation"
 NOTIFIED_ROLE = "HR Manager"
 HOLD_EMAIL_TEMPLATE = "employees_on_hold_without_salary"
@@ -31,15 +31,28 @@ def should_deactivate(salary_slips: list) -> bool:
     return not salary_slips
 
 
-def employee_values() -> dict[str, str]:
+def hold_after_months() -> int:
+    import frappe
+    from frappe.utils import cint
+
+    return cint(frappe.db.get_single_value(PAYROLL_SETTINGS, HOLD_MONTHS_FIELD)) or cint(
+        frappe.get_meta(PAYROLL_SETTINGS).get_field(HOLD_MONTHS_FIELD).default
+    )
+
+
+def reason_for(months: int) -> str:
+    return f"no salary slip in the last {months} months"
+
+
+def employee_values(months: int) -> dict[str, str]:
     return {
         "status": HOLD_STATUS,
-        "feedback": f"Employee status updated to '{HOLD_STATUS}' due to {REASON}.",
+        "feedback": f"Employee status updated to '{HOLD_STATUS}' due to {reason_for(months)}.",
     }
 
 
-def comment_for(today: str) -> str:
-    return f"Status updated to {HOLD_STATUS} on {today} due to {REASON}."
+def comment_for(today: str, months: int) -> str:
+    return f"Status updated to {HOLD_STATUS} on {today} due to {reason_for(months)}."
 
 
 def process_deactivations(names: Iterable[str], apply: Callable[[str], bool]) -> dict[str, object]:
@@ -108,7 +121,7 @@ def failed_rows(failed: list[dict[str, str]]) -> list[dict]:
     ]
 
 
-def notify_hr_managers(moved: list[str], failed: list[dict[str, str]]) -> None:
+def notify_hr_managers(moved: list[str], failed: list[dict[str, str]], months: int) -> None:
     import frappe
     from frappe.utils.jinja_globals import is_rtl
     from frappe.utils.user import get_users_with_role
@@ -120,11 +133,12 @@ def notify_hr_managers(moved: list[str], failed: list[dict[str, str]]) -> None:
         return
     frappe.sendmail(
         recipients=recipients,
-        subject=frappe._("Employees on Hold for no salary slip in the last 3 months"),
+        subject=frappe._("Employees on Hold for no salary slip in the last {0} months").format(months),
         template=HOLD_EMAIL_TEMPLATE,
         args={
             "employees": moved_rows(moved) if moved else [],
             "failed": failed_rows(failed) if failed else [],
+            "months": months,
             "direction": "rtl" if is_rtl() else "ltr",
             "site_url": frappe.utils.get_url(),
         },
@@ -135,15 +149,16 @@ def deactivate_employees_without_salary_slip() -> dict[str, object]:
     import frappe
 
     today = frappe.utils.nowdate()
-    window_start = frappe.utils.add_months(today, WINDOW_MONTHS)
+    months = hold_after_months()
+    window_start = frappe.utils.add_months(today, -months)
     candidates = frappe.get_all(EMPLOYEE_DOCTYPE, filters=candidate_filters(window_start), pluck="name")
 
     def hold(name: str) -> None:
         employee = frappe.get_doc(EMPLOYEE_DOCTYPE, name)
-        employee.update(employee_values())
+        employee.update(employee_values(months))
         employee.flags.ignore_mandatory = True
         employee.save()
-        employee.add_comment("Comment", comment_for(today))
+        employee.add_comment("Comment", comment_for(today, months))
 
     def apply(name: str) -> bool:
         slips = frappe.get_all(SALARY_SLIP_DOCTYPE, filters=slip_filters(name, window_start), pluck="name")
@@ -162,5 +177,5 @@ def deactivate_employees_without_salary_slip() -> dict[str, object]:
         return True
 
     outcome = process_deactivations(candidates, apply)
-    notify_hr_managers(outcome["moved"], outcome["failed"])
+    notify_hr_managers(outcome["moved"], outcome["failed"], months)
     return outcome
