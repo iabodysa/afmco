@@ -15553,13 +15553,11 @@ Accounts Bot changed {0} from {1} to {2}. Source file: {3},بوت المحاسب
 Accounts Bot Question,سؤال بوت المحاسبة
 Bank transfer fees,رسوم تحويل بنكية
 VAT for bank transfer fees,ضريبة القيمة المضافة على رسوم التحويل البنكية
-Employee {0} has a loan installment and a Loan Repayment deduction this period,للموظف {0} قسط قرض وخصم سداد قرض في هذه الفترة
 Already has salary slip {0} in this period,لديه قسيمة راتب {0} في هذه الفترة
 Check Employees,فحص الموظفين
 Date of Joining is missing,تاريخ المباشرة غير مسجل
 Employee ID {0} has a character a salary slip name cannot hold,رقم الموظف {0} فيه رمز لا يقبله اسم قسيمة الراتب
 Employees can be added only while the payroll is a draft,لا تمكن إضافة الموظفين إلا والمسير مسودة
-Fix these before submitting this payroll,صحّح ما يلي قبل اعتماد مسير الرواتب
 For your information,للعلم
 Inactive employee,موظف غير نشط
 Include in this payroll,ضمّهم إلى هذا المسير

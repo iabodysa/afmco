@@ -11,19 +11,6 @@ from afmco.people_and_payroll.payroll_check import held_employee_rows, payroll_c
 
 
 class AfmcoPayrollEntry:
-	def before_submit(self):
-		super().before_submit()
-		blockers = payroll_check(self)["blockers"]
-		if blockers:
-			frappe.throw(
-				[
-					" ".join(filter(None, (row["employee"], row["employee_name"], row["reason"])))
-					for row in blockers
-				],
-				title=_("Fix these before submitting this payroll"),
-				as_list=True,
-			)
-
 	@frappe.whitelist()
 	def get_payroll_check(self):
 		self.check_permission("read")
