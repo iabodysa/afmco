@@ -1,0 +1,77 @@
+{
+ "custom_fields": [
+  {
+   "dt": "Journal Entry",
+   "fieldname": "expense_request_cf",
+   "fieldtype": "Link",
+   "idx": "35",
+   "insert_after": "cheque_date",
+   "is_system_generated": "1",
+   "label": "Expense Request",
+   "link_filters": "[[\"Payment Requisition\",\"workflow_state\",\"in\",[\"Document Upload\",\"Paid\"]]]",
+   "module": "Afmco",
+   "name": "Journal Entry-expense_request_cf",
+   "options": "Payment Requisition",
+   "unique": "0"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.accounts_bot_preliminary",
+   "dt": "Journal Entry",
+   "fieldname": "accounts_bot_preliminary",
+   "fieldtype": "Check",
+   "insert_after": "expense_request_cf",
+   "is_system_generated": "0",
+   "label": "Preliminary",
+   "module": "Afmco",
+   "name": "Journal Entry-accounts_bot_preliminary",
+   "no_copy": "1",
+   "read_only": "1"
+  },
+  {
+   "dt": "Journal Entry",
+   "fetch_from": "expense_request_cf.workflow_state",
+   "fieldname": "pr_status",
+   "fieldtype": "Read Only",
+   "idx": "43",
+   "in_list_view": "1",
+   "in_standard_filter": "1",
+   "insert_after": "due_date",
+   "is_system_generated": "0",
+   "label": "PR Status",
+   "module": "Afmco",
+   "name": "Journal Entry-pr_status"
+  },
+  {
+   "allow_on_submit": 1,
+   "dt": "Payment Requisition",
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "hidden": 0,
+   "in_list_view": 0,
+   "insert_after": "section_workflow",
+   "is_system_generated": 1,
+   "label": "Workflow State",
+   "modified": "2026-10-20 18:00:00.000000",
+   "module": "Afmco",
+   "no_copy": 1,
+   "options": "Workflow State"
+  }
+ ],
+ "custom_perms": [],
+ "doctype": "Journal Entry",
+ "links": [
+  {
+   "custom": 1,
+   "doctype": "DocType Link",
+   "group": "Reference",
+   "link_doctype": "Journal Entry",
+   "link_fieldname": "expense_request_cf",
+   "parent": "Payment Requisition",
+   "parentfield": "links",
+   "parenttype": "DocType"
+  }
+ ],
+ "property_setters": [],
+ "sync_on_migrate": 1
+}

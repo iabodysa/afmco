@@ -8,7 +8,7 @@ frappe.provide('afmco.accounts_bot_choice');
     const CLOSE_EVENT = 'accounts_bot_choice_closed';
     const DONE_EVENT = 'accounts_bot_done';
     const JOURNAL_ENTRY_CREATED = 'Journal Entry Created';
-    const ANSWER_METHOD = 'afmco.financial_operations.api.accounts_bot.answer_accounts_bot_choice';
+    const ANSWER_METHOD = 'afmco.afmco.api.accounts_bot.answer_accounts_bot_choice';
     const DOCTYPE = 'Payment Requisition';
     const open = new Map();
     const waiting = [];

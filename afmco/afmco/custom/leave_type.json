@@ -1,0 +1,19 @@
+{
+ "custom_fields": [
+  {
+   "default": "0",
+   "dt": "Leave Type",
+   "fieldname": "extends_contract_year",
+   "fieldtype": "Check",
+   "insert_after": "is_lwp",
+   "label": "Extends Contract Year",
+   "module": "Afmco",
+   "name": "Leave Type-extends_contract_year"
+  }
+ ],
+ "custom_perms": [],
+ "doctype": "Leave Type",
+ "links": [],
+ "property_setters": [],
+ "sync_on_migrate": 1
+}

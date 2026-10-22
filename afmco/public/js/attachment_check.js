@@ -4,7 +4,7 @@
 frappe.provide("afmco.attachment_check");
 
 afmco.attachment_check = {
-	METHOD: "afmco.financial_operations.api.approver_check.verify_attachments",
+	METHOD: "afmco.afmco.api.approver_check.verify_attachments",
 	EVENT: "afmco_attachment_reading",
 	STATES: {
 		reading: () => __("Reading attachments"),

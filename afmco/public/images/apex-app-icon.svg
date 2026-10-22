@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
-  <title id="title">Apex app icon</title>
-  <rect width="128" height="128" rx="28" fill="#072b1a"/>
-  <g transform="translate(21 20) scale(1.34)">
-    <path d="M7 56 25.7 15.8C27.1 12.6 29.3 10 32 10l6.2 13.4-7.9 7.6-4.1-8.8L20.5 56Z" fill="#f8f5ee"/>
-    <path d="M32 10c2.7 0 4.9 2.6 6.3 5.8L57 56H43.5L30.3 31l7.9-7.6Z" fill="#60d297"/>
-    <path d="M32 10c2.7 0 4.9 2.6 6.3 5.8l3.5 7.6h-3.6Z" fill="#ffffff" opacity=".72"/>
-  </g>
-</svg>

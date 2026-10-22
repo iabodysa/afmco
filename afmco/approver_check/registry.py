@@ -1,7 +1,7 @@
 # Copyright (c) 2026, AFMCO and contributors
 # For license information, please see license.txt
 
-from afmco.people_and_payroll.advance_leave_salary import END_OF_SERVICE
+from afmco.afmco.advance_leave_salary import END_OF_SERVICE
 
 PAYMENT_REQUISITION = "Payment Requisition"
 
