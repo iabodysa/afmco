@@ -63,13 +63,6 @@ class AfmcoSalarySlip:
 	def on_submit(self):
 		super().on_submit()
 		self.return_held_employee_to_active()
-		if not (self.temporary_iban and self.payroll_entry):
-			return
-		temporary_iban = frappe.get_doc("Temporary IBAN", self.temporary_iban)
-		if self.payroll_entry in {row.payroll_entry for row in temporary_iban.wps_used}:
-			return
-		temporary_iban.append("wps_used", {"payroll_entry": self.payroll_entry})
-		temporary_iban.save(ignore_permissions=True)
 
 	def return_held_employee_to_active(self):
 		if frappe.db.get_value("Employee", self.employee, "status") != HOLD_STATUS:
