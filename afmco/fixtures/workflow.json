@@ -22,34 +22,14 @@
     "update_field": ""
    },
    {
-    "allow_edit": "Auditor",
+    "allow_edit": "Accountant",
     "avoid_status_override": 0,
     "doc_status": "0",
     "doctype": "Workflow Document State",
     "evaluate_as_expression": 0,
     "is_optional_state": 0,
     "send_email": 1,
-    "state": "Financial Controller"
-   },
-   {
-    "allow_edit": "Projects Manager",
-    "avoid_status_override": 0,
-    "doc_status": "0",
-    "doctype": "Workflow Document State",
-    "evaluate_as_expression": 0,
-    "is_optional_state": 0,
-    "send_email": 1,
-    "state": "Waiting P.M Approval"
-   },
-   {
-    "allow_edit": "Projects Manager",
-    "avoid_status_override": 0,
-    "doc_status": "0",
-    "doctype": "Workflow Document State",
-    "evaluate_as_expression": 0,
-    "is_optional_state": 0,
-    "send_email": 1,
-    "state": "Rejected"
+    "state": "Waiting Accountant Approval"
    },
    {
     "allow_edit": "General Manager",
@@ -70,37 +50,7 @@
     "evaluate_as_expression": 0,
     "is_optional_state": 0,
     "send_email": 1,
-    "state": "Waiting Bank Entry"
-   },
-   {
-    "allow_edit": "Bank Approval User",
-    "avoid_status_override": 0,
-    "doc_status": "0",
-    "doctype": "Workflow Document State",
-    "evaluate_as_expression": 0,
-    "is_optional_state": 0,
-    "send_email": 1,
-    "state": "First Approval for Bank"
-   },
-   {
-    "allow_edit": "Auditor",
-    "avoid_status_override": 0,
-    "doc_status": "0",
-    "doctype": "Workflow Document State",
-    "evaluate_as_expression": 0,
-    "is_optional_state": 0,
-    "send_email": 1,
     "state": "Document Upload"
-   },
-   {
-    "allow_edit": "Auditor",
-    "avoid_status_override": 0,
-    "doc_status": "0",
-    "doctype": "Workflow Document State",
-    "evaluate_as_expression": 0,
-    "is_optional_state": 0,
-    "send_email": 1,
-    "state": "Waiting"
    },
    {
     "allow_edit": "Accountant",
@@ -113,26 +63,6 @@
     "state": "Paid"
    },
    {
-    "allow_edit": "General Manager",
-    "avoid_status_override": 0,
-    "doc_status": "2",
-    "doctype": "Workflow Document State",
-    "evaluate_as_expression": 0,
-    "is_optional_state": 0,
-    "send_email": 1,
-    "state": "Cancelled"
-   },
-   {
-    "allow_edit": "Bank User",
-    "avoid_status_override": 0,
-    "doc_status": "0",
-    "doctype": "Workflow Document State",
-    "evaluate_as_expression": 0,
-    "is_optional_state": 0,
-    "send_email": 1,
-    "state": "Document Upload"
-   },
-   {
     "allow_edit": "Bank User",
     "avoid_status_override": 0,
     "doc_status": "1",
@@ -141,6 +71,26 @@
     "is_optional_state": 0,
     "send_email": 1,
     "state": "Paid"
+   },
+   {
+    "allow_edit": "General Manager",
+    "avoid_status_override": 0,
+    "doc_status": "0",
+    "doctype": "Workflow Document State",
+    "evaluate_as_expression": 0,
+    "is_optional_state": 0,
+    "send_email": 1,
+    "state": "Rejected"
+   },
+   {
+    "allow_edit": "General Manager",
+    "avoid_status_override": 0,
+    "doc_status": "2",
+    "doctype": "Workflow Document State",
+    "evaluate_as_expression": 0,
+    "is_optional_state": 0,
+    "send_email": 1,
+    "state": "Cancelled"
    }
   ],
   "transitions": [
@@ -148,103 +98,35 @@
     "action": "Approve",
     "allow_self_approval": 1,
     "allowed": "Desk User",
-    "condition": "",
     "doctype": "Workflow Transition",
-    "next_state": "Financial Controller",
-    "send_email_to_creator": 0,
-    "state": "Pending"
-   },
-   {
-    "action": "Reject",
-    "allow_self_approval": 1,
-    "allowed": "Desk User",
-    "doctype": "Workflow Transition",
-    "next_state": "Rejected",
+    "next_state": "Waiting Accountant Approval",
     "send_email_to_creator": 0,
     "state": "Pending"
    },
    {
     "action": "Approve",
-    "allow_self_approval": 0,
-    "allowed": "Projects Manager",
-    "condition": "doc.verify_payment == 0",
+    "allow_self_approval": 1,
+    "allowed": "Accountant",
     "doctype": "Workflow Transition",
     "next_state": "Waiting Manager Approval",
     "send_email_to_creator": 0,
-    "state": "Waiting P.M Approval"
-   },
-   {
-    "action": "Approve",
-    "allow_self_approval": 1,
-    "allowed": "Projects Manager",
-    "condition": "doc.verify_payment == 1",
-    "doctype": "Workflow Transition",
-    "next_state": "Document Upload",
-    "send_email_to_creator": 0,
-    "state": "Waiting P.M Approval"
-   },
-   {
-    "action": "Refund",
-    "allow_self_approval": 0,
-    "allowed": "Projects Manager",
-    "doctype": "Workflow Transition",
-    "next_state": "Pending",
-    "send_email_to_creator": 0,
-    "state": "Waiting P.M Approval"
-   },
-   {
-    "action": "Bank Entry",
-    "allow_self_approval": 1,
-    "allowed": "Projects Manager",
-    "condition": "(doc.payment_type == \"Payroll (Salary)\") or (doc.payment_type in [\"Passport Fee Payment\", \"Work Permit Fee Payment\"])",
-    "doctype": "Workflow Transition",
-    "next_state": "Waiting Bank Entry",
-    "send_email_to_creator": 0,
-    "state": "Waiting P.M Approval"
+    "state": "Waiting Accountant Approval"
    },
    {
     "action": "Reject",
-    "allow_self_approval": 0,
-    "allowed": "Projects Manager",
+    "allow_self_approval": 1,
+    "allowed": "Accountant",
     "doctype": "Workflow Transition",
     "next_state": "Rejected",
     "send_email_to_creator": 0,
-    "state": "Waiting P.M Approval"
-   },
-   {
-    "action": "Approve",
-    "allow_self_approval": 0,
-    "allowed": "Auditor",
-    "doctype": "Workflow Transition",
-    "next_state": "Waiting P.M Approval",
-    "send_email_to_creator": 0,
-    "state": "Financial Controller"
-   },
-   {
-    "action": "Refund",
-    "allow_self_approval": 0,
-    "allowed": "Auditor",
-    "doctype": "Workflow Transition",
-    "next_state": "Pending",
-    "send_email_to_creator": 0,
-    "state": "Financial Controller"
+    "state": "Waiting Accountant Approval"
    },
    {
     "action": "Approve",
     "allow_self_approval": 1,
     "allowed": "General Manager",
-    "condition": "",
     "doctype": "Workflow Transition",
-    "next_state": "Waiting Bank Entry",
-    "send_email_to_creator": 0,
-    "state": "Waiting Manager Approval"
-   },
-   {
-    "action": "Refund",
-    "allow_self_approval": 0,
-    "allowed": "General Manager",
-    "doctype": "Workflow Transition",
-    "next_state": "Pending",
+    "next_state": "Document Upload",
     "send_email_to_creator": 0,
     "state": "Waiting Manager Approval"
    },
@@ -264,79 +146,7 @@
     "doctype": "Workflow Transition",
     "next_state": "Paid",
     "send_email_to_creator": 0,
-    "state": "Waiting Bank Entry"
-   },
-   {
-    "action": "Approve",
-    "allow_self_approval": 1,
-    "allowed": "Bank User",
-    "doctype": "Workflow Transition",
-    "next_state": "Document Upload",
-    "send_email_to_creator": 0,
-    "state": "Waiting Bank Entry"
-   },
-   {
-    "action": "Waiting",
-    "allow_self_approval": 1,
-    "allowed": "Bank User",
-    "doctype": "Workflow Transition",
-    "next_state": "Waiting",
-    "send_email_to_creator": 0,
-    "state": "Waiting Bank Entry"
-   },
-   {
-    "action": "Refund",
-    "allow_self_approval": 0,
-    "allowed": "Bank User",
-    "doctype": "Workflow Transition",
-    "next_state": "Pending",
-    "send_email_to_creator": 0,
-    "state": "Waiting Bank Entry"
-   },
-   {
-    "action": "Approve",
-    "allow_self_approval": 0,
-    "allowed": "Auditor",
-    "doctype": "Workflow Transition",
-    "next_state": "Paid",
-    "send_email_to_creator": 0,
     "state": "Document Upload"
-   },
-   {
-    "action": "Reject",
-    "allow_self_approval": 1,
-    "allowed": "Auditor",
-    "doctype": "Workflow Transition",
-    "next_state": "Rejected",
-    "send_email_to_creator": 0,
-    "state": "Document Upload"
-   },
-   {
-    "action": "Approve",
-    "allow_self_approval": 1,
-    "allowed": "Auditor",
-    "doctype": "Workflow Transition",
-    "next_state": "Paid",
-    "send_email_to_creator": 0,
-    "state": "Waiting"
-   },
-   {
-    "action": "Refund",
-    "allow_self_approval": 1,
-    "allowed": "Auditor",
-    "doctype": "Workflow Transition",
-    "next_state": "Pending",
-    "send_email_to_creator": 0,
-    "state": "Waiting"
-   },
-   {
-    "action": "Refund",
-    "allow_self_approval": 0,
-    "allowed": "General Manager",
-    "doctype": "Workflow Transition",
-    "next_state": "Pending",
-    "send_email_to_creator": 0,
-    "state": "Rejected"
    },
    {
     "action": "Cancel",
@@ -346,43 +156,6 @@
     "next_state": "Cancelled",
     "send_email_to_creator": 0,
     "state": "Paid"
-   },
-   {
-    "action": "Reject",
-    "allow_self_approval": 0,
-    "allowed": "Bank Approval User",
-    "doctype": "Workflow Transition",
-    "next_state": "Rejected",
-    "send_email_to_creator": 0,
-    "state": "First Approval for Bank"
-   },
-   {
-    "action": "Approve",
-    "allow_self_approval": 0,
-    "allowed": "Bank Approval User",
-    "condition": "",
-    "doctype": "Workflow Transition",
-    "next_state": "Document Upload",
-    "send_email_to_creator": 0,
-    "state": "First Approval for Bank"
-   },
-   {
-    "action": "Paid",
-    "allow_self_approval": 1,
-    "allowed": "Bank User",
-    "doctype": "Workflow Transition",
-    "next_state": "Paid",
-    "send_email_to_creator": 0,
-    "state": "Document Upload"
-   },
-   {
-    "action": "Refund",
-    "allow_self_approval": 1,
-    "allowed": "Bank User",
-    "doctype": "Workflow Transition",
-    "next_state": "Pending",
-    "send_email_to_creator": 0,
-    "state": "Document Upload"
    }
   ],
   "workflow_name": "Payment Request",

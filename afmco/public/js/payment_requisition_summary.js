@@ -21,18 +21,12 @@ frappe.provide("afmco.pr_summary");
 		`<div class="prc-clamp prc-clamp--${lines}">${html}</div><button type="button" class="prc-more" hidden data-more>${esc(__("Show all"))}</button>`;
 
 	const SADAD = ["SADAD Payment", "Work Permit Fee Payment", "Passport Fee Payment"];
-	const BANK_LOCKED = ["Document Upload", "Waiting", "Paid", "Cancelled"];
-	const BANK_ENTRY = ["Waiting Bank Entry", "First Approval for Bank"];
-	const BANK_DATE_STATES = [...BANK_ENTRY, "Document Upload", "Waiting", "Paid", "Cancelled"];
+	const BANK_STATES = ["Document Upload", "Paid", "Cancelled"];
 	const JE_STATES = ["Document Upload", "Paid"];
 	const STATE_TONE = {
-		"Financial Controller": "blue",
-		"Waiting P.M Approval": "amber",
+		"Waiting Accountant Approval": "amber",
 		"Waiting Manager Approval": "amber",
-		"Waiting Bank Entry": "amber",
-		"First Approval for Bank": "amber",
 		"Document Upload": "accent",
-		Waiting: "amber",
 		Paid: "green",
 		Rejected: "red",
 	};
@@ -501,7 +495,7 @@ frappe.provide("afmco.pr_summary");
 			: clamp(esc(doc.beneficiary_name), 2);
 		const cell = (label, value) =>
 			isBlank(value) ? "" : `<div class="ch-cell"><span class="ch-k">${esc(label)}</span><b>${clamp(mixed(value), 2)}</b></div>`;
-		const showBankDate = !isBlank(doc.bank_payment_date) && (doc.verify_payment || BANK_DATE_STATES.includes(state));
+		const showBankDate = !isBlank(doc.bank_payment_date) && (doc.verify_payment || BANK_STATES.includes(state));
 		const date = (label, value) =>
 			isBlank(value) ? "" : `<div class="prc-dt"><span class="prc-label">${esc(label)}</span><b class="prc-ltr prc-num">${esc(value)}</b></div>`;
 		return `<section class="prc-cheque" aria-label="${esc(__("Payment order"))}">
@@ -543,7 +537,7 @@ frappe.provide("afmco.pr_summary");
 		const cards = [];
 		const no = () => `<span class="prc-card__no prc-num">${String(cards.length + 1).padStart(2, "0")}</span>`;
 		const val = (v) => (isBlank(v) ? "" : esc(v));
-		if (BANK_ENTRY.includes(state) || BANK_LOCKED.includes(state) || !isBlank(doc.bank_reference_cf)) {
+		if (BANK_STATES.includes(state) || !isBlank(doc.bank_reference_cf)) {
 			const paid = flt(doc.paid_amount_cf) ? money(doc.paid_amount_cf) : "";
 			const rows =
 				grid(2, field(__("Bank Account"), val(doc.bank_account)), field(__("Bank Payment Date"), isBlank(doc.bank_payment_date) ? "" : ltr(day(doc.bank_payment_date), "prc-num"))) +

@@ -11,24 +11,6 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2023-12-27 03:16:51.846439",
-  "name": "Financial Controller",
-  "style": "Primary",
-  "workflow_state_name": "Financial Controller"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2023-01-18 12:00:50.259978",
-  "name": "First Approval for Bank",
-  "style": "",
-  "workflow_state_name": "First Approval for Bank"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
   "icon": "question-sign",
   "modified": "2023-12-27 03:12:25.680632",
   "name": "Pending",
@@ -48,19 +30,10 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2023-12-27 03:14:41.779199",
-  "name": "Waiting",
-  "style": "Warning",
-  "workflow_state_name": "Waiting"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2023-01-18 12:02:02.481464",
-  "name": "Waiting Bank Entry",
-  "style": "",
-  "workflow_state_name": "Waiting Bank Entry"
+  "modified": "2024-01-07 16:08:26.678788",
+  "name": "Waiting Accountant Approval",
+  "style": "Danger",
+  "workflow_state_name": "Waiting Accountant Approval"
  },
  {
   "docstatus": 0,
@@ -70,14 +43,5 @@
   "name": "Waiting Manager Approval",
   "style": "Danger",
   "workflow_state_name": "Waiting Manager Approval"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2023-01-18 12:04:05.365876",
-  "name": "Waiting P.M Approval",
-  "style": "",
-  "workflow_state_name": "Waiting P.M Approval"
  }
 ]
