@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\": \"mini-h1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>AFMCO</b></span>\", \"col\": 12}}, {\"id\": \"mini-s0\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Payment Requisition\", \"col\": 4}}, {\"id\": \"mini-s1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Advance Leave Salary\", \"col\": 4}}, {\"id\": \"mini-s2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"End of Service Settlement\", \"col\": 4}}, {\"id\": \"mini-sp\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"mini-c1\", \"type\": \"card\", \"data\": {\"card_name\": \"Documents\", \"col\": 4}}, {\"id\": \"mini-c2\", \"type\": \"card\", \"data\": {\"card_name\": \"Setup\", \"col\": 4}}]",
+ "content": "[{\"id\": \"mini-h1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>AFMCO</b></span>\", \"col\": 12}}, {\"id\": \"mini-s0\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Payment Requisition\", \"col\": 4}}, {\"id\": \"mini-s1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Advance Leave Salary\", \"col\": 4}}, {\"id\": \"mini-s2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"End of Service Settlement\", \"col\": 4}}, {\"id\": \"mini-sp\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"mini-c1\", \"type\": \"card\", \"data\": {\"card_name\": \"Documents\", \"col\": 4}}]",
  "creation": "2026-10-23 00:00:00.000000",
  "custom_blocks": [],
  "docstatus": 0,
@@ -56,29 +56,9 @@
    "type": "Link",
    "dependencies": "",
    "only_for": ""
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Setup",
-   "link_count": 1,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Payment Approver",
-   "link_count": 0,
-   "link_to": "Payment Approver",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link",
-   "dependencies": "",
-   "only_for": ""
   }
  ],
- "modified": "2026-10-23 00:28:00.000000",
+ "modified": "2026-10-23 05:42:00.000000",
  "modified_by": "Administrator",
  "module": "Afmco",
  "name": "AFMCO",

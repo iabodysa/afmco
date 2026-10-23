@@ -1,14 +1,6 @@
 // Copyright (c) 2026, AFMCO and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Payment Requisition', {
-	setup: function (frm) {
-		frm.set_query('payment_approver', () => ({
-			query: 'afmco.afmco.api.payment_approver.active_approvers',
-		}))
-	},
-});
-
 /** Client script for Payment Requisition. */
 
 // Shared helpers ---------------------------------------------------------------
@@ -277,12 +269,6 @@ frappe.ui.form.on('Payment Requisition', {
         stopAccountsBotStatus(frm);
     },
 
-    onload(frm) {
-        if (frm.doc.workflow_state === 'Financial Controller' && frappe.user_roles.includes('Auditor')) {
-            displayPaymentApproverPermissions(frm);
-        }
-    },
-
     open_reference_document(frm) {
         if (frm.reference_doctype) frappe.set_route('Form', frm.reference_doctype, frm.doc.tax_invoice_number);
     },
@@ -294,7 +280,6 @@ frappe.ui.form.on('Payment Requisition', {
 
         frappe.require(['/assets/afmco/js/stepper.js', '/assets/afmco/css/stepper.css'], () => renderRequestCards(frm));
         validateAndDisplayBankAccountAlert(frm);
-        handleFinancialControllerPermissions(frm);
 
         addPreviousRecordsButton(frm);
         addUrgentButton(frm);
@@ -355,7 +340,7 @@ frappe.ui.form.on('Payment Requisition', {
 
 frappe.ui.form.on('Payment Requisition', Object.fromEntries([
     'amount', 'remark', 'account_no', 'payment_type', 'beneficiary_name', 'multiple_beneficiaries',
-    'sadad_biller_code', 'sadad_bill_number', 'cost_center', 'project', 'payment_approver', 'if_it__urgent',
+    'sadad_biller_code', 'sadad_bill_number', 'cost_center', 'project', 'if_it__urgent',
     'verify_payment', 'reason_of_urgency', 'bank_account', 'bank_payment_date', 'bank_reference_cf', 'jv_status',
     'tax_invoice_number'
 ].map((event) => [event, renderSummary])));
@@ -885,33 +870,6 @@ function getAccountValidationResult(account_no) {
     }
 
     return { hasError: false };
-}
-
-function handleFinancialControllerPermissions(frm) {
-    $('.payment-approver-message').remove();
-
-    if (frm.doc.workflow_state === 'Financial Controller' && frappe.user_roles.includes('Auditor')) {
-        displayPaymentApproverPermissions(frm);
-    }
-}
-
-function displayPaymentApproverPermissions(frm) {
-    if (!frm.doc.role) return;
-
-    const formatted_role = escapeHtmlWithLineBreaks(frm.doc.role);
-    const alertHtml = build_afmco_alert(
-        'info',
-        __('Please note that this document is pending approval from the {0}. Ensure all required verifications are completed before proceeding.', [formatted_role]),
-        'fa-shield-alt',
-        true
-    );
-    const message = `<div class="payment-approver-message">${alertHtml}</div>`;
-
-    $('.payment-approver-message').remove();
-
-    if (frm.page && frm.page.body) {
-        $(frm.page.body).prepend(message);
-    }
 }
 
 // Account audit dashboard ------------------------------------------------------

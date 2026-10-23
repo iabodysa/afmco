@@ -776,7 +776,6 @@ frappe.ui.form.on('Advance Leave Salary', {
         expenseRequest.naming_series = 'PR-.YYYY.-';
         expenseRequest.payment_type = 'Advance Leave Salary';
         expenseRequest.mode_of_payment = 'Bank Transfer';
-        expenseRequest.payment_approver ='Human Resources - الموارد البشرية';
         expenseRequest.remark = `
             Vacation Salary Request
             -------------------------------------
@@ -840,7 +839,6 @@ frappe.ui.form.on('Advance Leave Salary', {
                 naming_series: 'PR-.YYYY.-',
                 mode_of_payment: 'SADAD Payment',
                 multiple_beneficiaries: 1,
-                payment_approver: 'Human Resources - الموارد البشرية',
                 remark: `Exit and return visa:
 - Employee Name: ${frm.doc.employee_name}
 - Employee ID: ${frm.doc.employee}

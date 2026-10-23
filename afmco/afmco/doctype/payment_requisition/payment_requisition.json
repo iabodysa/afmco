@@ -8,7 +8,6 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "role",
   "urgency_and_status_section",
   "verify_payment",
   "if_it__urgent",
@@ -30,8 +29,6 @@
   "cost_center",
   "column_break_project",
   "project",
-  "column_break_payment_approver",
-  "payment_approver",
   "section_beneficiary_employee",
   "naming_series",
   "amount_in_words",
@@ -71,15 +68,6 @@
   "summary_end_section"
  ],
  "fields": [
-  {
-   "fetch_from": "payment_approver.roles",
-   "fieldname": "role",
-   "fieldtype": "Text",
-   "hidden": 1,
-   "ignore_user_permissions": 1,
-   "label": "Role",
-   "read_only": 1
-  },
   {
    "fieldname": "urgency_and_status_section",
    "fieldtype": "Section Break",
@@ -211,21 +199,6 @@
    "fieldtype": "Link",
    "label": "Cost Center",
    "options": "Cost Center"
-  },
-  {
-   "fieldname": "column_break_payment_approver",
-   "fieldtype": "Column Break"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "fieldname": "payment_approver",
-   "fieldtype": "Link",
-   "ignore_user_permissions": 0,
-   "label": "Payment Approver",
-   "link_filters": "[[\"Payment Approver\",\"active\",\"=\",1]]",
-   "no_copy": 1,
-   "options": "Payment Approver",
-   "read_only_depends_on": "eval:doc.workflow_state != 'Pending' && doc.workflow_state != 'Financial Controller'"
   },
   {
    "fieldname": "section_beneficiary_employee",
@@ -493,7 +466,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-10-21 18:14:00.000000",
+ "modified": "2026-10-23 05:42:00.000000",
  "module": "Afmco",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",

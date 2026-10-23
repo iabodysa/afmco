@@ -62,7 +62,6 @@ Payment Requisition,طلب الصرف
 Partly Claimed and Returned,مطالب به جزئيًا ومرتجع
 Payroll Cost Center,مركز تكلفة الرواتب
 Performance,الأداء
-Permission Role,دور الصلاحية
 Please delete the Employee {0} to cancel this document,يرجى حذف الموظف {0} لإلغاء هذا المستند
 Please enter a valid cell number with at least 9 digits.,يرجى إدخال رقم جوال صالح لا يقل عن 9 أرقام.
 Please fill out all required fields.,يرجى تعبئة جميع الحقول المطلوبة.
@@ -297,7 +296,6 @@ Employee Status Before Relieving,حالة الموظف قبل ترك العمل
 Employee Values Before Relieving,قيم الموظف قبل ترك العمل
 Workflow Action,إجراء سير العمل
 Years,سنوات
-Restricts this user to the Payment Requisitions addressed to this approver,يقصر هذا المستخدم على طلبات الصرف الموجهة إلى مسؤول الموافقة هذا
 Export All Requisitions to Excel,تصدير جميع طلبات الصرف إلى Excel
 {0} m,{0} دقيقة
 {0} h,{0} ساعة
@@ -434,13 +432,10 @@ PR Created,تم إنشاء طلب الصرف
 PR Not Created,لم ينشأ طلب الصرف
 PR-.YYYY.-,PR-.YYYY.-
 Passport Fee Payment,سداد رسوم الجواز
-Payment Approver,مسؤول موافقة الدفع
 Payment Date,تاريخ الدفع
 Payroll (Salary),الرواتب
-Permission Role {0} is already held by Payment Approver {1},دور الصلاحية {0} مسند مسبقًا إلى مسؤول موافقة الدفع {1}
 Petty Cash,العهدة النقدية
 Petty Cash Balance,رصيد العهدة النقدية
-Please note that this document is pending approval from the {0}. Ensure all required verifications are completed before proceeding.,يرجى العلم أن هذا المستند بانتظار موافقة {0}. تأكد من استكمال جميع التحققات المطلوبة قبل المتابعة.
 "Please print the form, sign the employee and attach it",يرجى طباعة النموذج وتوقيع الموظف عليه ثم إرفاقه
 Please select a valid payment type from the dropdown list.,يرجى اختيار نوع دفع صحيح من القائمة.
 Please verify the Bank Payment Date for year allocation.,يرجى التحقق من تاريخ الدفع البنكي لتوزيع المبلغ على السنوات.

@@ -504,7 +504,6 @@ frappe.provide("afmco.pr_summary");
 			${words ? `<div class="ch-words"><bdi dir="auto">${esc(words)}</bdi></div>` : ""}
 			${accountStrip(doc)}
 			<div class="ch-grid">${cell(__("Project"), doc.cost_center)}${cell(__("Cost Center"), doc.project)}<div class="prc-cheque__dates">${date(__("Request date"), day(doc.creation))}${showBankDate ? date(__("Bank Payment Date"), day(doc.bank_payment_date)) : ""}</div></div>
-			${isBlank(doc.payment_approver) ? "" : `<div class="ch-foot"><span><span>${esc(__("Payment Approver"))}:</span> <b>${mixed(doc.payment_approver)}</b></span></div>`}
 			<div class="ch-micr" aria-hidden="true">⑆ ${esc(doc.name)} ⑆ ${micr ? `<span class="ch-micr__acct">${esc(micr)} ⑈ </span>` : ""}${amount(doc.amount)} ⑈</div>
 		</section>`;
 	}

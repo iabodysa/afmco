@@ -83,15 +83,12 @@
 .afmco-pr-summary .ch-grid .prc-cheque__dates{justify-content:flex-end}
 .afmco-pr-summary .ch-cell{display:flex;flex-direction:column;gap:1px;min-width:0}
 .afmco-pr-summary .ch-cell b{font-size:14px;font-weight:600;line-height:1.45;overflow-wrap:break-word;text-wrap:balance}
-.afmco-pr-summary .ch-foot{display:flex;justify-content:space-between;gap:6px 10px;flex-wrap:wrap;font-size:12.5px;color:var(--prc-muted)}
-.afmco-pr-summary .ch-foot b{color:var(--prc-ink);font-weight:600;text-wrap:balance}
 .afmco-pr-summary .ch-micr{font-family:var(--prc-mono);font-size:12px;letter-spacing:.14em;color:var(--prc-faint);direction:ltr;text-align:center;border-top:1px dashed var(--prc-line);padding:8px 0 4px;overflow-wrap:anywhere}
 .afmco-pr-summary .prc-cheque .prc-cheque__dates{padding:0}
 @container afmco-pr-summary (max-width:560px){
 .afmco-pr-summary .prc-cheque{padding:14px 14px 16px}
 .afmco-pr-summary .ch-grid{grid-template-columns:minmax(0,1fr)}
 .afmco-pr-summary .ch-grid .prc-cheque__dates{justify-content:flex-start}
-.afmco-pr-summary .ch-foot > span{display:flex;flex-direction:column;gap:1px}
 .afmco-pr-summary .ch-name{font-size:18px}
 .afmco-pr-summary .ch-amt{flex:1 1 100%;text-align:start}
 .afmco-pr-summary .ch-iban{font-size:clamp(12px,3.9cqi,15px);letter-spacing:0}
