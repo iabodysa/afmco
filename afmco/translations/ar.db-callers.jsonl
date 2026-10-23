@@ -1,3 +1,5 @@
 {"key": "Waiting Accountant Approval", "caller": "Payment Request workflow state"}
 {"key": "Waiting Manager Approval", "caller": "Payment Request workflow state"}
 {"key": "Document Upload", "caller": "Payment Request workflow state"}
+{"key": "Payroll Manager", "caller": "afmco fixture Role name"}
+{"key": "Bank Approval User", "caller": "afmco fixture Role name"}
