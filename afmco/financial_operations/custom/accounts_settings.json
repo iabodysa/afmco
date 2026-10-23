@@ -11,6 +11,16 @@
    "module": "Financial Operations",
    "name": "Accounts Settings-afmco_journal_entry_draft_limit",
    "non_negative": 1
+  },
+  {
+   "dt": "Accounts Settings",
+   "fieldname": "afmco_journal_entry_draft_limit_exempt_role",
+   "fieldtype": "Link",
+   "insert_after": "afmco_journal_entry_draft_limit",
+   "label": "Journal Entry Draft Limit Exempt Role",
+   "module": "Financial Operations",
+   "name": "Accounts Settings-afmco_journal_entry_draft_limit_exempt_role",
+   "options": "Role"
   }
  ],
  "custom_perms": [],

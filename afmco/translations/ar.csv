@@ -294,6 +294,7 @@ Islam,الإسلام
 Item,الصنف
 Items,الأصناف
 Journal Entry Draft Limit per User,حد مسودات القيود لكل مستخدم
+Journal Entry Draft Limit Exempt Role,الدور المستثنى من حد مسودات القيود
 JV Based on Submitted SI,قيد يومية بناء على فواتير المبيعات المعتمدة
 JV Created for Renewal Fees,أنشئ قيد يومية لرسوم التجديد
 JV Created for Sadad Invoice,أنشئ قيد يومية لفاتورة سداد

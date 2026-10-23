@@ -6,6 +6,7 @@ from frappe import _
 from frappe.utils import cint, get_link_to_form
 
 DRAFT_LIMIT_FIELD = "afmco_journal_entry_draft_limit"
+DRAFT_LIMIT_EXEMPT_ROLE_FIELD = "afmco_journal_entry_draft_limit_exempt_role"
 SINGLE_ACTIVE_LINK_FIELDS = ("jv_based_on_submitted_si_cf",)
 
 
@@ -17,6 +18,9 @@ class AfmcoJournalEntry:
 		if self.is_new():
 			limit = cint(frappe.db.get_single_value("Accounts Settings", DRAFT_LIMIT_FIELD))
 			if not limit:
+				return
+			exempt_role = frappe.db.get_single_value("Accounts Settings", DRAFT_LIMIT_EXEMPT_ROLE_FIELD)
+			if exempt_role and exempt_role in frappe.get_roles():
 				return
 			count = frappe.db.count(
 				self.doctype,
