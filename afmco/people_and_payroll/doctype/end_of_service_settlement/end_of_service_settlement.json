@@ -26,9 +26,9 @@
   "accounting_procedures_section",
   "table_14",
   "cva",
+  "contract_year_note",
   "clearing_end_of_service_section",
   "dos_years",
-  "contract_year_note",
   "total_salary",
   "salary_per_day",
   "column_break_vacation",
@@ -201,12 +201,6 @@
    "label": "Duration of service (years)"
   },
   {
-   "fieldname": "contract_year_note",
-   "fieldtype": "Small Text",
-   "label": "Contract Year Note",
-   "read_only": 1
-  },
-  {
    "fetch_from": "employee.basic_wage",
    "fieldname": "total_salary",
    "fieldtype": "Currency",
@@ -284,6 +278,12 @@
    "label": "Advance Leave Salary Details",
    "options": "Contract Vacation Allowance",
    "read_only_depends_on": "eval:doc.workflow_state!=\"Waiting Accountant Approval\""
+  },
+  {
+   "fieldname": "contract_year_note",
+   "fieldtype": "Small Text",
+   "label": "Contract Year Note",
+   "read_only": 1
   },
   {
    "description": "After review, file the payment request on this form with supporting documents.",
@@ -537,7 +537,7 @@
    "link_fieldname": "tax_invoice_number"
   }
  ],
- "modified": "2026-10-13 08:15:00.000000",
+ "modified": "2026-10-25 09:00:00.000000",
  "module": "People and Payroll",
  "name": "End of Service Settlement",
  "naming_rule": "By \"Naming Series\" field",
