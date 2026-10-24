@@ -82,23 +82,21 @@ def daily_wage(wage):
 
 
 def contract_year_note(anchor, last_day, unpaid):
-    year = contract_year_of(anchor, last_day, unpaid)
-    if not year:
-        return ""
-    k, start, end = year
-    lines = [
-        _("Contract year {0}: from {1} to {2}").format(
-            k, formatdate(start), formatdate(end)
-        )
-    ]
-    for first, last in sorted(unpaid):
-        days = overlap_days(anchor, end, first, last)
-        if days:
-            lines.append(
-                _(
-                    "Unpaid leave from {0} to {1}: {2} days added to the contract year"
-                ).format(formatdate(first), formatdate(last), days)
+    lines = []
+    for k, start, end in contract_years(anchor, last_day, unpaid):
+        lines.append(
+            _("Contract year {0}: from {1} to {2}").format(
+                k, formatdate(start), formatdate(end)
             )
+        )
+        for first, last in sorted(unpaid):
+            days = overlap_days(start, end, first, last)
+            if days:
+                lines.append(
+                    _(
+                        "Unpaid leave from {0} to {1}: {2} days added to the contract year"
+                    ).format(formatdate(first), formatdate(last), days)
+                )
     return "\n".join(lines)
 
 
