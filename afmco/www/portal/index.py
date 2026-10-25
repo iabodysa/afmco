@@ -105,8 +105,9 @@ def get_news():
 
 def get_portal_image(image, size):
 	name = f"{os.path.splitext(os.path.basename(image))[0]}-{size}.webp"
-	if os.path.isfile(frappe.get_app_path("afmco", "public", "images", "portal", name)):
-		return f"{PORTAL_IMAGES}{name}"
+	path = frappe.get_app_path("afmco", "public", "images", "portal", name)
+	if os.path.isfile(path):
+		return f"{PORTAL_IMAGES}{name}?v={int(os.path.getmtime(path))}"
 
 
 def get_announcement():
