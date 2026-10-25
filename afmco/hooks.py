@@ -221,6 +221,7 @@ jinja = {
 override_whitelisted_methods = {
 	"toggle_archive_view": "afmco.financial_operations.api.expense_request.toggle_archive_view",
 	"frappe.desk.reportview.export_query": "afmco.people_and_payroll.api.report_view.export_query",
+	"frappe.desk.query_report.get_script": "afmco.people_and_payroll.api.query_report.get_script",
 }
 
 regional_overrides = {
