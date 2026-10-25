@@ -153,7 +153,6 @@ extend_doctype_class = {
 	"Expense Claim": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"File": "afmco.financial_operations.file.AfmcoFile",
 	"Journal Entry": "afmco.financial_operations.journal_entry.AfmcoJournalEntry",
-	"Leave Application": "afmco.people_and_payroll.leave_application.AfmcoLeaveApplication",
 	"Leave Encashment": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Loan": "afmco.people_and_payroll.loan.AfmcoLoan",
 	"Loan Disbursement": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
@@ -182,6 +181,7 @@ scheduler_events = {
 		"afmco.people_and_payroll.doctype.iqama_renewal_fee_tracking.iqama_renewal_fee_tracking.check_iqama_renewal_fee",
 		"afmco.people_and_payroll.doctype.iqama_renewal_tracking.iqama_renewal_tracking.check_iqama_renewal",
 		"afmco.people_and_payroll.leave_application.set_employees_on_leave",
+		"afmco.people_and_payroll.leave_application.alert_hr_of_employees_not_returned",
 	],
 	"hourly": [
 		"afmco.people_and_payroll.iqama.check_iqama_expiration",

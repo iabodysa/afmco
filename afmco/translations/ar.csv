@@ -1402,9 +1402,6 @@ This certificate was issued at the employee's request without any liability on t
 Important Notice,إشعار مهم,Employee
 The employee has an outstanding debt of {0} Saudi Riyals.,الموظف عليه مديونية بقيمة {0} ريال سعودي.,Employee
 Rejoin After Leave,المباشرة بعد الإجازة,Leave Application
-Date of Rejoining,تاريخ العودة,Leave Application
-The rejoining date must be the day after the leave end date. Please adjust the rejoining date.,يجب أن يكون تاريخ العودة هو اليوم التالي لتاريخ نهاية الإجازة. يرجى تعديل تاريخ العودة.,Leave Application
-An error occurred while adding the comment. Please try again.,حدث خطأ أثناء إضافة التعليق. أعد المحاولة.,Leave Application
 WPS Salary File,ملف رواتب حماية الأجور
 WPS Salary File,ملف رواتب حماية الأجور,WPS File
 Issue WPS file,إصدار ملف حماية الأجور,WPS File
@@ -1446,8 +1443,6 @@ The IBAN number must have 22 digits following 'SA'.,يجب أن يحتوي رق�
 Invalid bank code: {0},رمز البنك غير صالح: {0}
 The linked EOS document could not be marked as Paid. Please try again.,تعذر تعليم مستند نهاية الخدمة المرتبط كمدفوع. يرجى المحاولة مرة أخرى.
 EOS Update Failed,فشل تحديث مستند نهاية الخدمة
-"The employee is not currently on leave. Please ensure the employee status is ""On Leave"" before proceeding.","الموظف ليس في إجازة حاليًا. يرجى التأكد من أن حالة الموظف هي ""في إجازة"" قبل المتابعة.",Leave Application
-Employee status has been updated to Active.,تم تحديث حالة الموظف إلى نشط.,Leave Application
 SADAD Bulk Payments,مدفوعات سداد الجماعية,SADAD Bulk
 New batch,دفعة جديدة,SADAD Bulk
 Batches,الدفعات,SADAD Bulk
@@ -16613,3 +16608,21 @@ Amount Due from Employee,المبلغ المستحق على الموظف
 Hold After Months Without Salary Slip,أشهر بلا قسيمة راتب قبل التعليق
 "The employee agrees that the entire unpaid leave period is not counted in the length of service, by agreement of both parties under Article 116 of the Labor Law.",يوافق الموظف على عدم احتساب كامل مدة الإجازة بدون أجر ضمن مدة خدمته، وذلك باتفاق الطرفين وفقًا للمادة (116) من نظام العمل.,Leave Application
 Attach the leave form signed by the employee.,يُرجى إرفاق نموذج الإجازة موقّعًا من الموظف.,Leave Application
+An early resumption cannot be cancelled. Amend Leave Application {0} instead.,لا يمكن إلغاء مباشرة عمل مبكرة. عدّل طلب الإجازة {0} بدلًا من ذلك.
+Early,مبكرة
+Employee rejoined after leave on {0},باشر الموظف العمل بعد الإجازة في {0}
+Late,متأخرة
+Late Days Attendance,حضور أيام التأخير
+Late Days Leave Application,إجازة أيام التأخير
+Late Days Treatment,معالجة أيام التأخير
+Late return from {0},تأخر في العودة من {0}
+Leave Application {0} is not approved,طلب الإجازة {0} غير معتمد
+Leave Resumption,مباشرة عمل
+Leave Resumption {0} already records this leave,مباشرة العمل {0} مسجلة لهذه الإجازة
+On Time,في الموعد
+Resumption Date,تاريخ المباشرة
+Resumption Date cannot be in the future,لا يمكن أن يكون تاريخ المباشرة في المستقبل
+Resumption Date must be after the leave start date,يجب أن يكون تاريخ المباشرة بعد تاريخ بداية الإجازة
+Return Type,نوع العودة
+Shortened Leave Application,طلب الإجازة المختصر
+{0} has not resumed work {1} days after leave ended on {2},{0} لم يباشر العمل بعد {1} أيام من انتهاء إجازته في {2}

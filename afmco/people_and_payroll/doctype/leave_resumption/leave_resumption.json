@@ -1,0 +1,216 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "LR-.YYYY.-.#####",
+ "creation": "2026-10-25 09:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "leave_application",
+  "employee",
+  "employee_name",
+  "company",
+  "leave_type",
+  "from_date",
+  "to_date",
+  "column_break_return",
+  "resumption_date",
+  "return_type",
+  "days_difference",
+  "late_treatment",
+  "advance_leave_salary",
+  "amended_leave_application",
+  "late_leave_application",
+  "late_attendance",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "leave_application",
+   "fieldtype": "Link",
+   "label": "Leave Application",
+   "options": "Leave Application",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee",
+   "fetch_from": "leave_application.employee",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "fetch_from": "leave_application.employee_name",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "fetch_from": "leave_application.company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "leave_type",
+   "fieldtype": "Link",
+   "label": "Leave Type",
+   "options": "Leave Type",
+   "fetch_from": "leave_application.leave_type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "fetch_from": "leave_application.from_date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "fetch_from": "leave_application.to_date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_return",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "resumption_date",
+   "fieldtype": "Date",
+   "label": "Resumption Date",
+   "reqd": 1,
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "return_type",
+   "fieldtype": "Select",
+   "label": "Return Type",
+   "options": "\nOn Time\nEarly\nLate",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "days_difference",
+   "fieldtype": "Int",
+   "label": "Days",
+   "read_only": 1,
+   "depends_on": "eval:doc.days_difference"
+  },
+  {
+   "fieldname": "late_treatment",
+   "fieldtype": "Select",
+   "label": "Late Days Treatment",
+   "options": "\nLeave Without Pay\nAbsent",
+   "depends_on": "eval:doc.return_type=='Late'",
+   "mandatory_depends_on": "eval:doc.return_type=='Late'"
+  },
+  {
+   "fieldname": "advance_leave_salary",
+   "fieldtype": "Link",
+   "label": "Advance Leave Salary",
+   "options": "Advance Leave Salary",
+   "read_only": 1,
+   "depends_on": "eval:doc.advance_leave_salary"
+  },
+  {
+   "fieldname": "amended_leave_application",
+   "fieldtype": "Link",
+   "label": "Shortened Leave Application",
+   "options": "Leave Application",
+   "read_only": 1,
+   "no_copy": 1,
+   "depends_on": "eval:doc.amended_leave_application"
+  },
+  {
+   "fieldname": "late_leave_application",
+   "fieldtype": "Link",
+   "label": "Late Days Leave Application",
+   "options": "Leave Application",
+   "read_only": 1,
+   "no_copy": 1,
+   "depends_on": "eval:doc.late_leave_application"
+  },
+  {
+   "fieldname": "late_attendance",
+   "fieldtype": "Small Text",
+   "label": "Late Days Attendance",
+   "read_only": 1,
+   "no_copy": 1,
+   "depends_on": "eval:doc.late_attendance"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Leave Resumption",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1,
+   "hidden": 1
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-10-25 03:34:00.000000",
+ "modified_by": "Administrator",
+ "module": "People and Payroll",
+ "name": "Leave Resumption",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "HR Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "print": 1,
+   "email": 1,
+   "report": 1,
+   "export": 1,
+   "share": 1
+  },
+  {
+   "role": "HR User",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "print": 1,
+   "email": 1,
+   "report": 1,
+   "export": 1,
+   "share": 1
+  }
+ ],
+ "search_fields": "employee,employee_name",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "employee_name",
+ "track_changes": 1
+}

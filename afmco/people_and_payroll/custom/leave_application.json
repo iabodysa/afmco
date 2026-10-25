@@ -12,6 +12,7 @@
    "module": "People and Payroll",
    "name": "Leave Application-date_of_rejoing",
    "no_copy": "1",
+   "read_only": 1,
    "reqd": "0"
   },
   {
@@ -36,6 +37,18 @@
   }
  ],
  "doctype": "Leave Application",
+ "links": [
+  {
+   "custom": 1,
+   "doctype": "DocType Link",
+   "group": "Leave Resumption",
+   "link_doctype": "Leave Resumption",
+   "link_fieldname": "leave_application",
+   "parent": "Leave Application",
+   "parentfield": "links",
+   "parenttype": "DocType"
+  }
+ ],
  "property_setters": [
   {
    "doc_type": "Leave Application",

@@ -4,9 +4,10 @@
 import frappe
 from erpnext.accounts.doctype.journal_entry.journal_entry import get_account_details_and_party_type
 from frappe import _
-from frappe.utils import flt, getdate
+from frappe.utils import flt, getdate, today
 
 from afmco.people_and_payroll.employee import employees_on_hold
+from afmco.people_and_payroll.leave_application import employees_not_returned
 from afmco.people_and_payroll.payroll_check import held_employee_rows, payroll_check
 
 
@@ -37,7 +38,9 @@ class AfmcoPayrollEntry:
 
 	def fill_employee_details(self):
 		unmarked = super().fill_employee_details()
-		held = employees_on_hold(row.employee for row in self.employees)
+		employees = [row.employee for row in self.employees]
+		as_of = min(getdate(today()), getdate(self.end_date))
+		held = employees_on_hold(employees) | employees_not_returned(employees, as_of)
 		if not held:
 			return unmarked
 		for row in [row for row in self.employees if row.employee in held]:
