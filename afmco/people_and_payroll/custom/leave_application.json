@@ -13,6 +13,26 @@
    "name": "Leave Application-date_of_rejoing",
    "no_copy": "1",
    "reqd": "0"
+  },
+  {
+   "dt": "Leave Application",
+   "fieldname": "unpaid_leave_acknowledgement_section",
+   "fieldtype": "Section Break",
+   "hidden": "1",
+   "insert_after": "amended_from",
+   "module": "People and Payroll",
+   "name": "Leave Application-unpaid_leave_acknowledgement_section"
+  },
+  {
+   "dt": "Leave Application",
+   "fieldname": "unpaid_leave_acknowledgement",
+   "fieldtype": "HTML",
+   "hidden": "1",
+   "insert_after": "unpaid_leave_acknowledgement_section",
+   "module": "People and Payroll",
+   "name": "Leave Application-unpaid_leave_acknowledgement",
+   "options": "{% if doc.leave_type and frappe.db.get_value(\"Leave Type\", doc.leave_type, \"is_lwp\") %}<p>{{ _(\"The employee agrees that the entire unpaid leave period is not counted in the length of service, by agreement of both parties under Article 116 of the Labor Law.\", context=\"Leave Application\") }}</p><div class=\"row\"><div class=\"col-xs-6\">{{ _(\"Employee Signature\") }}: ____________________</div><div class=\"col-xs-6\">{{ _(\"Date\") }}: ____________________</div></div>{% endif %}",
+   "print_hide": "0"
   }
  ],
  "doctype": "Leave Application",
