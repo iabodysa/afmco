@@ -1,0 +1,47 @@
+<style>
+	.salary-slip-table table {
+		font-size: 8pt;
+	}
+	.salary-slip-table table > thead > tr > th,
+	.salary-slip-table table > tbody > tr > td {
+		padding: 2px 4px;
+	}
+	.salary-slip-table td.text-right {
+		white-space: nowrap;
+	}
+	.salary-slip-table .salary-slip-table-total {
+		font-weight: bold;
+	}
+</style>
+<div class="salary-slip-table">
+	<h2 class="text-center">{{ title }}</h2>
+	{% for (var s = 0; s < subtitles.length; s++) { %}
+	<h5 class="text-center">{{ subtitles[s] }}</h5>
+	{% } %}
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>#</th>
+				{% for (var c = 0; c < columns.length; c++) { %}
+				<th class="{{ columns[c].numeric ? 'text-right' : '' }}">{{ columns[c].label }}</th>
+				{% } %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for (var r = 0; r < rows.length; r++) { %}
+			<tr>
+				<td>{{ r + 1 }}</td>
+				{% for (var c = 0; c < columns.length; c++) { %}
+				<td class="{{ columns[c].numeric ? 'text-right' : '' }}">{{ rows[r][c] }}</td>
+				{% } %}
+			</tr>
+			{% } %}
+			<tr class="salary-slip-table-total">
+				<td></td>
+				{% for (var c = 0; c < columns.length; c++) { %}
+				<td class="{{ columns[c].numeric ? 'text-right' : '' }}">{{ c === 0 ? __("Total") : totals[c] }}</td>
+				{% } %}
+			</tr>
+		</tbody>
+	</table>
+</div>

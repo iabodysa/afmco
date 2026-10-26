@@ -16626,3 +16626,6 @@ Resumption Date must be after the leave start date,يجب أن يكون تاري
 Return Type,نوع العودة
 Shortened Leave Application,طلب الإجازة المختصر
 {0} has not resumed work {1} days after leave ended on {2},{0} لم يباشر العمل بعد {1} أيام من انتهاء إجازته في {2}
+Print as Table,طباعة كجدول
+Print Salary Slips,طباعة قسائم الرواتب
+No Salary Slip found,لم يعثر على قسيمة راتب

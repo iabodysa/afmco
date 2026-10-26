@@ -13,6 +13,11 @@ frappe.ui.form.on('Payroll Entry', {
         }
         if (frm.doc.docstatus == 1 && frm.doc.salary_slips_created == 1) {
             checkSalarySlipsAndAddButtons(frm);
+            frm.add_custom_button(__('Print Salary Slips'), () => {
+                frappe.require('salary_slip_table.bundle.js', () =>
+                    afmco.salary_slip_table.print({ payroll_entry: frm.doc.name, docstatus: ['!=', 2] }, frm.doc.name)
+                );
+            });
         }
     },
     after_save: function(frm) {

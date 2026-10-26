@@ -40,5 +40,12 @@ frappe.listview_settings["Salary Slip"] = frappe.listview_settings["Salary Slip"
 				filters: JSON.stringify([["Salary Slip", "name", "in", docnames]]),
 			});
 		});
+
+		listview.page.add_action_item(__("Print as Table"), () => {
+			const docnames = listview.get_checked_items(true);
+			frappe.require("salary_slip_table.bundle.js", () =>
+				afmco.salary_slip_table.print({ name: ["in", docnames] })
+			);
+		});
 	};
 })(frappe.listview_settings["Salary Slip"]);
