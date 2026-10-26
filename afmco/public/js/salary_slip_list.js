@@ -31,7 +31,7 @@ frappe.listview_settings["Salary Slip"] = frappe.listview_settings["Salary Slip"
 					"start_date",
 					"end_date",
 					"gross_pay",
-					"loans_amount",
+					"total_loan_repayment",
 					"total_deduction",
 					"net_pay",
 					"bank_name",
