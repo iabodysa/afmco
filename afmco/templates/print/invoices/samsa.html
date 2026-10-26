@@ -16,7 +16,7 @@
   ('P.O. No.', _("Purchase Order Number", "ar", ctx), doc.po_no or '', ''),
   ('P.O. Date', _("Purchase Order Date", "ar", ctx), frappe.utils.formatdate(doc.po_date, 'yyyy-mm-dd') if doc.po_date else '', 'num')
 ] -%}
-{%- call invoice(doc, columns, extra_meta=extra_meta) %}
+{%- call invoice(doc, columns, extra_meta=extra_meta, letter_head=None if no_letterhead else letter_head) %}
 {%- for item in doc.items %}
 {%- set s_desc = ((item.description or '') | replace('&nbsp;', ' ') | striptags).split() | join(' ') or item.item_name or '' -%}
 {%- set s_ar = (s_desc | select('ge', '؀') | select('le', 'ۿ') | list | length) > 0 %}

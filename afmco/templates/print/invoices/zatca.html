@@ -147,7 +147,7 @@
 {%- endif -%}
 {%- endmacro -%}
 
-{%- set _afm_co = frappe.db.get_value('Company', doc.company, ['company_name', 'company_name_in_arabic', 'tax_id', 'company_logo'], as_dict=1) or {} -%}
+{%- set _afm_co = frappe.db.get_value('Company', doc.company, ['company_name', 'company_name_in_arabic', 'tax_id'], as_dict=1) or {} -%}
 {%- set _afm_zbs = frappe.db.get_value('ZATCA Business Settings', {'company': doc.company}, 'name') if doc.company else none -%}
 {%- set _afm_ns = namespace(cr='', street='', postal='') -%}
 {%- if _afm_zbs -%}
@@ -161,17 +161,19 @@
   'name_en': 'AFMCO Ltd. for Support Services',
   'vat': _afm_co.tax_id or '',
   'cr': _afm_ns.cr,
-  'logo': _afm_co.company_logo or '/files/afmco-logo-full-1200w.png',
   'addr': [_afm_ns.street, _afm_ns.postal] | select | join(' - '),
   'phone': '011 242 5473',
   'web': 'www.afmcoltd.com'
 } -%}
 <div id="header-html">
+{%- if letter_head and not no_letterhead %}
+<div class="letter-head">{{ letter_head }}</div>
+{%- endif %}
 <div class="afm afm-hdr" dir="rtl" lang="ar">
   <table>
     <colgroup><col style="width:30mm"><col><col style="width:66mm"></colgroup>
     <tr>
-      <td class="logo">{% if afm.logo %}<img src="{{ afm.logo }}" alt="AFMCO">{% endif %}</td>
+      <td></td>
       <td></td>
       <td>
         <table class="ids">

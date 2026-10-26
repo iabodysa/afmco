@@ -40,8 +40,6 @@ html body, body[onload] { padding: 0 !important; margin: 0 !important; }
 .print-format .afm td, .print-format .afm th { padding: 2px 4px !important; vertical-align: middle !important; word-wrap: break-word; border: 0; }
 
 .print-format .afm-hdr td { padding: 0 !important; vertical-align: top !important; border: 0 !important; }
-.print-format .afm-hdr td.logo { text-align: right; }
-body:last-child .print-format .afm-hdr td.logo img, .print-format .afm-hdr td.logo img { height: 15mm !important; width: auto !important; max-width: none !important; max-height: none !important; object-fit: contain; display: inline-block; }
 .afm-hdr .ids td { font-size: 8pt; line-height: 13px; white-space: nowrap; vertical-align: baseline !important; color: #1a1a1a; }
 .print-format .afm-hdr .ids td { padding: 0 0 2px 4px !important; }
 .afm-hdr .ids .k { font-size: 6.5pt; color: #6b6b6b; }
@@ -145,9 +143,9 @@ body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.in
 </style>
 {%- endmacro %}
 
-{% macro invoice(doc, columns, title=None, extra_meta=[], buyer_name=None, buyer_address=None, notes=[], qr_note=False, stamp=None, compact=False) -%}
+{% macro invoice(doc, columns, title=None, extra_meta=[], buyer_name=None, buyer_address=None, notes=[], qr_note=False, stamp=None, compact=False, letter_head=None) -%}
 {%- set ctx = "Samsa Tax Invoice" -%}
-{%- set _co = frappe.db.get_value('Company', doc.company, ['company_name', 'company_name_in_arabic', 'tax_id', 'company_logo'], as_dict=1) or {} -%}
+{%- set _co = frappe.db.get_value('Company', doc.company, ['company_name', 'company_name_in_arabic', 'tax_id'], as_dict=1) or {} -%}
 {%- set _zbs = frappe.db.get_value('ZATCA Business Settings', {'company': doc.company}, 'name') if doc.company else none -%}
 {%- set _ns = namespace(cr='', street='', postal='') -%}
 {%- if _zbs -%}
@@ -160,17 +158,19 @@ body:last-child .print-format .afm.inv .inv-top td.qr img, .print-format .afm.in
   'name_en': 'AFMCO Ltd. for Support Services',
   'vat': _co.tax_id or '',
   'cr': _ns.cr,
-  'logo': _co.company_logo or '/files/afmco-logo-full-1200w.png',
   'addr': [_ns.street, _ns.postal] | select | join(' - '),
   'phone': '011 242 5473',
   'web': 'www.afmcoltd.com'
 } -%}
 <div id="header-html">
+{%- if letter_head %}
+<div class="letter-head">{{ letter_head }}</div>
+{%- endif %}
 <div class="afm afm-hdr" dir="rtl" lang="ar">
   <table>
     <colgroup><col><col style="width:62mm"></colgroup>
     <tr>
-      <td class="logo">{% if afm.logo %}<img src="{{ afm.logo }}" alt="AFMCO">{% endif %}</td>
+      <td></td>
       <td>
         <table class="ids">
           <colgroup><col style="width:24mm"><col><col style="width:13mm"></colgroup>

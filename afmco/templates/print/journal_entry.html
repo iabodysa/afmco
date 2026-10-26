@@ -4,7 +4,7 @@
 {%- macro stack(ar, en) -%}{% if ar != en %}<span class="ar">{{ ar }}</span>{% endif %}<span class="en">{{ en }}</span>{%- endmacro -%}
 {%- macro stamp(at) -%}{% if at %}<span class="num">{{ frappe.utils.format_datetime(at, "yyyy-MM-dd HH:mm") }}</span>{% endif %}{%- endmacro -%}
 
-{%- set co = frappe.db.get_value("Company", doc.company, ["company_name", "company_name_in_arabic", "tax_id", "company_logo", "phone_no", "website", "default_currency"], as_dict=1) or {} -%}
+{%- set co = frappe.db.get_value("Company", doc.company, ["company_name", "company_name_in_arabic", "tax_id", "phone_no", "website", "default_currency"], as_dict=1) or {} -%}
 {%- set zbs = frappe.db.get_value("ZATCA Business Settings", {"company": doc.company}, "name") if doc.company else none -%}
 {%- set ns = namespace(cr="", street="", postal="") -%}
 {%- if zbs -%}
@@ -48,8 +48,6 @@ html body, body[onload] { padding: 0 !important; margin: 0 !important; }
 .print-format .afm td, .print-format .afm th { padding: 2px 4px !important; vertical-align: middle !important; word-wrap: break-word; border: 0; }
 
 .print-format .afm-hdr td { padding: 0 !important; vertical-align: top !important; border: 0 !important; }
-.print-format .afm-hdr td.logo { text-align: right; }
-body:last-child .print-format .afm-hdr td.logo img, .print-format .afm-hdr td.logo img { height: 15mm !important; width: auto !important; max-width: none !important; max-height: none !important; object-fit: contain; display: inline-block; }
 .afm-hdr .ids td { font-size: 8pt; line-height: 13px; white-space: nowrap; vertical-align: baseline !important; color: #1a1a1a; }
 .print-format .afm-hdr .ids td { padding: 0 0 2px 4px !important; }
 .afm-hdr .ids .k { font-size: 6.5pt; color: #6b6b6b; }
@@ -129,11 +127,14 @@ body:last-child .print-format .afm-hdr td.logo img, .print-format .afm-hdr td.lo
 </style>
 
 <div id="header-html">
+{%- if letter_head and not no_letterhead %}
+<div class="letter-head">{{ letter_head }}</div>
+{%- endif %}
 <div class="afm afm-hdr" dir="rtl" lang="ar">
   <table>
     <colgroup><col><col style="width:62mm"></colgroup>
     <tr>
-      <td class="logo"><img src="{{ co.company_logo or '/assets/afmco/images/afmco-logo.png' }}" alt="{{ name_en }}"></td>
+      <td></td>
       <td>
         <table class="ids">
           <colgroup><col style="width:24mm"><col><col style="width:13mm"></colgroup>
