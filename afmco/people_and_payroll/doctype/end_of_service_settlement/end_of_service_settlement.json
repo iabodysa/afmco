@@ -27,6 +27,10 @@
   "table_14",
   "cva",
   "contract_year_note",
+  "leave_extension",
+  "before_2024_leave",
+  "leave_decision_by",
+  "leave_decision_on",
   "clearing_end_of_service_section",
   "dos_years",
   "total_salary",
@@ -286,6 +290,33 @@
    "read_only": 1
   },
   {
+   "fieldname": "leave_extension",
+   "fieldtype": "Select",
+   "label": "Contract Year Extension",
+   "options": "\nExtend\nNo extension",
+   "read_only": 1
+  },
+  {
+   "fieldname": "before_2024_leave",
+   "fieldtype": "Select",
+   "label": "Contract Years Before 2024",
+   "options": "\nTaken\nBalance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "leave_decision_by",
+   "fieldtype": "Link",
+   "label": "Extension Decided By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "leave_decision_on",
+   "fieldtype": "Datetime",
+   "label": "Extension Decided On",
+   "read_only": 1
+  },
+  {
    "description": "After review, file the payment request on this form with supporting documents.",
    "fieldname": "hr_procedures_section",
    "fieldtype": "Tab Break",
@@ -537,7 +568,7 @@
    "link_fieldname": "tax_invoice_number"
   }
  ],
- "modified": "2026-10-25 09:00:00.000000",
+ "modified": "2026-10-26 12:00:00.000000",
  "module": "People and Payroll",
  "name": "End of Service Settlement",
  "naming_rule": "By \"Naming Series\" field",

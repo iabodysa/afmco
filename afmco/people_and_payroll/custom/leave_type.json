@@ -9,6 +9,16 @@
    "label": "Extends Contract Year",
    "module": "People and Payroll",
    "name": "Leave Type-extends_contract_year"
+  },
+  {
+   "default": "0",
+   "dt": "Leave Type",
+   "fieldname": "uses_leave_balance",
+   "fieldtype": "Check",
+   "insert_after": "extends_contract_year",
+   "label": "Uses Annual Leave Balance",
+   "module": "People and Payroll",
+   "name": "Leave Type-uses_leave_balance"
   }
  ],
  "doctype": "Leave Type",

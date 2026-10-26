@@ -799,14 +799,8 @@ frappe.ui.form.on('Advance Leave Salary', {
       }).addClass('btn-danger');
     }
     if (frm.doc.workflow_state === 'Waiting Accountant Approval') {
-            frm.add_custom_button(__('Get Advance Leave Salary'), async () => {
-          if (frm.is_dirty()) await frm.save();
-          await frappe.call({
-            method: 'afmco.people_and_payroll.api.advance_leave_salary.fill_leave_allowance',
-            args: { doctype: frm.doctype, name: frm.docname },
-            freeze: true,
-          });
-          frm.reload_doc();
+            frm.add_custom_button(__('Get Advance Leave Salary'), () => {
+          frappe.require('/assets/afmco/js/leave_balance_dialog.js', () => afmco.leave_balance.calculate(frm));
         }).addClass('btn-primary');
 
             frm.add_custom_button(__('Open General Ledger'), function() {

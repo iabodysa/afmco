@@ -15,11 +15,17 @@ from frappe.utils import (
 )
 
 from afmco.people_and_payroll.service_calendar import (
+    ABSENT,
+    DEBIT,
+    DRAW,
     ONE_DAY,
+    RECORDS_START,
+    UNPAID as UNPAID_DAY,
     contract_year_of,
     contract_years,
     inclusive_days,
     leave_days,
+    leave_ledger,
     overlap_days,
     service_span,
     service_value,
@@ -40,6 +46,11 @@ PAID = "Paid"
 UNPAID = "unpaid"
 DRIFT_DAYS = 7
 OTHER_CLAIM = "Other"
+EXTEND = "Extend"
+NO_EXTENSION = "No extension"
+TAKEN = "Taken"
+BALANCE = "Balance"
+FRIDAY = 4
 
 NO_EOS_REASONS = {
     "3-Termination by the employer under Article 80",
@@ -81,7 +92,7 @@ def daily_wage(wage):
     return money(flt(wage) / 30)
 
 
-def contract_year_note(anchor, last_day, unpaid):
+def contract_year_note(anchor, last_day, unpaid, used=None):
     lines = []
     for k, start, end in contract_years(anchor, last_day, unpaid):
         lines.append(
@@ -89,6 +100,8 @@ def contract_year_note(anchor, last_day, unpaid):
                 k, formatdate(start), formatdate(end)
             )
         )
+        if used and used.get(k):
+            lines.append(_("Leave balance used: {0} days").format(used[k]))
         for first, last in sorted(unpaid):
             days = overlap_days(start, end, first, last)
             if days:
@@ -147,7 +160,7 @@ def recompute_settlement(doc):
     doc.total_eos = total_eos
     doc.dos_years = fixed(service_years(*span))
     doc.duration_of_service = fixed(worked_days(doc.date_1, doc.date_2, unpaid))
-    doc.contract_year_note = contract_year_note(doc.date_1, doc.date_2, unpaid)
+    doc.contract_year_note = leave_note(doc)
     if eos_days is not None:
         doc.days_of_eos = money(eos_days)
     doc.cva_total = money(allowance)
@@ -174,7 +187,7 @@ def recompute_advance(doc):
     ticket = 0 if doc.get("not") == 1 or doc.check1 == 0 else flt(doc.ticket_allowance)
     doc.dos_years = fixed(service_value(doc.date_1, doc.date_2, leave))
     doc.duration_of_service = fixed(worked_days(doc.date_1, doc.date_2, leave))
-    doc.contract_year_note = contract_year_note(doc.date_1, doc.date_2, leave)
+    doc.contract_year_note = leave_note(doc)
     doc.cva_total = money(allowance)
     doc.deductions = money(deducted)
     doc.amount = money(
@@ -196,10 +209,130 @@ def entitlement(doc, k):
     return 30 if k >= 6 and flt(vad) < 30 else vad
 
 
+def leave_day_kinds(employee):
+    kinds = {}
+    for row in frappe.get_all(
+        "Leave Type",
+        fields=["name", "is_lwp", "extends_contract_year", "uses_leave_balance"],
+    ):
+        if row.is_lwp or row.extends_contract_year:
+            kinds[row.name] = DRAW if row.uses_leave_balance else UNPAID_DAY
+        elif row.uses_leave_balance:
+            kinds[row.name] = DEBIT
+        else:
+            kinds[row.name] = None
+    rank = {UNPAID_DAY: 3, DRAW: 2, DEBIT: 1, None: 0}
+    days = {}
+    for row in frappe.get_all(
+        "Leave Application",
+        filters={"employee": employee, "docstatus": 1, "status": APPROVED},
+        fields=["leave_type", "from_date", "to_date"],
+    ):
+        kind = kinds.get(row.leave_type)
+        day, last = getdate(row.from_date), getdate(row.to_date)
+        while day <= last:
+            if day not in days or rank[kind] > rank[days[day]]:
+                days[day] = kind
+            day += ONE_DAY
+    for day in frappe.get_all(
+        "Attendance",
+        filters={"employee": employee, "docstatus": 1, "status": "Absent"},
+        pluck="attendance_date",
+    ):
+        day = getdate(day)
+        if day.weekday() != FRIDAY and day not in days:
+            days[day] = ABSENT
+    return {day: kind for day, kind in days.items() if kind}
+
+
+def has_early_leave_records(employee):
+    return bool(
+        frappe.db.exists(
+            "Leave Application",
+            {
+                "employee": employee,
+                "docstatus": 1,
+                "status": APPROVED,
+                "from_date": ["<", RECORDS_START],
+            },
+        )
+    )
+
+
+def before_records(doc, choice):
+    if (
+        not doc.date_1
+        or getdate(doc.date_1) >= RECORDS_START
+        or has_early_leave_records(doc.employee)
+    ):
+        return None, set()
+    periods = settled_periods(doc)
+    clearance = frappe.db.get_value(
+        "Employee", doc.employee, "date_of_last_vacation_clearance"
+    )
+    asked = set()
+
+    def taken(k, start, end):
+        if end >= RECORDS_START:
+            return False
+        year = frappe._dict(contract_start_date=start, contract_end_date=end)
+        if (clearance and start <= getdate(clearance)) or any(
+            settled_year(year, period) for period in periods
+        ):
+            return True
+        asked.add(k)
+        return choice == TAKEN
+
+    return taken, asked
+
+
+def balance_ledger(doc, before_2024=None, extend=True):
+    choice = before_2024 or doc.get("before_2024_leave")
+    key = (
+        doc.employee,
+        cstr(doc.date_1),
+        cstr(doc.date_2),
+        cstr(doc.vacation_days_per_year),
+        choice,
+        extend,
+    )
+    cache = doc.flags.leave_ledger or {}
+    if key not in cache:
+        taken, asked = before_records(doc, choice)
+        years, unpaid = leave_ledger(
+            doc.date_1,
+            doc.date_2,
+            lambda k: flt(entitlement(doc, k)),
+            leave_day_kinds(doc.employee),
+            taken,
+            extend,
+        )
+        cache[key] = (years, unpaid, sorted(asked))
+        doc.flags.leave_ledger = cache
+    return cache[key]
+
+
+def contract_year_unpaid(doc):
+    if doc.get("leave_extension") == EXTEND:
+        return balance_ledger(doc)[1]
+    if doc.get("leave_extension") == NO_EXTENSION:
+        return []
+    return unpaid_leave(doc.employee)
+
+
+def leave_note(doc):
+    unpaid = contract_year_unpaid(doc)
+    used = None
+    if doc.get("leave_extension"):
+        years = balance_ledger(doc, extend=doc.leave_extension == EXTEND)[0]
+        used = {year.k: year.used for year in years}
+    return contract_year_note(doc.date_1, doc.date_2, unpaid, used)
+
+
 def build_periods(doc):
     last_day = getdate(doc.date_2)
     advance = doc.doctype == ADVANCE_LEAVE_SALARY
-    unpaid = unpaid_leave(doc.employee)
+    unpaid = contract_year_unpaid(doc)
     rows = []
     for k, start, year_end in contract_years(doc.date_1, last_day, unpaid):
         if advance and year_end > last_day and not within_advance_window(getdate(doc.creation), year_end):
@@ -376,7 +509,7 @@ def fill_periods(doc):
         ):
             row.update(status=PAID, amount3=None)
     doc.set("cva", rows)
-    refresh_deduction(doc, periods, unpaid_leave(doc.employee))
+    refresh_deduction(doc, periods, contract_year_unpaid(doc))
     RECOMPUTE[doc.doctype](doc)
 
 
@@ -395,7 +528,7 @@ def follow_status_switch(doc):
     switched = [row for row in doc.cva or [] if row.name in previous and previous[row.name] != row.status]
     if not switched:
         return
-    unpaid = unpaid_leave(doc.employee)
+    unpaid = contract_year_unpaid(doc)
     for row in switched:
         row.amount3 = None if row.status == PAID else row_amount(doc, row, unpaid)
     refresh_deduction(doc, settled_periods(doc), unpaid)
@@ -421,7 +554,7 @@ def refuse_settled_employee(doc):
 
 
 def refuse_unfinished_contract_year(doc):
-    unpaid = unpaid_leave(doc.employee)
+    unpaid = contract_year_unpaid(doc)
     for row in doc.cva or []:
         if row.status == PAID or not (row.contract_start_date and row.contract_end_date):
             continue
@@ -440,7 +573,7 @@ def refuse_unfinished_contract_year(doc):
 def refuse_unearned_rows(doc):
     if not doc.date_1:
         return
-    unpaid = unpaid_leave(doc.employee)
+    unpaid = contract_year_unpaid(doc)
     for row in doc.cva or []:
         if row.status == PAID or not (row.contract_start_date and row.contract_end_date):
             continue

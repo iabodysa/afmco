@@ -16629,3 +16629,27 @@ Shortened Leave Application,طلب الإجازة المختصر
 Print as Table,طباعة كجدول
 Print Salary Slips,طباعة قسائم الرواتب
 No Salary Slip found,لم يعثر على قسيمة راتب
+Absence,الغياب
+Balance Used,المستخدم من الرصيد
+Choose how the contract years before 2024 count.,اختر طريقة احتساب السنوات العقدية قبل 2024.
+Choose whether to extend the contract year.,اختر تمديد السنة العقدية أو عدم تمديدها.
+Contract Year,السنة العقدية
+Contract Year Extension,تمديد السنة العقدية
+Contract Years Before 2024,السنوات العقدية قبل 2024
+"Contract years before 2024 count as {0}, as decided in {1}.",السنوات العقدية قبل 2024 محتسبة {0} حسب القرار في {1}.
+Entitlement,الاستحقاق
+Exit and Re-entry Visas,تأشيرات الخروج والعودة
+Extend,تمديد
+Extension Decided By,قرار التمديد بواسطة
+Extension Decided On,تاريخ قرار التمديد
+Fill the joining date and the last date before calculating.,أدخل تاريخ المباشرة والتاريخ الأخير قبل الحساب.
+Leave Applications,طلبات الإجازة
+Leave Balance and Contract Years,رصيد الإجازات والسنوات العقدية
+Leave balance used: {0} days,المستخدم من رصيد الإجازات: {0} يوم
+No extension,بدون تمديد
+Proposed Extension,التمديد المقترح
+Taken,مستخدمة
+The contract year extends by {0} days. Check the exit and re-entry records before extending.,تمتد السنة العقدية {0} يوم. راجع سجلات الخروج والعودة قبل التمديد.
+The employee joined before 2024 and has no leave records before 2024. Choose how the contract years before 2024 count.,باشر الموظف قبل 2024 ولا توجد له سجلات إجازات قبل 2024. اختر طريقة احتساب السنوات العقدية قبل 2024.
+Unpaid Days,أيام بدون أجر
+Uses Annual Leave Balance,تخصم من رصيد الإجازة السنوية
