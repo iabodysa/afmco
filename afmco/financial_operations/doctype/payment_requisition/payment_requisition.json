@@ -333,7 +333,7 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Bank Payment Date",
-   "read_only_depends_on": "eval:doc.docstatus == 2 || (doc.__onload && doc.__onload.journal_entry_locked) || (!doc.verify_payment && ['Document Upload','Waiting','Paid','Cancelled'].includes(doc.workflow_state) && !frappe.user.has_role('Bank User'))"
+   "read_only_depends_on": "eval:doc.docstatus == 2 || (doc.__onload && doc.__onload.journal_entry_locked) || (!doc.verify_payment && ['Document Upload','Waiting','Paid','Cancelled'].includes(doc.workflow_state) && !frappe.user.has_role('Bank User') && !frappe.user.has_role('Accountant'))"
   },
   {
    "allow_on_submit": 1,

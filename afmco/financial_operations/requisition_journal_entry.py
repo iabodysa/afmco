@@ -38,6 +38,8 @@ def build(requisition: Document, bank_account: str, administration: bool) -> Doc
 	remark = requisition.remark or ""
 	journal_entry = frappe.new_doc("Journal Entry")
 	journal_entry.expense_request_cf = requisition.name
+	if requisition.bank_payment_date:
+		journal_entry.posting_date = requisition.bank_payment_date
 	journal_entry.user_remark = remark or f"Expense Request: {requisition.name}"
 	names = account_names()
 	precision = frappe.get_precision("Journal Entry Account", "debit_in_account_currency")

@@ -415,7 +415,7 @@ def create_journal_entry(batch):
 	payment_requests = frappe.get_all(
 		PAYMENT_REQUEST,
 		filters={"tax_invoice_number": doc.name, "docstatus": ["<", 2]},
-		fields=["name", "docstatus", "jv_status"],
+		fields=["name", "docstatus", "jv_status", "bank_payment_date"],
 	)
 	if len(payment_requests) != 1:
 		frappe.throw(
@@ -474,7 +474,7 @@ def create_journal_entry(batch):
 			"doctype": JOURNAL_ENTRY,
 			"voucher_type": "Journal Entry",
 			"company": company,
-			"posting_date": today(),
+			"posting_date": payment_request.bank_payment_date or today(),
 			"user_remark": doc.name,
 			"expense_request_cf": payment_request.name,
 			"accounts": accounts,
