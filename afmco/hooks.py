@@ -131,10 +131,10 @@ after_migrate = [
 permission_query_conditions = {
 	"Payment Requisition": "afmco.financial_operations.doctype.payment_requisition.payment_requisition.get_permission_query_conditions",
 }
-#
-# has_permission = {
-#	"Event": "frappe.desk.doctype.event.event.has_permission",
-# }
+
+has_permission = {
+	"File": "afmco.financial_operations.journal_entry_dossier.file_permission",
+}
 
 # DocType Class
 # ---------------

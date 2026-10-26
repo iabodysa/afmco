@@ -19,6 +19,7 @@ PRINT_FORMAT = "Journal Entry Voucher"
 INDEX_TEMPLATE = "afmco/templates/print/journal_entry_dossier_index.html"
 LEGACY_PATTERN = re.compile(r"-dossier-[0-9a-f]{8}\.pdf$")
 ROLES = ("Accountant", "Accounts User", "Accounts Manager")
+GUARDIAN = "System Manager"
 SKIPPED_KEY = "/AfmcoSkipped"
 INPUTS_KEY = "/AfmcoInputs"
 
@@ -55,6 +56,19 @@ def split(journal_entry: str) -> tuple[list[dict], list[dict]]:
 	return files, dossiers
 
 
+def file_permission(doc, ptype=None, user=None, debug=False) -> bool:
+	if ptype not in ("write", "delete"):
+		return True
+	stored = frappe.db.get_value(
+		"File", doc.name, ["name", "file_name", "attached_to_doctype", "attached_to_name"], as_dict=True
+	)
+	if not stored or stored.attached_to_doctype != JOURNAL_ENTRY or GUARDIAN in frappe.get_roles(user):
+		return True
+	if frappe.db.get_value(JOURNAL_ENTRY, stored.attached_to_name, "docstatus") != 1:
+		return True
+	return not is_dossier(stored.attached_to_name, stored)
+
+
 def is_mergeable(file: dict) -> bool:
 	extension = requisition_pack.file_extension(file)
 	if extension != "pdf" and extension not in IMAGE_EXTENSIONS:
@@ -87,9 +101,9 @@ def source_pages(file: dict) -> int:
 	return 1
 
 
-def index_rows(cover: bytes, files: list[dict], excluded: list[str]) -> tuple[list[dict], int]:
+def index_rows(cover: bytes, files: list[dict], excluded: list[str], front: int) -> tuple[list[dict], int]:
 	rows = []
-	end = page_count(cover)
+	end = front + page_count(cover)
 	for file in files:
 		pages = 0 if file.file_name in excluded else source_pages(file)
 		rows.append(
@@ -105,9 +119,25 @@ def index_rows(cover: bytes, files: list[dict], excluded: list[str]) -> tuple[li
 	return rows, end
 
 
+def render_index(entry, cover: bytes, files: list[dict], excluded: list[str]) -> tuple[bytes, int, int]:
+	front = 0
+	for _attempt in range(3):
+		rows, end = index_rows(cover, files, excluded, front)
+		index = get_pdf(frappe.render_template(INDEX_TEMPLATE, {"entry": entry, "rows": rows}))
+		if page_count(index) == front:
+			break
+		front = page_count(index)
+	return index, front, end
+
+
 def finish(merged: bytes, index: bytes, info: dict[str, str]) -> bytes:
 	output = io.BytesIO()
-	with pikepdf.Pdf.open(io.BytesIO(merged)) as pdf, pikepdf.Pdf.open(io.BytesIO(index)) as tail:
+	with (
+		pikepdf.Pdf.open(io.BytesIO(index)) as pdf,
+		pikepdf.Pdf.open(io.BytesIO(merged)) as body,
+		pikepdf.Pdf.open(io.BytesIO(index)) as tail,
+	):
+		pdf.pages.extend(body.pages)
 		pdf.pages.extend(tail.pages)
 		for key, value in info.items():
 			pdf.docinfo[key] = value
@@ -128,9 +158,8 @@ def build(journal_entry: str) -> dict:
 		cover, files, requisition_pack.input_size(files) > requisition_pack.DOWNSAMPLE_THRESHOLD
 	)
 	skipped = [name for name in excluded if name not in listed]
-	rows, end = index_rows(cover, files, excluded)
-	index = get_pdf(frappe.render_template(INDEX_TEMPLATE, {"entry": entry, "rows": rows}))
-	expected = end + page_count(index)
+	index, front, end = render_index(entry, cover, files, excluded)
+	expected = end + front
 	content = finish(merged, index, {INPUTS_KEY: inputs_key(entry, files), SKIPPED_KEY: json.dumps(skipped)})
 	actual = page_count(content)
 	if actual != expected:
@@ -145,7 +174,7 @@ def build(journal_entry: str) -> dict:
 		)
 		return {"error": error, "listed": listed, "skipped": skipped}
 	for dossier in dossiers:
-		frappe.delete_doc("File", dossier.name)
+		frappe.delete_doc("File", dossier.name, ignore_permissions=True)
 	file = frappe.get_doc(
 		{
 			"doctype": "File",
