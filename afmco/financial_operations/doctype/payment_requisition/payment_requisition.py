@@ -33,6 +33,7 @@ RECEIPT_COMPARED_FIELDS = ("bank_payment_date", "bank_account", "paid_amount_cf"
 JOURNAL_ENTRY_LOCKED_FIELDS = ("bank_payment_date", "bank_account", "bank_reference_cf", "paid_amount_cf")
 SADAD_NUMBER_FIELDS = ("sadad_biller_code", "sadad_bill_number")
 SADAD_PAYMENT = "SADAD Payment"
+SADAD_PAYMENT_TYPES = (SADAD_PAYMENT, "Work Permit Fee Payment", "Passport Fee Payment")
 BANK_TRANSFER = "Bank Transfer"
 SAUDI_IBAN = re.compile(r"SA\d{22}")
 STOP_QUESTION_TAG = "[accounts-bot-stop-question q="
@@ -399,7 +400,7 @@ class PaymentRequisition(Document):
 			frappe.throw(_("Enter the reason of urgency."), title=_("Urgent"))
 
 	def validate_iban(self):
-		if not self.account_no or self.payment_type == SADAD_PAYMENT or not self.has_value_changed("account_no"):
+		if not self.account_no or self.payment_type in SADAD_PAYMENT_TYPES or not self.has_value_changed("account_no"):
 			return
 		if not SAUDI_IBAN.fullmatch(self.account_no):
 			frappe.throw(

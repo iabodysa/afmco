@@ -15,6 +15,7 @@ frappe.ui.form.on('Payment Requisition', {
 const user_language = frappe.boot.user.language || 'en';
 const isRTL = user_language === 'ar';
 const JOURNAL_ENTRY_PAYMENT_TYPES = Object.freeze(['EOS', 'Advance Leave Salary', 'SADAD Payment']);
+const SADAD_PAYMENT_TYPES = Object.freeze(['SADAD Payment', 'Work Permit Fee Payment', 'Passport Fee Payment']);
 
 function escapeHtml(value) {
     return frappe.utils.escape_html(value === null || value === undefined ? '' : String(value));
@@ -768,7 +769,7 @@ function createJournalEntryDraft(frm, values) {
 function validateAndDisplayBankAccountAlert(frm) {
     const fieldWrapper = frm.get_field('account_no')?.$wrapper;
 
-    if (frm.doc.payment_type === 'SADAD Payment') {
+    if (SADAD_PAYMENT_TYPES.includes(frm.doc.payment_type)) {
         frm.set_df_property('account_no', 'description', '');
         if (fieldWrapper) {
             fieldWrapper.removeClass('has-error has-success');
