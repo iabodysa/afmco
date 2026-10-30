@@ -2,6 +2,7 @@
 # For license information, please see license.txt
 
 import io
+import re
 from pathlib import Path
 
 import frappe
@@ -10,6 +11,7 @@ from frappe.utils import get_datetime
 from PIL import Image, ImageOps, UnidentifiedImageError
 
 from afmco.financial_operations import excel_lock
+from afmco.financial_operations.report_export import shorten_file_name
 
 PAYMENT_REQUISITION = "Payment Requisition"
 JOURNAL_ENTRY = "Journal Entry"
@@ -26,6 +28,13 @@ EXCEL_EXTENSIONS = {"xlsx", "xls"}
 
 def pack_file_name(requisition: str) -> str:
 	return f"{requisition}-pack.pdf"
+
+
+def is_generated(file_name: str | None, expected: str) -> bool:
+	stored = frappe._dict(file_name=expected)
+	shorten_file_name(stored)
+	stem, extension = Path(stored.file_name).stem, Path(stored.file_name).suffix
+	return re.fullmatch(rf"{re.escape(stem)}([0-9a-z]{{6}})?{re.escape(extension)}", file_name or "") is not None
 
 
 def requisition_files(requisition: str) -> list[dict]:
@@ -103,14 +112,11 @@ def attach(requisition: str, journal_entry: str) -> dict:
 	file_name = pack_file_name(requisition)
 	for previous in frappe.get_all(
 		"File",
-		filters={
-			"attached_to_doctype": JOURNAL_ENTRY,
-			"attached_to_name": journal_entry,
-			"file_name": file_name,
-		},
-		pluck="name",
+		filters={"attached_to_doctype": JOURNAL_ENTRY, "attached_to_name": journal_entry},
+		fields=["name", "file_name"],
 	):
-		frappe.delete_doc("File", previous)
+		if is_generated(previous.file_name, file_name):
+			frappe.delete_doc("File", previous.name)
 	file = frappe.get_doc(
 		{
 			"doctype": "File",
@@ -145,7 +151,7 @@ def attach_excel(files: list[dict], journal_entry: str) -> dict:
 	locked, not_locked = [], []
 	for f in excel:
 		name = locked_file_name(f.file_name)
-		previous = [a for a in attached if a.file_name == name]
+		previous = [a for a in attached if is_generated(a.file_name, name)]
 		if file_extension(f) == "xlsx" and any(get_datetime(a.creation) >= f.modified for a in previous):
 			locked.append(name)
 			continue
