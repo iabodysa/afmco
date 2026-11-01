@@ -33,7 +33,7 @@ page_renderer = [
 # include js, css files in header of desk.html
 app_include_css = "afmco_form_grid.bundle.css"
 
-app_include_js = "accounts_bot_choice.bundle.js"
+app_include_js = ["accounts_bot_choice.bundle.js", "list_column_width.bundle.js"]
 
 # include js, css files in header of web template
 web_include_css = "/assets/afmco/css/login.css"
