@@ -292,28 +292,36 @@
   {
    "fieldname": "leave_extension",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Contract Year Extension",
    "options": "\nExtend\nNo extension",
+   "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "before_2024_leave",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Contract Years Before 2024",
    "options": "\nTaken\nBalance",
+   "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "leave_decision_by",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Extension Decided By",
    "options": "User",
+   "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "leave_decision_on",
    "fieldtype": "Datetime",
+   "hidden": 1,
    "label": "Extension Decided On",
+   "print_hide": 1,
    "read_only": 1
   },
   {
@@ -568,7 +576,7 @@
    "link_fieldname": "tax_invoice_number"
   }
  ],
- "modified": "2026-10-26 12:00:00.000000",
+ "modified": "2026-11-05 16:02:00.000000",
  "module": "People and Payroll",
  "name": "End of Service Settlement",
  "naming_rule": "By \"Naming Series\" field",
