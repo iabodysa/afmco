@@ -74,6 +74,7 @@ doctype_js = {
 	"Journal Entry": "public/js/journal_entry.js",
 	"Leave Application": "public/js/leave_application.js",
 	"Loan Application": "public/js/loan_application.js",
+	"Loan Restructure": "public/js/loan_restructure.js",
 	"Payroll Entry": "public/js/payroll_entry.js",
 	"Sales Invoice": "public/js/sales_invoice_form.js",
 	"Task": "public/js/task.js",
