@@ -20,7 +20,8 @@
    "insert_after": "loan_repayment_schedule_tab",
    "label": "Loan Repayment Schedule",
    "module": "People and Payroll",
-   "name": "Loan-loan_repayment_schedule_section"
+   "name": "Loan-loan_repayment_schedule_section",
+   "hidden": "1"
   },
   {
    "dt": "Loan",
@@ -30,7 +31,8 @@
    "insert_after": "amended_from",
    "label": "Loan Repayment Schedule",
    "module": "People and Payroll",
-   "name": "Loan-loan_repayment_schedule_tab"
+   "name": "Loan-loan_repayment_schedule_tab",
+   "hidden": "1"
   },
   {
    "dt": "Loan",
@@ -41,7 +43,8 @@
    "label": "Repayment Details",
    "module": "People and Payroll",
    "name": "Loan-repayment_details",
-   "options": "loan Schedule"
+   "options": "loan Schedule",
+   "hidden": "1"
   }
  ],
  "doctype": "Loan",
