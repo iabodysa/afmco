@@ -132,8 +132,29 @@
   }
  ],
  "is_submittable": 1,
- "links": [],
- "modified": "2026-10-12 21:30:00.000000",
+ "links": [
+  {
+   "group": "Reference",
+   "link_doctype": "Salary Slip",
+   "link_fieldname": "temporary_iban"
+  },
+  {
+   "group": "Reference",
+   "link_doctype": "IBAN Update",
+   "link_fieldname": "temporary_iban"
+  },
+  {
+   "group": "Reference",
+   "link_doctype": "Advance Leave Salary",
+   "link_fieldname": "temporary_iban"
+  },
+  {
+   "group": "Reference",
+   "link_doctype": "End of Service Settlement",
+   "link_fieldname": "temporary_iban"
+  }
+ ],
+ "modified": "2026-11-11 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "People and Payroll",
  "name": "Temporary IBAN",

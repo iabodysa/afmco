@@ -17,6 +17,7 @@
   "establishment",
   "column_break_bank",
   "account_no",
+  "temporary_iban",
   "cash_payment",
   "iqama_expiration",
   "column_break_dates",
@@ -148,10 +149,16 @@
   },
   {
    "depends_on": "eval:doc.check3 == 0",
-   "fetch_from": "employee.bank_ac_no",
    "fieldname": "account_no",
    "fieldtype": "Data",
    "label": "Bank A/C No."
+  },
+  {
+   "fieldname": "temporary_iban",
+   "fieldtype": "Link",
+   "label": "Temporary IBAN",
+   "options": "Temporary IBAN",
+   "read_only": 1
   },
   {
    "default": "Account Suspended",
@@ -576,7 +583,7 @@
    "link_fieldname": "tax_invoice_number"
   }
  ],
- "modified": "2026-11-05 16:02:00.000000",
+ "modified": "2026-11-11 12:00:00.000000",
  "module": "People and Payroll",
  "name": "End of Service Settlement",
  "naming_rule": "By \"Naming Series\" field",

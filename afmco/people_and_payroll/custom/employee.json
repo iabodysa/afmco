@@ -1321,6 +1321,18 @@
    "parent": "Employee",
    "parentfield": "links",
    "parenttype": "DocType"
+  },
+  {
+   "custom": 1,
+   "group": "Dues",
+   "hidden": 0,
+   "idx": 6,
+   "is_child_table": 0,
+   "link_doctype": "Temporary IBAN",
+   "link_fieldname": "employee",
+   "parent": "Employee",
+   "parentfield": "links",
+   "parenttype": "DocType"
   }
  ],
  "property_setters": [

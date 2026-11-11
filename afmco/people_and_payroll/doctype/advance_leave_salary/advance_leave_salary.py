@@ -11,6 +11,7 @@ from afmco.people_and_payroll.advance_leave_salary import (
     refuse_unearned_rows,
     refuse_unfinished_contract_year,
 )
+from afmco.people_and_payroll.doctype.temporary_iban.temporary_iban import set_payment_bank
 from afmco.people_and_payroll.employee import validate_not_on_hold
 
 
@@ -19,6 +20,7 @@ class AdvanceLeaveSalary(Document):
         validate_not_on_hold(self.employee)
         if self.has_value_changed("employee"):
             refuse_settled_employee(self)
+        set_payment_bank(self)
         recompute_advance(self)
         follow_status_switch(self)
         refuse_unearned_rows(self)

@@ -761,10 +761,6 @@ frappe.ui.form.on('Advance Leave Salary', {
     });
     if (frm.doc.workflow_state === 'Approved' && frm.doc.pr_status == 'PR Not Created') {
       frm.add_custom_button(__('Create PR'), async () => {
-        await frm.set_value('pr_status', 'PR Created');
-
-        await frappe.db.set_value(frm.doctype, frm.docname, 'pr_status', 'PR Created');
-        
         const expenseRequest = frappe.model.get_new_doc('Payment Requisition');
         expenseRequest.tax_invoice_number = frm.doc.name;
         expenseRequest.account_no = frm.doc.account_no;

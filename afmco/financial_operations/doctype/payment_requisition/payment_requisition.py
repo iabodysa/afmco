@@ -35,6 +35,7 @@ SADAD_NUMBER_FIELDS = ("sadad_biller_code", "sadad_bill_number")
 SADAD_PAYMENT = "SADAD Payment"
 SADAD_PAYMENT_TYPES = (SADAD_PAYMENT, "Work Permit Fee Payment", "Passport Fee Payment")
 BANK_TRANSFER = "Bank Transfer"
+SOURCE_DOCTYPES = {"Advance Leave Salary": "Advance Leave Salary", "EOS": "End of Service Settlement"}
 SAUDI_IBAN = re.compile(r"SA\d{22}")
 STOP_QUESTION_TAG = "[accounts-bot-stop-question q="
 STOP_QUESTION = re.compile(r"^\[accounts-bot-stop-question q=([A-Za-z0-9_.-]+)\]$")
@@ -382,6 +383,11 @@ class PaymentRequisition(Document):
 		self.validate_sadad_numbers()
 		self.sync_workflow_state_to_jv()
 		self.sync_paid_eos_settlement()
+
+	def after_insert(self):
+		doctype = SOURCE_DOCTYPES.get(self.payment_type)
+		if doctype and self.tax_invoice_number and frappe.db.exists(doctype, self.tax_invoice_number):
+			frappe.db.set_value(doctype, self.tax_invoice_number, "pr_status", "PR Created")
 
 	def apply_multiple_beneficiaries(self):
 		if not self.multiple_beneficiaries:

@@ -3,7 +3,7 @@
 
 import frappe
 
-from afmco.people_and_payroll.doctype.temporary_iban.temporary_iban import get_active_temporary_ibans
+from afmco.people_and_payroll.doctype.temporary_iban.temporary_iban import get_payment_bank
 from afmco.people_and_payroll.employee import HOLD_STATUS, validate_not_on_hold
 
 ACTIVE_STATUS = "Active"
@@ -51,14 +51,11 @@ class AfmcoSalarySlip:
 
 	def pull_emp_details(self):
 		super().pull_emp_details()
-		temporary_iban = get_active_temporary_ibans([self.employee], self.end_date).get(self.employee)
-		self.temporary_iban = temporary_iban.name if temporary_iban else None
-		if temporary_iban:
-			self.iban_holder_name = temporary_iban.iban_holder_name
-			self.bank_account_no = temporary_iban.iban
-			self.bank_name = temporary_iban.bank_name
-		else:
-			self.iban_holder_name = frappe.get_cached_value("Employee", self.employee, "iban_holder_name")
+		bank = get_payment_bank(self.employee, self.end_date)
+		self.temporary_iban = bank.temporary_iban
+		self.iban_holder_name = bank.iban_holder_name
+		self.bank_account_no = bank.account_no
+		self.bank_name = bank.bank_name
 
 	def on_submit(self):
 		super().on_submit()
