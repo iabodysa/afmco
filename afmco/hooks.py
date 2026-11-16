@@ -131,6 +131,7 @@ after_migrate = [
 
 permission_query_conditions = {
 	"Payment Requisition": "afmco.financial_operations.doctype.payment_requisition.payment_requisition.get_permission_query_conditions",
+	"Workflow Action": "afmco.my_tasks.workflow_action.get_permission_query_conditions",
 }
 
 has_permission = {
