@@ -14,7 +14,9 @@
   "phone_no",
   "project",
   "iban_details_section",
+  "account_type",
   "iban",
+  "swift_code",
   "account_holder_name",
   "account_holder",
   "column_break_bank",
@@ -27,6 +29,7 @@
   "previous_iban",
   "previous_bank_name",
   "previous_holder",
+  "previous_swift_code",
   "naming_series",
   "deceleration",
   "iqama_copy",
@@ -85,6 +88,14 @@
    "label": "IBAN Details"
   },
   {
+   "default": "Saudi",
+   "fieldname": "account_type",
+   "fieldtype": "Select",
+   "label": "Account Type",
+   "options": "Saudi\nInternational",
+   "reqd": 1
+  },
+  {
    "default": "SA",
    "description": "Must be 24 characters and start with SA.",
    "fieldname": "iban",
@@ -92,6 +103,13 @@
    "in_list_view": 1,
    "label": "IBAN",
    "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.account_type == 'International'",
+   "fieldname": "swift_code",
+   "fieldtype": "Data",
+   "label": "SWIFT Code",
+   "mandatory_depends_on": "eval:doc.account_type == 'International'"
   },
   {
    "fieldname": "account_holder_name",
@@ -112,11 +130,12 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.account_type != 'International'",
    "fieldname": "bank_name",
    "fieldtype": "Select",
    "label": "Bank Name",
-   "options": "\nSTCJ\nAAAL\nALBI\nARNB\nBJAZ\nBMUS\nBNPA\nBSFR\nCHAS\nDEUT\nEBIL\nGULF\nICBK\nINMA\nNBOK\nNBOB\nNCBK\nNBPA\nRJHI\nRIBL\nSABB\nSAMA\nSAMB\nSBIN\nSIBC\nTCZB\nDBAK",
-   "reqd": 1
+   "mandatory_depends_on": "eval:doc.account_type != 'International'",
+   "options": "\nSTCJ\nAAAL\nALBI\nARNB\nBJAZ\nBMUS\nBNPA\nBSFR\nCHAS\nDEUT\nEBIL\nGULF\nICBK\nINMA\nNBOK\nNBOB\nNCBK\nNBPA\nRJHI\nRIBL\nSABB\nSAMA\nSAMB\nSBIN\nSIBC\nTCZB\nDBAK"
   },
   {
    "description": "If the account is not in your name, explain why.",
@@ -181,6 +200,13 @@
    "read_only": 1
   },
   {
+   "fieldname": "previous_swift_code",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Previous SWIFT Code",
+   "read_only": 1
+  },
+  {
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "hidden": 1,
@@ -219,7 +245,7 @@
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "modified": "2026-10-12 21:26:00.000000",
+ "modified": "2026-11-17 19:30:00.000000",
  "module": "People and Payroll",
  "name": "IBAN Update",
  "naming_rule": "By \"Naming Series\" field",

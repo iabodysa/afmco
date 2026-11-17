@@ -7,6 +7,7 @@ from frappe import _
 from frappe.utils import flt, getdate, today
 
 from afmco.people_and_payroll.employee import employees_on_hold
+from afmco.people_and_payroll.iban import recorded_swift_codes
 from afmco.people_and_payroll.leave_application import employees_not_returned
 from afmco.people_and_payroll.payroll_check import held_employee_rows, payroll_check
 
@@ -260,7 +261,12 @@ def bank_fee_defaults(payroll_entry):
 	ibans = dict(
 		frappe.get_all("Employee", filters={"name": ["in", paid]}, fields=["name", "bank_ac_no"], as_list=True)
 	)
-	transfers = sum(1 for employee in paid if iban_bank_code(ibans.get(employee)) != payer_bank)
+	foreign = recorded_swift_codes(ibans.values())
+	transfers = sum(
+		1
+		for employee in paid
+		if ibans.get(employee) not in foreign and iban_bank_code(ibans.get(employee)) != payer_bank
+	)
 	return {
 		"apply_fees": int(bool(fees_per_transfer and transfers)),
 		"fees_per_transfer": fees_per_transfer,

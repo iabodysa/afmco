@@ -16653,3 +16653,12 @@ The contract year extends by {0} days. Check the exit and re-entry records befor
 The employee joined before 2024 and has no leave records before 2024. Choose how the contract years before 2024 count.,باشر الموظف قبل 2024 ولا توجد له سجلات إجازات قبل 2024. اختر طريقة احتساب السنوات العقدية قبل 2024.
 Unpaid Days,أيام بدون أجر
 Uses Annual Leave Balance,تخصم من رصيد الإجازة السنوية
+A Saudi bank account must be entered as a Saudi IBAN.,الحساب في بنك سعودي يُدخل برقم آيبان سعودي.
+Account is outside Saudi Arabia,الحساب خارج المملكة
+Account number must be 5 to 34 letters and digits.,رقم الحساب من 5 إلى 34 حرفًا ورقمًا.
+Bank Country,دولة البنك
+Previous SWIFT Code,رمز السويفت السابق
+SWIFT Code,رمز السويفت
+SWIFT Code is missing,رمز السويفت غير موجود
+SWIFT Code must be 8 or 11 letters and digits.,رمز السويفت 8 أو 11 حرفًا ورقمًا.
+Saudi,سعودي

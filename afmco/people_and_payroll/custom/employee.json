@@ -317,6 +317,31 @@
    "read_only": "1"
   },
   {
+   "depends_on": "eval:doc.swift_code",
+   "dt": "Employee",
+   "fieldname": "swift_code",
+   "fieldtype": "Data",
+   "insert_after": "iban_holder_name",
+   "label": "SWIFT Code",
+   "module": "People and Payroll",
+   "name": "Employee-swift_code",
+   "permlevel": "2",
+   "read_only": "1"
+  },
+  {
+   "depends_on": "eval:doc.bank_country",
+   "dt": "Employee",
+   "fieldname": "bank_country",
+   "fieldtype": "Link",
+   "insert_after": "swift_code",
+   "label": "Bank Country",
+   "module": "People and Payroll",
+   "name": "Employee-bank_country",
+   "options": "Country",
+   "permlevel": "2",
+   "read_only": "1"
+  },
+  {
    "dt": "Employee",
    "fieldname": "iban_verified",
    "fieldtype": "Check",

@@ -4,6 +4,8 @@
 import re
 
 import frappe
+from frappe import _
+from frappe.utils import validate_iban
 
 BANK_CODES = {
 	"78": "STCJ",
@@ -36,12 +38,16 @@ BANK_CODES = {
 }
 
 SAUDI_IBAN = re.compile(r"SA\d{22}")
+BIC = re.compile(r"[A-Z]{4}([A-Z]{2})[A-Z0-9]{2}(?:[A-Z0-9]{3})?")
+IBAN_SHAPE = re.compile(r"([A-Z]{2})\d{2}[A-Z0-9]{11,30}")
+FOREIGN_ACCOUNT = re.compile(r"[A-Z0-9]{5,34}")
 SEPARATORS = re.compile(r"[\s\-_]+")
 
 MISSING = "missing"
 SHAPE = "shape"
 CHECKSUM = "checksum"
 BANK_CODE = "bank_code"
+INTERNATIONAL = "International"
 SLIP_BANK_FIELDS = ("bank_name", "bank_account_no", "iban_holder_name", "temporary_iban")
 
 
@@ -67,6 +73,52 @@ def parse_saudi_iban(value) -> tuple[bool, str | None, str | None]:
 	if not bank:
 		return False, BANK_CODE, None
 	return True, None, bank
+
+
+def validate_international_account(doc):
+	doc.iban = normalise_account(doc.iban)
+	doc.swift_code = normalise_account(doc.swift_code)
+	if not doc.swift_code:
+		frappe.throw(_("SWIFT Code is missing"))
+	bic = BIC.fullmatch(doc.swift_code)
+	if not bic:
+		frappe.throw(_("SWIFT Code must be 8 or 11 letters and digits."))
+	iban = IBAN_SHAPE.fullmatch(doc.iban)
+	if bic.group(1) == "SA" or (iban and iban.group(1) == "SA"):
+		frappe.throw(_("A Saudi bank account must be entered as a Saudi IBAN."))
+	if not FOREIGN_ACCOUNT.fullmatch(doc.iban):
+		frappe.throw(_("Account number must be 5 to 34 letters and digits."))
+	if iban:
+		validate_iban(doc.iban, throw=True)
+	return doc.swift_code[:4]
+
+
+def bank_country(swift_code):
+	bic = BIC.fullmatch(swift_code or "")
+	return bic and frappe.db.get_value("Country", {"code": bic.group(1).lower()})
+
+
+def recorded_swift_codes(accounts):
+	accounts = list({account for account in accounts if account})
+	if not accounts:
+		return {}
+	codes = dict(
+		frappe.get_all(
+			"Employee",
+			filters={"bank_ac_no": ("in", accounts), "swift_code": ("is", "set")},
+			fields=["bank_ac_no", "swift_code"],
+			as_list=True,
+		)
+	)
+	codes.update(
+		frappe.get_all(
+			"Temporary IBAN",
+			filters={"iban": ("in", accounts), "swift_code": ("is", "set"), "docstatus": 1, "active": 1},
+			fields=["iban", "swift_code"],
+			as_list=True,
+		)
+	)
+	return codes
 
 
 def refresh_draft_slips(employee):

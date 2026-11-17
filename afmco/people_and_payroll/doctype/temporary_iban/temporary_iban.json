@@ -13,7 +13,9 @@
   "valid_from",
   "valid_until",
   "column_break_iban",
+  "account_type",
   "iban",
+  "swift_code",
   "iban_holder_name",
   "bank_name",
   "section_break_reason",
@@ -76,11 +78,25 @@
    "fieldtype": "Column Break"
   },
   {
+   "fieldname": "account_type",
+   "fieldtype": "Select",
+   "label": "Account Type",
+   "options": "Saudi\nInternational",
+   "default": "Saudi",
+   "reqd": 1
+  },
+  {
    "fieldname": "iban",
    "fieldtype": "Data",
    "label": "IBAN",
-   "options": "IBAN",
    "reqd": 1
+  },
+  {
+   "fieldname": "swift_code",
+   "fieldtype": "Data",
+   "label": "SWIFT Code",
+   "depends_on": "eval:doc.account_type == 'International'",
+   "mandatory_depends_on": "eval:doc.account_type == 'International'"
   },
   {
    "fieldname": "iban_holder_name",
@@ -154,7 +170,7 @@
    "link_fieldname": "temporary_iban"
   }
  ],
- "modified": "2026-11-11 12:00:00.000000",
+ "modified": "2026-11-17 19:30:00.000000",
  "modified_by": "Administrator",
  "module": "People and Payroll",
  "name": "Temporary IBAN",

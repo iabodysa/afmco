@@ -14,6 +14,7 @@ from frappe.utils.html_utils import sanitize_html
 from afmco.approver_check import ai_reading
 from afmco.financial_operations import accounts_bot_choice, accounts_bot_run
 from afmco.people_and_payroll.doctype.end_of_service_settlement.end_of_service_settlement import mark_settlement_paid
+from afmco.people_and_payroll.iban import normalise_account, recorded_swift_codes
 
 ACCOUNTS_ROLES = ("Accounts User", "Accounts Manager")
 ACCOUNTS_BOT_VIEWER_ROLES = (*ACCOUNTS_ROLES, "System Manager")
@@ -406,9 +407,14 @@ class PaymentRequisition(Document):
 			frappe.throw(_("Enter the reason of urgency."), title=_("Urgent"))
 
 	def validate_iban(self):
-		if not self.account_no or self.payment_type in SADAD_PAYMENT_TYPES or not self.has_value_changed("account_no"):
+		if self.payment_type in SADAD_PAYMENT_TYPES or not self.has_value_changed("account_no"):
 			return
-		if not SAUDI_IBAN.fullmatch(self.account_no):
+		self.swift_code = None
+		if not self.account_no or SAUDI_IBAN.fullmatch(self.account_no):
+			return
+		account = normalise_account(self.account_no)
+		self.swift_code = recorded_swift_codes([account]).get(account)
+		if not self.swift_code:
 			frappe.throw(
 				_("Please verify the accuracy of the IBAN to avoid errors during banking transactions."),
 				title=_("Invalid IBAN"),

@@ -8,7 +8,13 @@ from frappe import _
 from frappe.model.document import Document
 from frappe.utils import format_date, getdate
 
-from afmco.people_and_payroll.iban import BANK_CODES, refresh_draft_slips
+from afmco.people_and_payroll.iban import (
+	BANK_CODES,
+	INTERNATIONAL,
+	bank_country,
+	refresh_draft_slips,
+	validate_international_account,
+)
 
 APPROVED = "Approved"
 ANOTHER_PERSON = "Another person"
@@ -34,7 +40,12 @@ class IBANUpdate(Document):
 	def validate(self):
 		if frappe.flags.in_install or frappe.flags.in_migrate:
 			return
-		self.bank_name = validate_saudi_iban(self.iban)
+		if self.account_type == INTERNATIONAL:
+			validate_international_account(self)
+			self.bank_name = None
+		else:
+			self.swift_code = None
+			self.bank_name = validate_saudi_iban(self.iban)
 		if (
 			self.duration == TEMPORARY
 			and self.valid_from
@@ -80,7 +91,9 @@ class IBANUpdate(Document):
 			{
 				"doctype": "Temporary IBAN",
 				"employee": self.employee,
+				"account_type": self.account_type,
 				"iban": self.iban,
+				"swift_code": self.swift_code,
 				"iban_holder_name": self.account_holder_name,
 				"reason": reason,
 				"iban_update": self.name,
@@ -98,8 +111,11 @@ class IBANUpdate(Document):
 		self.previous_iban = employee.bank_ac_no
 		self.previous_bank_name = employee.bank_name
 		self.previous_holder = employee.iban_holder_name
+		self.previous_swift_code = employee.swift_code
 		employee.bank_ac_no = self.iban
-		employee.bank_name = self.bank_name
+		employee.bank_name = self.bank_name or self.swift_code[:4]
+		employee.swift_code = self.swift_code
+		employee.bank_country = bank_country(self.swift_code)
 		employee.iban_holder_name = self.account_holder_name
 		employee.iban_verified = 1
 		employee.save(ignore_permissions=True)
@@ -117,6 +133,8 @@ class IBANUpdate(Document):
 		employee.bank_ac_no = self.previous_iban
 		employee.bank_name = self.previous_bank_name
 		employee.iban_holder_name = self.previous_holder
+		employee.swift_code = self.previous_swift_code
+		employee.bank_country = bank_country(self.previous_swift_code)
 		employee.save(ignore_permissions=True)
 		employee.add_comment(
 			"Comment", _("Bank details restored after IBAN Update {0} was cancelled.").format(self.name)

@@ -4,10 +4,10 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils import getdate, nowdate
+from frappe.utils import getdate, nowdate, validate_iban
 
 from afmco.people_and_payroll.doctype.iban_update.iban_update import validate_saudi_iban
-from afmco.people_and_payroll.iban import refresh_draft_slips
+from afmco.people_and_payroll.iban import INTERNATIONAL, refresh_draft_slips, validate_international_account
 
 PR_CREATED = "PR Created"
 PAYMENT_DOCTYPES = ("Advance Leave Salary", "End of Service Settlement")
@@ -15,7 +15,12 @@ PAYMENT_DOCTYPES = ("Advance Leave Salary", "End of Service Settlement")
 
 class TemporaryIBAN(Document):
 	def validate(self):
+		if self.account_type == INTERNATIONAL:
+			self.bank_name = validate_international_account(self)
+			return
+		self.swift_code = None
 		self.bank_name = validate_saudi_iban(self.iban)
+		validate_iban(self.iban, throw=True)
 
 	def before_submit(self):
 		self.validate_single_active()

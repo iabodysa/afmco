@@ -18,6 +18,7 @@
   "beneficiary_name",
   "column_break_beneficiary_name",
   "account_no",
+  "swift_code",
   "payment_details_section",
   "amount",
   "column_break_amount",
@@ -142,6 +143,13 @@
    "fieldtype": "Data",
    "label": "Account No",
    "mandatory_depends_on": "eval:!doc.multiple_beneficiaries && !['SADAD Payment', 'Work Permit Fee Payment', 'Passport Fee Payment'].includes(doc.payment_type)"
+  },
+  {
+   "depends_on": "eval:doc.swift_code",
+   "fieldname": "swift_code",
+   "fieldtype": "Data",
+   "label": "SWIFT Code",
+   "read_only": 1
   },
   {
    "fieldname": "payment_details_section",
@@ -499,7 +507,7 @@
    "link_fieldname": "expense_request_cf"
   }
  ],
- "modified": "2026-10-21 18:14:00.000000",
+ "modified": "2026-11-17 19:30:00.000000",
  "module": "Financial Operations",
  "name": "Payment Requisition",
  "naming_rule": "By \"Naming Series\" field",

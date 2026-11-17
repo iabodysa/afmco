@@ -13,6 +13,8 @@ import frappe
 from frappe import _
 from frappe.utils import cstr, flt
 
+from afmco.people_and_payroll.iban import recorded_swift_codes
+
 PAGE = "wps-file"
 FILE_FIELDS = (
 	"bank_name",
@@ -105,6 +107,7 @@ def get_slips(company, payroll_entry):
 
 def get_problems(slips):
 	per_employee = Counter(slip.employee for slip in slips)
+	foreign = recorded_swift_codes(slip.bank_account_no for slip in slips)
 	problems = []
 
 	def add(slip, check, message):
@@ -121,6 +124,8 @@ def get_problems(slips):
 	for slip in slips:
 		if not cstr(slip.bank_account_no).strip():
 			add(slip, "iban", _("IBAN is missing", context="WPS File"))
+		elif slip.bank_account_no in foreign:
+			add(slip, "iban", _("Account is outside Saudi Arabia", context="WPS File"))
 		if not cstr(slip.bank_name).strip():
 			add(slip, "bank", _("Bank is missing", context="WPS File"))
 		if not NATIONAL_ID.match(cstr(slip.employee)):
