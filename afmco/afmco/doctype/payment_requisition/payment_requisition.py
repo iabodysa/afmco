@@ -459,8 +459,11 @@ def set_sadad_bill(request, biller, bills):
 def get_permission_query_conditions(user):
 	if "System Manager" in frappe.get_roles(user):
 		return None
-	company = frappe.db.get_single_value("Global Defaults", "default_company")
-	frozen_date = company and frappe.db.get_value("Company", company, "accounts_frozen_till_date")
+	if frappe.get_meta("Company").has_field("accounts_frozen_till_date"):
+		company = frappe.db.get_single_value("Global Defaults", "default_company")
+		frozen_date = company and frappe.db.get_value("Company", company, "accounts_frozen_till_date")
+	else:
+		frozen_date = frappe.db.get_value("Accounts Settings", None, "acc_frozen_upto")
 	if frozen_date and frappe.defaults.get_user_default("show_archive_preference", user) != "1":
 		return f"`tabPayment Requisition`.`creation` >= '{add_days(frozen_date, 1)}'"
 	return None
