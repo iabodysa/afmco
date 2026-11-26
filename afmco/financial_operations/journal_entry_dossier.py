@@ -50,7 +50,7 @@ def split(journal_entry: str) -> tuple[list[dict], list[dict]]:
 	for file in frappe.get_all(
 		"File",
 		filters={"attached_to_doctype": JOURNAL_ENTRY, "attached_to_name": journal_entry, "is_folder": 0},
-		fields=["name", "file_name", "file_url", "file_size"],
+		fields=["name", "file_name", "file_url", "file_size", "is_private"],
 		order_by="creation asc",
 	):
 		(dossiers if is_dossier(file) else files).append(file)

@@ -118,9 +118,18 @@ class AfmcoJournalEntry:
 		)
 
 	def copy_attachments_from_amended_from(self):
-		super().copy_attachments_from_amended_from()
-		for dossier in journal_entry_dossier.split(self.name)[1]:
-			frappe.delete_doc("File", dossier.name, ignore_permissions=True)
+		for file in journal_entry_dossier.split(self.amended_from)[0]:
+			frappe.get_doc(
+				{
+					"doctype": "File",
+					"file_url": file.file_url,
+					"file_name": file.file_name,
+					"attached_to_name": self.name,
+					"attached_to_doctype": self.doctype,
+					"folder": "Home/Attachments",
+					"is_private": file.is_private,
+				}
+			).save()
 
 	def on_cancel(self):
 		super().on_cancel()
