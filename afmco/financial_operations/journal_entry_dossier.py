@@ -10,6 +10,7 @@ from pathlib import Path
 import frappe
 import pikepdf
 from frappe import _
+from frappe.core.api.file import get_max_file_size
 from frappe.utils.pdf import get_pdf
 
 from afmco.financial_operations import requisition_pack
@@ -37,11 +38,11 @@ def recorded(file: dict, key: str) -> str | None:
 		return None
 
 
-def is_dossier(journal_entry: str, file: dict) -> bool:
+def is_dossier(file: dict) -> bool:
 	name = file.file_name or ""
 	if LEGACY_PATTERN.search(name):
 		return True
-	return name.startswith(journal_entry) and name.endswith(".pdf") and recorded(file, INPUTS_KEY) is not None
+	return name.endswith(".pdf") and recorded(file, INPUTS_KEY) is not None
 
 
 def split(journal_entry: str) -> tuple[list[dict], list[dict]]:
@@ -52,7 +53,7 @@ def split(journal_entry: str) -> tuple[list[dict], list[dict]]:
 		fields=["name", "file_name", "file_url", "file_size"],
 		order_by="creation asc",
 	):
-		(dossiers if is_dossier(journal_entry, file) else files).append(file)
+		(dossiers if is_dossier(file) else files).append(file)
 	return files, dossiers
 
 
@@ -66,7 +67,7 @@ def file_permission(doc, ptype=None, user=None, debug=False) -> bool:
 		return True
 	if frappe.db.get_value(JOURNAL_ENTRY, stored.attached_to_name, "docstatus") != 1:
 		return True
-	return not is_dossier(stored.attached_to_name, stored)
+	return not is_dossier(stored)
 
 
 def is_mergeable(file: dict) -> bool:
@@ -162,10 +163,17 @@ def build(journal_entry: str) -> dict:
 	expected = end + front
 	content = finish(merged, index, {INPUTS_KEY: inputs_key(entry, files), SKIPPED_KEY: json.dumps(skipped)})
 	actual = page_count(content)
+	limit = get_max_file_size()
+	error = None
 	if actual != expected:
 		error = _("{0} has {1} pages, expected {2}; the previous print with attachments is kept.").format(
 			dossier_file_name(journal_entry), actual, expected
 		)
+	elif len(content) > limit:
+		error = _(
+			"{0} is {1} MB, above the maximum file size of {2} MB; the previous print with attachments is kept."
+		).format(dossier_file_name(journal_entry), round(len(content) / 1048576, 1), round(limit / 1048576, 1))
+	if error:
 		frappe.log_error(
 			title=_("Journal Entry dossier check failed"),
 			message=error,

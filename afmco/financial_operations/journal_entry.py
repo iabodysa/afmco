@@ -5,6 +5,8 @@ import frappe
 from frappe import _
 from frappe.utils import cint, get_link_to_form
 
+from afmco.financial_operations import journal_entry_dossier
+
 DRAFT_LIMIT_FIELD = "afmco_journal_entry_draft_limit"
 DRAFT_LIMIT_EXEMPT_ROLE_FIELD = "afmco_journal_entry_draft_limit_exempt_role"
 SINGLE_ACTIVE_LINK_FIELDS = ("jv_based_on_submitted_si_cf",)
@@ -114,6 +116,11 @@ class AfmcoJournalEntry:
 			enqueue_after_commit=True,
 			journal_entry=self.name,
 		)
+
+	def copy_attachments_from_amended_from(self):
+		super().copy_attachments_from_amended_from()
+		for dossier in journal_entry_dossier.split(self.name)[1]:
+			frappe.delete_doc("File", dossier.name, ignore_permissions=True)
 
 	def on_cancel(self):
 		super().on_cancel()
