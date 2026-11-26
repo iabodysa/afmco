@@ -1,0 +1,32 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "",
+ "condition_type": "Python",
+ "creation": "2026-11-26 18:32:00.000000",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Leave Application",
+ "enabled": 1,
+ "event": "Method",
+ "idx": 0,
+ "is_standard": 1,
+ "message_type": "HTML",
+ "method": "repeat_rejection_alert",
+ "minutes_offset": 0,
+ "modified": "2026-11-26 18:32:00.000000",
+ "modified_by": "Administrator",
+ "module": "People and Payroll",
+ "name": "Leave Repeat Rejection HR",
+ "notification_type": "Alert",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_role": "HR Manager"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "{{ _(\"Annual leave of {0} cannot be rejected again\").format(doc.employee_name) }}"
+}

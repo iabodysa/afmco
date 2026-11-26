@@ -178,7 +178,7 @@ scheduler_events = {
 			"afmco.financial_operations.accounts_bot_choice.republish_open_choices",
 		],
 		"0 8 * * *": [
-			"afmco.people_and_payroll.leave_application.mail_open_leave_digest",
+			"afmco.people_and_payroll.leave_application.remind_leave_approvers",
 		],
 	},
 	"daily": [

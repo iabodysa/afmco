@@ -1,33 +1,23 @@
 # Copyright (c) 2026, AFMCO and contributors
 # For license information, please see license.txt
 
-from collections import defaultdict
 from contextlib import contextmanager
 
 import frappe
 from frappe import _
 from frappe.desk.doctype.notification_log.notification_log import enqueue_create_notification
-from frappe.utils import (
-	add_days,
-	escape_html,
-	formatdate,
-	get_fullname,
-	get_url_to_form,
-	getdate,
-	now_datetime,
-	nowdate,
-)
+from frappe.utils import add_days, formatdate, get_fullname, getdate, now_datetime, nowdate
 from frappe.utils.user import get_users_with_role
 from hrms.hr.doctype.leave_application.leave_application import get_employee_leave_approver
-from hrms.utils import get_employee_email
 
 from afmco.people_and_payroll.employee import ON_LEAVE_STATUS
 
 NO_SHOW_ALERT_DAYS = 10
 NO_SHOW_ALERT_ROLE = "HR Manager"
 REJECTION_WINDOW_DAYS = 90
-REJECTION_ALERT_ROLE = "HR Manager"
 REJECTION_ALERT_SECONDS = 86400
+REPEAT_REJECTION_ALERT_METHOD = "repeat_rejection_alert"
+APPROVAL_REMINDER_METHOD = "approval_reminder"
 
 
 def set_employees_on_leave():
@@ -92,113 +82,17 @@ def annual_leave_types() -> list[str]:
 	return frappe.get_all("Leave Type", filters={"is_earned_leave": 1}, pluck="name")
 
 
-def mail_repeat_rejection_alert(
-	leave_application, employee, employee_name, from_date, to_date, rejected_by, rejected_on
-):
-	link = get_url_to_form("Leave Application", leave_application)
-	period = _("{0} to {1}").format(formatdate(from_date), formatdate(to_date))
-	hr_users = get_users_with_role(REJECTION_ALERT_ROLE)
-	if hr_users:
-		frappe.sendmail(
-			recipients=hr_users,
-			subject=_("Annual leave of {0} cannot be rejected again").format(employee_name),
-			message=_(
-				"{0} tried to reject the annual leave of {1} ({2}). An annual leave of {1} was rejected on {3}, within the last {4} days, so this request must be approved."
-			).format(escape_html(rejected_by), escape_html(employee_name), period, rejected_on, REJECTION_WINDOW_DAYS)
-			+ f'<p><a href="{link}">{leave_application}</a></p>',
-			reference_doctype="Leave Application",
-			reference_name=leave_application,
-		)
-	employee_email = get_employee_email(employee)
-	if employee_email:
-		frappe.sendmail(
-			recipients=[employee_email],
-			subject=_("Your annual leave request {0}").format(leave_application),
-			message=_(
-				"Your annual leave request ({0}) cannot be rejected, because an annual leave of yours was rejected on {1}, within the last {2} days. It has to be approved."
-			).format(period, rejected_on, REJECTION_WINDOW_DAYS),
-			reference_doctype="Leave Application",
-			reference_name=leave_application,
-		)
-
-
-def leave_approvers_of(leave, employees, managers, department_approvers) -> list[str]:
-	if leave.leave_approver:
-		return [leave.leave_approver]
-	employee = employees.get(leave.employee)
-	if employee and managers.get(employee.reports_to):
-		return [managers[employee.reports_to]]
-	return department_approvers.get(employee.department, []) if employee else []
-
-
-def mail_open_leave_digest():
-	open_leaves = frappe.get_all(
-		"Leave Application",
-		filters={"status": "Open", "docstatus": 0},
-		fields=["name", "employee", "employee_name", "leave_type", "from_date", "to_date", "leave_approver"],
-		order_by="from_date asc",
+def send_repeat_rejection_alert(leave_application, rejected_by, rejected_on):
+	doc = frappe.get_doc("Leave Application", leave_application)
+	doc.flags.repeat_rejection = frappe._dict(
+		rejected_by=rejected_by, rejected_on=rejected_on, window_days=REJECTION_WINDOW_DAYS
 	)
-	if not open_leaves:
-		return
-	employees = {
-		row.name: row
-		for row in frappe.get_all(
-			"Employee",
-			filters={"name": ("in", list({leave.employee for leave in open_leaves}))},
-			fields=["name", "department", "reports_to"],
-		)
-	}
-	managers = dict(
-		frappe.get_all(
-			"Employee",
-			filters={
-				"name": ("in", [e.reports_to for e in employees.values() if e.reports_to]),
-				"user_id": ("is", "set"),
-			},
-			fields=["name", "user_id"],
-			as_list=True,
-		)
-	)
-	department_approvers = defaultdict(list)
-	for row in frappe.get_all(
-		"Department Approver",
-		filters={
-			"parentfield": "leave_approvers",
-			"parent": ("in", [e.department for e in employees.values() if e.department]),
-		},
-		fields=["parent", "approver"],
-		order_by="idx asc",
-	):
-		department_approvers[row.parent].append(row.approver)
-	by_approver = defaultdict(list)
-	for leave in open_leaves:
-		for approver in leave_approvers_of(leave, employees, managers, department_approvers):
-			by_approver[approver].append(leave)
-	emails = dict(
-		frappe.get_all(
-			"User", filters={"name": ("in", list(by_approver)), "enabled": 1}, fields=["name", "email"], as_list=True
-		)
-	)
-	for approver, leaves in by_approver.items():
-		if not emails.get(approver):
-			continue
-		rows = "".join(
-			'<li><a href="{0}">{1}</a></li>'.format(
-				get_url_to_form("Leave Application", leave.name),
-				_("{0}: {1} from {2} to {3}").format(
-					escape_html(leave.employee_name),
-					_(leave.leave_type),
-					formatdate(leave.from_date),
-					formatdate(leave.to_date),
-				),
-			)
-			for leave in leaves
-		)
-		frappe.sendmail(
-			recipients=[emails[approver]],
-			subject=_("Leave requests waiting for your decision ({0})").format(len(leaves)),
-			message="<p>{0}</p><ul>{1}</ul>".format(_("These leave requests are waiting for your decision:"), rows),
-		)
+	doc.run_method(REPEAT_REJECTION_ALERT_METHOD)
+
+
+def remind_leave_approvers():
+	for name in frappe.get_all("Leave Application", filters={"status": "Open", "docstatus": 0}, pluck="name"):
+		frappe.get_doc("Leave Application", name).run_method(APPROVAL_REMINDER_METHOD)
 
 
 class AfmcoLeaveApplication:
@@ -241,12 +135,9 @@ class AfmcoLeaveApplication:
 		if not first_attempt:
 			return
 		frappe.enqueue(
-			mail_repeat_rejection_alert,
+			send_repeat_rejection_alert,
+			enqueue_after_commit=False,
 			leave_application=self.name,
-			employee=self.employee,
-			employee_name=self.employee_name,
-			from_date=self.from_date,
-			to_date=self.to_date,
 			rejected_by=get_fullname(frappe.session.user),
 			rejected_on=rejected_on,
 		)

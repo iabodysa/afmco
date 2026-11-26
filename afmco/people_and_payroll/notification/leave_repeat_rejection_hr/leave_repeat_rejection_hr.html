@@ -1,0 +1,4 @@
+{% set period = _("{0} to {1}").format(frappe.utils.formatdate(doc.from_date), frappe.utils.formatdate(doc.to_date)) %}
+{% set rejection = doc.flags.repeat_rejection %}
+<p>{{ _("{0} tried to reject the annual leave of {1} ({2}). An annual leave of {1} was rejected on {3}, within the last {4} days, so this request must be approved.").format(rejection.rejected_by | e, doc.employee_name | e, period, rejection.rejected_on, rejection.window_days) }}</p>
+<p><a href="{{ frappe.utils.get_url_to_form(doc.doctype, doc.name) }}">{{ doc.name }}</a></p>

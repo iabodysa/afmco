@@ -1,0 +1,2 @@
+<p>{{ _("{0}: {1} from {2} to {3}").format(doc.employee_name | e, _(doc.leave_type), frappe.utils.formatdate(doc.from_date), frappe.utils.formatdate(doc.to_date)) }}</p>
+<p><a href="{{ frappe.utils.get_url_to_form(doc.doctype, doc.name) }}">{{ doc.name }}</a></p>
