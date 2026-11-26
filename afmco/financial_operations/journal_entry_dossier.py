@@ -182,7 +182,9 @@ def build(journal_entry: str) -> dict:
 		)
 		return {"error": error, "listed": listed, "skipped": skipped}
 	for dossier in dossiers:
-		frappe.delete_doc("File", dossier.name, ignore_permissions=True)
+		name = dossier.file_name or ""
+		if LEGACY_PATTERN.search(name) or name.startswith(journal_entry):
+			frappe.delete_doc("File", dossier.name, ignore_permissions=True)
 	file = frappe.get_doc(
 		{
 			"doctype": "File",
