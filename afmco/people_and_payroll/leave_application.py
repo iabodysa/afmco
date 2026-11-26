@@ -1,11 +1,14 @@
 # Copyright (c) 2026, AFMCO and contributors
 # For license information, please see license.txt
 
+from contextlib import contextmanager
+
 import frappe
 from frappe import _
 from frappe.desk.doctype.notification_log.notification_log import enqueue_create_notification
 from frappe.utils import add_days, formatdate, getdate, nowdate
 from frappe.utils.user import get_users_with_role
+from hrms.hr.doctype.leave_application.leave_application import get_employee_leave_approver
 
 from afmco.people_and_payroll.employee import ON_LEAVE_STATUS
 
@@ -69,3 +72,34 @@ def alert_hr_of_employees_not_returned():
 			},
 			dedupe_on=["document_type", "document_name", "subject"],
 		)
+
+
+class AfmcoLeaveApplication:
+	def validate_balance_leaves(self):
+		with guest_web_form_balance_read():
+			return super().validate_balance_leaves()
+
+	def get_consecutive_leave_details(self) -> dict:
+		with guest_web_form_balance_read():
+			return super().get_consecutive_leave_details()
+
+	def validate_leave_approver(self):
+		if is_guest_web_form() and not self.leave_approver:
+			self.leave_approver = get_employee_leave_approver(self.employee)
+		return super().validate_leave_approver()
+
+
+def is_guest_web_form() -> bool:
+	return bool(frappe.flags.in_web_form) and frappe.session.user == "Guest"
+
+
+@contextmanager
+def guest_web_form_balance_read():
+	if not is_guest_web_form():
+		yield
+		return
+	frappe.session.user = "Administrator"
+	try:
+		yield
+	finally:
+		frappe.session.user = "Guest"

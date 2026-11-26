@@ -155,6 +155,7 @@ extend_doctype_class = {
 	"Expense Claim": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"File": "afmco.financial_operations.file.AfmcoFile",
 	"Journal Entry": "afmco.financial_operations.journal_entry.AfmcoJournalEntry",
+	"Leave Application": "afmco.people_and_payroll.leave_application.AfmcoLeaveApplication",
 	"Leave Encashment": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Loan": "afmco.people_and_payroll.loan.AfmcoLoan",
 	"Loan Disbursement": "afmco.people_and_payroll.employee.AfmcoHoldGuard",

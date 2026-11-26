@@ -24,7 +24,7 @@
  "list_columns": [],
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2026-10-16 12:00:00.000000",
+ "modified": "2026-11-26 15:58:00.000000",
  "module": "People and Payroll",
  "name": "leave-application",
  "payment_button_label": "Buy Now",
@@ -57,7 +57,7 @@
    "label": "Leave Type",
    "max_length": 0,
    "max_value": 0,
-   "options": "Paid Annual Leave - 21 days\nSick Leave",
+   "options": "Paid Annual Leave - 21 days\nSick Leave\nLeave Without Pay",
    "read_only": 0,
    "reqd": 1,
    "show_in_filter": 0
