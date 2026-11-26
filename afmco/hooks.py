@@ -111,6 +111,7 @@ after_install = "afmco.install.after_install"
 after_migrate = [
 	"afmco.financial_operations.zatca_workspace.remove_premium_promotion",
 	"afmco.vendor_desk_style.fill_empty_vendor_desk_style",
+	"afmco.vendor_data_lock.lock_vendor_data_paths",
 ]
 
 # Uninstallation

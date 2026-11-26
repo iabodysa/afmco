@@ -1,0 +1,17 @@
+{
+ "custom_fields": [],
+ "doctype": "Job Card",
+ "property_setters": [
+  {
+   "doc_type": "Job Card",
+   "doctype_or_field": "DocField",
+   "field_name": "barcode",
+   "module": "Financial Operations",
+   "name": "Job Card-barcode-hidden",
+   "property": "hidden",
+   "property_type": "Check",
+   "value": "1"
+  }
+ ],
+ "sync_on_migrate": 1
+}
