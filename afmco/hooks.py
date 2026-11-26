@@ -160,6 +160,8 @@ extend_doctype_class = {
 	"Loan": "afmco.people_and_payroll.loan.AfmcoLoan",
 	"Loan Disbursement": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Payroll Entry": "afmco.people_and_payroll.payroll_entry.AfmcoPayrollEntry",
+	"Prepared Report": "afmco.financial_operations.general_ledger_filter.AfmcoPreparedReport",
+	"Report": "afmco.financial_operations.general_ledger_filter.AfmcoReport",
 	"Retention Bonus": "afmco.people_and_payroll.employee.AfmcoHoldGuard",
 	"Salary Slip": "afmco.people_and_payroll.salary_slip.AfmcoSalarySlip",
 	"Salary Structure Assignment": "afmco.people_and_payroll.salary_structure_assignment.AfmcoSalaryStructureAssignment",

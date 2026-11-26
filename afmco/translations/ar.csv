@@ -16675,3 +16675,5 @@ Your annual leave request {0},طلب إجازتك السنوية {0}
 {0}: {1} from {2} to {3},{0}: {1} من {2} إلى {3}
 Leave request of {0} is waiting for your decision,طلب إجازة {0} بانتظار قرارك
 "{0} is {1} MB, above the maximum file size of {2} MB; the previous print with attachments is kept.",حجم {0} هو {1} ميجابايت، وهو أكبر من الحد الأقصى لحجم الملف {2} ميجابايت، وأبقيت الطباعة السابقة مع المرفقات.
+"Select at least one filter such as Account, Party, Cost Center or Voucher No to run this report.",اختر فلتر واحد على الأقل، مثل الحساب أو الطرف أو مركز التكلفة أو رقم المستند، لتشغيل هذا التقرير.
+Filter Required,الفلتر مطلوب
