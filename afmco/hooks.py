@@ -177,6 +177,9 @@ scheduler_events = {
 		"* * * * *": [
 			"afmco.financial_operations.accounts_bot_choice.republish_open_choices",
 		],
+		"0 8 * * *": [
+			"afmco.people_and_payroll.leave_application.mail_open_leave_digest",
+		],
 	},
 	"daily": [
 		"afmco.people_and_payroll.doctype.iqama_renewal_tracking.iqama_renewal_tracking.reschedule_due_trackings",

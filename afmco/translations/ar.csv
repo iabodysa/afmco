@@ -16662,3 +16662,16 @@ SWIFT Code,رمز السويفت
 SWIFT Code is missing,رمز السويفت غير موجود
 SWIFT Code must be 8 or 11 letters and digits.,رمز السويفت 8 أو 11 حرفًا ورقمًا.
 Saudi,سعودي
+Annual Leave,إجازة سنوية
+Annual leave of {0} cannot be rejected again,لا يمكن رفض الإجازة السنوية لـ {0} مرة أخرى
+Leave requests waiting for your decision ({0}),طلبات إجازة بانتظار قرارك ({0})
+Rejection Not Allowed,الرفض غير مسموح
+Rejection Reason,سبب الرفض
+Rejection Reason Required,سبب الرفض مطلوب
+These leave requests are waiting for your decision:,طلبات الإجازة التالية بانتظار قرارك:
+Write the reason for rejecting this annual leave.,اكتب سبب رفض هذه الإجازة السنوية.
+"Your annual leave request ({0}) cannot be rejected, because an annual leave of yours was rejected on {1}, within the last {2} days. It has to be approved.",لا يمكن رفض طلب إجازتك السنوية ({0})، لأن إجازة سنوية لك رُفضت بتاريخ {1} خلال آخر {2} يومًا، ويجب أن يُعتمد هذا الطلب.
+Your annual leave request {0},طلب إجازتك السنوية {0}
+"{0} tried to reject the annual leave of {1} ({2}). An annual leave of {1} was rejected on {3}, within the last {4} days, so this request must be approved.",حاول {0} رفض الإجازة السنوية لـ {1} ({2}). رُفضت إجازة سنوية لـ {1} بتاريخ {3} خلال آخر {4} يومًا، لذلك يجب اعتماد هذا الطلب.
+"{0} was refused annual leave on {1}, within the last {2} days. This request must be approved.",رُفضت إجازة سنوية لـ {0} بتاريخ {1} خلال آخر {2} يومًا، ويجب اعتماد هذا الطلب.
+{0}: {1} from {2} to {3},{0}: {1} من {2} إلى {3}

@@ -34,6 +34,31 @@
    "name": "Leave Application-unpaid_leave_acknowledgement",
    "options": "{% if doc.leave_type and frappe.db.get_value(\"Leave Type\", doc.leave_type, \"is_lwp\") %}<p>{{ _(\"The employee agrees that the entire unpaid leave period is not counted in the length of service, by agreement of both parties under Article 116 of the Labor Law.\", context=\"Leave Application\") }}</p><div class=\"row\"><div class=\"col-xs-6\">{{ _(\"Employee Signature\") }}: ____________________</div><div class=\"col-xs-6\">{{ _(\"Date\") }}: ____________________</div></div>{% endif %}",
    "print_hide": "0"
+  },
+  {
+   "dt": "Leave Application",
+   "fetch_from": "leave_type.is_earned_leave",
+   "fieldname": "annual_leave",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "insert_after": "leave_type",
+   "label": "Annual Leave",
+   "module": "People and Payroll",
+   "name": "Leave Application-annual_leave",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.status==\"Rejected\" && doc.annual_leave",
+   "dt": "Leave Application",
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "insert_after": "status",
+   "label": "Rejection Reason",
+   "mandatory_depends_on": "eval:doc.status==\"Rejected\" && doc.annual_leave",
+   "module": "People and Payroll",
+   "name": "Leave Application-rejection_reason",
+   "no_copy": 1,
+   "permlevel": 1
   }
  ],
  "doctype": "Leave Application",
